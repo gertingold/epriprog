@@ -1,0 +1,9 @@
+name: epriprog
+channels:
+  - default
+dependencies:
+  - python
+  - sphinx
+  - pip
+  - pip:
+    - jupyter-book
