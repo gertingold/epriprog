@@ -27,6 +27,14 @@ Originalbild eines Waschbärs (links) und nach Anwendung einer Exponentialfunkti
 (rechts).
 ```
 
+````{margin}
+```{admonition} Tipp
+:class: tip
+Eine größere Darstellung von Abbildung können Sie durch Klicken auf das
+entsprechende Bild erhalten.
+```
+````
+
 Das Beispiel der Digitalkamera schlägt die Brücke vom Alltag ins Labor. Im
 Grunde genommen ist eine Digitalkamera nichts anderes als ein Messgerät, das
 optische Information in digitale Daten umwandelt und zur Verfügung stellt, sei
@@ -230,9 +238,10 @@ verfügbaren numerischen Programmbibliotheken
 [{program}`NumPy`](https://numpy.org/) und
 [{program}`SciPy`](https://www.scipy.org), die wir im Kapitel {ref}`scipy`
 besprechen werden. Es ist daher am einfachsten, eine Python-Distribution, also
-eine Art Komplettpaket, zu installieren. Verzichtet man auf die Installation
-einer geeigneten Distribution, so müssen diese Programmbibliotheken zusätzlich
-installiert werden.
+eine Art Komplettpaket, das sowohl den Python-Interpreter als auch eine Reihe
+von Programmbibliotheken enthält, zu installieren. Verzichtet man auf die
+Installation einer geeigneten Distribution, so müssen die benötigten
+Programmbibliotheken zusätzlich installiert werden.
 
 Die aktuelle Standard-Distribution für Python im wissenschaftlichen Bereich ist
 die [Anaconda-Distribution](https://www.anaconda.com/products/individual), die
@@ -253,10 +262,8 @@ Manchmal hat man es nur mit kurzen Codestücken zu tun. Dies ist vor allem der
 Fall, wenn man schnell etwas ausprobieren möchte. Dann eignet sich die
 Python-Shell, in der man zeilenweise Python-Code eingeben kann, der
 anschließend ausgeführt wird. Sobald Python installiert ist, ist auch die
-zugehörige Python-Shell verfügbar. Allerdings ist die Python-Shell nicht sehr
-komfortabel. Da Tippfehler in den vorigen Zeilen nicht leicht korrigiert werden
-können, kann das Arbeiten mit der Python-Shell schnell lästig werden. 
-{numref}`fig:pythonshell` zeigt die Python-Shell in einem Konsolenfenster unter Linux.
+zugehörige Python-Shell verfügbar. {numref}`fig:pythonshell` zeigt die
+Python-Shell in einem Konsolenfenster unter Linux.
 
 ```{figure} images/einleitung/pythonshell.png
 ---
@@ -266,28 +273,41 @@ name: fig:pythonshell
 Programmierung von wenigen Zeilen direkt in der Python-Shell.
 ```
 
-Eine erheblich komfortablere Variante der Python-Shell ist die
-[IPython-Shell](http://ipython.org/), die beispielsweise bei der
-Anaconda-Distribution automatisch installiert wird.  Hier kann man alte
-Eingaben zurückholen, Befehle ergänzen lassen und vieles mehr. Es ist daher
+Allerdings ist die Python-Shell nicht sehr komfortabel. Da Tippfehler in den
+vorhergehenden Zeilen nicht leicht korrigiert werden können, kann das Arbeiten
+mit der Python-Shell schnell lästig werden.  Eine erheblich komfortablere
+Variante der Python-Shell ist die [IPython-Shell](http://ipython.org/), die
+beispielsweise bei der Anaconda-Distribution automatisch installiert wird.
+Hier kann man alte Eingaben zurückholen, Befehle ergänzen lassen und vieles
+mehr. In {numref}`fig:ipythonshell` ist auch zu sehen, dass diese Shell Teile der
+Eingabe je nach ihrer Funktion einfärbt.  Man spricht hierbei von *Syntax
+Highlighting*, das bei der Fehlersuche hilfreich sein kann. Es ist daher
 sinnvoll, statt der Python-Shell grundsätzlich die IPython-Shell zu verwenden.
 
-Interessant ist die Verwendung von so genannten IPython-Notebooks, die es
-erlauben, interaktiv mit Python in einem Browser zu arbeiten. Zur Vorlesung
-werden IPython-Notebooks zur Verfügung gestellt, die den zu
-besprechenden Programmcode enthalten. Damit kann der Programmcode während der
-Vorlesung auf dem eigenen Rechner ohne lästiges Abtippen ausprobiert werden.
-Zudem ist es leicht möglich, den Programmcode zu ändern, um auftretende Fragen
-zu klären.  Schließlich kann man auch eigene Anmerkungen im Notebook eintragen
-und auf diese Weise eine eigene Vorlesungsmitschrift erstellen. Ein Beispiel
-für ein Python-Notebook zeigt die folgende Abbildung.
+```{figure} images/einleitung/ipythonshell.png
+---
+width: 10cm
+name: fig:ipythonshell
+---
+Eine komfortablere Python-Shell bietet IPython, unter anderem mit *Syntax Highlighting*.
+```
+
+Interessant ist die Verwendung von so genannten Jupyter-Notebooks, die es
+erlauben, interaktiv mit Python in einem Browser zu arbeiten. Wie die
+{numref}`fig:jupyternotebook` zeigt, gibt es hier neben den grau hinterlegten
+Codezellen auch Textzellen, die sogar Formeln enthalten können, und von
+ausgeführtem Code erzeugte Resultate werden ebenfalls in das Notebook
+integriert.  Dabei kann es sich, wie in {numref}`fig:jupyternotebook` dargestellt,
+beispielsweise auch um graphische Darstellungen handeln. Das Jupyter-Notebook
+eignet sich unter anderem hervorragend dafür, die Schritte einer Datenanalyse zu
+dokumentieren, um sie auch später nachvollziehen zu können.
 
 ```{figure} images/einleitung/jupyternotebook.png
 ---
 width: 15cm
 name: fig:jupyternotebook
 ---
-Beispiel eines Jupyter Notebooks. Das graphische Ergebnis einer der beiden
+Beispiel eines Jupyter-Notebooks. Das graphische Ergebnis einer der beiden
 Codezellen wird innerhalb des Notebooks dargestellt. In Textzellen lassen
 sich auch Formeln einbetten.
 ```
@@ -304,26 +324,29 @@ sich aber auf längere Sicht durchaus lohnen kann. Wer die Mühe der Einarbeitun
 scheut, kann für die Programmentwicklung auch zu einer der verschiedenen
 verfügbaren graphischen Entwicklungsumgebungen greifen.
 
-Python stellt eine relativ einfache Entwicklungsumgebung namens IDLE zur
-Verfügung. Daneben gibt es eine Reihe von freien wie auch von kostenpflichtigen
-Entwicklungsumgebungen. In der Anaconda-Distribution wird die graphische
-Entwicklungsumgebung Spyder [^spyder] mitgeliefert, die im nächsten Bild
-gezeigt ist. Unter Linux kann Spyder auch über die jeweilige Paketverwaltung
-installiert werden.
+Python stellt eine relativ einfache Entwicklungsumgebung namens
+[IDLE](https://docs.python.org/3/library/idle.html) zur Verfügung. Daneben gibt
+es eine Reihe von freien wie auch von kostenpflichtigen Entwicklungsumgebungen.
+In der Anaconda-Distribution wird die graphische Entwicklungsumgebung
+[Spyder](https://www.spyder-ide.org/) [^spyder] mitgeliefert, die in {numref}`fig:spyder`
+gezeigt ist.
 
 [^spyder]: Spyder steht für «Scientific PYthon Development EnviRonment»
 
-Das Spyder-Fenster besteht aus verschiedenen Teilfenstern. Rechts unten erkennen
-wir in {numref}`fig:spyder` ein IPython-Fenster, in dem, wie zu Beginn beschrieben, kürzere
-Codesegmente getestet werden können. Dies ist besonders hilfreich, wenn man beim
-Programmieren nicht sicher ist, ob ein bestimmter Programmcode wirklich das
-Beabsichtigte leistet. Das große Fenster links dient dazu, umfangreichere
-Programmtexte zu schreiben. Die Ausgabe solcher Programme erfolgt dann wiederum
-im IPython-Fenster. Ein weiteres Fenster dient zur Anzeige von Dokumentation
-oder zur Fehlersuche. Je nach Bedarf lässt sich das Spyder-Fenster anpassen,
-aber zumindest zu Beginn sollte die Standardeinstellung angemessen sein. Wir
-können an dieser Stelle keine ausführliche Einführung in Spyder geben und
-verweisen stattdessen auf die zugehörige [Dokumentation](https://docs.spyder-ide.org/current/index.html).
+Das Spyder-Fenster besteht aus verschiedenen Teilfenstern. In dem in
+{numref}`fig:spyder` gezeigten Beispiel befindet sich links ein Editorfenster,
+in dem auch problemlos ein längeres Programm eingegeben werden kann. Rechts
+unten erkennen wir ein IPython-Fenster, in dem, wie weiter oben beschrieben,
+kürzere Codesegmente getestet werden können. Dies ist besonders hilfreich, wenn
+man beim Programmieren nicht sicher ist, ob ein bestimmter Programmcode
+wirklich das Beabsichtigte leistet. In dem IPython-Fenster erfolgt auch die
+Ausgabe von Ergebnissen, wenn man den Code im linken Fenster ausführt.  Ein
+weiteres Fenster dient unter anderem zur Anzeige von Dokumentation oder zur
+Fehlersuche. Je nach Bedarf lässt sich das Spyder-Fenster anpassen, aber
+zumindest zu Beginn sollte die Standardeinstellung angemessen sein. Wir können
+an dieser Stelle keine ausführliche Einführung in Spyder geben und verweisen
+stattdessen auf die zugehörige
+[Dokumentation](https://docs.spyder-ide.org/current/index.html).
 
 ```{figure} images/einleitung/spyder.png
 ---
