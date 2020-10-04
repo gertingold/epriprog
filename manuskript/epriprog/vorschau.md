@@ -386,3 +386,23 @@ sich diese nicht zur Darstellung von Matrizen. An dieser Stelle greift man
 lieber auf das bereits in der {ref}`einleitung` erwähnte NumPy-Paket zurück,
 das einem beispielsweise vielfältige Anwendungsmöglichkeiten im Bereich der
 linearen Algebra bietet.
+
+Das hier besprochene Beispielprogramm war in erster Linie dazu gedacht, einige
+Programmierkonzepte zu illustrieren, die wir in den folgenden Kapiteln genauer
+besprechen wollen. Tatsächlich könnte man den Programmcode in verschiedener
+Hinsicht verbessern. Zwei Punkte wollen wir explizit ansprechen, da es sich
+lohnt, diese beim Programmieren im Hinterkopf zu behalten.
+
+Einer der Punkte betrifft das zuvor besprochene Codesegment zwischen den Zeilen
+11 und 15. Man sieht hier, dass die in der Liste `objekte` aufgeführten Zeichenketten
+in `info_text` wieder auftreten. Dies birgt die Gefahr, dass bei einer Änderung
+der Objektnamen in Zeile 11 übersehen wird, dass auch in den folgenden Zeilen eine
+Änderung vorzunehmen wäre. Es wäre also besser, den Text in `info_text` direkt aus
+den Informationen in `objekte` zu erzeugen.
+
+Der zweite Punkt betrifft die Auswertung der Eingabe durch den Benutzer. Diese muss
+in eine ganze Zahl umwandelbar sein. Ansonsten bricht das Programm in Zeile 18 ab.
+Es empfiehlt sich, für solche Fälle vorzusorgen und dem Benutzer einen entsprechenden
+Hinweis auszugeben, wie dies in Zeile 29 der Fall ist, falls eine eingegebene Zahl
+nicht zwischen -1 und 2 liegt. Wie man solche Situationen sinnvoll behandelt, werden
+wir später noch genauer sehen.
