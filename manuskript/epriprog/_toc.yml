@@ -1,10 +1,5 @@
+- file: intro.md
+  numbered: true
+
 - file: einleitung.md
-
-- part: 
-  chapters:
-  - file: vorschau.md
-
-- part: Anhang
-  chapters:
-  - file: unicode.md
-
+- file: vorschau.md

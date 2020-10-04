@@ -4,10 +4,20 @@ author        : Gert-Ludwig Ingold
 copyright     : "2020"
 logo          : ""
 
+repository:
+  url: https//github.com/gertingold/epriprog
+  path_to_book: manuskript/epriprog
+
+html:
+  use_repository_button: false
+  use_issues_button: false
+  use_edit_page_button: false
+  home_page_in_navbar: false
+
 latex:
   latex_documents:
     targetname: epriprog.tex
   latex_elements:
-    papersize : a4paper
+    papersize: a4paper
 
 sphinx: {config      : {language: de}}
