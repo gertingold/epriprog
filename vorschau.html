@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Eine Vorschau &#8212; Einführung in Prinzipien der Programmierung</title>
+    
+  <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="prev" title="1. Einleitung" href="einleitung.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Einführung in Prinzipien der Programmierung</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="einleitung.html">
+   1. Einleitung
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Eine Vorschau
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
+            title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/vorschau.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/vorschau.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Vollbildmodus"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/manuskript/epriprog/vorschau.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="eine-vorschau">
+<span id="vorschau"></span><h1><span class="section-number">2. </span>Eine Vorschau<a class="headerlink" href="#eine-vorschau" title="Link zu dieser Überschrift">¶</a></h1>
+<p>In diesem Kapitel wollen wir anhand eines konkreten Beispiels eine Vorstellung
+von einigen Aspekten bekommen, die beim Programmieren eine Rolle spielen. Wir
+werden diese Aspekte und noch einige mehr in den folgenden Kapiteln genauer
+besprechen. Es geht hier also nicht darum, schon alles im Detail zu verstehen,
+sondern vielmehr einen ersten Eindruck von der Struktur eines Programms zu
+gewinnen.</p>
+<p>Unser Beispiel implementiert das Spiel <a class="reference external" href="https://de.wikipedia.org/wiki/Schere,_Stein,_Papier">»Schere, Stein,
+Papier«</a>, wobei der
+Benutzer gegen den Computer spielt. Bei der folgenden Realisierung spielen
+<a class="reference external" href="https://de.wikipedia.org/wiki/Schere,_Stein,_Papier#Logik_und_Psychologie_des_Spiels">psychologische Aspekte des
+Spiels</a>
+keine Rolle. Bevor wir das Programm ausführen und dann anschließend einen
+genaueren Blick auf den Code werfen, wollen wir kurz an die Spielregeln erinnern.
+Spieler und Computer wählen eines der drei Objekte Schere, Stein oder Papier.
+Die Schere schneidet das Papier, das Papier wickelt den Stein ein und der Stein
+macht die Schere stumpf. Daher gewinnt die Schere gegen dem Papier, das Papier gegen
+den Stein und der Stein wiederum gegen die Schere.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="tip admonition">
+<p class="admonition-title">Tipp</p>
+<p>Durch Klicken auf das Blattsymbol rechts oben im Codefeld kann man
+leicht den gesamten Code in eine Datei kopieren.</p>
+</div>
+</div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">n_self</span><span class="p">,</span> <span class="n">n_other</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_self</span> <span class="o">-</span> <span class="n">n_other</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Das Spiel endete unentschieden.&#39;</span>
+    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Du hast gewonnen.&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;Du hast leider verloren.&#39;</span>
+
+<span class="n">objekte</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
+<span class="n">info_text</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[0] Stein</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[1] Papier</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[2] Schere</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;Gib eine Zahl zwischen 0 und 2 ein oder -1 zum Beenden: &#39;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">n_benutzer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">info_text</span><span class="p">))</span>
+    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_benutzer</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">n_computer</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Benutzer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_benutzer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_computer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">get_result</span><span class="p">(</span><span class="n">n_benutzer</span><span class="p">,</span> <span class="n">n_computer</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n_benutzer</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*** ungültige Eingabe</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Bevor wir uns mit dem Programmcode beschäftigen, sehen wir uns zunächst eine
+Beispiellauf an. Das Programm sei in einer Datei <code class="docutils literal notranslate"><span class="pre">schere_stein_papier.py</span></code>
+abgespeichert, die jetzt unter der Kontrolle des Python-Interpreters ausgeführt
+wird. Nach einem Informationstext kann der Benutzer durch Eingabe einer Zahl
+zwischen 0 und 2 ein Objekt auswählen. Anschließend wählt der Computer ein
+Objekt und gibt das Spielergebnis aus. Danach sind weitere Spielrunden möglich
+bis der Benutzer die Zahl -1 eingibt.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python schere_stein_papier.py
+
+[0] Stein
+[1] Papier
+[2] Schere
+
+Gib eine Zahl zwischen 0 und 2 ein oder -1 zum Beenden: 2
+----------------------------------------
+Benutzer: Schere
+Computer: Papier
+Du hast gewonnen.
+----------------------------------------
+
+[0] Stein
+[1] Papier
+[2] Schere
+
+Gib eine Zahl zwischen 0 und 2 ein oder -1 zum Beenden: 2
+----------------------------------------
+Benutzer: Schere
+Computer: Schere
+Das Spiel endete unentschieden.
+----------------------------------------
+
+[0] Stein
+[1] Papier
+[2] Schere
+
+Gib eine Zahl zwischen 0 und 2 ein oder -1 zum Beenden: -1
+$
+</pre></div>
+</div>
+<p>Schon ohne den Programmcode genau anzusehen, macht die Ausführung des Programms
+deutlich, dass es möglich sein sollte, Daten einzugeben und die Resultate
+wieder auszugeben. Vor allem ohne Letzteres wird man kaum auskommen, da das
+Programm in irgendeiner Form eine Auswirkung haben sollte. Allerdings wird die
+Eingabe häufig nicht über die Tastatur und die Ausgabe über den Bildschirm
+erfolgen. Gerade umfangreichere Eingaben erfolgen durch das Einlesen einer oder
+auch mehrerer Dateien, die beispielsweise experimentelle Daten enthalten. Auch
+die Ausgabe wird häufig in Dateien erfolgen, zum Beispiel um die Daten für weitere
+Schritte wie eine graphische Aufbereitung zur Verfügung zu haben.</p>
+<p>Sehen wir uns an, wo in unserem Beispielprogramm die Ein- und Ausgabe erfolgt.
+Die relevanten Zeilen sind farblich hervorgehoben.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">n_self</span><span class="p">,</span> <span class="n">n_other</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_self</span> <span class="o">-</span> <span class="n">n_other</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Das Spiel endete unentschieden.&#39;</span>
+    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Du hast gewonnen.&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;Du hast leider verloren.&#39;</span>
+
+<span class="n">objekte</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
+<span class="n">info_text</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[0] Stein</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[1] Papier</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[2] Schere</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;Gib eine Zahl zwischen 0 und 2 ein oder -1 zum Beenden: &#39;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="hll">    <span class="n">n_benutzer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">info_text</span><span class="p">))</span>
+</span>    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_benutzer</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">n_computer</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+</span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Benutzer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_benutzer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_computer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="n">get_result</span><span class="p">(</span><span class="n">n_benutzer</span><span class="p">,</span> <span class="n">n_computer</span><span class="p">))</span>
+</span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+</span>    <span class="k">elif</span> <span class="n">n_benutzer</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+<span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*** ungültige Eingabe</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></pre></div>
+</td></tr></table></div>
+<p>Die <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code>-Funktion erlaubt das Einlesen von Information von der Tastatur.
+Hinter dem Befehl steht hier in Klammern ein Argument, wie wir das von mathematischen
+Funktion kennen. Dieses Argument, das hier <code class="docutils literal notranslate"><span class="pre">info_text</span></code> genannt wurde, enthält den Text,
+der als Eingabeaufforderung ausgegeben wird. Nach einer Umwandlung der Texteingabe
+in eine ganze Zahl wird die Eingabe hier der Variablen <code class="docutils literal notranslate"><span class="pre">n_benutzer</span></code> zugewiesen.</p>
+<p>In den Zeilen 21 bis 25 und 29 sehen wir Aufrufe der <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion, die für
+die Ausgabe von Information verantwortlich sind. Wie man die genaue Formatierung der
+Ausgabe steuern kann, werden wir in einem späteren Kapitel sehen.</p>
+<p>Weiter fällt bei der Ausführung des Programms auf, dass sich das Spiel wiederholen
+lässt, im Prinzip beliebig oft bis der Benutzer -1 eingibt. Die Ausführung von
+so genannten Schleifen ist in Programmen sehr häufig anzutreffen. Dabei kann die
+Zahl der Schleifendurchläufe vorgegeben sein, wie es in Python bei einer <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife
+der Fall ist oder von einer Bedingung abhängen, wie in Python durch eine <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife
+realisiert.</p>
+<p>In unserem Programm ist ab der Zeile 17 eine <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife implementiert, die
+eine etwas ungewöhnliche Form annimmt. Nach dem <code class="docutils literal notranslate"><span class="pre">while</span></code>-Befehl steht immer eine
+Bedingung, die je nachdem ob sie erfüllt ist oder nicht, über die Fortsetzung der
+Schleifendurchläufe entscheidet. Hier sorgt der Wahrheitswert <code class="docutils literal notranslate"><span class="pre">True</span></code> immer dafür,
+dass die Bedingung erfüllt ist. Die Schleife wird also im Prinzip unendlich oft
+durchlaufen. Allerdings haben wir in den Zeilen 26 und 27 eine Vorkehrung getroffen,
+dass die Schleifendurchläufe bei einer Eingabe von -1 abgebrochen wird.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">n_benutzer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">info_text</span><span class="p">))</span>
+    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_benutzer</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">n_computer</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Benutzer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_benutzer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_computer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">get_result</span><span class="p">(</span><span class="n">n_benutzer</span><span class="p">,</span> <span class="n">n_computer</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n_benutzer</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*** ungültige Eingabe</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Soeben sind wir einem weiteren typischen Programmierkonstrukt begegnet, nämlich
+einer Verzweigung. Auch hier passiert wieder etwas in Abhängigkeit davon, ob
+eine Bedingung erfüllt ist. Allerdings geht es nicht um die Wiederholung eines
+bestimmten Codes, sondern darum, welcher Code ausgeführt wird. Um die Struktur
+dieser Konstruktion zu verstehen, sehen wir uns die im Folgenden markierten
+Zeilen genauer an.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">n_benutzer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">info_text</span><span class="p">))</span>
+<span class="hll">    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_benutzer</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+</span>        <span class="n">n_computer</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Benutzer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_benutzer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_computer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">get_result</span><span class="p">(</span><span class="n">n_benutzer</span><span class="p">,</span> <span class="n">n_computer</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+<span class="hll">    <span class="k">elif</span> <span class="n">n_benutzer</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+</span>        <span class="k">break</span>
+<span class="hll">    <span class="k">else</span><span class="p">:</span>
+</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*** ungültige Eingabe</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>In Zeile 19 wird überprüft, ob die Eingabe durch den Benutzer im vorgegebenen
+Intervall, also zwischen 0 und 2 liegt. In diesem Fall wird eine Spielrunde
+durchgeführt, die durch die Einrückung verdeutlicht ist. Während andere
+Programmiersprachen zur Begrenzung eines solchen Blocks häufig Klammern
+verwenden, erwartet Python eine Einrückung.</p>
+<p>Liegt die Eingabe nicht im Intervall zwischen 0 und 2, so müssen wir noch den
+Fall der Eingabe -1 überprüfen. <code class="docutils literal notranslate"><span class="pre">elif</span></code> in Zeile 26 steht als Abkürzung für
+<code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>.  Falls also die Eingabe nicht zwischen 0 und 2 liegt, aber gleich -1
+ist, so wird die <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife in Zeile 27 abgebrochen.</p>
+<p>Ist keine der beiden vorgehenenden Fälle erfüllt, wird der <code class="docutils literal notranslate"><span class="pre">else</span></code>-Block ab
+Zeile 28 relevant, der in unserem in einer Ausgabe darauf hinweist, dass keine
+gültige Eingabe gemacht wurde.</p>
+<p>Eine entsprechende Verzweigungsstrukturen findet man auch in den Zeilen 4 bis
+9, wo auch drei Alternativen zu unterscheiden sind, nämlich gewonnen,
+unentschieden und verloren. Es kann aber auch vorkommen, dass ein <code class="docutils literal notranslate"><span class="pre">if</span></code>-Block
+alleine vorkommt oder nur in Kombination mit einem <code class="docutils literal notranslate"><span class="pre">else</span></code>-Block. Mehr hierzu
+werden wir später noch erfahren.</p>
+<p>Werfen wir ein genaueren Blick auf den ersten Teil des Programmcodes.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="hll"><span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">n_self</span><span class="p">,</span> <span class="n">n_other</span><span class="p">):</span>
+</span>    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_self</span> <span class="o">-</span> <span class="n">n_other</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="hll">        <span class="k">return</span> <span class="s1">&#39;Das Spiel endete unentschieden.&#39;</span>
+</span>    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="hll">        <span class="k">return</span> <span class="s1">&#39;Du hast gewonnen.&#39;</span>
+</span><span class="hll">    <span class="k">return</span> <span class="s1">&#39;Du hast leider verloren.&#39;</span>
+</span>
+<span class="n">objekte</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
+<span class="n">info_text</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[0] Stein</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[1] Papier</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[2] Schere</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;Gib eine Zahl zwischen 0 und 2 ein oder -1 zum Beenden: &#39;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">n_benutzer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">info_text</span><span class="p">))</span>
+    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_benutzer</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">n_computer</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Benutzer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_benutzer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_computer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="n">get_result</span><span class="p">(</span><span class="n">n_benutzer</span><span class="p">,</span> <span class="n">n_computer</span><span class="p">))</span>
+</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n_benutzer</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*** ungültige Eingabe</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>In den Zeilen 3 bis 9 ist eine Funkion definiert, die in Abhängigkeit der
+von Benutzer und Computer gewählten Objekte entscheidet, wer das Spiel gewonnen
+hat. Diese Funktion wird in Zeile 24 aufgerufen und dorthin wird mit Hilfe einer
+der <code class="docutils literal notranslate"><span class="pre">return</span></code>-Anweisungen in den Zeilen 6, 8 und 10 auch das Ergebnis der Funktion
+zurückgegeben. Im Prinzip könnte der Code im Funktionsblock auch direkt weiter
+unten im Programm stehen. Hier wird vor durch die Definition einer Funktion vor
+allem mehr Übersichtlichkeit erreicht.</p>
+<p>Häufig kann man auch auf Funktionen zurückgreifen, die von einem anderen
+Programmpaket bereitgestellt wird. In Python kann dies die sehr umfangreiche
+<a class="reference external" href="https://docs.python.org/3/library/index.html">Standardbibliothek</a> sein oder
+ein anderes der unzähligen verfügbaren Programmpakete. In unserem Beispiel haben
+wir zur Bestimmung der zufälligen Wahl des Objekts durch den Computer auf die
+Python-Standardbibliothek zurückgegriffen. Dies ist sinnvoll, da die Berechnung
+guter Zufallszahlen nicht ganz einfach ist. Daher ist es besser, auf bewährten und
+gut geschriebenen Code zurückgreifen statt das Rad neu zu erfinden. In der Zeile
+20 benutzen wir die <code class="xref py py-func docutils literal notranslate"><span class="pre">randrange()</span></code>-Funktion, um eines der drei Objekte zufällig
+auszuwählen. Dies ist möglich, nachdem wir in Zeile 1 das <code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code>-Modul
+importiert haben, das diese Funktion definiert.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">import</span> <span class="nn">random</span>
+</span>
+<span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">n_self</span><span class="p">,</span> <span class="n">n_other</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_self</span> <span class="o">-</span> <span class="n">n_other</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Das Spiel endete unentschieden.&#39;</span>
+    <span class="k">elif</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Du hast gewonnen.&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;Du hast leider verloren.&#39;</span>
+
+<span class="n">objekte</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
+<span class="n">info_text</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[0] Stein</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[1] Papier</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[2] Schere</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;Gib eine Zahl zwischen 0 und 2 ein oder -1 zum Beenden: &#39;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">n_benutzer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">info_text</span><span class="p">))</span>
+    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_benutzer</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+<span class="hll">        <span class="n">n_computer</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Benutzer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_benutzer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computer: </span><span class="si">{</span><span class="n">objekte</span><span class="p">[</span><span class="n">n_computer</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">get_result</span><span class="p">(</span><span class="n">n_benutzer</span><span class="p">,</span> <span class="n">n_computer</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n_benutzer</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">*** ungültige Eingabe</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Bereits in diese relativ kurzen Programm haben wir viele Aspekte einer
+Programmiersprache verwendet, die wir im Folgenden genauer besprechen werden.
+Dadurch dass das Beispiel nicht aus dem naturwissenschaftlichen Bereich gewählt
+war, kam allerdings ein Thema nicht zur Sprache, das uns ebenfalls noch
+beschäftigen wird. In den Natur- und Ingenieurwissenschaften haben die meisten
+Problemstellungen mit Zahlen zu tun, so dass sich Fragen stellen wie zum Beispiel
+wie groß der Bereich der Zahlen ist, die in einem Computer verarbeitet werden
+kann, oder ob die gewählte Programmiersprache komplexe Zahlen zulässt. Auch
+Vektoren oder Matrizen könnten von Interesse sein. In unserem Beispiel sieht man
+in Zeile 11 ein Objekt, das an einen Vektor erinnert.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">objekte</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
+</span><span class="n">info_text</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[0] Stein</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[1] Papier</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;[2] Schere</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+             <span class="s1">&#39;Gib eine Zahl zwischen 0 und 2 ein oder -1 zum Beenden: &#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Hierbei handelt es sich um eine Liste und es ist im Prinzip auch möglich,
+Listen von Zahlen zu verwenden. Allerdings sind Listen nicht geeignet, um
+Vektoren darzustellen und obwohl man Listen von Listen verwenden kann, eignen
+sich diese nicht zur Darstellung von Matrizen. An dieser Stelle greift man
+lieber auf das bereits in der <a class="reference internal" href="einleitung.html#einleitung"><span class="std std-ref">Einleitung</span></a> erwähnte NumPy-Paket zurück,
+das einem beispielsweise vielfältige Anwendungsmöglichkeiten im Bereich der
+linearen Algebra bietet.</p>
+<p>Das hier besprochene Beispielprogramm war in erster Linie dazu gedacht, einige
+Programmierkonzepte zu illustrieren, die wir in den folgenden Kapiteln genauer
+besprechen wollen. Tatsächlich könnte man den Programmcode in verschiedener
+Hinsicht verbessern. Zwei Punkte wollen wir explizit ansprechen, da es sich
+lohnt, diese beim Programmieren im Hinterkopf zu behalten.</p>
+<p>Einer der Punkte betrifft das zuvor besprochene Codesegment zwischen den Zeilen
+11 und 15. Man sieht hier, dass die in der Liste <code class="docutils literal notranslate"><span class="pre">objekte</span></code> aufgeführten Zeichenketten
+in <code class="docutils literal notranslate"><span class="pre">info_text</span></code> wieder auftreten. Dies birgt die Gefahr, dass bei einer Änderung
+der Objektnamen in Zeile 11 übersehen wird, dass auch in den folgenden Zeilen eine
+Änderung vorzunehmen wäre. Es wäre also besser, den Text in <code class="docutils literal notranslate"><span class="pre">info_text</span></code> direkt aus
+den Informationen in <code class="docutils literal notranslate"><span class="pre">objekte</span></code> zu erzeugen.</p>
+<p>Der zweite Punkt betrifft die Auswertung der Eingabe durch den Benutzer. Diese muss
+in eine ganze Zahl umwandelbar sein. Ansonsten bricht das Programm in Zeile 18 ab.
+Es empfiehlt sich, für solche Fälle vorzusorgen und dem Benutzer einen entsprechenden
+Hinweis auszugeben, wie dies in Zeile 29 der Fall ist, falls eine eingegebene Zahl
+nicht zwischen -1 und 2 liegt. Wie man solche Situationen sinnvoll behandelt, werden
+wir später noch genauer sehen.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="einleitung.html" title="previous page"><span class="section-number">1. </span>Einleitung</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Gert-Ludwig Ingold<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>

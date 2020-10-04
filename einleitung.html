@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Einleitung &#8212; Einführung in Prinzipien der Programmierung</title>
+    
+  <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="next" title="2. Eine Vorschau" href="vorschau.html" />
+    <link rel="prev" title="Vorlesungsmanuskript zur Vorlesung »Einführung in Prinzipien der Programmierung«" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Einführung in Prinzipien der Programmierung</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Einleitung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vorschau.html">
+   2. Eine Vorschau
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
+            title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/einleitung.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Vollbildmodus"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Inhalt
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#warum-programmieren-lernen">
+   1.1. Warum Programmieren lernen?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#warum-python">
+   1.2. Warum Python?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#einige-zutaten">
+   1.3. Einige Zutaten
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verwendete-symbole">
+   1.4. Verwendete Symbole
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#literatur">
+   1.5. Literatur
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-version">
+   1.6. Python-Version
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="einleitung">
+<span id="id1"></span><h1><span class="section-number">1. </span>Einleitung<a class="headerlink" href="#einleitung" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="warum-programmieren-lernen">
+<h2><span class="section-number">1.1. </span>Warum Programmieren lernen?<a class="headerlink" href="#warum-programmieren-lernen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Viele Geräte, mit denen wir es im modernen Leben zu tun haben, werden von
+Computern gesteuert, seien es Autos, Fernseher oder Smartphones, um nur ein
+paar Beispiele zu nennen. Um Auto fahren zu können, benötigt man sicherlich
+keine Computerkenntnisse und muss keine Programmiersprache beherrschen.
+Ein Smartphone kann man benutzen ohne selbst die zugehörigen Apps zu
+programmieren, auch wenn dies durchaus eine interessante und produktive
+Tätigkeit sein kann.</p>
+<p>Ein weiteres Alltagsgerät, das nicht ohne Computer auskommt, ist die Digitalkamera,
+ganz gleich ob als eigenständiger Fotoapparat oder als Teil eines Smartphones.
+Man kann sich vorstellen, dass man das digitale Bild weiterbearbeiten möchte.
+Für viele Bildbearbeitungsaufgaben sind geeignete Programme verfügbar, aber
+es kann auch Fälle geben, in denen man selbst programmieren muss, zum Beispiel
+wenn man eine Exponentialfunktion auf einen Waschbären anwenden möchte
+(<a class="reference internal" href="#fig-exponential-raccoon"><span class="std std-numref">Abb. 1.1</span></a>).</p>
+<div class="figure align-default" id="fig-exponential-raccoon">
+<a class="reference internal image-reference" href="_images/exponential_raccoon.png"><img alt="_images/exponential_raccoon.png" src="_images/exponential_raccoon.png" style="width: 10cm;" /></a>
+<p class="caption"><span class="caption-number">Abb. 1.1 </span><span class="caption-text">Originalbild eines Waschbärs (links) und nach Anwendung einer Exponentialfunktion
+(rechts).</span><a class="headerlink" href="#fig-exponential-raccoon" title="Link zu diesem Bild">¶</a></p>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="tip admonition">
+<p class="admonition-title">Tipp</p>
+<p>Eine größere Darstellung von Abbildung können Sie durch Klicken auf das
+entsprechende Bild erhalten.</p>
+</div>
+</div>
+<p>Das Beispiel der Digitalkamera schlägt die Brücke vom Alltag ins Labor. Im
+Grunde genommen ist eine Digitalkamera nichts anderes als ein Messgerät, das
+optische Information in digitale Daten umwandelt und zur Verfügung stellt, sei
+es als Rohdaten oder in einer vorverarbeiteten Form. Im Labor wird es erforderlich
+sein, mit dem Messgerät zu kommunizieren, um Messdaten herunterzuladen. Häufig
+geschieht dies mit einem vom Hersteller zur Verfügung gestellten Programm, aber
+man kann sich auch vorstellen, dass man die Schnittstelle des Messgeräts, über
+die die Messdaten zur Verfügung gestellt werden, mit eigenem Programm anspricht.</p>
+<p>Selbst wenn das Messgerät einen ersten Verarbeitungsschritt der Rohdaten durchführen
+sollte, sind im Allgemeinen weitere Auswertungen der Daten erforderlich, um
+wissenschaftlich relevante Informationen zu extrahieren. Hierfür stehen
+unter Umständen Softwarelösungen, meistens kommerzieller Art, zur Verfügung.
+Andererseits ist es häufig sinnvoll oder sogar erforderlich, die Verarbeitung
+der Daten mit einem eigenen Programm vorzunehmen. Damit hat man den Workflow
+unter Kontrolle. Gerade mit der in dieser Vorlesung verwendeten Programmiersprache
+Python steht mit dem Jupyter-Notebook auch ein Werkzeug zur Verfügung, dass für
+die Dokumentation der Datenanalyse hervorragend geeignet ist.</p>
+<p>Ein solches Vorgehen, bei dem man selbst programmiert, schließt keineswegs aus,
+dass man auf Bausteine von anderen zurückgreift. Es ist nicht nötig und meistens
+auch nicht sinnvoll, das Rad neu zu erfinden. Will man beispielsweise seine
+Daten graphisch darstellen, so wird man ein Programm schreiben, um die Daten
+geeignet aufzubereiten und die Abbildung in der gewünschten Form zu erhalten,
+aber man wird deswegen nicht gleich ein eigenes Programmpaket zur Erzeugung
+von Abbildungen schreiben. Wir werden im Lauf der Vorlesung ein paar ausgewählte
+Programmpakete ansprechen, die im wissenschaftlichen Bereich häufig genutzt
+werden.</p>
+<p>Nicht nur im experimentellen Bereich sind Programmierkenntnisse erforderlich,
+sondern auch in der theoretischen Arbeit. Will man als Ingenieur die Kräfte in
+einem Bauteil bestimmen, so ist diese Aufgabe im Allgemeinen so komplex, dass
+zu ihrer Lösung ein Programm geschrieben werden muss. Auch hier wird man auf
+vorhandene Programmpakete, z.B. für Finite-Elemente-Methoden, zurückgreifen
+können, aber das befreit einen nicht davon, auch selbst zu programmieren.
+Auch die Eigenschaften von neuen Materialien werden zunehmend zunächst mit
+Hilfe von Computern theoretisch berechnet. Die Bedeutung des Programmierens
+im naturwissenschaftlichen Bereich wird unter anderem daran deutlich, dass
+neben die Experimentalphysik und die Theoretische Physik inzwischen die
+computergestützte Physik oder <em>Computational Physics</em> getreten ist.</p>
+<p>Letztlich wird man im natur- und ingenieurwissenschaftlichen Bereich früher
+oder später mit Programmieraufgaben konfrontiert sein und das Schreiben eines
+Computerprogramms gehört genauso zum Handwerkszeug wie der Umgang mit Papier
+und Bleistift. Nicht zuletzt werden Programmierkenntnisse auch an verschiedensten
+Stellen in der Industrie vorausgesetzt, wie wir weiter unten noch sehen werden.</p>
+<p>Programmieren zu können ist aber nicht nur eine Notwendigkeit für
+Naturwissenschaftler, Programmieren kann auch einfach Spaß machen. So wie das
+Knobeln an einer wissenschaftlichen Aufgabe (hoffentlich) Spaß macht, gilt dies
+auch für die Suche nach einer eleganten und effizienten Lösung eines Problems
+auf dem Computer <a class="footnote-reference brackets" href="#euler" id="id2">1</a>. Zugegeben: Es kann durchaus nerven, wenn der
+Computer ständig Fehler anmahnt und dabei äußerst starrsinnig ist. Allerdings
+hat er praktisch immer recht. Da hilft es nur, die Fehlermeldungen ernst zu
+nehmen und ein bisschen Gelassenheit an den Tag zu legen. Dafür beschwert sich
+der Computer auch nicht, wenn er uns lästige Arbeit abnehmen muss, indem er zum
+Beispiel zuverlässig immer wieder die gleichen Programmanweisungen abarbeitet.</p>
+</div>
+<div class="section" id="warum-python">
+<h2><span class="section-number">1.2. </span>Warum Python?<a class="headerlink" href="#warum-python" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Das Ziel des Programmierens ist es, dem Computer zu erklären, was von ihm
+erwartet wird. Leider verstehen Computer nur Nullen und Einsen. Auch wenn
+es durchaus möglich ist, auf dieser Ebene ein Programm zu schreiben, ist es doch
+recht mühsam. Stattdessen gibt es eine Vielzahl von Programmiersprachen
+<a class="footnote-reference brackets" href="#languages" id="id3">2</a>, die es für den Menschen mehr oder weniger leicht machen, ein
+Programm zu schreiben. Dieses wird dann entweder mit Hilfe eines so genannten
+Interpreters oder mit Hilfe eines Compilers in eine maschinenlesbare Form
+übersetzt.</p>
+<p>Einige dieser Programmiersprachen, aber bei weitem nicht alle, sind im
+naturwissenschaftlichen Bereich besonders gebräuchlich. Beispielhaft seien
+Fortran, C, C++, Python und Julia genannt. Diesen Sprachen haben grundlegende
+Sprachelemente gemeinsam, die zwar in den verschiedenen Sprachen unterschiedlich
+dargestellt werden, aber die gleiche Funktionalität besitzen. Wir werden dies
+später an einzelnen Beispielen noch sehen.</p>
+<p>Zur Erläuterung grundlegender Prinzipien der Programmierung wird in dieser
+Vorlesung die Programmiersprache <em>Python</em> herangezogen. Dabei liegt der Fokus
+auf Konzepten, wie sie auch in den anderen gerade genannten Programmiersprachen
+typischerweise existieren. Diese Vorlesung stellt also keinen
+Python-Programmierkurs im engeren Sinne dar. Das Ziel ist es dennoch, auch
+Studierende ohne oder mit nur wenig Programmiererfahrung in die Lage zu
+versetzen, Problemstellungen mit Hilfe von <em>Python</em> zu lösen.</p>
+<p>Gründe für diese Wahl der Programmiersprache sind unter anderem:</p>
+<ul class="simple">
+<li><p>Es handelt sich um eine relativ leicht zu erlernende Programmiersprache, die
+aber dennoch sehr mächtig ist.</p></li>
+<li><p>Python ist für die gängigen Betriebssysteme, insbesondere Linux, MacOSX und
+Windows, frei erhältlich und kann somit problemlos auf dem eigenen Rechner
+installiert werden.</p></li>
+<li><p>Es unterstützt das Schreiben gut lesbarer Programme.</p></li>
+<li><p>Als interpretierte Sprache erlaubt Python das schnelle Testen von
+Codesegmenten im Interpreter und unterstützt somit das Lernen durch Ausprobieren.</p></li>
+<li><p>Python besitzt eine umfangreiche Standardbibliothek (»Python comes with batteries
+included«) und das wissenschaftliche Rechnen wird durch eine Vielzahl freier
+Programmbibliotheken, wie <strong class="program">NumPy/SciPy</strong>, das wir im Kapitel <span class="xref std std-ref">scipy</span>
+besprechen werden, unterstützt.</p></li>
+<li><p>Python hat sich in den letzten Jahren zu einer sehr populären Sprache
+entwickelt, unter anderem im Bereich der wissenschaftlichen Datenanalyse.</p></li>
+</ul>
+<p>Bei den beiden physikalischen Beobachtungen, die in den letzten Jahren die
+Aufmerksamkeit einer breiten Öffentlichkeit erregten, nämlich die Beobachtung
+von Gravitationswellen <a class="footnote-reference brackets" href="#prd93" id="id4">3</a> und die Aufnahme des Abbilds eines schwarzen
+Loches (<a class="reference internal" href="#fig-eso1907a"><span class="std std-numref">Abb. 1.2</span></a>) <a class="footnote-reference brackets" href="#apjl875l1" id="id5">4</a>, spielte Python bei der Datenanalyse
+eine wichtige Rolle. Die Verarbeitung der Bilddaten des schwarzen Loches
+erfolgte unter Verwendung wissenschaftlicher Programmpakete von Python wie
+<a class="reference external" href="https://numpy.org/">NumPy</a>, <a class="reference external" href="https://www.scipy.org">SciPy</a>,
+<a class="reference external" href="https://pandas.pydata.org">Pandas</a>, <a class="reference external" href="https://jupyter.org">Jupyter</a>, und
+<a class="reference external" href="https://matplotlib.org">Matplotlib</a> <a class="footnote-reference brackets" href="#apjl875l3" id="id6">5</a>.</p>
+<div class="figure align-default" id="fig-eso1907a">
+<a class="reference internal image-reference" href="_images/eso1907a.jpg"><img alt="_images/eso1907a.jpg" src="_images/eso1907a.jpg" style="width: 10cm;" /></a>
+<p class="caption"><span class="caption-number">Abb. 1.2 </span><span class="caption-text">Abbild eines schwarzen Lochs aus Aufnahmen des Event Horizon Telescopes.
+(Urheber: EHT Collaboration)</span><a class="headerlink" href="#fig-eso1907a" title="Link zu diesem Bild">¶</a></p>
+</div>
+<p>Die folgenden Zitate zeigen, dass Python nicht nur zur Einführung in das
+Programmieren taugt, sondern auch für große Projekte in führenden IT-Firmen,
+Forschungseinrichungen sowie der Finanz- und Filmindustrie verwendet wird <a class="footnote-reference brackets" href="#psf" id="id7">6</a>:</p>
+<ul>
+<li><p>Peter Norvig, Google</p>
+<p>«Python has been an important part of Google since the beginning, and remains
+so as the system grows and evolves. Today dozens of Google engineers use
+Python, and we’re looking for more people with skills in this language.»</p>
+</li>
+<li><p>Cuong Do, YouTube.com</p>
+<p>«Python is fast enough for our site and allows us to produce maintainable
+features in record times, with a minimum of developers.»</p>
+</li>
+<li><p>Benedikt Hegner, CERN</p>
+<p>«Most developers in the CMS experiment are physics students looking
+for new physics in the data. Usually they don’t have any formal IT training.
+Python allows them to be productive from the very start and to dedicate
+most of their time on the research they want to carry out.»</p>
+</li>
+<li><p>Holger Joukl, Manuela Kälberer, Rainer Kluger,
+Landesbank Baden-Württemberg IT Financial Markets</p>
+<p>«There are lots of other programming languages with outstanding features.
+We don’t know of any other programming language with features
+and a syntax as elegant and concise as Python, though.»</p>
+</li>
+<li><p>Tommy Burnette, Lucasfilm</p>
+<p>«Python plays a key role in our production pipeline. Without it a project
+the size of The Avengers would have been very difficult to pull off.
+From crowd rendering to batch processing to compositing, Python
+binds all things together.»</p>
+</li>
+</ul>
+</div>
+<div class="section" id="einige-zutaten">
+<h2><span class="section-number">1.3. </span>Einige Zutaten<a class="headerlink" href="#einige-zutaten" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Um auf einem Computer programmieren zu können, ist es im Allgemeinen zunächst
+erforderlich, die hierfür nötige Software zu installieren, sofern sie nicht
+ohnehin schon vorhanden ist. Zum einen muss man die Möglichkeit haben, dem
+Computer die eigenen Absichten mitzuteilen, also ein Programm einzugeben, und
+zum anderen muss der Computer wissen, wie er die Hardware des Computers dazu
+bringt, die Vorgaben des Programms umzusetzen.</p>
+<p>Beginnen wir mit dem zweiten Punkt und nehmen wir an, dass wir den Programmcode,
+der in unserem Fall in der Programmiersprache Python geschrieben ist, bereits
+eingegeben haben. Damit der Computer hiermit etwas anfangen kann, bedarf es
+bei Python eines sogenannten Interpreters, der den Programmcode interpretiert
+und auf der Computerhardware ausführen lässt.</p>
+<p>Grundsätzlich kann man die aktuellste Version des Python-Interpreters von der
+<a class="reference external" href="http://www.python.org/">offiziellen Python-Webseite</a>
+herunterladen. Zum Zeitpunkt der Erstellung dieses Manuskripts war die Version
+3.8.6 aktuell. Wie weiter unten noch kurz diskutiert wird, ist im Rahmen dieser
+Vorlesung jede Version ab Python 3.6 brauchbar.</p>
+<p>Neben dem eigentlichen Python-Interpreter werden wir für wissenschaftliche
+Anwendungen häufig noch weitere Software benötigen, wie zum Beispiel die frei
+verfügbaren numerischen Programmbibliotheken
+<a class="reference external" href="https://numpy.org/"><strong class="program">NumPy</strong></a> und
+<a class="reference external" href="https://www.scipy.org"><strong class="program">SciPy</strong></a>, die wir im Kapitel <span class="xref std std-ref">scipy</span>
+besprechen werden. Es ist daher am einfachsten, eine Python-Distribution, also
+eine Art Komplettpaket, das sowohl den Python-Interpreter als auch eine Reihe
+von Programmbibliotheken enthält, zu installieren. Verzichtet man auf die
+Installation einer geeigneten Distribution, so müssen die benötigten
+Programmbibliotheken zusätzlich installiert werden.</p>
+<p>Die aktuelle Standard-Distribution für Python im wissenschaftlichen Bereich ist
+die <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda-Distribution</a>, die
+für die gängigen Betriebssysteme Windows, MacOS und Linux frei verfügbar ist.
+Damit erhält man auf sehr einfach Weise eine sehr umfangreiche Sammlung an
+Programmpaketen, muss aber 3-4 GB freien Plattenplatz investieren. Alternativ
+kann man sich <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>
+installieren, muss dann aber alle benötigten Programmpakete mit Hilfe von
+<a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/index.html">conda</a>
+separat installieren.</p>
+<p>Kommen wir nun zu dem oben als erstes genannten Punkt: Wie sage ich es meinem
+Computer? Offenbar muss man das Python-Programm in irgendeiner Form dem
+Computer mitteilen. Hierfür gibt es eine Reihe von Möglichkeiten, die je nach
+Anwendungszweck geeignet sind und im Folgenden kurz beschrieben werden sollen.</p>
+<p>Manchmal hat man es nur mit kurzen Codestücken zu tun. Dies ist vor allem der
+Fall, wenn man schnell etwas ausprobieren möchte. Dann eignet sich die
+Python-Shell, in der man zeilenweise Python-Code eingeben kann, der
+anschließend ausgeführt wird. Sobald Python installiert ist, ist auch die
+zugehörige Python-Shell verfügbar. <a class="reference internal" href="#fig-pythonshell"><span class="std std-numref">Abb. 1.3</span></a> zeigt die
+Python-Shell in einem Konsolenfenster unter Linux.</p>
+<div class="figure align-default" id="fig-pythonshell">
+<a class="reference internal image-reference" href="_images/pythonshell.png"><img alt="_images/pythonshell.png" src="_images/pythonshell.png" style="width: 10cm;" /></a>
+<p class="caption"><span class="caption-number">Abb. 1.3 </span><span class="caption-text">Programmierung von wenigen Zeilen direkt in der Python-Shell.</span><a class="headerlink" href="#fig-pythonshell" title="Link zu diesem Bild">¶</a></p>
+</div>
+<p>Allerdings ist die Python-Shell nicht sehr komfortabel. Da Tippfehler in den
+vorhergehenden Zeilen nicht leicht korrigiert werden können, kann das Arbeiten
+mit der Python-Shell schnell lästig werden.  Eine erheblich komfortablere
+Variante der Python-Shell ist die <a class="reference external" href="http://ipython.org/">IPython-Shell</a>, die
+beispielsweise bei der Anaconda-Distribution automatisch installiert wird.
+Hier kann man alte Eingaben zurückholen, Befehle ergänzen lassen und vieles
+mehr. In <a class="reference internal" href="#fig-ipythonshell"><span class="std std-numref">Abb. 1.4</span></a> ist auch zu sehen, dass diese Shell Teile der
+Eingabe je nach ihrer Funktion einfärbt.  Man spricht hierbei von <em>Syntax
+Highlighting</em>, das bei der Fehlersuche hilfreich sein kann. Es ist daher
+sinnvoll, statt der Python-Shell grundsätzlich die IPython-Shell zu verwenden.</p>
+<div class="figure align-default" id="fig-ipythonshell">
+<a class="reference internal image-reference" href="_images/ipythonshell.png"><img alt="_images/ipythonshell.png" src="_images/ipythonshell.png" style="width: 10cm;" /></a>
+<p class="caption"><span class="caption-number">Abb. 1.4 </span><span class="caption-text">Eine komfortablere Python-Shell bietet IPython, unter anderem mit <em>Syntax Highlighting</em>.</span><a class="headerlink" href="#fig-ipythonshell" title="Link zu diesem Bild">¶</a></p>
+</div>
+<p>Interessant ist die Verwendung von so genannten Jupyter-Notebooks, die es
+erlauben, interaktiv mit Python in einem Browser zu arbeiten. Wie die
+<a class="reference internal" href="#fig-jupyternotebook"><span class="std std-numref">Abb. 1.5</span></a> zeigt, gibt es hier neben den grau hinterlegten
+Codezellen auch Textzellen, die sogar Formeln enthalten können, und von
+ausgeführtem Code erzeugte Resultate werden ebenfalls in das Notebook
+integriert.  Dabei kann es sich, wie in <a class="reference internal" href="#fig-jupyternotebook"><span class="std std-numref">Abb. 1.5</span></a> dargestellt,
+beispielsweise auch um graphische Darstellungen handeln. Das Jupyter-Notebook
+eignet sich unter anderem hervorragend dafür, die Schritte einer Datenanalyse zu
+dokumentieren, um sie auch später nachvollziehen zu können.</p>
+<div class="figure align-default" id="fig-jupyternotebook">
+<a class="reference internal image-reference" href="_images/jupyternotebook.png"><img alt="_images/jupyternotebook.png" src="_images/jupyternotebook.png" style="width: 15cm;" /></a>
+<p class="caption"><span class="caption-number">Abb. 1.5 </span><span class="caption-text">Beispiel eines Jupyter-Notebooks. Das graphische Ergebnis einer der beiden
+Codezellen wird innerhalb des Notebooks dargestellt. In Textzellen lassen
+sich auch Formeln einbetten.</span><a class="headerlink" href="#fig-jupyternotebook" title="Link zu diesem Bild">¶</a></p>
+</div>
+<p>Da Notebookzellen mehrzeiligen Code enthalten können, sind IPython-Notebooks
+prinzipiell auch dafür geeignet, etwas umfangreicheren Code damit zu
+entwickeln. Für größere Programmierprojekte bieten sich allerdings bessere
+Werkzeuge an. Eine Möglichkeit ist die Verwendung von Editoren wie
+<a class="reference external" href="http://www.gnu.org/software/emacs/"><strong class="program">EMACS</strong></a>
+oder <a class="reference external" href="http://www.vim.org/"><strong class="program">Vim</strong></a>, die zur Erstellung jeglicher Art von
+Textdateien und damit auch zum Erstellen von Pythonprogrammen verwendbar sind.
+Diese Editoren sind sehr mächtig und erfordern daher etwas Einarbeitung, die
+sich aber auf längere Sicht durchaus lohnen kann. Wer die Mühe der Einarbeitung
+scheut, kann für die Programmentwicklung auch zu einer der verschiedenen
+verfügbaren graphischen Entwicklungsumgebungen greifen.</p>
+<p>Python stellt eine relativ einfache Entwicklungsumgebung namens
+<a class="reference external" href="https://docs.python.org/3/library/idle.html">IDLE</a> zur Verfügung. Daneben gibt
+es eine Reihe von freien wie auch von kostenpflichtigen Entwicklungsumgebungen.
+In der Anaconda-Distribution wird die graphische Entwicklungsumgebung
+<a class="reference external" href="https://www.spyder-ide.org/">Spyder</a> <a class="footnote-reference brackets" href="#spyder" id="id8">7</a> mitgeliefert, die in <a class="reference internal" href="#fig-spyder"><span class="std std-numref">Abb. 1.6</span></a>
+gezeigt ist.</p>
+<p>Das Spyder-Fenster besteht aus verschiedenen Teilfenstern. In dem in
+<a class="reference internal" href="#fig-spyder"><span class="std std-numref">Abb. 1.6</span></a> gezeigten Beispiel befindet sich links ein Editorfenster,
+in dem auch problemlos ein längeres Programm eingegeben werden kann. Rechts
+unten erkennen wir ein IPython-Fenster, in dem, wie weiter oben beschrieben,
+kürzere Codesegmente getestet werden können. Dies ist besonders hilfreich, wenn
+man beim Programmieren nicht sicher ist, ob ein bestimmter Programmcode
+wirklich das Beabsichtigte leistet. In dem IPython-Fenster erfolgt auch die
+Ausgabe von Ergebnissen, wenn man den Code im linken Fenster ausführt.  Ein
+weiteres Fenster dient unter anderem zur Anzeige von Dokumentation oder zur
+Fehlersuche. Je nach Bedarf lässt sich das Spyder-Fenster anpassen, aber
+zumindest zu Beginn sollte die Standardeinstellung angemessen sein. Wir können
+an dieser Stelle keine ausführliche Einführung in Spyder geben und verweisen
+stattdessen auf die zugehörige
+<a class="reference external" href="https://docs.spyder-ide.org/current/index.html">Dokumentation</a>.</p>
+<div class="figure align-default" id="fig-spyder">
+<a class="reference internal image-reference" href="_images/spyder.png"><img alt="_images/spyder.png" src="_images/spyder.png" style="width: 15cm;" /></a>
+<p class="caption"><span class="caption-number">Abb. 1.6 </span><span class="caption-text">Python-Entwicklungsumgebung Spyder</span><a class="headerlink" href="#fig-spyder" title="Link zu diesem Bild">¶</a></p>
+</div>
+</div>
+<div class="section" id="verwendete-symbole">
+<h2><span class="section-number">1.4. </span>Verwendete Symbole<a class="headerlink" href="#verwendete-symbole" title="Link zu dieser Überschrift">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> stellt den Prompt des Python-Interpreters dar. Darauf folgt der
+einzugebende Text. Die Folgezeilen enthalten gegebenenfalls die Ausgabe des
+Interpreters.</p>
+<p><code class="docutils literal notranslate"><span class="pre">...</span></code> wird im Python-Interpreter als Prompt verwendet, wenn die Eingabe
+fortzusetzen ist, zum Beispiel im Rahmen einer Schleife. Diese Art der Eingabe
+kann sich über mehrere Zeilen hinziehen. Zum Beenden wird die
+<kbd class="kbd docutils literal notranslate">EINGABE</kbd>-Taste ohne vorhergehende Eingabe von Text verwendet.</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span></code> steht für den Prompt in der Kommandozeile eines Terminalfensters.</p>
+</div>
+<div class="section" id="literatur">
+<h2><span class="section-number">1.5. </span>Literatur<a class="headerlink" href="#literatur" title="Link zu dieser Überschrift">¶</a></h2>
+<ul>
+<li><p>Gert-Ludwig Ingold, Vorlesungsmanuskript »Einführung in Prinzipien der Programmierung«</p>
+<p>Das Vorlesungsmanuskript, das Sie gerade ansehen, befinde sich derzeit noch im Entstehen.</p>
+<p>Als übergangsweise Ausweichlösung kann das Manuskript zu der Vorgängervorlesung
+»Einführung in das Programmieren für Physiker und Materialwissenschaftler« genutzt
+werden, das <a class="reference external" href="http://gertingold.github.io/eidprog/">online</a> verfügbar ist. Eine
+<a class="reference external" href="http://gertingold.github.io/eidprog/_downloads/eidprog.pdf">PDF-Version</a> kann
+frei heruntergeladen werden.</p>
+</li>
+<li><p><a class="reference external" href="http://www.python.org/">www.python.org</a></p>
+<p>Dies ist die offizielle Python-Webseite. Dort gibt es z.B. die Software zum Herunterladen,
+eine umfangreiche <a class="reference external" href="https://docs.python.org/3/">Dokumentation der Programmiersprache</a>, insbesonderer ihrer
+<a class="reference external" href="https://docs.python.org/3/library/index.html">Standardbibliothek</a> sowie
+Verweise auf <a class="reference external" href="https://wiki.python.org/moin/PythonBooks">einführende Literatur</a> und einiges mehr.</p>
+</li>
+<li><p>Michael Weigend, <em>Python GE-PACKT</em> (MITP-Verlag, 2020)</p>
+<p>Dieses Buch eignet sich als kompaktes Nachschlagewerk. Die 8. Auflage berücksichtigt
+die Python-Version 3.8.</p>
+</li>
+<li><p>Hans Petter Langtangen, <em>A Primer on Scientific Programming with Python</em> (Springer, 2012)</p></li>
+</ul>
+</div>
+<div class="section" id="python-version">
+<h2><span class="section-number">1.6. </span>Python-Version<a class="headerlink" href="#python-version" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Python befindet sich in aktiver Entwicklung, so dass regelmäßig neue Versionen
+veröffentlicht werden. Für die Zwecke dieser Vorlesung sind die Unterschiede
+zwischen den neueren Versionen jedoch kaum relevant. Da Python 3.5 aber bereits sein
+Lebensende erreicht hat, sollte mindestens Python 3.6 verwendet werden. Lediglich
+an einer Stelle, auf die dann besonders hingewiesen wird, wird eine Eigenschaft von
+Python 3.8 ausgenutzt.</p>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="euler"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>Wer Spaß am Programmieren und am Lösen mathematischer Probleme hat
+oder einfach die gelernten Programmierfähigkeiten ausprobieren möchte,
+sollte einen Blick auf <a class="reference external" href="http://projecteuler.net/">projecteuler.net</a> werfen.</p>
+</dd>
+<dt class="label" id="languages"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>Für eine Übersicht siehe z.B. die <a class="reference external" href="https://de.wikipedia.org/wiki/Liste_von_Programmiersprachen">Liste von Programmiersprachen
+auf Wikipedia</a>.</p>
+</dd>
+<dt class="label" id="prd93"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>B. P. Abbott <em>et al.</em>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.93.122003">Phys. Rev. D <strong>93</strong>, 122003
+(2016)</a>. Das Analysepaket PyCBC
+basiert auf Python und auch das Analysepaket GstLAL enthält einige
+Pythonskripte.</p>
+</dd>
+<dt class="label" id="apjl875l1"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p>The Event Horizon Telescope Collaboration, <a class="reference external" href="https://doi.org/10.3847/2041-8213/ab0ec7">Astrophys. J. Lett.
+<strong>875</strong>, L1 (2019)</a>.</p>
+</dd>
+<dt class="label" id="apjl875l3"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
+<dd><p>The Event Horizon Telescope Collaboration, <a class="reference external" href="https://doi.org/10.3847/2041-8213/ab0c57">Astrophys. J. Lett.
+<strong>875</strong>, L3 (2019)</a>.</p>
+</dd>
+<dt class="label" id="psf"><span class="brackets"><a class="fn-backref" href="#id7">6</a></span></dt>
+<dd><p>Zitiert nach <a class="reference external" href="https://brochure.getpython.info/media/releases/psf-python-brochure-vol.-i-final-download.pdf/at_download/file">python, Case Studies &amp; Success Stories, Vol. I (Python
+Software Foundation)</a></p>
+</dd>
+<dt class="label" id="spyder"><span class="brackets"><a class="fn-backref" href="#id8">7</a></span></dt>
+<dd><p>Spyder steht für «Scientific PYthon Development EnviRonment»</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Vorlesungsmanuskript zur Vorlesung »Einführung in Prinzipien der Programmierung«</a>
+    <a class='right-next' id="next-link" href="vorschau.html" title="next page"><span class="section-number">2. </span>Eine Vorschau</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Gert-Ludwig Ingold<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>
