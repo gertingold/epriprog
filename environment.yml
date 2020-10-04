@@ -1,9 +1,11 @@
 name: epriprog
 channels:
   - default
+  - conda-forge
 dependencies:
   - python
   - sphinx
   - pip
+  - ghp-import
   - pip:
     - jupyter-book
