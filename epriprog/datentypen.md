@@ -1,92 +1,107 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: '0.8'
+    jupytext_version: 1.4.1+dev
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 (datentypen)=
 # Einfache Datentypen, Variablen und Zuweisungen
 
-## Integers
+In {numref}`vorschau` hatten wir bereits verschiedene Datentypen kennengelernt.
+Hierzu gehören ganze Zahlen, die zum einen durch die explizite Umwandlung der
+Benutzereingabe in eine ganze Zahl oder als Ergebnis der
+{func}`randrange`-Funktion erzeugt wurden. Des Weiteren kamen Wahrheitswerte
+vor. Ganz explizit war dies bei `True` der Fall, das zur Konstruktion einer
+Dauerschleife verwendet wurde.
 
-Wir hatten bereits im Kapitel {ref}`vorschau` gesehen, dass Python mit ganzen
-Zahlen umgehen kann und man mit diesen auch Rechenoperationen ausführen kann.
-Doch wie groß dürfen die ganzen Zahlen werden? Probieren wir es einfach aus,
-indem wir die 200-ste Potenz von 2 nehmen.
+Diese beiden Datentypen, ganze Zahlen und Wahrheitswerte gehören zu den einfachen
+Datentypen. Daneben gibt es auch zusammengesetzte Datentypen, für die wir
+in {numref}`vorschau` ebenfalls schon Beispiele gesehen hatten. Dazu gehören die
+Zeichenketten, zum Beispiel in den Zeilen 12 bis 15, aber auch die durch eckige
+Klammern gekennzeichnete Liste in Zeile 11.
 
-```{code-block} python
->>> 2**200
-1606938044258990275541962092341162602522202993782792835301376
+In diesem Kapitel werden wir uns zunächst den einfachen Datentypen zuwenden und
+die zusammengesetzten Datentypen in einem späteren Kapitel besprechen. Dabei
+werden wir vor allem neben den ganzen Zahlen noch weitere numerische Datentypen
+kennenlernen, die für natur- und ingenieurwissenschaftliche Anwendungen große
+Bedeutung besitzen.
+
+## Ganze Zahlen
+
+Wir beginnen bei der Besprechung der numerischen Datentypen mit den ganzen
+Zahlen, auf Englisch *integers*. Auf den ersten Blick könnte man denken, dass
+in den Natur- und Ingenieurwissenschaften ganze Zahlen gegenüber den reellen
+Zahlen eigentlich unwichtig sind. Auch wenn diese Einschätzung nicht ganz
+falsch ist, verwenden wir auch in diesen Bereichen relativ oft ganze Zahlen,
+zum Beispiel als Index für eine Vektor- oder Matrixkomponente. Beim
+Programmieren spielen ganze Zahlen daher unter anderem eine große Rolle, sobald
+etwas gezählt oder indiziert werden muss. Eine weitere Anwendung ganzer Zahlen
+ergibt sich speziell in Python daraus, dass im Prinzip betragsmäßig beliebig
+große ganze Zahlen dargestellt werden können. Dies ermöglicht es, Rechnungen
+mit beliebiger Genauigkeit durchzuführen.
+
+Die gerade angesprochene Frage, welche Zahlen überhaupt in einer Programmiersprache
+dargestellt werden können, ist von großer Bedeutung. Es lohnt sich daher, sich
+etwas genauer damit zu beschäftigen. Zahlen werden, wie andere Objekte auch, im
+Computer intern immer mit Hilfe von Nullen und Einsen dargestellt. Begrenzt man
+den Speicherplatz je Zahl, so ist der darstellbare Zahlenbereich eingeschränkt.
+Daher werden wir im Folgenden statt von »ganzen Zahlen«, die wir für das mathematische
+Objekt verwenden wollen, lieber von »Integers« sprechen, die sich auf die im
+Computer realisierbaren Zahlen beziehen.
+
+Die Frage nach den im Computer darstellbaren Zahlen ist insofern wichtig, als
+ein Überschreiten des Zahlenbereichs zu Problemen führt. Bei den
+Gleitkommazahlen, die wir im nächsten Kapitel besprechen werden, führt eine
+begrenzte Zahl von Nachkommastellen zusätzlich zu dem Problem von
+Rundungsfehlern.
+
+Doch kommen wir zurück zu den Integers. Wenn Python im Prinzip betragsmäßig
+beliebig große Zahlen erlaubt, könnte man meinen, dass man sich um die Größe
+des Zahlenbereichs nicht weiter kümmern muss. Das ist allerdings nicht ganz
+richtig.  Zum einen ist jeder reale Computerspeicher begrenzt, so dass der
+Zahlenbereich letztlich doch eingeschränkt ist. In der Praxis spielt diese
+Einschränkung kaum eine Rolle, sondern eher die Zeit, die eine Rechenoperation
+mit sehr großen Integers benötigt. In anderen Programmiersprachen dagegen ist
+der Bereich der möglichen Integers eingeschränkt. Da die für uns wichtigen
+numerischen Programmbibliotheken NumPy und SciPy zu großen Teilen auf in C oder
+Fortran geschriebenen Programmen basieren, werden dort auch unter Python die
+Einschränkungen des Zahlenbereichs wichtig. Zu erwähnen wäre noch, dass die Integers,
+die als Index zur Addressierung in Listen oder Zeichenketten verwendet werden
+können, auch in Python beschränkt sind. Allerdings wird diese Beschränkung auf
+modernen Computern selten ein Problem darstellen.
+
+Wie ganze Zahlen im Computer dargestellt werden und was das für die größenmäßige
+Einschränkung des Zahlenbereichs bedeutet, werden wir in einem Anhang diskutieren.
+Dort werden auch die Grundlagen des Dualsystems erklärt, das der Darstellung von
+Zahlen mit Hilfe von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun
+stärker der praktischen Arbeit mit Integers zuwenden.
+
+Als erstes wollen wir zeigen, dass Integers in Python tatsächlich sehr groß werden
+können, indem wir die tausendste Potenz von 2 ausrechnen lassen. Der doppelte Stern
+`**` steht dabei für den Exponentiationsoperator.
+
+```{code-cell} python
+2**1000
 ```
 
-Im Prinzip kann Python mit beliebig großen Zahlen umgehen. Außerdem können diese
-natürlich auch ein Vorzeichen besitzen.
+Das Ergebnis hat 302 Stellen. Genauso gut könnte man als Exponenten 100000 wählen
+und würde dann ein Ergebnis mit 30103 Stellen erhalten.
 
-```{code-block} python
->>> 5-7
--2
+Natürlich gibt es neben positiven Integers auch solche mit negativem Vorzeichen.
+
+```{code-cell} python
+2**100 - 2**101
 ```
-
-Es ist keineswegs selbstverständlich, dass eine Programmiersprache mit beliebig
-großen ganzen Zahlen umgehen kann. Zudem gibt es Programmiersprachen, die
-vorzeichenlose ganze Zahlen als Datentyp zur Verfügung stellen. Daher
-unterscheiden wir im Folgenden zwischen dem mathematischen Begriff »ganze Zahl«
-und dem Datentyp »Integer«. Dieser Unterschied kommt in Python bei der
-Addressierung von Listen und Zeichenketten zum Tragen, wo der Index begrenzt
-ist. Den zulässigen Maximalwert kann man folgendermaßen herausfinden
-[^import]:
-
-[^import]: Die Bedeutung der ``import``-Anweisung werden wir später noch genauer kennenlernen.
-
-```{code-block} python
->>> import sys
->>> sys.maxsize
-9223372036854775807
->>> 2**63-1
-9223372036854775807
-```
-
-Dieses Ergebnis wurde auf einem System mit einem 64-Bit-Prozessor erhalten.
-Wie lässt sich diese Beschränkung des Wertebereichs von Integers erklären?
-Im Computer werden sämtliche Daten binär durch Bits dargestellt, wobei jedes
-Bit den Wert 0 oder 1 annehmen kann. In einem 64-Bit-Prozessor kann ein
-Integer, der aus maximal 64 Bit besteht, auf einmal verarbeitet werden. Ein Bit
-wird allerdings für das Vorzeichen benötigt, wie man an den folgenden beiden
-Beispielen sieht:
-
-```{image} images/integers/binary.*
-:width: 40em
-:align: center
-```
-
-Für positive Zahlen ist das erste Bit gleich Null, für negative Zahlen dagegen
-gleich Eins. Die Viererblöcke stellen jeweils Hexadezimalzahlen dar, wobei nach
-0-9 mit A-F oder auch a-f weitergezählt wird, wie die folgende Tabelle zeigt.
-
-|dezimal | binär | oktal | hexadezimal |
-|-------:|-------|-------|-------------|
-|   0    | 0000  |  00   |    0        |
-|   1    | 0001  |  01   |    1        |
-|   2    | 0010  |  02   |    2        |
-|   3    | 0011  |  03   |    3        |
-|   4    | 0100  |  04   |    4        |
-|   5    | 0101  |  05   |    5        |
-|   6    | 0110  |  06   |    6        |
-|   7    | 0111  |  07   |    7        |
-|   8    | 1000  |  10   |    8        |
-|   9    | 1001  |  11   |    9        |
-|  10    | 1010  |  12   |    A        |
-|  11    | 1011  |  13   |    B        |
-|  12    | 1100  |  14   |    C        |
-|  13    | 1101  |  15   |    D        |
-|  14    | 1110  |  16   |    E        |
-|  15    | 1111  |  17   |    F        |
-
-
-Mit den 63 Bit, die für positive Zahlen zur Verfügung stehen, lassen sich die
-ganzen Zahlen von {math}`0` bis {math}`2^{63}-1` darstellen, womit sich obiges
-Ergebnis für ``sys.maxsize`` erklärt.
-
-```{admonition} Frage
-Wie lässt sich das Zustandekommen des Bitmusters im Falle negativer
-Zahlen verstehen?  Warum ist diese Wahl sinnvoll? (Hinweis: Betrachten Sie die 
-Addition einer positiven und einer negativen Zahl.) Warum ergibt sich ein
-asymmetrischer Wertebereich für Integers?
-```
+Die Leerzeichen um das Minuszeichen der Eingabe spielen für den Pythoninterpreter
+keine Rolle, sondern dienen hier der besseren Lesbarkeit.
 
 In Python kann man auch mit Binär-, Oktal- und Hexadezimalzahlen arbeiten, die durch
 die Präfixe ``0b`` oder ``0B``, ``0o`` oder ``0O`` bzw. ``0x`` oder ``0X``
