@@ -20,4 +20,8 @@ latex:
   latex_elements:
     papersize: a4paper
 
-sphinx: {config      : {language: de}}
+sphinx: 
+  config: 
+    language: de
+    numfig_format:
+      section: 'Kapitel %s'
