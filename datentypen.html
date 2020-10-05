@@ -145,7 +145,10 @@
     
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/datentypen.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/datentypen.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
@@ -166,6 +169,23 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/manuskript/epriprog/datentypen.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -177,8 +197,8 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#integers">
-   3.1. Integers
+  <a class="reference internal nav-link" href="#ganze-zahlen">
+   3.1. Ganze Zahlen
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -224,149 +244,99 @@
                 
   <div class="section" id="einfache-datentypen-variablen-und-zuweisungen">
 <span id="datentypen"></span><h1><span class="section-number">3. </span>Einfache Datentypen, Variablen und Zuweisungen<a class="headerlink" href="#einfache-datentypen-variablen-und-zuweisungen" title="Link zu dieser Überschrift">¶</a></h1>
-<div class="section" id="integers">
-<h2><span class="section-number">3.1. </span>Integers<a class="headerlink" href="#integers" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Wir hatten bereits im Kapitel <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-ref">Eine Vorschau</span></a> gesehen, dass Python mit ganzen
-Zahlen umgehen kann und man mit diesen auch Rechenoperationen ausführen kann.
-Doch wie groß dürfen die ganzen Zahlen werden? Probieren wir es einfach aus,
-indem wir die 200-ste Potenz von 2 nehmen.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">200</span>
-<span class="go">1606938044258990275541962092341162602522202993782792835301376</span>
+<p>In <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir bereits verschiedene Datentypen kennengelernt.
+Hierzu gehören ganze Zahlen, die zum einen durch die explizite Umwandlung der
+Benutzereingabe in eine ganze Zahl oder als Ergebnis der
+<code class="xref py py-func docutils literal notranslate"><span class="pre">randrange()</span></code>-Funktion erzeugt wurden. Des Weiteren kamen Wahrheitswerte
+vor. Ganz explizit war dies bei <code class="docutils literal notranslate"><span class="pre">True</span></code> der Fall, das zur Konstruktion einer
+Dauerschleife verwendet wurde.</p>
+<p>Diese beiden Datentypen, ganze Zahlen und Wahrheitswerte gehören zu den einfachen
+Datentypen. Daneben gibt es auch zusammengesetzte Datentypen, für die wir
+in <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> ebenfalls schon Beispiele gesehen hatten. Dazu gehören die
+Zeichenketten, zum Beispiel in den Zeilen 12 bis 15, aber auch die durch eckige
+Klammern gekennzeichnete Liste in Zeile 11.</p>
+<p>In diesem Kapitel werden wir uns zunächst den einfachen Datentypen zuwenden und
+die zusammengesetzten Datentypen in einem späteren Kapitel besprechen. Dabei
+werden wir vor allem neben den ganzen Zahlen noch weitere numerische Datentypen
+kennenlernen, die für natur- und ingenieurwissenschaftliche Anwendungen große
+Bedeutung besitzen.</p>
+<div class="section" id="ganze-zahlen">
+<h2><span class="section-number">3.1. </span>Ganze Zahlen<a class="headerlink" href="#ganze-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Wir beginnen bei der Besprechung der numerischen Datentypen mit den ganzen
+Zahlen, auf Englisch <em>integers</em>. Auf den ersten Blick könnte man denken, dass
+in den Natur- und Ingenieurwissenschaften ganze Zahlen gegenüber den reellen
+Zahlen eigentlich unwichtig sind. Auch wenn diese Einschätzung nicht ganz
+falsch ist, verwenden wir auch in diesen Bereichen relativ oft ganze Zahlen,
+zum Beispiel als Index für eine Vektor- oder Matrixkomponente. Beim
+Programmieren spielen ganze Zahlen daher unter anderem eine große Rolle, sobald
+etwas gezählt oder indiziert werden muss. Eine weitere Anwendung ganzer Zahlen
+ergibt sich speziell in Python daraus, dass im Prinzip betragsmäßig beliebig
+große ganze Zahlen dargestellt werden können. Dies ermöglicht es, Rechnungen
+mit beliebiger Genauigkeit durchzuführen.</p>
+<p>Die gerade angesprochene Frage, welche Zahlen überhaupt in einer Programmiersprache
+dargestellt werden können, ist von großer Bedeutung. Es lohnt sich daher, sich
+etwas genauer damit zu beschäftigen. Zahlen werden, wie andere Objekte auch, im
+Computer intern immer mit Hilfe von Nullen und Einsen dargestellt. Begrenzt man
+den Speicherplatz je Zahl, so ist der darstellbare Zahlenbereich eingeschränkt.
+Daher werden wir im Folgenden statt von »ganzen Zahlen«, die wir für das mathematische
+Objekt verwenden wollen, lieber von »Integers« sprechen, die sich auf die im
+Computer realisierbaren Zahlen beziehen.</p>
+<p>Die Frage nach den im Computer darstellbaren Zahlen ist insofern wichtig, als
+ein Überschreiten des Zahlenbereichs zu Problemen führt. Bei den
+Gleitkommazahlen, die wir im nächsten Kapitel besprechen werden, führt eine
+begrenzte Zahl von Nachkommastellen zusätzlich zu dem Problem von
+Rundungsfehlern.</p>
+<p>Doch kommen wir zurück zu den Integers. Wenn Python im Prinzip betragsmäßig
+beliebig große Zahlen erlaubt, könnte man meinen, dass man sich um die Größe
+des Zahlenbereichs nicht weiter kümmern muss. Das ist allerdings nicht ganz
+richtig.  Zum einen ist jeder reale Computerspeicher begrenzt, so dass der
+Zahlenbereich letztlich doch eingeschränkt ist. In der Praxis spielt diese
+Einschränkung kaum eine Rolle, sondern eher die Zeit, die eine Rechenoperation
+mit sehr großen Integers benötigt. In anderen Programmiersprachen dagegen ist
+der Bereich der möglichen Integers eingeschränkt. Da die für uns wichtigen
+numerischen Programmbibliotheken NumPy und SciPy zu großen Teilen auf in C oder
+Fortran geschriebenen Programmen basieren, werden dort auch unter Python die
+Einschränkungen des Zahlenbereichs wichtig. Zu erwähnen wäre noch, dass die Integers,
+die als Index zur Addressierung in Listen oder Zeichenketten verwendet werden
+können, auch in Python beschränkt sind. Allerdings wird diese Beschränkung auf
+modernen Computern selten ein Problem darstellen.</p>
+<p>Wie ganze Zahlen im Computer dargestellt werden und was das für die größenmäßige
+Einschränkung des Zahlenbereichs bedeutet, werden wir in einem Anhang diskutieren.
+Dort werden auch die Grundlagen des Dualsystems erklärt, das der Darstellung von
+Zahlen mit Hilfe von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun
+stärker der praktischen Arbeit mit Integers zuwenden.</p>
+<p>Als erstes wollen wir zeigen, dass Integers in Python tatsächlich sehr groß werden
+können, indem wir die tausendste Potenz von 2 ausrechnen lassen. Der doppelte Stern
+<code class="docutils literal notranslate"><span class="pre">**</span></code> steht dabei für den Exponentiationsoperator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">1000</span>
 </pre></div>
 </div>
-<p>Im Prinzip kann Python mit beliebig großen Zahlen umgehen. Außerdem können diese
-natürlich auch ein Vorzeichen besitzen.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span><span class="o">-</span><span class="mi">7</span>
-<span class="go">-2</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10715086071862673209484250490600018105614048117055336074437503883703510511249361224931983788156958581275946729175531468251871452856923140435984577574698574803934567774824230985421074605062371141877954182153046474983581941267398767559165543946077062914571196477686542167660429831652624386837205668069376
 </pre></div>
 </div>
-<p>Es ist keineswegs selbstverständlich, dass eine Programmiersprache mit beliebig
-großen ganzen Zahlen umgehen kann. Zudem gibt es Programmiersprachen, die
-vorzeichenlose ganze Zahlen als Datentyp zur Verfügung stellen. Daher
-unterscheiden wir im Folgenden zwischen dem mathematischen Begriff »ganze Zahl«
-und dem Datentyp »Integer«. Dieser Unterschied kommt in Python bei der
-Addressierung von Listen und Zeichenketten zum Tragen, wo der Index begrenzt
-ist. Den zulässigen Maximalwert kann man folgendermaßen herausfinden
-<a class="footnote-reference brackets" href="#import" id="id1">1</a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
-<span class="go">9223372036854775807</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">63</span><span class="o">-</span><span class="mi">1</span>
-<span class="go">9223372036854775807</span>
+</div>
+</div>
+<p>Das Ergebnis hat 302 Stellen. Genauso gut könnte man als Exponenten 100000 wählen
+und würde dann ein Ergebnis mit 30103 Stellen erhalten.</p>
+<p>Natürlich gibt es neben positiven Integers auch solche mit negativem Vorzeichen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">100</span> <span class="o">-</span> <span class="mi">2</span><span class="o">**</span><span class="mi">101</span>
 </pre></div>
 </div>
-<p>Dieses Ergebnis wurde auf einem System mit einem 64-Bit-Prozessor erhalten.
-Wie lässt sich diese Beschränkung des Wertebereichs von Integers erklären?
-Im Computer werden sämtliche Daten binär durch Bits dargestellt, wobei jedes
-Bit den Wert 0 oder 1 annehmen kann. In einem 64-Bit-Prozessor kann ein
-Integer, der aus maximal 64 Bit besteht, auf einmal verarbeitet werden. Ein Bit
-wird allerdings für das Vorzeichen benötigt, wie man an den folgenden beiden
-Beispielen sieht:</p>
-<a class="reference internal image-reference" href="images/integers/binary.*"><img alt="images/integers/binary.*" class="align-center" src="images/integers/binary.*" style="width: 40em;" /></a>
-<p>Für positive Zahlen ist das erste Bit gleich Null, für negative Zahlen dagegen
-gleich Eins. Die Viererblöcke stellen jeweils Hexadezimalzahlen dar, wobei nach
-0-9 mit A-F oder auch a-f weitergezählt wird, wie die folgende Tabelle zeigt.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:right head"><p>dezimal</p></th>
-<th class="head"><p>binär</p></th>
-<th class="head"><p>oktal</p></th>
-<th class="head"><p>hexadezimal</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:right"><p>0</p></td>
-<td><p>0000</p></td>
-<td><p>00</p></td>
-<td><p>0</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>1</p></td>
-<td><p>0001</p></td>
-<td><p>01</p></td>
-<td><p>1</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:right"><p>2</p></td>
-<td><p>0010</p></td>
-<td><p>02</p></td>
-<td><p>2</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>3</p></td>
-<td><p>0011</p></td>
-<td><p>03</p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:right"><p>4</p></td>
-<td><p>0100</p></td>
-<td><p>04</p></td>
-<td><p>4</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>5</p></td>
-<td><p>0101</p></td>
-<td><p>05</p></td>
-<td><p>5</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:right"><p>6</p></td>
-<td><p>0110</p></td>
-<td><p>06</p></td>
-<td><p>6</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>7</p></td>
-<td><p>0111</p></td>
-<td><p>07</p></td>
-<td><p>7</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:right"><p>8</p></td>
-<td><p>1000</p></td>
-<td><p>10</p></td>
-<td><p>8</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>9</p></td>
-<td><p>1001</p></td>
-<td><p>11</p></td>
-<td><p>9</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:right"><p>10</p></td>
-<td><p>1010</p></td>
-<td><p>12</p></td>
-<td><p>A</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>11</p></td>
-<td><p>1011</p></td>
-<td><p>13</p></td>
-<td><p>B</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:right"><p>12</p></td>
-<td><p>1100</p></td>
-<td><p>14</p></td>
-<td><p>C</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>13</p></td>
-<td><p>1101</p></td>
-<td><p>15</p></td>
-<td><p>D</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:right"><p>14</p></td>
-<td><p>1110</p></td>
-<td><p>16</p></td>
-<td><p>E</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:right"><p>15</p></td>
-<td><p>1111</p></td>
-<td><p>17</p></td>
-<td><p>F</p></td>
-</tr>
-</tbody>
-</table>
-<p>Mit den 63 Bit, die für positive Zahlen zur Verfügung stehen, lassen sich die
-ganzen Zahlen von <span class="math notranslate nohighlight">\(0\)</span> bis <span class="math notranslate nohighlight">\(2^{63}-1\)</span> darstellen, womit sich obiges
-Ergebnis für <code class="docutils literal notranslate"><span class="pre">sys.maxsize</span></code> erklärt.</p>
-<div class="admonition-frage admonition">
-<p class="admonition-title">Frage</p>
-<p>Wie lässt sich das Zustandekommen des Bitmusters im Falle negativer
-Zahlen verstehen?  Warum ist diese Wahl sinnvoll? (Hinweis: Betrachten Sie die
-Addition einer positiven und einer negativen Zahl.) Warum ergibt sich ein
-asymmetrischer Wertebereich für Integers?</p>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1267650600228229401496703205376
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Leerzeichen um das Minuszeichen der Eingabe spielen für den Pythoninterpreter
+keine Rolle, sondern dienen hier der besseren Lesbarkeit.</p>
 <p>In Python kann man auch mit Binär-, Oktal- und Hexadezimalzahlen arbeiten, die durch
 die Präfixe <code class="docutils literal notranslate"><span class="pre">0b</span></code> oder <code class="docutils literal notranslate"><span class="pre">0B</span></code>, <code class="docutils literal notranslate"><span class="pre">0o</span></code> oder <code class="docutils literal notranslate"><span class="pre">0O</span></code> bzw. <code class="docutils literal notranslate"><span class="pre">0x</span></code> oder <code class="docutils literal notranslate"><span class="pre">0X</span></code>
 gekennzeichnet werden.</p>
@@ -393,7 +363,7 @@ aufpassen, da die Division möglicherweise einen Rest ergibt. Das Ergebnis
 könnte daher entweder eine Gleitkommazahl sein oder aber ein Integer, wobei der
 entstandene Rest ignoriert wird.</p>
 <p>In Python 3 ergibt die Division mit einem einfachen Schrägstrich immer eine
-Gleitkommazahl, selbst wenn bei der Division kein Rest entsteht <a class="footnote-reference brackets" href="#py2div" id="id2">2</a>.</p>
+Gleitkommazahl, selbst wenn bei der Division kein Rest entsteht <a class="footnote-reference brackets" href="#py2div" id="id1">1</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
 <span class="go">0.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">15</span><span class="o">/</span><span class="mi">3</span>
@@ -414,7 +384,7 @@ sich mit einem doppelten Schrägstrich erhalten.</p>
 <div class="admonition-frage admonition">
 <p class="admonition-title">Frage</p>
 <p>Was macht der <code class="docutils literal notranslate"><span class="pre">//</span></code>-Divisionsoperator tatsächlich, vor allem vor dem
-Hintergrund des letzten Beispiels? <a class="footnote-reference brackets" href="#gvr-blog" id="id3">3</a></p>
+Hintergrund des letzten Beispiels? <a class="footnote-reference brackets" href="#gvr-blog" id="id2">2</a></p>
 </div>
 <p>In anderen Sprachen und auch in Python 2, in denen der einfache Schrägstrich
 eine Integerdivision bedeutet, kann man eine Gleitkommadivision erzwingen,
@@ -431,7 +401,7 @@ illustriert:</p>
 </div>
 <p>Die Multiplikation hat also offenbar Vorrang vor der Addition. In der folgenden,
 für Python gültigen Tabelle haben die höher stehenden Operatoren Vorrang vor
-den tiefer stehenden <a class="footnote-reference brackets" href="#precedence" id="id4">4</a>:</p>
+den tiefer stehenden <a class="footnote-reference brackets" href="#precedence" id="id3">3</a>:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Operatoren</p></th>
@@ -472,7 +442,7 @@ nicht zur korrekten Abarbeitung des Ausdrucks erforderlich sind.</p>
 <span id="float"></span><h2><span class="section-number">3.2. </span>Gleitkommazahlen<a class="headerlink" href="#gleitkommazahlen" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Wichtiger als Integers sind in der numerischen Physik die Floats, also
 Gleitkommazahlen. Man kann sie unter anderem durch Umwandlung mit Hilfe
-der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">float()</span></code> erhalten. <a class="footnote-reference brackets" href="#pprint" id="id5">5</a></p>
+der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">float()</span></code> erhalten. <a class="footnote-reference brackets" href="#pprint" id="id4">4</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">&lt;class &#39;int&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -496,7 +466,7 @@ interpretiert:</p>
 <p>Im Gegensatz zu vielen anderen Programmiersprachen ist es nicht notwendig, den
 Typ explizit festzulegen. Man spricht in diesem Zusammenhang auch von <em>duck
 typing</em>: »If it looks like a duck and quacks like a duck, it must be a duck.«
-<a class="footnote-reference brackets" href="#duck" id="id6">6</a></p>
+<a class="footnote-reference brackets" href="#duck" id="id5">5</a></p>
 <p>Für Floats gibt es zwei mögliche Schreibweisen. Dies ist zum einen die
 Dezimalbruchschreibweise unter Verwendung eines Dezimalpunkts. Stehen vor oder
 nach dem Dezimalpunkt keine Ziffern, so wird der entsprechende Anteil gleich
@@ -532,7 +502,7 @@ Zwischen Mantisse und Exponenten muss dabei ein <code class="docutils literal no
 <p>Da Dezimalzahlen im Allgemeinen keine endliche Binärdarstellung besitzen, kommt
 es bei der Umwandlung in die Binärdarstellung zu Rundungsfehlern, die
 gegebenenfalls bei der Beurteilung der Genauigkeit einer Rechnung zu beachten
-sind. <a class="footnote-reference brackets" href="#decimal" id="id7">7</a> Das Auftreten von Rundungsfehlern wird an folgendem Beispiel
+sind. <a class="footnote-reference brackets" href="#decimal" id="id6">6</a> Das Auftreten von Rundungsfehlern wird an folgendem Beispiel
 deutlich.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.3</span>
 <span class="go">5.551115123125783e-17</span>
@@ -561,7 +531,7 @@ gegebenen Float-Typ darstellbar ist, und Eins selbst.</p>
 <div class="admonition-frage admonition">
 <p class="admonition-title">Frage</p>
 <p>Können Sie die Werte für <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code> und <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> erklären?
-Hinweis: Es handelt sich hier um ein Double im Sinne des IEEE754-Standards <a class="footnote-reference brackets" href="#ieee754" id="id8">8</a>
+Hinweis: Es handelt sich hier um ein Double im Sinne des IEEE754-Standards <a class="footnote-reference brackets" href="#ieee754" id="id7">7</a>
 mit einem 11-Bit-Exponenten, einem Vorzeichenbit und einer Mantisse von 52 Bit.
 Welches ist die kleinste streng positive Zahl, die Sie mit einem Float darstellen
 können?</p>
@@ -727,7 +697,7 @@ des Programms fehlerhaft sein kann.</p>
 <td><p>größter gemeinsamer Teiler der ganzen Zahlen <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> (ab Python 3.5)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">isclose(a,</span> <span class="pre">b)</span></code></p></td>
-<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> nahezu gleich sind (ab Python 3.5) <a class="footnote-reference brackets" href="#isclosedoc" id="id9">9</a></p></td>
+<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> nahezu gleich sind (ab Python 3.5) <a class="footnote-reference brackets" href="#isclosedoc" id="id8">8</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isfinite(x)</span></code></p></td>
 <td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">x</span></code> weder unendlich noch <code class="docutils literal notranslate"><span class="pre">nan</span></code> (not a number) ist</p></td>
@@ -823,16 +793,16 @@ des Programms fehlerhaft sein kann.</p>
 <td><p>Tangens Hyperbolicus</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">erf(x)</span></code></p></td>
-<td><p>Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id10">10</a></p></td>
+<td><p>Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id9">9</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">erfc(x)</span></code></p></td>
-<td><p>Komplement der Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id11">10</a></p></td>
+<td><p>Komplement der Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id10">9</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gamma(x)</span></code></p></td>
-<td><p>Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id12">11</a></p></td>
+<td><p>Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id11">10</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lgamma(x)</span></code></p></td>
-<td><p>natürlicher Logarithmus des Betrags der Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id13">11</a></p></td>
+<td><p>natürlicher Logarithmus des Betrags der Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id12">10</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1033,7 +1003,7 @@ die Großbuchstaben an Höcker eines Kamels erinnern. Details zu den in Python
 empfohlenen Konventionen für Bezeichner finden Sie im Python Enhancement Proposal <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a>
 mit dem Titel »Style Guide for Python Code« im Abschnitt <em>Naming Conventions</em>.</p>
 <p>Die folgenden Schlüsselwörter sind in Python als Sprachelemente reserviert und dürfen
-nicht für Bezeichner verwendet werden <a class="footnote-reference brackets" href="#keywords" id="id14">12</a>::</p>
+nicht für Bezeichner verwendet werden <a class="footnote-reference brackets" href="#keywords" id="id13">11</a>::</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">assert</span>      <span class="k">del</span>        <span class="k">for</span>       <span class="ow">in</span>        <span class="ow">or</span>        <span class="k">while</span>
 <span class="kc">None</span>      <span class="k">break</span>       <span class="k">elif</span>       <span class="kn">from</span>      <span class="nn">is</span>        <span class="k">pass</span>      <span class="k">with</span>  
 <span class="kc">True</span>      <span class="k">class</span>       <span class="nc">else</span>       <span class="k">global</span>    <span class="k">lambda</span>    <span class="k">raise</span>     <span class="k">yield</span> 
@@ -1428,7 +1398,7 @@ erreicht man durch Angabe des Buchstabens <code class="docutils literal notransl
 </pre></div>
 </div>
 <p>Hier wird durch den Wechsel der Darstellung insbesondere sichergestellt, dass
-immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id15">13</a></p>
+immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id14">12</a></p>
 <p>Betrachten wir nun noch die Formatierung von Integers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{0}</span><span class="s2">|</span><span class="si">{0:5}</span><span class="s2">|</span><span class="si">{0:05}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
@@ -1441,7 +1411,7 @@ immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="fo
 nicht weglassen?</p>
 </div>
 <p>Integers in Dezimaldarstellung benötigen keinen Buchstaben zur
-Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id16">14</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
+Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id15">13</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
 die Feldbreite festlegen.  Gibt man vor der Feldbreite eine Null an, so wird
 das Feld vor der auszugebenden Zahl mit Nullen aufgefüllt. Dies kann zum
 Beispiel bei der Ausgabe in anderen Zahlensystemen interessant sein. Python
@@ -1475,66 +1445,63 @@ beeinflussen. Folgendes Beispiel zeigt die Funktionsweise. Die Befehle</p>
 <p>erzeugen die Ausgabe <code class="docutils literal notranslate"><span class="pre">x..xx</span></code> sowie einen anschließenden Zeilenumbruch.</p>
 <hr class="docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="import"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Die Bedeutung der <code class="docutils literal notranslate"><span class="pre">import</span></code>-Anweisung werden wir später noch genauer kennenlernen.</p>
-</dd>
-<dt class="label" id="py2div"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="py2div"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>In Python 2 bedeutet der einfache Schrägstrich eine echte Integerdivision. Ein
 Verhalten wie in Python 3 kann ab Python 2.2 mit der Befehlszeile
 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">__future__</span> <span class="pre">import</span> <span class="pre">division</span></code> erzwungen werden.</p>
 </dd>
-<dt class="label" id="gvr-blog"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="gvr-blog"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>Die Hintergründe kann man in einem
 <a class="reference external" href="http://python-history.blogspot.de/2010/08/why-pythons-integer-division-floors.html">Blog-Artikel</a>
 von Guido van Rossum nachlesen.</p>
 </dd>
-<dt class="label" id="precedence"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dt class="label" id="precedence"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p>Eine vollständige Liste, die auch noch nicht besprochene Operatoren umfasst, findet
 man unter Punkt 6.15 <a class="reference external" href="http://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a>
 in der Python-Dokumentation.</p>
 </dd>
-<dt class="label" id="pprint"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="pprint"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>In IPython kann die Ausgabe abweichen. Mit <code class="docutils literal notranslate"><span class="pre">%pprint</span> <span class="pre">off</span></code> sollte man aber die hier
 angegebene Ausgabe erhalten.</p>
 </dd>
-<dt class="label" id="duck"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dt class="label" id="duck"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p><a class="reference external" href="http://docs.python.org/glossary.html#term-duck-typing">docs.python.org/glossary.html#term-duck-typing</a>. Kritiker
 halten dem entgegen, dass sich auch ein Drache wie eine Ente verhalten kann.</p>
 </dd>
-<dt class="label" id="decimal"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
+<dt class="label" id="decimal"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
 <dd><p>In diesem Zusammenhang kann das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">decimal</span></code> nützlich sein, das
 das Rechnen in der Dezimaldarstellung erlaubt. Ferner gibt es das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">mpmath</span></code>,
 das eine Rechnung mit einer vorgebbaren, im Prinzip beliebig hohen Genauigkeit ermöglicht.</p>
 </dd>
-<dt class="label" id="ieee754"><span class="brackets"><a class="fn-backref" href="#id8">8</a></span></dt>
+<dt class="label" id="ieee754"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
 <dd><p>Detailliertere Informationen zu diesem Standard sind im Anhang
 <span class="xref std std-ref">appendixfloats</span> zu finden.</p>
 </dd>
-<dt class="label" id="isclosedoc"><span class="brackets"><a class="fn-backref" href="#id9">9</a></span></dt>
+<dt class="label" id="isclosedoc"><span class="brackets"><a class="fn-backref" href="#id8">8</a></span></dt>
 <dd><p>Standardmäßig wird ein relativer Fehler von <span class="math notranslate nohighlight">\(10^{-9}\)</span> zugelassen. Die
 <a class="reference external" href="https://docs.python.org/3/library/math.html#math.isclose">Dokumentation von isclose</a>
 beschreibt, wie man den relativen und absoluten Fehler selbst setzen kann.</p>
 </dd>
-<dt class="label" id="fehlerfunktion"><span class="brackets">10</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id11">2</a>)</span></dt>
+<dt class="label" id="fehlerfunktion"><span class="brackets">9</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id10">2</a>)</span></dt>
 <dd><p>Die Fehlerfunktion ist das normierte Integral über die Gaußfunktion
 von Null bis zu dem durch das Argument gegebenen Wert. Das Komplement der Fehlerfunktion
 ist die Differenz zwischen 1 und dem Wert der Fehlerfunktion.</p>
 </dd>
-<dt class="label" id="gammafunktion"><span class="brackets">11</span><span class="fn-backref">(<a href="#id12">1</a>,<a href="#id13">2</a>)</span></dt>
+<dt class="label" id="gammafunktion"><span class="brackets">10</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id12">2</a>)</span></dt>
 <dd><p>Für positive ganze Zahlen entspricht die Gammafunktion der Fakultät des
 um Eins verminderten Arguments.</p>
 </dd>
-<dt class="label" id="keywords"><span class="brackets"><a class="fn-backref" href="#id14">12</a></span></dt>
+<dt class="label" id="keywords"><span class="brackets"><a class="fn-backref" href="#id13">11</a></span></dt>
 <dd><p>Bei Bedarf kann die Liste der Schlüsselwörter mit Hilfe des <code class="docutils literal notranslate"><span class="pre">keyword</span></code>-Moduls
 und Verwendung der Anweisung <code class="docutils literal notranslate"><span class="pre">keyword.kwlist</span></code> erhalten werden.</p>
 </dd>
-<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id15">13</a></span></dt>
+<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id14">12</a></span></dt>
 <dd><p>Die genaue Regel für die Umstellung der Darstellungsart kann man in der
 Dokumentation der Python-Standardbibliothek unter [6.1.3.1. Format Specification Mini-Language]
 (http://docs.python.org/3/library/string.html#formatspec)
 nachlesen.</p>
 </dd>
-<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id16">14</a></span></dt>
+<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id15">13</a></span></dt>
 <dd><p>Wenn man unbedingt möchte, kann man <code class="docutils literal notranslate"><span class="pre">d</span></code> für Dezimaldarstellung angeben.</p>
 </dd>
 </dl>
