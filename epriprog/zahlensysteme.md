@@ -106,5 +106,32 @@ Dabei kann es nützlich sein, an geometrische Reihen zu denken.
 (hexadezimalsystem)=
 ## Hexadezimalsystem
 
+In der Praxis hat das Dualsystem den Nachteil, dass die Zahlen relativ schwer lesbar sind.
+Zum einen enthalten Binärzahlen lediglich die Ziffern 0 und 1 und zudem sind sie etwa
+3,3-mal so lang wie die entsprechende Dezimaldarstellung. Daher fasst man häufig vier Bits
+zusammen, die dann die Ziffern von 0 bis 15 darstellen können. Auf diese Weise erhält man
+das Hexadezimalsystem, das die Basis 16 benutzt. In diesem System benutzt man wie gewohnt
+die Ziffern 0 bis 9 und fährt dann mit den Buchstaben a bis f fort. Dabei spielt es 
+keine Rolle, ob diese Buchstaben klein- oder großgeschrieben sind. 
+
+| Dualsystem | Dezimalsystem | Hexadezimalsystem |
+|:----------:| :-----------: |:-----------------:|
+|   0000     |       0       |         0         |
+|   0001     |       1       |         1         |
+|   0010     |       2       |         2         |
+|   0011     |       3       |         3         |
+|   0100     |       4       |         4         |
+|   0101     |       5       |         5         |
+|   0110     |       6       |         6         |
+|   0111     |       7       |         7         |
+|   1000     |       8       |         8         |
+|   1001     |       9       |         9         |
+|   1010     |       10      |         a         |
+|   1011     |       11      |         b         |
+|   1100     |       12      |         c         |
+|   1101     |       13      |         d         |
+|   1110     |       14      |         e         |
+|   1111     |       15      |         f         |
+
 (integertypes)=
 ## Verschiedene Arten von Integers
