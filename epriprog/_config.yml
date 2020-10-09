@@ -25,3 +25,6 @@ sphinx:
     language: de
     numfig_format:
       section: 'Kapitel %s'
+
+launch_buttons:
+  binderhub_url: "https://mybinder.org" 
