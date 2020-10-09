@@ -111,7 +111,7 @@ Zum einen enthalten Binärzahlen lediglich die Ziffern 0 und 1 und zudem sind si
 3,3-mal so lang wie die entsprechende Dezimaldarstellung. Daher fasst man häufig vier Bits
 zusammen, die dann die Ziffern von 0 bis 15 darstellen können. Auf diese Weise erhält man
 das Hexadezimalsystem, das die Basis 16 benutzt. In diesem System benutzt man wie gewohnt
-die Ziffern 0 bis 9 und fährt dann mit den Buchstaben a bis f fort. Dabei spielt es 
+die Ziffern 0 bis 9 und fährt dann mit den Buchstaben A bis F fort. Dabei spielt es 
 keine Rolle, ob diese Buchstaben klein- oder großgeschrieben sind. 
 
 | Dualsystem | Dezimalsystem | Hexadezimalsystem |
@@ -126,12 +126,266 @@ keine Rolle, ob diese Buchstaben klein- oder großgeschrieben sind.
 |   0111     |       7       |         7         |
 |   1000     |       8       |         8         |
 |   1001     |       9       |         9         |
-|   1010     |       10      |         a         |
-|   1011     |       11      |         b         |
-|   1100     |       12      |         c         |
-|   1101     |       13      |         d         |
-|   1110     |       14      |         e         |
-|   1111     |       15      |         f         |
+|   1010     |       10      |         A         |
+|   1011     |       11      |         B         |
+|   1100     |       12      |         C         |
+|   1101     |       13      |         D         |
+|   1110     |       14      |         E         |
+|   1111     |       15      |         F         |
+
+Im vorigen Abschnitt hatten wir gesehen, dass die kleinste Informationseinheit in einem Computer
+ein Bit ist, das die Werte 0 oder 1 annehmen kann. Häufig fasst man mehrere Bits zu einem Byte
+zusammen, das normalerweise acht Bits umfast. Da eine Ziffer im Hexadezimalsystem vier Bits entspricht,
+lässt sich also ein Byte kompakt durch zwei Ziffern im Hexadezimalsystem darstellen. So ist zum
+Beispiel
+
+$$11110011_2 = \mathrm{F}3_{16} = 15\cdot16^1 + 3\cdot16^0 = 243_{10}$$
+
+Die Umwandlung von einer Dezimal- in eine Hexadezimalzahl kann man in Python mit Hilfe der 
+{func}`hex`-Funktion vorgenommen werden.
+
+```{code-cell} python
+hex(243)
+```
+
+Dabei zeigt das `x` nach der führenden Null das Hexadezimalformat an.
+
+Genauso wie man eine Binärzahl in eine Dezimalzahl umwandeln kann,
+
+```{code-cell} python
+int(0b11110011)
+```
+
+geht dies auch für eine Hexadezimalzahl
+
+```{code-cell} python
+int(0xf3)
+```
+
+Die Art der Zahl wird an dem `b` bzw. `x` erkannt. Dabei ist es irrelevant,
+ob das `x` klein oder groß geschrieben ist. Gleiches gilt, wie schon gesagt,
+auch für die Hexadezimalziffern.
+
+```{code-cell} python
+int(0xF3), int(0Xf3), int(0XF3)
+```
+
+Der Vollständigkeit halber sei erwähnt, dass Python auch mit Zahlen im Oktalsystem mit 
+der Basis 8 arbeiten kann, in dem die Ziffern zwischen 0 und 7 liegen. Allerdings ist
+das Hexadezimalsystem zur Angabe von Bytes am geeignetsten.
 
 (integertypes)=
 ## Verschiedene Arten von Integers
+
+Nachdem wir nun mit dem Dual- und dem Hexadezimalsystem vertraut sind, können wir uns
+verschiedenen Arten von Integers und den von ihnen abgedeckten Zahlenbereichen zuwenden.
+
+Zunächst kann man sich fragen, warum nicht alle Programmiersprachen zumindest
+im Prinzip beliebig große Integers zulassen. Hierfür gibt es zwei wesentliche
+Gründe. Ältere Programmiersprachen wurden zu einer Zeit entwickelt als Speicher
+in Computern eine knappe Ressource war. Man hat damals also versucht, mit so wenig
+Speicher auszukommen wie es von der entsprechenden Anwendung erfordert wurde.
+
+Ein weiterer Grund wird vor allem dann relevant, wenn man eine ganze Reihe von Objekten
+verarbeiten will. Gerade bei numerischen Problemen hat man es ja oft mit Vektoren oder
+Matrizen zu tun. Wenn alle Einträge in einem Vektor oder einer Matrix die gleiche
+Speichergröße erfordern, kann man sehr leicht ausrechnen, wo sich ein bestimmter Eintrag
+im Speicher befindet, und damit schnell darauf zugreifen. Gerade in Sprachen wie Fortran
+und C, die nicht wie Python den Code zeilenweise interpretieren, sondern den gesamten
+Code mehr oder weniger genau analysieren, ist es mit der Kenntnis über die Größe von
+Objekten im Speicher möglich, die Ausführungsgeschwindigkeit eines Programms zu optimieren.
+
+Um das Prinzip zu verstehen, beginnen wir mit den kleinsten Integers und verzichten zunächst
+auf negative Zahlen. Man spricht dann von »unsigned char«, die aus einem einzigen Byte bestehen.
+Python erlaubt es uns, die interne Darstellung leicht zu bestimmen, wobei uns hier nur das
+Ergebnis interessieren soll.
+
+```{code-cell} python
+from struct import pack
+pack('>B', 123).hex()
+```
+Dieses Ergebnis lässt sich leicht nachvollziehen
+
+$$\begin{align}
+7\mathrm{b}_{16} &= 7\cdot16^1+11\cdot16^0\\
+                 &= 112+11\\
+                 &= 123
+\end{align}$$
+
+Die größte Zahl, die man mit einem Byte darstellen kann, ist $2^{8}-1=255$.
+```{code-cell} python
+pack('>B', 2**8-1).hex()
+```
+Was passiert, wenn man versucht, $2^{8}$ als »unsigned char« darzustellen?
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+pack('>B', 2**8).hex()
+```
+Diese Zahl ist nicht mehr in einem Byte darstellbar, sondern erfordert zwei
+Bytes: `0x0100`.  Python bricht daher mit einer Fehlermeldung ab. Dieses
+Verhalten ist jedoch nicht selbstverständlich.  In manchen Programmiersprachen
+wird einfach die 1 im führenden Byte ignoriert, was zur Folge hat, dass $2^8$
+stillschweigend auf $0$ abgebildet wird. Man spricht hier von einem Überlauf.
+Diesen sollte man tunlichst vermeiden, da die Numerik sonst fehlerhafte
+Ergebnisse liefert.
+
+Neben dem gerade besprochenen Integerformat »unsigned char« gibt es auch
+»signed char«, das auch negative Zahlen zulässt. Dabei wird das Vorzeichen im
+höchsten Bit, in unserer Darstellung also ganz links, gespeichert.
+Dementsprechend sind positive Zahlen von $0$ mit $2^{7}-1$ darstellbar.
+```{code-cell} python
+pack('>b', 2**7-1).hex()
+```
+Hier ist das vordere Bit gleich $0$, während alle anderen Bits gleich $1$ sind.
+$2^7$ würde dazu führen, dass das erste Bit gleich $1$ wird, was aber eine
+negative Zahl anzeigen würde.
+
+Um die Darstellung negativer Zahlen besser zu verstehen, vergleichen wir die Art wie $1$ und $-1$
+abgespeichert werden.
+```{code-cell} python
+pack('>b', 1).hex(), pack('>b', -1).hex()
+```
+Anders als man erwarten könnte, unterscheiden sich die beiden Darstellungen nicht einfach im führenden
+Bit. Vielmehr ist die Darstellung so gewählt, dass sich beim Zusammenzählen tatsächlich Null ergibt.
+
+      0000 0001
+      1111 1111
+    -----------
+    1 0000 0000 
+
+Hier muss man bei der Addition berücksichtigen, dass im Dualsystem $1+1 = 10_2$
+gibt, also $0$ mit einem Übertrag von $1$. Die letzte Übertrag wird durch die
+Beschränkung auf ein Byte einfach ignoriert, und wir erhalten somit als Ergebnis
+Null, wie es auch sein muss.
+
+Wie erhält man nun aus einer positiven Zahl die zugehörige negative Zahl? Die
+Antwort ist das so genannte Zweierkomplement. Hierbei werden zunächst alle
+Nullen durch Einsen ersetzt und umgekehrt. Dieses Zwischenergebnis wird
+Einserkomplement genannt. Anschließend wird zu dem Ergebnis noch $1$ addiert.
+Sehen wir uns das an einem Beispiel an. Betrachten wir als Beispiel die Zahl
+mit der Hexadezimaldarstellung 7b, die, wie wir schon wissen, im Dezimalsystem
+gleich 123 ist. Zunächste erhalten wir für das Einserkomplement
+
+    0111 1011 → 1000 0100
+
+und dann durch Addition von Eins
+
+    1000 0100 → 1000 0101
+
+Die Addition der beiden Zahlen ergibt erwartungsgemäß Null
+
+      0111 1011
+      1000 0101
+    -----------
+    1 0000 0000
+
+Dass wir das Zweierkomplement richtig bestimmt haben, sieht man mit Hilfe von Python
+wenn man in der folgenden Ausgabe entsprechend unserer vorigen Beschränkung auf
+ein einziges Byte das vordere Byte ignoriert.
+```{code-cell} python
+pack('>b', 123).hex(), pack('>b', -123).hex()
+```
+
+```{admonition} Aufgabe
+
+Zeigen Sie, dass die Addition einer Zahl und ihres Zweierkomplements immer Null
+ergibt, wenn man den Übertrag, der zum Überlauf führt, ignoriert.
+```
+
+Da das erste Bit für das Vorzeichen benötigt wird, ist die größte positive Zahl,
+die sich mit einem »signed char« Integer darstellen lässt, gleich $2^7-1$. Die Zahl
+$2^7$ kann dagegen nicht mehr dargestellt werden.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+pack('>b', 2**7).hex()
+```
+Andererseits kann $-2^7$ gerade noch dargestellt werden:
+```{code-cell} python
+pack('>b', -2**7).hex()
+```
+Wenn man das Zweierkomplement bildet, stellt man fest, dass diese Zahl gleich
+ihrem Negativen ist. Dabei handelt es sich um ein Artefakt des
+Zweierkomplements. Im Einserkomplement hätte man dagegen unterschiedliche
+Darstellungen für die Null und ihr Negatives. 
+
+Durch den kleinen Zahlenbereich $-128\ldots127$ ist ein Byte selten für
+numerische Arbeiten ausreichend. Typischerweise wird man dann zwei, vier oder
+gar acht Bytes investieren, um Integers darzustellen. Damit wird der
+darstellbare Zahlenbereich erheblich größer, wie die {numref}`table:ints`
+zeigt. Die dort gezeigten Bezeichnungen werden so im
+[struct-Modul](https://docs.python.org/3/library/struct.html) von Python
+verwendet. Die einzelnen Bezeichnungen können in anderen Programmiersprachen
+unter Umständen abweichend definiert sein.
+
+```{list-table} Integerformate wie sie von Pythons [struct-Modul](https://docs.python.org/3/library/struct.html) verwendet werden
+:header-rows: 1
+:name: table:ints
+
+* - Name
+  - Format
+  - Bytes
+  - Minimalwert
+  - Maximalwert
+* - unsigned char
+  - B
+  - 1
+  - 0
+  - 255
+* - signed char
+  - b
+  - 1
+  - -128
+  - 127
+* - unsigned short
+  - H
+  - 2
+  - 0
+  - 65535
+* - short
+  - h
+  - 2
+  - -32768
+  - 32767
+* - unsigned int
+  - I
+  - 4
+  - 0
+  - 4294967295
+* - int
+  - i
+  - 4
+  - -2147483648
+  - 2147483647
+* - unsigned long
+  - L
+  - 4
+  - 0
+  - 4294967295
+* - long
+  - l
+  - 4
+  - -2147483648
+  - 2147483647
+* - unsigned long long
+  - Q
+  - 8
+  - 0
+  - 18446744073709551615
+* - long long
+  - q
+  - 8
+  - -9223372036854775808
+  - 9223372036854775807
+```
+
+
+````{admonition} Weiterführender Hinweis
+Das Größerzeichen `>` im ersten Argument der {func}`pack`-Funktion verlangt, dass die niedrigeren
+Stellen des Ergebnisses wie gewohnt weiter rechts stehen. Tatsächlich ist dies auf den üblichen
+Intelarchitekturen nicht der Fall. Davon kann man sich überzeugen, wenn man das `>` durch `@`
+ersetzt. Dadurch dreht sich die Reihenfolge der Bytes, nicht der Bits, gegebenenfalls um.
+````
