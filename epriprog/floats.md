@@ -29,9 +29,12 @@ Anteilen: 1 Bit für das Vorzeichen, 11 Bits aus denen der Exponent bestimmt wir
 höchstwertigste Bit (MSB – `most significant bit`) jeweils links und das niederwertigste 
 Bit (LSB – `least significant bit`) rechts.
 
-```{image} images/ieee754/ieee754_64.*
-:height: 2.5cm
-:align: center
+```{figure} images/ieee754/ieee754_64.png
+---
+height: 5cm
+name: fig:ieee754
+---
+64-Bit-Gleitkommazahl nach IEEE-Standard 754.
 ```
 
 Die Interpretation der 64 Bits hängt vom Wert des Exponenten E ab, der als Integer zu
