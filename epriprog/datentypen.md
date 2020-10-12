@@ -75,7 +75,7 @@ der Bereich der möglichen Integers eingeschränkt. Da die für uns wichtigen
 numerischen Programmbibliotheken NumPy und SciPy zu großen Teilen auf in C oder
 Fortran geschriebenen Programmen basieren, werden dort auch unter Python die
 Einschränkungen des Zahlenbereichs wichtig. Zu erwähnen wäre noch, dass die Integers,
-die als Index zur Addressierung in Listen oder Zeichenketten verwendet werden
+die als Index zur Adressierung in Listen oder Zeichenketten verwendet werden
 können, auch in Python beschränkt sind. Allerdings wird diese Beschränkung auf
 modernen Computern selten ein Problem darstellen.
 
@@ -108,7 +108,7 @@ keine Rolle, sondern dienen hier der besseren Lesbarkeit.
 In Python kann man auch mit Dual-, Oktal- und Hexadezimalzahlen arbeiten. Eine
 Einführung in Zahlensysteme, insbesondere das Dual- und das Hexadezimalsystem
 wird in {numref}`anhang_zahlensysteme` gegeben. Um zwischen den verschiedenen
-Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwa
+Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwar
 ``0b`` oder ``0B`` für das Dualsystem, ``0o`` oder ``0O`` für das Oktalsystem
 sowie ``0x`` oder ``0X`` für das Hexadezimalsystem. Die folgenden drei Darstellungen
 sind jeweils äquivalent zur Zahl 25 im gewohnten Dezimalsystem
@@ -473,7 +473,7 @@ In manchen Situation kann man mit dem Ergebnis sogar noch weiterrechnen.
 x = sys.float_info.max*1.00000001
 print(1/x)
 ```
-Dies ist jedoch nicht der Fall, wenn man zweimal positiv Unendlich voneinander bbziehen will.
+Dies ist jedoch nicht der Fall, wenn man zweimal positiv Unendlich voneinander abziehen will.
 ```{code-cell} python
 1e400 - 1e401
 ```
@@ -840,7 +840,7 @@ werden. Es gibt hierfür zahlreiche Standards, unter anderem den ASCII-Standard,
 der noch nicht einmal Umlaute kennt, den ISO-8859-1-Standard, der diesen
 Mangel behebt, aber dennoch im Umfang sehr beschränkt ist, bis hin zum
 Unicode-Standard, der mehr als hunderttausend Zeichen umfasst. Für den
-Unicode-Standard gibt es wiederum verschiedene Codierungen, inbesondere die in
+Unicode-Standard gibt es wiederum verschiedene Codierungen, insbesondere die in
 der westlichen Welt sinnvolle UTF-8-Kodierung. Etwas mehr Details zu diesem
 Thema sind im Anhang {ref}`appendixunicode` zu finden. 
 
