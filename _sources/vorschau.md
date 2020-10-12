@@ -251,7 +251,7 @@ Fall der Eingabe -1 überprüfen. `elif` in Zeile 26 steht als Abkürzung für
 `else if`.  Falls also die Eingabe nicht zwischen 0 und 2 liegt, aber gleich -1
 ist, so wird die `while`-Schleife in Zeile 27 abgebrochen. 
 
-Ist keine der beiden vorgehenenden Fälle erfüllt, wird der `else`-Block ab
+Ist keiner der beiden vorgehenden Fälle erfüllt, wird der `else`-Block ab
 Zeile 28 relevant, der in unserem in einer Ausgabe darauf hinweist, dass keine
 gültige Eingabe gemacht wurde.
 
@@ -299,7 +299,7 @@ while True:
         print('\n*** ungültige Eingabe\n')
 ```
 
-In den Zeilen 3 bis 9 ist eine Funkion definiert, die in Abhängigkeit der
+In den Zeilen 3 bis 9 ist eine Funktion definiert, die in Abhängigkeit der
 von Benutzer und Computer gewählten Objekte entscheidet, wer das Spiel gewonnen
 hat. Diese Funktion wird in Zeile 24 aufgerufen und dorthin wird mit Hilfe einer
 der `return`-Anweisungen in den Zeilen 6, 8 und 10 auch das Ergebnis der Funktion

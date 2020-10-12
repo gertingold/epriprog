@@ -135,7 +135,7 @@ keine Rolle, ob diese Buchstaben klein- oder großgeschrieben sind.
 
 Im vorigen Abschnitt hatten wir gesehen, dass die kleinste Informationseinheit in einem Computer
 ein Bit ist, das die Werte 0 oder 1 annehmen kann. Häufig fasst man mehrere Bits zu einem Byte
-zusammen, das normalerweise acht Bits umfast. Da eine Ziffer im Hexadezimalsystem vier Bits entspricht,
+zusammen, das normalerweise acht Bits umfasst. Da eine Ziffer im Hexadezimalsystem vier Bits entspricht,
 lässt sich also ein Byte kompakt durch zwei Ziffern im Hexadezimalsystem darstellen. So ist zum
 Beispiel
 
@@ -266,7 +266,7 @@ Nullen durch Einsen ersetzt und umgekehrt. Dieses Zwischenergebnis wird
 Einserkomplement genannt. Anschließend wird zu dem Ergebnis noch $1$ addiert.
 Sehen wir uns das an einem Beispiel an. Betrachten wir als Beispiel die Zahl
 mit der Hexadezimaldarstellung 7b, die, wie wir schon wissen, im Dezimalsystem
-gleich 123 ist. Zunächste erhalten wir für das Einserkomplement
+gleich 123 ist. Zunächst erhalten wir für das Einserkomplement
 
     0111 1011 → 1000 0100
 

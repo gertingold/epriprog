@@ -175,7 +175,7 @@ Abbild eines schwarzen Lochs aus Aufnahmen des Event Horizon Telescopes.
 
 Die folgenden Zitate zeigen, dass Python nicht nur zur Einführung in das
 Programmieren taugt, sondern auch für große Projekte in führenden IT-Firmen,
-Forschungseinrichungen sowie der Finanz- und Filmindustrie verwendet wird [^psf]:
+Forschungseinrichtungen sowie der Finanz- und Filmindustrie verwendet wird [^psf]:
 
 [^psf]: Zitiert nach [python, Case Studies & Success Stories, Vol. I (Python
      Software Foundation)](https://brochure.getpython.info/media/releases/psf-python-brochure-vol.-i-final-download.pdf/at_download/file)
@@ -386,7 +386,7 @@ kann sich über mehrere Zeilen hinziehen. Zum Beenden wird die
 - [www.python.org](http://www.python.org/)
 
   Dies ist die offizielle Python-Webseite. Dort gibt es z.B. die Software zum Herunterladen, 
-  eine umfangreiche [Dokumentation der Programmiersprache](https://docs.python.org/3/), insbesonderer ihrer
+  eine umfangreiche [Dokumentation der Programmiersprache](https://docs.python.org/3/), insbesondere ihrer
   [Standardbibliothek](https://docs.python.org/3/library/index.html) sowie
   Verweise auf [einführende Literatur](https://wiki.python.org/moin/PythonBooks) und einiges mehr.
 

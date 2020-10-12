@@ -310,7 +310,7 @@ der Bereich der möglichen Integers eingeschränkt. Da die für uns wichtigen
 numerischen Programmbibliotheken NumPy und SciPy zu großen Teilen auf in C oder
 Fortran geschriebenen Programmen basieren, werden dort auch unter Python die
 Einschränkungen des Zahlenbereichs wichtig. Zu erwähnen wäre noch, dass die Integers,
-die als Index zur Addressierung in Listen oder Zeichenketten verwendet werden
+die als Index zur Adressierung in Listen oder Zeichenketten verwendet werden
 können, auch in Python beschränkt sind. Allerdings wird diese Beschränkung auf
 modernen Computern selten ein Problem darstellen.</p>
 <p>Wie ganze Zahlen im Computer dargestellt werden und was das für die
@@ -354,7 +354,7 @@ keine Rolle, sondern dienen hier der besseren Lesbarkeit.</p>
 <p>In Python kann man auch mit Dual-, Oktal- und Hexadezimalzahlen arbeiten. Eine
 Einführung in Zahlensysteme, insbesondere das Dual- und das Hexadezimalsystem
 wird in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 4</span></a> gegeben. Um zwischen den verschiedenen
-Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwa
+Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwar
 <code class="docutils literal notranslate"><span class="pre">0b</span></code> oder <code class="docutils literal notranslate"><span class="pre">0B</span></code> für das Dualsystem, <code class="docutils literal notranslate"><span class="pre">0o</span></code> oder <code class="docutils literal notranslate"><span class="pre">0O</span></code> für das Oktalsystem
 sowie <code class="docutils literal notranslate"><span class="pre">0x</span></code> oder <code class="docutils literal notranslate"><span class="pre">0X</span></code> für das Hexadezimalsystem. Die folgenden drei Darstellungen
 sind jeweils äquivalent zur Zahl 25 im gewohnten Dezimalsystem</p>
@@ -928,10 +928,9 @@ formuliert hat. Eventuell kann schon eine Skalierung der Variablen das Problem
 beseitigen. Im schlimmsten Fall kann man in Python zum
 <a class="reference external" href="http://mpmath.org/doc/current/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpmath</span></code>-Modul</a> greifen, das es erlaubt,
 mit mehr als den standardmäßigen 15 signifikanten Stellen zu rechnen.</p>
-<p>Was passiert aber, wenn man den zulässigen Zahlenbereich von Floats überschreitet?</p>
-<hr class="docutils" />
-<p>Werden Gleitkommazahlen zu groß, so
-erhält man ein vorzeichenbehaftetes Unendlich:</p>
+<p>Was passiert aber, wenn man den zulässigen Zahlenbereich von Floats überschreitet?
+In diesem Fall setzt Python die entsprechende Zahl auf Unendlich oder <code class="docutils literal notranslate"><span class="pre">inf</span></code> vom
+vom englischen <em>infinity</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span><span class="o">*</span><span class="mf">1.00000001</span>
@@ -944,6 +943,7 @@ erhält man ein vorzeichenbehaftetes Unendlich:</p>
 </div>
 </div>
 </div>
+<p>Dieses Unendlich ist zudem vorzeichenbehaftet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span><span class="o">*</span><span class="mf">1.00000001</span>
@@ -956,25 +956,55 @@ erhält man ein vorzeichenbehaftetes Unendlich:</p>
 </div>
 </div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">1e400</span>
-<span class="go">inf</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mf">1e400</span>
-<span class="go">-inf</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mf">1e400</span> <span class="o">-</span> <span class="mf">1e401</span>
-<span class="go">nan</span>
+<p>In manchen Situation kann man mit dem Ergebnis sogar noch weiterrechnen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span><span class="o">*</span><span class="mf">1.00000001</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Lässt sich mit unendlichen Größen nicht sinnvoll rechnen, wird <code class="docutils literal notranslate"><span class="pre">nan</span></code> ausgegeben, das
-für »not a number« steht. Eine Division durch Null führt nicht etwa zu <code class="docutils literal notranslate"><span class="pre">inf</span></code>, sondern
-zu einem Fehler:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">1.5</span><span class="o">/</span><span class="mi">0</span>
-<span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">ZeroDivisionError</span>: <span class="n">float division by zero</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
 </pre></div>
 </div>
-<p>Hierbei wird eine Ausnahme (Exception) ausgelöst, die man geeignet behandeln kann, wie
-wir im Abschnitt <span class="xref std std-ref">tryexcept</span> noch sehen werden.</p>
+</div>
+</div>
+<p>Dies ist jedoch nicht der Fall, wenn man zweimal positiv Unendlich voneinander abziehen will.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e400</span> <span class="o">-</span> <span class="mf">1e401</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hierbei steht <code class="docutils literal notranslate"><span class="pre">nan</span></code> für »not a number«.</p>
+<p>Anders als man nach dieser Diskussion vielleicht denke könnte, hat eine Division durch Null
+nicht das Ergebnis <code class="docutils literal notranslate"><span class="pre">inf</span></code>. Vielmehr gibt es einen <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1.5</span><span class="o">/</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">36</span><span class="o">-</span><span class="n">aab2144c050b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="mf">1.5</span><span class="o">/</span><span class="mi">0</span>
+
+<span class="ne">ZeroDivisionError</span>: float division by zero
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hierbei handelt es sich um eine so genannte Ausnahme oder Englisch <em>exception</em>, die man geeignet
+behandeln kann, wie wir später noch sehen werden.</p>
 </div>
 <div class="section" id="funktionen-fur-reelle-zahlen">
 <span id="mathfunc"></span><h2><span class="section-number">3.3. </span>Funktionen für reelle Zahlen<a class="headerlink" href="#funktionen-fur-reelle-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
@@ -1370,7 +1400,7 @@ werden. Es gibt hierfür zahlreiche Standards, unter anderem den ASCII-Standard,
 der noch nicht einmal Umlaute kennt, den ISO-8859-1-Standard, der diesen
 Mangel behebt, aber dennoch im Umfang sehr beschränkt ist, bis hin zum
 Unicode-Standard, der mehr als hunderttausend Zeichen umfasst. Für den
-Unicode-Standard gibt es wiederum verschiedene Codierungen, inbesondere die in
+Unicode-Standard gibt es wiederum verschiedene Codierungen, insbesondere die in
 der westlichen Welt sinnvolle UTF-8-Kodierung. Etwas mehr Details zu diesem
 Thema sind im Anhang <span class="xref std std-ref">appendixunicode</span> zu finden.</p>
 <p>Aus dem vorigen Abschnitt ergibt sich vielleicht der Eindruck, dass die Kodierung
