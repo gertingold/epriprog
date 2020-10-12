@@ -34,6 +34,7 @@ werden wir vor allem neben den ganzen Zahlen noch weitere numerische Datentypen
 kennenlernen, die für natur- und ingenieurwissenschaftliche Anwendungen große
 Bedeutung besitzen.
 
+(integers)=
 ## Ganze Zahlen
 
 Wir beginnen bei der Besprechung der numerischen Datentypen mit den ganzen
@@ -78,11 +79,12 @@ die als Index zur Addressierung in Listen oder Zeichenketten verwendet werden
 können, auch in Python beschränkt sind. Allerdings wird diese Beschränkung auf
 modernen Computern selten ein Problem darstellen.
 
-Wie ganze Zahlen im Computer dargestellt werden und was das für die größenmäßige
-Einschränkung des Zahlenbereichs bedeutet, werden wir in einem Anhang diskutieren.
-Dort werden auch die Grundlagen des Dualsystems erklärt, das der Darstellung von
-Zahlen mit Hilfe von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun
-stärker der praktischen Arbeit mit Integers zuwenden.
+Wie ganze Zahlen im Computer dargestellt werden und was das für die
+größenmäßige Einschränkung des Zahlenbereichs bedeutet, werden wir in einem
+Anhang in {numref}`anhang_zahlensysteme` diskutieren.  Dort werden auch die
+Grundlagen des Dualsystems erklärt, das der Darstellung von Zahlen mit Hilfe
+von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun stärker der
+praktischen Arbeit mit Integers zuwenden.
 
 Als erstes wollen wir zeigen, dass Integers in Python tatsächlich sehr groß werden
 können, indem wir die tausendste Potenz von 2 ausrechnen lassen. Der doppelte Stern
@@ -103,104 +105,179 @@ Natürlich gibt es neben positiven Integers auch solche mit negativem Vorzeichen
 Die Leerzeichen um das Minuszeichen der Eingabe spielen für den Pythoninterpreter
 keine Rolle, sondern dienen hier der besseren Lesbarkeit.
 
-In Python kann man auch mit Binär-, Oktal- und Hexadezimalzahlen arbeiten, die durch
-die Präfixe ``0b`` oder ``0B``, ``0o`` oder ``0O`` bzw. ``0x`` oder ``0X``
-gekennzeichnet werden. 
+In Python kann man auch mit Dual-, Oktal- und Hexadezimalzahlen arbeiten. Eine
+Einführung in Zahlensysteme, insbesondere das Dual- und das Hexadezimalsystem
+wird in {numref}`anhang_zahlensysteme` gegeben. Um zwischen den verschiedenen
+Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwa
+``0b`` oder ``0B`` für das Dualsystem, ``0o`` oder ``0O`` für das Oktalsystem
+sowie ``0x`` oder ``0X`` für das Hexadezimalsystem. Die folgenden drei Darstellungen
+sind jeweils äquivalent zur Zahl 25 im gewohnten Dezimalsystem
 
-```{code-block} python
->>> 0x6cd8932f
-1826132783
->>> 0b11001
-25
->>> 0o31
-25
+```{code-cell} python
+0b11001, 0o31, 0x19
 ```
 
 Die Umwandlung in das Binär-, Oktal- oder Hexadezimalformat erfolgt mit Hilfe der
 Funktionen ``bin``, ``oct`` bzw. ``hex``:
 
-```{code-block} python
->>> bin(25)
-'0b11001'
->>> oct(25)
-'0o31'
->>> hex(25)
-'0x19'
+```{code-cell} python
+bin(25), oct(25), hex(25)
 ```
+Das Ergebnis ist allerdings keine Zahl, sondern eine Zeichenkette, wie an den
+einschließenden Hochkommas zu erkennen ist.
 
-Bei der Division von zwei Integers muss man je nach Programmiersprache
-aufpassen, da die Division möglicherweise einen Rest ergibt. Das Ergebnis
-könnte daher entweder eine Gleitkommazahl sein oder aber ein Integer, wobei der
-entstandene Rest ignoriert wird.
+Bei den meisten grundlegenden mathematischen Operationen wie Addition, Subtraktion,
+Multiplikation und Exponentiation ist gewährleistet, dass bei der Anwendung auf
+ganze Zahlen das Ergebnis wieder eine ganze Zahl ist. Eine Ausnahme ist die Division,
+da nicht klar ist, dass sich der Dividend durch den Divisor ohne Rest teilen lässt.
 
-In Python 3 ergibt die Division mit einem einfachen Schrägstrich immer eine
-Gleitkommazahl, selbst wenn bei der Division kein Rest entsteht [^py2div].
+Um fehlerhafte Programme zu vermeiden, ist es daher wichtig zu wissen, wie die
+verwendete Programmiersprache die Division handhabt. Prinzipiell gibt es zwei
+Möglichkeiten. Eine Möglichkeit besteht darin, bei der Division von zwei ganzen
+Zahlen wieder eine ganze Zahl zu erzeugen und einen eventuell entstehenden Rest
+zu ignorieren. Bei der anderen Möglichkeit wird der Quotient als Gleitkommazahl
+dargestellt. Keine der beiden Varianten ist besser als die andere, so dass es für 
+eine Programmiersprache auch keine natürliche Wahl gibt. Tatsächlich hat sich
+Python in der Version 2 an dieser Stelle anders verhalten als die Version 3, die
+wir heute benutzen.
 
-```{code-block} python
->>> 1/2
-0.5
->>> 15/3
-5.0
+Sehen wir uns an, wie Python 3 mit der Division von zwei Integers umgeht.
+```{code-cell} python
+1/2
 ```
+```{code-cell} python
+15/3
+```
+Offenbar wird hier immer eine Gleitkommazahl erzeugt, was an dem Dezimalpunkt
+ersichtlich ist. Dies gilt auch, wenn der Quotient wie im zweiten Fall im
+Prinzip als ganze Zahl darstellbar wäre.
 
-[^py2div]: In Python 2 bedeutet der einfache Schrägstrich eine echte Integerdivision. Ein
-    Verhalten wie in Python 3 kann ab Python 2.2 mit der Befehlszeile 
-    ``from __future__ import division`` erzwungen werden.
-
-Dies dürfte in den meisten Fällen das erwünschte Verhalten sein. Es kann aber
-durchaus sein, dass man tatsächlich eine Integerdivision benötigt. Diese lässt
-sich mit einem doppelten Schrägstrich erhalten.
-
-```{code-block} python
->>> 1//2
-0
->>> 15//7
-2
->>> -15//7
--3
+Gelegentlich benötigt man aber eine Ganzzahldivision. In Python 3 erhält man diese
+mit einem doppelten Schrägstrich.
+```{code-cell} python
+1//2
+```
+```{code-cell} python
+15//7
+```
+```{code-cell} python
+-15//7
 ```
 
 ```{admonition} Frage
-Was macht der ``//``-Divisionsoperator tatsächlich, vor allem vor dem
+Was macht der ``//``-Divisionsoperator in Python 3 tatsächlich, vor allem vor dem
 Hintergrund des letzten Beispiels? [^gvr_blog]
 
-[^gvr_blog]: Die Hintergründe kann man in einem
+[^gvr_blog]: Die Hintergründe für diese Wahl kann man in einem
     [Blog-Artikel](http://python-history.blogspot.de/2010/08/why-pythons-integer-division-floors.html)
     von Guido van Rossum nachlesen.
 ```
 
-In anderen Sprachen und auch in Python 2, in denen der einfache Schrägstrich
-eine Integerdivision bedeutet, kann man eine Gleitkommadivision erzwingen,
-indem man dafür sorgt, dass das erste Argument nicht ein Integer, sondern eine
-Gleitkommazahl ist. Wie dies geht, wird im Kapitel {ref}`float` erklärt.
+Um zu verdeutlichen, dass die in Python 3 getroffene Wahl nicht zwingend ist,
+sehen wir uns zum Vergleich die Division in der Programmiersprache C an.
+Hier liefert
+```{code-block} C
+#include <stdio.h>
 
-Ein wichtiger Punkt, der nicht nur für Integers von Bedeutung ist, ist die 
-Reihenfolge, in der Operationen ausgeführt werden. Dies sei an einem Beispiel
-illustriert:
+int main(void) {
+  printf("%d %d\n", 15/7, -15/7);
+}
+```
+als Ergebnis
+```
+2 -2
+```
+Im Gegensatz zu Python 3 führt in C die Division zweier Integers wieder auf einen
+Integer. Zudem wird hier zur Null hin abgeschnitten. Im zweiten Fall ergibt sich also
+nicht -3 wie bei Python 3, sondern -2. Genauso verhält sich auch der entsprechende
+Fortran-Code
+```{code-block} fortran
+program division
+  write(*, *) 15/7, -15/7
+  write(*, *) 1/2, 1.0/2
+end program division
+```
+mit dem Ergebnis
+```
+           2          -2
+           0  0.500000000
+```
+Hier illustriert die zweite Ausgabezeile, dass man hier eine Gleitkommadivision
+erzwingen kann, indem man mindestens eine der beiden Zahlen zu einer Gleitkommazahl
+macht.
 
-```{code-block} python
->>> 2+3*4
-14
->>> (2+3)*4
-20
+Kommen wir nach diesem Ausflug zu anderen Programmiersprachen wieder zurück zu
+Python. Oft ist man am Rest einer Integerdivision interessiert. Diesen könnte man
+im Prinzip folgendermaßen erhalten
+```{code-cell} python
+zaehler = 15
+nenner = 4
+rest = zaehler - (zaehler//nenner)*nenner
+print(rest)
+```
+Mit Hilfe des Modulo-Operators `%` von Python geht dies jedoch einfacher.
+```{code-cell} python
+zaehler = 15
+nenner = 4
+print(zaehler % nenner)
+```
+Eine häufige Anwendung ist der Test auf eine gerade oder ungerade Zahl.
+```{code-cell} python
+16 % 2
+```
+Ist die Zahl ohne Rest durch 2 teilbar, ist sie offenbar gerade, ansonsten ungerade.
+```{code-cell} python
+17 % 2
+```
+Benötigt man sowohl den Quotienten als auch den Rest, so kann man in Python beides
+in einem Schritt mit Hilfe der {func}`divmod`-Funktion erhalten
+```{code-cell} python
+quotient, rest = divmod(42, 5)
+print(quotient, rest)
 ```
 
-Die Multiplikation hat also offenbar Vorrang vor der Addition. In der folgenden,
-für Python gültigen Tabelle haben die höher stehenden Operatoren Vorrang vor
-den tiefer stehenden [^precedence]:
+Ein weiterer wichtiger Punkt, der hier für Integers zum ersten Mal auftritt, aber
+viel weitreichendere Bedeutung hat, ist die Reihenfolge, in der Operationen 
+ausgeführt werden. In dem folgenden Beispiel sehen wir, dass in Python ebenso wie
+in C und Fortran die Regel Punkt vor Strich gilt.
 
-|Operatoren   |   Beschreibung                    |
-|-------------|-----------------------------------|
-|``**``       | Exponentiation                    |
-|``+x, -x``   | Positives und negatives Vorzeichen|
-|``*, /``     | Multiplikation, Division          |
-|``+, -``     | Addition, Subtraktion             |
+```{code-cell} python
+2+3*4
+```
+Der Ausdruck wird also nicht von links nach rechts abgearbeitet. Möchte man zuerst
+die Addition ausführen, so muss man Klammern setzen.
+```{code-cell} python
+(2+3)*4
+```
+
+Die wichtigsten für Python geltenden Vorrangregeln sind in der {numref}`table:precedence`
+dargestellt. Dabei haben die weiter oben stehenden Operationen Vorrang vor den nachfolgenden
+Operationen [^precedence].
+
+```{list-table} Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden.
+:header-rows: 1
+:name: table:precedence
+
+* - Operatoren
+  - Beschreibung
+* - **
+  - Exponentiation
+* - +x, -x
+  - Positives und negatives Vorzeichen
+* - *, /, //, %
+  - Multiplikation, Division, Modulo
+* - +, -
+  - Addition, Subtraktion
+```
 
 [^precedence]: Eine vollständige Liste, die auch noch nicht besprochene Operatoren umfasst, findet
-    man unter Punkt 6.15 [Operator precedence](http://docs.python.org/3/reference/expressions.html#operator-precedence)
-    in der Python-Dokumentation.
+    man unter dem Punkt [Operator precedence](http://docs.python.org/3/reference/expressions.html#operator-precedence)
+    in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also
+    weiter unten stehende Operatoren Vorrang haben.
 
-Wird ``**`` direkt von einem Plus oder Minus gefolgt, bindet letzteres stärker:
+Auch wenn das folgende Beispiel Gleitkommazahlen involviert, sei angemerkt,
+dass falls der Exponentiationsoperator``**`` direkt von einem Plus oder Minus
+gefolgt, das Vorzeichen stärker bindet.
 
 ```{code-block} python
 >>> 2**-0.5
@@ -214,143 +291,186 @@ Zweifelsfall oder zur besseren Lesbarkeit Klammern zu setzen, selbst wenn diese
 nicht zur korrekten Abarbeitung des Ausdrucks erforderlich sind.
 
 ```{admonition} Frage
-Was ergibt ``-2*4+3**2``? Was ergibt ``6**4/2``?
+Was ergibt ``-2*4+3**2``? Was ergibt ``6**4//2``?
 ```
 
 (float)=
 ## Gleitkommazahlen
 
-Wichtiger als Integers sind in der numerischen Physik die Floats, also
-Gleitkommazahlen. Man kann sie unter anderem durch Umwandlung mit Hilfe
-der Funktion {func}`float` erhalten. [^pprint]
+Eine zentrale Rolle in der wissenschaftlichen Numerik spielen Gleitkommazahlen,
+die häufig auch mit dem englischen Begriff als *Floats* bezeichnet werden. 
+Wir werden diesen Begriff gelegentlich verwenden, insbesondere um den Unterschied
+zum mathematischen Begriff der reellen Zahlen deutlich zu machen. Wesentlich ist
+dabei, dass sowohl der Zahlenbereich der Floats als auch die Zahl der
+Nachkommastellen begrenzt sind.
 
-```{code-block} python
->>> type(2)
-<class 'int'>
->>> float(2)
-2.0
->>> type(float(2))
-<class 'float'>
+Während man sich beim normalen Rechnen per Hand üblicherweise keine
+Rechenschaft darüber ablegen muss, ob eine Zahl eine ganze Zahl oder eine
+Gleitkommazahl ist, ist dies beim numerischen Arbeiten anders. Im {numref}`integers`
+hatten wir ja schon gesehen, dass der Datentyp bei der Division durchaus eine Rolle
+spielen kann.
+
+An dieser Stelle müssen wir wieder einmal auf Unterschiede zwischen Programmiersprachen
+hinweisen. In Sprachen wie C und Fortran muss der Datentyp einer Variable festgelegt
+werden. Das Fortranprogramm
+```{code-block} fortran
+---
+emphasize-lines: 6, 6
+---
+program datentyp
+  integer :: n
+  real:: x
+
+  n = 2
+  x = n
+  write(*, *) n, x
+end program datentyp
 ```
+erzeugt die Ausgabe
+```
+           2   2.00000000
+```
+Gemäß der Deklaration zu Beginn des Programms handelt es sich bei der Variable `n` um
+einen Integer, während `x` ein Float ist, der in Fortran mit `real` bezeichnet wird. In
+der hervorgehobenen Zeile findet bei der Zuweisung automatisch die Umwandlung zwischen
+den beiden Datentypen statt.
 
-[^pprint]: In IPython kann die Ausgabe abweichen. Mit ``%pprint off`` sollte man aber die hier
-    angegebene Ausgabe erhalten.
+Im Gegensatz dazu ist eine Festlegung des Datentyps in Python nicht erforderlich.
+Man spricht in diesem Zusammenhang auch von *duck typing*: »If it looks like a
+duck and quacks like a duck, it must be a duck.« [^duck]
 
-Eine Umwandlung von Floats in Integers ist mit der Funktion {func}`int` 
-möglich, wobei der Nachkommaanteil abgeschnitten wird:
+[^duck]: [docs.python.org/glossary.html#term-duck-typing](http://docs.python.org/glossary.html#term-duck-typing). Kritiker
+    halten dem entgegen, dass sich auch ein Drache wie eine Ente verhalten kann.
 
-```{code-block} python
->>> int(2.5)
-2
+Den Typ einer Variable kann man in Python mit Hilfe der {func}`type`-Funktion herausfinden.
+
+```{code-cell} python
+n = 2
+print(type(n))
+```
+Eine Umwandlung von einem Integer zu einem Float lässt sich in Python mit Hilfe der 
+{func}`float`-Funktion vornehmen, wobei wir in diesem Beispiel gleich überprüfen, ob
+die Umwandlung tatsächlich stattgefunden hat.
+```{code-cell} python
+x = float(n)
+print(type(x))
+```
+Die umgekehrte Umwandlung von Floats in Integers ist mit der {func}`int`-Funktion 
+möglich, wobei der Nachkommaanteil einfach abgeschnitten wird:
+
+```{code-cell} python
+int(2.7)
 ```
 
 Bereits das Anhängen eines Punktes genügt, damit Python die Zahl als Float
 interpretiert:
 
-```{code-block} python
->>> type(2.)
-<class 'float'>
+```{code-cell} python
+print(type(2.))
 ```
 
-Im Gegensatz zu vielen anderen Programmiersprachen ist es nicht notwendig, den
-Typ explizit festzulegen. Man spricht in diesem Zusammenhang auch von *duck
-typing*: »If it looks like a duck and quacks like a duck, it must be a duck.«
-[^duck]
-
-[^duck]: [docs.python.org/glossary.html#term-duck-typing](http://docs.python.org/glossary.html#term-duck-typing). Kritiker
-    halten dem entgegen, dass sich auch ein Drache wie eine Ente verhalten kann.
-
-Für Floats gibt es zwei mögliche Schreibweisen. Dies ist zum einen die
-Dezimalbruchschreibweise unter Verwendung eines Dezimalpunkts. Stehen vor oder
-nach dem Dezimalpunkt keine Ziffern, so wird der entsprechende Anteil gleich
-Null gesetzt.
-
-```{code-block} python
->>> 5.
-5.0
->>> 0.25
-0.25
->>> .25
-0.25
->>> . # doctest: +SKIP
-    File "<stdin>", line 1
-      .
-      ^
-  SyntaxError: invalid syntax
+Für Floats gibt es zwei mögliche Schreibweisen. Zum einen die kann man die
+Dezimalbruchschreibweise verwenden, bei der ein Dezimalpunkt erwartet wird.
+Stehen vor oder nach dem Dezimalpunkt keine Ziffern, so wird der entsprechende
+Anteil gleich Null gesetzt.
+```{code-cell} python
+5.
+```
+```{code-cell} python
+.25
+```
+Es ist aber nicht möglich, im Sinne einer abkürzenden Schreibweise sowohl vor
+als auch nach dem Dezimalpunkt auf Ziffern zu verzichten.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+.
 ```
 
-Wie das letzte Beispiel zeigt, muss aber mindestens vor oder nach dem
-Dezimalpunkt eine Ziffer stehen. Andernfalls zeigt Python einen Syntaxfehler an.
+Für sehr kleine oder sehr große Zahlen ist die Exponentialschreibweise besser
+geeignet. Die Zahl wird dabei mit Hilfe einer Mantisse, die nicht zwingend
+einen Dezimalpunkt enthalten muss, und einem ganzzahligen Exponenten, der ein
+Vorzeichen enthalten darf, dargestellt.  Zwischen Mantisse und Exponenten muss
+dabei ein ``e`` oder ein ``E`` stehen.
 
-Für sehr kleine oder sehr große Zahlen ist statt der Dezimalbruchschreibweise
-die Exponentialschreibweise besser geeignet. Die Zahl wird dabei mit Hilfe
-einer Mantisse, die nicht zwingend einen Dezimalpunkt enthalten muss, und einem
-ganzzahligen Exponenten, der ein Vorzeichen enthalten darf, dargestellt.
-Zwischen Mantisse und Exponenten muss dabei ein ``e`` oder ein ``E`` stehen.
-
-```{code-block} python
->>> 1e-2
-0.01
->>> 1.53e2
-153.0
->>> 1E-5
-1e-05
+```{code-cell} python
+1e-2
+```
+```{code-cell} python
+1.53e2
+```
+```{code-cell} python
+1E-5
 ```
 
-Da Dezimalzahlen im Allgemeinen keine endliche Binärdarstellung besitzen, kommt
-es bei der Umwandlung in die Binärdarstellung zu Rundungsfehlern, die
-gegebenenfalls bei der Beurteilung der Genauigkeit einer Rechnung zu beachten
-sind. [^decimal] Das Auftreten von Rundungsfehlern wird an folgendem Beispiel
-deutlich.
-
-```{code-block} python
->>> 0.1+0.1+0.1-0.3
-5.551115123125783e-17
+Da Dezimalzahlen im Allgemeinen keine endliche Binärdarstellung besitzen, kann
+es bei der Umwandlung in die Binärdarstellung zu Rundungsfehlern kommen.
+In {numref}`dualsystem` wurde festgestellt, dass $0{,}1_{10} = 0{,}0\overline{0011}_2$,
+so dass diese Zahl im Dualsystem auf jeden Fall abgeschnitten werden muss.
+Das Problem wird an dem folgenden Beispiel deutlich, das zudem zeigt, dass es
+auf die Reihenfolge der Operationen ankommen kann.
+```{code-cell} python
+0.1+0.1+0.1-0.3
 ```
-
-[^decimal]: In diesem Zusammenhang kann das Modul {mod}`decimal` nützlich sein, das
-    das Rechnen in der Dezimaldarstellung erlaubt. Ferner gibt es das Modul {mod}`mpmath`,
-    das eine Rechnung mit einer vorgebbaren, im Prinzip beliebig hohen Genauigkeit ermöglicht.
-
-```{admonition} Frage
-Zeigen Sie, dass die Dezimalzahl 0.1 die Binärdarstellung
-{math}`0.0\overline{0011}` besitzt.
+```{code-cell} python
+0.1-0.3+0.1+0.1
 ```
+Für die praktische Arbeit ist es wichtig, ein Gefühl dafür zu entwickeln, ob
+zum Beispiel eine von Null verschiedene Zahl ein wichtiger Effekt ist oder lediglich
+die Folge eines Rundungsfehlers.
 
-Informationen über die Eigenschaften von Floats auf dem verwendeten System kann
-man folgendermaßen erhalten:
-
-```{code-block} python
->>> import sys
->>> sys.float_info # doctest: +NORMALIZE_WHITESPACE
-sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=308, 
-min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=15, 
-mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)
+Wie bereits gesagt, sind Floats in ihrer Größe begrenzt und sie können auch
+nicht beliebig dicht liegen. Informationen hierzu lassen sich in Python abfragen.
+Die größtmögliche Zahl, die sich als Float darstellen lässt lautet
+```{code-cell} python
+import sys
+sys.float_info.max
 ```
-
-``sys.float_info.max`` ist der maximale Wert, den ein Float darstellen kann,
-während ``sys.float_info.min`` die kleinste normalisierte Zahl größer als
-Null ist, die ein Float darstellen kann. Obwohl man noch kleinere Zahlen darstellen
-kann, besteht um die Null herum eine Lücke. ``sys.float_info.epsilon`` ist die 
-Differenz zwischen der kleinsten Zahl größer als Eins, die mit dem 
-gegebenen Float-Typ darstellbar ist, und Eins selbst.
-
-```{admonition} Frage
-Können Sie die Werte für ``max``, ``min`` und ``epsilon`` erklären?
-Hinweis: Es handelt sich hier um ein Double im Sinne des IEEE754-Standards [^ieee754]
-mit einem 11-Bit-Exponenten, einem Vorzeichenbit und einer Mantisse von 52 Bit.
-Welches ist die kleinste streng positive Zahl, die Sie mit einem Float darstellen
-können?
-
-[^ieee754]: Detailliertere Informationen zu diesem Standard sind im Anhang
-    {ref}`appendixfloats` zu finden.
+Die Distanz zwischen der 1 und der nächsten darauf folgenden darstellbaren Zahl ist
+```{code-cell} python
+sys.float_info.epsilon
 ```
+Die kleinste normalisierte Zahl ist
+```{code-cell} python
+sys.float_info.min
+```
+aber tatsächlich ist die kleinste darstellbare Zahl gleich `5e-324`. Es gibt also
+um die Null herum eine Lücke, die jedoch deutlich kleiner ist als die Lücke zwischen
+der Eins und der darauf folgenden Zahl.
+
+```{admonition} Hinweis
+:class: tip
+Ab Python 3.9 lässt sich die kleinste darstellbare Zahl, also `5e-324`
+mit Hilfe von `math.ulp(0)` erhalten.
+```
+Der Zahlenbereich für Floats sowie die Lücken um die Null und die Eins ergeben
+sich aus dem verwendeten Zahlenformat, das im IEEE-Standard 754 definiert ist.
+Einige Informationen dazu finden sich in {numref}`anhang_floats`.
 
 Im Gegensatz zu Integers können Gleitkommazahlen also nicht beliebig groß
 werden, sondern sind auf einen allerdings recht großzügig bemessenen Bereich
-bis etwas über {math}`10^{308}` beschränkt. Werden Gleitkommazahlen zu groß, so
+bis etwas über {math}`10^{308}` beschränkt. Sollte dieser Bereich sich als
+nicht ausreichend herausstellen, ist es empfehlenswert, sich zunächst einmal
+Gedanken darüber zu machen, ob man das verwendete numerische Verfahren geeignet
+formuliert hat. Eventuell kann schon eine Skalierung der Variablen das Problem
+beseitigen. Im schlimmsten Fall kann man in Python zum
+[{mod}`mpmath`-Modul](http://mpmath.org/doc/current/) greifen, das es erlaubt,
+mit mehr als den standardmäßigen 15 signifikanten Stellen zu rechnen.
+
+Was passiert aber, wenn man den zulässigen Zahlenbereich von Floats überschreitet?
+
+-----
+
+Werden Gleitkommazahlen zu groß, so
 erhält man ein vorzeichenbehaftetes Unendlich:
 
+```{code-cell} python
+sys.float_info.max*1.00000001
+```
+```{code-cell} python
+-sys.float_info.max*1.00000001
+```
 ```{code-block} python
 >>> 1e400
 inf

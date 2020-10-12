@@ -112,6 +112,11 @@
    4. Anhang: Zahlensysteme
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="floats.html">
+   5. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -269,7 +274,7 @@ werden wir vor allem neben den ganzen Zahlen noch weitere numerische Datentypen
 kennenlernen, die für natur- und ingenieurwissenschaftliche Anwendungen große
 Bedeutung besitzen.</p>
 <div class="section" id="ganze-zahlen">
-<h2><span class="section-number">3.1. </span>Ganze Zahlen<a class="headerlink" href="#ganze-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
+<span id="integers"></span><h2><span class="section-number">3.1. </span>Ganze Zahlen<a class="headerlink" href="#ganze-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Wir beginnen bei der Besprechung der numerischen Datentypen mit den ganzen
 Zahlen, auf Englisch <em>integers</em>. Auf den ersten Blick könnte man denken, dass
 in den Natur- und Ingenieurwissenschaften ganze Zahlen gegenüber den reellen
@@ -308,11 +313,12 @@ Einschränkungen des Zahlenbereichs wichtig. Zu erwähnen wäre noch, dass die I
 die als Index zur Addressierung in Listen oder Zeichenketten verwendet werden
 können, auch in Python beschränkt sind. Allerdings wird diese Beschränkung auf
 modernen Computern selten ein Problem darstellen.</p>
-<p>Wie ganze Zahlen im Computer dargestellt werden und was das für die größenmäßige
-Einschränkung des Zahlenbereichs bedeutet, werden wir in einem Anhang diskutieren.
-Dort werden auch die Grundlagen des Dualsystems erklärt, das der Darstellung von
-Zahlen mit Hilfe von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun
-stärker der praktischen Arbeit mit Integers zuwenden.</p>
+<p>Wie ganze Zahlen im Computer dargestellt werden und was das für die
+größenmäßige Einschränkung des Zahlenbereichs bedeutet, werden wir in einem
+Anhang in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 4</span></a> diskutieren.  Dort werden auch die
+Grundlagen des Dualsystems erklärt, das der Darstellung von Zahlen mit Hilfe
+von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun stärker der
+praktischen Arbeit mit Integers zuwenden.</p>
 <p>Als erstes wollen wir zeigen, dass Integers in Python tatsächlich sehr groß werden
 können, indem wir die tausendste Potenz von 2 ausrechnen lassen. Der doppelte Stern
 <code class="docutils literal notranslate"><span class="pre">**</span></code> steht dabei für den Exponentiationsoperator.</p>
@@ -345,93 +351,293 @@ und würde dann ein Ergebnis mit 30103 Stellen erhalten.</p>
 </div>
 <p>Die Leerzeichen um das Minuszeichen der Eingabe spielen für den Pythoninterpreter
 keine Rolle, sondern dienen hier der besseren Lesbarkeit.</p>
-<p>In Python kann man auch mit Binär-, Oktal- und Hexadezimalzahlen arbeiten, die durch
-die Präfixe <code class="docutils literal notranslate"><span class="pre">0b</span></code> oder <code class="docutils literal notranslate"><span class="pre">0B</span></code>, <code class="docutils literal notranslate"><span class="pre">0o</span></code> oder <code class="docutils literal notranslate"><span class="pre">0O</span></code> bzw. <code class="docutils literal notranslate"><span class="pre">0x</span></code> oder <code class="docutils literal notranslate"><span class="pre">0X</span></code>
-gekennzeichnet werden.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mh">0x6cd8932f</span>
-<span class="go">1826132783</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mb">0b11001</span>
-<span class="go">25</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mo">0o31</span>
-<span class="go">25</span>
+<p>In Python kann man auch mit Dual-, Oktal- und Hexadezimalzahlen arbeiten. Eine
+Einführung in Zahlensysteme, insbesondere das Dual- und das Hexadezimalsystem
+wird in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 4</span></a> gegeben. Um zwischen den verschiedenen
+Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwa
+<code class="docutils literal notranslate"><span class="pre">0b</span></code> oder <code class="docutils literal notranslate"><span class="pre">0B</span></code> für das Dualsystem, <code class="docutils literal notranslate"><span class="pre">0o</span></code> oder <code class="docutils literal notranslate"><span class="pre">0O</span></code> für das Oktalsystem
+sowie <code class="docutils literal notranslate"><span class="pre">0x</span></code> oder <code class="docutils literal notranslate"><span class="pre">0X</span></code> für das Hexadezimalsystem. Die folgenden drei Darstellungen
+sind jeweils äquivalent zur Zahl 25 im gewohnten Dezimalsystem</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mb">0b11001</span><span class="p">,</span> <span class="mo">0o31</span><span class="p">,</span> <span class="mh">0x19</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(25, 25, 25)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Die Umwandlung in das Binär-, Oktal- oder Hexadezimalformat erfolgt mit Hilfe der
 Funktionen <code class="docutils literal notranslate"><span class="pre">bin</span></code>, <code class="docutils literal notranslate"><span class="pre">oct</span></code> bzw. <code class="docutils literal notranslate"><span class="pre">hex</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
-<span class="go">&#39;0b11001&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">oct</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
-<span class="go">&#39;0o31&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">hex</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
-<span class="go">&#39;0x19&#39;</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span> <span class="nb">oct</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span> <span class="nb">hex</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bei der Division von zwei Integers muss man je nach Programmiersprache
-aufpassen, da die Division möglicherweise einen Rest ergibt. Das Ergebnis
-könnte daher entweder eine Gleitkommazahl sein oder aber ein Integer, wobei der
-entstandene Rest ignoriert wird.</p>
-<p>In Python 3 ergibt die Division mit einem einfachen Schrägstrich immer eine
-Gleitkommazahl, selbst wenn bei der Division kein Rest entsteht <a class="footnote-reference brackets" href="#py2div" id="id1">1</a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
-<span class="go">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">15</span><span class="o">/</span><span class="mi">3</span>
-<span class="go">5.0</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;0b11001&#39;, &#39;0o31&#39;, &#39;0x19&#39;)
 </pre></div>
 </div>
-<p>Dies dürfte in den meisten Fällen das erwünschte Verhalten sein. Es kann aber
-durchaus sein, dass man tatsächlich eine Integerdivision benötigt. Diese lässt
-sich mit einem doppelten Schrägstrich erhalten.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span>
-<span class="go">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">15</span><span class="o">//</span><span class="mi">7</span>
-<span class="go">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mi">15</span><span class="o">//</span><span class="mi">7</span>
-<span class="go">-3</span>
+</div>
+</div>
+<p>Das Ergebnis ist allerdings keine Zahl, sondern eine Zeichenkette, wie an den
+einschließenden Hochkommas zu erkennen ist.</p>
+<p>Bei den meisten grundlegenden mathematischen Operationen wie Addition, Subtraktion,
+Multiplikation und Exponentiation ist gewährleistet, dass bei der Anwendung auf
+ganze Zahlen das Ergebnis wieder eine ganze Zahl ist. Eine Ausnahme ist die Division,
+da nicht klar ist, dass sich der Dividend durch den Divisor ohne Rest teilen lässt.</p>
+<p>Um fehlerhafte Programme zu vermeiden, ist es daher wichtig zu wissen, wie die
+verwendete Programmiersprache die Division handhabt. Prinzipiell gibt es zwei
+Möglichkeiten. Eine Möglichkeit besteht darin, bei der Division von zwei ganzen
+Zahlen wieder eine ganze Zahl zu erzeugen und einen eventuell entstehenden Rest
+zu ignorieren. Bei der anderen Möglichkeit wird der Quotient als Gleitkommazahl
+dargestellt. Keine der beiden Varianten ist besser als die andere, so dass es für
+eine Programmiersprache auch keine natürliche Wahl gibt. Tatsächlich hat sich
+Python in der Version 2 an dieser Stelle anders verhalten als die Version 3, die
+wir heute benutzen.</p>
+<p>Sehen wir uns an, wie Python 3 mit der Division von zwei Integers umgeht.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Offenbar wird hier immer eine Gleitkommazahl erzeugt, was an dem Dezimalpunkt
+ersichtlich ist. Dies gilt auch, wenn der Quotient wie im zweiten Fall im
+Prinzip als ganze Zahl darstellbar wäre.</p>
+<p>Gelegentlich benötigt man aber eine Ganzzahldivision. In Python 3 erhält man diese
+mit einem doppelten Schrägstrich.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="o">//</span><span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">15</span><span class="o">//</span><span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-frage admonition">
 <p class="admonition-title">Frage</p>
-<p>Was macht der <code class="docutils literal notranslate"><span class="pre">//</span></code>-Divisionsoperator tatsächlich, vor allem vor dem
-Hintergrund des letzten Beispiels? <a class="footnote-reference brackets" href="#gvr-blog" id="id2">2</a></p>
+<p>Was macht der <code class="docutils literal notranslate"><span class="pre">//</span></code>-Divisionsoperator in Python 3 tatsächlich, vor allem vor dem
+Hintergrund des letzten Beispiels? <a class="footnote-reference brackets" href="#gvr-blog" id="id1">1</a></p>
 </div>
-<p>In anderen Sprachen und auch in Python 2, in denen der einfache Schrägstrich
-eine Integerdivision bedeutet, kann man eine Gleitkommadivision erzwingen,
-indem man dafür sorgt, dass das erste Argument nicht ein Integer, sondern eine
-Gleitkommazahl ist. Wie dies geht, wird im Kapitel <a class="reference internal" href="#float"><span class="std std-ref">Gleitkommazahlen</span></a> erklärt.</p>
-<p>Ein wichtiger Punkt, der nicht nur für Integers von Bedeutung ist, ist die
-Reihenfolge, in der Operationen ausgeführt werden. Dies sei an einem Beispiel
-illustriert:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span>
-<span class="go">14</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
-<span class="go">20</span>
+<p>Um zu verdeutlichen, dass die in Python 3 getroffene Wahl nicht zwingend ist,
+sehen wir uns zum Vergleich die Division in der Programmiersprache C an.
+Hier liefert</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span> <span class="mi">-15</span><span class="o">/</span><span class="mi">7</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Die Multiplikation hat also offenbar Vorrang vor der Addition. In der folgenden,
-für Python gültigen Tabelle haben die höher stehenden Operatoren Vorrang vor
-den tiefer stehenden <a class="footnote-reference brackets" href="#precedence" id="id3">3</a>:</p>
-<table class="colwidths-auto table">
+<p>als Ergebnis</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>Im Gegensatz zu Python 3 führt in C die Division zweier Integers wieder auf einen
+Integer. Zudem wird hier zur Null hin abgeschnitten. Im zweiten Fall ergibt sich also
+nicht -3 wie bei Python 3, sondern -2. Genauso verhält sich auch der entsprechende
+Fortran-Code</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">division</span>
+  <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span> <span class="mi">15</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="o">/</span><span class="mi">7</span>
+  <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="mi">2</span>
+<span class="k">end program </span><span class="n">division</span>
+</pre></div>
+</div>
+<p>mit dem Ergebnis</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">2</span>          <span class="o">-</span><span class="mi">2</span>
+           <span class="mi">0</span>  <span class="mf">0.500000000</span>
+</pre></div>
+</div>
+<p>Hier illustriert die zweite Ausgabezeile, dass man hier eine Gleitkommadivision
+erzwingen kann, indem man mindestens eine der beiden Zahlen zu einer Gleitkommazahl
+macht.</p>
+<p>Kommen wir nach diesem Ausflug zu anderen Programmiersprachen wieder zurück zu
+Python. Oft ist man am Rest einer Integerdivision interessiert. Diesen könnte man
+im Prinzip folgendermaßen erhalten</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zaehler</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">nenner</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="n">zaehler</span> <span class="o">-</span> <span class="p">(</span><span class="n">zaehler</span><span class="o">//</span><span class="n">nenner</span><span class="p">)</span><span class="o">*</span><span class="n">nenner</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit Hilfe des Modulo-Operators <code class="docutils literal notranslate"><span class="pre">%</span></code> von Python geht dies jedoch einfacher.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zaehler</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">nenner</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zaehler</span> <span class="o">%</span> <span class="n">nenner</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine häufige Anwendung ist der Test auf eine gerade oder ungerade Zahl.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">16</span> <span class="o">%</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ist die Zahl ohne Rest durch 2 teilbar, ist sie offenbar gerade, ansonsten ungerade.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">17</span> <span class="o">%</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Benötigt man sowohl den Quotienten als auch den Rest, so kann man in Python beides
+in einem Schritt mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">divmod()</span></code>-Funktion erhalten</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotient</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quotient</span><span class="p">,</span> <span class="n">rest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ein weiterer wichtiger Punkt, der hier für Integers zum ersten Mal auftritt, aber
+viel weitreichendere Bedeutung hat, ist die Reihenfolge, in der Operationen
+ausgeführt werden. In dem folgenden Beispiel sehen wir, dass in Python ebenso wie
+in C und Fortran die Regel Punkt vor Strich gilt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Ausdruck wird also nicht von links nach rechts abgearbeitet. Möchte man zuerst
+die Addition ausführen, so muss man Klammern setzen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die wichtigsten für Python geltenden Vorrangregeln sind in der <a class="reference internal" href="#table-precedence"><span class="std std-numref">Tab. 3.1</span></a>
+dargestellt. Dabei haben die weiter oben stehenden Operationen Vorrang vor den nachfolgenden
+Operationen <a class="footnote-reference brackets" href="#precedence" id="id2">2</a>.</p>
+<table class="table" id="table-precedence">
+<caption><span class="caption-number">Tab. 3.1 </span><span class="caption-text">Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden.</span><a class="headerlink" href="#table-precedence" title="Link zu dieser Tabelle">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operatoren</p></th>
 <th class="head"><p>Beschreibung</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
+<tr class="row-even"><td><p>**</p></td>
 <td><p>Exponentiation</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">+x,</span> <span class="pre">-x</span></code></p></td>
+<tr class="row-odd"><td><p>+x, -x</p></td>
 <td><p>Positives und negatives Vorzeichen</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*,</span> <span class="pre">/</span></code></p></td>
-<td><p>Multiplikation, Division</p></td>
+<tr class="row-even"><td><p>*, /, //, %</p></td>
+<td><p>Multiplikation, Division, Modulo</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">+,</span> <span class="pre">-</span></code></p></td>
+<tr class="row-odd"><td><p>+, -</p></td>
 <td><p>Addition, Subtraktion</p></td>
 </tr>
 </tbody>
 </table>
-<p>Wird <code class="docutils literal notranslate"><span class="pre">**</span></code> direkt von einem Plus oder Minus gefolgt, bindet letzteres stärker:</p>
+<p>Auch wenn das folgende Beispiel Gleitkommazahlen involviert, sei angemerkt,
+dass falls der Exponentiationsoperator<code class="docutils literal notranslate"><span class="pre">**</span></code> direkt von einem Plus oder Minus
+gefolgt, das Vorzeichen stärker bindet.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**-</span><span class="mf">0.5</span>
 <span class="go">0.7071067811865476</span>
 </pre></div>
@@ -443,111 +649,313 @@ Zweifelsfall oder zur besseren Lesbarkeit Klammern zu setzen, selbst wenn diese
 nicht zur korrekten Abarbeitung des Ausdrucks erforderlich sind.</p>
 <div class="admonition-frage admonition">
 <p class="admonition-title">Frage</p>
-<p>Was ergibt <code class="docutils literal notranslate"><span class="pre">-2*4+3**2</span></code>? Was ergibt <code class="docutils literal notranslate"><span class="pre">6**4/2</span></code>?</p>
+<p>Was ergibt <code class="docutils literal notranslate"><span class="pre">-2*4+3**2</span></code>? Was ergibt <code class="docutils literal notranslate"><span class="pre">6**4//2</span></code>?</p>
 </div>
 </div>
 <div class="section" id="gleitkommazahlen">
 <span id="float"></span><h2><span class="section-number">3.2. </span>Gleitkommazahlen<a class="headerlink" href="#gleitkommazahlen" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Wichtiger als Integers sind in der numerischen Physik die Floats, also
-Gleitkommazahlen. Man kann sie unter anderem durch Umwandlung mit Hilfe
-der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">float()</span></code> erhalten. <a class="footnote-reference brackets" href="#pprint" id="id4">4</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">&lt;class &#39;int&#39;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">2.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="go">&lt;class &#39;float&#39;&gt;</span>
+<p>Eine zentrale Rolle in der wissenschaftlichen Numerik spielen Gleitkommazahlen,
+die häufig auch mit dem englischen Begriff als <em>Floats</em> bezeichnet werden.
+Wir werden diesen Begriff gelegentlich verwenden, insbesondere um den Unterschied
+zum mathematischen Begriff der reellen Zahlen deutlich zu machen. Wesentlich ist
+dabei, dass sowohl der Zahlenbereich der Floats als auch die Zahl der
+Nachkommastellen begrenzt sind.</p>
+<p>Während man sich beim normalen Rechnen per Hand üblicherweise keine
+Rechenschaft darüber ablegen muss, ob eine Zahl eine ganze Zahl oder eine
+Gleitkommazahl ist, ist dies beim numerischen Arbeiten anders. Im <a class="reference internal" href="#integers"><span class="std std-numref">Kapitel 3.1</span></a>
+hatten wir ja schon gesehen, dass der Datentyp bei der Division durchaus eine Rolle
+spielen kann.</p>
+<p>An dieser Stelle müssen wir wieder einmal auf Unterschiede zwischen Programmiersprachen
+hinweisen. In Sprachen wie C und Fortran muss der Datentyp einer Variable festgelegt
+werden. Das Fortranprogramm</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">datentyp</span>
+  <span class="kt">integer</span> <span class="kd">::</span> <span class="n">n</span>
+  <span class="kt">real</span><span class="kd">::</span> <span class="n">x</span>
+
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="hll">  <span class="n">x</span> <span class="o">=</span> <span class="n">n</span>
+</span>  <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span> <span class="n">n</span><span class="p">,</span> <span class="n">x</span>
+<span class="k">end program </span><span class="n">datentyp</span>
 </pre></div>
 </div>
-<p>Eine Umwandlung von Floats in Integers ist mit der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code>
-möglich, wobei der Nachkommaanteil abgeschnitten wird:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
-<span class="go">2</span>
+<p>erzeugt die Ausgabe</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">2</span>   <span class="mf">2.00000000</span>
 </pre></div>
+</div>
+<p>Gemäß der Deklaration zu Beginn des Programms handelt es sich bei der Variable <code class="docutils literal notranslate"><span class="pre">n</span></code> um
+einen Integer, während <code class="docutils literal notranslate"><span class="pre">x</span></code> ein Float ist, der in Fortran mit <code class="docutils literal notranslate"><span class="pre">real</span></code> bezeichnet wird. In
+der hervorgehobenen Zeile findet bei der Zuweisung automatisch die Umwandlung zwischen
+den beiden Datentypen statt.</p>
+<p>Im Gegensatz dazu ist eine Festlegung des Datentyps in Python nicht erforderlich.
+Man spricht in diesem Zusammenhang auch von <em>duck typing</em>: »If it looks like a
+duck and quacks like a duck, it must be a duck.« <a class="footnote-reference brackets" href="#duck" id="id3">3</a></p>
+<p>Den Typ einer Variable kann man in Python mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">type()</span></code>-Funktion herausfinden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine Umwandlung von einem Integer zu einem Float lässt sich in Python mit Hilfe der
+<code class="xref py py-func docutils literal notranslate"><span class="pre">float()</span></code>-Funktion vornehmen, wobei wir in diesem Beispiel gleich überprüfen, ob
+die Umwandlung tatsächlich stattgefunden hat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die umgekehrte Umwandlung von Floats in Integers ist mit der <code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code>-Funktion
+möglich, wobei der Nachkommaanteil einfach abgeschnitten wird:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mf">2.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
 </div>
 <p>Bereits das Anhängen eines Punktes genügt, damit Python die Zahl als Float
 interpretiert:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>
-<span class="go">&lt;class &#39;float&#39;&gt;</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Im Gegensatz zu vielen anderen Programmiersprachen ist es nicht notwendig, den
-Typ explizit festzulegen. Man spricht in diesem Zusammenhang auch von <em>duck
-typing</em>: »If it looks like a duck and quacks like a duck, it must be a duck.«
-<a class="footnote-reference brackets" href="#duck" id="id5">5</a></p>
-<p>Für Floats gibt es zwei mögliche Schreibweisen. Dies ist zum einen die
-Dezimalbruchschreibweise unter Verwendung eines Dezimalpunkts. Stehen vor oder
-nach dem Dezimalpunkt keine Ziffern, so wird der entsprechende Anteil gleich
-Null gesetzt.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">5.</span>
-<span class="go">5.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mf">0.25</span>
-<span class="go">0.25</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="o">.</span><span class="mi">25</span>
-<span class="go">0.25</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="o">.</span> 
-<span class="go">    File &quot;&lt;stdin&gt;&quot;, line 1</span>
-<span class="go">      .</span>
-<span class="go">      ^</span>
-<span class="go">  SyntaxError: invalid syntax</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;float&#39;&gt;
 </pre></div>
 </div>
-<p>Wie das letzte Beispiel zeigt, muss aber mindestens vor oder nach dem
-Dezimalpunkt eine Ziffer stehen. Andernfalls zeigt Python einen Syntaxfehler an.</p>
-<p>Für sehr kleine oder sehr große Zahlen ist statt der Dezimalbruchschreibweise
-die Exponentialschreibweise besser geeignet. Die Zahl wird dabei mit Hilfe
-einer Mantisse, die nicht zwingend einen Dezimalpunkt enthalten muss, und einem
-ganzzahligen Exponenten, der ein Vorzeichen enthalten darf, dargestellt.
-Zwischen Mantisse und Exponenten muss dabei ein <code class="docutils literal notranslate"><span class="pre">e</span></code> oder ein <code class="docutils literal notranslate"><span class="pre">E</span></code> stehen.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">1e-2</span>
-<span class="go">0.01</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mf">1.53e2</span>
-<span class="go">153.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mf">1E-5</span>
-<span class="go">1e-05</span>
+</div>
+</div>
+<p>Für Floats gibt es zwei mögliche Schreibweisen. Zum einen die kann man die
+Dezimalbruchschreibweise verwenden, bei der ein Dezimalpunkt erwartet wird.
+Stehen vor oder nach dem Dezimalpunkt keine Ziffern, so wird der entsprechende
+Anteil gleich Null gesetzt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">5.</span>
 </pre></div>
 </div>
-<p>Da Dezimalzahlen im Allgemeinen keine endliche Binärdarstellung besitzen, kommt
-es bei der Umwandlung in die Binärdarstellung zu Rundungsfehlern, die
-gegebenenfalls bei der Beurteilung der Genauigkeit einer Rechnung zu beachten
-sind. <a class="footnote-reference brackets" href="#decimal" id="id6">6</a> Das Auftreten von Rundungsfehlern wird an folgendem Beispiel
-deutlich.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.3</span>
-<span class="go">5.551115123125783e-17</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
 </pre></div>
 </div>
-<div class="admonition-frage admonition">
-<p class="admonition-title">Frage</p>
-<p>Zeigen Sie, dass die Dezimalzahl 0.1 die Binärdarstellung
-<span class="math notranslate nohighlight">\(0.0\overline{0011}\)</span> besitzt.</p>
 </div>
-<p>Informationen über die Eigenschaften von Floats auf dem verwendeten System kann
-man folgendermaßen erhalten:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span> 
-<span class="go">sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=308, </span>
-<span class="go">min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=15, </span>
-<span class="go">mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)</span>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="mi">25</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">sys.float_info.max</span></code> ist der maximale Wert, den ein Float darstellen kann,
-während <code class="docutils literal notranslate"><span class="pre">sys.float_info.min</span></code> die kleinste normalisierte Zahl größer als
-Null ist, die ein Float darstellen kann. Obwohl man noch kleinere Zahlen darstellen
-kann, besteht um die Null herum eine Lücke. <code class="docutils literal notranslate"><span class="pre">sys.float_info.epsilon</span></code> ist die
-Differenz zwischen der kleinsten Zahl größer als Eins, die mit dem
-gegebenen Float-Typ darstellbar ist, und Eins selbst.</p>
-<div class="admonition-frage admonition">
-<p class="admonition-title">Frage</p>
-<p>Können Sie die Werte für <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code> und <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> erklären?
-Hinweis: Es handelt sich hier um ein Double im Sinne des IEEE754-Standards <a class="footnote-reference brackets" href="#ieee754" id="id7">7</a>
-mit einem 11-Bit-Exponenten, einem Vorzeichenbit und einer Mantisse von 52 Bit.
-Welches ist die kleinste streng positive Zahl, die Sie mit einem Float darstellen
-können?</p>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es ist aber nicht möglich, im Sinne einer abkürzenden Schreibweise sowohl vor
+als auch nach dem Dezimalpunkt auf Ziffern zu verzichten.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-23-a5d5b61aa8a6&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="o">.</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für sehr kleine oder sehr große Zahlen ist die Exponentialschreibweise besser
+geeignet. Die Zahl wird dabei mit Hilfe einer Mantisse, die nicht zwingend
+einen Dezimalpunkt enthalten muss, und einem ganzzahligen Exponenten, der ein
+Vorzeichen enthalten darf, dargestellt.  Zwischen Mantisse und Exponenten muss
+dabei ein <code class="docutils literal notranslate"><span class="pre">e</span></code> oder ein <code class="docutils literal notranslate"><span class="pre">E</span></code> stehen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e-2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1.53e2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>153.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1E-5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1e-05
+</pre></div>
+</div>
+</div>
+</div>
+<p>Da Dezimalzahlen im Allgemeinen keine endliche Binärdarstellung besitzen, kann
+es bei der Umwandlung in die Binärdarstellung zu Rundungsfehlern kommen.
+In <a class="reference internal" href="zahlensysteme.html#dualsystem"><span class="std std-numref">Kapitel 4.1</span></a> wurde festgestellt, dass <span class="math notranslate nohighlight">\(0{,}1_{10} = 0{,}0\overline{0011}_2\)</span>,
+so dass diese Zahl im Dualsystem auf jeden Fall abgeschnitten werden muss.
+Das Problem wird an dem folgenden Beispiel deutlich, das zudem zeigt, dass es
+auf die Reihenfolge der Operationen ankommen kann.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.551115123125783e-17
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.3</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.7755575615628914e-17
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für die praktische Arbeit ist es wichtig, ein Gefühl dafür zu entwickeln, ob
+zum Beispiel eine von Null verschiedene Zahl ein wichtiger Effekt ist oder lediglich
+die Folge eines Rundungsfehlers.</p>
+<p>Wie bereits gesagt, sind Floats in ihrer Größe begrenzt und sie können auch
+nicht beliebig dicht liegen. Informationen hierzu lassen sich in Python abfragen.
+Die größtmögliche Zahl, die sich als Float darstellen lässt lautet</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7976931348623157e+308
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Distanz zwischen der 1 und der nächsten darauf folgenden darstellbaren Zahl ist</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">epsilon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.220446049250313e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die kleinste normalisierte Zahl ist</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">min</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2250738585072014e-308
+</pre></div>
+</div>
+</div>
+</div>
+<p>aber tatsächlich ist die kleinste darstellbare Zahl gleich <code class="docutils literal notranslate"><span class="pre">5e-324</span></code>. Es gibt also
+um die Null herum eine Lücke, die jedoch deutlich kleiner ist als die Lücke zwischen
+der Eins und der darauf folgenden Zahl.</p>
+<div class="tip admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Ab Python 3.9 lässt sich die kleinste darstellbare Zahl, also <code class="docutils literal notranslate"><span class="pre">5e-324</span></code>
+mit Hilfe von <code class="docutils literal notranslate"><span class="pre">math.ulp(0)</span></code> erhalten.</p>
+</div>
+<p>Der Zahlenbereich für Floats sowie die Lücken um die Null und die Eins ergeben
+sich aus dem verwendeten Zahlenformat, das im IEEE-Standard 754 definiert ist.
+Einige Informationen dazu finden sich in <a class="reference internal" href="floats.html#anhang-floats"><span class="std std-numref">Kapitel 5</span></a>.</p>
 <p>Im Gegensatz zu Integers können Gleitkommazahlen also nicht beliebig groß
 werden, sondern sind auf einen allerdings recht großzügig bemessenen Bereich
-bis etwas über <span class="math notranslate nohighlight">\(10^{308}\)</span> beschränkt. Werden Gleitkommazahlen zu groß, so
+bis etwas über <span class="math notranslate nohighlight">\(10^{308}\)</span> beschränkt. Sollte dieser Bereich sich als
+nicht ausreichend herausstellen, ist es empfehlenswert, sich zunächst einmal
+Gedanken darüber zu machen, ob man das verwendete numerische Verfahren geeignet
+formuliert hat. Eventuell kann schon eine Skalierung der Variablen das Problem
+beseitigen. Im schlimmsten Fall kann man in Python zum
+<a class="reference external" href="http://mpmath.org/doc/current/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpmath</span></code>-Modul</a> greifen, das es erlaubt,
+mit mehr als den standardmäßigen 15 signifikanten Stellen zu rechnen.</p>
+<p>Was passiert aber, wenn man den zulässigen Zahlenbereich von Floats überschreitet?</p>
+<hr class="docutils" />
+<p>Werden Gleitkommazahlen zu groß, so
 erhält man ein vorzeichenbehaftetes Unendlich:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span><span class="o">*</span><span class="mf">1.00000001</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inf
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span><span class="o">*</span><span class="mf">1.00000001</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-inf
+</pre></div>
+</div>
+</div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">1e400</span>
 <span class="go">inf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mf">1e400</span>
@@ -705,7 +1113,7 @@ des Programms fehlerhaft sein kann.</p>
 <td><p>größter gemeinsamer Teiler der ganzen Zahlen <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> (ab Python 3.5)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">isclose(a,</span> <span class="pre">b)</span></code></p></td>
-<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> nahezu gleich sind (ab Python 3.5) <a class="footnote-reference brackets" href="#isclosedoc" id="id8">8</a></p></td>
+<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> nahezu gleich sind (ab Python 3.5) <a class="footnote-reference brackets" href="#isclosedoc" id="id4">4</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isfinite(x)</span></code></p></td>
 <td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">x</span></code> weder unendlich noch <code class="docutils literal notranslate"><span class="pre">nan</span></code> (not a number) ist</p></td>
@@ -801,16 +1209,16 @@ des Programms fehlerhaft sein kann.</p>
 <td><p>Tangens Hyperbolicus</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">erf(x)</span></code></p></td>
-<td><p>Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id9">9</a></p></td>
+<td><p>Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id5">5</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">erfc(x)</span></code></p></td>
-<td><p>Komplement der Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id10">9</a></p></td>
+<td><p>Komplement der Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id6">5</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gamma(x)</span></code></p></td>
-<td><p>Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id11">10</a></p></td>
+<td><p>Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id7">6</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lgamma(x)</span></code></p></td>
-<td><p>natürlicher Logarithmus des Betrags der Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id12">10</a></p></td>
+<td><p>natürlicher Logarithmus des Betrags der Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id8">6</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1011,7 +1419,7 @@ die Großbuchstaben an Höcker eines Kamels erinnern. Details zu den in Python
 empfohlenen Konventionen für Bezeichner finden Sie im Python Enhancement Proposal <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a>
 mit dem Titel »Style Guide for Python Code« im Abschnitt <em>Naming Conventions</em>.</p>
 <p>Die folgenden Schlüsselwörter sind in Python als Sprachelemente reserviert und dürfen
-nicht für Bezeichner verwendet werden <a class="footnote-reference brackets" href="#keywords" id="id13">11</a>::</p>
+nicht für Bezeichner verwendet werden <a class="footnote-reference brackets" href="#keywords" id="id9">7</a>::</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">assert</span>      <span class="k">del</span>        <span class="k">for</span>       <span class="ow">in</span>        <span class="ow">or</span>        <span class="k">while</span>
 <span class="kc">None</span>      <span class="k">break</span>       <span class="k">elif</span>       <span class="kn">from</span>      <span class="nn">is</span>        <span class="k">pass</span>      <span class="k">with</span>  
 <span class="kc">True</span>      <span class="k">class</span>       <span class="nc">else</span>       <span class="k">global</span>    <span class="k">lambda</span>    <span class="k">raise</span>     <span class="k">yield</span> 
@@ -1406,7 +1814,7 @@ erreicht man durch Angabe des Buchstabens <code class="docutils literal notransl
 </pre></div>
 </div>
 <p>Hier wird durch den Wechsel der Darstellung insbesondere sichergestellt, dass
-immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id14">12</a></p>
+immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id10">8</a></p>
 <p>Betrachten wir nun noch die Formatierung von Integers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{0}</span><span class="s2">|</span><span class="si">{0:5}</span><span class="s2">|</span><span class="si">{0:05}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
@@ -1419,7 +1827,7 @@ immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="fo
 nicht weglassen?</p>
 </div>
 <p>Integers in Dezimaldarstellung benötigen keinen Buchstaben zur
-Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id15">13</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
+Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id11">9</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
 die Feldbreite festlegen.  Gibt man vor der Feldbreite eine Null an, so wird
 das Feld vor der auszugebenden Zahl mit Nullen aufgefüllt. Dies kann zum
 Beispiel bei der Ausgabe in anderen Zahlensystemen interessant sein. Python
@@ -1453,63 +1861,46 @@ beeinflussen. Folgendes Beispiel zeigt die Funktionsweise. Die Befehle</p>
 <p>erzeugen die Ausgabe <code class="docutils literal notranslate"><span class="pre">x..xx</span></code> sowie einen anschließenden Zeilenumbruch.</p>
 <hr class="docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="py2div"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>In Python 2 bedeutet der einfache Schrägstrich eine echte Integerdivision. Ein
-Verhalten wie in Python 3 kann ab Python 2.2 mit der Befehlszeile
-<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">__future__</span> <span class="pre">import</span> <span class="pre">division</span></code> erzwungen werden.</p>
-</dd>
-<dt class="label" id="gvr-blog"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Die Hintergründe kann man in einem
+<dt class="label" id="gvr-blog"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Die Hintergründe für diese Wahl kann man in einem
 <a class="reference external" href="http://python-history.blogspot.de/2010/08/why-pythons-integer-division-floors.html">Blog-Artikel</a>
 von Guido van Rossum nachlesen.</p>
 </dd>
-<dt class="label" id="precedence"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="precedence"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>Eine vollständige Liste, die auch noch nicht besprochene Operatoren umfasst, findet
-man unter Punkt 6.15 <a class="reference external" href="http://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a>
-in der Python-Dokumentation.</p>
+man unter dem Punkt <a class="reference external" href="http://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a>
+in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also
+weiter unten stehende Operatoren Vorrang haben.</p>
 </dd>
-<dt class="label" id="pprint"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>In IPython kann die Ausgabe abweichen. Mit <code class="docutils literal notranslate"><span class="pre">%pprint</span> <span class="pre">off</span></code> sollte man aber die hier
-angegebene Ausgabe erhalten.</p>
-</dd>
-<dt class="label" id="duck"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="duck"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p><a class="reference external" href="http://docs.python.org/glossary.html#term-duck-typing">docs.python.org/glossary.html#term-duck-typing</a>. Kritiker
 halten dem entgegen, dass sich auch ein Drache wie eine Ente verhalten kann.</p>
 </dd>
-<dt class="label" id="decimal"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
-<dd><p>In diesem Zusammenhang kann das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">decimal</span></code> nützlich sein, das
-das Rechnen in der Dezimaldarstellung erlaubt. Ferner gibt es das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">mpmath</span></code>,
-das eine Rechnung mit einer vorgebbaren, im Prinzip beliebig hohen Genauigkeit ermöglicht.</p>
-</dd>
-<dt class="label" id="ieee754"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
-<dd><p>Detailliertere Informationen zu diesem Standard sind im Anhang
-<span class="xref std std-ref">appendixfloats</span> zu finden.</p>
-</dd>
-<dt class="label" id="isclosedoc"><span class="brackets"><a class="fn-backref" href="#id8">8</a></span></dt>
+<dt class="label" id="isclosedoc"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Standardmäßig wird ein relativer Fehler von <span class="math notranslate nohighlight">\(10^{-9}\)</span> zugelassen. Die
 <a class="reference external" href="https://docs.python.org/3/library/math.html#math.isclose">Dokumentation von isclose</a>
 beschreibt, wie man den relativen und absoluten Fehler selbst setzen kann.</p>
 </dd>
-<dt class="label" id="fehlerfunktion"><span class="brackets">9</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id10">2</a>)</span></dt>
+<dt class="label" id="fehlerfunktion"><span class="brackets">5</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>)</span></dt>
 <dd><p>Die Fehlerfunktion ist das normierte Integral über die Gaußfunktion
 von Null bis zu dem durch das Argument gegebenen Wert. Das Komplement der Fehlerfunktion
 ist die Differenz zwischen 1 und dem Wert der Fehlerfunktion.</p>
 </dd>
-<dt class="label" id="gammafunktion"><span class="brackets">10</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id12">2</a>)</span></dt>
+<dt class="label" id="gammafunktion"><span class="brackets">6</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>)</span></dt>
 <dd><p>Für positive ganze Zahlen entspricht die Gammafunktion der Fakultät des
 um Eins verminderten Arguments.</p>
 </dd>
-<dt class="label" id="keywords"><span class="brackets"><a class="fn-backref" href="#id13">11</a></span></dt>
+<dt class="label" id="keywords"><span class="brackets"><a class="fn-backref" href="#id9">7</a></span></dt>
 <dd><p>Bei Bedarf kann die Liste der Schlüsselwörter mit Hilfe des <code class="docutils literal notranslate"><span class="pre">keyword</span></code>-Moduls
 und Verwendung der Anweisung <code class="docutils literal notranslate"><span class="pre">keyword.kwlist</span></code> erhalten werden.</p>
 </dd>
-<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id14">12</a></span></dt>
+<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id10">8</a></span></dt>
 <dd><p>Die genaue Regel für die Umstellung der Darstellungsart kann man in der
 Dokumentation der Python-Standardbibliothek unter [6.1.3.1. Format Specification Mini-Language]
 (http://docs.python.org/3/library/string.html#formatspec)
 nachlesen.</p>
 </dd>
-<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id15">13</a></span></dt>
+<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id11">9</a></span></dt>
 <dd><p>Wenn man unbedingt möchte, kann man <code class="docutils literal notranslate"><span class="pre">d</span></code> für Dezimaldarstellung angeben.</p>
 </dd>
 </dl>
