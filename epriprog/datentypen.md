@@ -459,40 +459,36 @@ beseitigen. Im schlimmsten Fall kann man in Python zum
 mit mehr als den standardmäßigen 15 signifikanten Stellen zu rechnen.
 
 Was passiert aber, wenn man den zulässigen Zahlenbereich von Floats überschreitet?
-
------
-
-Werden Gleitkommazahlen zu groß, so
-erhält man ein vorzeichenbehaftetes Unendlich:
-
+In diesem Fall setzt Python die entsprechende Zahl auf Unendlich oder `inf` vom
+vom englischen *infinity*.
 ```{code-cell} python
 sys.float_info.max*1.00000001
 ```
+Dieses Unendlich ist zudem vorzeichenbehaftet.
 ```{code-cell} python
 -sys.float_info.max*1.00000001
 ```
-```{code-block} python
->>> 1e400
-inf
->>> -1e400
--inf
->>> 1e400 - 1e401
-nan
+In manchen Situation kann man mit dem Ergebnis sogar noch weiterrechnen.
+```{code-cell} python
+x = sys.float_info.max*1.00000001
+print(1/x)
 ```
-
-Lässt sich mit unendlichen Größen nicht sinnvoll rechnen, wird ``nan`` ausgegeben, das
-für »not a number« steht. Eine Division durch Null führt nicht etwa zu ``inf``, sondern
-zu einem Fehler:
-
-```{code-block} python
->>> 1.5/0
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ZeroDivisionError: float division by zero
+Dies ist jedoch nicht der Fall, wenn man zweimal positiv Unendlich voneinander bbziehen will.
+```{code-cell} python
+1e400 - 1e401
 ```
+Hierbei steht `nan` für »not a number«. 
 
-Hierbei wird eine Ausnahme (Exception) ausgelöst, die man geeignet behandeln kann, wie
-wir im Abschnitt {ref}`tryexcept` noch sehen werden.
+Anders als man nach dieser Diskussion vielleicht denke könnte, hat eine Division durch Null
+nicht das Ergebnis `inf`. Vielmehr gibt es einen `ZeroDivisionError`.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+1.5/0
+```
+Hierbei handelt es sich um eine so genannte Ausnahme oder Englisch *exception*, die man geeignet
+behandeln kann, wie wir später noch sehen werden.
 
 (mathfunc)=
 ## Funktionen für reelle Zahlen
