@@ -1140,10 +1140,10 @@ des Programms fehlerhaft sein kann.</p>
 <td><p>Summe über <code class="docutils literal notranslate"><span class="pre">z</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> ist iterierbarer Datentyp</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcd(a,</span> <span class="pre">b)</span></code></p></td>
-<td><p>größter gemeinsamer Teiler der ganzen Zahlen <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> (ab Python 3.5)</p></td>
+<td><p>größter gemeinsamer Teiler der ganzen Zahlen <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">isclose(a,</span> <span class="pre">b)</span></code></p></td>
-<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> nahezu gleich sind (ab Python 3.5) <a class="footnote-reference brackets" href="#isclosedoc" id="id4">4</a></p></td>
+<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> nahezu gleich sind <a class="footnote-reference brackets" href="#isclosedoc" id="id4">4</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isfinite(x)</span></code></p></td>
 <td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">x</span></code> weder unendlich noch <code class="docutils literal notranslate"><span class="pre">nan</span></code> (not a number) ist</p></td>
@@ -1450,11 +1450,11 @@ empfohlenen Konventionen für Bezeichner finden Sie im Python Enhancement Propos
 mit dem Titel »Style Guide for Python Code« im Abschnitt <em>Naming Conventions</em>.</p>
 <p>Die folgenden Schlüsselwörter sind in Python als Sprachelemente reserviert und dürfen
 nicht für Bezeichner verwendet werden <a class="footnote-reference brackets" href="#keywords" id="id9">7</a>::</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">assert</span>      <span class="k">del</span>        <span class="k">for</span>       <span class="ow">in</span>        <span class="ow">or</span>        <span class="k">while</span>
-<span class="kc">None</span>      <span class="k">break</span>       <span class="k">elif</span>       <span class="kn">from</span>      <span class="nn">is</span>        <span class="k">pass</span>      <span class="k">with</span>  
-<span class="kc">True</span>      <span class="k">class</span>       <span class="nc">else</span>       <span class="k">global</span>    <span class="k">lambda</span>    <span class="k">raise</span>     <span class="k">yield</span> 
-<span class="ow">and</span>       <span class="k">continue</span>    <span class="k">except</span>     <span class="k">if</span>        <span class="k">nonlocal</span>  <span class="k">return</span>     
-<span class="k">as</span>        <span class="k">def</span>         <span class="nf">finally</span>    <span class="kn">import</span>    <span class="nn">not</span>       <span class="k">try</span>        
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">assert</span>      <span class="k">continue</span>   <span class="k">except</span>    <span class="k">if</span>        <span class="k">nonlocal</span>  <span class="k">return</span>
+<span class="kc">None</span>      <span class="k">async</span>       <span class="k">def</span>        <span class="nf">finally</span>   <span class="kn">import</span>    <span class="nn">not</span>       <span class="k">try</span>  
+<span class="kc">True</span>      <span class="k">await</span>       <span class="k">del</span>        <span class="k">for</span>       <span class="ow">in</span>        <span class="ow">or</span>        <span class="k">while</span> 
+<span class="ow">and</span>       <span class="k">break</span>       <span class="k">elif</span>       <span class="kn">from</span>      <span class="nn">is</span>        <span class="k">pass</span>      <span class="k">with</span>
+<span class="k">as</span>        <span class="k">class</span>       <span class="nc">else</span>       <span class="k">global</span>    <span class="k">lambda</span>    <span class="k">raise</span>     <span class="k">yield</span> 
 </pre></div>
 </div>
 <div class="warning admonition">

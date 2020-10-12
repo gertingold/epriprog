@@ -620,8 +620,8 @@ Die nachfolgende Tabelle gibt die Funktionen des Moduls {mod}`math` an.
 |``fmod(x, y)``     | Modulofunktion für Gleitkommazahlen                                          |
 |``frexp(x)``       | ergibt Mantisse ``m`` und Exponent ``e`` für Basis 2                         |
 |``fsum(z)``        | Summe über ``z``, ``z`` ist iterierbarer Datentyp                            |
-|``gcd(a, b)``      | größter gemeinsamer Teiler der ganzen Zahlen ``a`` und ``b`` (ab Python 3.5) |
-|``isclose(a, b)``  | überprüft ob ``a`` und ``b`` nahezu gleich sind (ab Python 3.5) [^isclosedoc]|
+|``gcd(a, b)``      | größter gemeinsamer Teiler der ganzen Zahlen ``a`` und ``b``                 |
+|``isclose(a, b)``  | überprüft ob ``a`` und ``b`` nahezu gleich sind [^isclosedoc]                |
 |``isfinite(x)``    | überprüft ob ``x`` weder unendlich noch ``nan`` (not a number) ist           |
 |``isinf(x)``       | überprüft ob ``x`` unendlich ist                                             |
 |``isnan(x)``       | überprüft ob ``x`` ``nan`` (not a number) ist                                |
@@ -899,11 +899,11 @@ Die folgenden Schlüsselwörter sind in Python als Sprachelemente reserviert und
 nicht für Bezeichner verwendet werden [^keywords]::
 
 ```{code-block} python
-False     assert      del        for       in        or        while
-None      break       elif       from      is        pass      with  
-True      class       else       global    lambda    raise     yield 
-and       continue    except     if        nonlocal  return     
-as        def         finally    import    not       try        
+False     assert      continue   except    if        nonlocal  return
+None      async       def        finally   import    not       try  
+True      await       del        for       in        or        while 
+and       break       elif       from      is        pass      with
+as        class       else       global    lambda    raise     yield 
 ```
 
 [^keywords]: Bei Bedarf kann die Liste der Schlüsselwörter mit Hilfe des ``keyword``-Moduls
