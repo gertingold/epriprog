@@ -493,9 +493,6 @@ behandeln kann, wie wir später noch sehen werden.
 (mathfunc)=
 ## Funktionen für reelle Zahlen
 
-```{code-cell} python
-2+2
-```
 In numerischen Anwendungen in den Natur- und Ingenieurwissenschaften wird man häufig
 mathematische Funktionen auswerten wollen. Der Versuch, beispielsweise eine
 Exponentialfunktion auszuwerten, führt jedoch nicht unmittelbar zum Erfolg.
@@ -508,15 +505,20 @@ exp(2)
 Hierfür kann es im Wesentlichen zwei Gründe geben. Entweder hat die Exponentialfunktion
 nicht den Namen `exp` oder die Exponentialfunktion ist nicht verfügbar, zumindest nicht
 so unmittelbar, wie wir das hier annehmen. Tatsächlich muss man in Python, genauso wie
-in C, ein klein wenig mehr machen, als nur die Exponentialfunktion aufrufen.
+in C, ein klein wenig mehr tun, als nur die Exponentialfunktion aufzurufen.
 
-Bevor wir uns das gleich genauer ansehen, wollen wir kurz auf zwei für das wissenschaftliche
-Rechnen relevante Programmiersprachen hinweisen, bei den die Exponentialfunktion sowie eine
-ganze Reihe weiterer mathematischer Funktionen direkt aufgerufen werden können. Eine dieser
-Sprachen ist Fortran, eine relativ alte Sprache, deren Namen ursprünglich als Abkürzung
-für »Formula Translation« stand. Damit kann man schon erwarten, dass sich mathematische
-Funktionen sehr einfach verwenden lassen. Eine moderne Sprache, in der dies ebenfalls
-der Fall ist, ist Julia.
+Bevor wir uns das gleich genauer ansehen, wollen wir kurz auf zwei für das
+wissenschaftliche Rechnen relevante Programmiersprachen hinweisen, bei denen
+die Exponentialfunktion sowie eine ganze Reihe weiterer mathematischer
+Funktionen direkt aufgerufen werden können. Eine dieser Sprachen ist Fortran,
+eine relativ alte, aber im wissenschaftlichen Bereich immer noch häufig
+eingesetzte Sprache, deren Name ursprünglich als Abkürzung für »Formula
+Translation« stand. Damit kann man schon erwarten, dass sich iin Fortran
+mathematische Funktionen sehr einfach verwenden lassen.
+
+Eine moderne Sprache, in der dies ebenfalls der Fall ist, ist Julia.
+Hierbei handelt es sich wie bei Python um eine interpretierte Sprache, so 
+dass wir die Exponentiation einfach in der Julia-Shell ausprobieren können.
 ```{code-block} julia
 $ julia
                _
@@ -532,8 +534,9 @@ julia> exp(2)
 7.38905609893065
 ```
 
-Wesentlich komplizierter ist das Vorgehen in Python allerdings auch nicht. Man muss
-nur daran denken, zunächst das Modul {mod}`math` zu laden.
+Wesentlich komplizierter ist das Vorgehen in Python allerdings auch nicht. Man
+muss nur daran denken, zunächst das Modul {mod}`math`, das Bestandteil der
+Python-Standardbibliothek ist zu laden.
 ```{code-cell} python
 import math
 math.exp(2)
@@ -542,6 +545,9 @@ math.exp(2)
 Zum Vergleich mit Python betrachten wir den folgenden Code, der die Verwendung
 einer mathematischen Funktion in der Programmiersprache C illustriert:
 ```{code-block} c
+---
+emphasize-lines: 2, 2
+---
 #include <stdio.h>
 #include <math.h>
 
@@ -550,84 +556,112 @@ int main(void) {
   printf("Die Exponentialfunktion von %f ist %f\n", x, exp(x));
 }
 ```
+Hier entspricht die hervorgehobene Zeile dem `import`-Befehl in Python. Zudem muss
+man beim Kompilieren, also der Übersetzung des Programms in maschinenlesbaren Code
+mit `-lm` noch die Mathematikbibliothek hinzulinken.
+```{code-block} bash
+$ cc -o bsp_exp bsp_exp.c -lm
+$ ./bsp_exp
+Die Exponentialfunktion von 2.000000 ist 7.389056
+```
+In der ersten Zeile wird mit `-o bsp_exp` festgelegt, dass die Ausgabedatei
+den Namen `bsp_exp` heißen soll. Diese wird in der zweiten Zeile ausgeführt
+und wir erhalten in der dritten Zeile die erwartete Ausgabe.
 
-Speichert man diesen C-Code in einer Datei und verwendet hierfür beispielsweise
-den Dateinamen ``bsp_math.c``, so lässt sich mit Hilfe des
-Kommandozeilenbefehls ``cc -o bsp_math bsp_math.c -lm`` die lauffähige Datei
-``bsp_math`` erzeugen. Hierbei wird das Programm kompiliert und entsprechend
-der Option ``-lm`` mit der Mathematikbibliothek gelinkt. Das Resultat ist eine
-Datei in Maschinencode, die vom Rechner ausgeführt werden kann.
+````{admonition} Weiterführendes (rechts aufklappen)
+:class: toggle
+Nach der Kompilierung des obigen C-Programms entsteht als Zwischenprodukt
+ein so genanntes Assembler-Programm, das schon sehr maschinennah ist und
+von einem Assembler in den von einem Computer les- und ausführbaren
+Maschinencode umgewandelt wird.
+```{code-block}
+            .file   "bsp_exp.c"
+            .text
+            .section        .rodata
+            .align 8
+    .LC1:
+            .string "Die Exponentialfunktion von %f ist %f\n"
+            .text
+            .globl  main
+            .type   main, @function
+    main:
+    .LFB0:
+            .cfi_startproc
+            pushq   %rbp
+            .cfi_def_cfa_offset 16
+            .cfi_offset 6, -16
+            movq    %rsp, %rbp
+            .cfi_def_cfa_register 6
+            subq    $32, %rsp
+            movsd   .LC0(%rip), %xmm0
+            movsd   %xmm0, -8(%rbp)
+            movq    -8(%rbp), %rax
+            movq    %rax, -24(%rbp)
+            movsd   -24(%rbp), %xmm0
+            call    exp@PLT
+            movq    -8(%rbp), %rax
+            movapd  %xmm0, %xmm1
+            movq    %rax, -24(%rbp)
+            movsd   -24(%rbp), %xmm0
+            leaq    .LC1(%rip), %rdi
+            movl    $2, %eax
+            call    printf@PLT
+            movl    $0, %eax
+            leave
+            .cfi_def_cfa 7, 8
+            ret
+            .cfi_endproc
+    .LFE0:
+            .size   main, .-main
+            .section        .rodata
+            .align 8
+    .LC0:
+            .long   0
+            .long   1073741824
+            .ident  "GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+            .section        .note.GNU-stack,"",@progbits
+```
+````
 
-Dieses Codebeispiel zeigt einige Unterschiede zwischen den Programmiersprachen
-Python und C. Während Python das Programm direkt interpretiert, ist in C ein
-Kompilationsschritt und das Hinzuladen von Bibliotheken erforderlich. Zum
-anderen zeigt der C-Code, dass der Datentyp von Variablen deklariert werden
-muss. In diesem Beispiel wird `x` als doppelt genaue Gleitkommazahl definiert.
-Der Vorteil besteht darin, dass der resultierende Maschinencode im Allgemeinen
-deutlich schneller ausgeführt werden kann.
+Kommen wir nach diesem Ausflug in andere Programmiersprachen zurück zum Import von
+Funktionen aus dem {mod}`math`-Modul der Python-Standardbibliothek. Die obige Form
+des Imports ist nur eine von mehrere möglichen Varianten, die Vor- und Nachteile haben.
 
-Doch kommen wir zurück zu Python.  Nach dem Import des {mod}`math`-Moduls kann
-man Informationen über die zur Verfügung stehenden Funktionen durch Eingabe von
-``help(math)`` im Python-Interpreter erhalten. Von der Ausgabe ist im Folgenden
-nur ein kleiner Ausschnitt gezeigt:
+In der ersten Variante, die wir weiter oben verwendet haben, wird das Modul, hier `math`
+dem eigenen Code bekannt gemacht. Dies geschieht in unserem Beispiel mit `import math`.
+Der Nachteil hiervon ist, dass man jedes Mal, wenn man sich auf ein Objekt aus dem Modul
+beziehen will, den Modulnamen voranstellen muss. Deswegen mussten wir `math.exp` schreiben.
+Diese Mehrarbeit lohnt sich aber unter Umständen, um im Code deutlich zu machen, aus
+welchem Modul zum Beispiel eine Funktion stammt.
 
-```{code-block} python
->>> import math
->>> help(math) # doctest: +ELLIPSIS
-Help on module math:
-<BLANKLINE>
-NAME
-    math
-<BLANKLINE>
-MODULE REFERENCE
-    https://docs.python.org/3.6/library/math
-<BLANKLINE>
-    The following documentation is automatically generated from the Python
-    source files.  It may be incomplete, incorrect or include features that
-    are considered implementation detail and may vary between Python
-    implementations.  When in doubt, consult the module reference at the
-    location listed above.
-<BLANKLINE>
-DESCRIPTION
-    This module is always available.  It provides access to the
-    mathematical functions defined by the C standard.
-<BLANKLINE>
-FUNCTIONS
-    acos(...)
-        acos(x)
-<BLANKLINE>
-        Return the arc cosine (measured in radians) of x.
-<BLANKLINE>
-    acosh(...)
-        acosh(x)
-<BLANKLINE>
-        Return the inverse hyperbolic cosine of x.
-<BLANKLINE>
-...
-```    
-
-Häufig ist es zu umständlich, den Modulnamen beim Funktionsaufruf immer
-explizit anzugeben. Stattdessen kann man einzelne Funktionen des Moduls
-einbinden:
-
-```{code-block} python
->>> from math import sin, cos
->>> sin(0.5)**2+cos(0.5)**2
-1.0
+Alternativ hierzu kann man bestimmte Objekte, also Funktionen oder auch Attribute, 
+importieren. Diese stehen dann wie in dem folgenden Beispiel zur Verfügung, ohne dass
+der Modulname voranzustellen ist.
+```{code-cell} python
+from math import sin, cos
+sin(0.5)**2+cos(0.5)**2
 ```
 
-Alternativ kann man sämtliche Objekte eines Moduls auf einmal einbinden:
-
-```{code-block} python
->>> from math import *
->>> log(10)
-2.302585092994046
+Schließlich gibt es noch die Möglichkeit,  sämtliche Objekte eines Moduls auf einmal
+einbinden
+```{code-cell} python
+from math import *
+log(10)
 ```
 
 Dieses Vorgehen ist allerdings nicht ganz unproblematisch, da man auf diese
 Weise einen unter Umständen großen Namensraum einbindet und damit potentiell
-unabsichtlich Funktionen definiert oder umdefiniert wodurch die Funktionsweise
-des Programms fehlerhaft sein kann.
+unabsichtlich Funktionen definiert oder umdefiniert, wodurch die Funktionsweise
+des Programms fehlerhaft sein kann. Einer solchen Situation werden wir im nächsten
+Abschnitt noch begegnen.
+
+```{code-cell} python
+---
+tags: ["output_scroll"]
+---
+import math
+help(math)
+```    
 
 Die nachfolgende Tabelle gibt die Funktionen des Moduls {mod}`math` an.
 
