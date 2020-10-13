@@ -1008,18 +1008,6 @@ behandeln kann, wie wir später noch sehen werden.</p>
 </div>
 <div class="section" id="funktionen-fur-reelle-zahlen">
 <span id="mathfunc"></span><h2><span class="section-number">3.3. </span>Funktionen für reelle Zahlen<a class="headerlink" href="#funktionen-fur-reelle-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
 <p>In numerischen Anwendungen in den Natur- und Ingenieurwissenschaften wird man häufig
 mathematische Funktionen auswerten wollen. Der Versuch, beispielsweise eine
 Exponentialfunktion auszuwerten, führt jedoch nicht unmittelbar zum Erfolg.</p>
@@ -1032,7 +1020,7 @@ Exponentialfunktion auszuwerten, führt jedoch nicht unmittelbar zum Erfolg.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">38</span><span class="o">-</span><span class="mi">840</span><span class="n">a487878a2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">37</span><span class="o">-</span><span class="mi">840</span><span class="n">a487878a2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;exp&#39; is not defined
@@ -1043,14 +1031,18 @@ Exponentialfunktion auszuwerten, führt jedoch nicht unmittelbar zum Erfolg.</p>
 <p>Hierfür kann es im Wesentlichen zwei Gründe geben. Entweder hat die Exponentialfunktion
 nicht den Namen <code class="docutils literal notranslate"><span class="pre">exp</span></code> oder die Exponentialfunktion ist nicht verfügbar, zumindest nicht
 so unmittelbar, wie wir das hier annehmen. Tatsächlich muss man in Python, genauso wie
-in C, ein klein wenig mehr machen, als nur die Exponentialfunktion aufrufen.</p>
-<p>Bevor wir uns das gleich genauer ansehen, wollen wir kurz auf zwei für das wissenschaftliche
-Rechnen relevante Programmiersprachen hinweisen, bei den die Exponentialfunktion sowie eine
-ganze Reihe weiterer mathematischer Funktionen direkt aufgerufen werden können. Eine dieser
-Sprachen ist Fortran, eine relativ alte Sprache, deren Namen ursprünglich als Abkürzung
-für »Formula Translation« stand. Damit kann man schon erwarten, dass sich mathematische
-Funktionen sehr einfach verwenden lassen. Eine moderne Sprache, in der dies ebenfalls
-der Fall ist, ist Julia.</p>
+in C, ein klein wenig mehr tun, als nur die Exponentialfunktion aufzurufen.</p>
+<p>Bevor wir uns das gleich genauer ansehen, wollen wir kurz auf zwei für das
+wissenschaftliche Rechnen relevante Programmiersprachen hinweisen, bei denen
+die Exponentialfunktion sowie eine ganze Reihe weiterer mathematischer
+Funktionen direkt aufgerufen werden können. Eine dieser Sprachen ist Fortran,
+eine relativ alte, aber im wissenschaftlichen Bereich immer noch häufig
+eingesetzte Sprache, deren Name ursprünglich als Abkürzung für »Formula
+Translation« stand. Damit kann man schon erwarten, dass sich iin Fortran
+mathematische Funktionen sehr einfach verwenden lassen.</p>
+<p>Eine moderne Sprache, in der dies ebenfalls der Fall ist, ist Julia.
+Hierbei handelt es sich wie bei Python um eine interpretierte Sprache, so
+dass wir die Exponentiation einfach in der Julia-Shell ausprobieren können.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="o">$</span> <span class="n">julia</span>
                <span class="n">_</span>
    <span class="n">_</span>       <span class="n">_</span> <span class="n">_</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="n">_</span>     <span class="o">|</span>  <span class="n">Documentation</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">docs</span><span class="o">.</span><span class="n">julialang</span><span class="o">.</span><span class="n">org</span>
@@ -1065,8 +1057,9 @@ der Fall ist, ist Julia.</p>
 <span class="sb">7.38905609893065</span>
 </pre></div>
 </div>
-<p>Wesentlich komplizierter ist das Vorgehen in Python allerdings auch nicht. Man muss
-nur daran denken, zunächst das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> zu laden.</p>
+<p>Wesentlich komplizierter ist das Vorgehen in Python allerdings auch nicht. Man
+muss nur daran denken, zunächst das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>, das Bestandteil der
+Python-Standardbibliothek ist zu laden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1083,83 +1076,409 @@ nur daran denken, zunächst das Modul <code class="xref py py-mod docutils liter
 <p>Zum Vergleich mit Python betrachten wir den folgenden Code, der die Verwendung
 einer mathematischen Funktion in der Programmiersprache C illustriert:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
-
+<span class="hll"><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+</span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
   <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Die Exponentialfunktion von %f ist %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Speichert man diesen C-Code in einer Datei und verwendet hierfür beispielsweise
-den Dateinamen <code class="docutils literal notranslate"><span class="pre">bsp_math.c</span></code>, so lässt sich mit Hilfe des
-Kommandozeilenbefehls <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">-o</span> <span class="pre">bsp_math</span> <span class="pre">bsp_math.c</span> <span class="pre">-lm</span></code> die lauffähige Datei
-<code class="docutils literal notranslate"><span class="pre">bsp_math</span></code> erzeugen. Hierbei wird das Programm kompiliert und entsprechend
-der Option <code class="docutils literal notranslate"><span class="pre">-lm</span></code> mit der Mathematikbibliothek gelinkt. Das Resultat ist eine
-Datei in Maschinencode, die vom Rechner ausgeführt werden kann.</p>
-<p>Dieses Codebeispiel zeigt einige Unterschiede zwischen den Programmiersprachen
-Python und C. Während Python das Programm direkt interpretiert, ist in C ein
-Kompilationsschritt und das Hinzuladen von Bibliotheken erforderlich. Zum
-anderen zeigt der C-Code, dass der Datentyp von Variablen deklariert werden
-muss. In diesem Beispiel wird <code class="docutils literal notranslate"><span class="pre">x</span></code> als doppelt genaue Gleitkommazahl definiert.
-Der Vorteil besteht darin, dass der resultierende Maschinencode im Allgemeinen
-deutlich schneller ausgeführt werden kann.</p>
-<p>Doch kommen wir zurück zu Python.  Nach dem Import des <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Moduls kann
-man Informationen über die zur Verfügung stehenden Funktionen durch Eingabe von
-<code class="docutils literal notranslate"><span class="pre">help(math)</span></code> im Python-Interpreter erhalten. Von der Ausgabe ist im Folgenden
-nur ein kleiner Ausschnitt gezeigt:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="p">)</span> 
-<span class="go">Help on module math:</span>
-
-<span class="go">NAME</span>
-<span class="go">    math</span>
-
-<span class="go">MODULE REFERENCE</span>
-<span class="go">    https://docs.python.org/3.6/library/math</span>
-
-<span class="go">    The following documentation is automatically generated from the Python</span>
-<span class="go">    source files.  It may be incomplete, incorrect or include features that</span>
-<span class="go">    are considered implementation detail and may vary between Python</span>
-<span class="go">    implementations.  When in doubt, consult the module reference at the</span>
-<span class="go">    location listed above.</span>
-
-<span class="go">DESCRIPTION</span>
-<span class="go">    This module is always available.  It provides access to the</span>
-<span class="go">    mathematical functions defined by the C standard.</span>
-
-<span class="go">FUNCTIONS</span>
-<span class="go">    acos(...)</span>
-<span class="go">        acos(x)</span>
-
-<span class="go">        Return the arc cosine (measured in radians) of x.</span>
-
-<span class="go">    acosh(...)</span>
-<span class="go">        acosh(x)</span>
-
-<span class="go">        Return the inverse hyperbolic cosine of x.</span>
-
-<span class="gp">...</span>
+<p>Hier entspricht die hervorgehobene Zeile dem <code class="docutils literal notranslate"><span class="pre">import</span></code>-Befehl in Python. Zudem muss
+man beim Kompilieren, also der Übersetzung des Programms in maschinenlesbaren Code
+mit <code class="docutils literal notranslate"><span class="pre">-lm</span></code> noch die Mathematikbibliothek hinzulinken.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cc -o bsp_exp bsp_exp.c -lm
+$ ./bsp_exp
+Die Exponentialfunktion von <span class="m">2</span>.000000 ist <span class="m">7</span>.389056
 </pre></div>
 </div>
-<p>Häufig ist es zu umständlich, den Modulnamen beim Funktionsaufruf immer
-explizit anzugeben. Stattdessen kann man einzelne Funktionen des Moduls
-einbinden:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">cos</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-<span class="go">1.0</span>
+<p>In der ersten Zeile wird mit <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">bsp_exp</span></code> festgelegt, dass die Ausgabedatei
+den Namen <code class="docutils literal notranslate"><span class="pre">bsp_exp</span></code> heißen soll. Diese wird in der zweiten Zeile ausgeführt
+und wir erhalten in der dritten Zeile die erwartete Ausgabe.</p>
+<div class="toggle admonition">
+<p class="admonition-title">Weiterführendes (rechts aufklappen)</p>
+<p>Nach der Kompilierung des obigen C-Programms entsteht als Zwischenprodukt
+ein so genanntes Assembler-Programm, das schon sehr maschinennah ist und
+von einem Assembler in den von einem Computer les- und ausführbaren
+Maschinencode umgewandelt wird.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            .file   &quot;bsp_exp.c&quot;
+            .text
+            .section        .rodata
+            .align 8
+    .LC1:
+            .string &quot;Die Exponentialfunktion von %f ist %f\n&quot;
+            .text
+            .globl  main
+            .type   main, @function
+    main:
+    .LFB0:
+            .cfi_startproc
+            pushq   %rbp
+            .cfi_def_cfa_offset 16
+            .cfi_offset 6, -16
+            movq    %rsp, %rbp
+            .cfi_def_cfa_register 6
+            subq    $32, %rsp
+            movsd   .LC0(%rip), %xmm0
+            movsd   %xmm0, -8(%rbp)
+            movq    -8(%rbp), %rax
+            movq    %rax, -24(%rbp)
+            movsd   -24(%rbp), %xmm0
+            call    exp@PLT
+            movq    -8(%rbp), %rax
+            movapd  %xmm0, %xmm1
+            movq    %rax, -24(%rbp)
+            movsd   -24(%rbp), %xmm0
+            leaq    .LC1(%rip), %rdi
+            movl    $2, %eax
+            call    printf@PLT
+            movl    $0, %eax
+            leave
+            .cfi_def_cfa 7, 8
+            ret
+            .cfi_endproc
+    .LFE0:
+            .size   main, .-main
+            .section        .rodata
+            .align 8
+    .LC0:
+            .long   0
+            .long   1073741824
+            .ident  &quot;GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0&quot;
+            .section        .note.GNU-stack,&quot;&quot;,@progbits
 </pre></div>
 </div>
-<p>Alternativ kann man sämtliche Objekte eines Moduls auf einmal einbinden:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="go">2.302585092994046</span>
+</div>
+<p>Kommen wir nach diesem Ausflug in andere Programmiersprachen zurück zum Import von
+Funktionen aus dem <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul der Python-Standardbibliothek. Die obige Form
+des Imports ist nur eine von mehrere möglichen Varianten, die Vor- und Nachteile haben.</p>
+<p>In der ersten Variante, die wir weiter oben verwendet haben, wird das Modul, hier <code class="docutils literal notranslate"><span class="pre">math</span></code>
+dem eigenen Code bekannt gemacht. Dies geschieht in unserem Beispiel mit <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code>.
+Der Nachteil hiervon ist, dass man jedes Mal, wenn man sich auf ein Objekt aus dem Modul
+beziehen will, den Modulnamen voranstellen muss. Deswegen mussten wir <code class="docutils literal notranslate"><span class="pre">math.exp</span></code> schreiben.
+Diese Mehrarbeit lohnt sich aber unter Umständen, um im Code deutlich zu machen, aus
+welchem Modul zum Beispiel eine Funktion stammt.</p>
+<p>Alternativ hierzu kann man bestimmte Objekte, also Funktionen oder auch Attribute,
+importieren. Diese stehen dann wie in dem folgenden Beispiel zur Verfügung, ohne dass
+der Modulname voranzustellen ist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
+<span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">cos</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Schließlich gibt es noch die Möglichkeit,  sämtliche Objekte eines Moduls auf einmal
+einbinden</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.302585092994046
+</pre></div>
+</div>
+</div>
 </div>
 <p>Dieses Vorgehen ist allerdings nicht ganz unproblematisch, da man auf diese
 Weise einen unter Umständen großen Namensraum einbindet und damit potentiell
-unabsichtlich Funktionen definiert oder umdefiniert wodurch die Funktionsweise
-des Programms fehlerhaft sein kann.</p>
+unabsichtlich Funktionen definiert oder umdefiniert, wodurch die Funktionsweise
+des Programms fehlerhaft sein kann. Einer solchen Situation werden wir im nächsten
+Abschnitt noch begegnen.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on module math:
+
+NAME
+    math
+
+MODULE REFERENCE
+    https://docs.python.org/3.8/library/math
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    This module provides access to the mathematical functions
+    defined by the C standard.
+
+FUNCTIONS
+    acos(x, /)
+        Return the arc cosine (measured in radians) of x.
+    
+    acosh(x, /)
+        Return the inverse hyperbolic cosine of x.
+    
+    asin(x, /)
+        Return the arc sine (measured in radians) of x.
+    
+    asinh(x, /)
+        Return the inverse hyperbolic sine of x.
+    
+    atan(x, /)
+        Return the arc tangent (measured in radians) of x.
+    
+    atan2(y, x, /)
+        Return the arc tangent (measured in radians) of y/x.
+        
+        Unlike atan(y/x), the signs of both x and y are considered.
+    
+    atanh(x, /)
+        Return the inverse hyperbolic tangent of x.
+    
+    ceil(x, /)
+        Return the ceiling of x as an Integral.
+        
+        This is the smallest integer &gt;= x.
+    
+    comb(n, k, /)
+        Number of ways to choose k items from n items without repetition and without order.
+        
+        Evaluates to n! / (k! * (n - k)!) when k &lt;= n and evaluates
+        to zero when k &gt; n.
+        
+        Also called the binomial coefficient because it is equivalent
+        to the coefficient of k-th term in polynomial expansion of the
+        expression (1 + x)**n.
+        
+        Raises TypeError if either of the arguments are not integers.
+        Raises ValueError if either of the arguments are negative.
+    
+    copysign(x, y, /)
+        Return a float with the magnitude (absolute value) of x but the sign of y.
+        
+        On platforms that support signed zeros, copysign(1.0, -0.0)
+        returns -1.0.
+    
+    cos(x, /)
+        Return the cosine of x (measured in radians).
+    
+    cosh(x, /)
+        Return the hyperbolic cosine of x.
+    
+    degrees(x, /)
+        Convert angle x from radians to degrees.
+    
+    dist(p, q, /)
+        Return the Euclidean distance between two points p and q.
+        
+        The points should be specified as sequences (or iterables) of
+        coordinates.  Both inputs must have the same dimension.
+        
+        Roughly equivalent to:
+            sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
+    
+    erf(x, /)
+        Error function at x.
+    
+    erfc(x, /)
+        Complementary error function at x.
+    
+    exp(x, /)
+        Return e raised to the power of x.
+    
+    expm1(x, /)
+        Return exp(x)-1.
+        
+        This function avoids the loss of precision involved in the direct evaluation of exp(x)-1 for small x.
+    
+    fabs(x, /)
+        Return the absolute value of the float x.
+    
+    factorial(x, /)
+        Find x!.
+        
+        Raise a ValueError if x is negative or non-integral.
+    
+    floor(x, /)
+        Return the floor of x as an Integral.
+        
+        This is the largest integer &lt;= x.
+    
+    fmod(x, y, /)
+        Return fmod(x, y), according to platform C.
+        
+        x % y may differ.
+    
+    frexp(x, /)
+        Return the mantissa and exponent of x, as pair (m, e).
+        
+        m is a float and e is an int, such that x = m * 2.**e.
+        If x is 0, m and e are both 0.  Else 0.5 &lt;= abs(m) &lt; 1.0.
+    
+    fsum(seq, /)
+        Return an accurate floating point sum of values in the iterable seq.
+        
+        Assumes IEEE-754 floating point arithmetic.
+    
+    gamma(x, /)
+        Gamma function at x.
+    
+    gcd(x, y, /)
+        greatest common divisor of x and y
+    
+    hypot(...)
+        hypot(*coordinates) -&gt; value
+        
+        Multidimensional Euclidean distance from the origin to a point.
+        
+        Roughly equivalent to:
+            sqrt(sum(x**2 for x in coordinates))
+        
+        For a two dimensional point (x, y), gives the hypotenuse
+        using the Pythagorean theorem:  sqrt(x*x + y*y).
+        
+        For example, the hypotenuse of a 3/4/5 right triangle is:
+        
+            &gt;&gt;&gt; hypot(3.0, 4.0)
+            5.0
+    
+    isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
+        Determine whether two floating point numbers are close in value.
+        
+          rel_tol
+            maximum difference for being considered &quot;close&quot;, relative to the
+            magnitude of the input values
+          abs_tol
+            maximum difference for being considered &quot;close&quot;, regardless of the
+            magnitude of the input values
+        
+        Return True if a is close in value to b, and False otherwise.
+        
+        For the values to be considered close, the difference between them
+        must be smaller than at least one of the tolerances.
+        
+        -inf, inf and NaN behave similarly to the IEEE 754 Standard.  That
+        is, NaN is not close to anything, even itself.  inf and -inf are
+        only close to themselves.
+    
+    isfinite(x, /)
+        Return True if x is neither an infinity nor a NaN, and False otherwise.
+    
+    isinf(x, /)
+        Return True if x is a positive or negative infinity, and False otherwise.
+    
+    isnan(x, /)
+        Return True if x is a NaN (not a number), and False otherwise.
+    
+    isqrt(n, /)
+        Return the integer part of the square root of the input.
+    
+    ldexp(x, i, /)
+        Return x * (2**i).
+        
+        This is essentially the inverse of frexp().
+    
+    lgamma(x, /)
+        Natural logarithm of absolute value of Gamma function at x.
+    
+    log(...)
+        log(x, [base=math.e])
+        Return the logarithm of x to the given base.
+        
+        If the base not specified, returns the natural logarithm (base e) of x.
+    
+    log10(x, /)
+        Return the base 10 logarithm of x.
+    
+    log1p(x, /)
+        Return the natural logarithm of 1+x (base e).
+        
+        The result is computed in a way which is accurate for x near zero.
+    
+    log2(x, /)
+        Return the base 2 logarithm of x.
+    
+    modf(x, /)
+        Return the fractional and integer parts of x.
+        
+        Both results carry the sign of x and are floats.
+    
+    perm(n, k=None, /)
+        Number of ways to choose k items from n items without repetition and with order.
+        
+        Evaluates to n! / (n - k)! when k &lt;= n and evaluates
+        to zero when k &gt; n.
+        
+        If k is not specified or is None, then k defaults to n
+        and the function returns n!.
+        
+        Raises TypeError if either of the arguments are not integers.
+        Raises ValueError if either of the arguments are negative.
+    
+    pow(x, y, /)
+        Return x**y (x to the power of y).
+    
+    prod(iterable, /, *, start=1)
+        Calculate the product of all the elements in the input iterable.
+        
+        The default start value for the product is 1.
+        
+        When the iterable is empty, return the start value.  This function is
+        intended specifically for use with numeric values and may reject
+        non-numeric types.
+    
+    radians(x, /)
+        Convert angle x from degrees to radians.
+    
+    remainder(x, y, /)
+        Difference between x and the closest integer multiple of y.
+        
+        Return x - n*y where n*y is the closest integer multiple of y.
+        In the case where x is exactly halfway between two multiples of
+        y, the nearest even value of n is used. The result is always exact.
+    
+    sin(x, /)
+        Return the sine of x (measured in radians).
+    
+    sinh(x, /)
+        Return the hyperbolic sine of x.
+    
+    sqrt(x, /)
+        Return the square root of x.
+    
+    tan(x, /)
+        Return the tangent of x (measured in radians).
+    
+    tanh(x, /)
+        Return the hyperbolic tangent of x.
+    
+    trunc(x, /)
+        Truncates the Real x to the nearest Integral toward 0.
+        
+        Uses the __trunc__ magic method.
+
+DATA
+    e = 2.718281828459045
+    inf = inf
+    nan = nan
+    pi = 3.141592653589793
+    tau = 6.283185307179586
+
+FILE
+    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/lib-dynload/math.cpython-38-x86_64-linux-gnu.so
+</pre></div>
+</div>
+</div>
+</div>
 <p>Die nachfolgende Tabelle gibt die Funktionen des Moduls <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> an.</p>
 <table class="colwidths-auto table">
 <thead>
