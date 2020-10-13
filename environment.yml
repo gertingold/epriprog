@@ -7,5 +7,6 @@ dependencies:
   - sphinx
   - pip
   - ghp-import
+  - jupytext
   - pip:
     - jupyter-book
