@@ -1008,25 +1008,78 @@ behandeln kann, wie wir später noch sehen werden.</p>
 </div>
 <div class="section" id="funktionen-fur-reelle-zahlen">
 <span id="mathfunc"></span><h2><span class="section-number">3.3. </span>Funktionen für reelle Zahlen<a class="headerlink" href="#funktionen-fur-reelle-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
-<p>In physikalischen Anwendungen wird man häufig mathematische Funktionen auswerten wollen.
-Der Versuch, z.B. eine Exponentialfunktion auszuwerten, führt zunächst nicht zum Erfolg:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">NameError</span>: <span class="n">name &#39;exp&#39; is not defined</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
 </pre></div>
 </div>
-<p>Es muss vielmehr zunächst das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> geladen werden:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">7.38905609893065</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
 </pre></div>
 </div>
-<p>Dieser Schritt ist auch in vielen anderen Sprachen erforderlich. Eine wichtige
-Ausnahme stellt die Programmiersprache Fortran dar, deren Name ursprünglich als
-Abkürzung für <em>Formula Translation</em> stand und deren Hauptzweck in der Lösung
-numerischer Probleme besteht.  Dort werden mathematische Funktionen als
-Bestandteile der Sprache direkt zur Verfügung gestellt.</p>
+</div>
+</div>
+<p>In numerischen Anwendungen in den Natur- und Ingenieurwissenschaften wird man häufig
+mathematische Funktionen auswerten wollen. Der Versuch, beispielsweise eine
+Exponentialfunktion auszuwerten, führt jedoch nicht unmittelbar zum Erfolg.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">38</span><span class="o">-</span><span class="mi">840</span><span class="n">a487878a2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;exp&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hierfür kann es im Wesentlichen zwei Gründe geben. Entweder hat die Exponentialfunktion
+nicht den Namen <code class="docutils literal notranslate"><span class="pre">exp</span></code> oder die Exponentialfunktion ist nicht verfügbar, zumindest nicht
+so unmittelbar, wie wir das hier annehmen. Tatsächlich muss man in Python, genauso wie
+in C, ein klein wenig mehr machen, als nur die Exponentialfunktion aufrufen.</p>
+<p>Bevor wir uns das gleich genauer ansehen, wollen wir kurz auf zwei für das wissenschaftliche
+Rechnen relevante Programmiersprachen hinweisen, bei den die Exponentialfunktion sowie eine
+ganze Reihe weiterer mathematischer Funktionen direkt aufgerufen werden können. Eine dieser
+Sprachen ist Fortran, eine relativ alte Sprache, deren Namen ursprünglich als Abkürzung
+für »Formula Translation« stand. Damit kann man schon erwarten, dass sich mathematische
+Funktionen sehr einfach verwenden lassen. Eine moderne Sprache, in der dies ebenfalls
+der Fall ist, ist Julia.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="o">$</span> <span class="n">julia</span>
+               <span class="n">_</span>
+   <span class="n">_</span>       <span class="n">_</span> <span class="n">_</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="n">_</span>     <span class="o">|</span>  <span class="n">Documentation</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">docs</span><span class="o">.</span><span class="n">julialang</span><span class="o">.</span><span class="n">org</span>
+  <span class="p">(</span><span class="n">_</span><span class="p">)</span>     <span class="o">|</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span>    <span class="o">|</span>
+   <span class="n">_</span> <span class="n">_</span>   <span class="n">_</span><span class="o">|</span> <span class="o">|</span><span class="n">_</span>  <span class="n">__</span> <span class="n">_</span>   <span class="o">|</span>  <span class="kt">Type</span> <span class="s">&quot;?&quot;</span> <span class="k">for</span> <span class="n">help</span><span class="p">,</span> <span class="s">&quot;]?&quot;</span> <span class="k">for</span> <span class="n">Pkg</span> <span class="n">help</span><span class="o">.</span>
+  <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|/</span> <span class="n">_</span><span class="sb">` |  |</span>
+<span class="sb">  | | |_| | | | (_| |  |  Version 1.5.2 (2020-09-23)</span>
+<span class="sb"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
+<span class="sb">|__/                   |</span>
+
+<span class="sb">julia&gt; exp(2)</span>
+<span class="sb">7.38905609893065</span>
+</pre></div>
+</div>
+<p>Wesentlich komplizierter ist das Vorgehen in Python allerdings auch nicht. Man muss
+nur daran denken, zunächst das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> zu laden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.38905609893065
+</pre></div>
+</div>
+</div>
+</div>
 <p>Zum Vergleich mit Python betrachten wir den folgenden Code, der die Verwendung
 einer mathematischen Funktion in der Programmiersprache C illustriert:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -1034,7 +1087,7 @@ einer mathematischen Funktion in der Programmiersprache C illustriert:</p>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
   <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Die Wurzel von %f ist %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Die Exponentialfunktion von %f ist %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 </div>

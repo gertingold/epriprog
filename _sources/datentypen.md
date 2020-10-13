@@ -493,40 +493,61 @@ behandeln kann, wie wir später noch sehen werden.
 (mathfunc)=
 ## Funktionen für reelle Zahlen
 
-In physikalischen Anwendungen wird man häufig mathematische Funktionen auswerten wollen.
-Der Versuch, z.B. eine Exponentialfunktion auszuwerten, führt zunächst nicht zum Erfolg:
-
-```{code-block} python
->>> exp(2)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'exp' is not defined
+```{code-cell} python
+2+2
 ```
+In numerischen Anwendungen in den Natur- und Ingenieurwissenschaften wird man häufig
+mathematische Funktionen auswerten wollen. Der Versuch, beispielsweise eine
+Exponentialfunktion auszuwerten, führt jedoch nicht unmittelbar zum Erfolg.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+exp(2)
+```
+Hierfür kann es im Wesentlichen zwei Gründe geben. Entweder hat die Exponentialfunktion
+nicht den Namen `exp` oder die Exponentialfunktion ist nicht verfügbar, zumindest nicht
+so unmittelbar, wie wir das hier annehmen. Tatsächlich muss man in Python, genauso wie
+in C, ein klein wenig mehr machen, als nur die Exponentialfunktion aufrufen.
 
-Es muss vielmehr zunächst das Modul {mod}`math` geladen werden:
+Bevor wir uns das gleich genauer ansehen, wollen wir kurz auf zwei für das wissenschaftliche
+Rechnen relevante Programmiersprachen hinweisen, bei den die Exponentialfunktion sowie eine
+ganze Reihe weiterer mathematischer Funktionen direkt aufgerufen werden können. Eine dieser
+Sprachen ist Fortran, eine relativ alte Sprache, deren Namen ursprünglich als Abkürzung
+für »Formula Translation« stand. Damit kann man schon erwarten, dass sich mathematische
+Funktionen sehr einfach verwenden lassen. Eine moderne Sprache, in der dies ebenfalls
+der Fall ist, ist Julia.
+```{code-block} julia
+$ julia
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.5.2 (2020-09-23)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
 
-```{code-block} python
->>> import math
->>> math.exp(2)
+julia> exp(2)
 7.38905609893065
 ```
 
-Dieser Schritt ist auch in vielen anderen Sprachen erforderlich. Eine wichtige
-Ausnahme stellt die Programmiersprache Fortran dar, deren Name ursprünglich als
-Abkürzung für *Formula Translation* stand und deren Hauptzweck in der Lösung
-numerischer Probleme besteht.  Dort werden mathematische Funktionen als
-Bestandteile der Sprache direkt zur Verfügung gestellt.  
+Wesentlich komplizierter ist das Vorgehen in Python allerdings auch nicht. Man muss
+nur daran denken, zunächst das Modul {mod}`math` zu laden.
+```{code-cell} python
+import math
+math.exp(2)
+```
 
 Zum Vergleich mit Python betrachten wir den folgenden Code, der die Verwendung
 einer mathematischen Funktion in der Programmiersprache C illustriert:
-
 ```{code-block} c
 #include <stdio.h>
 #include <math.h>
 
 int main(void) {
   double x = 2;
-  printf("Die Wurzel von %f ist %f\n", x, sqrt(x));
+  printf("Die Exponentialfunktion von %f ist %f\n", x, exp(x));
 }
 ```
 
