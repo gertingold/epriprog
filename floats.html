@@ -212,39 +212,75 @@
                 
   <div class="section" id="anhang-64-bit-gleitkommazahlen-nach-ieee-standard-754">
 <span id="anhang-floats"></span><h1><span class="section-number">5. </span>Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754<a class="headerlink" href="#anhang-64-bit-gleitkommazahlen-nach-ieee-standard-754" title="Link zu dieser Überschrift">¶</a></h1>
-<p>In diesem Anhang soll kurz die Binärdarstellung von 64-Bit-Gleitkommazahlen nach dem
-Standard IEEE Std 754–2008 <a class="footnote-reference brackets" href="#ieee754" id="id1">1</a> vorgestellt werden. Dabei handelt es sich nur
-um einen sehr kleinen Ausschnitt dieses Standards, der noch weitere Gleitkommazahlenformate
-sowie deren arithmetische Verarbeitung definiert.</p>
+<p>In diesem Anhang soll kurz die Binärdarstellung von 64-Bit-Gleitkommazahlen
+nach dem <a class="reference external" href="http://dx.doi.org/10.1109/IEEESTD.2008.4610935">IEEE Standard for Floating-Point Arithmetic IEEE Std
+754–2008</a> vorgestellt werden.
+Dabei handelt es sich nur um einen sehr kleinen Ausschnitt dieses Standards,
+der noch weitere Gleitkommazahlenformate sowie deren arithmetische Verarbeitung
+definiert.</p>
 <p>Wie in der folgenden Abbildung zu sehen ist, besteht eine 64-Bit-Gleitkommazahl aus drei
 Anteilen: 1 Bit für das Vorzeichen, 11 Bits aus denen der Exponent bestimmt wird, sowie
 52 Bits aus denen sich die Mantisse ergibt. Im zweiten und dritten Segment steht das
 höchstwertigste Bit (MSB – <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">significant</span> <span class="pre">bit</span></code>) jeweils links und das niederwertigste
 Bit (LSB – <code class="docutils literal notranslate"><span class="pre">least</span> <span class="pre">significant</span> <span class="pre">bit</span></code>) rechts.</p>
 <div class="figure align-default" id="fig-ieee754">
-<a class="reference internal image-reference" href="_images/ieee754_64.png"><img alt="_images/ieee754_64.png" src="_images/ieee754_64.png" style="height: 5cm;" /></a>
+<a class="reference internal image-reference" href="_images/ieee754_64.png"><img alt="_images/ieee754_64.png" src="_images/ieee754_64.png" style="height: 4cm;" /></a>
 <p class="caption"><span class="caption-number">Abb. 5.1 </span><span class="caption-text">64-Bit-Gleitkommazahl nach IEEE-Standard 754.</span><a class="headerlink" href="#fig-ieee754" title="Link zu diesem Bild">¶</a></p>
 </div>
 <p>Die Interpretation der 64 Bits hängt vom Wert des Exponenten E ab, der als Integer zu
-verstehen ist und damit Werte zwischen 0 und <span class="math notranslate nohighlight">\(2^{11}-1\)</span> annehmen kann.</p>
-<p>Wir beginnen mit dem häufigsten Fall, dass E ungleich 0 und ungleich <span class="math notranslate nohighlight">\(2^{11}-1\)</span>
-ist, also einen Wert zwischen 1 und <span class="math notranslate nohighlight">\(2^{11}-2\)</span> besitzt. In diesem Fall
-liegt eine so genannte normalisierte Zahl vor, für die die 64 Bits in folgender Weise zu
-interpretieren sind. Ist das Vorzeichenbit gleich 0, so handelt es sich um eine positive
-Zahl, andernfalls um eine negative Zahl. Um den tatsächlichen Exponenten zu erhalten, muss
-man von E den Wert <span class="math notranslate nohighlight">\(2^{10}-1=1023\)</span> abziehen. Damit resultiert im Binärsystem ein Faktor,
-der zwischen <span class="math notranslate nohighlight">\(2^{-1022}\)</span> und <span class="math notranslate nohighlight">\(2^{1023}\)</span> liegt. Die Mantisse ist als Nachkommaanteil
-im Binärsystem zu interpretieren, wobei implizit eine führende 1 vor dem Komma steht.</p>
-<p>Ein Beispiel soll diese Kodierung verdeutlichen. Gegeben sei die
-64-Bit-Darstellung <code class="docutils literal notranslate"><span class="pre">C039A40000000000</span></code>, deren führende Bits
-<code class="docutils literal notranslate"><span class="pre">1|10000000011|100110100100...</span></code> lauten. Die senkrechten Striche verdeutlichen
-dabei die Einteilung in die drei Bereiche S, E und T.  Das erste Bit gibt an,
-dass es sich um eine negative Zahl handelt. Die folgenden 11 Bit ergeben
-<span class="math notranslate nohighlight">\(2^{10}+2^1+2^0 = 1027\)</span>. Subtrahiert man 1023, so ergibt
-sich für die kodierte Zahl ein Faktor <span class="math notranslate nohighlight">\(2^4\)</span>. Die restlichen Bits
-ergeben die Mantisse mit dem Wert <span class="math notranslate nohighlight">\(2^{-1}+2^{-4}+2^{-5}+2^{-7}+2^{-10} = 0{,}6025390625\)</span>.
-Berücksichtigt man die führende implizite Eins bei normalisierten Zahlen, so ergibt sich
-insgesamt <span class="math notranslate nohighlight">\(-2^4\times 1{,}6025390625 = -25{,}640625\)</span>.</p>
+verstehen ist und damit Werte zwischen <span class="math notranslate nohighlight">\(0\)</span> und <span class="math notranslate nohighlight">\(2^{11}-1\)</span> annehmen kann.</p>
+<p>Wir beginnen mit dem häufigsten Fall, dass E ungleich <span class="math notranslate nohighlight">\(0\)</span> und ungleich
+<span class="math notranslate nohighlight">\(2^{11}-1\)</span> ist, also einen Wert zwischen <span class="math notranslate nohighlight">\(1\)</span> und <span class="math notranslate nohighlight">\(2^{11}-2\)</span> besitzt.
+In diesem Fall liegt eine so genannte normalisierte Zahl vor, für die die 64
+Bits in folgender Weise zu interpretieren sind. Ist das Vorzeichenbit gleich 0,
+so handelt es sich um eine positive Zahl, andernfalls um eine negative Zahl. Um
+den tatsächlichen Exponenten zu erhalten, muss man von E den Wert
+<span class="math notranslate nohighlight">\(2^{10}-1=1023\)</span> abziehen. Damit resultiert im Binärsystem ein Faktor, der
+zwischen <span class="math notranslate nohighlight">\(2^{-1022}\)</span> und <span class="math notranslate nohighlight">\(2^{1023}\)</span> liegt. Die Mantisse ist als
+Nachkommaanteil im Binärsystem zu interpretieren, wobei implizit eine führende
+<span class="math notranslate nohighlight">\(1\)</span> vor dem Komma steht.</p>
+<p>Ein Beispiel soll diese Kodierung verdeutlichen. Konkret sehen wir uns die Zahl
+<span class="math notranslate nohighlight">\(-25{,}640625\)</span> an, die wir mit Hilfe von Python in die gewünschte Codierung
+umrechnen lassen können. Anschließend werden wir uns umgekehrt überlegen, dass
+die Interpretation der Hexadezimaldarstellung tatsächlich die Ausgangszahl ergibt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span>
+<span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;d&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">25.640625</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;c039a40000000000&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference internal" href="#fig-ieee-example"><span class="std std-numref">Abb. 5.2</span></a> zeigt die entsprechenden Bits des Vorzeichens, des
+Exponenten und der Mantisse, die farblich unterschiedlich hinterlegt sind.</p>
+<div class="figure align-default" id="fig-ieee-example">
+<img alt="_images/ieee_example.png" src="_images/ieee_example.png" />
+<p class="caption"><span class="caption-number">Abb. 5.2 </span><span class="caption-text">Bitweise Darstellung der Zahl <span class="math notranslate nohighlight">\(-25{,}640625\)</span> nach dem IEEE-Standard 754. Das Vorzeichenbit,
+die Bits des Exponenten und die Bits der Mantisse sind farblich orange, grün bzw.
+violett hinterlegt.</span><a class="headerlink" href="#fig-ieee-example" title="Link zu diesem Bild">¶</a></p>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-hinweis admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Die Funktionsweise des Dualsystems ist in <a class="reference internal" href="zahlensysteme.html#dualsystem"><span class="std std-numref">Kapitel 4.1</span></a> beschrieben.</p>
+</div>
+</div>
+<p>Das erste, orange hinterlegte Bit gibt an, dass es sich um eine negative Zahl handelt.
+Die folgenden 11 Bit ergeben</p>
+<div class="math notranslate nohighlight">
+\[2^{10}+2^1+2^0 = 1027\,.\]</div>
+<p>Subtrahiert man <span class="math notranslate nohighlight">\(1023\)</span>, so ergibt sich für die kodierte Zahl ein Faktor
+<span class="math notranslate nohighlight">\(2^4=16\)</span>. Die restlichen Bits ergeben die Mantisse mit dem Wert</p>
+<div class="math notranslate nohighlight">
+\[2^{-1}+2^{-4}+2^{-5}+2^{-7}+2^{-10} = 0{,}6025390625\,.\]</div>
+<p>Berücksichtigt man die führende implizite Eins bei normalisierten Zahlen, so
+ergibt sich insgesamt <span class="math notranslate nohighlight">\(-16\times 1{,}6025390625 = -25{,}640625\,.\)</span></p>
 <p>Falls der Exponent E seinen Maximalwert, für 64-Bit-Gleitkommazahlen also 2047,
 annimmt, hängt die Interpretation vom Mantissenfeld ab. Enthält dieses den Wert
 Null, so ist die Zahl unter Berücksichtigung des Vorzeichenbits als +∞ oder -∞
@@ -262,7 +298,7 @@ normalisierten Zahlen, bei denen eine implizite Eins vor den Nachkommaanteil zu
 setzen war, steht bei denormalisierten Zahlen vor dem Komma eine Null. Da damit
 der sich aus dem Mantissenfeld ergebende Faktor kleiner als Eins ist, eröffnet
 sich die Möglichkeit Zahlen darzustellen, die kleiner als die kleinst mögliche
-normalisierte Zahl ist. Allerdings geht dies auf Kosten der Anzahl
+normalisierte Zahl sind. Allerdings geht dies auf Kosten der Anzahl
 signifikanter Ziffern, die bei denormalisierten Zahlen kleiner ist als bei
 normalisierten Zahlen. Damit die denormalisierten Zahlen nahtlos an die
 normalisierten Zahlen anschließen, ist der sich normalerweise aus dem
@@ -271,26 +307,52 @@ Zahlen, also <span class="math notranslate nohighlight">\(2^{1-1023} = 2^{-1022}
 <p>Wir charakterisieren abschließend die 64-Bit-Gleitkommazahlen durch einige ihrer
 Eigenschaften. Die kleinste darstellbare Zahl größer als Null ist
 <span class="math notranslate nohighlight">\(2^{-1022}\times 2^{-52} = 2^{-1074} \approx 4,941\cdot 10^{-324}\)</span>.
-Die größte darstellbare endliche Zahl ist <span class="math notranslate nohighlight">\(2^{1023}\times(1+(1-2^{-52})) \approx 1{,}798\cdot 10^{308}\)</span>.
-Der Abstand zwischen der Zahl Eins und der nächst größeren
-darstellbaren Zahl beträgt <span class="math notranslate nohighlight">\(2^{-52} \approx 2{,}22\cdot 10^{-16}\)</span>. Die letzten beiden
-Angaben lassen sich in Python folgendermaßen verifizieren:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span>
-<span class="go">1.7976931348623157e+308</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">epsilon</span>
-<span class="go">2.220446049250313e-16</span>
+Die größte darstellbare endliche Zahl ist</p>
+<div class="math notranslate nohighlight">
+\[2^{1023}\times\big(1+(1-2^{-52})\big) \approx 1{,}798\cdot 10^{308}\,.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7976931348623157e+308
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Abstand zwischen der Zahl Eins und der nächst größeren
+darstellbaren Zahl beträgt</p>
+<div class="math notranslate nohighlight">
+\[2^{-52} \approx 2{,}22\cdot 10^{-16}\,.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">epsilon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.220446049250313e-16
+</pre></div>
+</div>
+</div>
 </div>
 <p>Mit <code class="docutils literal notranslate"><span class="pre">sys.float_info.min</span></code> erhält man nicht die kleinste überhaupt darstellbare Zahl,
 sondern die kleinste darstellbare normalisierte Zahl <span class="math notranslate nohighlight">\(2^{-1022}\)</span>.</p>
-<hr class="docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="ieee754"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>IEEE Standard for Floating-Point Arithmetic
-(<a class="reference external" href="http://dx.doi.org/10.1109/IEEESTD.2008.4610935%3E">dx.doi.org:10.1109/IEEESTD.2008.4610935</a>)</p>
-</dd>
-</dl>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">min</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2250738585072014e-308
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
