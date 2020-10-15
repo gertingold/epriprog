@@ -203,7 +203,7 @@ mit dem Ergebnis
            2          -2
            0  0.500000000
 ```
-Hier illustriert die zweite Ausgabezeile, dass man hier eine Gleitkommadivision
+Die zweite Ausgabezeile illustriert, dass man hier eine Gleitkommadivision
 erzwingen kann, indem man mindestens eine der beiden Zahlen zu einer Gleitkommazahl
 macht.
 

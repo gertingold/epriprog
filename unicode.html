@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Anhang: Unicode &#8212; Einführung in Prinzipien der Programmierung</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="prev" title="5. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754" href="floats.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Einführung in Prinzipien der Programmierung</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="einleitung.html">
+   1. Einleitung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vorschau.html">
+   2. Eine Vorschau
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datentypen.html">
+   3. Einfache Datentypen, Variablen und Zuweisungen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zahlensysteme.html">
+   4. Anhang: Zahlensysteme
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="floats.html">
+   5. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Anhang: Unicode
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
+            title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/unicode.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
+                title="Vollbildmodus"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="anhang-unicode">
+<span id="appendixunicode"></span><h1><span class="section-number">6. </span>Anhang: Unicode<a class="headerlink" href="#anhang-unicode" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Auch Schriftzeichen müssen im Computer binär kodiert werden. Zwar sind schon bei
+Zahlen verschiedene Codierungsarten möglich, aber grundlegende Züge ergeben sich
+durch die Verwendung des Dualsystems in natürlicher Weise. Bei Schriftzeichen ist
+dies dagegen überhaupt nicht der Fall, schon gar nicht, wenn man sich von der
+angelsächsischen Sicht auf das Problem löst. Entsprechend wurden im Lauf der Zeit
+eine Vielzahl unterschiedlicher Kodierungen entwickelt <a class="footnote-reference brackets" href="#haralambous" id="id1">1</a>, die durch
+Inkompatibilitäten den Informationsaustausch erschwerten. Erst in jüngerer Zeit
+setzt sich mit Unicode ein Standard weitgehend durch.</p>
+<p>Bereits 1967 wurde der <em>American Standard Code for Information Interchange</em>
+(ASCII) als Standard veröffentlicht, wobei aber auch andere Kodierungen
+insbesondere auf Großrechnern im Gebrauch waren. Der ASCII ist ein 7-Bit-Code
+und kann somit 128 Zeichen darstellen, die auf der ersten der Codetabellen
+gezeigt ist, die auf den folgenden Seiten dargestellt sind. Die grau
+unterlegten Akronyme stellen Steuerzeichen dar, wobei SP ein Leerzeichen
+bezeichnet und damit auch zu den druckbaren Zeichen gerechnet werden kann. Zu
+den heute noch wichtigen Steuerzeichen zählen:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Hexcode</p></th>
+<th class="head"><p>Kürzel</p></th>
+<th class="head"><p>Bedeutung</p></th>
+<th class="head"><p>Tastenkombination</p></th>
+<th class="head"><p>Escape-Sequenz</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>08</p></td>
+<td><p>BS</p></td>
+<td><p>backspace</p></td>
+<td><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">STRG</kbd>-<kbd class="kbd docutils literal notranslate">H</kbd></kbd></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\b</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>09</p></td>
+<td><p>HT</p></td>
+<td><p>horizontal tabulation</p></td>
+<td><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">STRG</kbd>-<kbd class="kbd docutils literal notranslate">I</kbd></kbd></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\t</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>0A</p></td>
+<td><p>LF</p></td>
+<td><p>line feed (neue Zeile)</p></td>
+<td><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">STRG</kbd>-<kbd class="kbd docutils literal notranslate">J</kbd></kbd></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\n</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>0C</p></td>
+<td><p>FF</p></td>
+<td><p>form feed (neue Seite)</p></td>
+<td><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">STRG</kbd>-<kbd class="kbd docutils literal notranslate">L</kbd></kbd></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\f</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>0D</p></td>
+<td><p>CR</p></td>
+<td><p>carriage return (Wagenrücklauf)</p></td>
+<td><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">STRG</kbd>-<kbd class="kbd docutils literal notranslate">M</kbd></kbd></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\r</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>1B</p></td>
+<td><p>ESC</p></td>
+<td><p>escape</p></td>
+<td><p><kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">STRG</kbd>-<kbd class="kbd docutils literal notranslate">[</kbd></kbd></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Bei der Betrachtung der ASCII-Codetabelle fällt sofort das Fehlen von Umlauten
+auf, die für deutsche Texte benötigt werden, von anderen Schriftsystemen ganz zu
+schweigen.  In einem ersten Schritt liegt daher eine Erweiterung auf einen
+8-Bit-Code nahe. Hierfür existieren eine ganze Reihe von Belegungen, die sich am
+Bedarf bestimmter Sprachen orientieren. Von Bedeutung ist unter anderem die
+Normenfamilie ISO 8859. Für die deutsche Sprache ist ISO-8859-1 gebräuchlich,
+der in der zweiten der folgenden Codetabellen dargestellt ist und auch als
+»Latin-1« bekannt ist.  Auch hier sind wieder eine Reihe von Steuerzeichen
+vertreten, unter anderem ein <code class="docutils literal notranslate"><span class="pre">nonbreakable</span> <span class="pre">space</span></code> (NBSP) und ein <code class="docutils literal notranslate"><span class="pre">soft</span> <span class="pre">hyphen</span></code>
+(SHY). Der zu den Zeichen gehörige Code ergibt sich aus den letzten beiden
+Stellen des Unicode Codepoints, der an dem vorangestellten <code class="docutils literal notranslate"><span class="pre">U+</span></code> erkenntlich
+ist.  Beispielsweise wird das »ä« durch <code class="docutils literal notranslate"><span class="pre">0xEA</span></code> kodiert. Da das Eurozeichen
+in ISO-8859-1 nicht enthalten ist, ist auch die Norm ISO-8859-15 von Bedeutung,
+die sich an 8 Stellen von ISO-8859-1 unterscheidet.</p>
+<p>In neuerer Zeit hat der <a class="reference external" href="http://www.unicode.org/">Unicode-Standard</a> enorm an
+Bedeutung gewonnen, da er das Ziel hat, alle weltweit gebräuchlichen Zeichen zu
+kodieren.  Die aktuelle <a class="reference external" href="http://www.unicode.org/versions/Unicode13.0.0/">Version
+13.0</a> umfasst 143.859 Zeichen
+und bietet noch genügend Platz für Erweiterungen. Jedes Zeichen ist einem so
+genannten Codepoint zugeordnet, der Werte zwischen <code class="docutils literal notranslate"><span class="pre">0x00</span></code> und  <code class="docutils literal notranslate"><span class="pre">0x10FFFF</span></code>
+annehmen kann. Da damit jedes Zeichen statt üblicherweise einem Byte nun drei
+Byte benötigen würde, werden die Unicode-Zeichen geschickt kodiert. Für
+westliche Sprachen ist die Kodierung UTF-8 besonders geeignet, da die
+ASCII-Zeichen im Bereich <code class="docutils literal notranslate"><span class="pre">0x00</span></code> bis <code class="docutils literal notranslate"><span class="pre">0x7F</span></code> ihre Bedeutung beibehalten. Wir
+beschränken uns daher im Folgenden auf die Erklärung dieser Kodierung.</p>
+<p>Die UTF-8-Kodierung ist in den folgenden Codetabellen unter dem entsprechenden
+Unicode Codepoint angegeben. Dabei kommen in diesen Beispielen 1-, 2- und
+3-Byte-Werte vor. Im Allgemeinen können sogar 4 Bytes auftreten.</p>
+<p>Im Bereich <code class="docutils literal notranslate"><span class="pre">0x00</span></code> bis <code class="docutils literal notranslate"><span class="pre">0x7f</span></code> wird das letzte Byte des Codepoints
+verwendet und auf diese Weise Übereinstimmung mit ASCII erreicht. Somit lassen
+sich in einer westlichen Sprache verfasste Texte weitestgehend unabhängig von
+der tatsächlichen Kodierung lesen. Außerdem wird die Mehrzahl der vorkommenden
+Zeichen platzsparend kodiert.</p>
+<p>Ist das führende Bit eine <code class="docutils literal notranslate"><span class="pre">1</span></code>, so handelt es sich um einen Mehrbytecode.
+Im Bereich <code class="docutils literal notranslate"><span class="pre">0x0080</span></code> bis <code class="docutils literal notranslate"><span class="pre">0x07FF</span></code> werden zwei Bytes zur Kodierung verwendet.
+Die elf relevanten Bytes werden dabei wie in folgendem Beispiel gezeigt auf die
+zwei Bytes verteilt:</p>
+<a class="reference internal image-reference" href="_images/utf8_2.png"><img alt="_images/utf8_2.png" class="align-center" src="_images/utf8_2.png" style="height: 2.5cm;" /></a>
+<p>Dabei wird der Codepoint <code class="docutils literal notranslate"><span class="pre">0xE9</span></code> des Zeichens »é« auf den UTF-8-Code
+<code class="docutils literal notranslate"><span class="pre">0xC3A9</span></code> abgebildet.</p>
+<div class="admonition-frage admonition">
+<p class="admonition-title">Frage</p>
+<p>Was würde ein Programm, das von einer Latin-1-Kodierung ausgeht,
+in diesem Fall anzeigen?</p>
+</div>
+<p>Beispiele von 2-Byte-Codes sind in der zweiten und dritten der im Folgenden
+abgebildeten Codetabellen zu sehen. Dabei handelt es sich zum einen um die
+oberen 128 Zeichen der ISO-8859-1-Norm und zum anderen um griechische und
+koptische Zeichen im Unicode-Standard.</p>
+<p>Die in der vierten Codetabelle gezeigten mathematischen Symbole erfordern
+einen 3-Byte-Code, der sich wie im folgenden Beispiel für das Zeichen
+»∞« gezeigt aus dem Unicode Codepoint ergibt:</p>
+<a class="reference internal image-reference" href="_images/utf8_3.png"><img alt="_images/utf8_3.png" class="align-center" src="_images/utf8_3.png" style="height: 2.5cm;" /></a>
+<p>Aus 4 Bytes bestehende Codes ergeben sich durch entsprechende Verallgemeinerung
+für Codepoints zwischen <code class="docutils literal notranslate"><span class="pre">0x010000</span></code> und <code class="docutils literal notranslate"><span class="pre">0x10FFFF</span></code>, wobei der UTF-8-Code dann
+mit <code class="docutils literal notranslate"><span class="pre">0xF</span></code> beginnt.</p>
+<div class="figure align-default" id="fig-unicode0000">
+<img alt="_images/u0000.png" src="_images/u0000.png" />
+<p class="caption"><span class="caption-number">Abb. 6.1 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0000.pdf">0000‒007F</a>.
+Der Unicode Codepoint sowie die UTF-8-Kodierung sind für jedes Zeichen blau bzw. grün
+hinterlegt angegeben. Steuerzeichen sind grau hinterlegt.</span><a class="headerlink" href="#fig-unicode0000" title="Link zu diesem Bild">¶</a></p>
+</div>
+<div class="figure align-default" id="fig-unicode0080">
+<img alt="_images/u0080.png" src="_images/u0080.png" />
+<p class="caption"><span class="caption-number">Abb. 6.2 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0080.pdf">0080‒00FF</a>.
+Der Unicode Codepoint sowie die UTF-8-Kodierung sind für jedes Zeichen blau bzw. grün
+hinterlegt angegeben. Steuerzeichen sind grau hinterlegt.</span><a class="headerlink" href="#fig-unicode0080" title="Link zu diesem Bild">¶</a></p>
+</div>
+<div class="figure align-default" id="fig-unicode0380">
+<img alt="_images/u0380.png" src="_images/u0380.png" />
+<p class="caption"><span class="caption-number">Abb. 6.3 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0370.pdf">0380‒03FF</a>.
+Der Unicode Codepoint sowie die UTF-8-Kodierung sind für jedes Zeichen blau bzw. grün
+hinterlegt angegeben. Die grau hinterlegten Einträge sind derzeit nicht mit einem
+Zeichen belegt.</span><a class="headerlink" href="#fig-unicode0380" title="Link zu diesem Bild">¶</a></p>
+</div>
+<div class="figure align-default" id="fig-unicode2200">
+<img alt="_images/u2200.png" src="_images/u2200.png" />
+<p class="caption"><span class="caption-number">Abb. 6.4 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U2200.pdf">2200‒227F</a>.
+Der Unicode Codepoint sowie die UTF-8-Kodierung sind für jedes Zeichen blau bzw. grün
+hinterlegt angegeben.</span><a class="headerlink" href="#fig-unicode2200" title="Link zu diesem Bild">¶</a></p>
+</div>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="haralambous"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Eine ausführlichere Darstellung der Entwicklungsgeschichte von Zeichenkodierungen
+gibt Y. Haralambous, <em>Fonts &amp; Encodings</em> (O’Reilly, 2007).</p>
+</dd>
+</dl>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="floats.html" title="previous page"><span class="section-number">5. </span>Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Gert-Ludwig Ingold<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
