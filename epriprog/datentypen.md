@@ -22,11 +22,12 @@ Benutzereingabe in eine ganze Zahl oder als Ergebnis der
 vor. Ganz explizit war dies bei `True` der Fall, das zur Konstruktion einer
 Dauerschleife verwendet wurde.
 
-Diese beiden Datentypen, ganze Zahlen und Wahrheitswerte gehören zu den einfachen
-Datentypen. Daneben gibt es auch zusammengesetzte Datentypen, für die wir
-in {numref}`vorschau` ebenfalls schon Beispiele gesehen hatten. Dazu gehören die
-Zeichenketten, zum Beispiel in den Zeilen 12 bis 15, aber auch die durch eckige
-Klammern gekennzeichnete Liste in Zeile 11.
+Diese beiden Datentypen, ganze Zahlen und Wahrheitswerte gehören zu den
+einfachen Datentypen. Daneben gibt es auch zusammengesetzte Datentypen, für die
+wir in {numref}`vorschau` ebenfalls schon Beispiele gesehen hatten. Dazu
+gehören die Zeichenketten, zum Beispiel in den Zeilen 12 bis 15 des
+Beispielprogramms, aber auch die durch eckige Klammern
+gekennzeichnete Liste in Zeile 11.
 
 In diesem Kapitel werden wir uns zunächst den einfachen Datentypen zuwenden und
 die zusammengesetzten Datentypen in einem späteren Kapitel besprechen. Dabei
