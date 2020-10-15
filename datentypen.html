@@ -1191,13 +1191,20 @@ einbinden</p>
 </div>
 <p>Dieses Vorgehen ist allerdings nicht ganz unproblematisch, da man auf diese
 Weise einen unter Umständen großen Namensraum einbindet und damit potentiell
-unabsichtlich Funktionen definiert oder umdefiniert, wodurch die Funktionsweise
-des Programms fehlerhaft sein kann. Einer solchen Situation werden wir im nächsten
+unabsichtlich Funktionen definiert oder umdefiniert, wodurch die Funktion
+des Programms beeinträchtigt werden kann. Einer solchen Situation werden wir im nächsten
 Abschnitt noch begegnen.</p>
+<p>Jetzt wollen wir uns aber zunächst einen Überblick über die Funktionalität verschaffen,
+die uns das <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul zur Verfügung stellt. Nachdem wir das Modul schon weiter
+oben importiert haben, können wir uns eine Hilfetext ausgeben lassen, der alle definierten
+Funktionen und Konstanten zusammen mit einem erläuternden Text aufführt. Wir werden im Folgenden
+einige Aspekte diskutieren. Zuvor können Sie sich aber gerne anhand des Hilfetextes einen
+ersten Überblick über die Möglichkeiten verschaffen, die das <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul bietet.
+Beachten Sie dabei, dass das Modul im Laufe der Zeit weiterentwickelt wird. Es kann also sein,
+dass einzelne Funktionen in älteren Python-Versionen noch nicht vorhanden sind.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1479,172 +1486,350 @@ FILE
 </div>
 </div>
 </div>
-<p>Die nachfolgende Tabelle gibt die Funktionen des Moduls <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> an.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Funktion</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ceil(x)</span></code></p></td>
-<td><p>kleinste ganze Zahl größer oder gleich <code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">copysign(x,</span> <span class="pre">y)</span></code></p></td>
-<td><p>ergibt <code class="docutils literal notranslate"><span class="pre">x</span></code> mit dem Vorzeichen von <code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fabs(x)</span></code></p></td>
-<td><p>Absolutwert von <code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">factorial(x)</span></code></p></td>
-<td><p>Fakultät, nur für positive ganze Argumente</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">floor(x)</span></code></p></td>
-<td><p>größte ganze Zahl kleiner oder gleich <code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fmod(x,</span> <span class="pre">y)</span></code></p></td>
-<td><p>Modulofunktion für Gleitkommazahlen</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">frexp(x)</span></code></p></td>
-<td><p>ergibt Mantisse <code class="docutils literal notranslate"><span class="pre">m</span></code> und Exponent <code class="docutils literal notranslate"><span class="pre">e</span></code> für Basis 2</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fsum(z)</span></code></p></td>
-<td><p>Summe über <code class="docutils literal notranslate"><span class="pre">z</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> ist iterierbarer Datentyp</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcd(a,</span> <span class="pre">b)</span></code></p></td>
-<td><p>größter gemeinsamer Teiler der ganzen Zahlen <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">isclose(a,</span> <span class="pre">b)</span></code></p></td>
-<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> nahezu gleich sind <a class="footnote-reference brackets" href="#isclosedoc" id="id4">4</a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isfinite(x)</span></code></p></td>
-<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">x</span></code> weder unendlich noch <code class="docutils literal notranslate"><span class="pre">nan</span></code> (not a number) ist</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">isinf(x)</span></code></p></td>
-<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">x</span></code> unendlich ist</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isnan(x)</span></code></p></td>
-<td><p>überprüft ob <code class="docutils literal notranslate"><span class="pre">x</span></code> <code class="docutils literal notranslate"><span class="pre">nan</span></code> (not a number) ist</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ldexp(x,</span> <span class="pre">i)</span></code></p></td>
-<td><p>inverse Funktion zu <code class="docutils literal notranslate"><span class="pre">frexp</span></code>, gibt <code class="docutils literal notranslate"><span class="pre">x*(2**i)</span></code> zurück</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">modf(x)</span></code></p></td>
-<td><p>gibt Vor- und Nachkommaanteil als Gleitkommazahl zurück</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">remainder(x,</span> <span class="pre">y)</span></code></p></td>
-<td><p>Rest bei Division von x durch y nach IEEE 754 (ab Python 3.7)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trunc(x)</span></code></p></td>
-<td><p>schneidet Nachkommaanteil ab</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exp(x)</span></code></p></td>
-<td><p>Exponentialfunktion</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">expm1(x)</span></code></p></td>
-<td><p>Exponentialfunktion minus 1</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">log(x[,</span> <span class="pre">base])</span></code></p></td>
-<td><p>Logarithmus, ohne Angabe der Basis: natürlicher Logarithmus</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log1p(x)</span></code></p></td>
-<td><p>natürlicher Logarithmus von <code class="docutils literal notranslate"><span class="pre">x+1</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">log2(x)</span></code></p></td>
-<td><p>binärer Logarithmus</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log10(x)</span></code></p></td>
-<td><p>dekadischer Logarithmus</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pow(x,</span> <span class="pre">y)</span></code></p></td>
-<td><p><span class="math notranslate nohighlight">\(x^y\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sqrt(x)</span></code></p></td>
-<td><p>Quadratwurzel</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">acos(x)</span></code></p></td>
-<td><p>Arkuskosinus (im Bogenmaß)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">asin(x)</span></code></p></td>
-<td><p>Arkussinus (im Bogenmaß)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">atan(x)</span></code></p></td>
-<td><p>Arkustangens (im Bogenmaß)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">atan2(y,</span> <span class="pre">x)</span></code></p></td>
-<td><p>Arkustangens von <code class="docutils literal notranslate"><span class="pre">y/x</span></code> (im Bogenmaß)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cos(x)</span></code></p></td>
-<td><p>Kosinus (<code class="docutils literal notranslate"><span class="pre">x</span></code> im Bogenmaß)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hypot(x,</span> <span class="pre">y)</span></code></p></td>
-<td><p>Wurzel aus der Summe der Quadrate von <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sin(x)</span></code></p></td>
-<td><p>Sinus (<code class="docutils literal notranslate"><span class="pre">x</span></code> im Bogenmaß)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tan(x)</span></code></p></td>
-<td><p>Tangens (<code class="docutils literal notranslate"><span class="pre">x</span></code> im Bogenmaß)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">degrees(x)</span></code></p></td>
-<td><p>Umwandlung von Bogenmaß nach Grad</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">radians(x)</span></code></p></td>
-<td><p>Umwandlung von Grad nach Bogenmaß</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">acosh(x)</span></code></p></td>
-<td><p>Areakosinus Hyperbolicus</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">asinh(x)</span></code></p></td>
-<td><p>Areasinus Hyperbolicus</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">atanh(x)</span></code></p></td>
-<td><p>Areatangens Hyperbolicus</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cosh(x)</span></code></p></td>
-<td><p>Kosinus Hyperbolicus</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sinh(x)</span></code></p></td>
-<td><p>Sinus Hyperbolicus</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tanh(x)</span></code></p></td>
-<td><p>Tangens Hyperbolicus</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">erf(x)</span></code></p></td>
-<td><p>Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id5">5</a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">erfc(x)</span></code></p></td>
-<td><p>Komplement der Fehlerfunktion <a class="footnote-reference brackets" href="#fehlerfunktion" id="id6">5</a></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gamma(x)</span></code></p></td>
-<td><p>Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id7">6</a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lgamma(x)</span></code></p></td>
-<td><p>natürlicher Logarithmus des Betrags der Gammafunktion <a class="footnote-reference brackets" href="#gammafunktion" id="id8">6</a></p></td>
-</tr>
-</tbody>
-</table>
-<p>Außerdem werden die Kreiszahl π=3.14159… und die eulersche Zahl e=2.71828… definiert:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">degrees</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
-<span class="go">1.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">degrees</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
-<span class="go">180.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">e</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-<span class="go">1.0</span>
+<p>Zunächst stellen wir fest, dass die wichtigsten Funktionsklassen wie
+trigonometrische und hyperbolische Funktionen sowie ihre Inversen, Logarithmen
+und die Exponentialfunktion vorhanden sind. Hinzu kommt noch eine kleine Zahl
+speziellere Funktionen wie die Gamma- oder die Fehlerfunktion. Für andere
+spezielle Funktionen, beispielsweise Besselfunktionen, steht die numerische Bibliothek
+<strong class="program">SciPy</strong> zur Verfügung.</p>
+<p>Bei den trigonometrischen Funktionen muss man sich immer die Frage stellen, ob Winkel
+im Bogenmaß oder in Grad erwartet werden. Die trigonometrischen Funktionen aus dem
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul erwarten Argumente im Bogenmaß.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">sin</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Falls <code class="docutils literal notranslate"><span class="pre">e</span></code> bereits als Bezeichner für andere Zwecke benötigt wird, können Sie auch einen
-anderen Namen vergeben:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">e</span> <span class="k">as</span> <span class="n">euler_zahl</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">euler_zahl</span>
-<span class="go">2.718281828459045</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.8939966636005579, 1.0)
 </pre></div>
 </div>
-<p>Ab Python 3.6 ist das Doppelte der Kreiszahl als <code class="docutils literal notranslate"><span class="pre">math.tau</span></code> verfügbar.
-Außerdem sind noch <code class="docutils literal notranslate"><span class="pre">math.inf</span></code> für positiv Unendlich und <code class="docutils literal notranslate"><span class="pre">math.nan</span></code> für
-»not a number« definiert.</p>
+</div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="tip admonition">
+<p class="admonition-title">Tipp</p>
+<p>Python stellt mit <code class="docutils literal notranslate"><span class="pre">math.tau</span></code> auch die Konstante 2π zur Verfügung, die gelegentlich
+als <a class="reference external" href="https://tauday.com/tau-manifesto">fundamentalere Zahl</a> angesehen wird.</p>
+</div>
+</div>
+<p>Wie man sieht, liefert das Argument in Grad nicht das vielleicht erwartete
+Ergebnis <code class="docutils literal notranslate"><span class="pre">1</span></code>.  Anders ist dies, wenn man das Argument im Bogenmaß einsetzt. In
+diesem Beispiel haben wir übrigens auch ausgenutzt, dass das <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul
+einige konstanten definiert, unter anderem eben die Kreiszahl π und die
+eulersche Zahl e.</p>
+<p>Die Umrechnung zwischen Bogenmaß und Grad kann explizit mit einem Faktor <code class="docutils literal notranslate"><span class="pre">180/π</span></code>
+vornehmen oder die Funktionen <code class="xref py py-func docutils literal notranslate"><span class="pre">degrees()</span></code> und <code class="xref py py-func docutils literal notranslate"><span class="pre">radians()</span></code> heranziehen.
+Letzteres kann für die Lesbarkeit hilfreich sein. Damit können wir unser obiges
+Beispiel für Argumente in Grad anpassen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">radians</span>
+<span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-hinweis admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">sin()</span></code> hatten wir bereits weiter oben importiert und brauchen
+dies daher hier nicht mehr zu tun. In einem größeren Programm würde man
+normalerweise alle benötigten <code class="docutils literal notranslate"><span class="pre">import</span></code>-Anweisungen an den Anfang des Programms
+stellen.</p>
+</div>
+<p>Bei der Umrechnung zwischen kartesischen und Polarkoordinaten, deren Beziehung
+durch</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+x &amp;= r\cos(\varphi)\\
+y &amp;= r\sin(\varphi)
+\end{align}\end{split}\]</div>
+<p>gegeben ist, kann man den Arkustangens verwenden, um den zu den kartesischen Koordinaten
+<span class="math notranslate nohighlight">\((x,y)\)</span> gehörigen Winkel</p>
+<div class="math notranslate nohighlight">
+\[\varphi = \arctan\left(\frac{y}{x}\right)\]</div>
+<p>zu berechnen. Dazu muss man zunächst einmal wissen, dass der Arkustangens in Python
+durch die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">atan()</span></code> berechnet wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">atan</span><span class="p">,</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">degrees</span><span class="p">(</span><span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.99999999999999
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir erhalten also, bis auf einen Rundungsfehler, den erwarteten Winkel von <span class="math notranslate nohighlight">\(60^\circ\)</span>.</p>
+<p>Allerdings gibt es zwei Probleme. Zum einen kann der Punkt auf der <span class="math notranslate nohighlight">\(y\)</span>-Achse liegen.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">45</span><span class="o">-</span><span class="n">ff65a2210cca</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
+
+<span class="ne">ZeroDivisionError</span>: division by zero
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier kommt es überhaupt nicht zur Berechnung des Arkustangens, da schon die Division
+fehlschlägt. Das andere Probleme besteht darin, dass man nicht zwischen einem Punkt
+und dem am Ursprung gespiegelten Punkt unterscheiden kann.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">degrees</span><span class="p">(</span><span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.99999999999999
+</pre></div>
+</div>
+</div>
+</div>
+<p>Obwohl der Punkt im dritten Quadranten liegt, erhalten wir wieder das Ergebnis <span class="math notranslate nohighlight">\(60^\circ\)</span>,
+während das korrekte Ergebnis <span class="math notranslate nohighlight">\(240^\circ\)</span> wäre.</p>
+<p>Für solche Fälle stellt Python die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">atan2()</span></code> zur Verfügung.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">atan2</span>
+<span class="n">help</span><span class="p">(</span><span class="n">atan2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function atan2 in module math:
+
+atan2(y, x, /)
+    Return the arc tangent (measured in radians) of y/x.
+    
+    Unlike atan(y/x), the signs of both x and y are considered.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wichtig ist hier, dass das erste Argument der Zahl entspricht, die normalerweise im Zähler
+des Bruches stehen würde, bei uns also <code class="docutils literal notranslate"><span class="pre">y</span></code>. Unsere Beispiel würde dann folgendermaßen
+aussehen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">degrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">degrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-120.00000000000001
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir erhalten also die erwarteten Ergebnisse, da <span class="math notranslate nohighlight">\(-120^\circ\)</span> äquivalent zu <span class="math notranslate nohighlight">\(240^\circ\)</span> ist.</p>
+<p>Im Zusammenhang mit der Umrechnung zwischen kartesischen und Polarkoordinaten hat man
+bei der Berechnung des Abstands</p>
+<div class="math notranslate nohighlight">
+\[r = \sqrt{x^2+y^2}\]</div>
+<p>die Wahl, diesen Ausdruck explizit hinzuschreiben oder die in Python vorhandene
+<code class="xref py py-func docutils literal notranslate"><span class="pre">hypot()</span></code>-Funktion zu verwenden. Letzteres kann unter anderem dazu dienen, den
+Code lesbarer zu machen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">hypot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.23606797749979, 2.23606797749979)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Name dieser Funktion erklört sich daraus, dass hier die Länge der Hypothenuse
+berechnet wird. Verwandt hiermit ist die <code class="xref py py-func docutils literal notranslate"><span class="pre">dist()</span></code>-Funktion, die den Abstand
+zweier Punkte berechnet. Sowohl <code class="xref py py-func docutils literal notranslate"><span class="pre">dist()</span></code> als auch <code class="xref py py-func docutils literal notranslate"><span class="pre">hypot()</span></code> funktionieren
+auch in mehr als zwei Dimensionen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">dist</span>
+<span class="n">dist</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7320508075688772
+</pre></div>
+</div>
+</div>
+</div>
+<p>In diesem Beispiel ergibt sich wie erwartet die Wurzel aus 3.</p>
+<div class="admonition-hinweis admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Die Verwendung von <code class="xref py py-func docutils literal notranslate"><span class="pre">dist()</span></code> sowie von <code class="xref py py-func docutils literal notranslate"><span class="pre">hypot()</span></code> in mehr als zwei Dimensionen
+erfordert mindestens Python 3.8.</p>
+</div>
+<p>Eine weitere wichtige Klasse von Funktionen, die vom <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul zur Verfügung
+gestellt werden, sind die Logarithmen und die Exponentialfunktion. Hier muss man
+vor allem zwischen dem natürlichen Logarithmus, der häufig als „ln‟ geschrieben wird,
+und dem Zehner- oder dekadischen Logarithmus unterscheiden. In Python wird der natürliche
+Logarithmus mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">log()</span></code>-Funktion berechnet und für den dekadischen Logarithmus
+gibt es die <code class="xref py py-func docutils literal notranslate"><span class="pre">log10()</span></code>-Funktion. Die gleiche Namensbezeichnungen werden zum Beispiel
+in C, Fortran und Julia verwendet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">e</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">log10</span>
+<span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">log10</span><span class="p">(</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, -3.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-hinweis admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Die <code class="xref py py-func docutils literal notranslate"><span class="pre">log()</span></code>-Funktion akzeptiert noch ein zweites Argument, das dann die Basis
+angibt. Damit könnte man den dekadischen Logarithmus auch mit <code class="docutils literal notranslate"><span class="pre">log(x,</span> <span class="pre">10)</span></code> berechnen,
+was aber potentiell ungenauer ist als <code class="docutils literal notranslate"><span class="pre">log10(x)</span></code>.</p>
+</div>
+<p>Neben dem natürlichen Logarithmus <code class="xref py py-func docutils literal notranslate"><span class="pre">log()</span></code> und der Exponentialfunction <code class="xref py py-func docutils literal notranslate"><span class="pre">exp()</span></code> stellt
+Python auch noch die Funktionen <code class="xref py py-func docutils literal notranslate"><span class="pre">log1p()</span></code> und <code class="xref py py-func docutils literal notranslate"><span class="pre">expm1()</span></code> zur Verfügung. Wozu diese
+beiden Funktionen erforderlich sind, wollen wir uns nun ansehen.</p>
+<p>Mathematisch stellen Quotienten zweier Funktionen ein Problem dar, wenn sie auf einen Ausdruck
+der Form <span class="math notranslate nohighlight">\(0/0\)</span> führen. Man muss dann eine geeignete Grenzwertbildung durchführen oder kann zum
+Beispiel den Satz von l’Hôpital anwenden. Numerisch wird das Problem noch dadurch schwieriger,
+dass Gleitkommazahlen nach einer gewissen Anzahl von Nachkommastellen abgeschnitten werden.</p>
+<p>Wenn wir also beispielsweise den Grenzwert</p>
+<div class="math notranslate nohighlight">
+\[\lim_{x\to 0} \frac{\mathrm{e}^x-1}{x}\]</div>
+<p>numerisch bestimmen wollen, kann es für kleine Werte von <span class="math notranslate nohighlight">\(x\)</span> zu Problemen kommen. Wir könnten
+zwar für hinreichend kleine Werte von <span class="math notranslate nohighlight">\(x\)</span> den Zähler mit Hilfe der Taylorreihe für die
+Exponentialfunktion</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{e}^x = \sum_{n=0}^\infty\frac{x^n}{n!}\]</div>
+<p>annähern, aber
+die <code class="xref py py-func docutils literal notranslate"><span class="pre">expm1()</span></code>-Funktion nimmt uns diese Arbeit ab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">expm1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">0.00001</span>
+<span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">expm1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0000050000069649e-05, 1.0000050000166668e-05)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit Hilfe der führenden Terme der zugehörigen Taylorreihe wird deutlich, dass das Resultat
+der <code class="xref py py-func docutils literal notranslate"><span class="pre">expm1()</span></code>-Funktion das richtige ist. Die weiteren Terme sind zu klein, um einen
+Unterschied zu machen, und da sie positiv sind, würden Sie den Abstand zum Resultat der
+<code class="xref py py-func docutils literal notranslate"><span class="pre">exp()</span></code>-Funktion ohnehin nur weiter vergrößern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.00001</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000050000166668e-05
+</pre></div>
+</div>
+</div>
+</div>
+<p>In <a class="reference internal" href="#fig-expm1"><span class="std std-numref">Abb. 3.1</span></a> ist der Unterschied der beiden Berechnungsweisen als Funktion von x
+zu sehen. Die durchgezogene Linie ist mit der <code class="xref py py-func docutils literal notranslate"><span class="pre">expm1()</span></code>-Funktion berechnet. Sie läuft
+in korrekter Weise gegen den Grenzwerten, was man in dieser Auftragung daran sieht, dass
+die Abweichung <span class="math notranslate nohighlight">\(f(x)-1\)</span> vom Grenzwert gegen Null geht. Die blauen Punkte sind dagegen mit
+der <code class="xref py py-func docutils literal notranslate"><span class="pre">exp()</span></code>-Funktion berechnet. Hier sieht man deutliche Abweichungen unterhalb von
+<span class="math notranslate nohighlight">\(x \lesssim 10^{-8}\)</span>, die in der Praxis das gesuchte Ergebnis unter Umständen entscheidend
+verfälschen könnten.</p>
+<div class="figure align-default" id="fig-expm1">
+<a class="reference internal image-reference" href="images/datentypen/expm1.png"><img alt="images/datentypen/expm1.png" src="images/datentypen/expm1.png" style="height: 8cm;" /></a>
+<p class="caption"><span class="caption-number">Abb. 3.1 </span><span class="caption-text">Vergleich von <code class="docutils literal notranslate"><span class="pre">exp(x)-1</span></code> (Punkte) und <code class="docutils literal notranslate"><span class="pre">expm1(x)</span></code> (durchgezogene Linie) durch Betrachtung des
+Grenzwerts von <span class="math notranslate nohighlight">\(f(x) = (\mathrm{e}^x-1)/x\)</span>.</span><a class="headerlink" href="#fig-expm1" title="Link zu diesem Bild">¶</a></p>
+</div>
+<p>Der Logarithmus geht für das Argument 1 durch Null, so dass dort Argumente in
+der Nähe von 1 einer besonderen Behandlung bedürfen. Hierzu steht in Python für den
+natürlichen Logarithmus die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">log1p()</span></code> zur Verfügung.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log1p</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">),</span> <span class="n">log1p</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9.999950000398841e-06, 9.999950000333332e-06)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Auch hier kann man sich durch Auswertung der führenden Term der Taylorreihe von</p>
+<div class="math notranslate nohighlight">
+\[\log(1+x) = \sum_{n=1}^\infty\frac{(-1)^{n+1}x^n}{n}\]</div>
+<p>davon überzeugen, dass <code class="xref py py-func docutils literal notranslate"><span class="pre">log1p()</span></code> bis auf Rundungsfehler den korrekten Wert liefert.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.999950000333334e-06
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="komplexe-zahlen">
 <h2><span class="section-number">3.4. </span>Komplexe Zahlen<a class="headerlink" href="#komplexe-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
@@ -1821,7 +2006,7 @@ die Großbuchstaben an Höcker eines Kamels erinnern. Details zu den in Python
 empfohlenen Konventionen für Bezeichner finden Sie im Python Enhancement Proposal <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a>
 mit dem Titel »Style Guide for Python Code« im Abschnitt <em>Naming Conventions</em>.</p>
 <p>Die folgenden Schlüsselwörter sind in Python als Sprachelemente reserviert und dürfen
-nicht für Bezeichner verwendet werden <a class="footnote-reference brackets" href="#keywords" id="id9">7</a>::</p>
+nicht für Bezeichner verwendet werden <a class="footnote-reference brackets" href="#keywords" id="id4">4</a>::</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">assert</span>      <span class="k">continue</span>   <span class="k">except</span>    <span class="k">if</span>        <span class="k">nonlocal</span>  <span class="k">return</span>
 <span class="kc">None</span>      <span class="k">async</span>       <span class="k">def</span>        <span class="nf">finally</span>   <span class="kn">import</span>    <span class="nn">not</span>       <span class="k">try</span>  
 <span class="kc">True</span>      <span class="k">await</span>       <span class="k">del</span>        <span class="k">for</span>       <span class="ow">in</span>        <span class="ow">or</span>        <span class="k">while</span> 
@@ -2216,7 +2401,7 @@ erreicht man durch Angabe des Buchstabens <code class="docutils literal notransl
 </pre></div>
 </div>
 <p>Hier wird durch den Wechsel der Darstellung insbesondere sichergestellt, dass
-immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id10">8</a></p>
+immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id5">5</a></p>
 <p>Betrachten wir nun noch die Formatierung von Integers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{0}</span><span class="s2">|</span><span class="si">{0:5}</span><span class="s2">|</span><span class="si">{0:05}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
@@ -2229,7 +2414,7 @@ immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="fo
 nicht weglassen?</p>
 </div>
 <p>Integers in Dezimaldarstellung benötigen keinen Buchstaben zur
-Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id11">9</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
+Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id6">6</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
 die Feldbreite festlegen.  Gibt man vor der Feldbreite eine Null an, so wird
 das Feld vor der auszugebenden Zahl mit Nullen aufgefüllt. Dies kann zum
 Beispiel bei der Ausgabe in anderen Zahlensystemen interessant sein. Python
@@ -2278,31 +2463,17 @@ weiter unten stehende Operatoren Vorrang haben.</p>
 <dd><p><a class="reference external" href="http://docs.python.org/glossary.html#term-duck-typing">docs.python.org/glossary.html#term-duck-typing</a>. Kritiker
 halten dem entgegen, dass sich auch ein Drache wie eine Ente verhalten kann.</p>
 </dd>
-<dt class="label" id="isclosedoc"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>Standardmäßig wird ein relativer Fehler von <span class="math notranslate nohighlight">\(10^{-9}\)</span> zugelassen. Die
-<a class="reference external" href="https://docs.python.org/3/library/math.html#math.isclose">Dokumentation von isclose</a>
-beschreibt, wie man den relativen und absoluten Fehler selbst setzen kann.</p>
-</dd>
-<dt class="label" id="fehlerfunktion"><span class="brackets">5</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>)</span></dt>
-<dd><p>Die Fehlerfunktion ist das normierte Integral über die Gaußfunktion
-von Null bis zu dem durch das Argument gegebenen Wert. Das Komplement der Fehlerfunktion
-ist die Differenz zwischen 1 und dem Wert der Fehlerfunktion.</p>
-</dd>
-<dt class="label" id="gammafunktion"><span class="brackets">6</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>)</span></dt>
-<dd><p>Für positive ganze Zahlen entspricht die Gammafunktion der Fakultät des
-um Eins verminderten Arguments.</p>
-</dd>
-<dt class="label" id="keywords"><span class="brackets"><a class="fn-backref" href="#id9">7</a></span></dt>
+<dt class="label" id="keywords"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Bei Bedarf kann die Liste der Schlüsselwörter mit Hilfe des <code class="docutils literal notranslate"><span class="pre">keyword</span></code>-Moduls
 und Verwendung der Anweisung <code class="docutils literal notranslate"><span class="pre">keyword.kwlist</span></code> erhalten werden.</p>
 </dd>
-<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id10">8</a></span></dt>
+<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p>Die genaue Regel für die Umstellung der Darstellungsart kann man in der
 Dokumentation der Python-Standardbibliothek unter [6.1.3.1. Format Specification Mini-Language]
 (http://docs.python.org/3/library/string.html#formatspec)
 nachlesen.</p>
 </dd>
-<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id11">9</a></span></dt>
+<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
 <dd><p>Wenn man unbedingt möchte, kann man <code class="docutils literal notranslate"><span class="pre">d</span></code> für Dezimaldarstellung angeben.</p>
 </dd>
 </dl>

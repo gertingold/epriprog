@@ -651,102 +651,248 @@ log(10)
 
 Dieses Vorgehen ist allerdings nicht ganz unproblematisch, da man auf diese
 Weise einen unter Umständen großen Namensraum einbindet und damit potentiell
-unabsichtlich Funktionen definiert oder umdefiniert, wodurch die Funktionsweise
-des Programms fehlerhaft sein kann. Einer solchen Situation werden wir im nächsten
+unabsichtlich Funktionen definiert oder umdefiniert, wodurch die Funktion
+des Programms beeinträchtigt werden kann. Einer solchen Situation werden wir im nächsten
 Abschnitt noch begegnen.
+
+Jetzt wollen wir uns aber zunächst einen Überblick über die Funktionalität verschaffen,
+die uns das {mod}`math`-Modul zur Verfügung stellt. Nachdem wir das Modul schon weiter
+oben importiert haben, können wir uns eine Hilfetext ausgeben lassen, der alle definierten
+Funktionen und Konstanten zusammen mit einem erläuternden Text aufführt. Wir werden im Folgenden
+einige Aspekte diskutieren. Zuvor können Sie sich aber gerne anhand des Hilfetextes einen
+ersten Überblick über die Möglichkeiten verschaffen, die das {mod}`math`-Modul bietet.
+Beachten Sie dabei, dass das Modul im Laufe der Zeit weiterentwickelt wird. Es kann also sein,
+dass einzelne Funktionen in älteren Python-Versionen noch nicht vorhanden sind.
 
 ```{code-cell} python
 ---
 tags: ["output_scroll"]
 ---
-import math
 help(math)
 ```    
 
-Die nachfolgende Tabelle gibt die Funktionen des Moduls {mod}`math` an.
+Zunächst stellen wir fest, dass die wichtigsten Funktionsklassen wie
+trigonometrische und hyperbolische Funktionen sowie ihre Inversen, Logarithmen
+und die Exponentialfunktion vorhanden sind. Hinzu kommt noch eine kleine Zahl
+speziellere Funktionen wie die Gamma- oder die Fehlerfunktion. Für andere
+spezielle Funktionen, beispielsweise Besselfunktionen, steht die numerische Bibliothek
+{program}`SciPy` zur Verfügung.
 
-| Name              | Funktion                                                                     |
-|-------------------|------------------------------------------------------------------------------|
-|``ceil(x)``        | kleinste ganze Zahl größer oder gleich ``x``                                 |
-|``copysign(x, y)`` | ergibt ``x`` mit dem Vorzeichen von ``y``                                    |
-|``fabs(x)``        | Absolutwert von ``x``                                                        |   
-|``factorial(x)``   | Fakultät, nur für positive ganze Argumente                                   |
-|``floor(x)``       | größte ganze Zahl kleiner oder gleich ``x``                                  |   
-|``fmod(x, y)``     | Modulofunktion für Gleitkommazahlen                                          |
-|``frexp(x)``       | ergibt Mantisse ``m`` und Exponent ``e`` für Basis 2                         |
-|``fsum(z)``        | Summe über ``z``, ``z`` ist iterierbarer Datentyp                            |
-|``gcd(a, b)``      | größter gemeinsamer Teiler der ganzen Zahlen ``a`` und ``b``                 |
-|``isclose(a, b)``  | überprüft ob ``a`` und ``b`` nahezu gleich sind [^isclosedoc]                |
-|``isfinite(x)``    | überprüft ob ``x`` weder unendlich noch ``nan`` (not a number) ist           |
-|``isinf(x)``       | überprüft ob ``x`` unendlich ist                                             |
-|``isnan(x)``       | überprüft ob ``x`` ``nan`` (not a number) ist                                |
-|``ldexp(x, i)``    | inverse Funktion zu ``frexp``, gibt ``x*(2**i)`` zurück                      |
-|``modf(x)``        | gibt Vor- und Nachkommaanteil als Gleitkommazahl zurück                      |
-|``remainder(x, y)``| Rest bei Division von x durch y nach IEEE 754 (ab Python 3.7)                |
-|``trunc(x)``       | schneidet Nachkommaanteil ab                                                 |
-|``exp(x)``         | Exponentialfunktion                                                          |
-|``expm1(x)``       | Exponentialfunktion minus 1                                                  |
-|``log(x[, base])`` | Logarithmus, ohne Angabe der Basis: natürlicher Logarithmus                  |
-|``log1p(x)``       | natürlicher Logarithmus von ``x+1``                                          |
-|``log2(x)``        | binärer Logarithmus                                                          |
-|``log10(x)``       | dekadischer Logarithmus                                                      |
-|``pow(x, y)``      | {math}`x^y`                                                                  |
-|``sqrt(x)``        | Quadratwurzel                                                                |
-|``acos(x)``        | Arkuskosinus (im Bogenmaß)                                                   |
-|``asin(x)``        | Arkussinus (im Bogenmaß)                                                     |
-|``atan(x)``        | Arkustangens (im Bogenmaß)                                                   |
-|``atan2(y, x)``    | Arkustangens von ``y/x`` (im Bogenmaß)                                       |
-|``cos(x)``         | Kosinus (``x`` im Bogenmaß)                                                  |
-|``hypot(x, y)``    | Wurzel aus der Summe der Quadrate von ``x`` und ``y``                        |
-|``sin(x)``         | Sinus (``x`` im Bogenmaß)                                                    |
-|``tan(x)``         | Tangens (``x`` im Bogenmaß)                                                  |
-|``degrees(x)``     | Umwandlung von Bogenmaß nach Grad                                            |
-|``radians(x)``     | Umwandlung von Grad nach Bogenmaß                                            |
-|``acosh(x)``       | Areakosinus Hyperbolicus                                                     |
-|``asinh(x)``       | Areasinus Hyperbolicus                                                       |
-|``atanh(x)``       | Areatangens Hyperbolicus                                                     |
-|``cosh(x)``        | Kosinus Hyperbolicus                                                         |
-|``sinh(x)``        | Sinus Hyperbolicus                                                           |
-|``tanh(x)``        | Tangens Hyperbolicus                                                         |
-|``erf(x)``         | Fehlerfunktion [^fehlerfunktion]                                             |
-|``erfc(x)``        | Komplement der Fehlerfunktion [^fehlerfunktion]                              |
-|``gamma(x)``       | Gammafunktion [^gammafunktion]                                               |
-|``lgamma(x)``      | natürlicher Logarithmus des Betrags der Gammafunktion [^gammafunktion]       |
+Bei den trigonometrischen Funktionen muss man sich immer die Frage stellen, ob Winkel
+im Bogenmaß oder in Grad erwartet werden. Die trigonometrischen Funktionen aus dem
+{mod}`math`-Modul erwarten Argumente im Bogenmaß. 
+```{code-cell} python
+from math import sin, pi
+sin(90), sin(0.5*pi)
+```
+````{margin}
+```{admonition} Tipp
+:class: tip
+Python stellt mit `math.tau` auch die Konstante 2π zur Verfügung, die gelegentlich
+als [fundamentalere Zahl](https://tauday.com/tau-manifesto) angesehen wird.
+```
+````
+Wie man sieht, liefert das Argument in Grad nicht das vielleicht erwartete
+Ergebnis `1`.  Anders ist dies, wenn man das Argument im Bogenmaß einsetzt. In
+diesem Beispiel haben wir übrigens auch ausgenutzt, dass das {mod}`math`-Modul
+einige konstanten definiert, unter anderem eben die Kreiszahl π und die
+eulersche Zahl e.
 
-[^isclosedoc]: Standardmäßig wird ein relativer Fehler von {math}`10^{-9}` zugelassen. Die
-    [Dokumentation von isclose](https://docs.python.org/3/library/math.html#math.isclose)
-    beschreibt, wie man den relativen und absoluten Fehler selbst setzen kann.
-[^fehlerfunktion]: Die Fehlerfunktion ist das normierte Integral über die Gaußfunktion
-    von Null bis zu dem durch das Argument gegebenen Wert. Das Komplement der Fehlerfunktion
-    ist die Differenz zwischen 1 und dem Wert der Fehlerfunktion.
-[^gammafunktion]: Für positive ganze Zahlen entspricht die Gammafunktion der Fakultät des
-     um Eins verminderten Arguments.
-
-Außerdem werden die Kreiszahl π=3.14159… und die eulersche Zahl e=2.71828… definiert:
-
-```{code-block} python
->>> from math import sin, pi, degrees
->>> sin(0.5*pi)
-1.0
->>> degrees(pi)
-180.0
->>> from math import log, e
->>> log(e)
-1.0
+Die Umrechnung zwischen Bogenmaß und Grad kann explizit mit einem Faktor `180/π`
+vornehmen oder die Funktionen {func}`degrees` und {func}`radians` heranziehen.
+Letzteres kann für die Lesbarkeit hilfreich sein. Damit können wir unser obiges
+Beispiel für Argumente in Grad anpassen.
+```{code-cell} python
+from math import radians
+sin(radians(90))
 ```
 
-Falls ``e`` bereits als Bezeichner für andere Zwecke benötigt wird, können Sie auch einen
-anderen Namen vergeben:
-
-```{code-block} python
->>> from math import e as euler_zahl
->>> euler_zahl
-2.718281828459045
+```{admonition} Hinweis
+Die Funktion {func}`sin` hatten wir bereits weiter oben importiert und brauchen
+dies daher hier nicht mehr zu tun. In einem größeren Programm würde man
+normalerweise alle benötigten `import`-Anweisungen an den Anfang des Programms
+stellen.
 ```
 
-Ab Python 3.6 ist das Doppelte der Kreiszahl als ``math.tau`` verfügbar.
-Außerdem sind noch ``math.inf`` für positiv Unendlich und ``math.nan`` für
-»not a number« definiert.
+Bei der Umrechnung zwischen kartesischen und Polarkoordinaten, deren Beziehung
+durch
+
+$$\begin{align}
+x &= r\cos(\varphi)\\
+y &= r\sin(\varphi)
+\end{align}$$
+
+gegeben ist, kann man den Arkustangens verwenden, um den zu den kartesischen Koordinaten
+$(x,y)$ gehörigen Winkel
+
+$$\varphi = \arctan\left(\frac{y}{x}\right)$$
+
+zu berechnen. Dazu muss man zunächst einmal wissen, dass der Arkustangens in Python
+durch die Funktion {func}`atan` berechnet wird.
+```{code-cell} pathon
+from math import atan, degrees, sqrt
+x = 1
+y = sqrt(3)
+degrees(atan(y/x))
+```
+Wir erhalten also, bis auf einen Rundungsfehler, den erwarteten Winkel von $60^\circ$.
+
+Allerdings gibt es zwei Probleme. Zum einen kann der Punkt auf der $y$-Achse liegen.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+x = 0
+y = 1
+atan(y/x)
+```
+Hier kommt es überhaupt nicht zur Berechnung des Arkustangens, da schon die Division
+fehlschlägt. Das andere Probleme besteht darin, dass man nicht zwischen einem Punkt
+und dem am Ursprung gespiegelten Punkt unterscheiden kann.
+```{code-cell} python
+x = -1
+y = -sqrt(3)
+degrees(atan(y/x))
+```
+Obwohl der Punkt im dritten Quadranten liegt, erhalten wir wieder das Ergebnis $60^\circ$,
+während das korrekte Ergebnis $240^\circ$ wäre.
+
+Für solche Fälle stellt Python die Funktion {func}`atan2` zur Verfügung.
+```{code-cell} python
+from math import atan2
+help(atan2)
+```
+Wichtig ist hier, dass das erste Argument der Zahl entspricht, die normalerweise im Zähler
+des Bruches stehen würde, bei uns also `y`. Unsere Beispiel würde dann folgendermaßen 
+aussehen:
+```{code-cell} python
+x = 0
+y = 1
+degrees(atan2(y, x))
+```
+```{code-cell} python
+x = -1
+y = -sqrt(3)
+degrees(atan2(y, x))
+```
+Wir erhalten also die erwarteten Ergebnisse, da $-120^\circ$ äquivalent zu $240^\circ$ ist.
+
+Im Zusammenhang mit der Umrechnung zwischen kartesischen und Polarkoordinaten hat man
+bei der Berechnung des Abstands
+
+$$r = \sqrt{x^2+y^2}$$
+
+die Wahl, diesen Ausdruck explizit hinzuschreiben oder die in Python vorhandene
+{func}`hypot`-Funktion zu verwenden. Letzteres kann unter anderem dazu dienen, den
+Code lesbarer zu machen.
+```{code-cell} python
+x = 1
+y = 2
+sqrt(x**2 + y**2), hypot(x, y)
+```
+Der Name dieser Funktion erklört sich daraus, dass hier die Länge der Hypothenuse
+berechnet wird. Verwandt hiermit ist die {func}`dist`-Funktion, die den Abstand
+zweier Punkte berechnet. Sowohl {func}`dist` als auch {func}`hypot` funktionieren
+auch in mehr als zwei Dimensionen.
+```{code-cell} python
+from math import dist
+dist((1, 2, 3), (2, 1, 4))
+```
+In diesem Beispiel ergibt sich wie erwartet die Wurzel aus 3.
+
+```{admonition} Hinweis
+Die Verwendung von {func}`dist` sowie von {func}`hypot` in mehr als zwei Dimensionen
+erfordert mindestens Python 3.8.
+```
+
+Eine weitere wichtige Klasse von Funktionen, die vom {mod}`math`-Modul zur Verfügung
+gestellt werden, sind die Logarithmen und die Exponentialfunktion. Hier muss man 
+vor allem zwischen dem natürlichen Logarithmus, der häufig als „ln‟ geschrieben wird,
+und dem Zehner- oder dekadischen Logarithmus unterscheiden. In Python wird der natürliche
+Logarithmus mit Hilfe der {func}`log`-Funktion berechnet und für den dekadischen Logarithmus
+gibt es die {func}`log10`-Funktion. Die gleiche Namensbezeichnungen werden zum Beispiel
+in C, Fortran und Julia verwendet.
+```{code-cell} python
+from math import e, log, log10
+log(e**2), log10(10**-3)
+```
+
+```{admonition} Hinweis
+Die {func}`log`-Funktion akzeptiert noch ein zweites Argument, das dann die Basis
+angibt. Damit könnte man den dekadischen Logarithmus auch mit `log(x, 10)` berechnen,
+was aber potentiell ungenauer ist als `log10(x)`.
+```
+
+Neben dem natürlichen Logarithmus {func}`log` und der Exponentialfunction {func}`exp` stellt
+Python auch noch die Funktionen {func}`log1p` und {func}`expm1` zur Verfügung. Wozu diese
+beiden Funktionen erforderlich sind, wollen wir uns nun ansehen.
+
+Mathematisch stellen Quotienten zweier Funktionen ein Problem dar, wenn sie auf einen Ausdruck
+der Form $0/0$ führen. Man muss dann eine geeignete Grenzwertbildung durchführen oder kann zum
+Beispiel den Satz von l'Hôpital anwenden. Numerisch wird das Problem noch dadurch schwieriger,
+dass Gleitkommazahlen nach einer gewissen Anzahl von Nachkommastellen abgeschnitten werden.
+
+Wenn wir also beispielsweise den Grenzwert
+
+$$\lim_{x\to 0} \frac{\mathrm{e}^x-1}{x}$$
+
+numerisch bestimmen wollen, kann es für kleine Werte von $x$ zu Problemen kommen. Wir könnten
+zwar für hinreichend kleine Werte von $x$ den Zähler mit Hilfe der Taylorreihe für die 
+Exponentialfunktion
+
+$$\mathrm{e}^x = \sum_{n=0}^\infty\frac{x^n}{n!}$$
+
+annähern, aber
+die {func}`expm1`-Funktion nimmt uns diese Arbeit ab.
+```{code-cell} python
+from math import expm1
+x = 0.00001
+exp(x)-1, expm1(x)
+```
+Mit Hilfe der führenden Terme der zugehörigen Taylorreihe wird deutlich, dass das Resultat
+der {func}`expm1`-Funktion das richtige ist. Die weiteren Terme sind zu klein, um einen
+Unterschied zu machen, und da sie positiv sind, würden Sie den Abstand zum Resultat der
+{func}`exp`-Funktion ohnehin nur weiter vergrößern.
+```{code-cell} python
+x = 0.00001
+x + x**2/2 + x**3/6
+```
+
+In {numref}`fig:expm1` ist der Unterschied der beiden Berechnungsweisen als Funktion von x
+zu sehen. Die durchgezogene Linie ist mit der {func}`expm1`-Funktion berechnet. Sie läuft
+in korrekter Weise gegen den Grenzwerten, was man in dieser Auftragung daran sieht, dass
+die Abweichung $f(x)-1$ vom Grenzwert gegen Null geht. Die blauen Punkte sind dagegen mit
+der {func}`exp`-Funktion berechnet. Hier sieht man deutliche Abweichungen unterhalb von
+$x \lesssim 10^{-8}$, die in der Praxis das gesuchte Ergebnis unter Umständen entscheidend
+verfälschen könnten.
+```{figure} images/datentypen/expm1.png
+---
+height: 8cm
+name: fig:expm1
+---
+Vergleich von `exp(x)-1` (Punkte) und `expm1(x)` (durchgezogene Linie) durch Betrachtung des
+Grenzwerts von $f(x) = (\mathrm{e}^x-1)/x$.
+```
+
+Der Logarithmus geht für das Argument 1 durch Null, so dass dort Argumente in
+der Nähe von 1 einer besonderen Behandlung bedürfen. Hierzu steht in Python für den
+natürlichen Logarithmus die Funktion {func}`log1p` zur Verfügung.
+```{code-cell} python
+from math import log1p
+x = 1e-5
+log(1+x), log1p(x)
+```
+Auch hier kann man sich durch Auswertung der führenden Term der Taylorreihe von
+
+$$\log(1+x) = \sum_{n=1}^\infty\frac{(-1)^{n+1}x^n}{n}$$
+
+davon überzeugen, dass {func}`log1p` bis auf Rundungsfehler den korrekten Wert liefert.
+```{code-cell} python
+x = 1e-5
+x - x**2/2 + x**3/3
+```
+
+
 
 ## Komplexe Zahlen
 
