@@ -6,7 +6,7 @@ logo          : ""
 
 repository:
   url: https//github.com/gertingold/epriprog
-  path_to_book: manuskript/epriprog
+  path_to_book: epriprog
 
 html:
   use_repository_button: false
