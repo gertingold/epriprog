@@ -59,7 +59,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
-    <link rel="next" title="4. Anhang: Zahlensysteme" href="zahlensysteme.html" />
+    <link rel="next" title="4. Kontrollstrukturen" href="kontrollstrukturen.html" />
     <link rel="prev" title="2. Eine Vorschau" href="vorschau.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -108,18 +108,53 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="kontrollstrukturen.html">
+   4. Kontrollstrukturen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="funktionen.html">
+   5. Funktionen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sequenzen.html">
+   6. Zusammengesetzte Datentypen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="einausgabe.html">
+   7. Ein- und Ausgabe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   8. Numerische Programmbibliotheken am Beispiel von NumPy/SciPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="objektorientiert.html">
+   9. Objektorientiertes Programmieren
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="grafik.html">
+   10. Erstellung von Grafiken
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="zahlensysteme.html">
-   4. Anhang: Zahlensysteme
+   11. Anhang: Zahlensysteme
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="floats.html">
-   5. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
+   12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unicode.html">
-   6. Anhang: Unicode
+   13. Anhang: Unicode
   </a>
  </li>
 </ul>
@@ -321,7 +356,7 @@ können, auch in Python beschränkt sind. Allerdings wird diese Beschränkung au
 modernen Computern selten ein Problem darstellen.</p>
 <p>Wie ganze Zahlen im Computer dargestellt werden und was das für die
 größenmäßige Einschränkung des Zahlenbereichs bedeutet, werden wir in einem
-Anhang in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 4</span></a> diskutieren.  Dort werden auch die
+Anhang in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 11</span></a> diskutieren.  Dort werden auch die
 Grundlagen des Dualsystems erklärt, das der Darstellung von Zahlen mit Hilfe
 von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun stärker der
 praktischen Arbeit mit Integers zuwenden.</p>
@@ -359,7 +394,7 @@ und würde dann ein Ergebnis mit 30103 Stellen erhalten.</p>
 keine Rolle, sondern dienen hier der besseren Lesbarkeit.</p>
 <p>In Python kann man auch mit Dual-, Oktal- und Hexadezimalzahlen arbeiten. Eine
 Einführung in Zahlensysteme, insbesondere das Dual- und das Hexadezimalsystem
-wird in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 4</span></a> gegeben. Um zwischen den verschiedenen
+wird in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 11</span></a> gegeben. Um zwischen den verschiedenen
 Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwar
 <code class="docutils literal notranslate"><span class="pre">0b</span></code> oder <code class="docutils literal notranslate"><span class="pre">0B</span></code> für das Dualsystem, <code class="docutils literal notranslate"><span class="pre">0o</span></code> oder <code class="docutils literal notranslate"><span class="pre">0O</span></code> für das Oktalsystem
 sowie <code class="docutils literal notranslate"><span class="pre">0x</span></code> oder <code class="docutils literal notranslate"><span class="pre">0X</span></code> für das Hexadezimalsystem. Die folgenden drei Darstellungen
@@ -841,7 +876,7 @@ dabei ein <code class="docutils literal notranslate"><span class="pre">e</span><
 </div>
 <p>Da Dezimalzahlen im Allgemeinen keine endliche Binärdarstellung besitzen, kann
 es bei der Umwandlung in die Binärdarstellung zu Rundungsfehlern kommen.
-In <a class="reference internal" href="zahlensysteme.html#dualsystem"><span class="std std-numref">Kapitel 4.1</span></a> wurde festgestellt, dass <span class="math notranslate nohighlight">\(0{,}1_{10} = 0{,}0\overline{0011}_2\)</span>,
+In <a class="reference internal" href="zahlensysteme.html#dualsystem"><span class="std std-numref">Kapitel 11.1</span></a> wurde festgestellt, dass <span class="math notranslate nohighlight">\(0{,}1_{10} = 0{,}0\overline{0011}_2\)</span>,
 so dass diese Zahl im Dualsystem auf jeden Fall abgeschnitten werden muss.
 Das Problem wird an dem folgenden Beispiel deutlich, das zudem zeigt, dass es
 auf die Reihenfolge der Operationen ankommen kann.</p>
@@ -924,7 +959,7 @@ mit Hilfe von <code class="docutils literal notranslate"><span class="pre">math.
 </div>
 <p>Der Zahlenbereich für Floats sowie die Lücken um die Null und die Eins ergeben
 sich aus dem verwendeten Zahlenformat, das im IEEE-Standard 754 definiert ist.
-Einige Informationen dazu finden sich in <a class="reference internal" href="floats.html#anhang-floats"><span class="std std-numref">Kapitel 5</span></a>.</p>
+Einige Informationen dazu finden sich in <a class="reference internal" href="floats.html#anhang-floats"><span class="std std-numref">Kapitel 12</span></a>.</p>
 <p>Im Gegensatz zu Integers können Gleitkommazahlen also nicht beliebig groß
 werden, sondern sind auf einen allerdings recht großzügig bemessenen Bereich
 bis etwas über <span class="math notranslate nohighlight">\(10^{308}\)</span> beschränkt. Sollte dieser Bereich sich als
@@ -1841,81 +1876,342 @@ natürlichen Logarithmus die Funktion <code class="xref py py-func docutils lite
 <h2><span class="section-number">3.4. </span>Komplexe Zahlen<a class="headerlink" href="#komplexe-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Neben reellen Zahlen benötigt man immer wieder auch komplexe Zahlen. Dabei
 erzeugt man einen Imaginärteil durch Anhängen des Zeichens <code class="docutils literal notranslate"><span class="pre">j</span></code> oder <code class="docutils literal notranslate"><span class="pre">J</span></code>, das
-Ingenieure häufig statt des in der Physik üblichen <code class="docutils literal notranslate"><span class="pre">i</span></code> verwenden.
-Alternativ kann man die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">complex()</span></code> verwenden:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">0.5</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="n">j</span><span class="p">)</span>
-<span class="go">(0.6+0.8j)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="go">(1+0.5j)</span>
+Ingenieure häufig statt des in der Physik üblichen <code class="docutils literal notranslate"><span class="pre">i</span></code> verwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">0.5</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="n">j</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6+0.8j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternativ kann man die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">complex()</span></code> verwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">z1</span><span class="o">/</span><span class="n">z2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6+0.8j)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Möchte man aus den Werten zweier Variablen eine komplexe Zahl
 konstruieren, geht dies mit der zweiten der gerade genannten Methoden
 sehr einfach</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
-<span class="go">(1+2j)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">z1</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">)</span>
+<span class="n">z1</span><span class="o">/</span><span class="n">z2</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.6+0.8j)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Falls man die Funktion <code class="docutils literal notranslate"><span class="pre">complex()</span></code> nicht verwenden möchte, muss man
-beachten, dass die folgenden beiden Wege nicht zum Ziel führen:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">yj</span>
-<span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">NameError</span>: <span class="n">name &#39;yj&#39; is not defined</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">j</span>
-<span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">NameError</span>: <span class="n">name &#39;j&#39; is not defined</span>
+beachten, dass die folgenden beiden Wege nicht zum Ziel führen.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">yj</span>
 </pre></div>
 </div>
-<p>In diesem Fall geht Python davon aus, dass es sich bei <code class="docutils literal notranslate"><span class="pre">yj</span></code> bzw. <code class="docutils literal notranslate"><span class="pre">j</span></code>
-um eine Variable handelt, die jedoch bis jetzt noch nicht definiert wurde.
-Vielmehr muss die imaginäre Einheit explizit als <code class="docutils literal notranslate"><span class="pre">1j</span></code> geschrieben
-werden:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
-<span class="go">(1+2j)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">60</span><span class="o">-</span><span class="mi">1710</span><span class="n">c726c088</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">yj</span>
+
+<span class="ne">NameError</span>: name &#39;yj&#39; is not defined
 </pre></div>
 </div>
-<div class="admonition-frage admonition">
-<p class="admonition-title">Frage</p>
-<p>Zeigen Sie, dass das Ergebnis einer Rechnung, die komplexe Zahlen
-enthält, selbst dann als komplexe Zahl dargestellt wird, wenn das Ergebnis
-reell ist.</p>
 </div>
-<p>Hat man eine komplexe Zahl einer Variablen zugewiesen (dies wird im Kapitel <a class="reference internal" href="#variablen"><span class="std std-ref">Variablen und Zuweisungen</span></a>
-genauer diskutiert), so lassen sich Real- und Imaginärteil wie folgt bestimmen:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mf">0.5</span><span class="n">j</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">real</span>
-<span class="go">1.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">imag</span>
-<span class="go">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
-<span class="go">(1-0.5j)</span>
+</div>
+<p>Hier geht Python davon aus, dass es sich bei <code class="docutils literal notranslate"><span class="pre">yj</span></code> um eine Variable handelt,
+der aber noch kein Wert zugewiesen wurde, die also noch nicht definiert ist,
+wie Python in der Fehlermeldung sagt. Diese Interpretation lässt sich
+leicht überprüfen, wenn man Werte für <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">yj</span></code> setzt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yj</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">x</span><span class="o">+</span><span class="n">yj</span>
 </pre></div>
 </div>
-<p>Die Unterschiede in den Aufrufen ergeben sich daraus, dass in den ersten beiden
-Fällen auf Attribute der komplexen Zahl zugegriffen wird, während im letzten
-Fall eine Methode aufgerufen wird. Diese Zusammenhänge werden im Kapitel
-<span class="xref std std-ref">oop</span> klarer werden.</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Entsprechendes gilt in dem zweiten Beispiel, in dem zwar <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> die
+oben zugewiesenen Werte besitzen. Python muss aber davon ausgehen, dass
+hier die Variable <code class="docutils literal notranslate"><span class="pre">y</span></code> mit der Variablen <code class="docutils literal notranslate"><span class="pre">j</span></code> multipliziert werden soll, und
+<code class="docutils literal notranslate"><span class="pre">j</span></code> ist bis jetzt noch nicht definiert. Damit erklärt sich die Fehlermeldung.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">j</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">62</span><span class="o">-</span><span class="n">a842156597de</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">j</span>
+
+<span class="ne">NameError</span>: name &#39;j&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vielmehr muss die imaginäre Einheit explizit als <code class="docutils literal notranslate"><span class="pre">1j</span></code> geschrieben
+werden. Den Grund hierfür werden wir noch genauer verstehen, wenn wir in
+<a class="reference internal" href="#variablen"><span class="std std-numref">Kapitel 3.5</span></a> besprechen, welche Namen für Variablen zugelassen
+sind.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
+<span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(18+9j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dieses Resultat ergibt sich aus den weiter oben definierten Werten von <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Zeigen Sie an einem oder mehreren Beispielen, dass das Ergebnis einer Rechnung,
+die komplexe Zahlen enthält, selbst dann als komplexe Zahl dargestellt wird, wenn
+das Ergebnis reell ist.</p>
+</div>
+<p>Hat man eine komplexe Zahl einer Variablen zugewiesen, wie wir dies in <a class="reference internal" href="#variablen"><span class="std std-numref">Kapitel 3.5</span></a>
+noch genauer diskutieren werden, so lassen sich aus der Variablen wieder der Real- und
+der Imaginärteil extrahieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mf">0.5</span><span class="n">j</span>
+<span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 0.5)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Man kann sich auch die konjugiert komplexe Zahl beschaffen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1-0.5j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Unterschiede in den Aufrufen ergeben sich daraus, dass bei Real- und
+Imaginärteil auf Attribute, also Eigenschaften, der komplexen Zahl zugegriffen
+wird, während bei der komplexen Konjugation eine Methode aufgerufen wird, die
+etwas mit der komplexen Zahl macht. Es mag an dieser Stelle verwirren, dass man
+nicht alternativ <code class="docutils literal notranslate"><span class="pre">conjugate(x)</span></code> verwenden kann. Die Hintergründe werden im
+<a class="reference internal" href="objektorientiert.html#oop"><span class="std std-numref">Kapitel 9</span></a> klarer werden, wo wir uns mit dem objektorientierten
+Programmieren beschäftigen werden.</p>
 <p>Natürlich wollen wir auch für komplexe Zahlen mathematische Funktionen
-auswerten. Das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> hilft hier aber nicht weiter:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
-<span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">TypeError</span>: <span class="n">can&#39;t convert complex to float</span>
+auswerten. Das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> hilft hier aber leider nicht weiter,
+da es nur mit reellen Zahlen umgehen kann und erfolglos versucht, das
+komplexe Argument in eine reelle Zahl umzuwandeln.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Als Argument wird hier nur eine reelle Zahl akzeptiert. Stattdessen muss man
-das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code> laden:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cmath</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
-<span class="go">(0.7071067811865476+0.7071067811865475j)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">66</span><span class="o">-</span><span class="mi">1</span><span class="n">af733aa4184</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: can&#39;t convert complex to float
 </pre></div>
+</div>
+</div>
+</div>
+<p>Es gibt in der Python-Standardbibliothek ein Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code>, das mit komplexen
+Zahlen umgehen kann.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cmath</span>
+<span class="n">help</span><span class="p">(</span><span class="n">cmath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on module cmath:
+
+NAME
+    cmath
+
+MODULE REFERENCE
+    https://docs.python.org/3.8/library/cmath
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    This module provides access to mathematical functions for complex
+    numbers.
+
+FUNCTIONS
+    acos(z, /)
+        Return the arc cosine of z.
+    
+    acosh(z, /)
+        Return the inverse hyperbolic cosine of z.
+    
+    asin(z, /)
+        Return the arc sine of z.
+    
+    asinh(z, /)
+        Return the inverse hyperbolic sine of z.
+    
+    atan(z, /)
+        Return the arc tangent of z.
+    
+    atanh(z, /)
+        Return the inverse hyperbolic tangent of z.
+    
+    cos(z, /)
+        Return the cosine of z.
+    
+    cosh(z, /)
+        Return the hyperbolic cosine of z.
+    
+    exp(z, /)
+        Return the exponential value e**z.
+    
+    isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
+        Determine whether two complex numbers are close in value.
+        
+          rel_tol
+            maximum difference for being considered &quot;close&quot;, relative to the
+            magnitude of the input values
+          abs_tol
+            maximum difference for being considered &quot;close&quot;, regardless of the
+            magnitude of the input values
+        
+        Return True if a is close in value to b, and False otherwise.
+        
+        For the values to be considered close, the difference between them must be
+        smaller than at least one of the tolerances.
+        
+        -inf, inf and NaN behave similarly to the IEEE 754 Standard. That is, NaN is
+        not close to anything, even itself. inf and -inf are only close to themselves.
+    
+    isfinite(z, /)
+        Return True if both the real and imaginary parts of z are finite, else False.
+    
+    isinf(z, /)
+        Checks if the real or imaginary part of z is infinite.
+    
+    isnan(z, /)
+        Checks if the real or imaginary part of z not a number (NaN).
+    
+    log(...)
+        log(z[, base]) -&gt; the logarithm of z to the given base.
+        
+        If the base not specified, returns the natural logarithm (base e) of z.
+    
+    log10(z, /)
+        Return the base-10 logarithm of z.
+    
+    phase(z, /)
+        Return argument, also known as the phase angle, of a complex.
+    
+    polar(z, /)
+        Convert a complex from rectangular coordinates to polar coordinates.
+        
+        r is the distance from 0 and phi the phase angle.
+    
+    rect(r, phi, /)
+        Convert from polar coordinates to rectangular coordinates.
+    
+    sin(z, /)
+        Return the sine of z.
+    
+    sinh(z, /)
+        Return the hyperbolic sine of z.
+    
+    sqrt(z, /)
+        Return the square root of z.
+    
+    tan(z, /)
+        Return the tangent of z.
+    
+    tanh(z, /)
+        Return the hyperbolic tangent of z.
+
+DATA
+    e = 2.718281828459045
+    inf = inf
+    infj = infj
+    nan = nan
+    nanj = nanj
+    pi = 3.141592653589793
+    tau = 6.283185307179586
+
+FILE
+    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/lib-dynload/cmath.cpython-38-x86_64-linux-gnu.so
+</pre></div>
+</div>
+</div>
+</div>
+<p>Damit können wir nun die Exponentialfunktion auf eine komplexe Zahl anwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cmath</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.7071067811865476+0.7071067811865475j)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Dabei ist das Ergebnis immer eine komplexe Zahl. Daher kann es wünschenswert
 sein, sowohl das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> als auch das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code> zu
@@ -2060,7 +2356,7 @@ Die zweite Zeile müsste also eigentlich als <code class="docutils literal notra
 (Zeile 1) oder mehreren Variablen in einer Anweisung verschiedene Werte
 zuzuordnen (Zeile 4). Statt des Tupels auf der rechten Seite von Zeile 4 könnte
 auch eine Liste mit zwei Elementen stehen.  Tupel und Liste sind Datentypen,
-die mehrere Elemente enthalten und die wir im Kapitel <span class="xref std std-ref">zusgdatentypen</span>
+die mehrere Elemente enthalten und die wir im Kapitel <a class="reference internal" href="sequenzen.html#zusgdatentypen"><span class="std std-ref">Zusammengesetzte Datentypen</span></a>
 noch genauer ansehen werden.  Zeile 7 zeigt, wie man elegant die Werte zweier
 Variablen vertauschen kann. Dieses Verfahren ist so nicht in jeder
 Programmiersprache möglich. Dann muss man darauf achten, nicht einen der beiden
@@ -2515,7 +2811,7 @@ nachlesen.</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="vorschau.html" title="previous page"><span class="section-number">2. </span>Eine Vorschau</a>
-    <a class='right-next' id="next-link" href="zahlensysteme.html" title="next page"><span class="section-number">4. </span>Anhang: Zahlensysteme</a>
+    <a class='right-next' id="next-link" href="kontrollstrukturen.html" title="next page"><span class="section-number">4. </span>Kontrollstrukturen</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

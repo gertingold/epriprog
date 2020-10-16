@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. Anhang: Unicode &#8212; Einführung in Prinzipien der Programmierung</title>
+    <title>13. Anhang: Unicode &#8212; Einführung in Prinzipien der Programmierung</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -59,7 +59,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
-    <link rel="prev" title="5. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754" href="floats.html" />
+    <link rel="prev" title="12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754" href="floats.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,18 +107,53 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="kontrollstrukturen.html">
+   4. Kontrollstrukturen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="funktionen.html">
+   5. Funktionen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sequenzen.html">
+   6. Zusammengesetzte Datentypen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="einausgabe.html">
+   7. Ein- und Ausgabe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   8. Numerische Programmbibliotheken am Beispiel von NumPy/SciPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="objektorientiert.html">
+   9. Objektorientiertes Programmieren
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="grafik.html">
+   10. Erstellung von Grafiken
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="zahlensysteme.html">
-   4. Anhang: Zahlensysteme
+   11. Anhang: Zahlensysteme
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="floats.html">
-   5. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
+   12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   6. Anhang: Unicode
+   13. Anhang: Unicode
   </a>
  </li>
 </ul>
@@ -195,17 +230,17 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#kodierung-von-schriftzeichen">
-   6.1. Kodierung von Schriftzeichen
+   13.1. Kodierung von Schriftzeichen
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utf-8-kodierung">
-   6.2. UTF-8-Kodierung
+   13.2. UTF-8-Kodierung
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ausgewahlte-codeseiten-aus-dem-unicode-standard">
-   6.3. Ausgewählte Codeseiten aus dem Unicode-Standard
+   13.3. Ausgewählte Codeseiten aus dem Unicode-Standard
   </a>
  </li>
 </ul>
@@ -220,9 +255,9 @@
               <div>
                 
   <div class="section" id="anhang-unicode">
-<span id="appendixunicode"></span><h1><span class="section-number">6. </span>Anhang: Unicode<a class="headerlink" href="#anhang-unicode" title="Link zu dieser Überschrift">¶</a></h1>
+<span id="appendixunicode"></span><h1><span class="section-number">13. </span>Anhang: Unicode<a class="headerlink" href="#anhang-unicode" title="Link zu dieser Überschrift">¶</a></h1>
 <div class="section" id="kodierung-von-schriftzeichen">
-<h2><span class="section-number">6.1. </span>Kodierung von Schriftzeichen<a class="headerlink" href="#kodierung-von-schriftzeichen" title="Link zu dieser Überschrift">¶</a></h2>
+<h2><span class="section-number">13.1. </span>Kodierung von Schriftzeichen<a class="headerlink" href="#kodierung-von-schriftzeichen" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Auch Schriftzeichen müssen im Computer binär kodiert werden. Zwar sind schon
 bei Zahlen verschiedene Codierungsarten denkbar, aber grundlegende Aspekte des
 Codes ergeben sich durch die Verwendung des Dualsystems in natürlicher Weise.
@@ -234,7 +269,7 @@ die in Gebrauch sind oder im Gebrauch waren, so dass eine konsistente Kodierung
 über alle Grenzen hinweg eine große Herausforderung darstellt.</p>
 <p>Historisch mussten die ersten Kodierungen von Schriftzeichen zur maschinellen
 Verarbeitung zudem auf die mechanische Stabilität von Lochkarten, wie die in
-<a class="reference internal" href="#fig-lochkarte"><span class="std std-numref">Abb. 6.1</span></a> gezeigte aus den späten 70er Jahren des letzten
+<a class="reference internal" href="#fig-lochkarte"><span class="std std-numref">Abb. 13.1</span></a> gezeigte aus den späten 70er Jahren des letzten
 Jahrhunderts, Rücksicht nehmen. Entsprechend wurden im Lauf der Zeit eine
 Vielzahl unterschiedlicher Kodierungen entwickelt <a class="footnote-reference brackets" href="#haralambous" id="id1">1</a>, die durch
 Inkompatibilitäten den Informationsaustausch erschwerten. Erst in jüngerer Zeit
@@ -242,7 +277,7 @@ setzt sich mit Unicode ein umfassender Standard weitgehend durch, der auch in
 Python seit der Version 3 konsequent unterstützt wird.</p>
 <div class="figure align-default" id="fig-lochkarte">
 <a class="reference internal image-reference" href="_images/lochkarte.png"><img alt="_images/lochkarte.png" src="_images/lochkarte.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Abb. 6.1 </span><span class="caption-text">Lochkarte in einer auf der Codierung des Lochkartenlochermodells 026 von IBM
+<p class="caption"><span class="caption-number">Abb. 13.1 </span><span class="caption-text">Lochkarte in einer auf der Codierung des Lochkartenlochermodells 026 von IBM
 basierenden Codierung von Control Data Cooperation. Die dargestellte Lochkarte
 enthält eine Zeile aus einem Fortran-Programm mit dem Inhalt <code class="docutils literal notranslate"><span class="pre">˽˽˽30˽IZ(J)=IZ(J+1)</span></code>
 (Quelle: Gert-Ludwig Ingold).</span><a class="headerlink" href="#fig-lochkarte" title="Link zu diesem Bild">¶</a></p>
@@ -251,17 +286,17 @@ enthält eine Zeile aus einem Fortran-Programm mit dem Inhalt <code class="docut
 (ASCII) als Standard veröffentlicht, der heute noch eine wichtige Rolle spielt.
 Auf Großrechnern waren damals aber auch andere Kodierungen in Gebrauch. Der
 ASCII ist ein 7-Bit-Code und kann somit 128 Zeichen darstellen, die in
-<a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 6.4</span></a> als Teil des Unicode-Standards gezeigt sind.  Die
+<a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 13.4</span></a> als Teil des Unicode-Standards gezeigt sind.  Die
 grau unterlegten Akronyme stellen Steuerzeichen dar, wobei SP ein Leerzeichen
 bezeichnet und damit auch zu den druckbaren Zeichen gerechnet werden kann.</p>
-<p>Einige heute noch wichtige Steuerzeichen sind in <a class="reference internal" href="#table-steuerzeichen"><span class="std std-numref">Tab. 6.1</span></a>
+<p>Einige heute noch wichtige Steuerzeichen sind in <a class="reference internal" href="#table-steuerzeichen"><span class="std std-numref">Tab. 13.1</span></a>
 aufgelistet. Ihnen ist ihr Ursprung in der Zeit der Fernschreiber deutlich
 anzumerken. Dabei wurde die Übertragung auf Computer von verschiedenen
 Betriebssystemen nicht einheitlich gehandhabt, was sich zum Beispiel daran
 zeigt, dass unterschiedliche Varianten mit LF und/oder CR in Gebrauch kamen,
 um einen Zeilenumbruch anzuzeigen.</p>
 <table class="table" id="table-steuerzeichen">
-<caption><span class="caption-number">Tab. 6.1 </span><span class="caption-text">Ausgewählte Steuerzeichen im ASCII-Standard</span><a class="headerlink" href="#table-steuerzeichen" title="Link zu dieser Tabelle">¶</a></caption>
+<caption><span class="caption-number">Tab. 13.1 </span><span class="caption-text">Ausgewählte Steuerzeichen im ASCII-Standard</span><a class="headerlink" href="#table-steuerzeichen" title="Link zu dieser Tabelle">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -317,14 +352,14 @@ um einen Zeilenumbruch anzuzeigen.</p>
 </tbody>
 </table>
 <p>Aus deutschsprachiger Sicht fällt bei der Betrachtung der ASCII-Codetabelle in
-<a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 6.4</span></a> sofort das Fehlen von Umlauten auf. In einem ersten
+<a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 13.4</span></a> sofort das Fehlen von Umlauten auf. In einem ersten
 Schritt liegt daher eine Erweiterung auf einen 8-Bit-Code nahe, der auch weitere
 Zeichen aus dem europäischen Sprachraum aufnehmen kann. Hierfür existieren eine
 ganze Reihe von Belegungen, die sich am Bedarf bestimmter Sprachen orientieren.</p>
 <p>Von Bedeutung ist unter anderem die Normenfamilie ISO 8859. Für die deutsche
 Sprache ist ISO-8859-1, auch bekannt als »Latin-1«, gebräuchlich. Die darin
 vorhandenen, über ASCII hinausgehenden Zeichen sind, wenn man die Steuerzeichen
-ignoriert, in <a class="reference internal" href="#fig-unicode0080"><span class="std std-numref">Abb. 6.5</span></a> dargestellt. Auch hier sind wieder
+ignoriert, in <a class="reference internal" href="#fig-unicode0080"><span class="std std-numref">Abb. 13.5</span></a> dargestellt. Auch hier sind wieder
 eine Reihe von Steuerzeichen vertreten, unter anderem ein <code class="docutils literal notranslate"><span class="pre">nonbreakable</span> <span class="pre">space</span></code>
 (NBSP) und ein <code class="docutils literal notranslate"><span class="pre">soft</span> <span class="pre">hyphen</span></code> (SHY). Der zu den Zeichen gehörige Code ergibt
 sich aus den letzten beiden Stellen des Unicode Codepoints, der an dem
@@ -346,10 +381,10 @@ die ASCII-Zeichen im Bereich <code class="docutils literal notranslate"><span cl
 Wir beschränken uns daher im Folgenden auf die Erklärung dieser Kodierung.</p>
 </div>
 <div class="section" id="utf-8-kodierung">
-<h2><span class="section-number">6.2. </span>UTF-8-Kodierung<a class="headerlink" href="#utf-8-kodierung" title="Link zu dieser Überschrift">¶</a></h2>
+<h2><span class="section-number">13.2. </span>UTF-8-Kodierung<a class="headerlink" href="#utf-8-kodierung" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Im Unicode-Standard ist jedes Zeichen zunächst einmal mit einer Nummer
 versehen, dem Unicode Codepoint, der in
-<a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 6.4</span></a>‒<a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 6.7</span></a> blau hinterlegt ist und mit
+<a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 13.4</span></a>‒<a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 13.7</span></a> blau hinterlegt ist und mit
 <code class="docutils literal notranslate"><span class="pre">U+</span></code> beginnt. In dem darunter befindlichen grünen Feld ist die zugehörige
 UTF-8-Kodierung angegeben. Dabei kommen in diesen Beispielen 1-, 2- und
 3-Byte-Werte vor. Im Allgemeinen können sogar 4 Bytes auftreten.</p>
@@ -361,66 +396,66 @@ Zeichen platzsparend kodiert. Alle Zeichen, die in mehr als einem Byte kodiert
 sind, beginnen in UTF-8 mit einer <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <p>Im Bereich <code class="docutils literal notranslate"><span class="pre">0x0080</span></code> bis <code class="docutils literal notranslate"><span class="pre">0x07FF</span></code> werden zwei Bytes zur Kodierung verwendet.
 Die elf relevanten Bytes aus dem Unicode-Codepoint werden dabei wie in
-<a class="reference internal" href="#fig-utf8-2byte"><span class="std std-numref">Abb. 6.2</span></a> gezeigt auf die zwei Bytes verteilt. Man kann dieses
+<a class="reference internal" href="#fig-utf8-2byte"><span class="std std-numref">Abb. 13.2</span></a> gezeigt auf die zwei Bytes verteilt. Man kann dieses
 Übersetzungsschema natürlich auch umgekehrt anwenden, nachdem man festgestellt
 hat, dass der UTF-8-Code mit <code class="docutils literal notranslate"><span class="pre">0xC</span></code> beginnt.</p>
 <div class="figure align-default" id="fig-utf8-2byte">
 <a class="reference internal image-reference" href="_images/utf8_2.png"><img alt="_images/utf8_2.png" src="_images/utf8_2.png" style="height: 3cm;" /></a>
-<p class="caption"><span class="caption-number">Abb. 6.2 </span><span class="caption-text">Übersetzung des Unicodezeichens »é«in die UTF-8-Kodierung, die zwei Bytes
+<p class="caption"><span class="caption-number">Abb. 13.2 </span><span class="caption-text">Übersetzung des Unicodezeichens »é«in die UTF-8-Kodierung, die zwei Bytes
 benötigt. Dabei wird der Codepoint <code class="docutils literal notranslate"><span class="pre">0xE9</span></code> nach dem gezeigten Schema auf
 den UTF-8-Code <code class="docutils literal notranslate"><span class="pre">0xC3A9</span></code> abgebildet.</span><a class="headerlink" href="#fig-utf8-2byte" title="Link zu diesem Bild">¶</a></p>
 </div>
 <div class="admonition-frage admonition">
 <p class="admonition-title">Frage</p>
 <p>Was würde ein Programm, das von einer Latin-1-Kodierung ausgeht, im Fall des
-in <a class="reference internal" href="#fig-utf8-2byte"><span class="std std-numref">Abb. 6.2</span></a> gezeigten UTF-8-Codes <code class="docutils literal notranslate"><span class="pre">0xC3A9</span></code> anzeigen.</p>
+in <a class="reference internal" href="#fig-utf8-2byte"><span class="std std-numref">Abb. 13.2</span></a> gezeigten UTF-8-Codes <code class="docutils literal notranslate"><span class="pre">0xC3A9</span></code> anzeigen.</p>
 </div>
 <p>Beispiele von 2-Byte-Codes sind in den Codetabellen in
-<a class="reference internal" href="#fig-unicode0080"><span class="std std-numref">Abb. 6.5</span></a> und <a class="reference internal" href="#fig-unicode0380"><span class="std std-numref">Abb. 6.6</span></a> zu sehen. Dabei handelt
+<a class="reference internal" href="#fig-unicode0080"><span class="std std-numref">Abb. 13.5</span></a> und <a class="reference internal" href="#fig-unicode0380"><span class="std std-numref">Abb. 13.6</span></a> zu sehen. Dabei handelt
 es sich zum einen um die oberen 128 Zeichen der ISO-8859-1-Norm und zum anderen
 um griechische und koptische Zeichen im Unicode-Standard.</p>
-<p>Die in <a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 6.7</span></a> gezeigten mathematischen Symbole erfordern
-einen 3-Byte-Code, der sich wie in <a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 6.7</span></a> für das Zeichen
+<p>Die in <a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 13.7</span></a> gezeigten mathematischen Symbole erfordern
+einen 3-Byte-Code, der sich wie in <a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 13.7</span></a> für das Zeichen
 »∞« gezeigt aus dem Unicode-Codepoint ergibt. In der UTF-8-Kodierung sind
 3-Byte-Codes daran erkennbar, dass sie mit <code class="docutils literal notranslate"><span class="pre">0xE</span></code> beginnen.</p>
 <div class="figure align-default" id="fig-utf8-3byte">
 <a class="reference internal image-reference" href="_images/utf8_3.png"><img alt="_images/utf8_3.png" src="_images/utf8_3.png" style="height: 3cm;" /></a>
-<p class="caption"><span class="caption-number">Abb. 6.3 </span><span class="caption-text">Übersetzung des Unicodezeichens »∞« in die UTF-8-Kodierung, die drei Byte erfordert..</span><a class="headerlink" href="#fig-utf8-3byte" title="Link zu diesem Bild">¶</a></p>
+<p class="caption"><span class="caption-number">Abb. 13.3 </span><span class="caption-text">Übersetzung des Unicodezeichens »∞« in die UTF-8-Kodierung, die drei Byte erfordert..</span><a class="headerlink" href="#fig-utf8-3byte" title="Link zu diesem Bild">¶</a></p>
 </div>
 <p>Aus 4 Bytes bestehende Codes ergeben sich durch entsprechende Verallgemeinerung
 für Codepoints zwischen <code class="docutils literal notranslate"><span class="pre">0x010000</span></code> und <code class="docutils literal notranslate"><span class="pre">0x10FFFF</span></code>, wobei der UTF-8-Code dann
 mit <code class="docutils literal notranslate"><span class="pre">0xF</span></code> beginnt.</p>
 </div>
 <div class="section" id="ausgewahlte-codeseiten-aus-dem-unicode-standard">
-<h2><span class="section-number">6.3. </span>Ausgewählte Codeseiten aus dem Unicode-Standard<a class="headerlink" href="#ausgewahlte-codeseiten-aus-dem-unicode-standard" title="Link zu dieser Überschrift">¶</a></h2>
+<h2><span class="section-number">13.3. </span>Ausgewählte Codeseiten aus dem Unicode-Standard<a class="headerlink" href="#ausgewahlte-codeseiten-aus-dem-unicode-standard" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Die im Folgenden abgebildeten exemplarischen Codeseiten geben einen kleinen Eindruck
 von der Vielfalt der vorhandenen Zeichen. Neben den im westlichen Sprachraum häufig
-verbreiten Zeichen, die in <a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 6.4</span></a> und <a class="reference internal" href="#fig-unicode0080"><span class="std std-numref">Abb. 6.5</span></a> gezeigt
-sind, werden als Beispiele in <a class="reference internal" href="#fig-unicode0380"><span class="std std-numref">Abb. 6.6</span></a> griechische und koptische Zeichen
-sowie in <a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 6.7</span></a> mathematische Symbole gezeigt. Einen vollständigen
+verbreiten Zeichen, die in <a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 13.4</span></a> und <a class="reference internal" href="#fig-unicode0080"><span class="std std-numref">Abb. 13.5</span></a> gezeigt
+sind, werden als Beispiele in <a class="reference internal" href="#fig-unicode0380"><span class="std std-numref">Abb. 13.6</span></a> griechische und koptische Zeichen
+sowie in <a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 13.7</span></a> mathematische Symbole gezeigt. Einen vollständigen
 Überblick geben die <a class="reference external" href="http://www.unicode.org/charts/">Unicode Character Code Charts</a>.</p>
 <div class="figure align-default" id="fig-unicode0000">
 <a class="reference internal image-reference" href="_images/u0000.png"><img alt="_images/u0000.png" src="_images/u0000.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Abb. 6.4 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0000.pdf">0000‒007F</a>.
+<p class="caption"><span class="caption-number">Abb. 13.4 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0000.pdf">0000‒007F</a>.
 Der Unicode Codepoint sowie die UTF-8-Kodierung sind für jedes Zeichen blau bzw. grün
 hinterlegt angegeben. Steuerzeichen sind grau hinterlegt.</span><a class="headerlink" href="#fig-unicode0000" title="Link zu diesem Bild">¶</a></p>
 </div>
 <div class="figure align-default" id="fig-unicode0080">
 <a class="reference internal image-reference" href="_images/u0080.png"><img alt="_images/u0080.png" src="_images/u0080.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Abb. 6.5 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0080.pdf">0080‒00FF</a>.
+<p class="caption"><span class="caption-number">Abb. 13.5 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0080.pdf">0080‒00FF</a>.
 Der Unicode Codepoint sowie die UTF-8-Kodierung sind für jedes Zeichen blau bzw. grün
 hinterlegt angegeben. Steuerzeichen sind grau hinterlegt.</span><a class="headerlink" href="#fig-unicode0080" title="Link zu diesem Bild">¶</a></p>
 </div>
 <div class="figure align-default" id="fig-unicode0380">
 <a class="reference internal image-reference" href="_images/u0380.png"><img alt="_images/u0380.png" src="_images/u0380.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Abb. 6.6 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0370.pdf">0380‒03FF</a>.
+<p class="caption"><span class="caption-number">Abb. 13.6 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U0370.pdf">0380‒03FF</a>.
 Der Unicode Codepoint sowie die UTF-8-Kodierung sind für jedes Zeichen blau bzw. grün
 hinterlegt angegeben. Die grau hinterlegten Einträge sind derzeit nicht mit einem
 Zeichen belegt.</span><a class="headerlink" href="#fig-unicode0380" title="Link zu diesem Bild">¶</a></p>
 </div>
 <div class="figure align-default" id="fig-unicode2200">
 <a class="reference internal image-reference" href="_images/u2200.png"><img alt="_images/u2200.png" src="_images/u2200.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Abb. 6.7 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U2200.pdf">2200‒227F</a>.
+<p class="caption"><span class="caption-number">Abb. 13.7 </span><span class="caption-text">Unicodezeichen im Bereich <a class="reference external" href="https://www.unicode.org/charts/PDF/U2200.pdf">2200‒227F</a>.
 Der Unicode Codepoint sowie die UTF-8-Kodierung sind für jedes Zeichen blau bzw. grün
 hinterlegt angegeben.</span><a class="headerlink" href="#fig-unicode2200" title="Link zu diesem Bild">¶</a></p>
 </div>
@@ -462,7 +497,7 @@ gibt Y. Haralambous, <em>Fonts &amp; Encodings</em> (O’Reilly, 2007).</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="floats.html" title="previous page"><span class="section-number">5. </span>Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754</a>
+    <a class='left-prev' id="prev-link" href="floats.html" title="previous page"><span class="section-number">12. </span>Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

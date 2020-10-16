@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754 &#8212; Einführung in Prinzipien der Programmierung</title>
+    <title>12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754 &#8212; Einführung in Prinzipien der Programmierung</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -59,8 +59,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
-    <link rel="next" title="6. Anhang: Unicode" href="unicode.html" />
-    <link rel="prev" title="4. Anhang: Zahlensysteme" href="zahlensysteme.html" />
+    <link rel="next" title="13. Anhang: Unicode" href="unicode.html" />
+    <link rel="prev" title="11. Anhang: Zahlensysteme" href="zahlensysteme.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -108,18 +108,53 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="kontrollstrukturen.html">
+   4. Kontrollstrukturen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="funktionen.html">
+   5. Funktionen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sequenzen.html">
+   6. Zusammengesetzte Datentypen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="einausgabe.html">
+   7. Ein- und Ausgabe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy.html">
+   8. Numerische Programmbibliotheken am Beispiel von NumPy/SciPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="objektorientiert.html">
+   9. Objektorientiertes Programmieren
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="grafik.html">
+   10. Erstellung von Grafiken
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="zahlensysteme.html">
-   4. Anhang: Zahlensysteme
+   11. Anhang: Zahlensysteme
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
+   12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unicode.html">
-   6. Anhang: Unicode
+   13. Anhang: Unicode
   </a>
  </li>
 </ul>
@@ -217,7 +252,7 @@
               <div>
                 
   <div class="section" id="anhang-64-bit-gleitkommazahlen-nach-ieee-standard-754">
-<span id="anhang-floats"></span><h1><span class="section-number">5. </span>Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754<a class="headerlink" href="#anhang-64-bit-gleitkommazahlen-nach-ieee-standard-754" title="Link zu dieser Überschrift">¶</a></h1>
+<span id="anhang-floats"></span><h1><span class="section-number">12. </span>Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754<a class="headerlink" href="#anhang-64-bit-gleitkommazahlen-nach-ieee-standard-754" title="Link zu dieser Überschrift">¶</a></h1>
 <p>In diesem Anhang soll kurz die Binärdarstellung von 64-Bit-Gleitkommazahlen
 nach dem <a class="reference external" href="http://dx.doi.org/10.1109/IEEESTD.2008.4610935">IEEE Standard for Floating-Point Arithmetic IEEE Std
 754–2008</a> vorgestellt werden.
@@ -231,7 +266,7 @@ höchstwertigste Bit (MSB – <code class="docutils literal notranslate"><span c
 Bit (LSB – <code class="docutils literal notranslate"><span class="pre">least</span> <span class="pre">significant</span> <span class="pre">bit</span></code>) rechts.</p>
 <div class="figure align-default" id="fig-ieee754">
 <a class="reference internal image-reference" href="_images/ieee754_64.png"><img alt="_images/ieee754_64.png" src="_images/ieee754_64.png" style="height: 4cm;" /></a>
-<p class="caption"><span class="caption-number">Abb. 5.1 </span><span class="caption-text">64-Bit-Gleitkommazahl nach IEEE-Standard 754.</span><a class="headerlink" href="#fig-ieee754" title="Link zu diesem Bild">¶</a></p>
+<p class="caption"><span class="caption-number">Abb. 12.1 </span><span class="caption-text">64-Bit-Gleitkommazahl nach IEEE-Standard 754.</span><a class="headerlink" href="#fig-ieee754" title="Link zu diesem Bild">¶</a></p>
 </div>
 <p>Die Interpretation der 64 Bits hängt vom Wert des Exponenten E ab, der als Integer zu
 verstehen ist und damit Werte zwischen <span class="math notranslate nohighlight">\(0\)</span> und <span class="math notranslate nohighlight">\(2^{11}-1\)</span> annehmen kann.</p>
@@ -262,11 +297,11 @@ die Interpretation der Hexadezimaldarstellung tatsächlich die Ausgangszahl ergi
 </div>
 </div>
 </div>
-<p><a class="reference internal" href="#fig-ieee-example"><span class="std std-numref">Abb. 5.2</span></a> zeigt die entsprechenden Bits des Vorzeichens, des
+<p><a class="reference internal" href="#fig-ieee-example"><span class="std std-numref">Abb. 12.2</span></a> zeigt die entsprechenden Bits des Vorzeichens, des
 Exponenten und der Mantisse, die farblich unterschiedlich hinterlegt sind.</p>
 <div class="figure align-default" id="fig-ieee-example">
 <img alt="_images/ieee_example.png" src="_images/ieee_example.png" />
-<p class="caption"><span class="caption-number">Abb. 5.2 </span><span class="caption-text">Bitweise Darstellung der Zahl <span class="math notranslate nohighlight">\(-25{,}640625\)</span> nach dem IEEE-Standard 754. Das Vorzeichenbit,
+<p class="caption"><span class="caption-number">Abb. 12.2 </span><span class="caption-text">Bitweise Darstellung der Zahl <span class="math notranslate nohighlight">\(-25{,}640625\)</span> nach dem IEEE-Standard 754. Das Vorzeichenbit,
 die Bits des Exponenten und die Bits der Mantisse sind farblich orange, grün bzw.
 violett hinterlegt.</span><a class="headerlink" href="#fig-ieee-example" title="Link zu diesem Bild">¶</a></p>
 </div>
@@ -274,7 +309,7 @@ violett hinterlegt.</span><a class="headerlink" href="#fig-ieee-example" title="
 <p class="sidebar-title"></p>
 <div class="admonition-hinweis admonition">
 <p class="admonition-title">Hinweis</p>
-<p>Die Funktionsweise des Dualsystems ist in <a class="reference internal" href="zahlensysteme.html#dualsystem"><span class="std std-numref">Kapitel 4.1</span></a> beschrieben.</p>
+<p>Die Funktionsweise des Dualsystems ist in <a class="reference internal" href="zahlensysteme.html#dualsystem"><span class="std std-numref">Kapitel 11.1</span></a> beschrieben.</p>
 </div>
 </div>
 <p>Das erste, orange hinterlegte Bit gibt an, dass es sich um eine negative Zahl handelt.
@@ -389,8 +424,8 @@ sondern die kleinste darstellbare normalisierte Zahl <span class="math notransla
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="zahlensysteme.html" title="previous page"><span class="section-number">4. </span>Anhang: Zahlensysteme</a>
-    <a class='right-next' id="next-link" href="unicode.html" title="next page"><span class="section-number">6. </span>Anhang: Unicode</a>
+    <a class='left-prev' id="prev-link" href="zahlensysteme.html" title="previous page"><span class="section-number">11. </span>Anhang: Zahlensysteme</a>
+    <a class='right-next' id="next-link" href="unicode.html" title="next page"><span class="section-number">13. </span>Anhang: Unicode</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
