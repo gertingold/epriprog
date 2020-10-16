@@ -192,6 +192,7 @@ sowie in {numref}`fig:unicode2200` mathematische Symbole gezeigt. Einen vollstä
 
 ```{figure} images/unicode/u0000.png
 ---
+width: 80%
 name: fig:unicode0000
 ---
 Unicodezeichen im Bereich [0000‒007F](https://www.unicode.org/charts/PDF/U0000.pdf).
@@ -201,6 +202,7 @@ hinterlegt angegeben. Steuerzeichen sind grau hinterlegt.
 
 ```{figure} images/unicode/u0080.png
 ---
+width: 80%
 name: fig:unicode0080
 ---
 Unicodezeichen im Bereich [0080‒00FF](https://www.unicode.org/charts/PDF/U0080.pdf).
@@ -210,6 +212,7 @@ hinterlegt angegeben. Steuerzeichen sind grau hinterlegt.
 
 ```{figure} images/unicode/u0380.png
 ---
+width: 80%
 name: fig:unicode0380
 ---
 Unicodezeichen im Bereich [0380‒03FF](https://www.unicode.org/charts/PDF/U0370.pdf).
@@ -220,6 +223,7 @@ Zeichen belegt.
 
 ```{figure} images/unicode/u2200.png
 ---
+width: 80%
 name: fig:unicode2200
 ---
 Unicodezeichen im Bereich [2200‒227F](https://www.unicode.org/charts/PDF/U2200.pdf).
