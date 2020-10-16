@@ -893,101 +893,125 @@ x = 1e-5
 x - x**2/2 + x**3/3
 ```
 
-
-
 ## Komplexe Zahlen
 
 Neben reellen Zahlen benötigt man immer wieder auch komplexe Zahlen. Dabei
 erzeugt man einen Imaginärteil durch Anhängen des Zeichens ``j`` oder ``J``, das
 Ingenieure häufig statt des in der Physik üblichen ``i`` verwenden.
-Alternativ kann man die Funktion {func}`complex` verwenden:
 
-```{code-block} python
->>> (1+0.5j)/(1-0.5j)
-(0.6+0.8j)
->>> complex(1, 0.5)
-(1+0.5j)
+```{code-cell} python
+(1+0.5j)/(1-0.5j)
 ```
-
+Alternativ kann man die Funktion {func}`complex` verwenden.
+```{code-cell} python
+z1 = complex(1, 0.5)
+z2 = complex(1, -0.5)
+z1/z2
+```
 Möchte man aus den Werten zweier Variablen eine komplexe Zahl
 konstruieren, geht dies mit der zweiten der gerade genannten Methoden
 sehr einfach
-
-```{code-block} python
->>> x = 1
->>> y = 2
->>> z = complex(x, y)
->>> z
-(1+2j)
+```{code-cell} python
+x = 1
+y = 2
+z1 = complex(x, y)
+z2 = complex(x, -y)
+z1/z2
 ```
 
 Falls man die Funktion ``complex()`` nicht verwenden möchte, muss man
-beachten, dass die folgenden beiden Wege nicht zum Ziel führen:
+beachten, dass die folgenden beiden Wege nicht zum Ziel führen.
 
-```{code-block} python
->>> z = x+yj
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'yj' is not defined
->>> z = x+y*j
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'j' is not defined
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+x = 18
+y = 9
+z = x+yj
+```
+Hier geht Python davon aus, dass es sich bei `yj` um eine Variable handelt,
+der aber noch kein Wert zugewiesen wurde, die also noch nicht definiert ist,
+wie Python in der Fehlermeldung sagt. Diese Interpretation lässt sich
+leicht überprüfen, wenn man Werte für `x` und `yj` setzt.
+```{code-cell} python
+yj = 24
+x+yj
 ```
 
-In diesem Fall geht Python davon aus, dass es sich bei ``yj`` bzw. ``j``
-um eine Variable handelt, die jedoch bis jetzt noch nicht definiert wurde.
+Entsprechendes gilt in dem zweiten Beispiel, in dem zwar `x` und `y` die
+oben zugewiesenen Werte besitzen. Python muss aber davon ausgehen, dass
+hier die Variable `y` mit der Variablen `j` multipliziert werden soll, und
+`j` ist bis jetzt noch nicht definiert. Damit erklärt sich die Fehlermeldung.
+
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+z = x+y*j
+```
 Vielmehr muss die imaginäre Einheit explizit als ``1j`` geschrieben
-werden:
+werden. Den Grund hierfür werden wir noch genauer verstehen, wenn wir in
+{numref}`variablen` besprechen, welche Namen für Variablen zugelassen
+sind.
 
-```{code-block} python
->>> z = x+y*1j
->>> z
-(1+2j)
+```{code-cell} python
+z = x+y*1j
+z
+```
+Dieses Resultat ergibt sich aus den weiter oben definierten Werten von `x` und `y`.
+
+```{admonition} Aufgabe
+Zeigen Sie an einem oder mehreren Beispielen, dass das Ergebnis einer Rechnung,
+die komplexe Zahlen enthält, selbst dann als komplexe Zahl dargestellt wird, wenn
+das Ergebnis reell ist.
 ```
 
-```{admonition} Frage
-Zeigen Sie, dass das Ergebnis einer Rechnung, die komplexe Zahlen
-enthält, selbst dann als komplexe Zahl dargestellt wird, wenn das Ergebnis
-reell ist.
+Hat man eine komplexe Zahl einer Variablen zugewiesen, wie wir dies in {numref}`variablen`
+noch genauer diskutieren werden, so lassen sich aus der Variablen wieder der Real- und
+der Imaginärteil extrahieren.
+```{code-cell} python
+x = 1+0.5j
+x.real, x.imag
 ```
-
-Hat man eine komplexe Zahl einer Variablen zugewiesen (dies wird im Kapitel {ref}`variablen`
-genauer diskutiert), so lassen sich Real- und Imaginärteil wie folgt bestimmen:
-
-```{code-block} python
->>> x = 1+0.5j
->>> x.real
-1.0
->>> x.imag
-0.5
->>> x.conjugate()
-(1-0.5j)
+Man kann sich auch die konjugiert komplexe Zahl beschaffen.
+```{code-cell} python
+x.conjugate()
 ```
-
-Die Unterschiede in den Aufrufen ergeben sich daraus, dass in den ersten beiden
-Fällen auf Attribute der komplexen Zahl zugegriffen wird, während im letzten
-Fall eine Methode aufgerufen wird. Diese Zusammenhänge werden im Kapitel
-{ref}`oop` klarer werden.
+Die Unterschiede in den Aufrufen ergeben sich daraus, dass bei Real- und
+Imaginärteil auf Attribute, also Eigenschaften, der komplexen Zahl zugegriffen
+wird, während bei der komplexen Konjugation eine Methode aufgerufen wird, die
+etwas mit der komplexen Zahl macht. Es mag an dieser Stelle verwirren, dass man
+nicht alternativ `conjugate(x)` verwenden kann. Die Hintergründe werden im
+{numref}`oop` klarer werden, wo wir uns mit dem objektorientierten
+Programmieren beschäftigen werden.
 
 Natürlich wollen wir auch für komplexe Zahlen mathematische Funktionen
-auswerten. Das Modul {mod}`math` hilft hier aber nicht weiter:
-
-```{code-block} python
->>> from math import exp, pi
->>> exp(0.25j*pi)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: can't convert complex to float
+auswerten. Das Modul {mod}`math` hilft hier aber leider nicht weiter,
+da es nur mit reellen Zahlen umgehen kann und erfolglos versucht, das
+komplexe Argument in eine reelle Zahl umzuwandeln.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+from math import exp, pi
+exp(0.25j*pi)
 ```
 
-Als Argument wird hier nur eine reelle Zahl akzeptiert. Stattdessen muss man
-das Modul {mod}`cmath` laden:
+Es gibt in der Python-Standardbibliothek ein Modul {mod}`cmath`, das mit komplexen
+Zahlen umgehen kann.
 
-```{code-block} python
->>> from cmath import exp, pi
->>> exp(0.25j*pi)
-(0.7071067811865476+0.7071067811865475j)
+```{code-cell} python
+---
+tags: ["output_scroll"]
+---
+import cmath
+help(cmath)
+```    
+Damit können wir nun die Exponentialfunktion auf eine komplexe Zahl anwenden.
+```{code-cell} python
+from cmath import exp, pi
+exp(0.25j*pi)
 ```
 
 Dabei ist das Ergebnis immer eine komplexe Zahl. Daher kann es wünschenswert
