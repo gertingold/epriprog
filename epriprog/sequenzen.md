@@ -1,0 +1,3 @@
+(zusgdatentypen)=
+# Zusammengesetzte Datentypen
+
