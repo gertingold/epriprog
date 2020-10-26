@@ -896,8 +896,8 @@ x - x**2/2 + x**3/3
 ## Komplexe Zahlen
 
 Neben reellen Zahlen benötigt man immer wieder auch komplexe Zahlen. Dabei
-erzeugt man einen Imaginärteil durch Anhängen des Zeichens ``j`` oder ``J``, das
-Ingenieure häufig statt des in der Physik üblichen ``i`` verwenden.
+erzeugt man einen Imaginärteil durch Anhängen des Buchstabens ``j`` oder ``J``, das
+Ingenieure häufig statt des in der Mathematik und Physik üblichen ``i`` verwenden.
 
 ```{code-cell} python
 (1+0.5j)/(1-0.5j)
@@ -932,17 +932,17 @@ z = x+yj
 ```
 Hier geht Python davon aus, dass es sich bei `yj` um eine Variable handelt,
 der aber noch kein Wert zugewiesen wurde, die also noch nicht definiert ist,
-wie Python in der Fehlermeldung sagt. Diese Interpretation lässt sich
-leicht überprüfen, wenn man Werte für `x` und `yj` setzt.
+wie Python in der Fehlermeldung sagt. Dies lässt sich leicht überprüfen, wenn
+man neben `x`, dem wir schon den Wert 18 zugewiesen haben, noch einen Wert
+für `yj` setzt.
 ```{code-cell} python
 yj = 24
 x+yj
 ```
 
-Entsprechendes gilt in dem zweiten Beispiel, in dem zwar `x` und `y` die
-oben zugewiesenen Werte besitzen. Python muss aber davon ausgehen, dass
-hier die Variable `y` mit der Variablen `j` multipliziert werden soll, und
-`j` ist bis jetzt noch nicht definiert. Damit erklärt sich die Fehlermeldung.
+Genauso verhält es sich, wenn wir versuchen, die Variable `y`, die den Imaginärteil
+repräsentieren soll, mit `j` zu multiplizieren. `j` würde von Python wieder als noch
+undefinierte Variable angesehen und so erklärt sich dann auch die Fehlermeldung.
 
 ```{code-cell} python
 ---
@@ -959,7 +959,7 @@ sind.
 z = x+y*1j
 z
 ```
-Dieses Resultat ergibt sich aus den weiter oben definierten Werten von `x` und `y`.
+Das Resultat für `z` ergibt sich aus den weiter oben definierten Werten von `x` und `y`.
 
 ```{admonition} Aufgabe
 Zeigen Sie an einem oder mehreren Beispielen, dass das Ergebnis einer Rechnung,
@@ -989,7 +989,10 @@ Programmieren beschäftigen werden.
 Natürlich wollen wir auch für komplexe Zahlen mathematische Funktionen
 auswerten. Das Modul {mod}`math` hilft hier aber leider nicht weiter,
 da es nur mit reellen Zahlen umgehen kann und erfolglos versucht, das
-komplexe Argument in eine reelle Zahl umzuwandeln.
+komplexe Argument in eine reelle Zahl umzuwandeln. Python wäre durchaus in
+der Lage, eine reelle Zahl in eine komplexe Zahl umzuwandeln, aber für den
+umgekehrten Weg gibt es keine mathematisch eindeutige Vorschrift, die
+Python verwenden könnte.
 ```{code-cell} python
 ---
 tags: [raises-exception]
@@ -998,7 +1001,7 @@ from math import exp, pi
 exp(0.25j*pi)
 ```
 
-Es gibt in der Python-Standardbibliothek ein Modul {mod}`cmath`, das mit komplexen
+Es gibt jedoch in der Python-Standardbibliothek ein Modul {mod}`cmath`, das mit komplexen
 Zahlen umgehen kann.
 
 ```{code-cell} python
@@ -1018,28 +1021,28 @@ Dabei ist das Ergebnis immer eine komplexe Zahl. Daher kann es wünschenswert
 sein, sowohl das Modul {mod}`math` als auch das Modul {mod}`cmath` zu
 importieren:
 
-```{code-block} python
->>> import math, cmath
->>> math.exp(2)
-7.38905609893065
->>> cmath.exp(0.25j*math.pi)
-(0.7071067811865476+0.7071067811865475j)
+```{code-cell} python
+import math, cmath
+print(f'reelle Exponentialfunktion:   {math.exp(2)}')
+print(f'komplexe Exponentialfunktion: {cmath.exp(0.25j*math.pi)}')
 ```
+Bei dieser Art des Imports ist durch die Notwendigkeit, das Modul anzugeben,
+immer klar, um welche Funktion es sich handelt.
 
-Eine andere Möglichkeit wäre
-
-```{code-block} python
->>> from math import exp, pi
->>> from cmath import exp as cexp
->>> exp(2)
-7.38905609893065
->>> cexp(0.25j*pi)
-(0.7071067811865476+0.7071067811865475j)
+Eine andere Möglichkeit wäre ein Umbenennung von einer der beiden Funktionen,
+wobei der Name nicht zwingend `cexp` sein müsste..
+```{code-cell} python
+from math import exp, pi
+from cmath import exp as cexp
+print(f'reelle Exponentialfunktion:   {exp(2)}')
+print(f'komplexe Exponentialfunktion: {cexp(0.25j*math.pi)}')
 ```
 
 ```{admonition} Frage
 Welche Funktion wird verwendet, wenn man nacheinander die Funktion
-:func:`exp` aus dem Modul {mod}`math` und aus dem Modul {mod}`cmath` importiert?
+{func}`exp` aus dem Modul {mod}`math` und aus dem Modul {mod}`cmath` importiert
+ohne wie im vorigen Beispiel eine Umbenennung durchzuführen? Probieren Sie es
+einfach mal aus.
 ```
 
 (variablen)=

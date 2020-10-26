@@ -1875,8 +1875,8 @@ natürlichen Logarithmus die Funktion <code class="xref py py-func docutils lite
 <div class="section" id="komplexe-zahlen">
 <h2><span class="section-number">3.4. </span>Komplexe Zahlen<a class="headerlink" href="#komplexe-zahlen" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Neben reellen Zahlen benötigt man immer wieder auch komplexe Zahlen. Dabei
-erzeugt man einen Imaginärteil durch Anhängen des Zeichens <code class="docutils literal notranslate"><span class="pre">j</span></code> oder <code class="docutils literal notranslate"><span class="pre">J</span></code>, das
-Ingenieure häufig statt des in der Physik üblichen <code class="docutils literal notranslate"><span class="pre">i</span></code> verwenden.</p>
+erzeugt man einen Imaginärteil durch Anhängen des Buchstabens <code class="docutils literal notranslate"><span class="pre">j</span></code> oder <code class="docutils literal notranslate"><span class="pre">J</span></code>, das
+Ingenieure häufig statt des in der Mathematik und Physik üblichen <code class="docutils literal notranslate"><span class="pre">i</span></code> verwenden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">0.5</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="n">j</span><span class="p">)</span>
@@ -1948,8 +1948,9 @@ beachten, dass die folgenden beiden Wege nicht zum Ziel führen.</p>
 </div>
 <p>Hier geht Python davon aus, dass es sich bei <code class="docutils literal notranslate"><span class="pre">yj</span></code> um eine Variable handelt,
 der aber noch kein Wert zugewiesen wurde, die also noch nicht definiert ist,
-wie Python in der Fehlermeldung sagt. Diese Interpretation lässt sich
-leicht überprüfen, wenn man Werte für <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">yj</span></code> setzt.</p>
+wie Python in der Fehlermeldung sagt. Dies lässt sich leicht überprüfen, wenn
+man neben <code class="docutils literal notranslate"><span class="pre">x</span></code>, dem wir schon den Wert 18 zugewiesen haben, noch einen Wert
+für <code class="docutils literal notranslate"><span class="pre">yj</span></code> setzt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yj</span> <span class="o">=</span> <span class="mi">24</span>
@@ -1963,10 +1964,9 @@ leicht überprüfen, wenn man Werte für <code class="docutils literal notransla
 </div>
 </div>
 </div>
-<p>Entsprechendes gilt in dem zweiten Beispiel, in dem zwar <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> die
-oben zugewiesenen Werte besitzen. Python muss aber davon ausgehen, dass
-hier die Variable <code class="docutils literal notranslate"><span class="pre">y</span></code> mit der Variablen <code class="docutils literal notranslate"><span class="pre">j</span></code> multipliziert werden soll, und
-<code class="docutils literal notranslate"><span class="pre">j</span></code> ist bis jetzt noch nicht definiert. Damit erklärt sich die Fehlermeldung.</p>
+<p>Genauso verhält es sich, wenn wir versuchen, die Variable <code class="docutils literal notranslate"><span class="pre">y</span></code>, die den Imaginärteil
+repräsentieren soll, mit <code class="docutils literal notranslate"><span class="pre">j</span></code> zu multiplizieren. <code class="docutils literal notranslate"><span class="pre">j</span></code> würde von Python wieder als noch
+undefinierte Variable angesehen und so erklärt sich dann auch die Fehlermeldung.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">j</span>
@@ -2001,7 +2001,7 @@ sind.</p>
 </div>
 </div>
 </div>
-<p>Dieses Resultat ergibt sich aus den weiter oben definierten Werten von <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>Das Resultat für <code class="docutils literal notranslate"><span class="pre">z</span></code> ergibt sich aus den weiter oben definierten Werten von <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <div class="admonition-aufgabe admonition">
 <p class="admonition-title">Aufgabe</p>
 <p>Zeigen Sie an einem oder mehreren Beispielen, dass das Ergebnis einer Rechnung,
@@ -2047,7 +2047,10 @@ Programmieren beschäftigen werden.</p>
 <p>Natürlich wollen wir auch für komplexe Zahlen mathematische Funktionen
 auswerten. Das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> hilft hier aber leider nicht weiter,
 da es nur mit reellen Zahlen umgehen kann und erfolglos versucht, das
-komplexe Argument in eine reelle Zahl umzuwandeln.</p>
+komplexe Argument in eine reelle Zahl umzuwandeln. Python wäre durchaus in
+der Lage, eine reelle Zahl in eine komplexe Zahl umzuwandeln, aber für den
+umgekehrten Weg gibt es keine mathematisch eindeutige Vorschrift, die
+Python verwenden könnte.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
@@ -2067,7 +2070,7 @@ komplexe Argument in eine reelle Zahl umzuwandeln.</p>
 </div>
 </div>
 </div>
-<p>Es gibt in der Python-Standardbibliothek ein Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code>, das mit komplexen
+<p>Es gibt jedoch in der Python-Standardbibliothek ein Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code>, das mit komplexen
 Zahlen umgehen kann.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
@@ -2216,26 +2219,47 @@ FILE
 <p>Dabei ist das Ergebnis immer eine komplexe Zahl. Daher kann es wünschenswert
 sein, sowohl das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> als auch das Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code> zu
 importieren:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">cmath</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">7.38905609893065</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cmath</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-<span class="go">(0.7071067811865476+0.7071067811865475j)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">cmath</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;reelle Exponentialfunktion:   </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;komplexe Exponentialfunktion: </span><span class="si">{</span><span class="n">cmath</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Eine andere Möglichkeit wäre</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cmath</span> <span class="kn">import</span> <span class="n">exp</span> <span class="k">as</span> <span class="n">cexp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">7.38905609893065</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cexp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
-<span class="go">(0.7071067811865476+0.7071067811865475j)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reelle Exponentialfunktion:   7.38905609893065
+komplexe Exponentialfunktion: (0.7071067811865476+0.7071067811865475j)
 </pre></div>
+</div>
+</div>
+</div>
+<p>Bei dieser Art des Imports ist durch die Notwendigkeit, das Modul anzugeben,
+immer klar, um welche Funktion es sich handelt.</p>
+<p>Eine andere Möglichkeit wäre ein Umbenennung von einer der beiden Funktionen,
+wobei der Name nicht zwingend <code class="docutils literal notranslate"><span class="pre">cexp</span></code> sein müsste..</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">cmath</span> <span class="kn">import</span> <span class="n">exp</span> <span class="k">as</span> <span class="n">cexp</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;reelle Exponentialfunktion:   </span><span class="si">{</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;komplexe Exponentialfunktion: </span><span class="si">{</span><span class="n">cexp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reelle Exponentialfunktion:   7.38905609893065
+komplexe Exponentialfunktion: (0.7071067811865476+0.7071067811865475j)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-frage admonition">
 <p class="admonition-title">Frage</p>
 <p>Welche Funktion wird verwendet, wenn man nacheinander die Funktion
-:func:<code class="docutils literal notranslate"><span class="pre">exp</span></code> aus dem Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> und aus dem Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code> importiert?</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">exp()</span></code> aus dem Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> und aus dem Modul <code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code> importiert
+ohne wie im vorigen Beispiel eine Umbenennung durchzuführen? Probieren Sie es
+einfach mal aus.</p>
 </div>
 </div>
 <div class="section" id="variablen-und-zuweisungen">
