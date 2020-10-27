@@ -1049,10 +1049,42 @@ einfach mal aus.
 
 ## Variablen und Zuweisungen
 
-In einem Beispiel des letzten Abschnitts haben wir bereits eine Zahl einer
-Variablen zugewiesen. Da dies in einem Programm der Normalfall ist, müssen wir
-wissen, welche Namen für Variablen zugelassen sind. Ein Variablenname oder
-allgemein ein Bezeichner besteht aus einer beliebigen Zahl von Zeichen, wobei
+Aus der Mathematik kennen wir das Konzept von Variablen, denen man je nach
+Anwendungsfall bestimmte Werte zuweisen kann. Es ist aber auch möglich, auf die
+explizite Zuweisung von Werten gänzlich zu verzichten und mit Variablen rein
+symbolisch zu rechnen. Wir werden im Folgenden immer den ersten Fall im Blick
+haben, bei dem Variablen ein Wert zugewiesen wird, der sich im Lauf der
+Programmabarbeitung auch verändern kann. Variablen sind in diesem Sinne Namen
+für Bereiche im Computerspeicher, die bestimmte Informationen enthalten.
+
+Die Beschränkung auf den ersten Fall bedeutet jedoch nicht, dass es auf Computern
+nicht möglich wäre, auch rein symbolisch zu rechnen, wie Computeralgebrasysteme
+zeigen. Auch in Python ist mit Hilfe der [`sympy`-Bibliothek](https://www.sympy.org/)
+symbolisches Rechnen möglich.
+
+Eine Variable soll nun den Speicherplatz bezeichnen, in dem ein bestimmtes Objekt,
+also zum Beispiel eine Zahl, eine Zeichenkette oder ein Objekt eines der anderen
+Datentypen, die wir noch kennenlernen werden, abgespeichert ist. Bedenkt man, dass
+der Ort im Speicher auch einfach durch eine Zahl angegeben werden könnte, wird klar,
+dass Variablen eine wichtige Rolle dabei spielen, ein Programm gut lesbar zu machen.
+
+```{admonition} Tipp
+:class: tip
+Es lohnt sich, bewusst beschreibende Variablennamen zu wählen, auch wenn es etwas Mühe kostet.
+In den meisten Fällen sind hierfür Variablennamen, die nur aus einem Buchstaben bestehen,
+ungeeignet, auch wenn sie bequem erscheinen mögen. Denken Sie daran, dass es für andere
+nicht offensichtlich sein wird, was die Bedeutung einer Variablen `x` im konkreten Fall
+ist. Unter Umständen handelt es sich bei dieser anderen Person auch um Sie selbst, wenn
+Sie nach einem halben Jahr wieder einen Blick auf Ihr Programm werfen. Eine beschreibende
+Benennung von Variablen ist ein wesentlicher Schritt zu einem gut dokumentierten Programm.
+```
+
+Wie muss ein Variablenname oder allgemein ein Bezeichner aufgebaut sein, damit er als
+solcher erkannt wird? Die Antwort hängt von der benutzten Programmiersprache ab, so dass
+wir sie hier konkret für Python beantworten werden. Die wesentlichen Aspekte gelten aber
+auch für die anderen verbreiteten Programmiersprachen für wissenschaftliche Anwendungen.
+
+In Python besteht ein Bezeichner aus einer beliebigen Zahl von Zeichen, wobei
 Buchstaben, der Unterstrich (`_`) und Ziffern zugelassen sind. Das erste Zeichen
 darf jedoch keine Ziffer sein. Der Unterstrich zu Beginn und am Ende eines Bezeichners
 impliziert üblicherweise eine spezielle Bedeutung, auf die wir später noch zurückkommen
@@ -1071,49 +1103,49 @@ Mangel behebt, aber dennoch im Umfang sehr beschränkt ist, bis hin zum
 Unicode-Standard, der mehr als hunderttausend Zeichen umfasst. Für den
 Unicode-Standard gibt es wiederum verschiedene Codierungen, insbesondere die in
 der westlichen Welt sinnvolle UTF-8-Kodierung. Etwas mehr Details zu diesem
-Thema sind im Anhang {ref}`appendixunicode` zu finden. 
+Thema sind im {numref}`appendixunicode` zu finden. 
 
-Aus dem vorigen Abschnitt ergibt sich vielleicht der Eindruck, dass die Kodierung
-von Zeichen ein komplexeres Thema ist, und dieser Eindruck trügt nicht. Die gute
-Nachricht ist allerdings, dass zum einen immer mehr Computerbetriebssysteme 
-die UTF-8-Kodierung verwenden und für Python-3-Skripte standardmäßig die 
-UTF-8-Kodierung angenommen wird. In Python 3 muss man sich, im Gegensatz zu
-Python 2, über die Codierung in vielen Fällen keine großen Gedanken mehr machen,
-sofern man nicht zum Beispiel eine Ausgabe in einer anderen Codierung haben möchte.
+````{margin}
+```{admonition} Weiterführender Hinweis
+Ein technisch präzise Beschreibung der erlaubten Zeichen findet sich in der
+[Sprachdokumentation von Python](https://docs.python.org/3/reference/lexical_analysis.html#identifiers).
+```
+````
 
-Die Verwendung der UTF-8-Kodierung impliziert, dass Buchstaben in Bezeichnern
-alle Zeichen sein können, die im Unicode-Standard als Buchstaben angesehen
-werden, also neben Umlauten zum Beispiel auch griechische Zeichen. Ob es
-wirklich sinnvoll ist, Buchstaben von außerhalb des Bereichs ``A-Z`` und
-``a-z`` zu verwenden, sollte man sich im Einzelfall gut überlegen. Man muss
-sich nur vor Augen halten, was es für Folgen hätte, wenn man ein Programm
-analysieren müsste, das unter Verwendung von chinesischen Schriftzeichen
-geschrieben wurde. Dennoch ist zum Beispiel der folgende Code für Python 3 kein
-Problem:
+Die systematische Unterstützung des Unicode-Standards durch Python impliziert,
+dass Buchstaben in Bezeichnern alle Zeichen sein können, die im
+Unicode-Standard als Buchstaben angesehen werden, also neben Umlauten zum
+Beispiel auch griechische Zeichen. Ob es wirklich sinnvoll ist, Buchstaben von
+außerhalb des Bereiche `A-Z` und `a-z` zu verwenden, sollte man sich im
+Einzelfall gut überlegen. Man muss sich nur vor Augen halten, was es für Folgen
+hätte, wenn man ein Programm analysieren müsste, das unter Verwendung von
+chinesischen Schriftzeichen geschrieben wurde. Dennoch ist zum Beispiel der
+folgende Code für Python 3 kein Problem.
 
-```{code-block} python
->>> from math import pi as π
->>> Radius = 2
->>> Fläche = π*Radius**2
->>> print(Fläche)
-12.566370614359172
+```{code-cell} python
+from math import pi as π
+Radius = 2
+Fläche = π*Radius**2
+print(Fläche)
 ```
 
-Es ist nicht selbstverständlich, dass solche Variablennamen in anderen
-Programmiersprachen ebenfalls zugelassen sind.
+Es ist nicht selbstverständlich, dass Variablennamen mit Umlauten, griechischen
+Buchstaben oder allgemein Zeichen außerhalb der Bereiche `A-Z` und `a-z`
+in anderen Programmiersprachen ebenfalls zugelassen sind. Will man solche Zeichen
+überhaupt verwenden, so sollte man sich hierüber informieren.
 
-Bei einer Programmiersprache ist immer die Frage zu klären, ob zwischen Groß-
-und Kleinschreibung unterschieden wird. Python tut dies, so dass ``var``,
+Bei einer Programmiersprache ist auch immer die Frage zu klären, ob zwischen
+Groß- und Kleinschreibung unterschieden wird. Python tut dies, so dass ``var``,
 ``Var`` und ``VAR`` verschiedene Variablen bezeichnen und für Python nichts
-miteinander zu tun haben. Auch hier stellt sich im Einzelfall die Frage,
-ob es sinnvoll ist, in einem Programm Variablennamen gleichzeitig in Groß-
-und Kleinschreibung zu verwenden. Es ist jedoch wichtig zu wissen, dass eine
-Fehlfunktion des Programms ihren Ursprung in einem Tippfehler haben kann,
-bei dem Groß- und Kleinschreibung nicht beachtet wurden.
+miteinander zu tun haben. Auch hier stellt sich im Einzelfall die Frage, ob es
+sinnvoll ist, in einem Programm einen Variablennamen gleichzeitig in Groß- und
+Kleinschreibung zu verwenden. Es ist jedoch wichtig zu wissen, dass eine
+Fehlfunktion des Programms ihren Ursprung in einem Tippfehler haben kann, bei
+dem Groß- und Kleinschreibung nicht beachtet wurden.
 
-Es ist für die Verständlichkeit des Programmcodes angebracht, möglichst
+Für die Verständlichkeit des Programmcodes ist es angebracht, möglichst
 aussagekräftige Bezeichner zu verwenden, auch wenn diese im Allgemeinen etwas
-länger ausfallen. Dabei ist es häufig sinnvoll, einen Bezeichner aus mehreren
+länger ausfallen. Dabei kann es sinnvoll sein, einen Bezeichner aus mehreren
 Wörtern zusammenzusetzen. Um die einzelnen Bestandteile erkennen zu können,
 sind verschiedene Varianten üblich. Man kann zur Trennung einen Unterstrich
 verwenden, z.B. ``sortiere_liste``. Alternativ kann man neue Worte mit einem
@@ -1124,121 +1156,138 @@ die Großbuchstaben an Höcker eines Kamels erinnern. Details zu den in Python
 empfohlenen Konventionen für Bezeichner finden Sie im Python Enhancement Proposal {pep}`8`
 mit dem Titel »Style Guide for Python Code« im Abschnitt *Naming Conventions*.
 
-Die folgenden Schlüsselwörter sind in Python als Sprachelemente reserviert und dürfen
-nicht für Bezeichner verwendet werden [^keywords]::
+In Python existieren eine Reihe von Schlüsselwörtern, die als Sprachelemente reserviert
+sind und daher nicht für Bezeichner verwendet werden dürfen. Die aktuelle Liste lässt
+sich mit einem kleinen Python-Programm erzeugen oder einfach in der [Sprachdokumentation von
+Python](https://docs.python.org/3/reference/lexical_analysis.html#keywords) nachschlagen.
+Wichtiger als das kurze Programm, das wir an dieser Stelle noch nicht vollständig verstehen
+können, ist das Ergebnis der reservierten Schlüsselwörter.
 
-```{code-block} python
-False     assert      continue   except    if        nonlocal  return
-None      async       def        finally   import    not       try  
-True      await       del        for       in        or        while 
-and       break       elif       from      is        pass      with
-as        class       else       global    lambda    raise     yield 
+```{code-cell} python
+from keyword import kwlist
+
+for nr, kw in enumerate(kwlist):
+    print(f'{kw:<10s}', end='')
+    if nr % 7 == 6:
+        print()
 ```
-
-[^keywords]: Bei Bedarf kann die Liste der Schlüsselwörter mit Hilfe des ``keyword``-Moduls
-    und Verwendung der Anweisung ``keyword.kwlist`` erhalten werden.
 
 ```{admonition} Wichtiger Hinweis
 :class: warning
 Da griechische Buchstaben in der Physik relativ häufig sind, ist 
-insbesondere darauf zu achten, dass ``lambda`` reserviert ist. Den Grund hierfür
-werden wir im Kapitel {ref}`lambdafunktionen` diskutieren.
+insbesondere darauf zu achten, dass ``lambda`` reserviert ist. Der Grund hierfür
+liegt darin, dass Python so genannte Lambdafunktionen zur Verfügung stellt, die
+wir im {numref}`lambdafunktionen` diskutieren werden.
 ```
 
-Variablen kann nun ein Wert zugeordnet werden, wie folgende Beispiele zeigen:
-
-```{code-block} python
->>> x = 1
->>> x = x + 1
->>> print(x)
-2
+Variablen kann nun ein Wert zugewiesen werden. Die Zuweisung wird dabei durch
+ein Gleichheitszeichen gekennzeichnet.
+```{code-cell} python
+x = 1
+print(f'nach der ersten Zuweisung:  x = {x}')
+x = x + 1
+print(f'nach der zweiten Zuweisung: x = {x}')
 ```
+In der ersten Zeile wird der Variable `x` der Wert 1 zugewiesen. Die dritte
+Zeile zeigt deutlich, dass das Gleichheitszeichen nicht im Sinne einer
+mathematischen Gleichung interpretiert werden darf. Mathematisch hätte diese
+Gleichung nämlich keine Lösung. In einer Zuweisung wird vielmehr der Code auf
+der rechten Seite des Gleichheitszeichens ausgewertet. Zu diesem Zeitpunkt hat
+`x` noch den Wert 1, so dass sich nach der Addition der Wert 2 ergibt. Dieser
+Wert wird anschließend der Variablen `x` zugewiesen, die nun den Wert 2 besitzt.
+Die Zuweisung ist also eher als `x+1` → `x` zu verstehen.
 
-Aus der zweiten Zeile wird klar, dass es sich hier trotz des
-Gleichheitszeichens nicht um eine Gleichung handelt. Vielmehr wird die rechte
-Seite ausgewertet und der auf der linken Seite stehenden Variablen zugewiesen.
-Die zweite Zeile müsste also eigentlich als ``x`` → ``x+1`` gelesen werden.
+Sich die zeitliche Abfolge von Zuweisungen klar zu machen, ist zum Beispiel wichtig,
+wenn man zwei Werte vertauschen möchte. Im folgenden Beispiel weisen wir der Variable
+`x` den Wert 1 zu und der Variable `y` den Wert 2. Wir möchten die beiden Werte nun
+vertauschen, so dass `x` den Wert 2 bekommt und `y` den Wert 1. Das soll unabhängig
+davon funktionieren, welchen konkreten Wert die beiden Variablen zunächst haben. Man
+könnte zunächst versucht sein, das Problem auf die folgende Weise zu lösen.
 
-```{code-block} python
----
-linenos: true
----
->>> x = y = 1
->>> x, y
-(1, 1)
->>> x, y = 2, 3
->>> x, y
-(2, 3)
->>> x, y = y, x
->>> x, y
-(3, 2)
+```{code-cell} python
+x = 1
+y = 2
+x = y
+y = x
+print(x, y)
 ```
+Offenbar haben wir auf diese Weise den ursprünglichen Wert von `x` verloren. Das Problem
+ist die dritte Zeile, in der wir der Variable `x` den Wert von `y`, also 2, zuweisen. 
+Damit wurde der vorherige Wert 1 überschrieben und dieser kann auch in der vierten Zeile
+nicht auf magische Weise wieder auftreten.
 
-In Python ist es möglich, mehreren Variablen gleichzeitig einen Wert zuzuordnen
-(Zeile 1) oder mehreren Variablen in einer Anweisung verschiedene Werte
-zuzuordnen (Zeile 4). Statt des Tupels auf der rechten Seite von Zeile 4 könnte
-auch eine Liste mit zwei Elementen stehen.  Tupel und Liste sind Datentypen,
-die mehrere Elemente enthalten und die wir im Kapitel {ref}`zusgdatentypen`
-noch genauer ansehen werden.  Zeile 7 zeigt, wie man elegant die Werte zweier
-Variablen vertauschen kann. Dieses Verfahren ist so nicht in jeder
-Programmiersprache möglich. Dann muss man darauf achten, nicht einen der beiden
-Werte zu verlieren:
-
-```{code-block} python
----
-linenos: true
----
->>> x, y = 1, 2
->>> x = y
->>> y = x
->>> x, y
-(2, 2)
->>> x, y = 1, 2
->>> tmp = x
->>> x = y
->>> y = tmp
->>> x, y
-(2, 1)
+Die Standardlösung für dieses Problem besteht darin, den Wert von `x` in einer Variablen
+zwischenzuspeichern.
+```{code-cell} python
+x = 1
+y = 2
+tmp = x
+x = y
+y = tmp
+print(x, y)
 ```
+Hier wird in der dritten Zeile der Wert von `x` der Variablen `tmp` zugewiesen, die wir
+so genannt haben, weil sie nur temporär zur Zwischenspeicherung benötigt wird. Ihren Wert
+können wir dann in der fünften Zeile verwenden, um `y` den ursprünglichen Wert von `x`
+zuzuweisen, der in `x` ja bereits überschrieben wurde.
 
-In Zeile 2 wird der Wert von ``x`` überschrieben und geht somit verloren. In
-Zeile 7 wird dieser Wert dagegen in der Variablen ``tmp`` zwischengespeichert und
-kann somit in Zeile 9 der Variablen ``y`` zugewiesen werden.
+In Python lässt sich das Problem noch eleganter in folgender Weise lösen.
+```{code-cell} python
+x = 1
+y = 2
+x, y = y, x
+print(x, y)
+```
+Dies Lösung vermeidet die Einführung einer weiteren Variablen und erfordert auch keine
+drei Zeile Code, deren Funktion man erst analysieren muss. Vielmehr stellt die dritte
+Zeile sehr kompakt dar, was passiert. Genau genommen wird hier ein aus zwei Variablen
+bestehendes Tupel einem anderen Tupel zugewiesen. Dies geschieht parallel, so dass es
+zu keiner unerwünschten Überschreibung wie zuvor kommen kann. Ein Tupel ist ein
+zusammengesetzter Datentyp, den wir in {numref}`tupel` genauer diskutieren werden.
+Seine Verwendung trägt in unserem Beispiel erheblich dazu bei, den Code gut lesbar
+zu machen.
 
-In den Codebeispielen haben wir vor und nach dem Gleichheitszeichen ein
+In den Zuweisungen haben wir vor und nach dem Gleichheitszeichen jeweils ein
 Leerzeichen gesetzt. Dies ist nicht zwingend notwendig, verbessert aber die
 Lesbarkeit des Codes und wird daher auch im bereits weiter oben erwähnten Python
-Enhancement Proposal {pep}`8` empfohlen. Eine weitere Empfehlung lautet, eine
-Zeilenlänge von 79 Zeichen nicht zu überschreiten. Bei überlangen Zeilen kann
-man mit einem Backslash (``\``) am Zeilenende eine Fortsetzungszeile erzeugen.
-In gewissen Fällen erkennt der Python-Interpreter, dass eine Fortsetzungszeile
-folgen muss, so dass dann der Backslash entfallen kann. Dies ist insbesondere
-der Fall, wenn in einer Zeile eine Klammer geöffnet wird, die dann erst in
-einer Folgezeile wieder geschlossen wird. Es wird häufig empfohlen, den Backslash
-zur Kennzeichnung einer Fortsetzungszeile zu vermeiden. Stattdessen sollte
-eine Klammerung verwendet werden, selbst wenn diese ausschließlich zur impliziten
-Markierung von Fortsetzungszeilen dient. Im folgenden Beispiel wird deutlich,
-wie man die Klammerung einsetzen kann, auch wenn man die Addition kaum über zwei
-Zeilen verteilen wird:
+Enhancement Proposal {pep}`8` empfohlen. Es ist durchaus sinnvoll, sich zumindest
+an die wesentlichen der in PEP 8 enthaltenen Empfehlungen zu halten, um anderen
+Personen das Lesen des Codes zu erleichtern.
 
-```{code-block} python
->>> 4+ # doctest: +SKIP
-  File "<stdin>", line 1
-    4+
-     ^
-SyntaxError: invalid syntax
->>> (4+
-... 5)
-9
+Eine weitere Empfehlung lautet, eine Zeilenlänge von 79 Zeichen nicht zu
+überschreiten, auch wenn diese Vorgabe in Zeiten großer Bildschirme nicht mehr
+ganz so streng gesehen wird Bei überlangen Zeilen kann man mit einem Backslash
+(``\``) am Zeilenende eine Fortsetzungszeile erzeugen. In gewissen Fällen erkennt der
+Python-Interpreter, dass eine Fortsetzungszeile folgen muss, so dass dann der
+Backslash entfallen kann. Dies ist insbesondere der Fall, wenn in einer Zeile
+eine Klammer geöffnet wird, die dann erst in einer Folgezeile wieder
+geschlossen wird.
+
+Es wird häufig empfohlen, den Backslash zur Kennzeichnung einer
+Fortsetzungszeile zu vermeiden. Stattdessen sollte eine Klammerung verwendet
+werden, selbst wenn diese ausschließlich zur impliziten Markierung von
+Fortsetzungszeilen dient. Im folgenden Beispiel wird deutlich, wie man die
+Klammerung einsetzen kann, auch wenn man die Addition kaum über zwei Zeilen
+verteilen wird. Im ersten Fall erwartet Python nach dem Pluszeichen den zweiten
+Summanden, der auf dieser Zeile aber nicht zu finden ist.
+
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+4+
+5
 ```
-
-Beim ersten Versuch kann Python nicht erkennen, dass eine Fortsetzungszeile
-folgen soll, und beschwert sich entsprechend über die unvollständige Addition.
-Im zweiten Versuch behebt die Klammerung das Problem.
+Anders ist dies nach einer öffnenden Klammer, da Python dann den Code bis zur
+zugehörigen schließenden Klammer liest.
+```{code-cell} python
+(4+
+5)
+```
 
 ## Wahrheitswerte
 
-Im Kapitel {ref}`vorschau` hatten wir schon gesehen, dass man den Ablauf eines
+Im {numref}`vorschau` hatten wir schon gesehen, dass man den Ablauf eines
 Programms in Abhängigkeit davon beeinflussen kann, dass eine bestimmte Bedingung
 erfüllt ist oder nicht. In diesem Zusammenhang spielen Wahrheitswerte oder so
 genannte boolesche Variable eine Rolle.
