@@ -2264,10 +2264,37 @@ einfach mal aus.</p>
 </div>
 <div class="section" id="variablen-und-zuweisungen">
 <span id="variablen"></span><h2><span class="section-number">3.5. </span>Variablen und Zuweisungen<a class="headerlink" href="#variablen-und-zuweisungen" title="Link zu dieser Überschrift">¶</a></h2>
-<p>In einem Beispiel des letzten Abschnitts haben wir bereits eine Zahl einer
-Variablen zugewiesen. Da dies in einem Programm der Normalfall ist, müssen wir
-wissen, welche Namen für Variablen zugelassen sind. Ein Variablenname oder
-allgemein ein Bezeichner besteht aus einer beliebigen Zahl von Zeichen, wobei
+<p>Aus der Mathematik kennen wir das Konzept von Variablen, denen man je nach
+Anwendungsfall bestimmte Werte zuweisen kann. Es ist aber auch möglich, auf die
+explizite Zuweisung von Werten gänzlich zu verzichten und mit Variablen rein
+symbolisch zu rechnen. Wir werden im Folgenden immer den ersten Fall im Blick
+haben, bei dem Variablen ein Wert zugewiesen wird, der sich im Lauf der
+Programmabarbeitung auch verändern kann. Variablen sind in diesem Sinne Namen
+für Bereiche im Computerspeicher, die bestimmte Informationen enthalten.</p>
+<p>Die Beschränkung auf den ersten Fall bedeutet jedoch nicht, dass es auf Computern
+nicht möglich wäre, auch rein symbolisch zu rechnen, wie Computeralgebrasysteme
+zeigen. Auch in Python ist mit Hilfe der <a class="reference external" href="https://www.sympy.org/"><code class="docutils literal notranslate"><span class="pre">sympy</span></code>-Bibliothek</a>
+symbolisches Rechnen möglich.</p>
+<p>Eine Variable soll nun den Speicherplatz bezeichnen, in dem ein bestimmtes Objekt,
+also zum Beispiel eine Zahl, eine Zeichenkette oder ein Objekt eines der anderen
+Datentypen, die wir noch kennenlernen werden, abgespeichert ist. Bedenkt man, dass
+der Ort im Speicher auch einfach durch eine Zahl angegeben werden könnte, wird klar,
+dass Variablen eine wichtige Rolle dabei spielen, ein Programm gut lesbar zu machen.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tipp</p>
+<p>Es lohnt sich, bewusst beschreibende Variablennamen zu wählen, auch wenn es etwas Mühe kostet.
+In den meisten Fällen sind hierfür Variablennamen, die nur aus einem Buchstaben bestehen,
+ungeeignet, auch wenn sie bequem erscheinen mögen. Denken Sie daran, dass es für andere
+nicht offensichtlich sein wird, was die Bedeutung einer Variablen <code class="docutils literal notranslate"><span class="pre">x</span></code> im konkreten Fall
+ist. Unter Umständen handelt es sich bei dieser anderen Person auch um Sie selbst, wenn
+Sie nach einem halben Jahr wieder einen Blick auf Ihr Programm werfen. Eine beschreibende
+Benennung von Variablen ist ein wesentlicher Schritt zu einem gut dokumentierten Programm.</p>
+</div>
+<p>Wie muss ein Variablenname oder allgemein ein Bezeichner aufgebaut sein, damit er als
+solcher erkannt wird? Die Antwort hängt von der benutzten Programmiersprache ab, so dass
+wir sie hier konkret für Python beantworten werden. Die wesentlichen Aspekte gelten aber
+auch für die anderen verbreiteten Programmiersprachen für wissenschaftliche Anwendungen.</p>
+<p>In Python besteht ein Bezeichner aus einer beliebigen Zahl von Zeichen, wobei
 Buchstaben, der Unterstrich (<code class="docutils literal notranslate"><span class="pre">_</span></code>) und Ziffern zugelassen sind. Das erste Zeichen
 darf jedoch keine Ziffer sein. Der Unterstrich zu Beginn und am Ende eines Bezeichners
 impliziert üblicherweise eine spezielle Bedeutung, auf die wir später noch zurückkommen
@@ -2285,43 +2312,54 @@ Mangel behebt, aber dennoch im Umfang sehr beschränkt ist, bis hin zum
 Unicode-Standard, der mehr als hunderttausend Zeichen umfasst. Für den
 Unicode-Standard gibt es wiederum verschiedene Codierungen, insbesondere die in
 der westlichen Welt sinnvolle UTF-8-Kodierung. Etwas mehr Details zu diesem
-Thema sind im Anhang <a class="reference internal" href="unicode.html#appendixunicode"><span class="std std-ref">Anhang: Unicode</span></a> zu finden.</p>
-<p>Aus dem vorigen Abschnitt ergibt sich vielleicht der Eindruck, dass die Kodierung
-von Zeichen ein komplexeres Thema ist, und dieser Eindruck trügt nicht. Die gute
-Nachricht ist allerdings, dass zum einen immer mehr Computerbetriebssysteme
-die UTF-8-Kodierung verwenden und für Python-3-Skripte standardmäßig die
-UTF-8-Kodierung angenommen wird. In Python 3 muss man sich, im Gegensatz zu
-Python 2, über die Codierung in vielen Fällen keine großen Gedanken mehr machen,
-sofern man nicht zum Beispiel eine Ausgabe in einer anderen Codierung haben möchte.</p>
-<p>Die Verwendung der UTF-8-Kodierung impliziert, dass Buchstaben in Bezeichnern
-alle Zeichen sein können, die im Unicode-Standard als Buchstaben angesehen
-werden, also neben Umlauten zum Beispiel auch griechische Zeichen. Ob es
-wirklich sinnvoll ist, Buchstaben von außerhalb des Bereichs <code class="docutils literal notranslate"><span class="pre">A-Z</span></code> und
-<code class="docutils literal notranslate"><span class="pre">a-z</span></code> zu verwenden, sollte man sich im Einzelfall gut überlegen. Man muss
-sich nur vor Augen halten, was es für Folgen hätte, wenn man ein Programm
-analysieren müsste, das unter Verwendung von chinesischen Schriftzeichen
-geschrieben wurde. Dennoch ist zum Beispiel der folgende Code für Python 3 kein
-Problem:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span> <span class="k">as</span> <span class="n">π</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Radius</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Fläche</span> <span class="o">=</span> <span class="n">π</span><span class="o">*</span><span class="n">Radius</span><span class="o">**</span><span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Fläche</span><span class="p">)</span>
-<span class="go">12.566370614359172</span>
+Thema sind im <a class="reference internal" href="unicode.html#appendixunicode"><span class="std std-numref">Kapitel 13</span></a> zu finden.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Ein technisch präzise Beschreibung der erlaubten Zeichen findet sich in der
+<a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#identifiers">Sprachdokumentation von Python</a>.</p>
+</div>
+</div>
+<p>Die systematische Unterstützung des Unicode-Standards durch Python impliziert,
+dass Buchstaben in Bezeichnern alle Zeichen sein können, die im
+Unicode-Standard als Buchstaben angesehen werden, also neben Umlauten zum
+Beispiel auch griechische Zeichen. Ob es wirklich sinnvoll ist, Buchstaben von
+außerhalb des Bereiche <code class="docutils literal notranslate"><span class="pre">A-Z</span></code> und <code class="docutils literal notranslate"><span class="pre">a-z</span></code> zu verwenden, sollte man sich im
+Einzelfall gut überlegen. Man muss sich nur vor Augen halten, was es für Folgen
+hätte, wenn man ein Programm analysieren müsste, das unter Verwendung von
+chinesischen Schriftzeichen geschrieben wurde. Dennoch ist zum Beispiel der
+folgende Code für Python 3 kein Problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span> <span class="k">as</span> <span class="n">π</span>
+<span class="n">Radius</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Fläche</span> <span class="o">=</span> <span class="n">π</span><span class="o">*</span><span class="n">Radius</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Fläche</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Es ist nicht selbstverständlich, dass solche Variablennamen in anderen
-Programmiersprachen ebenfalls zugelassen sind.</p>
-<p>Bei einer Programmiersprache ist immer die Frage zu klären, ob zwischen Groß-
-und Kleinschreibung unterschieden wird. Python tut dies, so dass <code class="docutils literal notranslate"><span class="pre">var</span></code>,
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.566370614359172
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es ist nicht selbstverständlich, dass Variablennamen mit Umlauten, griechischen
+Buchstaben oder allgemein Zeichen außerhalb der Bereiche <code class="docutils literal notranslate"><span class="pre">A-Z</span></code> und <code class="docutils literal notranslate"><span class="pre">a-z</span></code>
+in anderen Programmiersprachen ebenfalls zugelassen sind. Will man solche Zeichen
+überhaupt verwenden, so sollte man sich hierüber informieren.</p>
+<p>Bei einer Programmiersprache ist auch immer die Frage zu klären, ob zwischen
+Groß- und Kleinschreibung unterschieden wird. Python tut dies, so dass <code class="docutils literal notranslate"><span class="pre">var</span></code>,
 <code class="docutils literal notranslate"><span class="pre">Var</span></code> und <code class="docutils literal notranslate"><span class="pre">VAR</span></code> verschiedene Variablen bezeichnen und für Python nichts
-miteinander zu tun haben. Auch hier stellt sich im Einzelfall die Frage,
-ob es sinnvoll ist, in einem Programm Variablennamen gleichzeitig in Groß-
-und Kleinschreibung zu verwenden. Es ist jedoch wichtig zu wissen, dass eine
-Fehlfunktion des Programms ihren Ursprung in einem Tippfehler haben kann,
-bei dem Groß- und Kleinschreibung nicht beachtet wurden.</p>
-<p>Es ist für die Verständlichkeit des Programmcodes angebracht, möglichst
+miteinander zu tun haben. Auch hier stellt sich im Einzelfall die Frage, ob es
+sinnvoll ist, in einem Programm einen Variablennamen gleichzeitig in Groß- und
+Kleinschreibung zu verwenden. Es ist jedoch wichtig zu wissen, dass eine
+Fehlfunktion des Programms ihren Ursprung in einem Tippfehler haben kann, bei
+dem Groß- und Kleinschreibung nicht beachtet wurden.</p>
+<p>Für die Verständlichkeit des Programmcodes ist es angebracht, möglichst
 aussagekräftige Bezeichner zu verwenden, auch wenn diese im Allgemeinen etwas
-länger ausfallen. Dabei ist es häufig sinnvoll, einen Bezeichner aus mehreren
+länger ausfallen. Dabei kann es sinnvoll sein, einen Bezeichner aus mehreren
 Wörtern zusammenzusetzen. Um die einzelnen Bestandteile erkennen zu können,
 sind verschiedene Varianten üblich. Man kann zur Trennung einen Unterstrich
 verwenden, z.B. <code class="docutils literal notranslate"><span class="pre">sortiere_liste</span></code>. Alternativ kann man neue Worte mit einem
@@ -2331,118 +2369,195 @@ Im ersten Fall spricht man von <em>mixedCase</em>, im zweiten Fall von <em>Camel
 die Großbuchstaben an Höcker eines Kamels erinnern. Details zu den in Python
 empfohlenen Konventionen für Bezeichner finden Sie im Python Enhancement Proposal <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a>
 mit dem Titel »Style Guide for Python Code« im Abschnitt <em>Naming Conventions</em>.</p>
-<p>Die folgenden Schlüsselwörter sind in Python als Sprachelemente reserviert und dürfen
-nicht für Bezeichner verwendet werden <a class="footnote-reference brackets" href="#keywords" id="id4">4</a>::</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">assert</span>      <span class="k">continue</span>   <span class="k">except</span>    <span class="k">if</span>        <span class="k">nonlocal</span>  <span class="k">return</span>
-<span class="kc">None</span>      <span class="k">async</span>       <span class="k">def</span>        <span class="nf">finally</span>   <span class="kn">import</span>    <span class="nn">not</span>       <span class="k">try</span>  
-<span class="kc">True</span>      <span class="k">await</span>       <span class="k">del</span>        <span class="k">for</span>       <span class="ow">in</span>        <span class="ow">or</span>        <span class="k">while</span> 
-<span class="ow">and</span>       <span class="k">break</span>       <span class="k">elif</span>       <span class="kn">from</span>      <span class="nn">is</span>        <span class="k">pass</span>      <span class="k">with</span>
-<span class="k">as</span>        <span class="k">class</span>       <span class="nc">else</span>       <span class="k">global</span>    <span class="k">lambda</span>    <span class="k">raise</span>     <span class="k">yield</span> 
+<p>In Python existieren eine Reihe von Schlüsselwörtern, die als Sprachelemente reserviert
+sind und daher nicht für Bezeichner verwendet werden dürfen. Die aktuelle Liste lässt
+sich mit einem kleinen Python-Programm erzeugen oder einfach in der <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#keywords">Sprachdokumentation von
+Python</a> nachschlagen.
+Wichtiger als das kurze Programm, das wir an dieser Stelle noch nicht vollständig verstehen
+können, ist das Ergebnis der reservierten Schlüsselwörter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keyword</span> <span class="kn">import</span> <span class="n">kwlist</span>
+
+<span class="k">for</span> <span class="n">nr</span><span class="p">,</span> <span class="n">kw</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kwlist</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kw</span><span class="si">:</span><span class="s1">&lt;10s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nr</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False     None      True      and       as        assert    async     
+await     break     class     continue  def       del       elif      
+else      except    finally   for       from      global    if        
+import    in        is        lambda    nonlocal  not       or        
+pass      raise     return    try       while     with      yield     
+</pre></div>
+</div>
+</div>
 </div>
 <div class="warning admonition">
 <p class="admonition-title">Wichtiger Hinweis</p>
 <p>Da griechische Buchstaben in der Physik relativ häufig sind, ist
-insbesondere darauf zu achten, dass <code class="docutils literal notranslate"><span class="pre">lambda</span></code> reserviert ist. Den Grund hierfür
-werden wir im Kapitel <span class="xref std std-ref">lambdafunktionen</span> diskutieren.</p>
+insbesondere darauf zu achten, dass <code class="docutils literal notranslate"><span class="pre">lambda</span></code> reserviert ist. Der Grund hierfür
+liegt darin, dass Python so genannte Lambdafunktionen zur Verfügung stellt, die
+wir im <code class="xref std std-numref docutils literal notranslate"><span class="pre">lambdafunktionen</span></code> diskutieren werden.</p>
 </div>
-<p>Variablen kann nun ein Wert zugeordnet werden, wie folgende Beispiele zeigen:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="go">2</span>
+<p>Variablen kann nun ein Wert zugewiesen werden. Die Zuweisung wird dabei durch
+ein Gleichheitszeichen gekennzeichnet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nach der ersten Zuweisung:  x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nach der zweiten Zuweisung: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Aus der zweiten Zeile wird klar, dass es sich hier trotz des
-Gleichheitszeichens nicht um eine Gleichung handelt. Vielmehr wird die rechte
-Seite ausgewertet und der auf der linken Seite stehenden Variablen zugewiesen.
-Die zweite Zeile müsste also eigentlich als <code class="docutils literal notranslate"><span class="pre">x</span></code> → <code class="docutils literal notranslate"><span class="pre">x+1</span></code> gelesen werden.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-<span class="go">(1, 1)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-<span class="go">(2, 3)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-<span class="go">(3, 2)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nach der ersten Zuweisung:  x = 1
+nach der zweiten Zuweisung: x = 2
 </pre></div>
-</td></tr></table></div>
-<p>In Python ist es möglich, mehreren Variablen gleichzeitig einen Wert zuzuordnen
-(Zeile 1) oder mehreren Variablen in einer Anweisung verschiedene Werte
-zuzuordnen (Zeile 4). Statt des Tupels auf der rechten Seite von Zeile 4 könnte
-auch eine Liste mit zwei Elementen stehen.  Tupel und Liste sind Datentypen,
-die mehrere Elemente enthalten und die wir im Kapitel <a class="reference internal" href="sequenzen.html#zusgdatentypen"><span class="std std-ref">Zusammengesetzte Datentypen</span></a>
-noch genauer ansehen werden.  Zeile 7 zeigt, wie man elegant die Werte zweier
-Variablen vertauschen kann. Dieses Verfahren ist so nicht in jeder
-Programmiersprache möglich. Dann muss man darauf achten, nicht einen der beiden
-Werte zu verlieren:</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-<span class="go">(2, 2)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-<span class="go">(2, 1)</span>
+</div>
+</div>
+</div>
+<p>In der ersten Zeile wird der Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> der Wert 1 zugewiesen. Die dritte
+Zeile zeigt deutlich, dass das Gleichheitszeichen nicht im Sinne einer
+mathematischen Gleichung interpretiert werden darf. Mathematisch hätte diese
+Gleichung nämlich keine Lösung. In einer Zuweisung wird vielmehr der Code auf
+der rechten Seite des Gleichheitszeichens ausgewertet. Zu diesem Zeitpunkt hat
+<code class="docutils literal notranslate"><span class="pre">x</span></code> noch den Wert 1, so dass sich nach der Addition der Wert 2 ergibt. Dieser
+Wert wird anschließend der Variablen <code class="docutils literal notranslate"><span class="pre">x</span></code> zugewiesen, die nun den Wert 2 besitzt.
+Die Zuweisung ist also eher als <code class="docutils literal notranslate"><span class="pre">x+1</span></code> → <code class="docutils literal notranslate"><span class="pre">x</span></code> zu verstehen.</p>
+<p>Sich die zeitliche Abfolge von Zuweisungen klar zu machen, ist zum Beispiel wichtig,
+wenn man zwei Werte vertauschen möchte. Im folgenden Beispiel weisen wir der Variable
+<code class="docutils literal notranslate"><span class="pre">x</span></code> den Wert 1 zu und der Variable <code class="docutils literal notranslate"><span class="pre">y</span></code> den Wert 2. Wir möchten die beiden Werte nun
+vertauschen, so dass <code class="docutils literal notranslate"><span class="pre">x</span></code> den Wert 2 bekommt und <code class="docutils literal notranslate"><span class="pre">y</span></code> den Wert 1. Das soll unabhängig
+davon funktionieren, welchen konkreten Wert die beiden Variablen zunächst haben. Man
+könnte zunächst versucht sein, das Problem auf die folgende Weise zu lösen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
-<p>In Zeile 2 wird der Wert von <code class="docutils literal notranslate"><span class="pre">x</span></code> überschrieben und geht somit verloren. In
-Zeile 7 wird dieser Wert dagegen in der Variablen <code class="docutils literal notranslate"><span class="pre">tmp</span></code> zwischengespeichert und
-kann somit in Zeile 9 der Variablen <code class="docutils literal notranslate"><span class="pre">y</span></code> zugewiesen werden.</p>
-<p>In den Codebeispielen haben wir vor und nach dem Gleichheitszeichen ein
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Offenbar haben wir auf diese Weise den ursprünglichen Wert von <code class="docutils literal notranslate"><span class="pre">x</span></code> verloren. Das Problem
+ist die dritte Zeile, in der wir der Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> den Wert von <code class="docutils literal notranslate"><span class="pre">y</span></code>, also 2, zuweisen.
+Damit wurde der vorherige Wert 1 überschrieben und dieser kann auch in der vierten Zeile
+nicht auf magische Weise wieder auftreten.</p>
+<p>Die Standardlösung für dieses Problem besteht darin, den Wert von <code class="docutils literal notranslate"><span class="pre">x</span></code> in einer Variablen
+zwischenzuspeichern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier wird in der dritten Zeile der Wert von <code class="docutils literal notranslate"><span class="pre">x</span></code> der Variablen <code class="docutils literal notranslate"><span class="pre">tmp</span></code> zugewiesen, die wir
+so genannt haben, weil sie nur temporär zur Zwischenspeicherung benötigt wird. Ihren Wert
+können wir dann in der fünften Zeile verwenden, um <code class="docutils literal notranslate"><span class="pre">y</span></code> den ursprünglichen Wert von <code class="docutils literal notranslate"><span class="pre">x</span></code>
+zuzuweisen, der in <code class="docutils literal notranslate"><span class="pre">x</span></code> ja bereits überschrieben wurde.</p>
+<p>In Python lässt sich das Problem noch eleganter in folgender Weise lösen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dies Lösung vermeidet die Einführung einer weiteren Variablen und erfordert auch keine
+drei Zeile Code, deren Funktion man erst analysieren muss. Vielmehr stellt die dritte
+Zeile sehr kompakt dar, was passiert. Genau genommen wird hier ein aus zwei Variablen
+bestehendes Tupel einem anderen Tupel zugewiesen. Dies geschieht parallel, so dass es
+zu keiner unerwünschten Überschreibung wie zuvor kommen kann. Ein Tupel ist ein
+zusammengesetzter Datentyp, den wir in <code class="xref std std-numref docutils literal notranslate"><span class="pre">tupel</span></code> genauer diskutieren werden.
+Seine Verwendung trägt in unserem Beispiel erheblich dazu bei, den Code gut lesbar
+zu machen.</p>
+<p>In den Zuweisungen haben wir vor und nach dem Gleichheitszeichen jeweils ein
 Leerzeichen gesetzt. Dies ist nicht zwingend notwendig, verbessert aber die
 Lesbarkeit des Codes und wird daher auch im bereits weiter oben erwähnten Python
-Enhancement Proposal <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> empfohlen. Eine weitere Empfehlung lautet, eine
-Zeilenlänge von 79 Zeichen nicht zu überschreiten. Bei überlangen Zeilen kann
-man mit einem Backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) am Zeilenende eine Fortsetzungszeile erzeugen.
-In gewissen Fällen erkennt der Python-Interpreter, dass eine Fortsetzungszeile
-folgen muss, so dass dann der Backslash entfallen kann. Dies ist insbesondere
-der Fall, wenn in einer Zeile eine Klammer geöffnet wird, die dann erst in
-einer Folgezeile wieder geschlossen wird. Es wird häufig empfohlen, den Backslash
-zur Kennzeichnung einer Fortsetzungszeile zu vermeiden. Stattdessen sollte
-eine Klammerung verwendet werden, selbst wenn diese ausschließlich zur impliziten
-Markierung von Fortsetzungszeilen dient. Im folgenden Beispiel wird deutlich,
-wie man die Klammerung einsetzen kann, auch wenn man die Addition kaum über zwei
-Zeilen verteilen wird:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">4</span><span class="o">+</span> 
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
-    <span class="mi">4</span><span class="o">+</span>
-     <span class="o">^</span>
-<span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">4</span><span class="o">+</span>
-<span class="gp">... </span><span class="mi">5</span><span class="p">)</span>
-<span class="go">9</span>
+Enhancement Proposal <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> empfohlen. Es ist durchaus sinnvoll, sich zumindest
+an die wesentlichen der in PEP 8 enthaltenen Empfehlungen zu halten, um anderen
+Personen das Lesen des Codes zu erleichtern.</p>
+<p>Eine weitere Empfehlung lautet, eine Zeilenlänge von 79 Zeichen nicht zu
+überschreiten, auch wenn diese Vorgabe in Zeiten großer Bildschirme nicht mehr
+ganz so streng gesehen wird Bei überlangen Zeilen kann man mit einem Backslash
+(<code class="docutils literal notranslate"><span class="pre">\</span></code>) am Zeilenende eine Fortsetzungszeile erzeugen. In gewissen Fällen erkennt der
+Python-Interpreter, dass eine Fortsetzungszeile folgen muss, so dass dann der
+Backslash entfallen kann. Dies ist insbesondere der Fall, wenn in einer Zeile
+eine Klammer geöffnet wird, die dann erst in einer Folgezeile wieder
+geschlossen wird.</p>
+<p>Es wird häufig empfohlen, den Backslash zur Kennzeichnung einer
+Fortsetzungszeile zu vermeiden. Stattdessen sollte eine Klammerung verwendet
+werden, selbst wenn diese ausschließlich zur impliziten Markierung von
+Fortsetzungszeilen dient. Im folgenden Beispiel wird deutlich, wie man die
+Klammerung einsetzen kann, auch wenn man die Addition kaum über zwei Zeilen
+verteilen wird. Im ersten Fall erwartet Python nach dem Pluszeichen den zweiten
+Summanden, der auf dieser Zeile aber nicht zu finden ist.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="o">+</span>
+<span class="mi">5</span>
 </pre></div>
 </div>
-<p>Beim ersten Versuch kann Python nicht erkennen, dass eine Fortsetzungszeile
-folgen soll, und beschwert sich entsprechend über die unvollständige Addition.
-Im zweiten Versuch behebt die Klammerung das Problem.</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-77-93104a7e2633&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">4</span><span class="o">+</span>
+      <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<p>Anders ist dies nach einer öffnenden Klammer, da Python dann den Code bis zur
+zugehörigen schließenden Klammer liest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">4</span><span class="o">+</span>
+<span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="wahrheitswerte">
 <h2><span class="section-number">3.6. </span>Wahrheitswerte<a class="headerlink" href="#wahrheitswerte" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Im Kapitel <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-ref">Eine Vorschau</span></a> hatten wir schon gesehen, dass man den Ablauf eines
+<p>Im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir schon gesehen, dass man den Ablauf eines
 Programms in Abhängigkeit davon beeinflussen kann, dass eine bestimmte Bedingung
 erfüllt ist oder nicht. In diesem Zusammenhang spielen Wahrheitswerte oder so
 genannte boolesche Variable eine Rolle.</p>
@@ -2727,7 +2842,7 @@ erreicht man durch Angabe des Buchstabens <code class="docutils literal notransl
 </pre></div>
 </div>
 <p>Hier wird durch den Wechsel der Darstellung insbesondere sichergestellt, dass
-immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id5">5</a></p>
+immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id4">4</a></p>
 <p>Betrachten wir nun noch die Formatierung von Integers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{0}</span><span class="s2">|</span><span class="si">{0:5}</span><span class="s2">|</span><span class="si">{0:05}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
@@ -2740,7 +2855,7 @@ immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="fo
 nicht weglassen?</p>
 </div>
 <p>Integers in Dezimaldarstellung benötigen keinen Buchstaben zur
-Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id6">6</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
+Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id5">5</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
 die Feldbreite festlegen.  Gibt man vor der Feldbreite eine Null an, so wird
 das Feld vor der auszugebenden Zahl mit Nullen aufgefüllt. Dies kann zum
 Beispiel bei der Ausgabe in anderen Zahlensystemen interessant sein. Python
@@ -2789,17 +2904,13 @@ weiter unten stehende Operatoren Vorrang haben.</p>
 <dd><p><a class="reference external" href="http://docs.python.org/glossary.html#term-duck-typing">docs.python.org/glossary.html#term-duck-typing</a>. Kritiker
 halten dem entgegen, dass sich auch ein Drache wie eine Ente verhalten kann.</p>
 </dd>
-<dt class="label" id="keywords"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>Bei Bedarf kann die Liste der Schlüsselwörter mit Hilfe des <code class="docutils literal notranslate"><span class="pre">keyword</span></code>-Moduls
-und Verwendung der Anweisung <code class="docutils literal notranslate"><span class="pre">keyword.kwlist</span></code> erhalten werden.</p>
-</dd>
-<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Die genaue Regel für die Umstellung der Darstellungsart kann man in der
 Dokumentation der Python-Standardbibliothek unter [6.1.3.1. Format Specification Mini-Language]
 (http://docs.python.org/3/library/string.html#formatspec)
 nachlesen.</p>
 </dd>
-<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p>Wenn man unbedingt möchte, kann man <code class="docutils literal notranslate"><span class="pre">d</span></code> für Dezimaldarstellung angeben.</p>
 </dd>
 </dl>
