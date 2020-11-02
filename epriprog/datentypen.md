@@ -270,13 +270,17 @@ name: table:precedence
   - Addition, Subtraktion
 ```
 
-Auch wenn das folgende Beispiel Gleitkommazahlen involviert, sei angemerkt,
-dass falls der Exponentiationsoperator `**` direkt von einem Plus oder Minus
-gefolgt, das Vorzeichen stärker bindet.
-
+Wird der Exponentiationsoperator `**` direkt von einem Plus oder Minus
+gefolgt, bindet das Vorzeichen allerdings stärker, was ja auch die einzig
+sinnvolle Interpretation dieses Codes ist.
 ```{code-cell} python
-2**-0.5
+2**-2
 ```
+Dagegen ist das Ergebnis von
+```{code-cell} python
+-2**2
+```
+negativ.
 
 Stehen Operatoren auf der gleichen Stufe, so wird der Ausdruck von links nach
 rechts ausgewertet. Gegebenenfalls müssen Klammern verwendet werden, um die
