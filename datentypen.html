@@ -2401,7 +2401,7 @@ pass      raise     return    try       while     with      yield
 <p>Da griechische Buchstaben in der Physik relativ häufig sind, ist
 insbesondere darauf zu achten, dass <code class="docutils literal notranslate"><span class="pre">lambda</span></code> reserviert ist. Der Grund hierfür
 liegt darin, dass Python so genannte Lambdafunktionen zur Verfügung stellt, die
-wir im <code class="xref std std-numref docutils literal notranslate"><span class="pre">lambdafunktionen</span></code> diskutieren werden.</p>
+wir im <a class="reference internal" href="funktionen.html#lambdafunktionen"><span class="std std-numref">Kapitel 5.6</span></a> diskutieren werden.</p>
 </div>
 <p>Variablen kann nun ein Wert zugewiesen werden. Die Zuweisung wird dabei durch
 ein Gleichheitszeichen gekennzeichnet.</p>
@@ -2499,7 +2499,7 @@ drei Zeile Code, deren Funktion man erst analysieren muss. Vielmehr stellt die d
 Zeile sehr kompakt dar, was passiert. Genau genommen wird hier ein aus zwei Variablen
 bestehendes Tupel einem anderen Tupel zugewiesen. Dies geschieht parallel, so dass es
 zu keiner unerwünschten Überschreibung wie zuvor kommen kann. Ein Tupel ist ein
-zusammengesetzter Datentyp, den wir in <code class="xref std std-numref docutils literal notranslate"><span class="pre">tupel</span></code> genauer diskutieren werden.
+zusammengesetzter Datentyp, den wir in <a class="reference internal" href="sequenzen.html#tupel"><span class="std std-numref">Kapitel 6.2</span></a> genauer diskutieren werden.
 Seine Verwendung trägt in unserem Beispiel erheblich dazu bei, den Code gut lesbar
 zu machen.</p>
 <p>In den Zuweisungen haben wir vor und nach dem Gleichheitszeichen jeweils ein
@@ -2558,7 +2558,7 @@ zugehörigen schließenden Klammer liest.</p>
 <div class="section" id="wahrheitswerte">
 <h2><span class="section-number">3.6. </span>Wahrheitswerte<a class="headerlink" href="#wahrheitswerte" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir schon gesehen, dass man den Ablauf eines
-Programms in Abhängigkeit davon beeinflussen kann, dass eine bestimmte Bedingung
+Programms in Abhängigkeit davon beeinflussen kann, ob eine bestimmte Bedingung
 erfüllt ist oder nicht. In diesem Zusammenhang spielen Wahrheitswerte oder so
 genannte boolesche Variable eine Rolle.</p>
 <p>Mit einem Wahrheitswert kann die Gültigkeit einer Aussage mit »wahr« oder
@@ -2568,45 +2568,122 @@ ist. Für die bis jetzt behandelten Datentypen (Integer, Float, Complex) gilt,
 dass eine Null dem Wert <code class="docutils literal notranslate"><span class="pre">False</span></code> entspricht, während alle anderen Zahlenwerte
 einem <code class="docutils literal notranslate"><span class="pre">True</span></code> entsprechen. Dies lässt sich durch eine explizite Umwandlung mit
 Hilfe der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">bool()</span></code> überprüfen:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="go">True</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Wichtige logische Operatoren sind <code class="docutils literal notranslate"><span class="pre">not</span></code> (Negation), <code class="docutils literal notranslate"><span class="pre">and</span></code> (logisches Und)
-und <code class="docutils literal notranslate"><span class="pre">or</span></code> (logisches Oder):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="ow">not</span> <span class="n">x</span>
-<span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="ow">and</span> <span class="n">y</span>
-<span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="ow">or</span> <span class="n">y</span>
-<span class="go">True</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wichtige logische Operatoren sind <code class="docutils literal notranslate"><span class="pre">not</span></code> (Negation), <code class="docutils literal notranslate"><span class="pre">and</span></code> (logisches Und)
+und <code class="docutils literal notranslate"><span class="pre">or</span></code> (logisches Oder). Bei der Negation wird aus <code class="docutils literal notranslate"><span class="pre">True</span></code> <code class="docutils literal notranslate"><span class="pre">False</span></code> und umgekehrt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ow">not</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nehmen wir noch einen zweiten Wahrheitswert hinzu, so können wir die <code class="docutils literal notranslate"><span class="pre">and</span></code>-Operation
+durchführen, die nur dann <code class="docutils literal notranslate"><span class="pre">True</span></code> ergibt, wenn beide beteiligten Ausdrücke den
+Wahrheitswert <code class="docutils literal notranslate"><span class="pre">True</span></code> haben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">x</span> <span class="ow">and</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die <code class="docutils literal notranslate"><span class="pre">or</span></code>-Operation ergibt <code class="docutils literal notranslate"><span class="pre">True</span></code> wenn mindestens einer der beiden beteiligten Ausdrücke
+den Wahrheitswert <code class="docutils literal notranslate"><span class="pre">True</span></code> hat. Diese Operation muss vom exklusiven Oder unterschieden werden,
+das nur <code class="docutils literal notranslate"><span class="pre">True</span></code> ergibt, wenn genau einer der beiden Wahrheitswerte gleich <code class="docutils literal notranslate"><span class="pre">True</span></code> ist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="ow">or</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <p>Logische Ausdrücke werden in Python von links nach rechts ausgewertet und zwar
 nur so weit, wie es für die Entscheidung über den Wahrheitswert erforderlich ist.
-Dies wird in dem folgenden Beispiel illustriert:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="ow">or</span> <span class="mi">1</span><span class="o">/</span><span class="n">y</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="ow">and</span> <span class="mi">1</span><span class="o">/</span><span class="n">y</span>
-<span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">ZeroDivisionError</span>: <span class="n">division by zero</span>
+Dies wird in dem folgenden Beispiel illustriert. Im ersten Fall steht das Ergebnis der
+<code class="docutils literal notranslate"><span class="pre">or</span></code>-Verküpfung schon dadurch fest, dass <code class="docutils literal notranslate"><span class="pre">x</span></code> gleich <code class="docutils literal notranslate"><span class="pre">True</span></code> ist, so dass die Division
+durch Null nicht mehr durchgeführt wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x</span> <span class="ow">or</span> <span class="mi">1</span><span class="o">/</span><span class="n">y</span>
 </pre></div>
 </div>
-<p>Bei der <code class="docutils literal notranslate"><span class="pre">or</span></code>-Verknüpfung ist schon aufgrund der Tatsache, dass <code class="docutils literal notranslate"><span class="pre">x</span></code> den Wert
-<code class="docutils literal notranslate"><span class="pre">True</span></code> hat, klar, dass der gesamte Ausdruck diesen Wert besitzt. Die Division
-wird daher nicht mehr ausgewertet. Bei der <code class="docutils literal notranslate"><span class="pre">and</span></code>-Verknüpfung reicht die
-Information über <code class="docutils literal notranslate"><span class="pre">x</span></code> dagegen nicht aus. Zusätzlich wird die Division ausgeführt,
-die hier zu einer <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>-Ausnahme führt.</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Anders ist dies bei der <code class="docutils literal notranslate"><span class="pre">and</span></code>-Verknüpfung. Hier wird die Division ausgeführt mit den
+bekannten Folgen einer Division durch Null.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="ow">and</span> <span class="mi">1</span><span class="o">/</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">85</span><span class="o">-</span><span class="mi">1</span><span class="n">caaeadbca49</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">x</span> <span class="ow">and</span> <span class="mi">1</span><span class="o">/</span><span class="n">y</span>
+
+<span class="ne">ZeroDivisionError</span>: division by zero
+</pre></div>
+</div>
+</div>
+</div>
 <p>Wahrheitswerte sind häufig das Ergebnis von Vergleichsoperationen, die in der
-folgenden Tabelle zusammengestellt sind.</p>
-<table class="colwidths-auto table">
+<a class="reference internal" href="#table-comparison"><span class="std std-numref">Tab. 3.2</span></a> zusammengestellt sind.</p>
+<table class="table" id="table-comparison">
+<caption><span class="caption-number">Tab. 3.2 </span><span class="caption-text">Vergleichsoperationen in Python</span><a class="headerlink" href="#table-comparison" title="Link zu dieser Tabelle">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operator</p></th>
 <th class="head"><p>Bedeutung</p></th>
@@ -2633,115 +2710,246 @@ folgenden Tabelle zusammengestellt sind.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">2</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">2</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">==</span> <span class="mi">2</span>
-<span class="go">False</span>
+<p>Die folgenden drei Beispiele illustrieren Vergleichsoperationen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">2</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
 </div>
 <div class="warning admonition">
 <p class="admonition-title">Wichtiger Hinweis</p>
 <p>Ein beliebter Fehler besteht darin, beim Test auf Gleichheit nur eines
 statt zwei Gleichheitszeichen zu verwenden.</p>
 </div>
-<p>Bei Gleitkommazahlen ist es normalerweise nicht sinnvoll, auf Gleichheit zu
-prüfen, da Rundungsfehler leicht dazu führen können, dass das Ergebnis nicht
+<p>Hat man es mit Gleitkommazahlen zu tun, so ist ein Test auf Gleichheit meistens
+nicht sinnvoll, das Rundungsfehler dazu führen können, dass das Ergebnis nicht
 wie erwartet ausfällt.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mf">0.1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
-<span class="go">False</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mf">0.1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
 </div>
 <p>In solchen Fällen ist es besser zu überprüfen, ob die Differenz von zwei
 Gleitkommazahlen eine vertretbare Schwelle unterschreitet.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-12</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span>
-<span class="go">True</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-12</span>
+<span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>In diesem Zusammenhang kann auch die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">isclose()</span></code> aus dem <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul
+hilfreich sein, das sowohl absolute als auch relative Abweichungen berücksichtigen kann.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function isclose in module math:
+
+isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
+    Determine whether two floating point numbers are close in value.
+    
+      rel_tol
+        maximum difference for being considered &quot;close&quot;, relative to the
+        magnitude of the input values
+      abs_tol
+        maximum difference for being considered &quot;close&quot;, regardless of the
+        magnitude of the input values
+    
+    Return True if a is close in value to b, and False otherwise.
+    
+    For the values to be considered close, the difference between them
+    must be smaller than at least one of the tolerances.
+    
+    -inf, inf and NaN behave similarly to the IEEE 754 Standard.  That
+    is, NaN is not close to anything, even itself.  inf and -inf are
+    only close to themselves.
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="formatierung-von-ausgaben">
 <span id="formatierung"></span><h2><span class="section-number">3.7. </span>Formatierung von Ausgaben<a class="headerlink" href="#formatierung-von-ausgaben" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Wenn man ein Programm ausführt, möchte man in den meisten Fällen eine Ausgabe haben,
-die im einfachsten Fall auf dem Bildschirm erfolgen kann. Im Folgenden soll auf die
-Formatierung, insbesondere von Zahlen, eingegangen werden. In Python 3 erfolgt die
-Ausgabe auf dem Bildschirm mit Hilfe der <code class="docutils literal notranslate"><span class="pre">print</span></code>-Funktion, die wir schon im Kapitel
-<a class="reference internal" href="vorschau.html#vorschau"><span class="std std-ref">Eine Vorschau</span></a> erwähnt hatten.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mf">3.14159</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="go">1.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">1.5 3.14159</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dies ist eine Näherung für die Kreiszahl:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">Dies ist eine Näherung für die Kreiszahl: 3.14159</span>
+<p>Wenn man ein Programm ausführt, möchte man in den meisten Fällen eine Ausgabe
+haben, die im einfachsten Fall auf dem Bildschirm erfolgen kann. In den
+Codezellen eines Jupyter Notebooks, wie wir sie in diesem Manuskript verwenden,
+kann man am Ende der Zelle einfach eine Variable oder einen Ausdruck
+hinschreiben. Dieser wird ausgewertet und das Ergebnis ausgegeben. Dabei
+handelt es sich zwar um eine bequeme Art der Ausgabe, die aber in Python im
+Allgemeinen und auch in anderen Programmiersprachen so nicht funktionieren
+wird.</p>
+<p>Stattdessen muss man die <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion verwenden, die in anderen
+Programmiersprachen auch einen anderen Namen, beispielsweise <code class="docutils literal notranslate"><span class="pre">write</span></code>, haben kann.
+Die <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion ist uns auch schon in einigen Beispielen begegnet.</p>
+<p>Die Ein- und Ausgabe von Daten werden wir erst später im <a class="reference internal" href="einausgabe.html#einausgabe"><span class="std std-numref">Kapitel 7</span></a>
+genauer diskutieren. Dennoch wollen wir uns schon jetzt mit der Frage beschäftigen,
+wie man eine Ausgabe in das gewünschte Format bringen kann. Gerade beim Arbeiten mit
+numerischen Datentypen, die wir zu Beginn dieses Kapitels eingeführt hatten, möchte
+man unter Umständen in der Lage sein, die Zahl der Nachkommastellen festzulegen oder
+eine Exponentialschreibweise zu wählen.</p>
+<p>Die Möglichkeit, das Format der Ausgabe festzulegen, ist zumindest in allen für
+das wissenschaftliche Arbeiten relevanten Programmiersprache gegeben. Die
+Beschreibung des Formats funktioniert typischerweise mit Hilfe eines <em>format
+strings</em>, der in den verschiedenen Programmiersprachen ähnlich aufgebaut ist,
+auch wenn es im Detail durchaus Unterschiede geben kann. Wie die auszugebenden
+Objekte und ihre Formatierung dann im Code anzugegeben sind, unterscheidet sich
+von Programmiersprache zu Programmiersprache. Python selbst stellt hierfür schon
+mehrere Möglichkeiten zur Verfügung. Mit der Version 3.6 wurden die so genannten
+f-Strings eingeführt, wobei der englische Begriff <em>string</em> hier im Sinne einer
+Zeichenkette zu verstehen ist. Im Folgenden werden wir uns auf die Formatierung mit
+Hilfe von f-Strings beschränken, da sich diese als bevorzugte Methode etabliert hat.</p>
+<p>Wir beginnen mit dem einfachsten Fall einer unformatierten Ausgabe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Wie diese Beispiele zeigen, kann man in einer Zeile mehrere Variablenwerte
-ausgeben, unter denen auch Zeichenketten sein können. Im Moment genügt es zu
-wissen, dass man Zeichenketten zum Beispiel durch umschließende
-Anführungszeichen kennzeichnen kann.  Zeichenketten werden wir detaillierter im
-Kapitel <span class="xref std std-ref">strings</span> besprechen. Die letzten beiden <code class="docutils literal notranslate"><span class="pre">print</span></code>-Aufrufe zeigen,
-dass beim Ausdruck mehrerer Variablen automatisch ein Leerzeichen eingefügt
-wird. Wenn man zwischen Zeichenketten das Komma weglässt, kann man dieses
-Leerzeichen unterdrücken:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dies ist eine Näher&quot;</span> <span class="s2">&quot;ung für die Kreiszahl:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">Dies ist eine Näherung für die Kreiszahl: 3.14159</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.25
+1.5 3.14159
 </pre></div>
 </div>
-<p>Dies ist besonders bei langen Zeichenketten nützlich, da diese damit problemlos
-über mehrere Zeilen geschrieben werden können. Zu beachten ist, dass das Weglassen
-des Kommas nur zwischen Zeichenketten erlaubt ist. Das noch vorhandene Komma ist
-also erforderlich.</p>
-<p>In Python ist es, wie in vielen anderen Programmiersprachen, möglich, die
-Darstellung der Variablenwerte genauer festzulegen. Auch wenn die Details von
-der Programmiersprache abhängig sind, gibt man typischerweise eine Zeichenkette
-an, die neben Text auch Platzhalter für die auszugebenden Variablen beinhaltet.
-Mit Hilfe dieser Platzhalter kann man auch genauer spezifizieren, wie die
-Ausgabe aussehen soll. Beim Übergang von Python 2 zu Python 3 wurde hierzu eine
-<code class="docutils literal notranslate"><span class="pre">format</span></code>-Methode eingeführt, die eine sehr flexible Formatierung erlaubt. Wir
-beschränken uns daher im Folgenden auf diese Art der Formatierung. Einige der
-damit verbundenen Möglichkeiten werden wir im weiteren Verlauf noch kennenlernen.</p>
-<p>Bevor wir uns mit den Formatierungsmöglichkeiten von Integers und Gleitkommazahlen
-beschäftigen, müssen wir uns zunächst die grundsätzliche Funktionsweise der
-<code class="docutils literal notranslate"><span class="pre">format</span></code>-Methode ansehen.</p>
-<p>Im einfachsten Fall hat man eine gewisse Anzahl von Variablen, die man ausgeben
-möchte und die im Formatierungsausdruck durch in geschweifte Klammern eingeschlossene
-Nummern angegeben werden.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">power</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="go">2**3 = 8</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">**</span><span class="si">{1}</span><span class="s2"> = </span><span class="si">{2}</span><span class="s2">. Ja, das Ergebnis ist </span><span class="si">{2}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="n">power</span><span class="p">))</span>
-<span class="go">2**3 = 8. Ja, das Ergebnis ist 8!</span>
+</div>
+</div>
+<p>Die Zeile 3, die zur ersten Ausgabezeile führt, zeigt, dass in er
+<code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion nicht nur Variablen angeben kann, sondern auch ganze
+Ausdrücke, wie hier das Quadrat der Variablen <code class="docutils literal notranslate"><span class="pre">x</span></code>. Daneben ist es möglich,
+mehrere Variable gleichzeitig auszugeben. Dazu werden diese im Argument der
+<code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion durch ein Komma getrennt. Das Leerzeichen nach dem Komma
+ist für Python nicht relevant, verbessert aber die Lesbarkeit des Codes und ist
+daher üblich. Auf jeden Fall wird Python in der Ausgabe zwischen den Werten der
+beiden Variablen immer ein Leerzeichen setzen.</p>
+<p>Um die Bedeutung der ausgegebenen Wert anzudeuten, möchte man häufig gerne noch
+einen Text ausgeben. Im einfachsten Fall kann man diesen Text einfach als
+weiteres Argument der <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion in Form einer Zeichenkette
+angeben. Zeichenketten werden wir erst im <a class="reference internal" href="sequenzen.html#strings"><span class="std std-numref">Kapitel 6.3</span></a> genauer besprechen.
+Für den Moment ist nur wichtig, dass Zeichenketten durch Anführungszeichen
+begrenzt werden müssen. Dabei sind sowohl doppelte Anführungszeichen (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) als
+auch einfache Anführungszeichen (<code class="docutils literal notranslate"><span class="pre">'</span></code>) zugelassen, sofern am Anfang und Ende der
+Zeichenkette das gleiche Zeichen verwendet wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Näherung für π/3:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Wie die letzte Eingabe zeigt, können Platzhalter auch wiederholt werden. Ist eine
-Wiederholung nicht gewünscht und gibt man die Variablen in der richtigen Reihenfolge
-an, so kann auf die Nummerierung verzichtet werden.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">**</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="n">power</span><span class="p">))</span>
-<span class="go">2**3 = 8</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Näherung für π/3: 1.0471966666666666
 </pre></div>
 </div>
-<p>In unübersichtlichen Situationen oder wenn man die Reihenfolge später noch auf
-einfache Weise ändern möchte kann man auch Namen vergeben.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{basis}</span><span class="s2">**</span><span class="si">{exponent}</span><span class="s2"> = </span><span class="si">{ergebnis}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basis</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
-<span class="gp">... </span>                                                <span class="n">exponent</span><span class="o">=</span><span class="n">power</span><span class="p">,</span>
-<span class="gp">... </span>                                                <span class="n">ergebnis</span><span class="o">=</span><span class="n">x</span><span class="o">**</span><span class="n">power</span><span class="p">))</span>
-<span class="go">2**3 = 8</span>
+</div>
+</div>
+<p>Bis jetzt haben wir noch keinerlei Formatierung vorgenommen. Das vorige Beispiel,
+bei dem die Kreiszahl nur auf fünf Nachkommastellen einging, illustriert aber,
+dass man beispielsweise die Zahl der Nachkommstellen kontrollieren will. In unserem
+Beispiel wäre eine Beschränkung auf fünf Nachkommastellen sinnvoll.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Näherung für π/3: </span><span class="si">{</span><span class="n">y</span><span class="o">/</span><span class="mi">3</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Die drei Argumente stehen hier nur in eigenen Zeilen um den langen Ausdruck
-geeignet umzubrechen. Wir erinnern uns daran, dass nach einer geöffneten Klammer,
-also der Klammer vor <code class="docutils literal notranslate"><span class="pre">basis</span></code>, bis zur schließenden Klammer weitergelesen wird.</p>
-<p>Will man eine geschweifte Klammer im Ausgabetext unterbringen, so muss man diese
-wie im folgenden Beispiel gezeigt verdoppeln.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">**</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">. Und das ist eine geschweifte Klammer: {{&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-<span class="gp">... </span>                                                     <span class="n">x</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="n">power</span><span class="p">))</span>
-<span class="go">2**3 = 8. Und das ist eine geschweifte Klammer: {</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Näherung für π/3: 1.04720
 </pre></div>
+</div>
+</div>
+</div>
+<p>Bevor wir das Vorgehen bei der Formatierung in Python systematischer
+diskutieren, sehen wir uns zunächst das Argument der <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion in
+diesem Beispiel genauer an. Durch die Anführungszeichen wird die Zeichenkette
+begrenzt die ausgegeben wird. Um diese Zeichenkette als f-String zu kennzeichnen,
+muss ein <code class="docutils literal notranslate"><span class="pre">f</span></code> vorangestellt werden. Die eigentliche Zeichenkette enthält zum einen
+einfach Text, wobei wir an dem griechischen Buchstaben sehen, dass wir im Prinzip
+beliebige Unicodezeichen in UTF-8-Kodierung angeben können.</p>
+<p>Daneben enthält die Zeichenkette noch einen Teil, der durch geschweifte Klammern
+gekennzeichnet ist, und der eine von Python auszuwertenden Ausdruck sowie eine
+Formatierungsangabe enthält, die durch einen Doppelpunkt voneinander getrennt sind.
+Der <em>format string</em> lautet hier also <code class="docutils literal notranslate"><span class="pre">.5f</span></code> und gibt mit Hilfe des Buchstabens <code class="docutils literal notranslate"><span class="pre">f</span></code>,
+der für <em>float</em> steht, an, dass eine Gleitkommadarstellung gewünscht wird. Die <code class="docutils literal notranslate"><span class="pre">5</span></code>
+nach dem Dezimalpunkt legt fest, dass fünf Nachkommastellen auszugeben sind. Wie wir
+an der Ausgabe im Beispiel sehen, wird die Zahl nicht einfach abgeschnitten, sondern
+gerundet.</p>
+<p>In f-Strings ist die Zahl der auszuwertenden Ausdrücke nicht auf einen beschränkt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">power</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">**</span><span class="si">{</span><span class="n">power</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">x</span><span class="o">**</span><span class="n">power</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2**0.5 = 1.4142135623730951
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier ist zwischen den zwei Sternchen außerhalb der geschweiften Klammern, die direkt
+so ausgegeben werden, und den Sternchen innerhalb der geschweiften Klammern, die als
+Exponentierungsoperator fungieren, zu unterscheiden.</p>
+<div class="admonition-hinweis admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Will man im Ausgabetext eine öffnende oder schließende geschweifte Klammer unterbringen,
+so ist diese zu verdoppeln, also <code class="docutils literal notranslate"><span class="pre">{{</span></code> oder <code class="docutils literal notranslate"><span class="pre">}}</span></code>.</p>
+</div>
+<div class="admonition-hinweis admonition">
+<p class="admonition-title">Hinweis</p>
 </div>
 <p>Bis jetzt haben wir nur die Ausgabe von Variablen in einen Text eingebettet,
 ohne die Ausgabe jeder Variable selbst beeinflussen zu können. Dies ist aber
