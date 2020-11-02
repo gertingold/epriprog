@@ -1288,79 +1288,95 @@ zugehörigen schließenden Klammer liest.
 ## Wahrheitswerte
 
 Im {numref}`vorschau` hatten wir schon gesehen, dass man den Ablauf eines
-Programms in Abhängigkeit davon beeinflussen kann, dass eine bestimmte Bedingung
+Programms in Abhängigkeit davon beeinflussen kann, ob eine bestimmte Bedingung
 erfüllt ist oder nicht. In diesem Zusammenhang spielen Wahrheitswerte oder so
 genannte boolesche Variable eine Rolle.
 
 Mit einem Wahrheitswert kann die Gültigkeit einer Aussage mit »wahr« oder
 »falsch« spezifiziert werden.  Mögliche Werte in Python sind entsprechend
-``True`` und ``False``, wobei die Großschreibung des ersten Zeichens wichtig
+`True` und `False`, wobei die Großschreibung des ersten Zeichens wichtig
 ist. Für die bis jetzt behandelten Datentypen (Integer, Float, Complex) gilt,
-dass eine Null dem Wert ``False`` entspricht, während alle anderen Zahlenwerte
-einem ``True`` entsprechen. Dies lässt sich durch eine explizite Umwandlung mit
+dass eine Null dem Wert `False` entspricht, während alle anderen Zahlenwerte
+einem `True` entsprechen. Dies lässt sich durch eine explizite Umwandlung mit
 Hilfe der Funktion {func}`bool` überprüfen:
 
-```{code-block} python
->>> bool(0)
-False
->>> bool(42)
-True
+```{code-cell} python
+bool(0)
+```
+```{code-cell} python
+bool(42)
 ```
 
-Wichtige logische Operatoren sind ``not`` (Negation), ``and`` (logisches Und)
-und ``or`` (logisches Oder):
-
-```{code-block} python
->>> x = True
->>> y = False
->>> not x
-False
->>> x and y
-False
->>> x or y
-True
+Wichtige logische Operatoren sind `not` (Negation), `and` (logisches Und)
+und `or` (logisches Oder). Bei der Negation wird aus `True` `False` und umgekehrt.
+```{code-cell} python
+x = True
+not x
+```
+Nehmen wir noch einen zweiten Wahrheitswert hinzu, so können wir die `and`-Operation
+durchführen, die nur dann `True` ergibt, wenn beide beteiligten Ausdrücke den
+Wahrheitswert `True` haben.
+```{code-cell} python
+y = False
+x and y
+```
+Die `or`-Operation ergibt `True` wenn mindestens einer der beiden beteiligten Ausdrücke
+den Wahrheitswert `True` hat. Diese Operation muss vom exklusiven Oder unterschieden werden,
+das nur `True` ergibt, wenn genau einer der beiden Wahrheitswerte gleich `True` ist.
+```{code-cell} python
+x or y
 ```
 
 Logische Ausdrücke werden in Python von links nach rechts ausgewertet und zwar
 nur so weit, wie es für die Entscheidung über den Wahrheitswert erforderlich ist.
-Dies wird in dem folgenden Beispiel illustriert:
-
-```{code-block} python
->>> x = True
->>> y = 0
->>> x or 1/y
-True
->>> x and 1/y
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ZeroDivisionError: division by zero
+Dies wird in dem folgenden Beispiel illustriert. Im ersten Fall steht das Ergebnis der
+`or`-Verküpfung schon dadurch fest, dass `x` gleich `True` ist, so dass die Division
+durch Null nicht mehr durchgeführt wird.
+```{code-cell} python
+x = True
+y = 0
+x or 1/y
+```
+Anders ist dies bei der `and`-Verknüpfung. Hier wird die Division ausgeführt mit den
+bekannten Folgen einer Division durch Null.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+x and 1/y
 ```
 
-Bei der ``or``-Verknüpfung ist schon aufgrund der Tatsache, dass ``x`` den Wert
-``True`` hat, klar, dass der gesamte Ausdruck diesen Wert besitzt. Die Division
-wird daher nicht mehr ausgewertet. Bei der ``and``-Verknüpfung reicht die
-Information über ``x`` dagegen nicht aus. Zusätzlich wird die Division ausgeführt,
-die hier zu einer ``ZeroDivisionError``-Ausnahme führt.
-
 Wahrheitswerte sind häufig das Ergebnis von Vergleichsoperationen, die in der 
-folgenden Tabelle zusammengestellt sind.
+{numref}`table:comparison` zusammengestellt sind.
 
-|Operator |  Bedeutung             |
-|---------|------------------------|
-|``<``    |  kleiner               |
-|``<=``   |  kleiner oder gleich   |
-|``>``    |  größer                |
-|``>=``   |  größer oder gleich    |
-|``!=``   |  ungleich              |
-|``==``   |  gleich                |
+```{list-table} Vergleichsoperationen in Python
+:header-rows: 1
+:name: table:comparison
 
-```{code-block} python
->>> 5 != 2
-True
->>> 5 > 2
-True
->>> 5 == 2
-False
+* - Operator
+  - Bedeutung
+* - `<`
+  - kleiner
+* - `<=`
+  - kleiner oder gleich
+* - `>`
+  - größer
+* - `>=`
+  - größer oder gleich
+* - `!=`
+  - ungleich
+* - `==`
+  - gleich
+```
+Die folgenden drei Beispiele illustrieren Vergleichsoperationen.
+```{code-cell} python
+5 != 2
+```
+```{code-cell} python
+5 > 2
+```
+```{code-cell} python
+5 == 2
 ```
 
 ```{admonition} Wichtiger Hinweis
@@ -1369,123 +1385,143 @@ Ein beliebter Fehler besteht darin, beim Test auf Gleichheit nur eines
 statt zwei Gleichheitszeichen zu verwenden.
 ```
 
-Bei Gleitkommazahlen ist es normalerweise nicht sinnvoll, auf Gleichheit zu
-prüfen, da Rundungsfehler leicht dazu führen können, dass das Ergebnis nicht
+Hat man es mit Gleitkommazahlen zu tun, so ist ein Test auf Gleichheit meistens
+nicht sinnvoll, das Rundungsfehler dazu führen können, dass das Ergebnis nicht
 wie erwartet ausfällt.
-
-```{code-block} python
->>> x = 3*0.1
->>> y = 0.3
->>> x == y
-False
+```{code-cell} python
+x = 3*0.1
+y = 0.3
+x == y
 ```
 
 In solchen Fällen ist es besser zu überprüfen, ob die Differenz von zwei
 Gleitkommazahlen eine vertretbare Schwelle unterschreitet.
-
-```{code-block} python
->>> eps = 1e-12
->>> abs(x-y) < eps
-True
+```{code-cell} python
+eps = 1e-12
+abs(x-y) < eps
 ```
+In diesem Zusammenhang kann auch die Funktion {func}`isclose` aus dem {mod}`math`-Modul
+hilfreich sein, das sowohl absolute als auch relative Abweichungen berücksichtigen kann.
+```{code-cell} python
+---
+tags: ["output_scroll"]
+---
+import math
+help(math.isclose)
+```    
 
 
 (formatierung)=
 ## Formatierung von Ausgaben
 
-Wenn man ein Programm ausführt, möchte man in den meisten Fällen eine Ausgabe haben,
-die im einfachsten Fall auf dem Bildschirm erfolgen kann. Im Folgenden soll auf die
-Formatierung, insbesondere von Zahlen, eingegangen werden. In Python 3 erfolgt die
-Ausgabe auf dem Bildschirm mit Hilfe der ``print``-Funktion, die wir schon im Kapitel
-{ref}`vorschau` erwähnt hatten.
+Wenn man ein Programm ausführt, möchte man in den meisten Fällen eine Ausgabe
+haben, die im einfachsten Fall auf dem Bildschirm erfolgen kann. In den
+Codezellen eines Jupyter Notebooks, wie wir sie in diesem Manuskript verwenden,
+kann man am Ende der Zelle einfach eine Variable oder einen Ausdruck
+hinschreiben. Dieser wird ausgewertet und das Ergebnis ausgegeben. Dabei
+handelt es sich zwar um eine bequeme Art der Ausgabe, die aber in Python im
+Allgemeinen und auch in anderen Programmiersprachen so nicht funktionieren
+wird.
 
-```{code-block} python
->>> x = 1.5
->>> y = 3.14159
->>> print(x)
-1.5
->>> print(x, y)
-1.5 3.14159
->>> print("Dies ist eine Näherung für die Kreiszahl:", y)
-Dies ist eine Näherung für die Kreiszahl: 3.14159
+Stattdessen muss man die {func}`print`-Funktion verwenden, die in anderen
+Programmiersprachen auch einen anderen Namen, beispielsweise `write`, haben kann.
+Die {func}`print`-Funktion ist uns auch schon in einigen Beispielen begegnet.
+
+Die Ein- und Ausgabe von Daten werden wir erst später im {numref}`einausgabe`
+genauer diskutieren. Dennoch wollen wir uns schon jetzt mit der Frage beschäftigen,
+wie man eine Ausgabe in das gewünschte Format bringen kann. Gerade beim Arbeiten mit
+numerischen Datentypen, die wir zu Beginn dieses Kapitels eingeführt hatten, möchte
+man unter Umständen in der Lage sein, die Zahl der Nachkommastellen festzulegen oder
+eine Exponentialschreibweise zu wählen.
+
+Die Möglichkeit, das Format der Ausgabe festzulegen, ist zumindest in allen für
+das wissenschaftliche Arbeiten relevanten Programmiersprache gegeben. Die
+Beschreibung des Formats funktioniert typischerweise mit Hilfe eines *format
+strings*, der in den verschiedenen Programmiersprachen ähnlich aufgebaut ist,
+auch wenn es im Detail durchaus Unterschiede geben kann. Wie die auszugebenden
+Objekte und ihre Formatierung dann im Code anzugegeben sind, unterscheidet sich
+von Programmiersprache zu Programmiersprache. Python selbst stellt hierfür schon
+mehrere Möglichkeiten zur Verfügung. Mit der Version 3.6 wurden die so genannten
+f-Strings eingeführt, wobei der englische Begriff *string* hier im Sinne einer 
+Zeichenkette zu verstehen ist. Im Folgenden werden wir uns auf die Formatierung mit
+Hilfe von f-Strings beschränken, da sich diese als bevorzugte Methode etabliert hat.
+
+Wir beginnen mit dem einfachsten Fall einer unformatierten Ausgabe.
+```{code-cell} python
+x = 1.5
+y = 3.14159
+print(x**2)
+print(x, y)
+```
+Die Zeile 3, die zur ersten Ausgabezeile führt, zeigt, dass in er
+{func}`print`-Funktion nicht nur Variablen angeben kann, sondern auch ganze
+Ausdrücke, wie hier das Quadrat der Variablen `x`. Daneben ist es möglich,
+mehrere Variable gleichzeitig auszugeben. Dazu werden diese im Argument der
+{func}`print`-Funktion durch ein Komma getrennt. Das Leerzeichen nach dem Komma
+ist für Python nicht relevant, verbessert aber die Lesbarkeit des Codes und ist
+daher üblich. Auf jeden Fall wird Python in der Ausgabe zwischen den Werten der
+beiden Variablen immer ein Leerzeichen setzen.
+
+Um die Bedeutung der ausgegebenen Wert anzudeuten, möchte man häufig gerne noch
+einen Text ausgeben. Im einfachsten Fall kann man diesen Text einfach als
+weiteres Argument der {func}`print`-Funktion in Form einer Zeichenkette
+angeben. Zeichenketten werden wir erst im {numref}`strings` genauer besprechen.
+Für den Moment ist nur wichtig, dass Zeichenketten durch Anführungszeichen
+begrenzt werden müssen. Dabei sind sowohl doppelte Anführungszeichen (`"`) als
+auch einfache Anführungszeichen (`'`) zugelassen, sofern am Anfang und Ende der
+Zeichenkette das gleiche Zeichen verwendet wird.
+```{code-cell} python
+print("Näherung für π/3:", y/3)
 ```
 
-Wie diese Beispiele zeigen, kann man in einer Zeile mehrere Variablenwerte
-ausgeben, unter denen auch Zeichenketten sein können. Im Moment genügt es zu
-wissen, dass man Zeichenketten zum Beispiel durch umschließende
-Anführungszeichen kennzeichnen kann.  Zeichenketten werden wir detaillierter im
-Kapitel {ref}`strings` besprechen. Die letzten beiden ``print``-Aufrufe zeigen,
-dass beim Ausdruck mehrerer Variablen automatisch ein Leerzeichen eingefügt
-wird. Wenn man zwischen Zeichenketten das Komma weglässt, kann man dieses
-Leerzeichen unterdrücken:
-
-```{code-block} python
->>> print("Dies ist eine Näher" "ung für die Kreiszahl:", y)
-Dies ist eine Näherung für die Kreiszahl: 3.14159
+Bis jetzt haben wir noch keinerlei Formatierung vorgenommen. Das vorige Beispiel,
+bei dem die Kreiszahl nur auf fünf Nachkommastellen einging, illustriert aber,
+dass man beispielsweise die Zahl der Nachkommstellen kontrollieren will. In unserem
+Beispiel wäre eine Beschränkung auf fünf Nachkommastellen sinnvoll.
+```{code-cell} python
+print(f"Näherung für π/3: {y/3:.5f}")
 ```
 
-Dies ist besonders bei langen Zeichenketten nützlich, da diese damit problemlos
-über mehrere Zeilen geschrieben werden können. Zu beachten ist, dass das Weglassen
-des Kommas nur zwischen Zeichenketten erlaubt ist. Das noch vorhandene Komma ist
-also erforderlich.
+Bevor wir das Vorgehen bei der Formatierung in Python systematischer
+diskutieren, sehen wir uns zunächst das Argument der {func}`print`-Funktion in
+diesem Beispiel genauer an. Durch die Anführungszeichen wird die Zeichenkette
+begrenzt die ausgegeben wird. Um diese Zeichenkette als f-String zu kennzeichnen,
+muss ein `f` vorangestellt werden. Die eigentliche Zeichenkette enthält zum einen
+einfach Text, wobei wir an dem griechischen Buchstaben sehen, dass wir im Prinzip
+beliebige Unicodezeichen in UTF-8-Kodierung angeben können.
 
-In Python ist es, wie in vielen anderen Programmiersprachen, möglich, die
-Darstellung der Variablenwerte genauer festzulegen. Auch wenn die Details von
-der Programmiersprache abhängig sind, gibt man typischerweise eine Zeichenkette
-an, die neben Text auch Platzhalter für die auszugebenden Variablen beinhaltet.
-Mit Hilfe dieser Platzhalter kann man auch genauer spezifizieren, wie die
-Ausgabe aussehen soll. Beim Übergang von Python 2 zu Python 3 wurde hierzu eine
-``format``-Methode eingeführt, die eine sehr flexible Formatierung erlaubt. Wir
-beschränken uns daher im Folgenden auf diese Art der Formatierung. Einige der
-damit verbundenen Möglichkeiten werden wir im weiteren Verlauf noch kennenlernen.
+Daneben enthält die Zeichenkette noch einen Teil, der durch geschweifte Klammern
+gekennzeichnet ist, und der eine von Python auszuwertenden Ausdruck sowie eine
+Formatierungsangabe enthält, die durch einen Doppelpunkt voneinander getrennt sind.
+Der *format string* lautet hier also `.5f` und gibt mit Hilfe des Buchstabens `f`,
+der für *float* steht, an, dass eine Gleitkommadarstellung gewünscht wird. Die `5`
+nach dem Dezimalpunkt legt fest, dass fünf Nachkommastellen auszugeben sind. Wie wir
+an der Ausgabe im Beispiel sehen, wird die Zahl nicht einfach abgeschnitten, sondern
+gerundet.
 
-Bevor wir uns mit den Formatierungsmöglichkeiten von Integers und Gleitkommazahlen
-beschäftigen, müssen wir uns zunächst die grundsätzliche Funktionsweise der
-``format``-Methode ansehen.
+In f-Strings ist die Zahl der auszuwertenden Ausdrücke nicht auf einen beschränkt.
+```{code-cell} python
+x = 2
+power = 0.5
+print(f"{x}**{power} = {x**power}")
+```
+Hier ist zwischen den zwei Sternchen außerhalb der geschweiften Klammern, die direkt
+so ausgegeben werden, und den Sternchen innerhalb der geschweiften Klammern, die als
+Exponentierungsoperator fungieren, zu unterscheiden.
 
-Im einfachsten Fall hat man eine gewisse Anzahl von Variablen, die man ausgeben
-möchte und die im Formatierungsausdruck durch in geschweifte Klammern eingeschlossene
-Nummern angegeben werden.
-
-```{code-block} python
->>> x = 2
->>> power = 3
-2**3 = 8
->>> print("{0}**{1} = {2}. Ja, das Ergebnis ist {2}!".format(x, power, x**power))
-2**3 = 8. Ja, das Ergebnis ist 8!
+```{admonition} Hinweis
+Will man im Ausgabetext eine öffnende oder schließende geschweifte Klammer unterbringen,
+so ist diese zu verdoppeln, also `{{` oder `}}`.
 ```
 
-Wie die letzte Eingabe zeigt, können Platzhalter auch wiederholt werden. Ist eine
-Wiederholung nicht gewünscht und gibt man die Variablen in der richtigen Reihenfolge
-an, so kann auf die Nummerierung verzichtet werden.
-
-```{code-block} python
->>> print("{}**{} = {}".format(x, power, x**power))
-2**3 = 8
+````{admonition} Hinweis
+```{code-cell} python
+x = 2
+print(x**2)
 ```
+````
 
-In unübersichtlichen Situationen oder wenn man die Reihenfolge später noch auf
-einfache Weise ändern möchte kann man auch Namen vergeben.
 
-```{code-block} python
->>> print("{basis}**{exponent} = {ergebnis}".format(basis=x,
-...                                                 exponent=power,
-...                                                 ergebnis=x**power))
-2**3 = 8
-```
-
-Die drei Argumente stehen hier nur in eigenen Zeilen um den langen Ausdruck
-geeignet umzubrechen. Wir erinnern uns daran, dass nach einer geöffneten Klammer,
-also der Klammer vor ``basis``, bis zur schließenden Klammer weitergelesen wird.
-
-Will man eine geschweifte Klammer im Ausgabetext unterbringen, so muss man diese
-wie im folgenden Beispiel gezeigt verdoppeln.
-
-```{code-block} python
->>> print("{}**{} = {}. Und das ist eine geschweifte Klammer: {{".format(
-...                                                      x, power, x**power))
-2**3 = 8. Und das ist eine geschweifte Klammer: {
-```
 
 Bis jetzt haben wir nur die Ausgabe von Variablen in einen Text eingebettet,
 ohne die Ausgabe jeder Variable selbst beeinflussen zu können. Dies ist aber
