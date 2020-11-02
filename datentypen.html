@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -509,7 +509,9 @@ mit einem doppelten Schrägstrich.</p>
 <div class="admonition-frage admonition">
 <p class="admonition-title">Frage</p>
 <p>Was macht der <code class="docutils literal notranslate"><span class="pre">//</span></code>-Divisionsoperator in Python 3 tatsächlich, vor allem vor dem
-Hintergrund des letzten Beispiels? <a class="footnote-reference brackets" href="#gvr-blog" id="id1">1</a></p>
+Hintergrund des letzten Beispiels? Warum dies so ist, lässt sich in einem
+<a class="reference external" href="http://python-history.blogspot.de/2010/08/why-pythons-integer-division-floors.html">Blog-Artikel</a>
+von Guido van Rossum nachlesen.</p>
 </div>
 <p>Um zu verdeutlichen, dass die in Python 3 getroffene Wahl nicht zwingend ist,
 sehen wir uns zum Vergleich die Division in der Programmiersprache C an.
@@ -649,9 +651,9 @@ die Addition ausführen, so muss man Klammern setzen.</p>
 </div>
 <p>Die wichtigsten für Python geltenden Vorrangregeln sind in der <a class="reference internal" href="#table-precedence"><span class="std std-numref">Tab. 3.1</span></a>
 dargestellt. Dabei haben die weiter oben stehenden Operationen Vorrang vor den nachfolgenden
-Operationen <a class="footnote-reference brackets" href="#precedence" id="id2">2</a>.</p>
+Operationen [^precedence].</p>
 <table class="table" id="table-precedence">
-<caption><span class="caption-number">Tab. 3.1 </span><span class="caption-text">Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden.</span><a class="headerlink" href="#table-precedence" title="Link zu dieser Tabelle">¶</a></caption>
+<caption><span class="caption-number">Tab. 3.1 </span><span class="caption-text">Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden. Eine vollständige Liste findet man unter dem Punkt <a class="reference external" href="http://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a> in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also weiter unten stehende Operatoren Vorrang haben.</span><a class="headerlink" href="#table-precedence" title="Link zu dieser Tabelle">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -677,7 +679,7 @@ Operationen <a class="footnote-reference brackets" href="#precedence" id="id2">2
 </tbody>
 </table>
 <p>Auch wenn das folgende Beispiel Gleitkommazahlen involviert, sei angemerkt,
-dass falls der Exponentiationsoperator<code class="docutils literal notranslate"><span class="pre">**</span></code> direkt von einem Plus oder Minus
+dass falls der Exponentiationsoperator <code class="docutils literal notranslate"><span class="pre">**</span></code> direkt von einem Plus oder Minus
 gefolgt, das Vorzeichen stärker bindet.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**-</span><span class="mf">0.5</span>
 <span class="go">0.7071067811865476</span>
@@ -729,7 +731,8 @@ der hervorgehobenen Zeile findet bei der Zuweisung automatisch die Umwandlung zw
 den beiden Datentypen statt.</p>
 <p>Im Gegensatz dazu ist eine Festlegung des Datentyps in Python nicht erforderlich.
 Man spricht in diesem Zusammenhang auch von <em>duck typing</em>: »If it looks like a
-duck and quacks like a duck, it must be a duck.« <a class="footnote-reference brackets" href="#duck" id="id3">3</a></p>
+duck and quacks like a duck, it must be a duck.« Kritiker halten dem entgegen, dass
+sich auch ein Drache scheinbar wie eine Ente verhalten kann.</p>
 <p>Den Typ einer Variable kann man in Python mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">type()</span></code>-Funktion herausfinden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1923,7 +1926,7 @@ sehr einfach</p>
 </div>
 </div>
 </div>
-<p>Falls man die Funktion <code class="docutils literal notranslate"><span class="pre">complex()</span></code> nicht verwenden möchte, muss man
+<p>Falls man die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">complex()</span></code> nicht verwenden möchte, muss man
 beachten, dass die folgenden beiden Wege nicht zum Ziel führen.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
@@ -2948,88 +2951,187 @@ Exponentierungsoperator fungieren, zu unterscheiden.</p>
 <p>Will man im Ausgabetext eine öffnende oder schließende geschweifte Klammer unterbringen,
 so ist diese zu verdoppeln, also <code class="docutils literal notranslate"><span class="pre">{{</span></code> oder <code class="docutils literal notranslate"><span class="pre">}}</span></code>.</p>
 </div>
-<div class="admonition-hinweis admonition">
-<p class="admonition-title">Hinweis</p>
-</div>
-<p>Bis jetzt haben wir nur die Ausgabe von Variablen in einen Text eingebettet,
-ohne die Ausgabe jeder Variable selbst beeinflussen zu können. Dies ist aber
-beispielsweise bei Gleitkommazahlen wichtig.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="go">1.4142135623730951</span>
+<p>Seit Python 3.8 gibt es eine praktische Möglichkeit, sowohl den Namen als auch den
+Wert einer Variablen auszugeben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myvar</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">myvar</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">myvar</span> <span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">myvar</span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">myvar</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Vielleicht wollen wir jedoch gar nicht so viele Nachkommastellen ausgeben. Dies können
-wir mit Hilfe einer Formatspezifikation festlegen.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{0:5.2f}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">| 1.41|</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>myvar = 1.4142135623730951
+myvar =1.4142135623730951
+myvar= 1.4142135623730951
+myvar=1.4142135623730951
 </pre></div>
 </div>
-<p>Nach der Argumentnummer, die man hier auch weglassen könnte, folgt durch einen
-Doppelpunkt abgetrennt die Formatierungsangabe. Die Zahl vor dem Punkt gibt
-die minimale Feldbreite an, während die Zahl nach dem Punkt die Anzahl der
-Nachkommastellen angibt. Das abschließende <code class="docutils literal notranslate"><span class="pre">f</span></code> verlangt die Ausgabe in
-einem Format mit fester Kommastelle. Die beiden senkrechten Striche sollen
-nur dazu dienen, den Leerplatz vor der Zahl sichtbar zu machen, der dadurch
-entsteht, dass die gesamte Feldbreite gleich <code class="docutils literal notranslate"><span class="pre">5</span></code> sein soll.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{0:.2f}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|1.41|</span>
+</div>
+</div>
+<p>In diesem Beispiel wird deutlich, dass man die Ausgabe von Leerzeichen um das
+Gleichheitszeichen herum leicht beeinflussen kann. Für ältere Pythonversionen
+müsste man stattdessen den Variablennamen de facto zweimal angeben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;myvar = </span><span class="si">{</span><span class="n">myvar</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Lässt man die Spezifikation der Feldbreite weg, so wird die minimal benötigte
-Breite belegt. Bei der mehrzeiligen Ausgabe von Zahlen ist dann jedoch keine
-Ausrichtung nach dem Dezimalpunkt möglich. Bei der Ausrichtung ist auch das
-Vorzeichen relevant. Hierbei kann man angeben, wie bei einer positiven Zahl
-verfahren wird. Durch Eingabe eines Pluszeichens, eines Leerzeichens oder
-eines Minuszeichens in der Formatierungsangabe wird ein Plus, ein Leerzeichen
-bzw. gar nichts ausgegeben wie die folgenden Beispiele zeigen:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:+4.2f}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|+1.41|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:+4.2f}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|-1.41|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{: 4.2f}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">| 1.41|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{: 4.2f}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|-1.41|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:-4.2f}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|1.41|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:-4.2f}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|-1.41|</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>myvar = 1.4142135623730951
 </pre></div>
+</div>
+</div>
+</div>
+<p>Mit einer Ausnahme haben wir bis jetzt nur Werte von Variablen in einen Text
+eingebettet, ohne die Form ihrer Ausgabe zu beeinflussen.  Dies ist aber
+beispielsweise bei Gleitkommazahlen wichtig. Wir wollen uns jetzt etwas
+systematischer mit den Formatierungsmöglichkeiten beschäftigen.</p>
+<p>Bei Gleitkommazahlen ist unter anderem die Anzahl der Nachkommastellen von
+Interesse. Um deutlich zu machen, wie viele Leerzeichen ausgegeben werden,
+begrenzen wir die Ausgabe mit senkrechten Strichen. In Erweiterung unseres
+Beispiels weiter oben, in dem wir fünf Nachkommastellen festgelegt hatten,
+wollen wir nun die ganze Breite der Ausgabe festlegen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">6.3f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 1.414|
+</pre></div>
+</div>
+</div>
+</div>
+<p>Von Interesse für uns ist der Bereich zwischen den geschweiften Klammern,
+der zunächst den Namen der Variable, also <code class="docutils literal notranslate"><span class="pre">x</span></code>, enthält und, durch einen
+Doppelpunkt abgetrennt, die Formatierungsangabe. Die erste Zahl, die auch
+aus mehr als einer Ziffer bestehen kann, gibt die gesamte Feldbreite an.
+Diese enthält sowohl Vor- und Nachkommastellen als auch den Dezimalpunkt.
+Bleibt dann noch Platz, so wird dieser durch Leerzeichen aufgefüllt. Von
+der gesamten Feldbreite durch einen Punkt abgetrennt wird die Zahl der
+Nachkommastellen angegeben. In unserem Fall benötigt der Wert von <code class="docutils literal notranslate"><span class="pre">x</span></code> eine
+Vorkommastelle und drei Nachkommastellen. Zusammen mit dem Dezimalpunkt macht
+dies fünf Zeichen, so dass sich noch ein Leerzeichen ergibt. Das abschließend
+<code class="docutils literal notranslate"><span class="pre">f</span></code> gibt an, dass der Wert von <code class="docutils literal notranslate"><span class="pre">x</span></code> als Gleitkommazahl ausgegeben werden soll,
+also nicht in Exponentialschreibweise.</p>
+<p>Wählt man die Feldbreite zu klein, so wird zwar immer noch die gesamte Zahl
+ausgegeben, aber untereinanderstehende Zahlen werden unter Umständen nicht
+mehr wie gewünscht zueinander ausgerichtet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">4.3f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|1.414|
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dies gilt inbesondere, wenn man die Feldbreiten überhaupt nicht spezifiziert,
+da dann immer die minimal benötigte Breite belegt wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">**</span><span class="mi">7</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.414
+11.314
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bei der Ausrichtung von Zahlen ist auch das Vorzeichen relevant. Hierbei kann
+man angeben, wie bei einer positiven Zahl verfahren wird. Durch Eingabe eines
+Pluszeichens, eines Leerzeichens oder eines Minuszeichens in der
+Formatierungsangabe wird für positive Zahlen ein Plus, ein Leerzeichen bzw. gar
+nichts ausgegeben wie die folgenden Beispiele zeigen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">+4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="o">-</span><span class="n">x</span><span class="si">:</span><span class="s2">+4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2"> 4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="o">-</span><span class="n">x</span><span class="si">:</span><span class="s2"> 4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">-4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="o">-</span><span class="n">x</span><span class="si">:</span><span class="s2">-4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|+1.41|
+|-1.41|
+| 1.41|
+|-1.41|
+|1.41|
+|-1.41|
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier haben wir bewusst die Feldbreite nur auf <code class="docutils literal notranslate"><span class="pre">4</span></code> gesetzt, um den Unterschied
 zwischen der dritten und fünften Eingabe zu verdeutlichen.</p>
 <p>Bei der Ausgabe von Gleitkommazahlen gibt es nun aber das Problem, dass bei sehr
 kleinen oder sehr großen Zahlen eine feste Anzahl von Nachkommastellen nicht
 unbedingt geeignet ist.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:10.8f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">1.41421356</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:10.8f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">10000000</span><span class="p">))</span>
-<span class="go">0.00000014</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In der zweiten Eingabe sieht man, dass die Zahl der ausgegebenen signifikanten
-Stellen dramatisch reduziert ist. In solchen Fällen bietet es sich an, eine
-Ausgabe in Exponentialdarstellung zu verlangen, die man mit Hilfe des Buchstabens
-<code class="docutils literal notranslate"><span class="pre">e</span></code> statt <code class="docutils literal notranslate"><span class="pre">f</span></code> erhält.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:10.8e}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|1.41421356e+00|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:10.4e}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|1.4142e+00|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:14.8e}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">10000000</span><span class="p">))</span>
-<span class="go">|1.41421356e-07|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:20.8e}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
-<span class="go">|      1.41421356e+00|</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.41421356
+0.00000014
+14142135.62373095
 </pre></div>
 </div>
-<p>Die erste Eingabe zeigt, wie man eine Exponentialdarstellung mit 8 Nachkommastellen
-erhält. Der Exponent wird mit ausgegeben, obwohl er nur für <span class="math notranslate nohighlight">\(10^0=1\)</span> steht.
-Die Zahl der Nachkommastellen lässt sich, wie erwartet und wie in der zweiten
-Eingabe zu sehen ist, bei Bedarf anpassen. In diesem Beispiel wird die Feldbreite
-von 10 gerade ausgenutzt. Das dritte Beispiel zeigt, dass wir nun auch bei der
-Ausgabe von kleinen Zahlen keine signifikanten Stellen verlieren. Entsprechendes
-wäre bei großen Zahlen der Fall. Macht man wie in Eingabe 3 die Feldlänge größer, so
-wird entsprechend viel Leerplatz auf der linken Seite ausgegeben.</p>
+</div>
+</div>
+<p>Während in der zweiten Zeile die Zahl der ausgegebenen signifikanten Stellen
+dramatisch reduziert ist, ist sie in der dritten Zeile unter Umständen
+unerwünscht groß. In solchen Fällen bietet es sich an, eine Ausgabe in
+Exponentialdarstellung zu verlangen, die man mit Hilfe des Buchstabens <code class="docutils literal notranslate"><span class="pre">e</span></code>
+an Stelle des bisherigen <code class="docutils literal notranslate"><span class="pre">f</span></code> erhält.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">10.8e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">10.4e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">14.8e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">20.8e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|1.41421356e+00|
+|1.4142e+00|
+|1.41421356e-07|
+|      1.41421356e+00|
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die erste Eingabe zeigt, wie man eine Exponentialdarstellung mit 8
+Nachkommastellen erhält. Der Exponent wird mit ausgegeben, obwohl er nur für
+<span class="math notranslate nohighlight">\(10^0=1\)</span> steht.  Die Zahl der Nachkommastellen lässt sich, wie erwartet
+und wie in der zweiten Eingabe zu sehen ist, bei Bedarf anpassen. In diesem
+Beispiel wird die Feldbreite von 10 gerade ausgenutzt. Das dritte Beispiel
+zeigt, dass wir nun auch bei der Ausgabe von kleinen Zahlen keine signifikanten
+Stellen verlieren. Auch für große Zahlen ändert sich die Zahl der signifikanten
+Stellen nicht.  Macht man wie in der vierten Zeile die Feldlänge größer, so wird
+entsprechend viel Leerplatz auf der linken Seite ausgegeben.</p>
 <div class="admonition-weiterfuhrender-hinweis admonition">
 <p class="admonition-title">Weiterführender Hinweis</p>
 <p>Um etwas über die Möglichkeiten der Positionierung der Ausgabe
@@ -3039,39 +3141,62 @@ ausprobieren: <code class="docutils literal notranslate"><span class="pre">{:&lt
 <p>Häufig möchte man die Exponentialschreibweise nur verwenden, wenn die
 auszugebende Zahl hinreichend groß oder klein ist. Ein solches Verhalten
 erreicht man durch Angabe des Buchstabens <code class="docutils literal notranslate"><span class="pre">g</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:15.8g}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">100000</span><span class="p">))</span>
-<span class="go">|  1.4142136e-05|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:15.8g}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">10000</span><span class="p">))</span>
-<span class="go">|  0.00014142136|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:15.8g}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">10000000</span><span class="p">))</span>
-<span class="go">|       14142136|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:15.8g}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100000000</span><span class="p">))</span>
-<span class="go">|  1.4142136e+08|</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e4</span><span class="si">:</span><span class="s2">15.8g</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e3</span><span class="si">:</span><span class="s2">15.8g</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">15.8g</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="mf">10e7</span><span class="si">:</span><span class="s2">15.8g</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|  1.4142136e-05|
+|  0.00014142136|
+|       14142136|
+|  1.4142136e+08|
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier wird durch den Wechsel der Darstellung insbesondere sichergestellt, dass
-immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. <a class="footnote-reference brackets" href="#gformat" id="id4">4</a></p>
+immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird.  Die genaue
+Regel für die Umstellung der Darstellungsart kann man in der Dokumentation der
+Python-Standardbibliothek unter dem Thema <a class="reference external" href="http://docs.python.org/3/library/string.html#formatspec">Format Specification
+Mini-Language</a>
+nachlesen, die auch alle weiteren Aspekte der Formatierung detailliert beschreibt.</p>
 <p>Betrachten wir nun noch die Formatierung von Integers.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{0}</span><span class="s2">|</span><span class="si">{0:5}</span><span class="s2">|</span><span class="si">{0:05}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-<span class="go">|42|   42|00042|</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">5</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">05</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="admonition-frage admonition">
-<p class="admonition-title">Frage</p>
-<p>Warum kann man die <code class="docutils literal notranslate"><span class="pre">0</span></code> zur Kennzeichnung der einzusetzenden Variable
-nicht weglassen?</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|42|   42|00042|
+</pre></div>
+</div>
+</div>
 </div>
 <p>Integers in Dezimaldarstellung benötigen keinen Buchstaben zur
-Formatspezifikation. <a class="footnote-reference brackets" href="#dezimal" id="id5">5</a>  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
-die Feldbreite festlegen.  Gibt man vor der Feldbreite eine Null an, so wird
-das Feld vor der auszugebenden Zahl mit Nullen aufgefüllt. Dies kann zum
-Beispiel bei der Ausgabe in anderen Zahlensystemen interessant sein. Python
-unterstützt insbesondere die Ausgabe im Binärformat (<code class="docutils literal notranslate"><span class="pre">b</span></code>), Oktalformat
-(<code class="docutils literal notranslate"><span class="pre">o</span></code>) und im Hexadezimalformat (<code class="docutils literal notranslate"><span class="pre">x</span></code>).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{0:}</span><span class="s2">|</span><span class="si">{0:8b}</span><span class="s2">|</span><span class="si">{0:8o}</span><span class="s2">|</span><span class="si">{0:8x}</span><span class="s2">|</span><span class="si">{0:08b}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-<span class="go">|42|  101010|      52|      2a|00101010|</span>
+Formatspezifikation. Man kann aber ein <code class="docutils literal notranslate"><span class="pre">d</span></code> für Dezimaldarstellung angeben.
+Ähnlich wie bei den Gleitkommazahlen lässt sich die Feldbreite festlegen. Gibt
+man vor der Feldbreite eine Null an, so wird das Feld vor der auszugebenden
+Zahl mit Nullen aufgefüllt. Dies kann zum Beispiel bei der Ausgabe in anderen
+Zahlensystemen interessant sein. Python unterstützt insbesondere die Ausgabe im
+Binärformat (<code class="docutils literal notranslate"><span class="pre">b</span></code>), Oktalformat (<code class="docutils literal notranslate"><span class="pre">o</span></code>) und im Hexadezimalformat (<code class="docutils literal notranslate"><span class="pre">x</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">n</span><span class="si">:}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8b</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8o</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8x</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">08b</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|42|  101010|      52|      2a|00101010|
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-frage admonition">
 <p class="admonition-title">Frage</p>
@@ -3079,49 +3204,29 @@ unterstützt insbesondere die Ausgabe im Binärformat (<code class="docutils lit
 Großbuchstaben ersetzt? Welche Auswirkungen hat ein <code class="docutils literal notranslate"><span class="pre">#</span></code>, das vor der Feldbreite
 inklusive einer eventuell vorhandenen Null steht?</p>
 </div>
-<p>Die hier besprochenen Formatierungsanweisungen decken bereits viele
-Anwendungsfälle ab. Dennoch sind die von Python 3 zur Verfügung gestellten
-Formatierungsmöglichkeiten noch vielfältiger. Für eine systematische und
-vollständige Darstellung der möglichen Formatierungen verweisen wir auf den
-<a class="reference external" href="http://docs.python.org/3/library/string.html#formatspec">Abschnitt 6.1.3.1. Format Specification Mini-Language</a>
-in der Dokumentation der Python-Standardbibliothek.</p>
-<p>Abschließend sei noch angemerkt, dass die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Funktion standardmäßig
+<p>Abschließend sei noch angemerkt, dass die <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion standardmäßig
 einen Zeilenumbruch an das Ende des auszugebenden Textes anhängt. Dies ist
 jedoch nicht immer gewünscht und lässt sich mit Hilfe der Option <code class="docutils literal notranslate"><span class="pre">end</span></code>
-beeinflussen. Folgendes Beispiel zeigt die Funktionsweise. Die Befehle</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;..&quot;</span><span class="p">)</span>
+beeinflussen. Folgendes Beispiel zeigt die Funktionsweise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;..&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>erzeugen die Ausgabe <code class="docutils literal notranslate"><span class="pre">x..xx</span></code> sowie einen anschließenden Zeilenumbruch.</p>
-<hr class="docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="gvr-blog"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Die Hintergründe für diese Wahl kann man in einem
-<a class="reference external" href="http://python-history.blogspot.de/2010/08/why-pythons-integer-division-floors.html">Blog-Artikel</a>
-von Guido van Rossum nachlesen.</p>
-</dd>
-<dt class="label" id="precedence"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Eine vollständige Liste, die auch noch nicht besprochene Operatoren umfasst, findet
-man unter dem Punkt <a class="reference external" href="http://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a>
-in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also
-weiter unten stehende Operatoren Vorrang haben.</p>
-</dd>
-<dt class="label" id="duck"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p><a class="reference external" href="http://docs.python.org/glossary.html#term-duck-typing">docs.python.org/glossary.html#term-duck-typing</a>. Kritiker
-halten dem entgegen, dass sich auch ein Drache wie eine Ente verhalten kann.</p>
-</dd>
-<dt class="label" id="gformat"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>Die genaue Regel für die Umstellung der Darstellungsart kann man in der
-Dokumentation der Python-Standardbibliothek unter [6.1.3.1. Format Specification Mini-Language]
-(http://docs.python.org/3/library/string.html#formatspec)
-nachlesen.</p>
-</dd>
-<dt class="label" id="dezimal"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
-<dd><p>Wenn man unbedingt möchte, kann man <code class="docutils literal notranslate"><span class="pre">d</span></code> für Dezimaldarstellung angeben.</p>
-</dd>
-</dl>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x..xx
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aufgrund der ersten Zeile werden zwei Punkte an das <code class="docutils literal notranslate"><span class="pre">x</span></code> angehängt, ohne einen
+Zeilenumbruch zu verursachen. Letzteres wird auch in der zweiten Zeile vermieden.
+Es werden wegen der leeren Zeichenkette (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>) aber keine weiteren Zeichen an das zweite
+<code class="docutils literal notranslate"><span class="pre">x</span></code> angehängt. In der dritten Zeile schließlich wird ein weiteres <code class="docutils literal notranslate"><span class="pre">x</span></code> angehängt.
+Zusätzlich wird ein Zeilenumbruch erzeugt, da das Argument <code class="docutils literal notranslate"><span class="pre">end</span></code> nicht gesetzt wurde.</p>
 </div>
 </div>
 
