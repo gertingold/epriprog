@@ -110,8 +110,8 @@ In Python kann man auch mit Dual-, Oktal- und Hexadezimalzahlen arbeiten. Eine
 Einführung in Zahlensysteme, insbesondere das Dual- und das Hexadezimalsystem
 wird in {numref}`anhang_zahlensysteme` gegeben. Um zwischen den verschiedenen
 Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwar
-``0b`` oder ``0B`` für das Dualsystem, ``0o`` oder ``0O`` für das Oktalsystem
-sowie ``0x`` oder ``0X`` für das Hexadezimalsystem. Die folgenden drei Darstellungen
+`0b` oder `0B` für das Dualsystem, `0o` oder `0O` für das Oktalsystem
+sowie `0x` oder `0X` für das Hexadezimalsystem. Die folgenden drei Darstellungen
 sind jeweils äquivalent zur Zahl 25 im gewohnten Dezimalsystem
 
 ```{code-cell} python
@@ -119,7 +119,7 @@ sind jeweils äquivalent zur Zahl 25 im gewohnten Dezimalsystem
 ```
 
 Die Umwandlung in das Binär-, Oktal- oder Hexadezimalformat erfolgt mit Hilfe der
-Funktionen ``bin``, ``oct`` bzw. ``hex``:
+Funktionen `bin`, `oct` bzw. `hex`:
 
 ```{code-cell} python
 bin(25), oct(25), hex(25)
@@ -166,12 +166,10 @@ mit einem doppelten Schrägstrich.
 ```
 
 ```{admonition} Frage
-Was macht der ``//``-Divisionsoperator in Python 3 tatsächlich, vor allem vor dem
-Hintergrund des letzten Beispiels? [^gvr_blog]
-
-[^gvr_blog]: Die Hintergründe für diese Wahl kann man in einem
-    [Blog-Artikel](http://python-history.blogspot.de/2010/08/why-pythons-integer-division-floors.html)
-    von Guido van Rossum nachlesen.
+Was macht der `//`-Divisionsoperator in Python 3 tatsächlich, vor allem vor dem
+Hintergrund des letzten Beispiels? Warum dies so ist, lässt sich in einem
+[Blog-Artikel](http://python-history.blogspot.de/2010/08/why-pythons-integer-division-floors.html)
+von Guido van Rossum nachlesen.
 ```
 
 Um zu verdeutlichen, dass die in Python 3 getroffene Wahl nicht zwingend ist,
@@ -255,10 +253,11 @@ Die wichtigsten für Python geltenden Vorrangregeln sind in der {numref}`table:p
 dargestellt. Dabei haben die weiter oben stehenden Operationen Vorrang vor den nachfolgenden
 Operationen [^precedence].
 
-```{list-table} Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden.
-:header-rows: 1
-:name: table:precedence
-
+```{list-table} Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden. Eine vollständige Liste findet man unter dem Punkt [Operator precedence](http://docs.python.org/3/reference/expressions.html#operator-precedence) in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also weiter unten stehende Operatoren Vorrang haben.
+---
+header-rows: 1
+name: table:precedence
+---
 * - Operatoren
   - Beschreibung
 * - **
@@ -271,13 +270,8 @@ Operationen [^precedence].
   - Addition, Subtraktion
 ```
 
-[^precedence]: Eine vollständige Liste, die auch noch nicht besprochene Operatoren umfasst, findet
-    man unter dem Punkt [Operator precedence](http://docs.python.org/3/reference/expressions.html#operator-precedence)
-    in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also
-    weiter unten stehende Operatoren Vorrang haben.
-
 Auch wenn das folgende Beispiel Gleitkommazahlen involviert, sei angemerkt,
-dass falls der Exponentiationsoperator``**`` direkt von einem Plus oder Minus
+dass falls der Exponentiationsoperator `**` direkt von einem Plus oder Minus
 gefolgt, das Vorzeichen stärker bindet.
 
 ```{code-block} python
@@ -292,7 +286,7 @@ Zweifelsfall oder zur besseren Lesbarkeit Klammern zu setzen, selbst wenn diese
 nicht zur korrekten Abarbeitung des Ausdrucks erforderlich sind.
 
 ```{admonition} Frage
-Was ergibt ``-2*4+3**2``? Was ergibt ``6**4//2``?
+Was ergibt `-2*4+3**2`? Was ergibt `6**4//2`?
 ```
 
 (float)=
@@ -338,10 +332,8 @@ den beiden Datentypen statt.
 
 Im Gegensatz dazu ist eine Festlegung des Datentyps in Python nicht erforderlich.
 Man spricht in diesem Zusammenhang auch von *duck typing*: »If it looks like a
-duck and quacks like a duck, it must be a duck.« [^duck]
-
-[^duck]: [docs.python.org/glossary.html#term-duck-typing](http://docs.python.org/glossary.html#term-duck-typing). Kritiker
-    halten dem entgegen, dass sich auch ein Drache wie eine Ente verhalten kann.
+duck and quacks like a duck, it must be a duck.« Kritiker halten dem entgegen, dass
+sich auch ein Drache scheinbar wie eine Ente verhalten kann.
 
 Den Typ einer Variable kann man in Python mit Hilfe der {func}`type`-Funktion herausfinden.
 
@@ -393,7 +385,7 @@ Für sehr kleine oder sehr große Zahlen ist die Exponentialschreibweise besser
 geeignet. Die Zahl wird dabei mit Hilfe einer Mantisse, die nicht zwingend
 einen Dezimalpunkt enthalten muss, und einem ganzzahligen Exponenten, der ein
 Vorzeichen enthalten darf, dargestellt.  Zwischen Mantisse und Exponenten muss
-dabei ein ``e`` oder ein ``E`` stehen.
+dabei ein `e` oder ein `E` stehen.
 
 ```{code-cell} python
 1e-2
@@ -896,8 +888,8 @@ x - x**2/2 + x**3/3
 ## Komplexe Zahlen
 
 Neben reellen Zahlen benötigt man immer wieder auch komplexe Zahlen. Dabei
-erzeugt man einen Imaginärteil durch Anhängen des Buchstabens ``j`` oder ``J``, das
-Ingenieure häufig statt des in der Mathematik und Physik üblichen ``i`` verwenden.
+erzeugt man einen Imaginärteil durch Anhängen des Buchstabens `j` oder `J`, das
+Ingenieure häufig statt des in der Mathematik und Physik üblichen `i` verwenden.
 
 ```{code-cell} python
 (1+0.5j)/(1-0.5j)
@@ -919,7 +911,7 @@ z2 = complex(x, -y)
 z1/z2
 ```
 
-Falls man die Funktion ``complex()`` nicht verwenden möchte, muss man
+Falls man die Funktion {func}`complex` nicht verwenden möchte, muss man
 beachten, dass die folgenden beiden Wege nicht zum Ziel führen.
 
 ```{code-cell} python
@@ -950,7 +942,7 @@ tags: [raises-exception]
 ---
 z = x+y*j
 ```
-Vielmehr muss die imaginäre Einheit explizit als ``1j`` geschrieben
+Vielmehr muss die imaginäre Einheit explizit als `1j` geschrieben
 werden. Den Grund hierfür werden wir noch genauer verstehen, wenn wir in
 {numref}`variablen` besprechen, welche Namen für Variablen zugelassen
 sind.
@@ -1093,7 +1085,7 @@ eines Bezeichners zu verwenden, sofern man nicht bewusst den Unterstrich in ande
 Weise einsetzt.
 
 Viel interessanter als Unterstriche sind Buchstaben. Diese umfassen zunächst
-einmal die Großbuchstaben ``A-Z`` und Kleinbuchstaben ``a-z``. Wie sieht es
+einmal die Großbuchstaben `A-Z` und Kleinbuchstaben `a-z`. Wie sieht es
 aber mit Umlauten oder gar mit Buchstaben aus anderen Schriftsystemen,
 beispielsweise griechischen Buchstaben aus? In diesem Zusammenhang stellt sich
 die Frage, wie Zeichen im Rechner überhaupt in einer binären Form dargestellt
@@ -1135,8 +1127,8 @@ in anderen Programmiersprachen ebenfalls zugelassen sind. Will man solche Zeiche
 überhaupt verwenden, so sollte man sich hierüber informieren.
 
 Bei einer Programmiersprache ist auch immer die Frage zu klären, ob zwischen
-Groß- und Kleinschreibung unterschieden wird. Python tut dies, so dass ``var``,
-``Var`` und ``VAR`` verschiedene Variablen bezeichnen und für Python nichts
+Groß- und Kleinschreibung unterschieden wird. Python tut dies, so dass `var`,
+`Var` und `VAR` verschiedene Variablen bezeichnen und für Python nichts
 miteinander zu tun haben. Auch hier stellt sich im Einzelfall die Frage, ob es
 sinnvoll ist, in einem Programm einen Variablennamen gleichzeitig in Groß- und
 Kleinschreibung zu verwenden. Es ist jedoch wichtig zu wissen, dass eine
@@ -1148,9 +1140,9 @@ aussagekräftige Bezeichner zu verwenden, auch wenn diese im Allgemeinen etwas
 länger ausfallen. Dabei kann es sinnvoll sein, einen Bezeichner aus mehreren
 Wörtern zusammenzusetzen. Um die einzelnen Bestandteile erkennen zu können,
 sind verschiedene Varianten üblich. Man kann zur Trennung einen Unterstrich
-verwenden, z.B. ``sortiere_liste``. Alternativ kann man neue Worte mit einem
+verwenden, z.B. `sortiere_liste`. Alternativ kann man neue Worte mit einem
 Großbuchstaben beginnen, wobei der erste Buchstabe des Bezeichners groß oder
-klein geschrieben werden kann, z.B. ``sortiereListe`` oder ``SortiereListe``.
+klein geschrieben werden kann, z.B. `sortiereListe` oder `SortiereListe`.
 Im ersten Fall spricht man von *mixedCase*, im zweiten Fall von *CamelCase*, da
 die Großbuchstaben an Höcker eines Kamels erinnern. Details zu den in Python
 empfohlenen Konventionen für Bezeichner finden Sie im Python Enhancement Proposal {pep}`8`
@@ -1175,7 +1167,7 @@ for nr, kw in enumerate(kwlist):
 ```{admonition} Wichtiger Hinweis
 :class: warning
 Da griechische Buchstaben in der Physik relativ häufig sind, ist 
-insbesondere darauf zu achten, dass ``lambda`` reserviert ist. Der Grund hierfür
+insbesondere darauf zu achten, dass `lambda` reserviert ist. Der Grund hierfür
 liegt darin, dass Python so genannte Lambdafunktionen zur Verfügung stellt, die
 wir im {numref}`lambdafunktionen` diskutieren werden.
 ```
@@ -1514,187 +1506,166 @@ Will man im Ausgabetext eine öffnende oder schließende geschweifte Klammer unt
 so ist diese zu verdoppeln, also `{{` oder `}}`.
 ```
 
-````{admonition} Hinweis
+Seit Python 3.8 gibt es eine praktische Möglichkeit, sowohl den Namen als auch den
+Wert einer Variablen auszugeben.
 ```{code-cell} python
-x = 2
-print(x**2)
+myvar = 2**0.5
+print(f"{myvar = }")
+print(f"{myvar =}")
+print(f"{myvar= }")
+print(f"{myvar=}")
 ```
-````
-
-
-
-Bis jetzt haben wir nur die Ausgabe von Variablen in einen Text eingebettet,
-ohne die Ausgabe jeder Variable selbst beeinflussen zu können. Dies ist aber
-beispielsweise bei Gleitkommazahlen wichtig. 
-
-```{code-block} python
->>> from math import sqrt
->>> print(sqrt(2))
-1.4142135623730951
+In diesem Beispiel wird deutlich, dass man die Ausgabe von Leerzeichen um das
+Gleichheitszeichen herum leicht beeinflussen kann. Für ältere Pythonversionen
+müsste man stattdessen den Variablennamen de facto zweimal angeben.
+```{code-cell} python
+print(f"myvar = {myvar}")
 ```
 
-Vielleicht wollen wir jedoch gar nicht so viele Nachkommastellen ausgeben. Dies können
-wir mit Hilfe einer Formatspezifikation festlegen.
+Mit einer Ausnahme haben wir bis jetzt nur Werte von Variablen in einen Text
+eingebettet, ohne die Form ihrer Ausgabe zu beeinflussen.  Dies ist aber
+beispielsweise bei Gleitkommazahlen wichtig. Wir wollen uns jetzt etwas
+systematischer mit den Formatierungsmöglichkeiten beschäftigen.
 
-```{code-block} python
->>> print("|{0:5.2f}|".format(sqrt(2)))
-| 1.41|
+Bei Gleitkommazahlen ist unter anderem die Anzahl der Nachkommastellen von
+Interesse. Um deutlich zu machen, wie viele Leerzeichen ausgegeben werden,
+begrenzen wir die Ausgabe mit senkrechten Strichen. In Erweiterung unseres
+Beispiels weiter oben, in dem wir fünf Nachkommastellen festgelegt hatten, 
+wollen wir nun die ganze Breite der Ausgabe festlegen.
+```{code-cell} python
+x = 2**0.5
+print(f"|{x:6.3f}|")
+```
+Von Interesse für uns ist der Bereich zwischen den geschweiften Klammern,
+der zunächst den Namen der Variable, also `x`, enthält und, durch einen
+Doppelpunkt abgetrennt, die Formatierungsangabe. Die erste Zahl, die auch
+aus mehr als einer Ziffer bestehen kann, gibt die gesamte Feldbreite an.
+Diese enthält sowohl Vor- und Nachkommastellen als auch den Dezimalpunkt.
+Bleibt dann noch Platz, so wird dieser durch Leerzeichen aufgefüllt. Von
+der gesamten Feldbreite durch einen Punkt abgetrennt wird die Zahl der
+Nachkommastellen angegeben. In unserem Fall benötigt der Wert von `x` eine
+Vorkommastelle und drei Nachkommastellen. Zusammen mit dem Dezimalpunkt macht
+dies fünf Zeichen, so dass sich noch ein Leerzeichen ergibt. Das abschließend
+`f` gibt an, dass der Wert von `x` als Gleitkommazahl ausgegeben werden soll,
+also nicht in Exponentialschreibweise.
+
+Wählt man die Feldbreite zu klein, so wird zwar immer noch die gesamte Zahl
+ausgegeben, aber untereinanderstehende Zahlen werden unter Umständen nicht
+mehr wie gewünscht zueinander ausgerichtet.
+```{code-cell} python
+print(f"|{x:4.3f}|")
+```
+Dies gilt inbesondere, wenn man die Feldbreiten überhaupt nicht spezifiziert,
+da dann immer die minimal benötigte Breite belegt wird.
+```{code-cell} python
+print(f"{x:.3f}")
+print(f"{x**7:.3f}")
 ```
 
-Nach der Argumentnummer, die man hier auch weglassen könnte, folgt durch einen
-Doppelpunkt abgetrennt die Formatierungsangabe. Die Zahl vor dem Punkt gibt
-die minimale Feldbreite an, während die Zahl nach dem Punkt die Anzahl der
-Nachkommastellen angibt. Das abschließende ``f`` verlangt die Ausgabe in
-einem Format mit fester Kommastelle. Die beiden senkrechten Striche sollen
-nur dazu dienen, den Leerplatz vor der Zahl sichtbar zu machen, der dadurch
-entsteht, dass die gesamte Feldbreite gleich ``5`` sein soll.
-
-```{code-block} python
->>> print("|{0:.2f}|".format(sqrt(2)))
-|1.41|
+Bei der Ausrichtung von Zahlen ist auch das Vorzeichen relevant. Hierbei kann
+man angeben, wie bei einer positiven Zahl verfahren wird. Durch Eingabe eines
+Pluszeichens, eines Leerzeichens oder eines Minuszeichens in der
+Formatierungsangabe wird für positive Zahlen ein Plus, ein Leerzeichen bzw. gar
+nichts ausgegeben wie die folgenden Beispiele zeigen.
+```{code-cell} python
+print(f"|{x:+4.2f}|")
+print(f"|{-x:+4.2f}|")
+print(f"|{x: 4.2f}|")
+print(f"|{-x: 4.2f}|")
+print(f"|{x:-4.2f}|")
+print(f"|{-x:-4.2f}|")
 ```
-
-Lässt man die Spezifikation der Feldbreite weg, so wird die minimal benötigte
-Breite belegt. Bei der mehrzeiligen Ausgabe von Zahlen ist dann jedoch keine
-Ausrichtung nach dem Dezimalpunkt möglich. Bei der Ausrichtung ist auch das
-Vorzeichen relevant. Hierbei kann man angeben, wie bei einer positiven Zahl
-verfahren wird. Durch Eingabe eines Pluszeichens, eines Leerzeichens oder
-eines Minuszeichens in der Formatierungsangabe wird ein Plus, ein Leerzeichen
-bzw. gar nichts ausgegeben wie die folgenden Beispiele zeigen:
-
-```{code-block} python
->>> print("|{:+4.2f}|".format(sqrt(2)))
-|+1.41|
->>> print("|{:+4.2f}|".format(-sqrt(2)))
-|-1.41|
->>> print("|{: 4.2f}|".format(sqrt(2)))
-| 1.41|
->>> print("|{: 4.2f}|".format(-sqrt(2)))
-|-1.41|
->>> print("|{:-4.2f}|".format(sqrt(2)))
-|1.41|
->>> print("|{:-4.2f}|".format(-sqrt(2)))
-|-1.41|
-```
-
-Hier haben wir bewusst die Feldbreite nur auf ``4`` gesetzt, um den Unterschied
+Hier haben wir bewusst die Feldbreite nur auf `4` gesetzt, um den Unterschied
 zwischen der dritten und fünften Eingabe zu verdeutlichen.
 
 Bei der Ausgabe von Gleitkommazahlen gibt es nun aber das Problem, dass bei sehr
 kleinen oder sehr großen Zahlen eine feste Anzahl von Nachkommastellen nicht
 unbedingt geeignet ist.
-
-```{code-block} python
->>> print("{:10.8f}".format(sqrt(2)))
-1.41421356
->>> print("{:10.8f}".format(sqrt(2)/10000000))
-0.00000014
+```{code-cell} python
+print(f"{x:10.8f}")
+print(f"{x/10e6:10.8f}")
+print(f"{x*10e6:10.8f}")
 ```
 
-In der zweiten Eingabe sieht man, dass die Zahl der ausgegebenen signifikanten
-Stellen dramatisch reduziert ist. In solchen Fällen bietet es sich an, eine
-Ausgabe in Exponentialdarstellung zu verlangen, die man mit Hilfe des Buchstabens
-``e`` statt ``f`` erhält.
-
-```{code-block} python
->>> print("|{:10.8e}|".format(sqrt(2)))
-|1.41421356e+00|
->>> print("|{:10.4e}|".format(sqrt(2)))
-|1.4142e+00|
->>> print("|{:14.8e}|".format(sqrt(2)/10000000))
-|1.41421356e-07|
->>> print("|{:20.8e}|".format(sqrt(2)))
-|      1.41421356e+00|
+Während in der zweiten Zeile die Zahl der ausgegebenen signifikanten Stellen
+dramatisch reduziert ist, ist sie in der dritten Zeile unter Umständen
+unerwünscht groß. In solchen Fällen bietet es sich an, eine Ausgabe in
+Exponentialdarstellung zu verlangen, die man mit Hilfe des Buchstabens `e`
+an Stelle des bisherigen `f` erhält.
+```{code-cell} python
+print(f"|{x:10.8e}|")
+print(f"|{x:10.4e}|")
+print(f"|{x/10e6:14.8e}|")
+print(f"|{x:20.8e}|")
 ```
-
-Die erste Eingabe zeigt, wie man eine Exponentialdarstellung mit 8 Nachkommastellen
-erhält. Der Exponent wird mit ausgegeben, obwohl er nur für {math}`10^0=1` steht.
-Die Zahl der Nachkommastellen lässt sich, wie erwartet und wie in der zweiten
-Eingabe zu sehen ist, bei Bedarf anpassen. In diesem Beispiel wird die Feldbreite
-von 10 gerade ausgenutzt. Das dritte Beispiel zeigt, dass wir nun auch bei der
-Ausgabe von kleinen Zahlen keine signifikanten Stellen verlieren. Entsprechendes
-wäre bei großen Zahlen der Fall. Macht man wie in Eingabe 3 die Feldlänge größer, so
-wird entsprechend viel Leerplatz auf der linken Seite ausgegeben.
+Die erste Eingabe zeigt, wie man eine Exponentialdarstellung mit 8
+Nachkommastellen erhält. Der Exponent wird mit ausgegeben, obwohl er nur für
+{math}`10^0=1` steht.  Die Zahl der Nachkommastellen lässt sich, wie erwartet
+und wie in der zweiten Eingabe zu sehen ist, bei Bedarf anpassen. In diesem
+Beispiel wird die Feldbreite von 10 gerade ausgenutzt. Das dritte Beispiel
+zeigt, dass wir nun auch bei der Ausgabe von kleinen Zahlen keine signifikanten
+Stellen verlieren. Auch für große Zahlen ändert sich die Zahl der signifikanten
+Stellen nicht.  Macht man wie in der vierten Zeile die Feldlänge größer, so wird
+entsprechend viel Leerplatz auf der linken Seite ausgegeben.
 
 ```{admonition} Weiterführender Hinweis
 Um etwas über die Möglichkeiten der Positionierung der Ausgabe
 zu erfahren, können Sie im letzten Beispiel folgende Formatierungsspezifikationen
-ausprobieren: ``{:<20.8e}``, ``{:=+20.8e}`` und ``{:^20.8e}``.
+ausprobieren: `{:<20.8e}`, `{:=+20.8e}` und `{:^20.8e}`.
 ```
 
 Häufig möchte man die Exponentialschreibweise nur verwenden, wenn die
 auszugebende Zahl hinreichend groß oder klein ist. Ein solches Verhalten
-erreicht man durch Angabe des Buchstabens ``g``.
+erreicht man durch Angabe des Buchstabens `g`.
 
-```{code-block} python
->>> print("|{:15.8g}|".format(sqrt(2)/100000))
-|  1.4142136e-05|
->>> print("|{:15.8g}|".format(sqrt(2)/10000))
-|  0.00014142136|
->>> print("|{:15.8g}|".format(sqrt(2)*10000000))
-|       14142136|
->>> print("|{:15.8g}|".format(sqrt(2)*100000000))
-|  1.4142136e+08|
+```{code-cell} python
+print(f"|{x/10e4:15.8g}|")
+print(f"|{x/10e3:15.8g}|")
+print(f"|{x*10e6:15.8g}|")
+print(f"|{x*10e7:15.8g}|")
 ```
-
-Hier wird durch den Wechsel der Darstellung insbesondere sichergestellt, dass 
-immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird. [^gformat]
-
-[^gformat]: Die genaue Regel für die Umstellung der Darstellungsart kann man in der
-     Dokumentation der Python-Standardbibliothek unter [6.1.3.1. Format Specification Mini-Language]
-     (http://docs.python.org/3/library/string.html#formatspec)
-     nachlesen.
+Hier wird durch den Wechsel der Darstellung insbesondere sichergestellt, dass
+immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird.  Die genaue
+Regel für die Umstellung der Darstellungsart kann man in der Dokumentation der
+Python-Standardbibliothek unter dem Thema [Format Specification
+Mini-Language](http://docs.python.org/3/library/string.html#formatspec)
+nachlesen, die auch alle weiteren Aspekte der Formatierung detailliert beschreibt.
 
 Betrachten wir nun noch die Formatierung von Integers.
-
-```{code-block} python
->>> n = 42
->>> print("|{0}|{0:5}|{0:05}|".format(n))
-|42|   42|00042|
-```
-
-```{admonition} Frage
-Warum kann man die ``0`` zur Kennzeichnung der einzusetzenden Variable
-nicht weglassen?
+```{code-cell} python
+n = 42
+print(f"|{n}|{n:5}|{n:05}|")
 ```
 
 Integers in Dezimaldarstellung benötigen keinen Buchstaben zur
-Formatspezifikation. [^dezimal]  Man kann hier aber ähnlich wie bei den Gleitkommazahlen
-die Feldbreite festlegen.  Gibt man vor der Feldbreite eine Null an, so wird
-das Feld vor der auszugebenden Zahl mit Nullen aufgefüllt. Dies kann zum
-Beispiel bei der Ausgabe in anderen Zahlensystemen interessant sein. Python
-unterstützt insbesondere die Ausgabe im Binärformat (``b``), Oktalformat
-(``o``) und im Hexadezimalformat (``x``).
+Formatspezifikation. Man kann aber ein `d` für Dezimaldarstellung angeben.
+Ähnlich wie bei den Gleitkommazahlen lässt sich die Feldbreite festlegen. Gibt
+man vor der Feldbreite eine Null an, so wird das Feld vor der auszugebenden
+Zahl mit Nullen aufgefüllt. Dies kann zum Beispiel bei der Ausgabe in anderen
+Zahlensystemen interessant sein. Python unterstützt insbesondere die Ausgabe im
+Binärformat (`b`), Oktalformat (`o`) und im Hexadezimalformat (`x`).
 
-[^dezimal]: Wenn man unbedingt möchte, kann man ``d`` für Dezimaldarstellung angeben.
-
-```{code-block} python
->>> print("|{0:}|{0:8b}|{0:8o}|{0:8x}|{0:08b}|".format(n))
-|42|  101010|      52|      2a|00101010|
+```{code-cell} python
+print(f"|{n:}|{n:8b}|{n:8o}|{n:8x}|{n:08b}|")
 ```
 
 ```{admonition} Frage
-Was ändert sich, wenn man ``b``, ``o`` und ``x`` durch die entsprechenden
-Großbuchstaben ersetzt? Welche Auswirkungen hat ein ``#``, das vor der Feldbreite
+Was ändert sich, wenn man `b`, `o` und `x` durch die entsprechenden
+Großbuchstaben ersetzt? Welche Auswirkungen hat ein `#`, das vor der Feldbreite
 inklusive einer eventuell vorhandenen Null steht?
 ```
 
-Die hier besprochenen Formatierungsanweisungen decken bereits viele
-Anwendungsfälle ab. Dennoch sind die von Python 3 zur Verfügung gestellten
-Formatierungsmöglichkeiten noch vielfältiger. Für eine systematische und
-vollständige Darstellung der möglichen Formatierungen verweisen wir auf den
-[Abschnitt 6.1.3.1. Format Specification Mini-Language](http://docs.python.org/3/library/string.html#formatspec)
-in der Dokumentation der Python-Standardbibliothek.
-
-Abschließend sei noch angemerkt, dass die ``print``-Funktion standardmäßig
+Abschließend sei noch angemerkt, dass die {func}`print`-Funktion standardmäßig
 einen Zeilenumbruch an das Ende des auszugebenden Textes anhängt. Dies ist
-jedoch nicht immer gewünscht und lässt sich mit Hilfe der Option ``end``
-beeinflussen. Folgendes Beispiel zeigt die Funktionsweise. Die Befehle
-
-```{code-block} python
+jedoch nicht immer gewünscht und lässt sich mit Hilfe der Option `end`
+beeinflussen. Folgendes Beispiel zeigt die Funktionsweise.
+```{code-cell} python
 print("x", end="..")
 print("x", end="")
 print("x")
 ```
-
-erzeugen die Ausgabe ``x..xx`` sowie einen anschließenden Zeilenumbruch.
+Aufgrund der ersten Zeile werden zwei Punkte an das `x` angehängt, ohne einen
+Zeilenumbruch zu verursachen. Letzteres wird auch in der zweiten Zeile vermieden.
+Es werden wegen der leeren Zeichenkette (`""`) aber keine weiteren Zeichen an das zweite
+`x` angehängt. In der dritten Zeile schließlich wird ein weiteres `x` angehängt.
+Zusätzlich wird ein Zeilenumbruch erzeugt, da das Argument `end` nicht gesetzt wurde.
