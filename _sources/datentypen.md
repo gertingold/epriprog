@@ -274,9 +274,8 @@ Auch wenn das folgende Beispiel Gleitkommazahlen involviert, sei angemerkt,
 dass falls der Exponentiationsoperator `**` direkt von einem Plus oder Minus
 gefolgt, das Vorzeichen stärker bindet.
 
-```{code-block} python
->>> 2**-0.5
-0.7071067811865476
+```{code-cell} python
+2**-0.5
 ```
 
 Stehen Operatoren auf der gleichen Stufe, so wird der Ausdruck von links nach
