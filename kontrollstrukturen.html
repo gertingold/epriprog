@@ -197,7 +197,10 @@
     
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/kontrollstrukturen.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/kontrollstrukturen.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
@@ -218,6 +221,23 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/kontrollstrukturen.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -284,7 +304,150 @@ nicht zwingend zum Abbruch des Programms führen, sondern sie können geeignet
 behandelt werden. Diesen Aspekt der Steuerung des Programmablaufs werden wir im
 letzten Abschnitt dieses Kapitels kennenlernen.</p>
 <div class="section" id="for-schleife">
-<h2><span class="section-number">4.1. </span>For-Schleife<a class="headerlink" href="#for-schleife" title="Link zu dieser Überschrift">¶</a></h2>
+<span id="forloop"></span><h2><span class="section-number">4.1. </span>For-Schleife<a class="headerlink" href="#for-schleife" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Sollen bestimmte Anweisungen mehrfach ausgeführt werden, wobei die Anzahl der
+Wiederholungen zuvor bestimmt werden kann, bietet sich die Verwendung einer
+<code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife an. Gegenüber der expliziten Wiederholung von Befehlen ergeben
+sich eine Reihe von Vorteilen. Zunächst einmal spart man sich Tipparbeit und
+verbessert erheblich die Lesbarkeit des Programms. Zudem ist eine explizite
+Wiederholung nur möglich, wenn die Zahl der Wiederholungen bereits beim
+Schreiben des Programms feststeht und nicht erst beim Ausführen des Programms
+berechnet wird.</p>
+<p>Wir verdeutlichen das anhand eines Beispiels, in dem wir einige Quadratzahlen
+berechnen. In einer <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife würde das für die Zahlen von 0 bis 4
+folgendermaßen gehen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   0    0
+   1    1
+   2    4
+   3    9
+   4   16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verzichtet man auf die Schleife, so wäre der folgende Code erforderlich.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">0</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">0</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">1</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">1</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">3</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">4</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">4</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   0    0
+   1    1
+   2    4
+   3    9
+   4   16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es dürfte offensichtlich sein, dass die erste Variante zu bevorzugen ist.
+Dies gilt inbesondere, wenn die Zahl der Durchläufe variable sein soll, wie
+im folgenden Fall.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nmax</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   0    0
+   1    1
+   2    4
+   3    9
+   4   16
+   5   25
+   6   36
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sehen wir uns den Aufbau der <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife genauer an. Das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">for</span></code>
+kennzeichnet den Beginn einer Schleife. Dann folgt der Name der Variable, in
+unserem Fall also <code class="docutils literal notranslate"><span class="pre">n</span></code>, die bei der Abarbeitung der Schleife vorgegebene Werte
+annimmt, und im Rahmen der Schleife verwendet werden kann. Im Allgemeinen
+können hier auch mehrere Variablennamen vorkommen, wie wir später im
+<a class="reference internal" href="sequenzen.html#zusgdatentypen"><span class="std std-numref">Kapitel 6</span></a> sehen werden. Die Werte, die die Variable <code class="docutils literal notranslate"><span class="pre">n</span></code> in
+unserem Beispiel annehmen kann, werden durch die <code class="docutils literal notranslate"><span class="pre">range</span></code>-Anweisung bestimmt.
+Zwar werden die Werte erst bei Bedarf generiert, aber wir können sie uns
+ansehen, indem wir explizit eine Liste der Werte erzeugen lassen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es wird also eine Liste von aufeinanderfolgenden ganzen Zahlen erzeugt, die
+hier fünf Elemente enthält. Zu beachten ist, dass die Liste mit Null beginnt
+und nicht mit Eins. Wir werden uns diesen zusammengesetzten Datentyp im
+<a class="reference internal" href="sequenzen.html#listen"><span class="std std-numref">Kapitel 6.1</span></a> noch genauer ansehen. Für den Moment genügt jedoch die
+intuitive Vorstellung von einer Liste. In der ersten Zeile der
+<code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife, die mit einem Doppelpunkt enden muss, wird also festgelegt,
+welchen Wert die Schleifenvariable <code class="docutils literal notranslate"><span class="pre">n</span></code> bei den aufeinanderfolgenden
+Schleifendurchläufen jeweils annimmt.</p>
+<p>Der Codeteil, der im Rahmen der Schleife im Allgemeinen mehrfach ausgeführt
+wird und im obigen Beispiel nur aus einer Zeile besteht, ist daran zu erkennen,
+dass er eingerückt ist. Zur Verdeutlichung vergleichen wir zwei Beispiele,
+die sich lediglich in der Einrückung der letzten Zeile unterscheiden.
+Im ersten Beispiel ist die letzte Zeile Bestandteil der Schleife und wird
+demnach zweimal ausgeführt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Schleifendurchlauf </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Das war&#39;s.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Schleifendurchlauf 1
+Das war&#39;s.
+Schleifendurchlauf 2
+Das war&#39;s.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rückt man die letzte Zeile dagegen aus, so wird sie erst ausgeführt nachdem
+die Schleife zweimal durchlaufen wurde.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Schleifendurchlauf </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Das war&#39;s.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Schleifendurchlauf 1
+Schleifendurchlauf 2
+Das war&#39;s.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im vorliegenden Beispiel ist sicher die zweite Variante adäquat.</p>
 </div>
 <div class="section" id="while-schleife">
 <h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Link zu dieser Überschrift">¶</a></h2>
