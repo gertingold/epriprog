@@ -361,7 +361,7 @@ Python-Entwicklungsumgebung Spyder
 
 - Gert-Ludwig Ingold, Vorlesungsmanuskript »Einführung in Prinzipien der Programmierung«
 
-  Das Vorlesungsmanuskript, das Sie gerade ansehen, befinde sich derzeit noch im Entstehen.
+  Das Vorlesungsmanuskript, das Sie gerade ansehen, befindet sich derzeit noch im Entstehen.
 
   Als übergangsweise Ausweichlösung kann das Manuskript zu der Vorgängervorlesung
   »Einführung in das Programmieren für Physiker und Materialwissenschaftler« genutzt
