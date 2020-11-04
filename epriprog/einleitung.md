@@ -268,7 +268,7 @@ Python-Shell in einem Konsolenfenster unter Linux.
 
 ```{figure} images/einleitung/pythonshell.png
 ---
-width: 10cm
+width: 80%
 name: fig:pythonshell
 ---
 Programmierung von wenigen Zeilen direkt in der Python-Shell.
@@ -287,7 +287,7 @@ sinnvoll, statt der Python-Shell grundsätzlich die IPython-Shell zu verwenden.
 
 ```{figure} images/einleitung/ipythonshell.png
 ---
-width: 10cm
+width: 80%
 name: fig:ipythonshell
 ---
 Eine komfortablere Python-Shell bietet IPython, unter anderem mit *Syntax Highlighting*.
