@@ -448,6 +448,65 @@ Das war&#39;s.
 </div>
 </div>
 <p>Im vorliegenden Beispiel ist sicher die zweite Variante adäquat.</p>
+<p>Entscheidend für die Zugehörigkeit zur Schleife ist also die Einrückung, wobei
+die Zahl der Leerstellen im Prinzip frei gewählt werden kann, aber innerhalb
+des ganzen Schleifenkörpers konstant sein muss. Ein guter Kompromiss zwischen
+kaum sichtbaren Einrückungen und zu großen Einrückungen, die bei geschachtelten
+Schleifen schnell zu Platzproblemen führen, ist eine Einrückung von vier
+Leerzeichen. So wird dies auch im <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> empfohlen, dem <em>Python Enhancement
+Proposal</em>, das Empfehlungen zur Formatierung von in Python geschriebenem
+Programmcode gibt. Diese Empfehlungen sind zwar nicht verpflichtend, aber die
+wichtigsten Hinweise werden von den meisten Programmierern respektiert.</p>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Im <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> wird auch eine maximale Zeilenlänge von 79 Zeichen empfohlen. Sehr
+lange Zeilen sind unter Umständen schwer zu lesen und führen bei kleineren
+Bildschirmen zu Problemen mit Zeilenumbrüchen. Da heutzutage oft größere
+Monitore zum Einsatz kommen, geben manche Projekte eine Maximallänge von 99
+Zeichen vor.</p>
+</div>
+<p>Da die Verwendung der Einrückung als syntaktisches Merkmal ungewöhnlich ist,
+wollen wir kurz zwei Beispiele aus anderen Programmiersprachen besprechen. In
+FORTRAN 90 könnte eine Schleife folgendermaßen aussehen:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">PROGRAM </span><span class="n">Quadrat</span>
+<span class="k">DO </span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span>
+   <span class="k">PRINT</span> <span class="s1">&#39;(2I4)&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">END DO</span>
+<span class="k">END PROGRAM </span><span class="n">Quadrat</span>
+</pre></div>
+</div>
+<p>Hier wurde nur aus Gründen der Lesbarkeit eine Einrückung vorgenommen. Relevant
+für das Ende der Schleife ist lediglich das abschließende <code class="docutils literal notranslate"><span class="pre">END</span> <span class="pre">DO</span></code>. Während
+man sich hier selbst dazu zwingen muss, gut lesbaren Code zu schreiben, zwingt
+Python den Programmierer durch seine Syntax dazu, übersichtlichen Code zu
+produzieren.</p>
+<p>Auch im folgenden C-Code sind die Einrückungen nur der Lesbarkeit wegen
+vorgenommen worden. Der Inhalt der Schleife wird durch die öffnende
+geschweifte Klammer in Zeile 6 und die schließende geschweifte Klammer in Zeile
+9 definiert. Würde man auf die Klammern verzichten, so wäre nur die der
+<code class="docutils literal notranslate"><span class="pre">for</span></code>-Anweisung folgende Zeile, also Zeile 7, Bestandteil der Schleife.
+Dagegen befände sich Zeile 8 trotz der Einrückung nicht mehr im Schleifenkörper.</p>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="n">main</span><span class="p">(){</span>
+   <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">quadrat</span><span class="p">;</span>
+   <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="hll">         <span class="n">quadrat</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">;</span>
+</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%4i %4i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">quadrat</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="while-schleife">
 <h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Link zu dieser Überschrift">¶</a></h2>

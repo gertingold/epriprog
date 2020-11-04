@@ -230,7 +230,7 @@ und auf der Computerhardware ausführen lässt.
 Grundsätzlich kann man die aktuellste Version des Python-Interpreters von der
 [offiziellen Python-Webseite](http://www.python.org/)
 herunterladen. Zum Zeitpunkt der Erstellung dieses Manuskripts war die Version
-3.8.6 aktuell. Wie weiter unten noch kurz diskutiert wird, ist im Rahmen dieser
+3.9.0 aktuell. Wie weiter unten noch kurz diskutiert wird, ist im Rahmen dieser
 Vorlesung jede Version ab Python 3.6 brauchbar.
 
 Neben dem eigentlichen Python-Interpreter werden wir für wissenschaftliche
@@ -268,7 +268,7 @@ Python-Shell in einem Konsolenfenster unter Linux.
 
 ```{figure} images/einleitung/pythonshell.png
 ---
-width: 10cm
+width: 80%
 name: fig:pythonshell
 ---
 Programmierung von wenigen Zeilen direkt in der Python-Shell.
@@ -287,7 +287,7 @@ sinnvoll, statt der Python-Shell grundsätzlich die IPython-Shell zu verwenden.
 
 ```{figure} images/einleitung/ipythonshell.png
 ---
-width: 10cm
+width: 80%
 name: fig:ipythonshell
 ---
 Eine komfortablere Python-Shell bietet IPython, unter anderem mit *Syntax Highlighting*.
@@ -357,25 +357,11 @@ name: fig:spyder
 Python-Entwicklungsumgebung Spyder
 ```
 
-
-## Verwendete Symbole
-
-``>>>`` stellt den Prompt des Python-Interpreters dar. Darauf folgt der
-einzugebende Text. Die Folgezeilen enthalten gegebenenfalls die Ausgabe des
-Interpreters.
-
-``...`` wird im Python-Interpreter als Prompt verwendet, wenn die Eingabe
-fortzusetzen ist, zum Beispiel im Rahmen einer Schleife. Diese Art der Eingabe
-kann sich über mehrere Zeilen hinziehen. Zum Beenden wird die
-{kbd}`EINGABE`-Taste ohne vorhergehende Eingabe von Text verwendet.
-
-``$`` steht für den Prompt in der Kommandozeile eines Terminalfensters.
-
 ## Literatur
 
 - Gert-Ludwig Ingold, Vorlesungsmanuskript »Einführung in Prinzipien der Programmierung«
 
-  Das Vorlesungsmanuskript, das Sie gerade ansehen, befinde sich derzeit noch im Entstehen.
+  Das Vorlesungsmanuskript, das Sie gerade ansehen, befindet sich derzeit noch im Entstehen.
 
   Als übergangsweise Ausweichlösung kann das Manuskript zu der Vorgängervorlesung
   »Einführung in das Programmieren für Physiker und Materialwissenschaftler« genutzt
