@@ -357,20 +357,6 @@ name: fig:spyder
 Python-Entwicklungsumgebung Spyder
 ```
 
-
-## Verwendete Symbole
-
-``>>>`` stellt den Prompt des Python-Interpreters dar. Darauf folgt der
-einzugebende Text. Die Folgezeilen enthalten gegebenenfalls die Ausgabe des
-Interpreters.
-
-``...`` wird im Python-Interpreter als Prompt verwendet, wenn die Eingabe
-fortzusetzen ist, zum Beispiel im Rahmen einer Schleife. Diese Art der Eingabe
-kann sich über mehrere Zeilen hinziehen. Zum Beenden wird die
-{kbd}`EINGABE`-Taste ohne vorhergehende Eingabe von Text verwendet.
-
-``$`` steht für den Prompt in der Kommandozeile eines Terminalfensters.
-
 ## Literatur
 
 - Gert-Ludwig Ingold, Vorlesungsmanuskript »Einführung in Prinzipien der Programmierung«
