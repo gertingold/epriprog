@@ -116,6 +116,65 @@ print("Das war's.")
 ```
 Im vorliegenden Beispiel ist sicher die zweite Variante adäquat.
 
+Entscheidend für die Zugehörigkeit zur Schleife ist also die Einrückung, wobei
+die Zahl der Leerstellen im Prinzip frei gewählt werden kann, aber innerhalb
+des ganzen Schleifenkörpers konstant sein muss. Ein guter Kompromiss zwischen
+kaum sichtbaren Einrückungen und zu großen Einrückungen, die bei geschachtelten
+Schleifen schnell zu Platzproblemen führen, ist eine Einrückung von vier
+Leerzeichen. So wird dies auch im {pep}`8` empfohlen, dem *Python Enhancement
+Proposal*, das Empfehlungen zur Formatierung von in Python geschriebenem
+Programmcode gibt. Diese Empfehlungen sind zwar nicht verpflichtend, aber die
+wichtigsten Hinweise werden von den meisten Programmierern respektiert.
+
+```{admonition} Weiterführender Hinweis
+Im {pep}`8` wird auch eine maximale Zeilenlänge von 79 Zeichen empfohlen. Sehr
+lange Zeilen sind unter Umständen schwer zu lesen und führen bei kleineren
+Bildschirmen zu Problemen mit Zeilenumbrüchen. Da heutzutage oft größere
+Monitore zum Einsatz kommen, geben manche Projekte eine Maximallänge von 99
+Zeichen vor.
+```
+
+Da die Verwendung der Einrückung als syntaktisches Merkmal ungewöhnlich ist,
+wollen wir kurz zwei Beispiele aus anderen Programmiersprachen besprechen. In
+FORTRAN 90 könnte eine Schleife folgendermaßen aussehen:
+
+```{code-block} fortran
+PROGRAM Quadrat
+DO n = 0, 4
+   PRINT '(2I4)', n, n**2
+END DO
+END PROGRAM Quadrat
+```
+
+Hier wurde nur aus Gründen der Lesbarkeit eine Einrückung vorgenommen. Relevant
+für das Ende der Schleife ist lediglich das abschließende `END DO`. Während
+man sich hier selbst dazu zwingen muss, gut lesbaren Code zu schreiben, zwingt
+Python den Programmierer durch seine Syntax dazu, übersichtlichen Code zu
+produzieren.
+
+Auch im folgenden C-Code sind die Einrückungen nur der Lesbarkeit wegen
+vorgenommen worden. Der Inhalt der Schleife wird durch die öffnende
+geschweifte Klammer in Zeile 6 und die schließende geschweifte Klammer in Zeile
+9 definiert. Würde man auf die Klammern verzichten, so wäre nur die der
+`for`-Anweisung folgende Zeile, also Zeile 7, Bestandteil der Schleife.
+Dagegen befände sich Zeile 8 trotz der Einrückung nicht mehr im Schleifenkörper.
+
+```{code-block} c
+---
+linenos: true
+emphasize-lines: 7, 7
+---
+#include <stdio.h>
+
+main(){
+   int i;
+   int quadrat;
+   for(i = 0; i < 5; i++){
+         quadrat = i*i;
+         printf("%4i %4i\n", i, quadrat);
+   }
+}
+```
 
 ## While-Schleife
 
