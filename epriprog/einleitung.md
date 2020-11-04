@@ -230,7 +230,7 @@ und auf der Computerhardware ausführen lässt.
 Grundsätzlich kann man die aktuellste Version des Python-Interpreters von der
 [offiziellen Python-Webseite](http://www.python.org/)
 herunterladen. Zum Zeitpunkt der Erstellung dieses Manuskripts war die Version
-3.8.6 aktuell. Wie weiter unten noch kurz diskutiert wird, ist im Rahmen dieser
+3.9.0 aktuell. Wie weiter unten noch kurz diskutiert wird, ist im Rahmen dieser
 Vorlesung jede Version ab Python 3.6 brauchbar.
 
 Neben dem eigentlichen Python-Interpreter werden wir für wissenschaftliche
