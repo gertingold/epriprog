@@ -437,7 +437,7 @@ der Eins und der darauf folgenden Zahl.
 
 ```{admonition} Hinweis
 :class: tip
-Ab Python 3.9 lässt sich die kleinste darstellbare Zahl, also `5e-324`
+Seit Python 3.9 lässt sich die kleinste darstellbare Zahl, also `5e-324`
 mit Hilfe von `math.ulp(0)` erhalten.
 ```
 Der Zahlenbereich für Floats sowie die Lücken um die Null und die Eins ergeben
