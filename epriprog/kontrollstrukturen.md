@@ -96,6 +96,17 @@ intuitive Vorstellung von einer Liste. In der ersten Zeile der
 welchen Wert die Schleifenvariable `n` bei den aufeinanderfolgenden
 Schleifendurchläufen jeweils annimmt.
 
+```{admonition} Mehr Flexiblität in der range()-Funktion
+:class: tip
+Mit nur einem Argument erzeugt die {func}`range`-Funktion wie oben gesehen
+ganze Zahlen von 0 bis ausschließlich dem angegebenen Wert. Gibt man zwei
+Argumente an, so entsprechen diese dem Startwert und dem Wert, der gerade
+nicht mehr angenommen wird. Gibt man ein drittes Argument an, so entspricht
+dieses der Schrittweite, die übrigens auch negativ sein kann. Alle Argumente
+müssen aber ganze Zahlen sein. Spielen Sie einfach mal ein bisschen mit
+der {func}`range`-Funktion herum.
+```
+
 Der Codeteil, der im Rahmen der Schleife im Allgemeinen mehrfach ausgeführt
 wird und im obigen Beispiel nur aus einer Zeile besteht, ist daran zu erkennen,
 dass er eingerückt ist. Zur Verdeutlichung vergleichen wir zwei Beispiele,
@@ -155,10 +166,7 @@ produzieren.
 Auch im folgenden C-Code sind die Einrückungen nur der Lesbarkeit wegen
 vorgenommen worden. Der Inhalt der Schleife wird durch die öffnende
 geschweifte Klammer in Zeile 6 und die schließende geschweifte Klammer in Zeile
-9 definiert. Würde man auf die Klammern verzichten, so wäre nur die der
-`for`-Anweisung folgende Zeile, also Zeile 7, Bestandteil der Schleife.
-Dagegen befände sich Zeile 8 trotz der Einrückung nicht mehr im Schleifenkörper.
-
+9 definiert.
 ```{code-block} c
 ---
 linenos: true
@@ -175,6 +183,163 @@ main(){
    }
 }
 ```
+Würde man auf die Klammern verzichten, so wäre nur die der `for`-Anweisung folgende
+Zeile, also Zeile 7, Bestandteil der Schleife. Dagegen befände sich Zeile 8 trotz
+der Einrückung nicht mehr im Schleifenkörper.
+
+Schleifen werden in Python häufig anders organisiert als dies in Sprachen wie
+Fortran und C der Fall ist. Diesen Unterschied können wir durch zwei
+Realisierungen der gleichen Problemstellung illustrieren. Im {numref}`vorschau`
+hatten wir eine Implementation des Schere-Papier-Stein-Spiels in Python
+besprochen. Darin kam unter anderem eine Liste der drei beteiligten Gegenstände
+vor. An dieser Stelle ist nur wichtig, dass wir Elemente einer Liste durch
+einen Index addressieren können, so wie wir das für die Komponenten eines
+Vektors in der Mathematik gewohnt sind.
+
+Stellen wir uns nun vor, dass wir eine Liste der drei Gegenstände ausgeben wollen.
+Eine erste Variante besteht darin, mit Hilfe der {func}`range`-Funktion eine Schleife
+über die Indizes zu programmieren, in der dann die Elemente der Liste addressiert und
+ausgegeben werden. 
+```{code-cell} python
+objekte = ['Stein', 'Papier', 'Schere']
+for idx in range(3):
+    print(objekte[idx])
+```
+Eine solche Vorgehensweise ist für Sprachen wie Fortran und C typisch. Da der
+Index in gleichmäßigen Schritten hochgezählt wird, ist es für den Computer möglich,
+effizient auf die einzelnen Listenobjekte zuzugreifen. Dies gilt insbesondere, wenn
+es sich bei den Listenobjekten um Zahlen handelt, die alle gleich viel Speicher
+in Anspruch nehmen. Diese erste Variante wird in Python eigentlich nur in besonderen
+Fällen verwendet, in denen die Rechengeschwindigkeit im Vordergrund steht.
+
+In Python üblicher ist die zweite Variante, bei der direkt über die Liste iteriert
+wird.
+```{code-cell} python
+for objekt in ['Stein', 'Papier', 'Schere']:
+    print(objekt)
+```
+Aus der zweiten Zeile wird hier offensichtlich, dass die Schleife über alle Elemente
+der Liste geht. Der Code ist insgesamt etwas leichter zu lesen und schneller zu
+schreiben als der Code der ersten Variante und wird daher normalerweise von
+Python-Programmierern bevorzugt.
+
+Wir betrachten noch ein zweites Beispiel, das von seiner Struktur gerade beim
+numerischen Arbeiten typisch ist. Dabei wollen wir die Kreiszahl π mit Hilfe
+der Summendarstellung
+
+$$\sum_{n=1}^\infty\frac{1}{n^2} = \frac{\pi^2}{6}$$
+
+bestimmen. Dies geht allein schon deshalb nur näherungsweise, weil wir die Summe
+bei einem wählbaren maximalen Index abschneiden müssen. Dabei fällt der Fehler
+invers linear mit diesem maximalen Index. Betrachten wir nun den zugehörigen Python-Code.
+```{code-cell} python
+from math import sqrt
+
+nmax = 100000
+summe = 0
+for n in range(nmax):
+    summe = summe + 1/(n+1)**2
+print(sqrt(6*summe))
+```
+Den maximalen Summationsindex hätten wir hier auch direkt in das Argument der
+{func}`range`-Funktion schreiben können. Wollen wir diesen Wert aber ändern, so
+ist die betreffende Stelle leichter zu finden, da der Variablenname `nmax` auf
+die Bedeutung dieses Wert hinweist.
+
+Zwei Aspekte wollen wir an diesem Beispiel betonen. Zum einen übersieht man leicht,
+dass im Nenner nicht einfach `n**2` stehen darf. Dies würde zu einer Division durch
+Null führen, da der erste Wert, der von der {func}`range`-Funktion geliefert wird,
+gerade Null ist. Da die Summation bei 1 beginnt, müssen wir also im Nenner `(n+1)**2`
+schreiben.
+
+Ein zweiter Aspekt wird gerne übersehen. Im Schleifenkörper, der hier nur aus der
+vorletzten Zeile besteht, wird wie bei jeder Zuweisung zunächst die rechte Seite
+ausgewertet. Dabei erwartet der Pythoninterpreter schon beim ersten Durchlauf, dass
+die Variable `summe` einen Wert besitzt. Auch wenn wir einen fehlenden Wert intuitiv
+einfach auf Null setzen würden, ist es für Python ein großer Unterschied, ob eine
+Variable den Wert Null hat oder überhaupt keinen Wert besitzt. Dies bedeutet, dass
+unser Beispiel nicht mehr läuft, wenn wir die vierte Zeile weglassen. Aus technischen
+Gründen entfernen wir die Variable hier explizit, da sie sonst ihren Wert aus der
+obigen Zelle behält.
+```{code-cell} python
+del summe
+```
+Unser neuer Code hat nun die folgende Form.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+from math import sqrt
+
+nmax = 100000
+for n in range(nmax):
+    summe = summe + 1/(n+1)**2
+print(sqrt(6*summe))
+```
+Wie erwartet schlägt die Ausführung fehl, weil die Variable `summe` beim allerersten
+Schleifendurchlauf noch nicht definiert ist. Es ist also unbedingt erforderlich,
+die Variable vor der Schleife zu definieren. Man spricht hier auch von einer
+Initialisierung.
+
+`for`-Schleifen können auch geschachtelt werden. Wir zeigen dies an einem Beispiel,
+das die Wahrheitswerttabelle für die logische UND-Verknüpfung (`&`) und die logische
+ODER-Verknüpfung (`|`) darstellt.
+```{code-cell} python
+print("  arg1   arg2   arg1 & arg2   arg1 | arg2 ")
+print("------------------------------------------")
+for arg1 in [False, True]:
+    for arg2 in [False, True]:
+        print(f" {arg1!s:5}  {arg2!s:5}   {arg1&arg2!s:^11}   {arg1|arg2!s:^11}")
+```
+```{admonition} Weiterführender Hinweis
+Unter anderem für solche Situationen stellt in Python das
+[{mod}`itertools`-Modul](https://docs.python.org/3/library/itertools.html) der
+Standardbibliothek hilfreiche Funktionen zur Verfügung.
+```
+Wie man in den ersten beiden Spalten der Ausgabe sieht, wird zunächst in der äußeren
+Schleife `arg1` auf `False` gesetzt. Anschließend wird die innere Schleife abgearbeitet,
+in der `arg2` nacheinander die Werte `False` und `True` annimmt. Erst dann wird in der
+äußeren Schleife `arg1` auf `True` gesetzt und danach wiederum die innere Schleife
+abgearbeitet.
+
+Gerade in einer doppelten Schleife ist die Einrückung wichtig, die darüber bestimmt,
+in welcher Schleife eine Befehlszeile abgearbeitet wird. Da die `print`-Anweisung
+relativ zur inneren Schleife eingerückt ist, wird sie in dieser ausgeführt. und
+entsprechend werden zusätzlich zum Tabellenkopf vier Zeile ausgegeben. Würde man die
+letzte Zeile nur vier Leerzeichen weit einrücken, würde sie in die äußere Schleife
+wandern und nur zweimal ausgeführt werden.
+
+Versucht man dies, gibt es zunächst allerdings ein Problem.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+print("  arg1   arg2   arg1 & arg2   arg1 | arg2 ")
+print("------------------------------------------")
+for arg1 in [False, True]:
+    for arg2 in [False, True]:
+    print(f" {arg1!s:5}  {arg2!s:5}   {arg1&arg2!s:^11}   {arg1|arg2!s:^11}")
+```
+Jede Schleife erwartet nämlich einen eingerückten Block von mindestens einer Zeile
+Länge. In unserem Fall ist es eigentlich nicht sinnvoll, die innere Schleife leer
+zu lassen. Gerade bei der Programmentwicklung kann es aber vorkommen, dass man eine
+Schleife schon mal anlegen, aber erst später mit Code füllen will. Häufiger kommt
+dies bei Funktionen vor, in denen sich das gleiche Problem stellt. Dann hilft der
+Befehl `pass` weiter, der Python signalisiert, dass es hier nichts zu tun gibt.
+```{code-cell} python
+print("  arg1   arg2   arg1 & arg2   arg1 | arg2 ")
+print("------------------------------------------")
+for arg1 in [False, True]:
+    for arg2 in [False, True]:
+        pass
+    print(f" {arg1!s:5}  {arg2!s:5}   {arg1&arg2!s:^11}   {arg1|arg2!s:^11}")
+```
+Jetzt wird die `print`-Anweisung tatsächlich nur zweimal ausgeführt, nämlich jeweils
+am Ende der Abarbeitung der äußeren Schleifendurchläufe. Außerdem kann man hier
+noch feststellen, dass die Laufvariable `arg2` der inneren Schleife auch nach der
+Abarbeitung der Schleife zur Verfügung steht. Sie hat dabei den Wert, der ihr zuletzt
+zugewiesen wurde, in unserem Fall also `True`.
+
 
 ## While-Schleife
 
