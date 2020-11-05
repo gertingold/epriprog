@@ -406,6 +406,16 @@ intuitive Vorstellung von einer Liste. In der ersten Zeile der
 <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife, die mit einem Doppelpunkt enden muss, wird also festgelegt,
 welchen Wert die Schleifenvariable <code class="docutils literal notranslate"><span class="pre">n</span></code> bei den aufeinanderfolgenden
 Schleifendurchläufen jeweils annimmt.</p>
+<div class="tip admonition">
+<p class="admonition-title">Mehr Flexiblität in der range()-Funktion</p>
+<p>Mit nur einem Argument erzeugt die <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion wie oben gesehen
+ganze Zahlen von 0 bis ausschließlich dem angegebenen Wert. Gibt man zwei
+Argumente an, so entsprechen diese dem Startwert und dem Wert, der gerade
+nicht mehr angenommen wird. Gibt man ein drittes Argument an, so entspricht
+dieses der Schrittweite, die übrigens auch negativ sein kann. Alle Argumente
+müssen aber ganze Zahlen sein. Spielen Sie einfach mal ein bisschen mit
+der <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion herum.</p>
+</div>
 <p>Der Codeteil, der im Rahmen der Schleife im Allgemeinen mehrfach ausgeführt
 wird und im obigen Beispiel nur aus einer Zeile besteht, ist daran zu erkennen,
 dass er eingerückt ist. Zur Verdeutlichung vergleichen wir zwei Beispiele,
@@ -483,9 +493,7 @@ produzieren.</p>
 <p>Auch im folgenden C-Code sind die Einrückungen nur der Lesbarkeit wegen
 vorgenommen worden. Der Inhalt der Schleife wird durch die öffnende
 geschweifte Klammer in Zeile 6 und die schließende geschweifte Klammer in Zeile
-9 definiert. Würde man auf die Klammern verzichten, so wäre nur die der
-<code class="docutils literal notranslate"><span class="pre">for</span></code>-Anweisung folgende Zeile, also Zeile 7, Bestandteil der Schleife.
-Dagegen befände sich Zeile 8 trotz der Einrückung nicht mehr im Schleifenkörper.</p>
+9 definiert.</p>
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -507,6 +515,237 @@ Dagegen befände sich Zeile 8 trotz der Einrückung nicht mehr im Schleifenkörp
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
+<p>Würde man auf die Klammern verzichten, so wäre nur die der <code class="docutils literal notranslate"><span class="pre">for</span></code>-Anweisung folgende
+Zeile, also Zeile 7, Bestandteil der Schleife. Dagegen befände sich Zeile 8 trotz
+der Einrückung nicht mehr im Schleifenkörper.</p>
+<p>Schleifen werden in Python häufig anders organisiert als dies in Sprachen wie
+Fortran und C der Fall ist. Diesen Unterschied können wir durch zwei
+Realisierungen der gleichen Problemstellung illustrieren. Im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a>
+hatten wir eine Implementation des Schere-Papier-Stein-Spiels in Python
+besprochen. Darin kam unter anderem eine Liste der drei beteiligten Gegenstände
+vor. An dieser Stelle ist nur wichtig, dass wir Elemente einer Liste durch
+einen Index addressieren können, so wie wir das für die Komponenten eines
+Vektors in der Mathematik gewohnt sind.</p>
+<p>Stellen wir uns nun vor, dass wir eine Liste der drei Gegenstände ausgeben wollen.
+Eine erste Variante besteht darin, mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion eine Schleife
+über die Indizes zu programmieren, in der dann die Elemente der Liste addressiert und
+ausgegeben werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">objekte</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">objekte</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stein
+Papier
+Schere
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine solche Vorgehensweise ist für Sprachen wie Fortran und C typisch. Da der
+Index in gleichmäßigen Schritten hochgezählt wird, ist es für den Computer möglich,
+effizient auf die einzelnen Listenobjekte zuzugreifen. Dies gilt insbesondere, wenn
+es sich bei den Listenobjekten um Zahlen handelt, die alle gleich viel Speicher
+in Anspruch nehmen. Diese erste Variante wird in Python eigentlich nur in besonderen
+Fällen verwendet, in denen die Rechengeschwindigkeit im Vordergrund steht.</p>
+<p>In Python üblicher ist die zweite Variante, bei der direkt über die Liste iteriert
+wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">objekt</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">objekt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stein
+Papier
+Schere
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aus der zweiten Zeile wird hier offensichtlich, dass die Schleife über alle Elemente
+der Liste geht. Der Code ist insgesamt etwas leichter zu lesen und schneller zu
+schreiben als der Code der ersten Variante und wird daher normalerweise von
+Python-Programmierern bevorzugt.</p>
+<p>Wir betrachten noch ein zweites Beispiel, das von seiner Struktur gerade beim
+numerischen Arbeiten typisch ist. Dabei wollen wir die Kreiszahl π mit Hilfe
+der Summendarstellung</p>
+<div class="math notranslate nohighlight">
+\[\sum_{n=1}^\infty\frac{1}{n^2} = \frac{\pi^2}{6}\]</div>
+<p>bestimmen. Dies geht allein schon deshalb nur näherungsweise, weil wir die Summe
+bei einem wählbaren maximalen Index abschneiden müssen. Dabei fällt der Fehler
+invers linear mit diesem maximalen Index. Betrachten wir nun den zugehörigen Python-Code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="n">nmax</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">summe</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
+    <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">summe</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141583104326456
+</pre></div>
+</div>
+</div>
+</div>
+<p>Den maximalen Summationsindex hätten wir hier auch direkt in das Argument der
+<code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion schreiben können. Wollen wir diesen Wert aber ändern, so
+ist die betreffende Stelle leichter zu finden, da der Variablenname <code class="docutils literal notranslate"><span class="pre">nmax</span></code> auf
+die Bedeutung dieses Wert hinweist.</p>
+<p>Zwei Aspekte wollen wir an diesem Beispiel betonen. Zum einen übersieht man leicht,
+dass im Nenner nicht einfach <code class="docutils literal notranslate"><span class="pre">n**2</span></code> stehen darf. Dies würde zu einer Division durch
+Null führen, da der erste Wert, der von der <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion geliefert wird,
+gerade Null ist. Da die Summation bei 1 beginnt, müssen wir also im Nenner <code class="docutils literal notranslate"><span class="pre">(n+1)**2</span></code>
+schreiben.</p>
+<p>Ein zweiter Aspekt wird gerne übersehen. Im Schleifenkörper, der hier nur aus der
+vorletzten Zeile besteht, wird wie bei jeder Zuweisung zunächst die rechte Seite
+ausgewertet. Dabei erwartet der Pythoninterpreter schon beim ersten Durchlauf, dass
+die Variable <code class="docutils literal notranslate"><span class="pre">summe</span></code> einen Wert besitzt. Auch wenn wir einen fehlenden Wert intuitiv
+einfach auf Null setzen würden, ist es für Python ein großer Unterschied, ob eine
+Variable den Wert Null hat oder überhaupt keinen Wert besitzt. Dies bedeutet, dass
+unser Beispiel nicht mehr läuft, wenn wir die vierte Zeile weglassen. Aus technischen
+Gründen entfernen wir die Variable hier explizit, da sie sonst ihren Wert aus der
+obigen Zelle behält.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">summe</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unser neuer Code hat nun die folgende Form.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="n">nmax</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
+    <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">summe</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">3</span><span class="n">f25c651cbec</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">summe</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;summe&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie erwartet schlägt die Ausführung fehl, weil die Variable <code class="docutils literal notranslate"><span class="pre">summe</span></code> beim allerersten
+Schleifendurchlauf noch nicht definiert ist. Es ist also unbedingt erforderlich,
+die Variable vor der Schleife zu definieren. Man spricht hier auch von einer
+Initialisierung.</p>
+<p><code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleifen können auch geschachtelt werden. Wir zeigen dies an einem Beispiel,
+das die Wahrheitswerttabelle für die logische UND-Verknüpfung (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>) und die logische
+ODER-Verknüpfung (<code class="docutils literal notranslate"><span class="pre">|</span></code>) darstellt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">arg1</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">arg2</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 
+------------------------------------------
+ False  False      False         False   
+ False  True       False         True    
+ True   False      False         True    
+ True   True       True          True    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Unter anderem für solche Situationen stellt in Python das
+<a class="reference external" href="https://docs.python.org/3/library/itertools.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">itertools</span></code>-Modul</a> der
+Standardbibliothek hilfreiche Funktionen zur Verfügung.</p>
+</div>
+<p>Wie man in den ersten beiden Spalten der Ausgabe sieht, wird zunächst in der äußeren
+Schleife <code class="docutils literal notranslate"><span class="pre">arg1</span></code> auf <code class="docutils literal notranslate"><span class="pre">False</span></code> gesetzt. Anschließend wird die innere Schleife abgearbeitet,
+in der <code class="docutils literal notranslate"><span class="pre">arg2</span></code> nacheinander die Werte <code class="docutils literal notranslate"><span class="pre">False</span></code> und <code class="docutils literal notranslate"><span class="pre">True</span></code> annimmt. Erst dann wird in der
+äußeren Schleife <code class="docutils literal notranslate"><span class="pre">arg1</span></code> auf <code class="docutils literal notranslate"><span class="pre">True</span></code> gesetzt und danach wiederum die innere Schleife
+abgearbeitet.</p>
+<p>Gerade in einer doppelten Schleife ist die Einrückung wichtig, die darüber bestimmt,
+in welcher Schleife eine Befehlszeile abgearbeitet wird. Da die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung
+relativ zur inneren Schleife eingerückt ist, wird sie in dieser ausgeführt. und
+entsprechend werden zusätzlich zum Tabellenkopf vier Zeile ausgegeben. Würde man die
+letzte Zeile nur vier Leerzeichen weit einrücken, würde sie in die äußere Schleife
+wandern und nur zweimal ausgeführt werden.</p>
+<p>Versucht man dies, gibt es zunächst allerdings ein Problem.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">arg1</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">arg2</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-13-796f5cfb3843&gt;&quot;</span><span class="gt">, line </span><span class="mi">5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jede Schleife erwartet nämlich einen eingerückten Block von mindestens einer Zeile
+Länge. In unserem Fall ist es eigentlich nicht sinnvoll, die innere Schleife leer
+zu lassen. Gerade bei der Programmentwicklung kann es aber vorkommen, dass man eine
+Schleife schon mal anlegen, aber erst später mit Code füllen will. Häufiger kommt
+dies bei Funktionen vor, in denen sich das gleiche Problem stellt. Dann hilft der
+Befehl <code class="docutils literal notranslate"><span class="pre">pass</span></code> weiter, der Python signalisiert, dass es hier nichts zu tun gibt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">arg1</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">arg2</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 
+------------------------------------------
+ False  True       False         True    
+ True   True       True          True    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt wird die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung tatsächlich nur zweimal ausgeführt, nämlich jeweils
+am Ende der Abarbeitung der äußeren Schleifendurchläufe. Außerdem kann man hier
+noch feststellen, dass die Laufvariable <code class="docutils literal notranslate"><span class="pre">arg2</span></code> der inneren Schleife auch nach der
+Abarbeitung der Schleife zur Verfügung steht. Sie hat dabei den Wert, der ihr zuletzt
+zugewiesen wurde, in unserem Fall also <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </div>
 <div class="section" id="while-schleife">
 <h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Link zu dieser Überschrift">¶</a></h2>
