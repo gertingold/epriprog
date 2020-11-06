@@ -362,7 +362,7 @@ von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun stärker der
 praktischen Arbeit mit Integers zuwenden.</p>
 <p>Als erstes wollen wir zeigen, dass Integers in Python tatsächlich sehr groß werden
 können, indem wir die tausendste Potenz von 2 ausrechnen lassen. Der doppelte Stern
-<code class="docutils literal notranslate"><span class="pre">**</span></code> steht dabei für den Exponentiationsoperator.</p>
+<code class="docutils literal notranslate"><span class="pre">**</span></code> steht dabei für den Exponentierungsoperator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">1000</span>
@@ -678,7 +678,7 @@ Operationen [^precedence].</p>
 </tr>
 </tbody>
 </table>
-<p>Wird der Exponentiationsoperator <code class="docutils literal notranslate"><span class="pre">**</span></code> direkt von einem Plus oder Minus
+<p>Wird der Exponentierungsoperator <code class="docutils literal notranslate"><span class="pre">**</span></code> direkt von einem Plus oder Minus
 gefolgt, bindet das Vorzeichen allerdings stärker, was ja auch die einzig
 sinnvolle Interpretation dieses Codes ist.</p>
 <div class="cell docutils container">
@@ -1152,7 +1152,7 @@ einer mathematischen Funktion in der Programmiersprache C illustriert:</p>
 </div>
 <p>Hier entspricht die hervorgehobene Zeile dem <code class="docutils literal notranslate"><span class="pre">import</span></code>-Befehl in Python. Zudem muss
 man beim Kompilieren, also der Übersetzung des Programms in maschinenlesbaren Code
-mit <code class="docutils literal notranslate"><span class="pre">-lm</span></code> noch die Mathematikbibliothek hinzulinken.</p>
+mit <code class="docutils literal notranslate"><span class="pre">-lm</span></code> noch die Mathematikbibliothek hinzuzulinken.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cc -o bsp_exp bsp_exp.c -lm
 $ ./bsp_exp
 Die Exponentialfunktion von <span class="m">2</span>.000000 ist <span class="m">7</span>.389056
@@ -1753,7 +1753,7 @@ Code lesbarer zu machen.</p>
 </div>
 </div>
 </div>
-<p>Der Name dieser Funktion erklört sich daraus, dass hier die Länge der Hypothenuse
+<p>Der Name dieser Funktion erklärt sich daraus, dass hier die Länge der Hypothenuse
 berechnet wird. Verwandt hiermit ist die <code class="xref py py-func docutils literal notranslate"><span class="pre">dist()</span></code>-Funktion, die den Abstand
 zweier Punkte berechnet. Sowohl <code class="xref py py-func docutils literal notranslate"><span class="pre">dist()</span></code> als auch <code class="xref py py-func docutils literal notranslate"><span class="pre">hypot()</span></code> funktionieren
 auch in mehr als zwei Dimensionen.</p>
@@ -1802,7 +1802,7 @@ in C, Fortran und Julia verwendet.</p>
 angibt. Damit könnte man den dekadischen Logarithmus auch mit <code class="docutils literal notranslate"><span class="pre">log(x,</span> <span class="pre">10)</span></code> berechnen,
 was aber potentiell ungenauer ist als <code class="docutils literal notranslate"><span class="pre">log10(x)</span></code>.</p>
 </div>
-<p>Neben dem natürlichen Logarithmus <code class="xref py py-func docutils literal notranslate"><span class="pre">log()</span></code> und der Exponentialfunction <code class="xref py py-func docutils literal notranslate"><span class="pre">exp()</span></code> stellt
+<p>Neben dem natürlichen Logarithmus <code class="xref py py-func docutils literal notranslate"><span class="pre">log()</span></code> und der Exponentialfunktion <code class="xref py py-func docutils literal notranslate"><span class="pre">exp()</span></code> stellt
 Python auch noch die Funktionen <code class="xref py py-func docutils literal notranslate"><span class="pre">log1p()</span></code> und <code class="xref py py-func docutils literal notranslate"><span class="pre">expm1()</span></code> zur Verfügung. Wozu diese
 beiden Funktionen erforderlich sind, wollen wir uns nun ansehen.</p>
 <p>Mathematisch stellen Quotienten zweier Funktionen ein Problem dar, wenn sie auf einen Ausdruck
@@ -2666,7 +2666,7 @@ das nur <code class="docutils literal notranslate"><span class="pre">True</span>
 <p>Logische Ausdrücke werden in Python von links nach rechts ausgewertet und zwar
 nur so weit, wie es für die Entscheidung über den Wahrheitswert erforderlich ist.
 Dies wird in dem folgenden Beispiel illustriert. Im ersten Fall steht das Ergebnis der
-<code class="docutils literal notranslate"><span class="pre">or</span></code>-Verküpfung schon dadurch fest, dass <code class="docutils literal notranslate"><span class="pre">x</span></code> gleich <code class="docutils literal notranslate"><span class="pre">True</span></code> ist, so dass die Division
+<code class="docutils literal notranslate"><span class="pre">or</span></code>-Verknüpfung schon dadurch fest, dass <code class="docutils literal notranslate"><span class="pre">x</span></code> gleich <code class="docutils literal notranslate"><span class="pre">True</span></code> ist, so dass die Division
 durch Null nicht mehr durchgeführt wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2868,7 +2868,7 @@ das wissenschaftliche Arbeiten relevanten Programmiersprache gegeben. Die
 Beschreibung des Formats funktioniert typischerweise mit Hilfe eines <em>format
 strings</em>, der in den verschiedenen Programmiersprachen ähnlich aufgebaut ist,
 auch wenn es im Detail durchaus Unterschiede geben kann. Wie die auszugebenden
-Objekte und ihre Formatierung dann im Code anzugegeben sind, unterscheidet sich
+Objekte und ihre Formatierung dann im Code anzugeben sind, unterscheidet sich
 von Programmiersprache zu Programmiersprache. Python selbst stellt hierfür schon
 mehrere Möglichkeiten zur Verfügung. Mit der Version 3.6 wurden die so genannten
 f-Strings eingeführt, wobei der englische Begriff <em>string</em> hier im Sinne einer
@@ -2921,7 +2921,7 @@ Zeichenkette das gleiche Zeichen verwendet wird.</p>
 </div>
 <p>Bis jetzt haben wir noch keinerlei Formatierung vorgenommen. Das vorige Beispiel,
 bei dem die Kreiszahl nur auf fünf Nachkommastellen einging, illustriert aber,
-dass man beispielsweise die Zahl der Nachkommstellen kontrollieren will. In unserem
+dass man beispielsweise die Zahl der Nachkommastellen kontrollieren will. In unserem
 Beispiel wäre eine Beschränkung auf fünf Nachkommastellen sinnvoll.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3058,7 +3058,7 @@ mehr wie gewünscht zueinander ausgerichtet.</p>
 </div>
 </div>
 </div>
-<p>Dies gilt inbesondere, wenn man die Feldbreiten überhaupt nicht spezifiziert,
+<p>Dies gilt insbesondere, wenn man die Feldbreiten überhaupt nicht spezifiziert,
 da dann immer die minimal benötigte Breite belegt wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3157,7 +3157,7 @@ entsprechend viel Leerplatz auf der linken Seite ausgegeben.</p>
 <div class="admonition-weiterfuhrender-hinweis admonition">
 <p class="admonition-title">Weiterführender Hinweis</p>
 <p>Um etwas über die Möglichkeiten der Positionierung der Ausgabe
-zu erfahren, können Sie im letzten Beispiel folgende Formatierungsspezifikationen
+zu erfahren, können Sie im letzten Beispiel folgende Formatspezifikationen
 ausprobieren: <code class="docutils literal notranslate"><span class="pre">{:&lt;20.8e}</span></code>, <code class="docutils literal notranslate"><span class="pre">{:=+20.8e}</span></code> und <code class="docutils literal notranslate"><span class="pre">{:^20.8e}</span></code>.</p>
 </div>
 <p>Häufig möchte man die Exponentialschreibweise nur verwenden, wenn die
