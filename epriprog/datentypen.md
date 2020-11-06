@@ -89,7 +89,7 @@ praktischen Arbeit mit Integers zuwenden.
 
 Als erstes wollen wir zeigen, dass Integers in Python tatsächlich sehr groß werden
 können, indem wir die tausendste Potenz von 2 ausrechnen lassen. Der doppelte Stern
-`**` steht dabei für den Exponentiationsoperator.
+`**` steht dabei für den Exponentierungsoperator.
 
 ```{code-cell} python
 2**1000
@@ -270,7 +270,7 @@ name: table:precedence
   - Addition, Subtraktion
 ```
 
-Wird der Exponentiationsoperator `**` direkt von einem Plus oder Minus
+Wird der Exponentierungsoperator `**` direkt von einem Plus oder Minus
 gefolgt, bindet das Vorzeichen allerdings stärker, was ja auch die einzig
 sinnvolle Interpretation dieses Codes ist.
 ```{code-cell} python
@@ -554,7 +554,7 @@ int main(void) {
 ```
 Hier entspricht die hervorgehobene Zeile dem `import`-Befehl in Python. Zudem muss
 man beim Kompilieren, also der Übersetzung des Programms in maschinenlesbaren Code
-mit `-lm` noch die Mathematikbibliothek hinzulinken.
+mit `-lm` noch die Mathematikbibliothek hinzuzulinken.
 ```{code-block} bash
 $ cc -o bsp_exp bsp_exp.c -lm
 $ ./bsp_exp
@@ -725,7 +725,7 @@ $$\varphi = \arctan\left(\frac{y}{x}\right)$$
 
 zu berechnen. Dazu muss man zunächst einmal wissen, dass der Arkustangens in Python
 durch die Funktion {func}`atan` berechnet wird.
-```{code-cell} pathon
+```{code-cell} python
 from math import atan, degrees, sqrt
 x = 1
 y = sqrt(3)
@@ -786,7 +786,7 @@ x = 1
 y = 2
 sqrt(x**2 + y**2), hypot(x, y)
 ```
-Der Name dieser Funktion erklört sich daraus, dass hier die Länge der Hypothenuse
+Der Name dieser Funktion erklärt sich daraus, dass hier die Länge der Hypothenuse
 berechnet wird. Verwandt hiermit ist die {func}`dist`-Funktion, die den Abstand
 zweier Punkte berechnet. Sowohl {func}`dist` als auch {func}`hypot` funktionieren
 auch in mehr als zwei Dimensionen.
@@ -819,7 +819,7 @@ angibt. Damit könnte man den dekadischen Logarithmus auch mit `log(x, 10)` bere
 was aber potentiell ungenauer ist als `log10(x)`.
 ```
 
-Neben dem natürlichen Logarithmus {func}`log` und der Exponentialfunction {func}`exp` stellt
+Neben dem natürlichen Logarithmus {func}`log` und der Exponentialfunktion {func}`exp` stellt
 Python auch noch die Funktionen {func}`log1p` und {func}`expm1` zur Verfügung. Wozu diese
 beiden Funktionen erforderlich sind, wollen wir uns nun ansehen.
 
@@ -1325,7 +1325,7 @@ x or y
 Logische Ausdrücke werden in Python von links nach rechts ausgewertet und zwar
 nur so weit, wie es für die Entscheidung über den Wahrheitswert erforderlich ist.
 Dies wird in dem folgenden Beispiel illustriert. Im ersten Fall steht das Ergebnis der
-`or`-Verküpfung schon dadurch fest, dass `x` gleich `True` ist, so dass die Division
+`or`-Verknüpfung schon dadurch fest, dass `x` gleich `True` ist, so dass die Division
 durch Null nicht mehr durchgeführt wird.
 ```{code-cell} python
 x = True
@@ -1434,7 +1434,7 @@ das wissenschaftliche Arbeiten relevanten Programmiersprache gegeben. Die
 Beschreibung des Formats funktioniert typischerweise mit Hilfe eines *format
 strings*, der in den verschiedenen Programmiersprachen ähnlich aufgebaut ist,
 auch wenn es im Detail durchaus Unterschiede geben kann. Wie die auszugebenden
-Objekte und ihre Formatierung dann im Code anzugegeben sind, unterscheidet sich
+Objekte und ihre Formatierung dann im Code anzugeben sind, unterscheidet sich
 von Programmiersprache zu Programmiersprache. Python selbst stellt hierfür schon
 mehrere Möglichkeiten zur Verfügung. Mit der Version 3.6 wurden die so genannten
 f-Strings eingeführt, wobei der englische Begriff *string* hier im Sinne einer 
@@ -1471,7 +1471,7 @@ print("Näherung für π/3:", y/3)
 
 Bis jetzt haben wir noch keinerlei Formatierung vorgenommen. Das vorige Beispiel,
 bei dem die Kreiszahl nur auf fünf Nachkommastellen einging, illustriert aber,
-dass man beispielsweise die Zahl der Nachkommstellen kontrollieren will. In unserem
+dass man beispielsweise die Zahl der Nachkommastellen kontrollieren will. In unserem
 Beispiel wäre eine Beschränkung auf fünf Nachkommastellen sinnvoll.
 ```{code-cell} python
 print(f"Näherung für π/3: {y/3:.5f}")
@@ -1558,7 +1558,7 @@ mehr wie gewünscht zueinander ausgerichtet.
 ```{code-cell} python
 print(f"|{x:4.3f}|")
 ```
-Dies gilt inbesondere, wenn man die Feldbreiten überhaupt nicht spezifiziert,
+Dies gilt insbesondere, wenn man die Feldbreiten überhaupt nicht spezifiziert,
 da dann immer die minimal benötigte Breite belegt wird.
 ```{code-cell} python
 print(f"{x:.3f}")
@@ -1613,7 +1613,7 @@ entsprechend viel Leerplatz auf der linken Seite ausgegeben.
 
 ```{admonition} Weiterführender Hinweis
 Um etwas über die Möglichkeiten der Positionierung der Ausgabe
-zu erfahren, können Sie im letzten Beispiel folgende Formatierungsspezifikationen
+zu erfahren, können Sie im letzten Beispiel folgende Formatspezifikationen
 ausprobieren: `{:<20.8e}`, `{:=+20.8e}` und `{:^20.8e}`.
 ```
 

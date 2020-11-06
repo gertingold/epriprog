@@ -66,7 +66,7 @@ print(f"{3:4} {3**2:4}")
 print(f"{4:4} {4**2:4}")
 ```
 Es dürfte offensichtlich sein, dass die erste Variante zu bevorzugen ist.
-Dies gilt inbesondere, wenn die Zahl der Durchläufe variable sein soll, wie
+Dies gilt insbesondere, wenn die Zahl der Durchläufe variable sein soll, wie
 im folgenden Fall.
 ```{code-cell} python
 nmax = 7
@@ -96,7 +96,7 @@ intuitive Vorstellung von einer Liste. In der ersten Zeile der
 welchen Wert die Schleifenvariable `n` bei den aufeinanderfolgenden
 Schleifendurchläufen jeweils annimmt.
 
-```{admonition} Mehr Flexiblität in der range()-Funktion
+```{admonition} Mehr Flexibilität in der range()-Funktion
 :class: tip
 Mit nur einem Argument erzeugt die {func}`range`-Funktion wie oben gesehen
 ganze Zahlen von 0 bis ausschließlich dem angegebenen Wert. Gibt man zwei
@@ -193,12 +193,12 @@ Realisierungen der gleichen Problemstellung illustrieren. Im {numref}`vorschau`
 hatten wir eine Implementation des Schere-Papier-Stein-Spiels in Python
 besprochen. Darin kam unter anderem eine Liste der drei beteiligten Gegenstände
 vor. An dieser Stelle ist nur wichtig, dass wir Elemente einer Liste durch
-einen Index addressieren können, so wie wir das für die Komponenten eines
+einen Index adressieren können, so wie wir das für die Komponenten eines
 Vektors in der Mathematik gewohnt sind.
 
 Stellen wir uns nun vor, dass wir eine Liste der drei Gegenstände ausgeben wollen.
 Eine erste Variante besteht darin, mit Hilfe der {func}`range`-Funktion eine Schleife
-über die Indizes zu programmieren, in der dann die Elemente der Liste addressiert und
+über die Indizes zu programmieren, in der dann die Elemente der Liste adressiert und
 ausgegeben werden. 
 ```{code-cell} python
 objekte = ['Stein', 'Papier', 'Schere']
