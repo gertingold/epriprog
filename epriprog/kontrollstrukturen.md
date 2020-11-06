@@ -343,6 +343,176 @@ zugewiesen wurde, in unserem Fall also `True`.
 
 ## While-Schleife
 
+Bei der gerade besprochenen `for`-Schleife kennt man im Vorhinein die Zahl der
+Durchläufe. Dies ist jedoch nicht immer der Fall. Gelegentlich möchte man eine
+Schleife ausführen, so lange eine bestimmte Bedingung erfüllt ist. Einen eher
+untypischen Fall hatten wir in {numref}`vorschau` kennengelernt. Dort war die
+Bedingung immer wahr, so dass die Schleife, zumindest im Prinzip, unendlich
+lange laufen konnte. In unserem Beispiel wollen wir dagegen eine Bedingung
+stellen, die entweder wahr oder falsch sein kann.
+
+Konkret wollen wir uns vorstellen, dass wir mit einem Würfel so lange würfeln
+bis wir eine Sechs erhalten. Wir wollen uns fragen, wie lange es im Mittel
+dauert, bis wir eine Sechs gewürfelt haben und welche Wurfanzahl die häufigste
+ist. Diese Fragen lassen sich mathematisch streng beantworten, aber wir wollen
+nun den Computer heranziehen.
+
+```{code-cell} python
+from random import randrange
+import matplotlib.pyplot as plt
+
+def wait_for_six():
+    result = randrange(1, 7)
+    ncasts = 1
+    while result != 6:
+        result = randrange(1, 7)
+        ncasts = ncasts + 1
+    return ncasts
+
+waiting_sequence = [wait_for_six() for n in range(100000)]
+plt.hist(waiting_sequence, bins=30, range=(1, 30), density=True)
+plt.show()
+```
+Bei der Besprechung des Codes wollen wir uns auf die Funktion {func}`wait_for_six`
+konzentrieren, die die `while`-Schleife enthält und für eine zufällige Realisierung
+von Würfen bestimmt, wie viele Würfe benötigt werden um zum ersten Mal eine Sechs
+zu erhalten.
+
+Betrachten wir zunächst einmal die grundsätzliche Struktur des Codes innerhalb
+der Funktion. Ähnlich wie bei einem der Beispiele für eine `for`-Schleife im
+vorigen Kapitel  wird zunächst eine Initialisierung vorgenommen. Dazu wird mit
+Hilfe der {func}`randrange`-Funktion ein Würfelwurf mit einem Ergebnis zwischen
+1 und 6 vorgenommen. Anhand des Werts der Variable `result` wird nachher festgelegt,
+über noch weitere Würfe erforderlich sind. Außerdem müssen wir die Zahl der Würfe
+zählen. Da bereits ein Wurf stattgefunden hat, setzen wir die betreffende Variable
+`ncasts` auf Eins. Nun beginnt die Schleife mit dem Schlüsselwort `while`, das von
+einer Bedingung gefolgt wird, die wiederum mit einem Doppelpunkt abgeschlossen wird.
+Die folgenden, zum Schleifenkörper gehörenden Zeilen sind wie üblich eingerückt. Bis
+auf das Schlüsselwort `while` entspricht die Struktur also dem, was wir von der
+`for`-Schleife schon kennen. 
+
+In der `while`-Schleife wird zu Beginn getestet, ob die Befehle im Schleifenkörper
+überhaupt abgearbeitet werden sollen. Dies ist genau dann der Fall, wenn die
+Bedingung erfüllt ist, in unserem Fall also wenn `result` nicht den Wert 6 besitzt.
+Dann muss offenbar weitergewürfelt werden. Andernfalls wird der Schleifenkörper
+übersprungen und die Ausführung wird der ersten nicht mehr eingerückten Anweisung
+fortgesetzt. In unserem Fall wird dann die Zahl der Würfe an den aufrufenden Code
+zurückgegeben. Im Schleifenkörper selbst wird gewürfelt und der Wurfzähler um
+Eins erhöht. Anschließend wird wieder getestet, ob `result` ungleich 6 ist und
+gegebenenfalls die Ausführung der Schleife fortgesetzt.
+
+Aufmerksamen Leserinnen und Lesern fällt in diesem Code vielleicht auf, dass der
+Code für das Würfeln wiederholt wird. Am Ende von {numref}`vorschau` hatten wir
+darauf angewiesen, dass in solchen Fällen die Gefahr von Programmierfehlern droht.
+Dies könnte beispielsweise der Fall sein, wenn man statt für einen normalen Würfel
+das Programm auf einen der in {numref}`fig:wuerfel` gezeigten Würfel mit 12 oder 20
+Flächen übertragen möchte. Dann kann es passieren, dass man aus Versehen nur einen
+der beiden Aufrufe der {func}`randrange`-Funktion korrigiert, womit das Programm
+fehlerhaft wäre.
+
+```{figure} images/kontrollstrukturen/wuerfel.png
+---
+width: 50%
+name: fig:wuerfel
+---
+Dodekaeder- und Ikosaederwürfel.
+```
+
+Der Grund für den ersten Aufruf der {func}`randrange`-Funktion besteht darin,
+dass bei der Ausführung des Bedingung zu Beginn der `while`-Schleife die
+Variable `result` bekannt sein muss. Ein möglicher Ausweg besteht darin, den
+Wert von `result` so zu setzen, dass die Bedingung beim ersten Mal auf jeden
+Fall wahr ist. Dazu können wir `result` zum Beispiel gleich Null setzen. Da wir
+damit noch nicht gewürfelt haben, setzen wir auch `ncasts` gleich Null. Nun
+finden alle Würfe innerhalb der `while`-Schleife statt. Der folgende Code verwendet
+die {func}`wait_for_six`-Funktion, um die mittlere Zahl der Würfe zu bestimmen,
+die benötigt werden, um eine 6 zu erhalten. Aufgrund der endlichen Zahl von
+Realisierungen ist es nicht unerwartet, dass das Ergebnis vom analytischen Ergebnis,
+nämlich 6, etwas abweicht.
+
+```{code-cell} python
+from random import randrange
+
+def wait_for_six():
+    result = 0
+    ncasts = 0
+    while result != 6:
+        result = randrange(1, 7)
+        ncasts = ncasts + 1
+    return ncasts
+
+waiting_sequence = [wait_for_six() for n in range(100000)]
+average = sum(waiting_sequence)/len(waiting_sequence)
+print(average)
+```
+
+Im Prinzip ließe sich unser Problem eleganter lösen, wenn man die Bedingung nicht
+zu Beginn der `while`-Schleife überprüfen würde, sondern an deren  Ende. Dann würde die
+Schleife auf jeden Fall einmal durchlaufen werden. In Python ist dies nicht direkt
+möglich, so dass wir zu dieser Hilfslösung greifen mussten. In anderen Sprachen gibt
+es dagegen ein `do … while`, wie zum Beispiel in C, oder ein `repeat … until` wie in
+Pascal. Dabei wird am Ende getestet.
+
+Ein einfaches Beispiel, das im Prinzip eine absteigende Folge von Quadratzahlen 
+ausgibt, ist hier in C realisiert.
+
+```{code-block} c
+---
+linenos: true
+---
+#include <stdio.h>
+
+void main(){
+   int i=-1;
+   do {printf("%4i %4i\n", i, i*i);
+       i = i-1;
+   } while (i>0);
+}
+```
+Nach der Kompilation des Codes kann man das Programm ausführen und erhält als Ausgabe 
+```
+  -1    1
+```
+In Zeile 4 wird der Wert von `i` auf `-1` gesetzt. Würde die Bedingung `i>0` schon zu
+Beginn der Schleife ausgewertet werden, würde man keine Ausgabe erhalten. Im vorliegenden
+Code erfolgt die Überprüfung aber am Ende, so dass die Schleife für den Wert `-1` für `i`
+durchlaufen wird. Anschließend hat `i` den Wert `-2` und die Schleife wird beendet. Hier
+sei nochmals angemerkt, dass die Einrückungen in C nicht erforderlich sind, sondern dass
+stattdessen die geschweiften Klammerpaare relevant sind.
+
+Entsprechend funktioniert das `repeat … until`-Konstrukt in Pascal.
+```{code-block} pascal
+program Quadrat;
+var
+  i: integer;
+begin
+  i := -1;
+
+  repeat
+    writeln(i, '   ', i*i);
+    i := i-1;
+  until i <= 0;
+
+end.
+```
+Einen Unterschied gibt es im Verhalten, wenn die angegebene Bedingung erfüllt ist. Im
+C-Beispiel wird die Schleife dann fortgesetzt, während sie im Pascal-Beispiel beendet
+wird. Entsprechend sind die beiden Bedingungen verschieden formuliert.
+
+Abschließend sei betont, dass der Programmierer bei der Verwendung von
+`while`-Schleifen und ähnlichen Konstrukten selbst dafür verantwortlich
+ist sicherzustellen, dass die Schleife irgendwann beendet wird.
+Andernfalls liegt eine Endlosschleife vor und das Programm muss von außen
+abgebrochen werden. Dieses Szenario kann allerdings gezielt bei Programmen
+eingesetzt werden, die durch äußere Ereignisse wie Tastendrucke oder Mausbewegungen
+gesteuert werden. Ein Beispiel hatten wir im {numref}`vorschau` kennengelernt.
+In diesem Fall durchläuft das Programm eine Endlosschleife, um bei Bedarf auf äußere
+Ereignisse adäquat zu reagieren. Aber auch in diesem Fall ist darauf zu achten,
+dass es eine Möglichkeit gibt, das Programm kontrolliert, beispielsweise durch
+Drücken der Taste `q`, zu beenden. Im Python-Code verwendet man dann den
+`break`-Befehl, um die Ausführung des Programmcodes außerhalb der
+Schleife fortzusetzen.
+
 ## Verzweigungen
 
 ## Abfangen von Ausnahmen
