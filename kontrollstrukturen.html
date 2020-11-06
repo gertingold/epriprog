@@ -749,6 +749,185 @@ zugewiesen wurde, in unserem Fall also <code class="docutils literal notranslate
 </div>
 <div class="section" id="while-schleife">
 <h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Bei der gerade besprochenen <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife kennt man im Vorhinein die Zahl der
+Durchläufe. Dies ist jedoch nicht immer der Fall. Gelegentlich möchte man eine
+Schleife ausführen, so lange eine bestimmte Bedingung erfüllt ist. Einen eher
+untypischen Fall hatten wir in <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> kennengelernt. Dort war die
+Bedingung immer wahr, so dass die Schleife, zumindest im Prinzip, unendlich
+lange laufen konnte. In unserem Beispiel wollen wir dagegen eine Bedingung
+stellen, die entweder wahr oder falsch sein kann.</p>
+<p>Konkret wollen wir uns vorstellen, dass wir mit einem Würfel so lange würfeln
+bis wir eine Sechs erhalten. Wir wollen uns fragen, wie lange es im Mittel
+dauert, bis wir eine Sechs gewürfelt haben und welche Wurfanzahl die häufigste
+ist. Diese Fragen lassen sich mathematisch streng beantworten, aber wir wollen
+nun den Computer heranziehen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">wait_for_six</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="n">ncasts</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">result</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+        <span class="n">ncasts</span> <span class="o">=</span> <span class="n">ncasts</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">ncasts</span>
+
+<span class="n">waiting_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">wait_for_six</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">waiting_sequence</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="mi">2</span><span class="n">d36a36f5406</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">wait_for_six</span><span class="p">():</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bei der Besprechung des Codes wollen wir uns auf die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">wait_for_six()</span></code>
+konzentrieren, die die <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife enthält und für eine zufällige Realisierung
+von Würfen bestimmt, wie viele Würfe benötigt werden um zum ersten Mal eine Sechs
+zu erhalten.</p>
+<p>Betrachten wir zunächst einmal die grundsätzliche Struktur des Codes innerhalb
+der Funktion. Ähnlich wie bei einem der Beispiele für eine <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife im
+vorigen Kapitel  wird zunächst eine Initialisierung vorgenommen. Dazu wird mit
+Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">randrange()</span></code>-Funktion ein Würfelwurf mit einem Ergebnis zwischen
+1 und 6 vorgenommen. Anhand des Werts der Variable <code class="docutils literal notranslate"><span class="pre">result</span></code> wird nachher festgelegt,
+über noch weitere Würfe erforderlich sind. Außerdem müssen wir die Zahl der Würfe
+zählen. Da bereits ein Wurf stattgefunden hat, setzen wir die betreffende Variable
+<code class="docutils literal notranslate"><span class="pre">ncasts</span></code> auf Eins. Nun beginnt die Schleife mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">while</span></code>, das von
+einer Bedingung gefolgt wird, die wiederum mit einem Doppelpunkt abgeschlossen wird.
+Die folgenden, zum Schleifenkörper gehörenden Zeilen sind wie üblich eingerückt. Bis
+auf das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">while</span></code> entspricht die Struktur also dem, was wir von der
+<code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife schon kennen.</p>
+<p>In der <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife wird zu Beginn getestet, ob die Befehle im Schleifenkörper
+überhaupt abgearbeitet werden sollen. Dies ist genau dann der Fall, wenn die
+Bedingung erfüllt ist, in unserem Fall also wenn <code class="docutils literal notranslate"><span class="pre">result</span></code> nicht den Wert 6 besitzt.
+Dann muss offenbar weitergewürfelt werden. Andernfalls wird der Schleifenkörper
+übersprungen und die Ausführung wird der ersten nicht mehr eingerückten Anweisung
+fortgesetzt. In unserem Fall wird dann die Zahl der Würfe an den aufrufenden Code
+zurückgegeben. Im Schleifenkörper selbst wird gewürfelt und der Wurfzähler um
+Eins erhöht. Anschließend wird wieder getestet, ob <code class="docutils literal notranslate"><span class="pre">result</span></code> ungleich 6 ist und
+gegebenenfalls die Ausführung der Schleife fortgesetzt.</p>
+<p>Aufmerksamen Leserinnen und Lesern fällt in diesem Code vielleicht auf, dass der
+Code für das Würfeln wiederholt wird. Am Ende von <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir
+darauf angewiesen, dass in solchen Fällen die Gefahr von Programmierfehlern droht.
+Dies könnte beispielsweise der Fall sein, wenn man statt für einen normalen Würfel
+das Programm auf einen der in <a class="reference internal" href="#fig-wuerfel"><span class="std std-numref">Abb. 4.1</span></a> gezeigten Würfel mit 12 oder 20
+Flächen übertragen möchte. Dann kann es passieren, dass man aus Versehen nur einen
+der beiden Aufrufe der <code class="xref py py-func docutils literal notranslate"><span class="pre">randrange()</span></code>-Funktion korrigiert, womit das Programm
+fehlerhaft wäre.</p>
+<div class="figure align-default" id="fig-wuerfel">
+<a class="reference internal image-reference" href="_images/wuerfel.png"><img alt="_images/wuerfel.png" src="_images/wuerfel.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Abb. 4.1 </span><span class="caption-text">Dodekaeder- und Ikosaederwürfel.</span><a class="headerlink" href="#fig-wuerfel" title="Link zu diesem Bild">¶</a></p>
+</div>
+<p>Der Grund für den ersten Aufruf der <code class="xref py py-func docutils literal notranslate"><span class="pre">randrange()</span></code>-Funktion besteht darin,
+dass bei der Ausführung des Bedingung zu Beginn der <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife die
+Variable <code class="docutils literal notranslate"><span class="pre">result</span></code> bekannt sein muss. Ein möglicher Ausweg besteht darin, den
+Wert von <code class="docutils literal notranslate"><span class="pre">result</span></code> so zu setzen, dass die Bedingung beim ersten Mal auf jeden
+Fall wahr ist. Dazu können wir <code class="docutils literal notranslate"><span class="pre">result</span></code> zum Beispiel gleich Null setzen. Da wir
+damit noch nicht gewürfelt haben, setzen wir auch <code class="docutils literal notranslate"><span class="pre">ncasts</span></code> gleich Null. Nun
+finden alle Würfe innerhalb der <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife statt. Der folgende Code verwendet
+die <code class="xref py py-func docutils literal notranslate"><span class="pre">wait_for_six()</span></code>-Funktion, um die mittlere Zahl der Würfe zu bestimmen,
+die benötigt werden, um eine 6 zu erhalten. Aufgrund der endlichen Zahl von
+Realisierungen ist es nicht unerwartet, dass das Ergebnis vom analytischen Ergebnis,
+nämlich 6, etwas abweicht.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+
+<span class="k">def</span> <span class="nf">wait_for_six</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ncasts</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">result</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+        <span class="n">ncasts</span> <span class="o">=</span> <span class="n">ncasts</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">ncasts</span>
+
+<span class="n">waiting_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">wait_for_six</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
+<span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">waiting_sequence</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">waiting_sequence</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im Prinzip ließe sich unser Problem eleganter lösen, wenn man die Bedingung nicht
+zu Beginn der <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife überprüfen würde, sondern an deren  Ende. Dann würde die
+Schleife auf jeden Fall einmal durchlaufen werden. In Python ist dies nicht direkt
+möglich, so dass wir zu dieser Hilfslösung greifen mussten. In anderen Sprachen gibt
+es dagegen ein <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">…</span> <span class="pre">while</span></code>, wie zum Beispiel in C, oder ein <code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">…</span> <span class="pre">until</span></code> wie in
+Pascal. Dabei wird am Ende getestet.</p>
+<p>Ein einfaches Beispiel, das im Prinzip eine absteigende Folge von Quadratzahlen
+ausgibt, ist hier in C realisiert.</p>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+   <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">-1</span><span class="p">;</span>
+   <span class="k">do</span> <span class="p">{</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%4i %4i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">);</span>
+       <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="mi">-1</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Nach der Kompilation des Codes kann man das Programm ausführen und erhält als Ausgabe</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">-</span><span class="mi">1</span>    <span class="mi">1</span>
+</pre></div>
+</div>
+<p>In Zeile 4 wird der Wert von <code class="docutils literal notranslate"><span class="pre">i</span></code> auf <code class="docutils literal notranslate"><span class="pre">-1</span></code> gesetzt. Würde die Bedingung <code class="docutils literal notranslate"><span class="pre">i&gt;0</span></code> schon zu
+Beginn der Schleife ausgewertet werden, würde man keine Ausgabe erhalten. Im vorliegenden
+Code erfolgt die Überprüfung aber am Ende, so dass die Schleife für den Wert <code class="docutils literal notranslate"><span class="pre">-1</span></code> für <code class="docutils literal notranslate"><span class="pre">i</span></code>
+durchlaufen wird. Anschließend hat <code class="docutils literal notranslate"><span class="pre">i</span></code> den Wert <code class="docutils literal notranslate"><span class="pre">-2</span></code> und die Schleife wird beendet. Hier
+sei nochmals angemerkt, dass die Einrückungen in C nicht erforderlich sind, sondern dass
+stattdessen die geschweiften Klammerpaare relevant sind.</p>
+<p>Entsprechend funktioniert das <code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">…</span> <span class="pre">until</span></code>-Konstrukt in Pascal.</p>
+<div class="highlight-pascal notranslate"><div class="highlight"><pre><span></span><span class="k">program</span> <span class="n">Quadrat</span><span class="o">;</span>
+<span class="k">var</span>
+  <span class="n">i</span><span class="o">:</span> <span class="kt">integer</span><span class="o">;</span>
+<span class="k">begin</span>
+  <span class="n">i</span> <span class="o">:=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+
+  <span class="k">repeat</span>
+    <span class="nb">writeln</span><span class="p">(</span><span class="n">i</span><span class="o">,</span> <span class="s">&#39;   &#39;</span><span class="o">,</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">)</span><span class="o">;</span>
+    <span class="n">i</span> <span class="o">:=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+  <span class="k">until</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">;</span>
+
+<span class="k">end</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Einen Unterschied gibt es im Verhalten, wenn die angegebene Bedingung erfüllt ist. Im
+C-Beispiel wird die Schleife dann fortgesetzt, während sie im Pascal-Beispiel beendet
+wird. Entsprechend sind die beiden Bedingungen verschieden formuliert.</p>
+<p>Abschließend sei betont, dass der Programmierer bei der Verwendung von
+<code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleifen und ähnlichen Konstrukten selbst dafür verantwortlich
+ist sicherzustellen, dass die Schleife irgendwann beendet wird.
+Andernfalls liegt eine Endlosschleife vor und das Programm muss von außen
+abgebrochen werden. Dieses Szenario kann allerdings gezielt bei Programmen
+eingesetzt werden, die durch äußere Ereignisse wie Tastendrucke oder Mausbewegungen
+gesteuert werden. Ein Beispiel hatten wir im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> kennengelernt.
+In diesem Fall durchläuft das Programm eine Endlosschleife, um bei Bedarf auf äußere
+Ereignisse adäquat zu reagieren. Aber auch in diesem Fall ist darauf zu achten,
+dass es eine Möglichkeit gibt, das Programm kontrolliert, beispielsweise durch
+Drücken der Taste <code class="docutils literal notranslate"><span class="pre">q</span></code>, zu beenden. Im Python-Code verwendet man dann den
+<code class="docutils literal notranslate"><span class="pre">break</span></code>-Befehl, um die Ausführung des Programmcodes außerhalb der
+Schleife fortzusetzen.</p>
 </div>
 <div class="section" id="verzweigungen">
 <h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link zu dieser Überschrift">¶</a></h2>
