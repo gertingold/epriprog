@@ -646,7 +646,7 @@ die Addition ausführen, so muss man Klammern setzen.</p>
 </div>
 <p>Die wichtigsten für Python geltenden Vorrangregeln sind in der <a class="reference internal" href="#table-precedence"><span class="std std-numref">Tab. 3.1</span></a>
 dargestellt. Dabei haben die weiter oben stehenden Operationen Vorrang vor den nachfolgenden
-Operationen [^precedence].</p>
+Operationen.</p>
 <table class="table" id="table-precedence">
 <caption><span class="caption-number">Tab. 3.1 </span><span class="caption-text">Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden. Eine vollständige Liste findet man unter dem Punkt <a class="reference external" href="http://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a> in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also weiter unten stehende Operatoren Vorrang haben.</span><a class="headerlink" href="#table-precedence" title="Link zu dieser Tabelle">¶</a></caption>
 <colgroup>
@@ -2415,19 +2415,21 @@ können, ist das Ergebnis der reservierten Schlüsselwörter.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keyword</span> <span class="kn">import</span> <span class="n">kwlist</span>
 
 <span class="k">for</span> <span class="n">nr</span><span class="p">,</span> <span class="n">kw</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kwlist</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kw</span><span class="si">:</span><span class="s1">&lt;10s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">nr</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kw</span><span class="si">:</span><span class="s1">&lt;16s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nr</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False     None      True      __peg_parser__and       as        assert    
-async     await     break     class     continue  def       del       
-elif      else      except    finally   for       from      global    
-if        import    in        is        lambda    nonlocal  not       
-or        pass      raise     return    try       while     with      
-yield     
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False           None            True            __peg_parser__  and             
+as              assert          async           await           break           
+class           continue        def             del             elif            
+else            except          finally         for             from            
+global          if              import          in              is              
+lambda          nonlocal        not             or              pass            
+raise           return          try             while           with            
+yield           
 </pre></div>
 </div>
 </div>

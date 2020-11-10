@@ -251,7 +251,7 @@ die Addition ausführen, so muss man Klammern setzen.
 
 Die wichtigsten für Python geltenden Vorrangregeln sind in der {numref}`table:precedence`
 dargestellt. Dabei haben die weiter oben stehenden Operationen Vorrang vor den nachfolgenden
-Operationen [^precedence].
+Operationen.
 
 ```{list-table} Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden. Eine vollständige Liste findet man unter dem Punkt [Operator precedence](http://docs.python.org/3/reference/expressions.html#operator-precedence) in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also weiter unten stehende Operatoren Vorrang haben.
 ---
@@ -1162,8 +1162,8 @@ können, ist das Ergebnis der reservierten Schlüsselwörter.
 from keyword import kwlist
 
 for nr, kw in enumerate(kwlist):
-    print(f'{kw:<10s}', end='')
-    if nr % 7 == 6:
+    print(f'{kw:<16s}', end='')
+    if nr % 5 == 4:
         print()
 ```
 
