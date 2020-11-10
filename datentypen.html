@@ -1276,7 +1276,7 @@ NAME
     math
 
 MODULE REFERENCE
-    https://docs.python.org/3.8/library/math
+    https://docs.python.org/3.9/library/math
     
     The following documentation is automatically generated from the Python
     source files.  It may be incomplete, incorrect or include features that
@@ -1291,18 +1291,24 @@ DESCRIPTION
 FUNCTIONS
     acos(x, /)
         Return the arc cosine (measured in radians) of x.
+        
+        The result is between 0 and pi.
     
     acosh(x, /)
         Return the inverse hyperbolic cosine of x.
     
     asin(x, /)
         Return the arc sine (measured in radians) of x.
+        
+        The result is between -pi/2 and pi/2.
     
     asinh(x, /)
         Return the inverse hyperbolic sine of x.
     
     atan(x, /)
         Return the arc tangent (measured in radians) of x.
+        
+        The result is between -pi/2 and pi/2.
     
     atan2(y, x, /)
         Return the arc tangent (measured in radians) of y/x.
@@ -1400,8 +1406,8 @@ FUNCTIONS
     gamma(x, /)
         Gamma function at x.
     
-    gcd(x, y, /)
-        greatest common divisor of x and y
+    gcd(*integers)
+        Greatest Common Divisor.
     
     hypot(...)
         hypot(*coordinates) -&gt; value
@@ -1450,6 +1456,9 @@ FUNCTIONS
     isqrt(n, /)
         Return the integer part of the square root of the input.
     
+    lcm(*integers)
+        Least Common Multiple.
+    
     ldexp(x, i, /)
         Return x * (2**i).
         
@@ -1479,6 +1488,9 @@ FUNCTIONS
         Return the fractional and integer parts of x.
         
         Both results carry the sign of x and are floats.
+    
+    nextafter(x, y, /)
+        Return the next floating-point value after x towards y.
     
     perm(n, k=None, /)
         Number of ways to choose k items from n items without repetition and with order.
@@ -1533,6 +1545,9 @@ FUNCTIONS
         Truncates the Real x to the nearest Integral toward 0.
         
         Uses the __trunc__ magic method.
+    
+    ulp(x, /)
+        Return the value of the least significant bit of the float x.
 
 DATA
     e = 2.718281828459045
@@ -1542,7 +1557,7 @@ DATA
     tau = 6.283185307179586
 
 FILE
-    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/lib-dynload/math.cpython-38-x86_64-linux-gnu.so
+    /opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/lib-dynload/math.cpython-39-x86_64-linux-gnu.so
 </pre></div>
 </div>
 </div>
@@ -2106,7 +2121,7 @@ NAME
     cmath
 
 MODULE REFERENCE
-    https://docs.python.org/3.8/library/cmath
+    https://docs.python.org/3.9/library/cmath
     
     The following documentation is automatically generated from the Python
     source files.  It may be incomplete, incorrect or include features that
@@ -2217,7 +2232,7 @@ DATA
     tau = 6.283185307179586
 
 FILE
-    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/lib-dynload/cmath.cpython-38-x86_64-linux-gnu.so
+    /opt/hostedtoolcache/Python/3.9.0/x64/lib/python3.9/lib-dynload/cmath.cpython-39-x86_64-linux-gnu.so
 </pre></div>
 </div>
 </div>
@@ -2407,11 +2422,12 @@ können, ist das Ergebnis der reservierten Schlüsselwörter.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False     None      True      and       as        assert    async     
-await     break     class     continue  def       del       elif      
-else      except    finally   for       from      global    if        
-import    in        is        lambda    nonlocal  not       or        
-pass      raise     return    try       while     with      yield     
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False     None      True      __peg_parser__and       as        assert    
+async     await     break     class     continue  def       del       
+elif      else      except    finally   for       from      global    
+if        import    in        is        lambda    nonlocal  not       
+or        pass      raise     return    try       while     with      
+yield     
 </pre></div>
 </div>
 </div>
