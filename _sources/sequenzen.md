@@ -15,4 +15,5 @@ Dieses Kapitel befindet sich noch in Bearbeitung.
 (strings)=
 ## Zeichenketten
 
+(dictionaries)=
 ## Dictionaries

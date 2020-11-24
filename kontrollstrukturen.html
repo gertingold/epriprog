@@ -846,7 +846,7 @@ nämlich 6, etwas abweicht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.98318
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.02991
 </pre></div>
 </div>
 </div>
@@ -919,7 +919,537 @@ Drücken der Taste <code class="docutils literal notranslate"><span class="pre">
 Schleife fortzusetzen.</p>
 </div>
 <div class="section" id="verzweigungen">
-<h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link zu dieser Überschrift">¶</a></h2>
+<span id="ifelse"></span><h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Eine andere Art von Kontrollstruktur, die nicht die Wiederholung von Programmcode
+regelt, sondern vielmehr auf der Basis einer gegebenen Bedingung entscheidet,
+welcher Code ausgeführt wird, sind Verzweigungen.</p>
+<p>Im einfachsten Fall wird zusätzlicher Code ausgeführt, wenn eine Bedingung erfüllt
+ist. Diese Kontrollstruktur basiert auf der <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung. Zur Illustration greifen
+wir auf die näherungsweise Berechnung der Kreiszahl zurück, die wir im <a class="reference internal" href="#forloop"><span class="std std-numref">Kapitel 4.1</span></a>
+betrachtet hatten. Insbesondere wenn die Rechnung insgesamt länger dauert, möchte man
+vielleicht die Konvergenz der Summation bereits während des Programmlaufs beurteilen.
+So können wir uns zum Beispiel jeweils das Zwischenergebnis nach zehntausend Iterationen
+ausgeben lassen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="n">nmax</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">summe</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
+    <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">summe</span><span class="si">:</span><span class="s2">18.16f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">summe</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         0  1.0000000000000000
+     10000  1.6448340818460654
+     20000  1.6448840705979586
+     30000  1.6449007351814806
+     40000  1.6449090677856950
+     50000  1.6449140674482257
+     60000  1.6449174005982372
+     70000  1.6449197814400827
+     80000  1.6449215670826174
+     90000  1.6449229559223180
+3.141583104326456
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier wird in der <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung überprüft, ob der Schleifenzähler ohne Rest durch Zehntausend
+teilbar ist. Dann ist der Wahrheitswert des logischen Ausdrucks gleich <code class="docutils literal notranslate"><span class="pre">True</span></code> und der folgende
+Code-Block wird ausgeführt. Andernfalls wird dieser Block einfach übersprungen. Wie wir es
+schon von den <code class="docutils literal notranslate"><span class="pre">for</span></code>- und <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleifen kennen, ist der Code-Block, der zur <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung
+gehört, durch die Einrückung kenntlich gemacht. Die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung in der letzten Zeile ist
+nicht mehr eingerückt und gehört damit weder zur <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung noch zur <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife. Sie
+wir also erst am Ende des Programmlaufs genau einmal ausgeführt.</p>
+<p>Besteht der Code-Block einer <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung nur aus einer einzigen Zeile, so kann man den gesamten
+Code in einer einzigen Zeile schreiben. Dies ist allerdings nur sinnvoll, wenn die Anweisung im
+Code-Block relativ kurz ist. Statt</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span> <span class="si">= }</span><span class="s1"> ist bestimmt nicht negativ.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 4 ist bestimmt nicht negativ.
+</pre></div>
+</div>
+</div>
+</div>
+<p>kann man also auch</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span> <span class="si">= }</span><span class="s1"> ist bestimmt nicht negativ.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 4 ist bestimmt nicht negativ.
+</pre></div>
+</div>
+</div>
+</div>
+<p>schreiben. Meistens wird aber die erste Variante übersichtlicher sein.</p>
+<p>Bei komplizierteren logischen Ausdrücken kann es auch sinnvoll sein, einen Variablennamen
+einzuführen, um die Bedeutung des Ausdrucks zu verdeutlichen. Wir illustrieren das anhand
+eines kleinen Programms, das eine Liste von Schaltjahren ausgibt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyear</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1860</span><span class="p">,</span> <span class="mi">2210</span><span class="p">):</span>
+    <span class="n">is_leapyear</span> <span class="o">=</span> <span class="p">((</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">100</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_leapyear</span><span class="p">:</span>
+        <span class="n">nyear</span> <span class="o">=</span> <span class="n">nyear</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">nyear</span> <span class="o">%</span> <span class="mi">12</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1860 1864 1868 1872 1876 1880 1884 1888 1892 1896 1904 1908
+1912 1916 1920 1924 1928 1932 1936 1940 1944 1948 1952 1956
+1960 1964 1968 1972 1976 1980 1984 1988 1992 1996 2000 2004
+2008 2012 2016 2020 2024 2028 2032 2036 2040 2044 2048 2052
+2056 2060 2064 2068 2072 2076 2080 2084 2088 2092 2096 2104
+2108 2112 2116 2120 2124 2128 2132 2136 2140 2144 2148 2152
+2156 2160 2164 2168 2172 2176 2180 2184 2188 2192 2196 2204
+2208 
+</pre></div>
+</div>
+</div>
+</div>
+<p>In der dritten Zeile wird der logische Ausdruck, der auswertet, ob es sich beidem vorgegebenen
+Jahr um ein Schaltjahr handelt, der Variable <code class="docutils literal notranslate"><span class="pre">is_leapyear</span></code> zugewiesen. Nur wenn diese Variable
+den Wert <code class="docutils literal notranslate"><span class="pre">True</span></code> besitzt, wird das Jahr ausgegeben. Alternativ hätte man natürlich auch eine
+Funktion definieren können.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_leapyear</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">100</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">nyear</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1860</span><span class="p">,</span> <span class="mi">2210</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_leapyear</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+        <span class="n">nyear</span> <span class="o">=</span> <span class="n">nyear</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">nyear</span> <span class="o">%</span> <span class="mi">12</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1860 1864 1868 1872 1876 1880 1884 1888 1892 1896 1904 1908
+1912 1916 1920 1924 1928 1932 1936 1940 1944 1948 1952 1956
+1960 1964 1968 1972 1976 1980 1984 1988 1992 1996 2000 2004
+2008 2012 2016 2020 2024 2028 2032 2036 2040 2044 2048 2052
+2056 2060 2064 2068 2072 2076 2080 2084 2088 2092 2096 2104
+2108 2112 2116 2120 2124 2128 2132 2136 2140 2144 2148 2152
+2156 2160 2164 2168 2172 2176 2180 2184 2188 2192 2196 2204
+2208 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die letzten vier Zeilen dieser beiden Codebeispiele illustrieren zugleich eine Erweiterung der
+<code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung, in der auch eine Alternative im <code class="docutils literal notranslate"><span class="pre">else</span></code>-Zweig vorgesehen ist. Falls <code class="docutils literal notranslate"><span class="pre">nyear</span> <span class="pre">%</span> <span class="pre">12</span></code>
+den Wahrheitswert <code class="docutils literal notranslate"><span class="pre">True</span></code> ergibt, also bei der Division von <code class="docutils literal notranslate"><span class="pre">nyear</span></code> durch 12 ein Rest bleibt, wird
+der <code class="docutils literal notranslate"><span class="pre">if</span></code>-Zweig ausgeführt. Nach der Jahreszahl wird dann noch ein Leerzeichen ausgegeben, der
+Zeilenumbruch entfällt aber. Im allen anderen Fällen, also wenn <code class="docutils literal notranslate"><span class="pre">nyear</span></code> ohne Rest durch 12 teilbar
+ist, wird die Anweisung im <code class="docutils literal notranslate"><span class="pre">else</span></code>-Zweig ausgeführt, so dass nach der Ausgabe der Jahreszahl ein
+Zeilenumbruch folgt. Auf diese Weise weren zwölf Jahreszahlen je Zeile ausgegeben.</p>
+<p>Wichtig ist, dass die <code class="docutils literal notranslate"><span class="pre">else</span></code>-Anweisung so weit eingerückt ist, wie die
+zugehörige <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung.  Wäre sie nur einfach eingerückt, würde sie die
+Alternative zur ersten <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung bilden. In diesem Fall würde jedes Jahr
+zwischen 1860 und 2209 mit Ausnahme jedes zwölften Schaltjahres ausgegeben
+werden. Nach den Schaltjahren würde nur ein Leerzeichen gesetzt werden, aber
+auf ein Zeilenumbruch verzichtet werden. Dagegen würde nach jedem Jahr, das
+kein Schaltjahr ist, ein Zeilenumbruch vorgenommen werden. Korrektes Einrücken
+ist also essentiell dafür, dass der Code wie gewünscht abgearbeitet wird.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyear</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1860</span><span class="p">,</span> <span class="mi">2210</span><span class="p">):</span>
+    <span class="n">is_leapyear</span> <span class="o">=</span> <span class="p">((</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">100</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_leapyear</span><span class="p">:</span>
+        <span class="n">nyear</span> <span class="o">=</span> <span class="n">nyear</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">nyear</span> <span class="o">%</span> <span class="mi">12</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1860 1861
+1862
+1863
+1864 1865
+1866
+1867
+1868 1869
+1870
+1871
+1872 1873
+1874
+1875
+1876 1877
+1878
+1879
+1880 1881
+1882
+1883
+1884 1885
+1886
+1887
+1888 1889
+1890
+1891
+1892 1893
+1894
+1895
+1896 1897
+1898
+1899
+1900
+1901
+1902
+1903
+1904 1905
+1906
+1907
+1909
+1910
+1911
+1912 1913
+1914
+1915
+1916 1917
+1918
+1919
+1920 1921
+1922
+1923
+1924 1925
+1926
+1927
+1928 1929
+1930
+1931
+1932 1933
+1934
+1935
+1936 1937
+1938
+1939
+1940 1941
+1942
+1943
+1944 1945
+1946
+1947
+1948 1949
+1950
+1951
+1952 1953
+1954
+1955
+1957
+1958
+1959
+1960 1961
+1962
+1963
+1964 1965
+1966
+1967
+1968 1969
+1970
+1971
+1972 1973
+1974
+1975
+1976 1977
+1978
+1979
+1980 1981
+1982
+1983
+1984 1985
+1986
+1987
+1988 1989
+1990
+1991
+1992 1993
+1994
+1995
+1996 1997
+1998
+1999
+2000 2001
+2002
+2003
+2005
+2006
+2007
+2008 2009
+2010
+2011
+2012 2013
+2014
+2015
+2016 2017
+2018
+2019
+2020 2021
+2022
+2023
+2024 2025
+2026
+2027
+2028 2029
+2030
+2031
+2032 2033
+2034
+2035
+2036 2037
+2038
+2039
+2040 2041
+2042
+2043
+2044 2045
+2046
+2047
+2048 2049
+2050
+2051
+2053
+2054
+2055
+2056 2057
+2058
+2059
+2060 2061
+2062
+2063
+2064 2065
+2066
+2067
+2068 2069
+2070
+2071
+2072 2073
+2074
+2075
+2076 2077
+2078
+2079
+2080 2081
+2082
+2083
+2084 2085
+2086
+2087
+2088 2089
+2090
+2091
+2092 2093
+2094
+2095
+2096 2097
+2098
+2099
+2100
+2101
+2102
+2103
+2105
+2106
+2107
+2108 2109
+2110
+2111
+2112 2113
+2114
+2115
+2116 2117
+2118
+2119
+2120 2121
+2122
+2123
+2124 2125
+2126
+2127
+2128 2129
+2130
+2131
+2132 2133
+2134
+2135
+2136 2137
+2138
+2139
+2140 2141
+2142
+2143
+2144 2145
+2146
+2147
+2148 2149
+2150
+2151
+2153
+2154
+2155
+2156 2157
+2158
+2159
+2160 2161
+2162
+2163
+2164 2165
+2166
+2167
+2168 2169
+2170
+2171
+2172 2173
+2174
+2175
+2176 2177
+2178
+2179
+2180 2181
+2182
+2183
+2184 2185
+2186
+2187
+2188 2189
+2190
+2191
+2192 2193
+2194
+2195
+2196 2197
+2198
+2199
+2200
+2201
+2202
+2203
+2205
+2206
+2207
+2208 2209
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die <code class="docutils literal notranslate"><span class="pre">if…else</span></code>-Konstruktion lässt in der bisher besprochene Weise zwei mögliche Wege abhängig
+davon zu, ob eine Bedingung erfüllt ist oder nicht. Man kann aber auch mehr als zwei Alternativen
+vorsehen. Eine erste Möglichkeit, die noch nicht wirklich optimal ist, beruht auf einer Schachtelung
+von <code class="docutils literal notranslate"><span class="pre">if…else</span></code>-Verweigungen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist positiv.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich Null.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2 ist negativ.
+-1 ist negativ.
+0 ist gleich Null.
+1 ist positiv.
+2 ist positiv.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unter Verwendung der <code class="docutils literal notranslate"><span class="pre">elif</span></code>-Anweisung, die gewissermaßen eine <code class="docutils literal notranslate"><span class="pre">else</span></code>-Anweisung und eine <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung
+zusammenzieht, kann man die Verzweigungen etwas weniger hierarchisch hinschreiben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist positiv.&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich Null.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2 ist negativ.
+-1 ist negativ.
+0 ist gleich Null.
+1 ist positiv.
+2 ist positiv.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hierbei werden nacheinander die Bedingungen <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> und <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">0</span></code> abgeprüft und für den Fall, dass keiner
+der beiden Ausdrücke gleich <code class="docutils literal notranslate"><span class="pre">True</span></code> ist, die letzte Alternative ausgeführt. Wichtig ist dabei, dass die
+Verzweigungsstruktur verlassen wird, sobald eine Bedingung erfüllt war und der zugehörige Code ausgeführt
+wurde. Dieses Verhalten wird im folgenden Beispiel illustriert.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist positiv.&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gerade.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ und nicht gerade.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2 ist gerade.
+-1 ist negativ und nicht gerade.
+0 ist gerade.
+1 ist positiv.
+2 ist positiv.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nachdem die <code class="docutils literal notranslate"><span class="pre">2</span></code> als positive Zahl erkannt und entsprechend behandelt wurde, wurde wegen des in <code class="docutils literal notranslate"><span class="pre">elif</span></code>
+enthaltenen <code class="docutils literal notranslate"><span class="pre">else</span></code> nicht mehr überprüft, ob die Zahl auch gerade ist.</p>
+<p>Im Prinzip kann man mehrere <code class="docutils literal notranslate"><span class="pre">elif</span></code>-Ebenen in einer Verzweigungsstruktur vorsehen. Als erstes muss jedoch
+immer eine <code class="docutils literal notranslate"><span class="pre">if</span></code>-Verzweigung stehen. Ein abschließendes <code class="docutils literal notranslate"><span class="pre">else</span></code>, das alle nicht behandelten Fälle abfängt,
+kann, muss aber nicht am Ende der Verzweigungsstruktur stehen. Zu bedenken ist allerdings, dass eine lange
+Hierarchie von Verzweigungen insbesondere dann nicht günstig ist, wenn erst eine der unteren Bedingung
+erfüllt ist, da dann zunächst einmal viele Bedingungen erfolglos ausgewertet werden müssen. In einem solchen
+Fall kann zumindest versuchen, dafür zu sorgen, dass die wahrscheinlichsten Fälle weiter oben stehen. In
+vielen Fällen kann man aber einen zusammengesetzten Datentyp, das so genannte <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> verwenden, das wir
+im <a class="reference internal" href="sequenzen.html#dictionaries"><span class="std std-numref">Kapitel 6.4</span></a> genauer besprechen werden.</p>
 </div>
 <div class="section" id="abfangen-von-ausnahmen">
 <h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Link zu dieser Überschrift">¶</a></h2>

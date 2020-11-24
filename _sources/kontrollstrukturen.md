@@ -513,6 +513,169 @@ Drücken der Taste `q`, zu beenden. Im Python-Code verwendet man dann den
 `break`-Befehl, um die Ausführung des Programmcodes außerhalb der
 Schleife fortzusetzen.
 
+(ifelse)=
 ## Verzweigungen
+
+Eine andere Art von Kontrollstruktur, die nicht die Wiederholung von Programmcode
+regelt, sondern vielmehr auf der Basis einer gegebenen Bedingung entscheidet,
+welcher Code ausgeführt wird, sind Verzweigungen.
+
+Im einfachsten Fall wird zusätzlicher Code ausgeführt, wenn eine Bedingung erfüllt
+ist. Diese Kontrollstruktur basiert auf der `if`-Anweisung. Zur Illustration greifen
+wir auf die näherungsweise Berechnung der Kreiszahl zurück, die wir im {numref}`forloop`
+betrachtet hatten. Insbesondere wenn die Rechnung insgesamt länger dauert, möchte man
+vielleicht die Konvergenz der Summation bereits während des Programmlaufs beurteilen.
+So können wir uns zum Beispiel jeweils das Zwischenergebnis nach zehntausend Iterationen
+ausgeben lassen.
+```{code-cell} python
+from math import sqrt
+
+nmax = 100000
+summe = 0
+for n in range(nmax):
+    summe = summe + 1/(n+1)**2
+    if n % 10000 == 0:
+        print(f"{n:10}  {summe:18.16f}")
+print(sqrt(6*summe))
+```
+Hier wird in der `if`-Anweisung überprüft, ob der Schleifenzähler ohne Rest durch Zehntausend
+teilbar ist. Dann ist der Wahrheitswert des logischen Ausdrucks gleich `True` und der folgende
+Code-Block wird ausgeführt. Andernfalls wird dieser Block einfach übersprungen. Wie wir es
+schon von den `for`- und `while`-Schleifen kennen, ist der Code-Block, der zur `if`-Anweisung
+gehört, durch die Einrückung kenntlich gemacht. Die `print`-Anweisung in der letzten Zeile ist
+nicht mehr eingerückt und gehört damit weder zur `if`-Anweisung noch zur `for`-Schleife. Sie
+wir also erst am Ende des Programmlaufs genau einmal ausgeführt.
+
+Besteht der Code-Block einer `if`-Anweisung nur aus einer einzigen Zeile, so kann man den gesamten
+Code in einer einzigen Zeile schreiben. Dies ist allerdings nur sinnvoll, wenn die Anweisung im
+Code-Block relativ kurz ist. Statt
+```{code-cell} python
+x = -4
+if x < 0:
+    x = -x
+print(f'{x = } ist bestimmt nicht negativ.')
+```
+kann man also auch
+```{code-cell} python
+x = -4
+if x < 0: x = -x
+print(f'{x = } ist bestimmt nicht negativ.')
+```
+schreiben. Meistens wird aber die erste Variante übersichtlicher sein.
+
+Bei komplizierteren logischen Ausdrücken kann es auch sinnvoll sein, einen Variablennamen 
+einzuführen, um die Bedeutung des Ausdrucks zu verdeutlichen. Wir illustrieren das anhand
+eines kleinen Programms, das eine Liste von Schaltjahren ausgibt.
+```{code-cell} python
+nyear = 0
+for year in range(1860, 2210):
+    is_leapyear = ((year % 4 == 0) and (year % 100)) or (year % 400 == 0)
+    if is_leapyear:
+        nyear = nyear + 1
+        if nyear % 12:
+            print(year, end=' ')
+        else:
+            print(year)
+```
+In der dritten Zeile wird der logische Ausdruck, der auswertet, ob es sich beidem vorgegebenen
+Jahr um ein Schaltjahr handelt, der Variable `is_leapyear` zugewiesen. Nur wenn diese Variable
+den Wert `True` besitzt, wird das Jahr ausgegeben. Alternativ hätte man natürlich auch eine
+Funktion definieren können.
+```{code-cell} python
+def is_leapyear(year):
+    return ((year % 4 == 0) and (year % 100)) or (year % 400 == 0)
+
+nyear = 0
+for year in range(1860, 2210):
+    if is_leapyear(year):
+        nyear = nyear + 1
+        if nyear % 12:
+            print(year, end=' ')
+        else:
+            print(year)
+```
+
+Die letzten vier Zeilen dieser beiden Codebeispiele illustrieren zugleich eine Erweiterung der
+`if`-Anweisung, in der auch eine Alternative im `else`-Zweig vorgesehen ist. Falls `nyear % 12`
+den Wahrheitswert `True` ergibt, also bei der Division von `nyear` durch 12 ein Rest bleibt, wird
+der `if`-Zweig ausgeführt. Nach der Jahreszahl wird dann noch ein Leerzeichen ausgegeben, der
+Zeilenumbruch entfällt aber. Im allen anderen Fällen, also wenn `nyear` ohne Rest durch 12 teilbar
+ist, wird die Anweisung im `else`-Zweig ausgeführt, so dass nach der Ausgabe der Jahreszahl ein 
+Zeilenumbruch folgt. Auf diese Weise weren zwölf Jahreszahlen je Zeile ausgegeben.
+
+Wichtig ist, dass die `else`-Anweisung so weit eingerückt ist, wie die
+zugehörige `if`-Anweisung.  Wäre sie nur einfach eingerückt, würde sie die
+Alternative zur ersten `if`-Anweisung bilden. In diesem Fall würde jedes Jahr
+zwischen 1860 und 2209 mit Ausnahme jedes zwölften Schaltjahres ausgegeben
+werden. Nach den Schaltjahren würde nur ein Leerzeichen gesetzt werden, aber
+auf ein Zeilenumbruch verzichtet werden. Dagegen würde nach jedem Jahr, das
+kein Schaltjahr ist, ein Zeilenumbruch vorgenommen werden. Korrektes Einrücken
+ist also essentiell dafür, dass der Code wie gewünscht abgearbeitet wird.
+```{code-cell} python
+---
+tags: ["output_scroll"]
+---
+nyear = 0
+for year in range(1860, 2210):
+    is_leapyear = ((year % 4 == 0) and (year % 100)) or (year % 400 == 0)
+    if is_leapyear:
+        nyear = nyear + 1
+        if nyear % 12:
+            print(year, end=' ')
+    else:
+        print(year)
+```
+
+Die `if…else`-Konstruktion lässt in der bisher besprochene Weise zwei mögliche Wege abhängig
+davon zu, ob eine Bedingung erfüllt ist oder nicht. Man kann aber auch mehr als zwei Alternativen
+vorsehen. Eine erste Möglichkeit, die noch nicht wirklich optimal ist, beruht auf einer Schachtelung
+von `if…else`-Verweigungen.
+```{code-cell} python
+for n in range(-2, 3):
+    if n > 0:
+        print(f'{n} ist positiv.')
+    else:
+        if n == 0:
+            print(f'{n} ist gleich Null.')
+        else:
+            print(f'{n} ist negativ.')
+```
+Unter Verwendung der `elif`-Anweisung, die gewissermaßen eine `else`-Anweisung und eine `if`-Anweisung
+zusammenzieht, kann man die Verzweigungen etwas weniger hierarchisch hinschreiben.
+```{code-cell} python
+for n in range(-2, 3):
+    if n > 0:
+        print(f'{n} ist positiv.')
+    elif n == 0:
+        print(f'{n} ist gleich Null.')
+    else:
+        print(f'{n} ist negativ.')
+```
+Hierbei werden nacheinander die Bedingungen `n > 0` und `n == 0` abgeprüft und für den Fall, dass keiner
+der beiden Ausdrücke gleich `True` ist, die letzte Alternative ausgeführt. Wichtig ist dabei, dass die
+Verzweigungsstruktur verlassen wird, sobald eine Bedingung erfüllt war und der zugehörige Code ausgeführt
+wurde. Dieses Verhalten wird im folgenden Beispiel illustriert.
+```{code-cell} python
+for n in range(-2, 3):
+    if n > 0:
+        print(f'{n} ist positiv.')
+    elif n % 2 == 0:
+        print(f'{n} ist gerade.')
+    else:
+        print(f'{n} ist negativ und nicht gerade.')
+```
+Nachdem die `2` als positive Zahl erkannt und entsprechend behandelt wurde, wurde wegen des in `elif`
+enthaltenen `else` nicht mehr überprüft, ob die Zahl auch gerade ist.
+
+Im Prinzip kann man mehrere `elif`-Ebenen in einer Verzweigungsstruktur vorsehen. Als erstes muss jedoch
+immer eine `if`-Verzweigung stehen. Ein abschließendes `else`, das alle nicht behandelten Fälle abfängt,
+kann, muss aber nicht am Ende der Verzweigungsstruktur stehen. Zu bedenken ist allerdings, dass eine lange
+Hierarchie von Verzweigungen insbesondere dann nicht günstig ist, wenn erst eine der unteren Bedingung
+erfüllt ist, da dann zunächst einmal viele Bedingungen erfolglos ausgewertet werden müssen. In einem solchen
+Fall kann zumindest versuchen, dafür zu sorgen, dass die wahrscheinlichsten Fälle weiter oben stehen. In
+vielen Fällen kann man aber einen zusammengesetzten Datentyp, das so genannte `dictionary` verwenden, das wir
+im {numref}`dictionaries` genauer besprechen werden.
+ 
+
 
 ## Abfangen von Ausnahmen
