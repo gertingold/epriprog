@@ -664,9 +664,7 @@ ODER-Verknüpfung (<code class="docutils literal notranslate"><span class="pre">
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------
+------------------------------------------
  False  False      False         False   
  False  True       False         True    
  True   False      False         True    
@@ -848,7 +846,7 @@ nämlich 6, etwas abweicht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.97927
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.98415
 </pre></div>
 </div>
 </div>
@@ -1455,6 +1453,14 @@ im <a class="reference internal" href="sequenzen.html#dictionaries"><span class=
 </div>
 <div class="section" id="abfangen-von-ausnahmen">
 <h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>In <a class="reference internal" href="datentypen.html#float"><span class="std std-numref">Kapitel 3.2</span></a> hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
+Ausnahme oder <em>exception</em> reagiert, dem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>. Unbehandelt führt eine solche Ausnahme zur
+Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
+in geeigneter Weise behandeln. Dazu betrachten wir die Funktion</p>
+<div class="math notranslate nohighlight">
+\[f(x)=\frac{\sin(x)}{x}\,.\]</div>
+<p>Wir interessieren uns speziell für das Verhalten für <span class="math notranslate nohighlight">\(x\to 0\)</span>. Wie wir wissen, geht die Funktion <span class="math notranslate nohighlight">\(f(x)\)</span> in
+diesem Grenzfall gegen <span class="math notranslate nohighlight">\(1\)</span>.</p>
 </div>
 </div>
 
