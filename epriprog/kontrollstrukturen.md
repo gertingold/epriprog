@@ -675,7 +675,16 @@ erfüllt ist, da dann zunächst einmal viele Bedingungen erfolglos ausgewertet w
 Fall kann zumindest versuchen, dafür zu sorgen, dass die wahrscheinlichsten Fälle weiter oben stehen. In
 vielen Fällen kann man aber einen zusammengesetzten Datentyp, das so genannte `dictionary` verwenden, das wir
 im {numref}`dictionaries` genauer besprechen werden.
- 
 
 
 ## Abfangen von Ausnahmen
+
+In {numref}`float` hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
+Ausnahme oder *exception* reagiert, dem `ZeroDivisionError`. Unbehandelt führt eine solche Ausnahme zur
+Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
+in geeigneter Weise behandeln. Dazu betrachten wir die Funktion 
+
+$$f(x)=\frac{\sin(x)}{x}\,.$$
+
+Wir interessieren uns speziell für das Verhalten für $x\to 0$. Wie wir wissen, geht die Funktion $f(x)$ in 
+diesem Grenzfall gegen $1$.
