@@ -1380,8 +1380,17 @@ Ein beliebter Fehler besteht darin, beim Test auf Gleichheit nur eines
 statt zwei Gleichheitszeichen zu verwenden.
 ```
 
+In Python kann man Vergleichsoperation auch verketten wie das folgende Beispiel zeigt.
+```{code-cell} python
+for n in range(10):
+    if 2 <= n <= 5:
+        print(f'{n} ✓')
+    else:
+        print(f'{n} ✗')
+```
+
 Hat man es mit Gleitkommazahlen zu tun, so ist ein Test auf Gleichheit meistens
-nicht sinnvoll, das Rundungsfehler dazu führen können, dass das Ergebnis nicht
+nicht sinnvoll, da Rundungsfehler dazu führen können, dass das Ergebnis nicht
 wie erwartet ausfällt.
 ```{code-cell} python
 x = 3*0.1
