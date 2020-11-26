@@ -14,11 +14,6 @@ kernelspec:
 
 # Kontrollstrukturen
 
-```{admonition} Hinweis
-:class: warning
-Dieses Kapitel befindet sich noch in Bearbeitung.
-```
-
 Im {numref}`vorschau` hatten wir bereits kurz die Möglichkeit angesprochen, den
 Ablauf eines Programms zu beeinflussen, sei es dadurch, dass ein Programmteil
 in einer Schleife mehrfach ausgeführt wird oder dass ein Programmteil nur dann
@@ -682,9 +677,112 @@ im {numref}`dictionaries` genauer besprechen werden.
 In {numref}`float` hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
 Ausnahme oder *exception* reagiert, dem `ZeroDivisionError`. Unbehandelt führt eine solche Ausnahme zur
 Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
-in geeigneter Weise behandeln. Dazu betrachten wir die Funktion 
+in geeigneter Weise behandeln. Zur Illustration betrachten wir die Funktion 
 
 $$f(x)=\frac{\sin(x)}{x}\,.$$
 
-Wir interessieren uns speziell für das Verhalten für $x\to 0$. Wie wir wissen, geht die Funktion $f(x)$ in 
-diesem Grenzfall gegen $1$.
+Eine numerische Auswertung dieser Funktion an der Stelle $x=0$ führt zu einer Division durch Null und
+damit zu einem `ZeroDivisionError` obwohl der Wert der Funktion im Grenzübergang $x\to 0$ gleich $1$ ist.
+
+Den speziellen Wert bei $x=0$ könnte man nun mit Hilfe einer Verzweigung behandeln.
+```{code-cell} python
+from math import sin
+
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return sin(x)/x
+
+for x in (-0.02, -0.01, 0, 0.01, 0.02):
+    print(f"{x:5.2f}  {f(x):8.6f}")
+```
+Allerdings muss hier jedes Mal überprüft werden, ob $x=0$ ist, selbst dann, wenn dies in der Anwendung 
+vielleicht nur selten oder überhaupt nicht vorkommt. Dennoch wird man den Spezialfall in vielen
+Programmiersprachen in dieser Weise behandeln.
+
+In Python folgt man stattdessen meistens dem Motto, dass um Verzeihung zu bitten einfacher ist als um
+Erlaubnis zu fragen. Anstatt also immer erst zu überprüfen, ob $x=0$ ist, dividiert man einfach durch
+$x$ und kümmert sich dann darum, wenn es Probleme gibt.
+```{code-cell} python
+from math import sin
+
+def f(x):
+    try:
+        return sin(x)/x
+    except ZeroDivisionError:
+        return 1
+
+for x in (-0.02, -0.01, 0, 0.01, 0.02):
+    print(f"{x:5.2f}  {f(x):8.6f}")
+```
+Es wird also zunächst versucht, den Code im `try`-Block auszuführen. Wenn dabei eine
+`ZeroDivisionError`-Ausnahme auftritt, wird der entsprechende Block ausgeführt. 
+
+Es ist zwar im Prinzip nicht erforderlich, im Zusammenhang mit `except` eine oder mehrere Ausnahmen
+explizit zu benennen. Es ist aber sinnvoll, in der Nennung der Ausnahmen möglichst restriktiv zu sein,
+da sonst Fehler eventuell unentdeckt bleiben können, wie in dem folgenden Beispiel gezeigt ist.
+```{code-cell} python
+from math import sin
+
+def f(x):
+    try:
+        return sin(x)/x
+    except:
+        return 1
+
+for x in (-0.01, 0, 'xxx'):
+    print(f"{x:7}  {f(x):8.6f}")
+```
+Übergibt man als Argument hier eine Zeichenkette, so kommt es bei der Division zu einem `TypeError`, 
+der hier vom `except`-Block mit behandelt wird. Besser wäre es, diesen beispielsweise in einem zweiten
+`except`-Block separat und adäquat zu behandeln.
+
+```{admonition} Weiterführender Hinweis
+Nach dem `try`- und einem oder mehreren `except`-Blöcken kann noch ein `else`- oder ein `finally`-Block
+folgen. Der `else`-Block wird nur dann ausgeführt, wenn keine Ausnahme die Abarbeitung eines `except`-Blocks
+erzwingt. Dadurch ist es leicht möglich, den `try`-Block auf den relevanten Codeteil zu begrenzen. Ein
+`finally`-Block wird dagegen immer ausgeführt, zum Beispiel um notwendige Aufräumarbeiten auszuführen.
+```
+
+Abschließend wollen wir noch kurz demonstrieren, wie man Ausnahmen selbst gezielt zur Fehlerbehandlung 
+einsetzen kann. Dazu greifen wir auf die Funktion `get_result` des Spiels zurück, das wir in {numref}`vorschau`
+gesprochen hatten. Dabei mussten die beiden Argumente ganze Zahlen zwischen 0 und 2 einschließlich sein.
+Für unsere Zwecke nehmen wir an, dass sichergestellt sei, dass die Argumente ganze Zahlen sind. Wir
+wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs behandeln.
+```{code-cell} python
+from random import randrange
+
+def get_result(n_self, n_other):
+    if not(0 <= n_self <=2 and 0 <= n_other <= 2):
+        raise ValueError(
+            f"{n_self = } und {n_other = } müssen beide zwischen 0 und 2 liegen.")
+    return (n_self-n_other) % 3
+
+for _ in range(5):
+    n_self = randrange(-1, 4)
+    n_other = randrange(-1, 4)
+    try:
+        result = get_result(n_self, n_other)
+    except ValueError as e:
+        print(e)
+    else:
+        print(f"Ergebnis für {n_self = } und {n_other = }: {result}")
+```
+
+```{admonition} Hinweis
+In diesem Codebeispiel wird in der `for`-Schleife ein Unterstrich als Variablenname verwendet. Von dieser Möglichkeit
+sollte man nur sparsamen Gebrauch machen, da ein Unterstrich im Allgemeinen nicht sehr aussagekräftig ist. Im 
+vorliegenden Fall deutet der Unterstrich an, dass die Laufvariable in der Schleife nicht weiter verwendet
+wird.
+```
+
+In der Funktion `get_result` wird mit Hilfe der `raise`-Anweisung im Fehlerfall
+eine `ValueError`-Ausnahme ausgelöst, die zudem eine informative Fehlermeldung
+enthält. Im aufrufenden Programm wird mit einer `try…except`-Konstruktion der
+`ValueError` abgefangen und die in der hier `e` genannten Variable enthaltene
+Fehlermeldung ausgegeben.
+
+Einen Überblick über die von Python vordefinierten Ausnahmen findet man in der [Dokumentation der
+Python-Standardbibliothek](https://docs.python.org/3/library/exceptions.html#exception-hierarchy).
+Darüber hinaus ist es auch möglich, eigene Ausnahmen zu definieren.
