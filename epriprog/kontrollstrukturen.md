@@ -61,7 +61,7 @@ print(f"{3:4} {3**2:4}")
 print(f"{4:4} {4**2:4}")
 ```
 Es dürfte offensichtlich sein, dass die erste Variante zu bevorzugen ist.
-Dies gilt insbesondere, wenn die Zahl der Durchläufe variable sein soll, wie
+Dies gilt insbesondere, wenn die Zahl der Durchläufe variabel sein soll, wie
 im folgenden Fall.
 ```{code-cell} python
 nmax = 7
