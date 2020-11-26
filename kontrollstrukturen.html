@@ -277,10 +277,6 @@
                 
   <div class="section" id="kontrollstrukturen">
 <h1><span class="section-number">4. </span>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Link zu dieser Überschrift">¶</a></h1>
-<div class="warning admonition">
-<p class="admonition-title">Hinweis</p>
-<p>Dieses Kapitel befindet sich noch in Bearbeitung.</p>
-</div>
 <p>Im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir bereits kurz die Möglichkeit angesprochen, den
 Ablauf eines Programms zu beeinflussen, sei es dadurch, dass ein Programmteil
 in einer Schleife mehrfach ausgeführt wird oder dass ein Programmteil nur dann
@@ -846,7 +842,7 @@ nämlich 6, etwas abweicht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.98415
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.98425
 </pre></div>
 </div>
 </div>
@@ -1456,11 +1452,158 @@ im <a class="reference internal" href="sequenzen.html#dictionaries"><span class=
 <p>In <a class="reference internal" href="datentypen.html#float"><span class="std std-numref">Kapitel 3.2</span></a> hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
 Ausnahme oder <em>exception</em> reagiert, dem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>. Unbehandelt führt eine solche Ausnahme zur
 Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
-in geeigneter Weise behandeln. Dazu betrachten wir die Funktion</p>
+in geeigneter Weise behandeln. Zur Illustration betrachten wir die Funktion</p>
 <div class="math notranslate nohighlight">
 \[f(x)=\frac{\sin(x)}{x}\,.\]</div>
-<p>Wir interessieren uns speziell für das Verhalten für <span class="math notranslate nohighlight">\(x\to 0\)</span>. Wie wir wissen, geht die Funktion <span class="math notranslate nohighlight">\(f(x)\)</span> in
-diesem Grenzfall gegen <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Eine numerische Auswertung dieser Funktion an der Stelle <span class="math notranslate nohighlight">\(x=0\)</span> führt zu einer Division durch Null und
+damit zu einem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> obwohl der Wert der Funktion im Grenzübergang <span class="math notranslate nohighlight">\(x\to 0\)</span> gleich <span class="math notranslate nohighlight">\(1\)</span> ist.</p>
+<p>Den speziellen Wert bei <span class="math notranslate nohighlight">\(x=0\)</span> könnte man nun mit Hilfe einer Verzweigung behandeln.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.02  0.999933
+-0.01  0.999983
+ 0.00  1.000000
+ 0.01  0.999983
+ 0.02  0.999933
+</pre></div>
+</div>
+</div>
+</div>
+<p>Allerdings muss hier jedes Mal überprüft werden, ob <span class="math notranslate nohighlight">\(x=0\)</span> ist, selbst dann, wenn dies in der Anwendung
+vielleicht nur selten oder überhaupt nicht vorkommt. Dennoch wird man den Spezialfall in vielen
+Programmiersprachen in dieser Weise behandeln.</p>
+<p>In Python folgt man stattdessen meistens dem Motto, dass um Verzeihung zu bitten einfacher ist als um
+Erlaubnis zu fragen. Anstatt also immer erst zu überprüfen, ob <span class="math notranslate nohighlight">\(x=0\)</span> ist, dividiert man einfach durch
+<span class="math notranslate nohighlight">\(x\)</span> und kümmert sich dann darum, wenn es Probleme gibt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.02  0.999933
+-0.01  0.999983
+ 0.00  1.000000
+ 0.01  0.999983
+ 0.02  0.999933
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es wird also zunächst versucht, den Code im <code class="docutils literal notranslate"><span class="pre">try</span></code>-Block auszuführen. Wenn dabei eine
+<code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>-Ausnahme auftritt, wird der entsprechende Block ausgeführt.</p>
+<p>Es ist zwar im Prinzip nicht erforderlich, im Zusammenhang mit <code class="docutils literal notranslate"><span class="pre">except</span></code> eine oder mehrere Ausnahmen
+explizit zu benennen. Es ist aber sinnvoll, in der Nennung der Ausnahmen möglichst restriktiv zu sein,
+da sonst Fehler eventuell unentdeckt bleiben können, wie in dem folgenden Beispiel gezeigt ist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">7</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -0.01  0.999983
+      0  1.000000
+xxx      1.000000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Übergibt man als Argument hier eine Zeichenkette, so kommt es bei der Division zu einem <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>,
+der hier vom <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block mit behandelt wird. Besser wäre es, diesen beispielsweise in einem zweiten
+<code class="docutils literal notranslate"><span class="pre">except</span></code>-Block separat und adäquat zu behandeln.</p>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Nach dem <code class="docutils literal notranslate"><span class="pre">try</span></code>- und einem oder mehreren <code class="docutils literal notranslate"><span class="pre">except</span></code>-Blöcken kann noch ein <code class="docutils literal notranslate"><span class="pre">else</span></code>- oder ein <code class="docutils literal notranslate"><span class="pre">finally</span></code>-Block
+folgen. Der <code class="docutils literal notranslate"><span class="pre">else</span></code>-Block wird nur dann ausgeführt, wenn keine Ausnahme die Abarbeitung eines <code class="docutils literal notranslate"><span class="pre">except</span></code>-Blocks
+erzwingt. Dadurch ist es leicht möglich, den <code class="docutils literal notranslate"><span class="pre">try</span></code>-Block auf den relevanten Codeteil zu begrenzen. Ein
+<code class="docutils literal notranslate"><span class="pre">finally</span></code>-Block wird dagegen immer ausgeführt, zum Beispiel um notwendige Aufräumarbeiten auszuführen.</p>
+</div>
+<p>Abschließend wollen wir noch kurz demonstrieren, wie man Ausnahmen selbst gezielt zur Fehlerbehandlung
+einsetzen kann. Dazu greifen wir auf die Funktion <code class="docutils literal notranslate"><span class="pre">get_result</span></code> des Spiels zurück, das wir in <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a>
+gesprochen hatten. Dabei mussten die beiden Argumente ganze Zahlen zwischen 0 und 2 einschließlich sein.
+Für unsere Zwecke nehmen wir an, dass sichergestellt sei, dass die Argumente ganze Zahlen sind. Wir
+wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs behandeln.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+
+<span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">n_self</span><span class="p">,</span> <span class="n">n_other</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_self</span> <span class="o">&lt;=</span><span class="mi">2</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_other</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_self</span> <span class="si">= }</span><span class="s2"> und </span><span class="si">{</span><span class="n">n_other</span> <span class="si">= }</span><span class="s2"> müssen beide zwischen 0 und 2 liegen.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">n_self</span><span class="o">-</span><span class="n">n_other</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">n_self</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">n_other</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">get_result</span><span class="p">(</span><span class="n">n_self</span><span class="p">,</span> <span class="n">n_other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ergebnis für </span><span class="si">{</span><span class="n">n_self</span> <span class="si">= }</span><span class="s2"> und </span><span class="si">{</span><span class="n">n_other</span> <span class="si">= }</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = 0 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+n_self = 3 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
+n_self = 3 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 1 und n_other = 1: 0
+n_self = 0 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-hinweis admonition">
+<p class="admonition-title">Hinweis</p>
+<p>In diesem Codebeispiel wird in der <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife ein Unterstrich als Variablenname verwendet. Von dieser Möglichkeit
+sollte man nur sparsamen Gebrauch machen, da ein Unterstrich im Allgemeinen nicht sehr aussagekräftig ist. Im
+vorliegenden Fall deutet der Unterstrich an, dass die Laufvariable in der Schleife nicht weiter verwendet
+wird.</p>
+</div>
+<p>In der Funktion <code class="docutils literal notranslate"><span class="pre">get_result</span></code> wird mit Hilfe der <code class="docutils literal notranslate"><span class="pre">raise</span></code>-Anweisung im Fehlerfall
+eine <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>-Ausnahme ausgelöst, die zudem eine informative Fehlermeldung
+enthält. Im aufrufenden Programm wird mit einer <code class="docutils literal notranslate"><span class="pre">try…except</span></code>-Konstruktion der
+<code class="docutils literal notranslate"><span class="pre">ValueError</span></code> abgefangen und die in der hier <code class="docutils literal notranslate"><span class="pre">e</span></code> genannten Variable enthaltene
+Fehlermeldung ausgegeben.</p>
+<p>Einen Überblick über die von Python vordefinierten Ausnahmen findet man in der <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">Dokumentation der
+Python-Standardbibliothek</a>.
+Darüber hinaus ist es auch möglich, eigene Ausnahmen zu definieren.</p>
 </div>
 </div>
 
