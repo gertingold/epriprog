@@ -169,7 +169,7 @@ emphasize-lines: 7, 7
 ---
 #include <stdio.h>
 
-main(){
+void main(){
    int i;
    int quadrat;
    for(i = 0; i < 5; i++){
