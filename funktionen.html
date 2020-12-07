@@ -276,6 +276,39 @@
 <p class="admonition-title">Hinweis</p>
 <p>Dieses Kapitel befindet sich noch in Bearbeitung.</p>
 </div>
+<p>Funktionen im mathematischen Sinne sind uns in den Natur- und Ingenieurwissenschaften
+wohlbekannt. Dass solche Funktionen auch von Programmiersprachen zur Verfügung gestellt
+werden, hatten wir unter anderem im <a class="reference internal" href="datentypen.html#mathfunc"><span class="std std-numref">Kapitel 3.3</span></a> gesehen. Allerdings ist der
+Begriff der Funktionen in Programmiersprachen wesentlich weiter gefasst. So muss eine
+Funktion nicht unbedingt ein Argument besitzen, und sie muss auch nicht unbedingt ein
+Ergebnis zurückgeben. In manchen Programmiersprachen wird nach diesem letzten Kriterium
+unterschieden. So kennt Fortran <em>functions</em>, die ein Resultat zurückgeben, und <em>subroutines</em>,
+bei denen dies nicht der Fall ist.</p>
+<p>Wozu sind Funktionen gut, wenn man davon absieht, dass sie uns aus der Mathematik vertraut
+sind? Zunächst einmal können Funktionen wesentlich dabei helfen, ein Programm zu strukturieren.
+Lagert man eine bestimmte Funktionalität in eine Funktion mit einem gut gewählten Namen aus,
+so kann man die Komplexität im Innern der Funktion verstecken. Bei der Suche nach Fehlern
+kann dies ein entscheidender Vorteil sein, da man sich entweder nur mit dem Innern der Funktion
+beschäftigt und untersucht, ob diese korrekt implementiert ist, oder aber sich auf deren
+Korrektheit verlässt und die Details bei der Untersuchung des restlichen Programms nicht im
+Blick haben muss.</p>
+<p>Funktionen eignen sich auch sehr gut dazu, Programmcode, der an mehreren Stellen im Programm
+auftreten würde, an einer einzigen Stelle unterzubringen. Auch dieser Aspekt trägt, zusammen
+mit einem gut gewählten Funktionsnamen, dazu bei, ein Programm lesbarer zu machen. Zum
+anderen verbessert sich die Wartbarkeit des Codes erheblich, da Korrekturen nur an einer
+Stelle vorgenommen werden müssen. Ohne die Verwendung von Funktionen müssten man darauf achten,
+Korrekturen zum Code an verschiedenen Stellen der Programms in konsistenter Weise vorzunehmen.</p>
+<p>Stellt man beim Programmieren fest, dass sich Code wiederholt, so sollte man sich also überlegen,
+ob es nicht sinnvoll wäre, für die betreffende Aufgabe eine Funktion zu definieren. Auch dann
+wenn Code nicht identisch wiederholt wird, sondern nur in ähnlicher Weise, ist eine Auslagerung
+in eine Funktion denkbar, wenn man geeignete Funktionsargumente einführt. Grundsätzlich sollte
+man beim Programmieren daran denken, sich nicht unnötig zu wiederholen und stattdessen entweder
+eine der in <a class="reference internal" href="kontrollstrukturen.html#forloop"><span class="std std-numref">Kapitel 4.1</span></a> und <a class="reference internal" href="kontrollstrukturen.html#whileloop"><span class="std std-numref">Kapitel 4.2</span></a> besprochenen Schleifenvarianten zu verwenden
+oder aber eine Funktion zu implementieren.</p>
+<p>Schließlich ist die Verwendung von Funktionen auch dann angebracht, wenn man die gleiche
+Funktionalität in verschiedenen Programmen benötigt. Man kann solche Funktionen in einem
+Modul sammeln und dann bei Bedarf importieren, wie wir es schon mit dem <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul
+und den darin enthaltenen Funktionen getan haben.</p>
 <div class="section" id="funktionsdefinitionen">
 <h2><span class="section-number">5.1. </span>Funktionsdefinitionen<a class="headerlink" href="#funktionsdefinitionen" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
