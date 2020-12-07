@@ -73,7 +73,7 @@ Im Ergebnis deutet die führenden Null an, dass es sich um eine Zahl handelt, w�
 man eine Binärzahl in die Codezelle eines Jupyter-Notebooks ein, so wird als Ausgabe die
 entsprechende Dezimaldarstellung erzeugt.
 
-```{code-cell} Python
+```{code-cell} python
 0b1111011
 ```
 
