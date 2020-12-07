@@ -335,7 +335,7 @@ noch feststellen, dass die Laufvariable `arg2` der inneren Schleife auch nach de
 Abarbeitung der Schleife zur Verfügung steht. Sie hat dabei den Wert, der ihr zuletzt
 zugewiesen wurde, in unserem Fall also `True`.
 
-
+(whileloop)=
 ## While-Schleife
 
 Bei der gerade besprochenen `for`-Schleife kennt man im Vorhinein die Zahl der
