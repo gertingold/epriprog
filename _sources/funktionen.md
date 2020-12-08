@@ -265,6 +265,33 @@ Weitere Hinweis zu *docstrings* sind in {pep}`257` zu finden.
 
 ## Lokale und globale Variable
 
+Nicht selten kommt es vor, dass Variablen inner- und außerhalb einer Funktion den gleichen
+Namen haben. Insbesondere bei Funktionen, die aus fremden Modulen, zum Beispiel aus der 
+Python-Standardbibliothek, importiert werden, lassen sich solche Namensdoppelungen auch kaum
+vermeiden. Daher stellt sich die Frage, auf welche Variable sich unter welchen Umständen
+ein mehrfach verwendeter Variablenname bezieht.
+
+In dem folgenden Beispiel sind außerhalb der Funktion {func}`f` die Variablen
+`x` und `y` definiert. Innerhalb der Funktion {func}`f` gibt es eine Variable
+`x`, die innerhalb der Funktion verändert wird. Außerdem geht der Wert der
+Variable `y` in die Rechnung ein. Aus der Sicht der Funktion {func}`f` muss man
+nun zwischen lokalen und globalen Variablen unterscheiden. Lokale Variablen sind
+nur innerhalb der Funktion sichtbar, jedoch nicht von außerhalb der Funktion. Gibt
+es keine lokale Variable mit dem vorgegebenen Namen, dafür aber eine passende globale
+Variable, so wird deren Wert verwendet. Sollte es auch keine passende globale Variable
+geben, so sucht Python schließlich auch noch in den eingebauten Python-Funktionen.
+
+```{admonition} Tipp
+:class: warning
+Grundsätzlich sollte man den Bezug auf globale Variablen nach Möglichkeit vermeiden, da
+hier eine große Gefahr für Fehler lauert. Meistens ist es besser, den Wert der globalen
+Variable explizit über ein Funktionsargument zu übergeben. Unter Umständen kann auch 
+objektorientiertes Programmieren nützlich sein, auf das wir in {numref}`oop` eingehen
+werden.
+```
+
+Betrachten wir die Unterscheidung zwischen lokalen und globalen Variablen in einem
+konkreten Beispiel.
 ```{code-cell} python
 def f(x):
     x = x+1
@@ -275,9 +302,41 @@ def f(x):
 
 x = 5
 y = 2
-print("f(3) =", f(3))
-print("x =", x)
+print(f"{f(3) = }")
+print(f"{x = }")
 ```
+Außerhalb der Funktion {func}`f` sind die globalen Variablen `x` und `y` mit ihren Werten
+5 und 2 definiert. In der vorletzten Zeile wird dann die Funktion {func}`f` mit dem Argument
+3 aufgerufen. Damit hat die lokale Variable `x` im Innern der Funktion diesen Wert. In der
+ersten Zeile des Funktionskörpers wird `x` dann auf den Wert 4 inkrementiert. Dabei nehmen
+sowohl die linke als auch die rechte Seite Bezug auf die lokale Variable `x`, deren Wert
+über das Funktionsargument gesetzt wurde. Die globale Variable `x` mit ihrem Wert 5 spielt
+für die Rechnung keine Rolle, da die lokale Variable Vorrang hat.
+
+Nach der Inkrementierung der Variablen `x` sehen wir uns die innerhalb der Funktion bekannten
+lokalen und globalen Variablen an. Die lokale Variable `x` hat den Wert 4 und ein Bezug auf eine
+Variable mit dem Namen `x` wird innerhalb der Funktion diesen Wert liefern, sofern nicht im
+weiteren Verlauf ein anderer Wert zugewiesen wird. Ferner ist eine globale Variable `x` mit
+dem Wert 5 bekannt, auf die aber nicht unter dem Namen `x` direkt zugegriffen werden kann.
+Schließlich gibt es noch die globale Variable `y`, die den Wert 2 besitzt.
+
+```{admonition} Hinweis
+Die meisten globale Objekte können innerhalb einer Funktion nicht verändert werden. Eine 
+Ausnahme sind Listen, so dass bei deren Modifikation innerhalb einer Funktion besondere
+Vorstcht geboten ist. Auf die Besonderheiten von Listen werden in {numref}`zusgdatentypen`
+genauer eingehen.
+```
+
+Der Rückgabewert der Funktion ergibt sich nun aus dem Produkt der lokalen Variable `x` und
+der globalen Variable `y` zu 4 mal 2, also 8. Außerhalb der Funktion hat die Variable `x`
+weiterhin den Wert 5. Dieser wurde durch die Inkrementierung der lokalen Variable `x` innerhalb
+der Funktion also nicht berührt.
+
+Betrachten wir abschließend noch eine abgewandelte Form des vorigen Beispiels, in der neben der
+Variablen `x` auch die Variable `y` inkrementiert wird. Durch diesen Umstand wird `y` zu einer
+lokalen Variablen, und zwar in der gesamten Funktion. Dies hat insbesondere zur Folge, dass
+auf der rechten Seite der zweiten Zeile des Funktionskörpers der Wert der lokalen Variablen `y`
+benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem `UnboundLocalError`.
 
 ```{code-cell} python
 ---
@@ -290,7 +349,7 @@ def f(x):
 
 x = 5
 y = 2
-print("f(3) =", f(3))
+print(f"{f(3) = }")
 ```
 
 ## Rekursive Funktionen

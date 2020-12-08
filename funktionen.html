@@ -643,6 +643,30 @@ mitternacht(a, b, c)
 </div>
 <div class="section" id="lokale-und-globale-variable">
 <h2><span class="section-number">5.3. </span>Lokale und globale Variable<a class="headerlink" href="#lokale-und-globale-variable" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Nicht selten kommt es vor, dass Variablen inner- und außerhalb einer Funktion den gleichen
+Namen haben. Insbesondere bei Funktionen, die aus fremden Modulen, zum Beispiel aus der
+Python-Standardbibliothek, importiert werden, lassen sich solche Namensdoppelungen auch kaum
+vermeiden. Daher stellt sich die Frage, auf welche Variable sich unter welchen Umständen
+ein mehrfach verwendeter Variablenname bezieht.</p>
+<p>In dem folgenden Beispiel sind außerhalb der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> die Variablen
+<code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> definiert. Innerhalb der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> gibt es eine Variable
+<code class="docutils literal notranslate"><span class="pre">x</span></code>, die innerhalb der Funktion verändert wird. Außerdem geht der Wert der
+Variable <code class="docutils literal notranslate"><span class="pre">y</span></code> in die Rechnung ein. Aus der Sicht der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> muss man
+nun zwischen lokalen und globalen Variablen unterscheiden. Lokale Variablen sind
+nur innerhalb der Funktion sichtbar, jedoch nicht von außerhalb der Funktion. Gibt
+es keine lokale Variable mit dem vorgegebenen Namen, dafür aber eine passende globale
+Variable, so wird deren Wert verwendet. Sollte es auch keine passende globale Variable
+geben, so sucht Python schließlich auch noch in den eingebauten Python-Funktionen.</p>
+<div class="warning admonition">
+<p class="admonition-title">Tipp</p>
+<p>Grundsätzlich sollte man den Bezug auf globale Variablen nach Möglichkeit vermeiden, da
+hier eine große Gefahr für Fehler lauert. Meistens ist es besser, den Wert der globalen
+Variable explizit über ein Funktionsargument zu übergeben. Unter Umständen kann auch
+objektorientiertes Programmieren nützlich sein, auf das wir in <a class="reference internal" href="objektorientiert.html#oop"><span class="std std-numref">Kapitel 9</span></a> eingehen
+werden.</p>
+</div>
+<p>Betrachten wir die Unterscheidung zwischen lokalen und globalen Variablen in einem
+konkreten Beispiel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -654,8 +678,8 @@ mitternacht(a, b, c)
 
 <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f(3) =&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -669,6 +693,35 @@ x = 5
 </div>
 </div>
 </div>
+<p>Außerhalb der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> sind die globalen Variablen <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> mit ihren Werten
+5 und 2 definiert. In der vorletzten Zeile wird dann die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> mit dem Argument
+3 aufgerufen. Damit hat die lokale Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> im Innern der Funktion diesen Wert. In der
+ersten Zeile des Funktionskörpers wird <code class="docutils literal notranslate"><span class="pre">x</span></code> dann auf den Wert 4 inkrementiert. Dabei nehmen
+sowohl die linke als auch die rechte Seite Bezug auf die lokale Variable <code class="docutils literal notranslate"><span class="pre">x</span></code>, deren Wert
+über das Funktionsargument gesetzt wurde. Die globale Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> mit ihrem Wert 5 spielt
+für die Rechnung keine Rolle, da die lokale Variable Vorrang hat.</p>
+<p>Nach der Inkrementierung der Variablen <code class="docutils literal notranslate"><span class="pre">x</span></code> sehen wir uns die innerhalb der Funktion bekannten
+lokalen und globalen Variablen an. Die lokale Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> hat den Wert 4 und ein Bezug auf eine
+Variable mit dem Namen <code class="docutils literal notranslate"><span class="pre">x</span></code> wird innerhalb der Funktion diesen Wert liefern, sofern nicht im
+weiteren Verlauf ein anderer Wert zugewiesen wird. Ferner ist eine globale Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> mit
+dem Wert 5 bekannt, auf die aber nicht unter dem Namen <code class="docutils literal notranslate"><span class="pre">x</span></code> direkt zugegriffen werden kann.
+Schließlich gibt es noch die globale Variable <code class="docutils literal notranslate"><span class="pre">y</span></code>, die den Wert 2 besitzt.</p>
+<div class="admonition-hinweis admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Die meisten globale Objekte können innerhalb einer Funktion nicht verändert werden. Eine
+Ausnahme sind Listen, so dass bei deren Modifikation innerhalb einer Funktion besondere
+Vorstcht geboten ist. Auf die Besonderheiten von Listen werden in <a class="reference internal" href="sequenzen.html#zusgdatentypen"><span class="std std-numref">Kapitel 6</span></a>
+genauer eingehen.</p>
+</div>
+<p>Der Rückgabewert der Funktion ergibt sich nun aus dem Produkt der lokalen Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> und
+der globalen Variable <code class="docutils literal notranslate"><span class="pre">y</span></code> zu 4 mal 2, also 8. Außerhalb der Funktion hat die Variable <code class="docutils literal notranslate"><span class="pre">x</span></code>
+weiterhin den Wert 5. Dieser wurde durch die Inkrementierung der lokalen Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> innerhalb
+der Funktion also nicht berührt.</p>
+<p>Betrachten wir abschließend noch eine abgewandelte Form des vorigen Beispiels, in der neben der
+Variablen <code class="docutils literal notranslate"><span class="pre">x</span></code> auch die Variable <code class="docutils literal notranslate"><span class="pre">y</span></code> inkrementiert wird. Durch diesen Umstand wird <code class="docutils literal notranslate"><span class="pre">y</span></code> zu einer
+lokalen Variablen, und zwar in der gesamten Funktion. Dies hat insbesondere zur Folge, dass
+auf der rechten Seite der zweiten Zeile des Funktionskörpers der Wert der lokalen Variablen <code class="docutils literal notranslate"><span class="pre">y</span></code>
+benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem <code class="docutils literal notranslate"><span class="pre">UnboundLocalError</span></code>.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -678,19 +731,19 @@ x = 5
 
 <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f(3) =&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">77</span><span class="n">b24d99da16</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">d50cf0ed9a63</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f(3) =&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="nn">&lt;ipython-input-13-77b24d99da16&gt;</span> in <span class="ni">f</span><span class="nt">(x)</span>
+<span class="nn">&lt;ipython-input-13-d50cf0ed9a63&gt;</span> in <span class="ni">f</span><span class="nt">(x)</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span>
