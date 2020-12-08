@@ -596,7 +596,7 @@ den Wahrheitswert `True` ergibt, also bei der Division von `nyear` durch 12 ein 
 der `if`-Zweig ausgeführt. Nach der Jahreszahl wird dann noch ein Leerzeichen ausgegeben, der
 Zeilenumbruch entfällt aber. Im allen anderen Fällen, also wenn `nyear` ohne Rest durch 12 teilbar
 ist, wird die Anweisung im `else`-Zweig ausgeführt, so dass nach der Ausgabe der Jahreszahl ein 
-Zeilenumbruch folgt. Auf diese Weise weren zwölf Jahreszahlen je Zeile ausgegeben.
+Zeilenumbruch folgt. Auf diese Weise werden zwölf Jahreszahlen je Zeile ausgegeben.
 
 Wichtig ist, dass die `else`-Anweisung so weit eingerückt ist, wie die
 zugehörige `if`-Anweisung.  Wäre sie nur einfach eingerückt, würde sie die
@@ -624,7 +624,7 @@ for year in range(1860, 2210):
 Die `if…else`-Konstruktion lässt in der bisher besprochene Weise zwei mögliche Wege abhängig
 davon zu, ob eine Bedingung erfüllt ist oder nicht. Man kann aber auch mehr als zwei Alternativen
 vorsehen. Eine erste Möglichkeit, die noch nicht wirklich optimal ist, beruht auf einer Schachtelung
-von `if…else`-Verweigungen.
+von `if…else`-Verzweigungen.
 ```{code-cell} python
 for n in range(-2, 3):
     if n > 0:

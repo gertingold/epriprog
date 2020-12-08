@@ -842,7 +842,7 @@ nämlich 6, etwas abweicht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.01414
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0184
 </pre></div>
 </div>
 </div>
@@ -1066,7 +1066,7 @@ den Wahrheitswert <code class="docutils literal notranslate"><span class="pre">T
 der <code class="docutils literal notranslate"><span class="pre">if</span></code>-Zweig ausgeführt. Nach der Jahreszahl wird dann noch ein Leerzeichen ausgegeben, der
 Zeilenumbruch entfällt aber. Im allen anderen Fällen, also wenn <code class="docutils literal notranslate"><span class="pre">nyear</span></code> ohne Rest durch 12 teilbar
 ist, wird die Anweisung im <code class="docutils literal notranslate"><span class="pre">else</span></code>-Zweig ausgeführt, so dass nach der Ausgabe der Jahreszahl ein
-Zeilenumbruch folgt. Auf diese Weise weren zwölf Jahreszahlen je Zeile ausgegeben.</p>
+Zeilenumbruch folgt. Auf diese Weise werden zwölf Jahreszahlen je Zeile ausgegeben.</p>
 <p>Wichtig ist, dass die <code class="docutils literal notranslate"><span class="pre">else</span></code>-Anweisung so weit eingerückt ist, wie die
 zugehörige <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung.  Wäre sie nur einfach eingerückt, würde sie die
 Alternative zur ersten <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung bilden. In diesem Fall würde jedes Jahr
@@ -1362,7 +1362,7 @@ ist also essentiell dafür, dass der Code wie gewünscht abgearbeitet wird.</p>
 <p>Die <code class="docutils literal notranslate"><span class="pre">if…else</span></code>-Konstruktion lässt in der bisher besprochene Weise zwei mögliche Wege abhängig
 davon zu, ob eine Bedingung erfüllt ist oder nicht. Man kann aber auch mehr als zwei Alternativen
 vorsehen. Eine erste Möglichkeit, die noch nicht wirklich optimal ist, beruht auf einer Schachtelung
-von <code class="docutils literal notranslate"><span class="pre">if…else</span></code>-Verweigungen.</p>
+von <code class="docutils literal notranslate"><span class="pre">if…else</span></code>-Verzweigungen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
@@ -1580,11 +1580,11 @@ wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = -1 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
-n_self = -1 und n_other = 1 müssen beide zwischen 0 und 2 liegen.
-n_self = 1 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
-n_self = -1 und n_other = 0 müssen beide zwischen 0 und 2 liegen.
-Ergebnis für n_self = 0 und n_other = 1: 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ergebnis für n_self = 0 und n_other = 0: 0
+n_self = 0 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 0 und n_other = 2: 1
+n_self = -1 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+n_self = 3 und n_other = 1 müssen beide zwischen 0 und 2 liegen.
 </pre></div>
 </div>
 </div>

@@ -509,7 +509,7 @@ die Exponentialfunktion sowie eine ganze Reihe weiterer mathematischer
 Funktionen direkt aufgerufen werden können. Eine dieser Sprachen ist Fortran,
 eine relativ alte, aber im wissenschaftlichen Bereich immer noch häufig
 eingesetzte Sprache, deren Name ursprünglich als Abkürzung für »Formula
-Translation« stand. Damit kann man schon erwarten, dass sich iin Fortran
+Translation« stand. Damit kann man schon erwarten, dass sich in Fortran
 mathematische Funktionen sehr einfach verwenden lassen.
 
 Eine moderne Sprache, in der dies ebenfalls der Fall ist, ist Julia.

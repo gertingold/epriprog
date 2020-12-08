@@ -85,7 +85,7 @@ einen eingerückten Codeblock. Wie schon bei den `for`-Schleifen in {numref}`for
 bei Bedarf der Befehl `pass` eingerückt verwendet werden.
 
 Wenn der Python-Interpreter den Code des obigen Beispiels verarbeitet, wird zunächst die Funktion
-`f` definiert. Sie wird zu diesem Zeitpunkt jedoch nicht ausgeführt. Es erfolgt als inbesondere
+`f` definiert. Sie wird zu diesem Zeitpunkt jedoch nicht ausgeführt. Es erfolgt als insbesondere
 zu diesem Zeitpunkt nicht die Ausgabe des Textes `Hallo!`. Die Anweisung in Zeile 4 führt nun dazu,
 dass der Text `** Anfang` ausgegeben wird. Anschließend wird die Funktion `f` ohne Argumente aufgerufen.
 An dieser Stelle ein Argument anzugeben, das in der Funktionsdefinition nicht vorgesehen ist, würde
@@ -255,7 +255,7 @@ Der *docstring* wird hier nicht nur mit einem, sondern mit drei Anführungszeich
 da auf diese Weise ein mehrzeiliger Text möglich ist. Der Vorteil dieser Dokumentationsweise
 im Vergleich zu einfachen Kommentaren besteht bei Python darin, dass der *docstring* mit Hilfe
 der {func}`help`-Funktion ausgegeben werden kann, ähnlich wie wir dies im {numref}`mathfunc`
-kennengelernt hatten, wo `help(math)` die Dokumentation für das {mod}`math`-Modul ausgabe.
+kennengelernt hatten, wo `help(math)` die Dokumentation für das {mod}`math`-Modul ausgab.
 ```{code-cell} python
 help(mitternacht)
 ```
@@ -323,7 +323,7 @@ Schließlich gibt es noch die globale Variable `y`, die den Wert 2 besitzt.
 ```{admonition} Hinweis
 Die meisten globale Objekte können innerhalb einer Funktion nicht verändert werden. Eine 
 Ausnahme sind Listen, so dass bei deren Modifikation innerhalb einer Funktion besondere
-Vorstcht geboten ist. Auf die Besonderheiten von Listen werden in {numref}`zusgdatentypen`
+Vorsicht geboten ist. Auf die Besonderheiten von Listen werden in {numref}`zusgdatentypen`
 genauer eingehen.
 ```
 
