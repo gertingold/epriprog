@@ -354,7 +354,174 @@ print(f"{f(3) = }")
 
 ## Rekursive Funktionen
 
-## Funktionen als Argumente von Funktionen
+Darf man in einer Funktion die Funktion selbst wieder aufrufen? In Sprachen wie Python, C und
+modernen Versionen von Fortran ist dies möglich. In Fortran 77 musste man dafür noch in die
+Trickkiste greifen. Eine Funktion, die in sich selbst wieder aufgerufen wird, wenn auch mit 
+anderen Werten für die Argumente, nennt man eine rekursive Funktion. Zur Erläuterung betrachten
+wir zunächst ein mathematisches Beispiel.
+
+Die Fakultät $n!$ einer ganzen Zahl $n$ ist definiert als das Produkt der ganzen Zahlen von $1$ bis
+$n$, also
+
+$$n! = \prod_{k=1}^n k = 1\cdot 2\cdot\ldots\cdot(n-1)\cdot n\,.$$
+
+Alternativ kann man die Fakultät auch rekursiv definieren als
+
+$$n! = n\cdot(n-1)!\,,\ 1!=1\,.$$
+
+Hierbei wird die Auswertung der Fakultät auf die Auswertung der Fakultät für eine um Eins kleinere
+Zahl reduziert. So lässt sich sukzessive das Argument der auszuwertenden Fakultät reduzieren, was
+natürlich nur etwas nützt, wenn diese Folge irgendwann abbricht. In unserem Fall geschieht dies
+dadurch, dass die Fakultät von $1$ zu $1$ definiert wird.
+
+Wir setzen diese mathematischen Formeln nun in Programmcode um und beginnen mit der expliziten
+Produktdarstellung.
+
+```{code-cell} python
+def fakultaet(n):
+    produkt = 1
+    for k in range(2, n+1):
+        produkt = produkt*k
+    return produkt
+
+for n in range(1, 10):
+    print(n, fakultaet(n))
+```
+
+Alternativ kann man die Fakultät rekursiv implementieren.
+```{code-cell} python
+def fakultaet_rekursiv(n):
+    if n > 1:
+        return n*fakultaet_rekursiv(n-1)
+    elif n == 1:
+        return 1
+    else:
+        raise ValueError("Das Argument muss größer als Null sein.")
+
+for n in range(1, 10):
+    print(n, fakultaet_rekursiv(n))
+```
+Sehen wir uns diese Implementierung etwas genauer an. So lange das Argument `n` größer als Eins ist,
+wird einfach die Rekursionsformel implementiert. Es wird als Ergebnis also einfach `n` mal die Fakultät
+von `n-1` zurückgegeben. Dabei muss aber zunächst diese Fakultät berechnet werden. Auf diese Weise
+arbeitet man sich sukzessive zu immer kleineren Argumenten bis `n` den Wert `1` erreicht. In diesem Fall
+bricht die Rekursion ab, und es wird direkt das Resultat `1` zurückgegeben. Nachdem dieser Wert erhalten
+wurde, können sukzessive die Resultate der einzelnen Funktionsaufrufe bestimmt werden bis am Ende das
+gewünschte Ergebnis erhalten wird. Diesen Vorgang werden wir gleich noch etwas genauer veranschaulichen.
+
+Zuvor wollen wir aber noch darauf hinweisen, dass unsere Funktion noch eine Fehlerbehandlung
+durchführt, die verhindert, dass die Rekursion nie zu Ende kommt. Sollte das Argument `n` nämlich
+kleiner gleich Null sein oder keine ganze Zahl sein, würde man nie die Abbruchbedingung erreichen,
+bei der `n` gleich Eins ist.  Damit wären wir in einer Endlosschleife gefangen. Bei rekursiven
+Funktionen ist es also immer essentiell wichtig, darauf zu achten, dass die Abbruchbedingung korrekt
+implementiert ist. 
+
+```{admonition} Maximale Rekursionstiefe in Python
+In Python ist die Rekursionstiefe standardmäßig auf 1000 begrenzt, wie sich mit Hilfe von 
+{func}`sys.getrecursionlimit` verifizieren lässt. Damit ist einerseits die Gefahr von Endlosschleifen
+etwas entschärft. In unserem Beispiel wäre aber die Größe des Arguments `n` dadurch begrenzt. Bei
+Bedarf lässt sich die maximale Rekursionstiefe mit {func}`sys.setrecursionlimit` anpassen. Zuvor
+sollte man aber sicherstellen, dass die Abbruchbedingung für die Rekursion tatsächlich korrekt
+funktioniert.
+```
+
+Um den Ablauf der Rekursion zu veranschaulichen, modifizieren wir unser Programm noch ein klein
+wenig.
+```{code-cell} python
+def fakultaet_rekursiv(n):
+    print(f"** Aufruf mit Argument {n = }")
+    if n > 1:
+        ergebnis = n*fakultaet_rekursiv(n-1)
+        print(f"-> {n}! = {ergebnis}")
+        return ergebnis
+    elif n == 1:
+        ergebnis = 1
+        print(f"-> {n}! = {ergebnis}")
+        return ergebnis
+    else:
+        raise ValueError("Das Argument muss größer gleich Eins sein.")
+
+fakultaet_rekursiv(5)
+```
+Hier wird deutlich, wie zunächst nacheinander die Funktion mit fallenden Argumenten aufgerufen
+wird und dann sukzessive die Resultate aufgebaut werden, nachdem das Ende der Rekursion
+erreicht wurde.
+
+## Funktionen als Bürger erster Klasse
+
+````{margin}
+```{admonition} Literaturverweis
+Das Konzept von Objekten oder Bürgern erster Klasse wurde im Zusammenhang mit Programmiersprachen
+1967 von Christopher Strachey eingeführt: C. Strachey, [Higher-order Symb. Comput. *13*, 11
+(2000)](https://doi.org/10.1023/A:1010000313106)
+```
+````
+In diesem Kapitel haben wir bis jetzt Funktionen definiert und diese aufgerufen. Die Funktion
+wurde dann ausgeführt, und wir haben ein Ergebnis erhalten. Diese Möglichkeiten, mit Funktionen
+zu arbeiten, kann man für alle Programmiersprachen erwarten. Es gibt jedoch Programmiersprachen,
+zu denen auch Python gehört, in denen mit Funktionen genauso wie mit anderen Objekten, also zum
+Beispiel Variablen umgegangen werden kann. Man spricht dann davon, dass Funktionen *first class
+citizens*, also Bürger erster Klasse, sind, die im Vergleich zu anderen Objekten nicht in ihren
+Möglichkeiten eingeschränkt sind.
+
+Was sind also die zusätzlichen Möglichkeiten, die sich daraus ergeben, dass Funktionen *first class
+objects* oder *first class citizens* sind? Funktionen können dann Variablen zugewiesen werden,
+sie können als Argumente an Funktionen übergeben werden oder beispielsweise auch als Elemente in
+Listen auftreten. Wir wollen dies an Beispielen illustrieren.
+```{code-cell} python
+from math import sin
+
+funktion = sin
+print(funktion(1), sin(1))
+print(funktion)
+print(sin)
+```
+Hier wird der Variablen `funktion` die Sinusfunktion `sin` aus dem {mod}`math`-Modul zugewiesen.
+Wichtig ist an dieser Stelle, dass keine Klammer gesetzt werden, wie man es bei einem
+Funktionsaufruf tun müsste. Nur dann bezieht man sich auf das Funktionsobjekt. Die Variable
+`funktion` kann nun mit Argumenten genauso aufgerufen werden, wie das für `sin` möglich ist, und
+wir stellen fest, dass sich erwartungsgemäß auch das gleiche Ergebnis ergibt. Übergibt man das
+Funktionsobjekt, also nicht das Ergebnis einer Funktionsauswertung, an die {func}`print`-Funktion,
+so wird ein beschreibender Text ausgegeben, der zeigt, dass `funktion` tatsächlich auf die
+eingebaute Funktion `sin` verweist.
+
+Wie schon erwähnt, können Funktionsobjekte auch als Elemente einer Liste auftreten. Dabei spielt
+es keine Rolle, ob die betreffenden Funktionen importiert oder selbst definiert wurden.
+```{code-cell} python
+from math import cos, sin
+
+def myfunc(x):
+    return x**2 - 4*x + 4
+
+for f in [cos, sin, myfunc]:
+    print(f"{f.__name__:6s}: {f(1):8.6f}")
+```
+Für die Ausgabe des Funktionsnamens haben wir uns dabei des Attributs `__name__` bedient, wobei hier
+vor und nach dem Text `name` jeweils zwei Unterstriche stehen.
+
+Funktionen als Argumente an andere Funktionen übergeben zu können, eröffnet interessante
+Möglichkeiten. Wir wollen dies an einem Beispiel demonstrieren, das numerisch näherungsweise die
+Ableitung einer Funktion an einer vorgegebenen Stelle bestimmen soll.
+```{code-cell} python
+from math import cos, sin
+
+def ableitung(f, x):
+    h = 1e-7
+    df = (f(x+h)-f(x-h))/(2*h)
+    return df
+
+print(f"{ableitung(sin, 0) = }")
+print(f"{ableitung(cos, 0) = }")
+```
+Hier wird der Differenzenquotient für eine kleine, aber fest vorgegebene Schrittweite ausgewertet.
+Als Argumente werden sowohl die Funktion, hier Sinus und Kosinus, sowie die Stelle, an der die
+Ableitung auszuwerten ist, übergeben. Es sei noch einmal betont, dass bei der Übergabe des
+Funktionsobjekts keine Klammern gesetzt werden dürfen.
+
+Natürlich kann der Code für die Ableitung noch verbessert werden, zum Beispiel weil die Wahl einer
+festen Schrittweite nicht unbedingt ideal ist. Immerhin kommen alle Verbesserung des Codes der
+Auswertung der Ableitung von im Prinzip beliebigen Funktionen zugute. Im {numref}`kwargs` werden
+wir dieses Beispiel noch weiter entwickeln.
 
 (lambdafunktionen)=
 ## Lambda-Funktionen
