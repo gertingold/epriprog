@@ -265,8 +265,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#funktionen-als-argumente-von-funktionen">
-   5.5. Funktionen als Argumente von Funktionen
+  <a class="reference internal nav-link" href="#funktionen-als-burger-erster-klasse">
+   5.5. Funktionen als Bürger erster Klasse
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -758,9 +758,253 @@ benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem <code cl
 </div>
 <div class="section" id="rekursive-funktionen">
 <h2><span class="section-number">5.4. </span>Rekursive Funktionen<a class="headerlink" href="#rekursive-funktionen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Darf man in einer Funktion die Funktion selbst wieder aufrufen? In Sprachen wie Python, C und
+modernen Versionen von Fortran ist dies möglich. In Fortran 77 musste man dafür noch in die
+Trickkiste greifen. Eine Funktion, die in sich selbst wieder aufgerufen wird, wenn auch mit
+anderen Werten für die Argumente, nennt man eine rekursive Funktion. Zur Erläuterung betrachten
+wir zunächst ein mathematisches Beispiel.</p>
+<p>Die Fakultät <span class="math notranslate nohighlight">\(n!\)</span> einer ganzen Zahl <span class="math notranslate nohighlight">\(n\)</span> ist definiert als das Produkt der ganzen Zahlen von <span class="math notranslate nohighlight">\(1\)</span> bis
+<span class="math notranslate nohighlight">\(n\)</span>, also</p>
+<div class="math notranslate nohighlight">
+\[n! = \prod_{k=1}^n k = 1\cdot 2\cdot\ldots\cdot(n-1)\cdot n\,.\]</div>
+<p>Alternativ kann man die Fakultät auch rekursiv definieren als</p>
+<div class="math notranslate nohighlight">
+\[n! = n\cdot(n-1)!\,,\ 1!=1\,.\]</div>
+<p>Hierbei wird die Auswertung der Fakultät auf die Auswertung der Fakultät für eine um Eins kleinere
+Zahl reduziert. So lässt sich sukzessive das Argument der auszuwertenden Fakultät reduzieren, was
+natürlich nur etwas nützt, wenn diese Folge irgendwann abbricht. In unserem Fall geschieht dies
+dadurch, dass die Fakultät von <span class="math notranslate nohighlight">\(1\)</span> zu <span class="math notranslate nohighlight">\(1\)</span> definiert wird.</p>
+<p>Wir setzen diese mathematischen Formeln nun in Programmcode um und beginnen mit der expliziten
+Produktdarstellung.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fakultaet</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">produkt</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">produkt</span> <span class="o">=</span> <span class="n">produkt</span><span class="o">*</span><span class="n">k</span>
+    <span class="k">return</span> <span class="n">produkt</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fakultaet</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
 </div>
-<div class="section" id="funktionen-als-argumente-von-funktionen">
-<h2><span class="section-number">5.5. </span>Funktionen als Argumente von Funktionen<a class="headerlink" href="#funktionen-als-argumente-von-funktionen" title="Link zu dieser Überschrift">¶</a></h2>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1
+2 2
+3 6
+4 24
+5 120
+6 720
+7 5040
+8 40320
+9 362880
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternativ kann man die Fakultät rekursiv implementieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Das Argument muss größer als Null sein.&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1
+2 2
+3 6
+4 24
+5 120
+6 720
+7 5040
+8 40320
+9 362880
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sehen wir uns diese Implementierung etwas genauer an. So lange das Argument <code class="docutils literal notranslate"><span class="pre">n</span></code> größer als Eins ist,
+wird einfach die Rekursionsformel implementiert. Es wird als Ergebnis also einfach <code class="docutils literal notranslate"><span class="pre">n</span></code> mal die Fakultät
+von <code class="docutils literal notranslate"><span class="pre">n-1</span></code> zurückgegeben. Dabei muss aber zunächst diese Fakultät berechnet werden. Auf diese Weise
+arbeitet man sich sukzessive zu immer kleineren Argumenten bis <code class="docutils literal notranslate"><span class="pre">n</span></code> den Wert <code class="docutils literal notranslate"><span class="pre">1</span></code> erreicht. In diesem Fall
+bricht die Rekursion ab, und es wird direkt das Resultat <code class="docutils literal notranslate"><span class="pre">1</span></code> zurückgegeben. Nachdem dieser Wert erhalten
+wurde, können sukzessive die Resultate der einzelnen Funktionsaufrufe bestimmt werden bis am Ende das
+gewünschte Ergebnis erhalten wird. Diesen Vorgang werden wir gleich noch etwas genauer veranschaulichen.</p>
+<p>Zuvor wollen wir aber noch darauf hinweisen, dass unsere Funktion noch eine Fehlerbehandlung
+durchführt, die verhindert, dass die Rekursion nie zu Ende kommt. Sollte das Argument <code class="docutils literal notranslate"><span class="pre">n</span></code> nämlich
+kleiner gleich Null sein oder keine ganze Zahl sein, würde man nie die Abbruchbedingung erreichen,
+bei der <code class="docutils literal notranslate"><span class="pre">n</span></code> gleich Eins ist.  Damit wären wir in einer Endlosschleife gefangen. Bei rekursiven
+Funktionen ist es also immer essentiell wichtig, darauf zu achten, dass die Abbruchbedingung korrekt
+implementiert ist.</p>
+<div class="admonition-maximale-rekursionstiefe-in-python admonition">
+<p class="admonition-title">Maximale Rekursionstiefe in Python</p>
+<p>In Python ist die Rekursionstiefe standardmäßig auf 1000 begrenzt, wie sich mit Hilfe von
+<code class="xref py py-func docutils literal notranslate"><span class="pre">sys.getrecursionlimit()</span></code> verifizieren lässt. Damit ist einerseits die Gefahr von Endlosschleifen
+etwas entschärft. In unserem Beispiel wäre aber die Größe des Arguments <code class="docutils literal notranslate"><span class="pre">n</span></code> dadurch begrenzt. Bei
+Bedarf lässt sich die maximale Rekursionstiefe mit <code class="xref py py-func docutils literal notranslate"><span class="pre">sys.setrecursionlimit()</span></code> anpassen. Zuvor
+sollte man aber sicherstellen, dass die Abbruchbedingung für die Rekursion tatsächlich korrekt
+funktioniert.</p>
+</div>
+<p>Um den Ablauf der Rekursion zu veranschaulichen, modifizieren wir unser Programm noch ein klein
+wenig.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;** Aufruf mit Argument </span><span class="si">{</span><span class="n">n</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-&gt; </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">! = </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ergebnis</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-&gt; </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">! = </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ergebnis</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Das Argument muss größer gleich Eins sein.&quot;</span><span class="p">)</span>
+
+<span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>** Aufruf mit Argument n = 5
+** Aufruf mit Argument n = 4
+** Aufruf mit Argument n = 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>** Aufruf mit Argument n = 2
+** Aufruf mit Argument n = 1
+-&gt; 1! = 1
+-&gt; 2! = 2
+-&gt; 3! = 6
+-&gt; 4! = 24
+-&gt; 5! = 120
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier wird deutlich, wie zunächst nacheinander die Funktion mit fallenden Argumenten aufgerufen
+wird und dann sukzessive die Resultate aufgebaut werden, nachdem das Ende der Rekursion
+erreicht wurde.</p>
+</div>
+<div class="section" id="funktionen-als-burger-erster-klasse">
+<h2><span class="section-number">5.5. </span>Funktionen als Bürger erster Klasse<a class="headerlink" href="#funktionen-als-burger-erster-klasse" title="Link zu dieser Überschrift">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-literaturverweis admonition">
+<p class="admonition-title">Literaturverweis</p>
+<p>Das Konzept von Objekten oder Bürgern erster Klasse wurde im Zusammenhang mit Programmiersprachen
+1967 von Christopher Strachey eingeführt: C. Strachey, <a class="reference external" href="https://doi.org/10.1023/A:1010000313106">Higher-order Symb. Comput. <em>13</em>, 11
+(2000)</a></p>
+</div>
+</div>
+<p>In diesem Kapitel haben wir bis jetzt Funktionen definiert und diese aufgerufen. Die Funktion
+wurde dann ausgeführt, und wir haben ein Ergebnis erhalten. Diese Möglichkeiten, mit Funktionen
+zu arbeiten, kann man für alle Programmiersprachen erwarten. Es gibt jedoch Programmiersprachen,
+zu denen auch Python gehört, in denen mit Funktionen genauso wie mit anderen Objekten, also zum
+Beispiel Variablen umgegangen werden kann. Man spricht dann davon, dass Funktionen <em>first class
+citizens</em>, also Bürger erster Klasse, sind, die im Vergleich zu anderen Objekten nicht in ihren
+Möglichkeiten eingeschränkt sind.</p>
+<p>Was sind also die zusätzlichen Möglichkeiten, die sich daraus ergeben, dass Funktionen <em>first class
+objects</em> oder <em>first class citizens</em> sind? Funktionen können dann Variablen zugewiesen werden,
+sie können als Argumente an Funktionen übergeben werden oder beispielsweise auch als Elemente in
+Listen auftreten. Wir wollen dies an Beispielen illustrieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+
+<span class="n">funktion</span> <span class="o">=</span> <span class="n">sin</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">funktion</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">funktion</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8414709848078965 0.8414709848078965
+&lt;built-in function sin&gt;
+&lt;built-in function sin&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier wird der Variablen <code class="docutils literal notranslate"><span class="pre">funktion</span></code> die Sinusfunktion <code class="docutils literal notranslate"><span class="pre">sin</span></code> aus dem <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul zugewiesen.
+Wichtig ist an dieser Stelle, dass keine Klammer gesetzt werden, wie man es bei einem
+Funktionsaufruf tun müsste. Nur dann bezieht man sich auf das Funktionsobjekt. Die Variable
+<code class="docutils literal notranslate"><span class="pre">funktion</span></code> kann nun mit Argumenten genauso aufgerufen werden, wie das für <code class="docutils literal notranslate"><span class="pre">sin</span></code> möglich ist, und
+wir stellen fest, dass sich erwartungsgemäß auch das gleiche Ergebnis ergibt. Übergibt man das
+Funktionsobjekt, also nicht das Ergebnis einer Funktionsauswertung, an die <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion,
+so wird ein beschreibender Text ausgegeben, der zeigt, dass <code class="docutils literal notranslate"><span class="pre">funktion</span></code> tatsächlich auf die
+eingebaute Funktion <code class="docutils literal notranslate"><span class="pre">sin</span></code> verweist.</p>
+<p>Wie schon erwähnt, können Funktionsobjekte auch als Elemente einer Liste auftreten. Dabei spielt
+es keine Rolle, ob die betreffenden Funktionen importiert oder selbst definiert wurden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+
+<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">4</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span><span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">myfunc</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="si">:</span><span class="s2">6s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cos   : 0.540302
+sin   : 0.841471
+myfunc: 1.000000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für die Ausgabe des Funktionsnamens haben wir uns dabei des Attributs <code class="docutils literal notranslate"><span class="pre">__name__</span></code> bedient, wobei hier
+vor und nach dem Text <code class="docutils literal notranslate"><span class="pre">name</span></code> jeweils zwei Unterstriche stehen.</p>
+<p>Funktionen als Argumente an andere Funktionen übergeben zu können, eröffnet interessante
+Möglichkeiten. Wir wollen dies an einem Beispiel demonstrieren, das numerisch näherungsweise die
+Ableitung einer Funktion an einer vorgegebenen Stelle bestimmen soll.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+
+<span class="k">def</span> <span class="nf">ableitung</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mf">1e-7</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ableitung</span><span class="p">(</span><span class="n">sin</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ableitung</span><span class="p">(</span><span class="n">cos</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ableitung(sin, 0) = 0.9999999999999983
+ableitung(cos, 0) = 0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier wird der Differenzenquotient für eine kleine, aber fest vorgegebene Schrittweite ausgewertet.
+Als Argumente werden sowohl die Funktion, hier Sinus und Kosinus, sowie die Stelle, an der die
+Ableitung auszuwerten ist, übergeben. Es sei noch einmal betont, dass bei der Übergabe des
+Funktionsobjekts keine Klammern gesetzt werden dürfen.</p>
+<p>Natürlich kann der Code für die Ableitung noch verbessert werden, zum Beispiel weil die Wahl einer
+festen Schrittweite nicht unbedingt ideal ist. Immerhin kommen alle Verbesserung des Codes der
+Auswertung der Ableitung von im Prinzip beliebigen Funktionen zugute. Im <a class="reference internal" href="#kwargs"><span class="std std-numref">Kapitel 5.7</span></a> werden
+wir dieses Beispiel noch weiter entwickeln.</p>
 </div>
 <div class="section" id="lambda-funktionen">
 <span id="lambdafunktionen"></span><h2><span class="section-number">5.6. </span>Lambda-Funktionen<a class="headerlink" href="#lambda-funktionen" title="Link zu dieser Überschrift">¶</a></h2>
