@@ -57,6 +57,7 @@ Funktionalität in verschiedenen Programmen benötigt. Man kann solche Funktione
 Modul sammeln und dann bei Bedarf importieren, wie wir es schon mit dem {mod}`math`-Modul
 und den darin enthaltenen Funktionen getan haben. 
 
+(fdef)=
 ## Funktionsdefinitionen
 
 Betrachten wir zunächst eine Funktion, die keine Argumente besitzt. Was die Funktion tut, ist
@@ -447,6 +448,7 @@ Hier wird deutlich, wie zunächst nacheinander die Funktion mit fallenden Argume
 wird und dann sukzessive die Resultate aufgebaut werden, nachdem das Ende der Rekursion
 erreicht wurde.
 
+(fccfunc)=
 ## Funktionen als Bürger erster Klasse
 
 ````{margin}
@@ -525,6 +527,53 @@ wir dieses Beispiel noch weiter entwickeln.
 
 (lambdafunktionen)=
 ## Lambda-Funktionen
+
+Im {numref}`fdef` hatten wir Beispiele für Funktionen kennengelernt, bei denen die Bestimmung der
+Ergebnisses in einer einzelnen Codezeile erfolgte. Bei machen Gelegenheiten erscheint dann die
+vollständige Definition einer Funktion als unnötig aufwändig. Tatsächlich erlauben es die
+sogenannten Lambda-Funktionen, eine Funktion in einer einzigen Zeile zu definieren. Der Name dieser
+Funktionen stammt aus dem Lambda-Kalkül, in dem die Lambda-Funktionen einen wichtige Rolle spielen.
+Dies erklärt auch, warum `lambda` zu den reservierten Schlüsselwörtern in Python gehört und nicht
+als Variablenname verwendet werden kann. Ein Beispiel soll die Definition einer Lambda-Funktion 
+illustrieren.
+```{code-cell} python
+quadrat = lambda x: x**2
+potenz = lambda x, y: x**y
+print(quadrat(9), potenz(3, 4))
+```
+Nach dem Schlüsselwort `lambda` folgt ein oder mehrere Argumente gefolgt von einem Doppelpunkt.
+Der letzte Ausdruck gibt an, wie der Rückgabewert zu bestimmen ist. 
+
+Lambda-Funktionen werden auch als anonyme Funktionen bezeichnet, da sie nicht unbedingt einen
+Namen tragen müssen. Dies kann zum Beispiel dann nützlich sein, wenn das Ergebnis einer Funktion
+wiederum eine Funktion sein soll. Die Funktion {func}`potenz` gibt in Abhängigkeit von dem
+übergebenen Argument eine Funktion zurück, die die entsprechende Potenz eines Arguments berechnet.
+So werden hier das Quadrat (`square`) und die dritte Potenz (`cubic`) mit Hilfe der einen Funktion
+`potenz` definiert.
+```{code-cell} python
+def potenz(exponent):
+    return lambda x: x**exponent
+
+square = potenz(2)
+cubic = potenz(3)
+print(square(5), cubic(5))
+```
+Auch bei Anwendungen der im {numref}`fccfunc` definierten Ableitungsfunktion können anonyme
+Funktionen nützlich sein, wenn man die Ableitung einer selbst definierten Funktion numerisch
+berechnen möchte. In dem folgenden Beispiel soll die Ableitung von $f(x)=x^3$ berechnet werden.
+```{code-cell} python
+def ableitung(f, x):
+    h = 1e-7
+    df = (f(x+h)-f(x-h))/(2*h)
+    return df
+
+print(ableitung(lambda x: x**3, 1))
+```
+Die ersten vier Zeilen enthalten die bereits zuvor verwendete Ableitungsfunktion. Beim Aufruf dieser
+Funktion kann das erste Argument einfach in Form einer anonymen Funktion oder Lambda-Funktion
+angegeben werden, ohne dass eine separate Funktion in der üblichen Weise definiert werden müsste.
+Auf diese Weise erhalten wir hier eine numerische Näherung für die Ableitung der dritten Potenz an
+der Stelle $1$.
 
 (kwargs)=
 ## Schlüsselworte und Defaultwerte
