@@ -88,7 +88,7 @@ An dieser Stelle ein Argument anzugeben, das in der Funktionsdefinition nicht vo
 zu einem Fehler führen.
 ```{code-cell} python
 ---
-tags: ["raises-exception"]
+tags: [raises-exception]
 ---
 def f():
     print("Hallo!")
@@ -336,7 +336,7 @@ benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem `Unbound
 
 ```{code-cell} python
 ---
-tags: ["raises-exception"]
+tags: [raises-exception]
 ---
 def f(x):
     x = x+1
@@ -666,7 +666,7 @@ Es sei noch einmal betont, dass in diesem Fall das Schlüsselwort `x` im letzten
 entfallen kann, da sonst die Zuordnung nicht eindeutig ist.
 ```{code-cell} python
 ---
-tags: ["raises-exception"]
+tags: [raises-exception]
 ---
 ableitung(lambda x: x**3, h=10**-n, 1)
 ```
