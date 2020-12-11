@@ -1468,6 +1468,11 @@ sehr einfach</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.6+0.8j)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Falls man die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">complex()</span></code> nicht verwenden möchte, muss man
 beachten, dass die folgenden beiden Wege nicht zum Ziel führen.</p>
@@ -1476,6 +1481,18 @@ beachten, dass die folgenden beiden Wege nicht zum Ziel führen.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">18</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">9</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">yj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">27</span><span class="o">-</span><span class="mi">1710</span><span class="n">c726c088</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">yj</span>
+
+<span class="ne">NameError</span>: name &#39;yj&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1511,17 +1528,6 @@ sind.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
 <span class="n">z</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="mi">327</span><span class="n">f08e640d4</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">z</span>
-
-<span class="ne">NameError</span>: name &#39;y&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -2122,6 +2128,11 @@ Zeichenkette das gleiche Zeichen verwendet wird.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Näherung für π/3: 3.0
+</pre></div>
+</div>
+</div>
 </div>
 <p>Bis jetzt haben wir noch keinerlei Formatierung vorgenommen. Das vorige Beispiel,
 bei dem die Kreiszahl nur auf fünf Nachkommastellen einging, illustriert aber,
@@ -2130,6 +2141,11 @@ Beispiel wäre eine Beschränkung auf fünf Nachkommastellen sinnvoll.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Näherung für π/3: </span><span class="si">{</span><span class="n">y</span><span class="o">/</span><span class="mi">3</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Näherung für π/3: 3.00000
 </pre></div>
 </div>
 </div>
@@ -2158,6 +2174,11 @@ gerundet.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2**0.5 = 1.4142135623730951
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier ist zwischen den zwei Sternchen außerhalb der geschweiften Klammern, die direkt
 so ausgegeben werden, und den Sternchen innerhalb der geschweiften Klammern, die als
@@ -2179,6 +2200,14 @@ Wert einer Variablen auszugeben.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>myvar = 1.4142135623730951
+myvar =1.4142135623730951
+myvar= 1.4142135623730951
+myvar=1.4142135623730951
+</pre></div>
+</div>
+</div>
 </div>
 <p>In diesem Beispiel wird deutlich, dass man die Ausgabe von Leerzeichen um das
 Gleichheitszeichen herum leicht beeinflussen kann. Für ältere Pythonversionen
@@ -2186,6 +2215,11 @@ müsste man stattdessen den Variablennamen de facto zweimal angeben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;myvar = </span><span class="si">{</span><span class="n">myvar</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>myvar = 1.4142135623730951
 </pre></div>
 </div>
 </div>
@@ -2203,6 +2237,11 @@ wollen wir nun die ganze Breite der Ausgabe festlegen.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">6.3f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 1.414|
 </pre></div>
 </div>
 </div>
@@ -2228,6 +2267,11 @@ mehr wie gewünscht zueinander ausgerichtet.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|1.414|
+</pre></div>
+</div>
+</div>
 </div>
 <p>Dies gilt insbesondere, wenn man die Feldbreiten überhaupt nicht spezifiziert,
 da dann immer die minimal benötigte Breite belegt wird.</p>
@@ -2235,6 +2279,12 @@ da dann immer die minimal benötigte Breite belegt wird.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">**</span><span class="mi">7</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.414
+11.314
 </pre></div>
 </div>
 </div>
@@ -2255,6 +2305,16 @@ nichts ausgegeben wie die folgenden Beispiele zeigen.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|+1.41|
+|-1.41|
+| 1.41|
+|-1.41|
+|1.41|
+|-1.41|
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier haben wir bewusst die Feldbreite nur auf <code class="docutils literal notranslate"><span class="pre">4</span></code> gesetzt, um den Unterschied
 zwischen der dritten und fünften Eingabe zu verdeutlichen.</p>
@@ -2266,6 +2326,13 @@ unbedingt geeignet ist.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.41421356
+0.00000014
+14142135.62373095
 </pre></div>
 </div>
 </div>
@@ -2281,6 +2348,14 @@ an Stelle des bisherigen <code class="docutils literal notranslate"><span class=
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">10.4e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">14.8e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">20.8e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|1.41421356e+00|
+|1.4142e+00|
+|1.41421356e-07|
+|      1.41421356e+00|
 </pre></div>
 </div>
 </div>
@@ -2312,6 +2387,14 @@ erreicht man durch Angabe des Buchstabens <code class="docutils literal notransl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|  1.4142136e-05|
+|  0.00014142136|
+|       14142136|
+|  1.4142136e+08|
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier wird durch den Wechsel der Darstellung insbesondere sichergestellt, dass
 immer die gleiche Anzahl von signifikanten Stellen ausgegeben wird.  Die genaue
@@ -2327,6 +2410,11 @@ nachlesen, die auch alle weiteren Aspekte der Formatierung detailliert beschreib
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|42|   42|00042|
+</pre></div>
+</div>
+</div>
 </div>
 <p>Integers in Dezimaldarstellung benötigen keinen Buchstaben zur
 Formatspezifikation. Man kann aber ein <code class="docutils literal notranslate"><span class="pre">d</span></code> für Dezimaldarstellung angeben.
@@ -2338,6 +2426,11 @@ Binärformat (<code class="docutils literal notranslate"><span class="pre">b</sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">n</span><span class="si">:}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8b</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8o</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8x</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">08b</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|42|  101010|      52|      2a|00101010|
 </pre></div>
 </div>
 </div>
@@ -2357,6 +2450,11 @@ beeinflussen. Folgendes Beispiel zeigt die Funktionsweise.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;..&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x..xx
 </pre></div>
 </div>
 </div>
