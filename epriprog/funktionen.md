@@ -14,11 +14,6 @@ kernelspec:
 
 # Funktionen
 
-```{admonition} Hinweis
-:class: warning
-Dieses Kapitel befindet sich noch in Bearbeitung.
-```
-
 Funktionen im mathematischen Sinne sind uns in den Natur- und Ingenieurwissenschaften
 wohlbekannt. Dass solche Funktionen auch von Programmiersprachen zur Verfügung gestellt
 werden, hatten wir unter anderem im {numref}`mathfunc` gesehen. Allerdings ist der 
@@ -93,7 +88,7 @@ An dieser Stelle ein Argument anzugeben, das in der Funktionsdefinition nicht vo
 zu einem Fehler führen.
 ```{code-cell} python
 ---
-tags: [raises-exception]
+tags: ["raises-exception"]
 ---
 def f():
     print("Hallo!")
@@ -341,7 +336,7 @@ benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem `Unbound
 
 ```{code-cell} python
 ---
-tags: [raises-exception]
+tags: ["raises-exception"]
 ---
 def f(x):
     x = x+1
@@ -577,3 +572,113 @@ der Stelle $1$.
 
 (kwargs)=
 ## Schlüsselworte und Defaultwerte
+
+Am Ende von {numref}`fdef` hatten wir gezeigt, dass bei Funktionsaufrufen mit mehreren Argumenten
+die Zuordnung nicht nach dem Namen erfolgt, sondern zunächst einmal nach der Position der jeweiligen
+Argumente.  Dies ist jedoch insbesondere in Fällen, in denen die Argumentliste sehr lange wird,
+nicht praktisch und daher gibt es auch andere Möglichkeiten, Argumente zu übergeben.  Zur
+Illustration dieser Problematik stellen wir uns eine Funktion vor, die es ermöglicht, vorgegebene
+Daten graphisch darzustellen. Eine solche Funktion wird typischerweise relativ viele Argumente
+haben, da man beispielsweise die Strichfarbe, die Strichdicke und die Strichart festlegen möchte.
+Andererseits möchte man nicht unbedingt alle Argumente explizit angeben müssen, wenn man nur eine
+schwarze durchgezogene Linie mittlerer Dicke darstellen möchte. Es sollte auch nicht so sein, dass
+man, nur weil man die Stichart anpassen möchte, alle anderen Argumente, die vor dem betreffenden
+Argument stehen, zwingend angeben muss.
+
+In einem solchen Fall ist es sinnvoll, Argumente per Schlüsselwort zu übergeben. Um das Vorgehen
+zu verdeutlichen, greifen wir auf die Funktion zurück, die wir am Ende des letzten Abschnitts zur
+numerischen Berechnung von Ableitungen eingeführt hatten.
+```{code-cell} python
+def ableitung(f, x):
+    h = 1e-7
+    df = (f(x+h)-f(x-h))/(2*h)
+    return df
+```
+In dem zuvor beschriebenen Funktionsaufruf
+```{code-cell} python
+ableitung(lambda x: x**3, 1)
+```
+wird das erste Argument der Variable `f` und das zweite Argument der Variable `x` in der Funktion 
+zugeordnet. Alternativ kann man die Argumente mit den in der Funktion verwendeten Namen bezeichnen.
+Ein mögliche Form des Funktionsaufrufs wäre dann
+```{code-cell} python
+ableitung(f=lambda x: x**3, x=1)
+```
+Hier stehen die Argumente zwar immer noch in der gleichen Reihenfolge, aber die Zuordnung erfolgt
+nun über die angegebenen Bezeichner. Daher könnte man genauso gut die Reihenfolge der beiden
+Argumente vertauschen.
+```{code-cell} python
+ableitung(x=1, f=lambda x: x**3)
+```
+```{admonition} Hinweis zur Formatierung
+{pep}`8` empfiehlt, um Gleichheitszeichen in Zuweisungen Leerzeichen zu setzen. Anders
+ist dies bei Schlüsselwortargumenten. Hier sollen um das Gleichheitszeichen keine Leerzeichen
+gesetzt.
+```
+Beim den letzten beiden Funktionsaufrufen ist es wichtig, die verschiedenen `x` voneinander zu
+unterscheiden. Die beiden `x` in der Lambdafunktion haben dabei nichts mit dem Schlüsselwort `x`
+zu tun. Noch sorgfältiger muss man in dem folgenden Funktionsaufruf die verschiedenen `x`
+unterscheiden.
+```{code-cell} python
+x = 1
+ableitung(x=x, f=lambda x: x**3)
+```
+Im Funktionsaufruf bezeichnet das erste `x` ein Schlüsselwort, das mit einem Argumentbezeichner in 
+der Funktionsdefinition übereinstimmen muss. Das zweite `x` verweist auf die Variable `x`, die nach
+der Zuweisung in der ersten Zeile den Wert 1 besitzt. Die `x` im zweiten Argument bezeichnen eine
+lokale Variable in der Lambdafunktion und haben nichts mit dem beiden `x` im ersten Argument zu tun.
+
+Gerade bei längeren Argumentlisten kann es sinnvoll sein, einen Teil der Argumente über ihre
+Position in der Liste zuzuordnen und andere Argumente über das zugehörige Schlüsselwort. In einem
+solchen Fall müssen die Argumente mit Schlüsselwort zwingend hinter den Argumenten kommen, die über
+ihre Position zugeordnet werden. Andernfalls könnten die Argumente im Allgemeinen nicht
+zweifelsfrei zugeordnet werden.
+
+Ein Nachteil unserer Ableitungsfunktion, wie sie momentan implementiert ist, besteht darin, dass die
+Schrittweite `h` in der Funktion fest vorgegeben ist. Der Wert von $10^{-7}$ mag zwar vernünftig 
+gewählt sein, aber es wäre sinnvoll, wenn man diesen Wert bei Bedarf anpassen könnte. In einem
+solchen Fall ist es möglich, einen so genannten Defaultwert zu definieren, der dann zum Tragen
+kommt, wenn nichts anderes gesagt wird. Ein verbesserte Variante der Ableitungsfunktion könnte also
+wie folgt aussehen.
+```{code-cell} python
+def ableitung(f, x, h=1e-7):
+    df = (f(x+h)-f(x-h))/(2*h)
+    return df
+```
+Diese Funktion kann nun in verschiedener Weise aufgerufen werden. Zum einen können wir die früheren
+Aufrufe übernehmen, wobei dann der Wert für `h` gleich dem angegebenen Defaultwert ist. Python wird
+sich also nicht darüber beschweren, dass `h` nicht definiert sei.
+```{code-cell} python
+ableitung(lambda x: x**3, 1)
+```
+Man kann aber auch den Wert von `h` vorgeben.
+```{code-cell} python
+for n in range(1, 8):
+    print(ableitung(lambda x: x**3, 1, 10**-n))
+```
+In diesem Fall werden die Argumente über ihre Position übergeben. Natürlich könnte man stattdessen
+auch Schlüsselwortargumente verwenden, zum Beispiel in der Form
+```{code-cell} python
+for n in range(1, 8):
+    print(ableitung(lambda x: x**3, h=10**-n, x=1))
+```
+Es sei noch einmal betont, dass in diesem Fall das Schlüsselwort `x` im letzten Argument nicht
+entfallen kann, da sonst die Zuordnung nicht eindeutig ist.
+```{code-cell} python
+---
+tags: ["raises-exception"]
+---
+ableitung(lambda x: x**3, h=10**-n, 1)
+```
+
+Abschließend sehen wir uns zur Illustration noch ein Beispiel aus der Scipy-Bibliothek an, auf die wir 
+im {numref}`scipy` noch etwas genauer eingehen werden. Diese Bibliothek stellt eine Funktion zur
+numerischen Integration zur Verfügung, die 14 Argumente besitzt. Die ersten drei Argumente werden 
+typischerweise über ihre Position übergeben, was sich unter anderem daraus ergibt, dass es sich
+hierbei um essentielle Argumente wie den Integranden und die Integrationsgrenzen handelt. Für diese
+Argumente gibt es keine sinnvollen Defaultwerte. Anders ist dies bei den restlichen elf Argumenten,
+für die Defaultwerte definiert sind, die bei Bedarf abgeändert werden können.
+```{code-cell} python
+from scipy import integrate
+help(integrate.quad)
+```
