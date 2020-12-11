@@ -292,10 +292,6 @@
                 
   <div class="section" id="funktionen">
 <h1><span class="section-number">5. </span>Funktionen<a class="headerlink" href="#funktionen" title="Link zu dieser Überschrift">¶</a></h1>
-<div class="warning admonition">
-<p class="admonition-title">Hinweis</p>
-<p>Dieses Kapitel befindet sich noch in Bearbeitung.</p>
-</div>
 <p>Funktionen im mathematischen Sinne sind uns in den Natur- und Ingenieurwissenschaften
 wohlbekannt. Dass solche Funktionen auch von Programmiersprachen zur Verfügung gestellt
 werden, hatten wir unter anderem im <a class="reference internal" href="datentypen.html#mathfunc"><span class="std std-numref">Kapitel 3.3</span></a> gesehen. Allerdings ist der
@@ -416,11 +412,6 @@ zu grüßenden Person als Argument übergeben.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo, Guido!
-</pre></div>
-</div>
-</div>
 </div>
 <p>Will man zusätzlich die Sprache zwischen Deutsch (de) und Englisch (en) wählen, so könnte man ein
 weiteres Argument vorsehen.</p>
@@ -438,11 +429,6 @@ weiteres Argument vorsehen.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Guido!
-</pre></div>
-</div>
-</div>
 </div>
 <p>Das gewählte Beispiel ist insofern untypisch als die Funktion anscheinend keinen Rückgabewert zurückliefert.
 Normalerweise würde man die sich ergebende Zeichenkette an den aufrufenden Programmteil übergeben, wo dann
@@ -455,11 +441,6 @@ einem Argument würde dann folgendermaßen aussehen.</p>
     <span class="k">return</span> <span class="n">s</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo, Guido!
 </pre></div>
 </div>
 </div>
@@ -479,12 +460,6 @@ kein Ergebnis zurückgibt, ist dies nicht ganz richtig.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo, Guido!
-Rückgabewert: None
-</pre></div>
-</div>
-</div>
 </div>
 <p>Die erste Ausgabezeile ergibt sich aus der <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung in der Funktion <code class="docutils literal notranslate"><span class="pre">f</span></code>. Der Rückgabewert aufgrund
 des Funktionsaufrufs wird in der Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> gespeichert, die anschließend ausgegeben wird. Wie wir sehen,
@@ -498,12 +473,6 @@ letzte Zeile explizit <code class="docutils literal notranslate"><span class="pr
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rückgabewert: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo, Guido!
-Rückgabewert: None
 </pre></div>
 </div>
 </div>
@@ -528,14 +497,6 @@ sehr simplen Primzahltest.</p>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 3 5 7 11 13
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
 </pre></div>
 </div>
 </div>
@@ -570,11 +531,6 @@ getrennt in der <code class="docutils literal notranslate"><span class="pre">ret
 <span class="n">pt1_phi</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">pt1_x</span><span class="p">,</span> <span class="n">pt1_y</span><span class="p">,</span> <span class="n">pt1_z</span> <span class="o">=</span> <span class="n">spherical2cartesian</span><span class="p">(</span><span class="n">pt1_r</span><span class="p">,</span> <span class="n">pt1_theta</span><span class="p">,</span> <span class="n">pt1_phi</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">pt1_x</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pt1_y</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pt1_z</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.124, 3.536, 7.071)
 </pre></div>
 </div>
 </div>
@@ -629,17 +585,6 @@ kennengelernt hatten, wo <code class="docutils literal notranslate"><span class=
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function mitternacht in module __main__:
-
-mitternacht(a, b, c)
-    Berechne die beiden Lösungen einer quadratischen Gleichung ax²+bx+c=0
-    
-    Es wird die Mitternachtsformel verwendet.
-    Achtung: Es wird stillschweigend vorausgesetzt, dass b^2-4ac&gt;0.
-</pre></div>
-</div>
-</div>
 </div>
 <p>Hier wird man also in Python belohnt, wenn man sich einer guten Dokumentationspraxis bedient.</p>
 <p>Weitere Hinweis zu <em>docstrings</em> sind in <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0257"><strong>PEP 257</strong></a> zu finden.</p>
@@ -686,15 +631,6 @@ konkreten Beispiel.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lokal:  x = 4
-global: x = 5
-global: y = 2
-f(3) = 8
-x = 5
-</pre></div>
-</div>
-</div>
 </div>
 <p>Außerhalb der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> sind die globalen Variablen <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> mit ihren Werten
 5 und 2 definiert. In der vorletzten Zeile wird dann die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> mit dem Argument
@@ -738,25 +674,6 @@ benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem <code cl
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">d50cf0ed9a63</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nn">&lt;ipython-input-13-d50cf0ed9a63&gt;</span> in <span class="ni">f</span><span class="nt">(x)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="ne">UnboundLocalError</span>: local variable &#39;y&#39; referenced before assignment
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="rekursive-funktionen">
@@ -792,19 +709,6 @@ Produktdarstellung.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1
-2 2
-3 6
-4 24
-5 120
-6 720
-7 5040
-8 40320
-9 362880
-</pre></div>
-</div>
-</div>
 </div>
 <p>Alternativ kann man die Fakultät rekursiv implementieren.</p>
 <div class="cell docutils container">
@@ -819,19 +723,6 @@ Produktdarstellung.</p>
 
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1
-2 2
-3 6
-4 24
-5 120
-6 720
-7 5040
-8 40320
-9 362880
 </pre></div>
 </div>
 </div>
@@ -879,25 +770,6 @@ wenig.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>** Aufruf mit Argument n = 5
-** Aufruf mit Argument n = 4
-** Aufruf mit Argument n = 3
-** Aufruf mit Argument n = 2
-** Aufruf mit Argument n = 1
--&gt; 1! = 1
--&gt; 2! = 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; 3! = 6
--&gt; 4! = 24
--&gt; 5! = 120
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
-</pre></div>
-</div>
-</div>
 </div>
 <p>Hier wird deutlich, wie zunächst nacheinander die Funktion mit fallenden Argumenten aufgerufen
 wird und dann sukzessive die Resultate aufgebaut werden, nachdem das Ende der Rekursion
@@ -936,13 +808,6 @@ Listen auftreten. Wir wollen dies an Beispielen illustrieren.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8414709848078965 0.8414709848078965
-&lt;built-in function sin&gt;
-&lt;built-in function sin&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Hier wird der Variablen <code class="docutils literal notranslate"><span class="pre">funktion</span></code> die Sinusfunktion <code class="docutils literal notranslate"><span class="pre">sin</span></code> aus dem <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul zugewiesen.
 Wichtig ist an dieser Stelle, dass keine Klammer gesetzt werden, wie man es bei einem
@@ -966,13 +831,6 @@ es keine Rolle, ob die betreffenden Funktionen importiert oder selbst definiert 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cos   : 0.540302
-sin   : 0.841471
-myfunc: 1.000000
-</pre></div>
-</div>
-</div>
 </div>
 <p>Für die Ausgabe des Funktionsnamens haben wir uns dabei des Attributs <code class="docutils literal notranslate"><span class="pre">__name__</span></code> bedient, wobei hier
 vor und nach dem Text <code class="docutils literal notranslate"><span class="pre">name</span></code> jeweils zwei Unterstriche stehen.</p>
@@ -990,12 +848,6 @@ Ableitung einer Funktion an einer vorgegebenen Stelle bestimmen soll.</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ableitung</span><span class="p">(</span><span class="n">sin</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ableitung</span><span class="p">(</span><span class="n">cos</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ableitung(sin, 0) = 0.9999999999999983
-ableitung(cos, 0) = 0.0
 </pre></div>
 </div>
 </div>
@@ -1027,11 +879,6 @@ illustrieren.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81 81
-</pre></div>
-</div>
-</div>
 </div>
 <p>Nach dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">lambda</span></code> folgt ein oder mehrere Argumente gefolgt von einem Doppelpunkt.
 Der letzte Ausdruck gibt an, wie der Rückgabewert zu bestimmen ist.</p>
@@ -1052,11 +899,6 @@ So werden hier das Quadrat (<code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25 125
-</pre></div>
-</div>
-</div>
 </div>
 <p>Auch bei Anwendungen der im <a class="reference internal" href="#fccfunc"><span class="std std-numref">Kapitel 5.5</span></a> definierten Ableitungsfunktion können anonyme
 Funktionen nützlich sein, wenn man die Ableitung einer selbst definierten Funktion numerisch
@@ -1072,11 +914,6 @@ berechnen möchte. In dem folgenden Beispiel soll die Ableitung von <span class=
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000086267
-</pre></div>
-</div>
-</div>
 </div>
 <p>Die ersten vier Zeilen enthalten die bereits zuvor verwendete Ableitungsfunktion. Beim Aufruf dieser
 Funktion kann das erste Argument einfach in Form einer anonymen Funktion oder Lambda-Funktion
@@ -1086,6 +923,153 @@ der Stelle <span class="math notranslate nohighlight">\(1\)</span>.</p>
 </div>
 <div class="section" id="schlusselworte-und-defaultwerte">
 <span id="kwargs"></span><h2><span class="section-number">5.7. </span>Schlüsselworte und Defaultwerte<a class="headerlink" href="#schlusselworte-und-defaultwerte" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Am Ende von <a class="reference internal" href="#fdef"><span class="std std-numref">Kapitel 5.1</span></a> hatten wir gezeigt, dass bei Funktionsaufrufen mit mehreren Argumenten
+die Zuordnung nicht nach dem Namen erfolgt, sondern zunächst einmal nach der Position der jeweiligen
+Argumente.  Dies ist jedoch insbesondere in Fällen, in denen die Argumentliste sehr lange wird,
+nicht praktisch und daher gibt es auch andere Möglichkeiten, Argumente zu übergeben.  Zur
+Illustration dieser Problematik stellen wir uns eine Funktion vor, die es ermöglicht, vorgegebene
+Daten graphisch darzustellen. Eine solche Funktion wird typischerweise relativ viele Argumente
+haben, da man beispielsweise die Strichfarbe, die Strichdicke und die Strichart festlegen möchte.
+Andererseits möchte man nicht unbedingt alle Argumente explizit angeben müssen, wenn man nur eine
+schwarze durchgezogene Linie mittlerer Dicke darstellen möchte. Es sollte auch nicht so sein, dass
+man, nur weil man die Stichart anpassen möchte, alle anderen Argumente, die vor dem betreffenden
+Argument stehen, zwingend angeben muss.</p>
+<p>In einem solchen Fall ist es sinnvoll, Argumente per Schlüsselwort zu übergeben. Um das Vorgehen
+zu verdeutlichen, greifen wir auf die Funktion zurück, die wir am Ende des letzten Abschnitts zur
+numerischen Berechnung von Ableitungen eingeführt hatten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ableitung</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mf">1e-7</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In dem zuvor beschriebenen Funktionsaufruf</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>wird das erste Argument der Variable <code class="docutils literal notranslate"><span class="pre">f</span></code> und das zweite Argument der Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in der Funktion
+zugeordnet. Alternativ kann man die Argumente mit den in der Funktion verwendeten Namen bezeichnen.
+Ein mögliche Form des Funktionsaufrufs wäre dann</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier stehen die Argumente zwar immer noch in der gleichen Reihenfolge, aber die Zuordnung erfolgt
+nun über die angegebenen Bezeichner. Daher könnte man genauso gut die Reihenfolge der beiden
+Argumente vertauschen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-hinweis-zur-formatierung admonition">
+<p class="admonition-title">Hinweis zur Formatierung</p>
+<p><span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> empfiehlt, um Gleichheitszeichen in Zuweisungen Leerzeichen zu setzen. Anders
+ist dies bei Schlüsselwortargumenten. Hier sollen um das Gleichheitszeichen keine Leerzeichen
+gesetzt.</p>
+</div>
+<p>Beim den letzten beiden Funktionsaufrufen ist es wichtig, die verschiedenen <code class="docutils literal notranslate"><span class="pre">x</span></code> voneinander zu
+unterscheiden. Die beiden <code class="docutils literal notranslate"><span class="pre">x</span></code> in der Lambdafunktion haben dabei nichts mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">x</span></code>
+zu tun. Noch sorgfältiger muss man in dem folgenden Funktionsaufruf die verschiedenen <code class="docutils literal notranslate"><span class="pre">x</span></code>
+unterscheiden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ableitung</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im Funktionsaufruf bezeichnet das erste <code class="docutils literal notranslate"><span class="pre">x</span></code> ein Schlüsselwort, das mit einem Argumentbezeichner in
+der Funktionsdefinition übereinstimmen muss. Das zweite <code class="docutils literal notranslate"><span class="pre">x</span></code> verweist auf die Variable <code class="docutils literal notranslate"><span class="pre">x</span></code>, die nach
+der Zuweisung in der ersten Zeile den Wert 1 besitzt. Die <code class="docutils literal notranslate"><span class="pre">x</span></code> im zweiten Argument bezeichnen eine
+lokale Variable in der Lambdafunktion und haben nichts mit dem beiden <code class="docutils literal notranslate"><span class="pre">x</span></code> im ersten Argument zu tun.</p>
+<p>Gerade bei längeren Argumentlisten kann es sinnvoll sein, einen Teil der Argumente über ihre
+Position in der Liste zuzuordnen und andere Argumente über das zugehörige Schlüsselwort. In einem
+solchen Fall müssen die Argumente mit Schlüsselwort zwingend hinter den Argumenten kommen, die über
+ihre Position zugeordnet werden. Andernfalls könnten die Argumente im Allgemeinen nicht
+zweifelsfrei zugeordnet werden.</p>
+<p>Ein Nachteil unserer Ableitungsfunktion, wie sie momentan implementiert ist, besteht darin, dass die
+Schrittweite <code class="docutils literal notranslate"><span class="pre">h</span></code> in der Funktion fest vorgegeben ist. Der Wert von <span class="math notranslate nohighlight">\(10^{-7}\)</span> mag zwar vernünftig
+gewählt sein, aber es wäre sinnvoll, wenn man diesen Wert bei Bedarf anpassen könnte. In einem
+solchen Fall ist es möglich, einen so genannten Defaultwert zu definieren, der dann zum Tragen
+kommt, wenn nichts anderes gesagt wird. Ein verbesserte Variante der Ableitungsfunktion könnte also
+wie folgt aussehen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ableitung</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Diese Funktion kann nun in verschiedener Weise aufgerufen werden. Zum einen können wir die früheren
+Aufrufe übernehmen, wobei dann der Wert für <code class="docutils literal notranslate"><span class="pre">h</span></code> gleich dem angegebenen Defaultwert ist. Python wird
+sich also nicht darüber beschweren, dass <code class="docutils literal notranslate"><span class="pre">h</span></code> nicht definiert sei.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Man kann aber auch den Wert von <code class="docutils literal notranslate"><span class="pre">h</span></code> vorgeben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In diesem Fall werden die Argumente über ihre Position übergeben. Natürlich könnte man stattdessen
+auch Schlüsselwortargumente verwenden, zum Beispiel in der Form</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es sei noch einmal betont, dass in diesem Fall das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">x</span></code> im letzten Argument nicht
+entfallen kann, da sonst die Zuordnung nicht eindeutig ist.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Abschließend sehen wir uns zur Illustration noch ein Beispiel aus der Scipy-Bibliothek an, auf die wir
+im <a class="reference internal" href="scipy.html#scipy"><span class="std std-numref">Kapitel 8</span></a> noch etwas genauer eingehen werden. Diese Bibliothek stellt eine Funktion zur
+numerischen Integration zur Verfügung, die 14 Argumente besitzt. Die ersten drei Argumente werden
+typischerweise über ihre Position übergeben, was sich unter anderem daraus ergibt, dass es sich
+hierbei um essentielle Argumente wie den Integranden und die Integrationsgrenzen handelt. Für diese
+Argumente gibt es keine sinnvollen Defaultwerte. Anders ist dies bei den restlichen elf Argumenten,
+für die Defaultwerte definiert sind, die bei Bedarf abgeändert werden können.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+<span class="n">help</span><span class="p">(</span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
