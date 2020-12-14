@@ -1,5 +1,5 @@
-sphinx
-jupyter-book
-numpy
-scipy
-matplotlib
+sphinx==3.2.1
+jupyter-book==0.8.3
+numpy==1.19.2
+scipy==1.5.2
+matplotlib==3.3.3
