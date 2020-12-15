@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -605,6 +605,11 @@ Dementsprechend sind positive Zahlen von <span class="math notranslate nohighlig
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;7f&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier ist das vordere Bit gleich <span class="math notranslate nohighlight">\(0\)</span>, während alle anderen Bits gleich <span class="math notranslate nohighlight">\(1\)</span> sind.
 <span class="math notranslate nohighlight">\(2^7\)</span> würde dazu führen, dass das erste Bit gleich <span class="math notranslate nohighlight">\(1\)</span> wird, was aber eine
@@ -614,6 +619,11 @@ abgespeichert werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span> <span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;01&#39;, &#39;ff&#39;)
 </pre></div>
 </div>
 </div>
@@ -660,6 +670,11 @@ ein einziges Byte das vordere Byte ignoriert.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;7b&#39;, &#39;85&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-aufgabe admonition">
 <p class="admonition-title">Aufgabe</p>
@@ -675,11 +690,26 @@ die sich mit einem »signed char« Integer darstellen lässt, gleich <span class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">error</span><span class="g g-Whitespace">                                     </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">76</span><span class="n">f77c86fbe2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+
+<span class="ne">error</span>: byte format requires -128 &lt;= number &lt;= 127
+</pre></div>
+</div>
+</div>
 </div>
 <p>Andererseits kann <span class="math notranslate nohighlight">\(-2^7\)</span> gerade noch dargestellt werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;80&#39;
 </pre></div>
 </div>
 </div>

@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -350,7 +350,7 @@ Hallo!
 </div>
 <p>In diesem einfachen Beispiel ist die Funktion durch die ersten beiden Zeilen definiert. Dabei
 besitzt die erste Zeile eine Struktur wie wir sie ähnlich von Schleifen und Verzweigungen kennen.
-Die Zeile beginnt nämlich ebenfalls mit einem Schlüsselwort, das hier <code class="docutils literal notranslate"><span class="pre">def</span></code> heißt und andeutet,
+Die Zeile beginnt nämlich ebenfalls mit einem Schlüsselwort, das in diesem Fall <code class="docutils literal notranslate"><span class="pre">def</span></code> heißt und andeutet,
 dass hier eine Funktion definiert wird. Des Weiteren wird die erste Zeile mit einem Doppelpunkt
 beendet. Der Funktionsname ist hier <code class="docutils literal notranslate"><span class="pre">f</span></code>, wobei hier im Allgemeinen eine Name gewählt werden sollte,
 der besser beschreibt, was die Funktion tut. Wichtig ist das Klammerpaar, das auch dann nicht
@@ -412,6 +412,11 @@ zu grüßenden Person als Argument übergeben.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo, Guido!
+</pre></div>
+</div>
+</div>
 </div>
 <p>Will man zusätzlich die Sprache zwischen Deutsch (de) und Englisch (en) wählen, so könnte man ein
 weiteres Argument vorsehen.</p>
@@ -429,6 +434,11 @@ weiteres Argument vorsehen.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Guido!
+</pre></div>
+</div>
+</div>
 </div>
 <p>Das gewählte Beispiel ist insofern untypisch als die Funktion anscheinend keinen Rückgabewert zurückliefert.
 Normalerweise würde man die sich ergebende Zeichenkette an den aufrufenden Programmteil übergeben, wo dann
@@ -441,6 +451,11 @@ einem Argument würde dann folgendermaßen aussehen.</p>
     <span class="k">return</span> <span class="n">s</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo, Guido!
 </pre></div>
 </div>
 </div>
@@ -460,6 +475,12 @@ kein Ergebnis zurückgibt, ist dies nicht ganz richtig.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo, Guido!
+Rückgabewert: None
+</pre></div>
+</div>
+</div>
 </div>
 <p>Die erste Ausgabezeile ergibt sich aus der <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung in der Funktion <code class="docutils literal notranslate"><span class="pre">f</span></code>. Der Rückgabewert aufgrund
 des Funktionsaufrufs wird in der Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> gespeichert, die anschließend ausgegeben wird. Wie wir sehen,
@@ -473,6 +494,15 @@ letzte Zeile explizit <code class="docutils literal notranslate"><span class="pr
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rückgabewert: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo, Guido!
+Rückgabewert: None
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -497,6 +527,11 @@ sehr simplen Primzahltest.</p>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
 </pre></div>
 </div>
 </div>
@@ -531,6 +566,11 @@ getrennt in der <code class="docutils literal notranslate"><span class="pre">ret
 <span class="n">pt1_phi</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">pt1_x</span><span class="p">,</span> <span class="n">pt1_y</span><span class="p">,</span> <span class="n">pt1_z</span> <span class="o">=</span> <span class="n">spherical2cartesian</span><span class="p">(</span><span class="n">pt1_r</span><span class="p">,</span> <span class="n">pt1_theta</span><span class="p">,</span> <span class="n">pt1_phi</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">pt1_x</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pt1_y</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pt1_z</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.124, 3.536, 7.071)
 </pre></div>
 </div>
 </div>
@@ -585,6 +625,17 @@ kennengelernt hatten, wo <code class="docutils literal notranslate"><span class=
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function mitternacht in module __main__:
+
+mitternacht(a, b, c)
+    Berechne die beiden Lösungen einer quadratischen Gleichung ax²+bx+c=0
+    
+    Es wird die Mitternachtsformel verwendet.
+    Achtung: Es wird stillschweigend vorausgesetzt, dass b^2-4ac&gt;0.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier wird man also in Python belohnt, wenn man sich einer guten Dokumentationspraxis bedient.</p>
 <p>Weitere Hinweis zu <em>docstrings</em> sind in <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0257"><strong>PEP 257</strong></a> zu finden.</p>
@@ -631,6 +682,15 @@ konkreten Beispiel.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lokal:  x = 4
+global: x = 5
+global: y = 2
+f(3) = 8
+x = 5
+</pre></div>
+</div>
+</div>
 </div>
 <p>Außerhalb der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> sind die globalen Variablen <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> mit ihren Werten
 5 und 2 definiert. In der vorletzten Zeile wird dann die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">f()</span></code> mit dem Argument
@@ -674,6 +734,25 @@ benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem <code cl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">d50cf0ed9a63</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-13-d50cf0ed9a63&gt;</span> in <span class="ni">f</span><span class="nt">(x)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+
+<span class="ne">UnboundLocalError</span>: local variable &#39;y&#39; referenced before assignment
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="rekursive-funktionen">
@@ -709,6 +788,19 @@ Produktdarstellung.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1
+2 2
+3 6
+4 24
+5 120
+6 720
+7 5040
+8 40320
+9 362880
+</pre></div>
+</div>
+</div>
 </div>
 <p>Alternativ kann man die Fakultät rekursiv implementieren.</p>
 <div class="cell docutils container">
@@ -723,6 +815,19 @@ Produktdarstellung.</p>
 
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1
+2 2
+3 6
+4 24
+5 120
+6 720
+7 5040
+8 40320
+9 362880
 </pre></div>
 </div>
 </div>
@@ -770,6 +875,23 @@ wenig.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>** Aufruf mit Argument n = 5
+** Aufruf mit Argument n = 4
+** Aufruf mit Argument n = 3
+** Aufruf mit Argument n = 2
+** Aufruf mit Argument n = 1
+-&gt; 1! = 1
+-&gt; 2! = 2
+-&gt; 3! = 6
+-&gt; 4! = 24
+-&gt; 5! = 120
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier wird deutlich, wie zunächst nacheinander die Funktion mit fallenden Argumenten aufgerufen
 wird und dann sukzessive die Resultate aufgebaut werden, nachdem das Ende der Rekursion
@@ -808,6 +930,13 @@ Listen auftreten. Wir wollen dies an Beispielen illustrieren.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8414709848078965 0.8414709848078965
+&lt;built-in function sin&gt;
+&lt;built-in function sin&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier wird der Variablen <code class="docutils literal notranslate"><span class="pre">funktion</span></code> die Sinusfunktion <code class="docutils literal notranslate"><span class="pre">sin</span></code> aus dem <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul zugewiesen.
 Wichtig ist an dieser Stelle, dass keine Klammer gesetzt werden, wie man es bei einem
@@ -831,6 +960,13 @@ es keine Rolle, ob die betreffenden Funktionen importiert oder selbst definiert 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cos   : 0.540302
+sin   : 0.841471
+myfunc: 1.000000
+</pre></div>
+</div>
+</div>
 </div>
 <p>Für die Ausgabe des Funktionsnamens haben wir uns dabei des Attributs <code class="docutils literal notranslate"><span class="pre">__name__</span></code> bedient, wobei hier
 vor und nach dem Text <code class="docutils literal notranslate"><span class="pre">name</span></code> jeweils zwei Unterstriche stehen.</p>
@@ -848,6 +984,12 @@ Ableitung einer Funktion an einer vorgegebenen Stelle bestimmen soll.</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ableitung</span><span class="p">(</span><span class="n">sin</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ableitung</span><span class="p">(</span><span class="n">cos</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ableitung(sin, 0) = 0.9999999999999983
+ableitung(cos, 0) = 0.0
 </pre></div>
 </div>
 </div>
@@ -879,6 +1021,11 @@ illustrieren.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81 81
+</pre></div>
+</div>
+</div>
 </div>
 <p>Nach dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">lambda</span></code> folgt ein oder mehrere Argumente gefolgt von einem Doppelpunkt.
 Der letzte Ausdruck gibt an, wie der Rückgabewert zu bestimmen ist.</p>
@@ -899,6 +1046,11 @@ So werden hier das Quadrat (<code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25 125
+</pre></div>
+</div>
+</div>
 </div>
 <p>Auch bei Anwendungen der im <a class="reference internal" href="#fccfunc"><span class="std std-numref">Kapitel 5.5</span></a> definierten Ableitungsfunktion können anonyme
 Funktionen nützlich sein, wenn man die Ableitung einer selbst definierten Funktion numerisch
@@ -911,6 +1063,11 @@ berechnen möchte. In dem folgenden Beispiel soll die Ableitung von <span class=
     <span class="k">return</span> <span class="n">df</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000086267
 </pre></div>
 </div>
 </div>
@@ -954,6 +1111,11 @@ numerischen Berechnung von Ableitungen eingeführt hatten.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000086267
+</pre></div>
+</div>
+</div>
 </div>
 <p>wird das erste Argument der Variable <code class="docutils literal notranslate"><span class="pre">f</span></code> und das zweite Argument der Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in der Funktion
 zugeordnet. Alternativ kann man die Argumente mit den in der Funktion verwendeten Namen bezeichnen.
@@ -964,6 +1126,11 @@ Ein mögliche Form des Funktionsaufrufs wäre dann</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000086267
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier stehen die Argumente zwar immer noch in der gleichen Reihenfolge, aber die Zuordnung erfolgt
 nun über die angegebenen Bezeichner. Daher könnte man genauso gut die Reihenfolge der beiden
@@ -971,6 +1138,11 @@ Argumente vertauschen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000086267
 </pre></div>
 </div>
 </div>
@@ -989,6 +1161,11 @@ unterscheiden.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">ableitung</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000086267
 </pre></div>
 </div>
 </div>
@@ -1026,12 +1203,28 @@ sich also nicht darüber beschweren, dass <code class="docutils literal notransl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000086267
+</pre></div>
+</div>
+</div>
 </div>
 <p>Man kann aber auch den Wert von <code class="docutils literal notranslate"><span class="pre">h</span></code> vorgeben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0100000000000016
+3.0001000000000055
+3.0000009999998634
+3.0000000099994484
+3.000000000097369
+2.9999999999197335
+3.000000000086267
 </pre></div>
 </div>
 </div>
@@ -1045,6 +1238,17 @@ auch Schlüsselwortargumente verwenden, zum Beispiel in der Form</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0100000000000016
+3.0001000000000055
+3.0000009999998634
+3.0000000099994484
+3.000000000097369
+2.9999999999197335
+3.000000000086267
+</pre></div>
+</div>
+</div>
 </div>
 <p>Es sei noch einmal betont, dass in diesem Fall das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">x</span></code> im letzten Argument nicht
 entfallen kann, da sonst die Zuordnung nicht eindeutig ist.</p>
@@ -1054,18 +1258,327 @@ entfallen kann, da sonst die Zuordnung nicht eindeutig ist.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-32-623220036647&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                                         <span class="o">^</span>
+<span class="ne">SyntaxError</span>: positional argument follows keyword argument
+</pre></div>
 </div>
-<p>Abschließend sehen wir uns zur Illustration noch ein Beispiel aus der Scipy-Bibliothek an, auf die wir
-im <a class="reference internal" href="scipy.html#scipy"><span class="std std-numref">Kapitel 8</span></a> noch etwas genauer eingehen werden. Diese Bibliothek stellt eine Funktion zur
-numerischen Integration zur Verfügung, die 14 Argumente besitzt. Die ersten drei Argumente werden
-typischerweise über ihre Position übergeben, was sich unter anderem daraus ergibt, dass es sich
-hierbei um essentielle Argumente wie den Integranden und die Integrationsgrenzen handelt. Für diese
-Argumente gibt es keine sinnvollen Defaultwerte. Anders ist dies bei den restlichen elf Argumenten,
-für die Defaultwerte definiert sind, die bei Bedarf abgeändert werden können.</p>
-<div class="cell docutils container">
+</div>
+</div>
+<p>Abschließend sehen wir uns zur Illustration noch ein Beispiel aus der
+Scipy-Bibliothek an, auf die wir im <a class="reference internal" href="scipy.html#scipy"><span class="std std-numref">Kapitel 8</span></a> einen Blick werfen
+werden. Diese Bibliothek stellt neben vielem anderem eine Funktion zur
+numerischen Integration zur Verfügung, die 14 Argumente besitzt. Die ersten
+drei Argumente werden typischerweise über ihre Position übergeben, was sich
+unter anderem daraus ergibt, dass es sich hierbei um essentielle Argumente wie
+den Integranden und die Integrationsgrenzen handelt. Für diese Argumente gibt
+es keine sinnvollen Defaultwerte. Anders ist dies bei den restlichen elf
+Argumenten, für die Defaultwerte definiert sind, die bei Bedarf abgeändert
+werden können. Da diese Argumente mit Hilfe der Namen übergeben werden können,
+ist es problemlos möglich, nur eines der Argumente zu modifizieren ohne
+die in der Argumentliste davor stehenden Argumente angeben zu müssen.</p>
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
 <span class="n">help</span><span class="p">(</span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function quad in module scipy.integrate.quadpack:
+
+quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=50, points=None, weight=None, wvar=None, wopts=None, maxp1=50, limlst=50)
+    Compute a definite integral.
+    
+    Integrate func from `a` to `b` (possibly infinite interval) using a
+    technique from the Fortran library QUADPACK.
+    
+    Parameters
+    ----------
+    func : {function, scipy.LowLevelCallable}
+        A Python function or method to integrate. If `func` takes many
+        arguments, it is integrated along the axis corresponding to the
+        first argument.
+    
+        If the user desires improved integration performance, then `f` may
+        be a `scipy.LowLevelCallable` with one of the signatures::
+    
+            double func(double x)
+            double func(double x, void *user_data)
+            double func(int n, double *xx)
+            double func(int n, double *xx, void *user_data)
+    
+        The ``user_data`` is the data contained in the `scipy.LowLevelCallable`.
+        In the call forms with ``xx``,  ``n`` is the length of the ``xx``
+        array which contains ``xx[0] == x`` and the rest of the items are
+        numbers contained in the ``args`` argument of quad.
+    
+        In addition, certain ctypes call signatures are supported for
+        backward compatibility, but those should not be used in new code.
+    a : float
+        Lower limit of integration (use -numpy.inf for -infinity).
+    b : float
+        Upper limit of integration (use numpy.inf for +infinity).
+    args : tuple, optional
+        Extra arguments to pass to `func`.
+    full_output : int, optional
+        Non-zero to return a dictionary of integration information.
+        If non-zero, warning messages are also suppressed and the
+        message is appended to the output tuple.
+    
+    Returns
+    -------
+    y : float
+        The integral of func from `a` to `b`.
+    abserr : float
+        An estimate of the absolute error in the result.
+    infodict : dict
+        A dictionary containing additional information.
+        Run scipy.integrate.quad_explain() for more information.
+    message
+        A convergence message.
+    explain
+        Appended only with &#39;cos&#39; or &#39;sin&#39; weighting and infinite
+        integration limits, it contains an explanation of the codes in
+        infodict[&#39;ierlst&#39;]
+    
+    Other Parameters
+    ----------------
+    epsabs : float or int, optional
+        Absolute error tolerance. Default is 1.49e-8. `quad` tries to obtain
+        an accuracy of ``abs(i-result) &lt;= max(epsabs, epsrel*abs(i))``
+        where ``i`` = integral of `func` from `a` to `b`, and ``result`` is the
+        numerical approximation. See `epsrel` below.
+    epsrel : float or int, optional
+        Relative error tolerance. Default is 1.49e-8.
+        If ``epsabs &lt;= 0``, `epsrel` must be greater than both 5e-29
+        and ``50 * (machine epsilon)``. See `epsabs` above.
+    limit : float or int, optional
+        An upper bound on the number of subintervals used in the adaptive
+        algorithm.
+    points : (sequence of floats,ints), optional
+        A sequence of break points in the bounded integration interval
+        where local difficulties of the integrand may occur (e.g.,
+        singularities, discontinuities). The sequence does not have
+        to be sorted. Note that this option cannot be used in conjunction
+        with ``weight``.
+    weight : float or int, optional
+        String indicating weighting function. Full explanation for this
+        and the remaining arguments can be found below.
+    wvar : optional
+        Variables for use with weighting functions.
+    wopts : optional
+        Optional input for reusing Chebyshev moments.
+    maxp1 : float or int, optional
+        An upper bound on the number of Chebyshev moments.
+    limlst : int, optional
+        Upper bound on the number of cycles (&gt;=3) for use with a sinusoidal
+        weighting and an infinite end-point.
+    
+    See Also
+    --------
+    dblquad : double integral
+    tplquad : triple integral
+    nquad : n-dimensional integrals (uses `quad` recursively)
+    fixed_quad : fixed-order Gaussian quadrature
+    quadrature : adaptive Gaussian quadrature
+    odeint : ODE integrator
+    ode : ODE integrator
+    simps : integrator for sampled data
+    romb : integrator for sampled data
+    scipy.special : for coefficients and roots of orthogonal polynomials
+    
+    Notes
+    -----
+    
+    **Extra information for quad() inputs and outputs**
+    
+    If full_output is non-zero, then the third output argument
+    (infodict) is a dictionary with entries as tabulated below. For
+    infinite limits, the range is transformed to (0,1) and the
+    optional outputs are given with respect to this transformed range.
+    Let M be the input argument limit and let K be infodict[&#39;last&#39;].
+    The entries are:
+    
+    &#39;neval&#39;
+        The number of function evaluations.
+    &#39;last&#39;
+        The number, K, of subintervals produced in the subdivision process.
+    &#39;alist&#39;
+        A rank-1 array of length M, the first K elements of which are the
+        left end points of the subintervals in the partition of the
+        integration range.
+    &#39;blist&#39;
+        A rank-1 array of length M, the first K elements of which are the
+        right end points of the subintervals.
+    &#39;rlist&#39;
+        A rank-1 array of length M, the first K elements of which are the
+        integral approximations on the subintervals.
+    &#39;elist&#39;
+        A rank-1 array of length M, the first K elements of which are the
+        moduli of the absolute error estimates on the subintervals.
+    &#39;iord&#39;
+        A rank-1 integer array of length M, the first L elements of
+        which are pointers to the error estimates over the subintervals
+        with ``L=K`` if ``K&lt;=M/2+2`` or ``L=M+1-K`` otherwise. Let I be the
+        sequence ``infodict[&#39;iord&#39;]`` and let E be the sequence
+        ``infodict[&#39;elist&#39;]``.  Then ``E[I[1]], ..., E[I[L]]`` forms a
+        decreasing sequence.
+    
+    If the input argument points is provided (i.e., it is not None),
+    the following additional outputs are placed in the output
+    dictionary. Assume the points sequence is of length P.
+    
+    &#39;pts&#39;
+        A rank-1 array of length P+2 containing the integration limits
+        and the break points of the intervals in ascending order.
+        This is an array giving the subintervals over which integration
+        will occur.
+    &#39;level&#39;
+        A rank-1 integer array of length M (=limit), containing the
+        subdivision levels of the subintervals, i.e., if (aa,bb) is a
+        subinterval of ``(pts[1], pts[2])`` where ``pts[0]`` and ``pts[2]``
+        are adjacent elements of ``infodict[&#39;pts&#39;]``, then (aa,bb) has level l
+        if ``|bb-aa| = |pts[2]-pts[1]| * 2**(-l)``.
+    &#39;ndin&#39;
+        A rank-1 integer array of length P+2. After the first integration
+        over the intervals (pts[1], pts[2]), the error estimates over some
+        of the intervals may have been increased artificially in order to
+        put their subdivision forward. This array has ones in slots
+        corresponding to the subintervals for which this happens.
+    
+    **Weighting the integrand**
+    
+    The input variables, *weight* and *wvar*, are used to weight the
+    integrand by a select list of functions. Different integration
+    methods are used to compute the integral with these weighting
+    functions, and these do not support specifying break points. The
+    possible values of weight and the corresponding weighting functions are.
+    
+    ==========  ===================================   =====================
+    ``weight``  Weight function used                  ``wvar``
+    ==========  ===================================   =====================
+    &#39;cos&#39;       cos(w*x)                              wvar = w
+    &#39;sin&#39;       sin(w*x)                              wvar = w
+    &#39;alg&#39;       g(x) = ((x-a)**alpha)*((b-x)**beta)   wvar = (alpha, beta)
+    &#39;alg-loga&#39;  g(x)*log(x-a)                         wvar = (alpha, beta)
+    &#39;alg-logb&#39;  g(x)*log(b-x)                         wvar = (alpha, beta)
+    &#39;alg-log&#39;   g(x)*log(x-a)*log(b-x)                wvar = (alpha, beta)
+    &#39;cauchy&#39;    1/(x-c)                               wvar = c
+    ==========  ===================================   =====================
+    
+    wvar holds the parameter w, (alpha, beta), or c depending on the weight
+    selected. In these expressions, a and b are the integration limits.
+    
+    For the &#39;cos&#39; and &#39;sin&#39; weighting, additional inputs and outputs are
+    available.
+    
+    For finite integration limits, the integration is performed using a
+    Clenshaw-Curtis method which uses Chebyshev moments. For repeated
+    calculations, these moments are saved in the output dictionary:
+    
+    &#39;momcom&#39;
+        The maximum level of Chebyshev moments that have been computed,
+        i.e., if ``M_c`` is ``infodict[&#39;momcom&#39;]`` then the moments have been
+        computed for intervals of length ``|b-a| * 2**(-l)``,
+        ``l=0,1,...,M_c``.
+    &#39;nnlog&#39;
+        A rank-1 integer array of length M(=limit), containing the
+        subdivision levels of the subintervals, i.e., an element of this
+        array is equal to l if the corresponding subinterval is
+        ``|b-a|* 2**(-l)``.
+    &#39;chebmo&#39;
+        A rank-2 array of shape (25, maxp1) containing the computed
+        Chebyshev moments. These can be passed on to an integration
+        over the same interval by passing this array as the second
+        element of the sequence wopts and passing infodict[&#39;momcom&#39;] as
+        the first element.
+    
+    If one of the integration limits is infinite, then a Fourier integral is
+    computed (assuming w neq 0). If full_output is 1 and a numerical error
+    is encountered, besides the error message attached to the output tuple,
+    a dictionary is also appended to the output tuple which translates the
+    error codes in the array ``info[&#39;ierlst&#39;]`` to English messages. The
+    output information dictionary contains the following entries instead of
+    &#39;last&#39;, &#39;alist&#39;, &#39;blist&#39;, &#39;rlist&#39;, and &#39;elist&#39;:
+    
+    &#39;lst&#39;
+        The number of subintervals needed for the integration (call it ``K_f``).
+    &#39;rslst&#39;
+        A rank-1 array of length M_f=limlst, whose first ``K_f`` elements
+        contain the integral contribution over the interval
+        ``(a+(k-1)c, a+kc)`` where ``c = (2*floor(|w|) + 1) * pi / |w|``
+        and ``k=1,2,...,K_f``.
+    &#39;erlst&#39;
+        A rank-1 array of length ``M_f`` containing the error estimate
+        corresponding to the interval in the same position in
+        ``infodict[&#39;rslist&#39;]``.
+    &#39;ierlst&#39;
+        A rank-1 integer array of length ``M_f`` containing an error flag
+        corresponding to the interval in the same position in
+        ``infodict[&#39;rslist&#39;]``.  See the explanation dictionary (last entry
+        in the output tuple) for the meaning of the codes.
+    
+    Examples
+    --------
+    Calculate :math:`\int^4_0 x^2 dx` and compare with an analytic result
+    
+    &gt;&gt;&gt; from scipy import integrate
+    &gt;&gt;&gt; x2 = lambda x: x**2
+    &gt;&gt;&gt; integrate.quad(x2, 0, 4)
+    (21.333333333333332, 2.3684757858670003e-13)
+    &gt;&gt;&gt; print(4**3 / 3.)  # analytical result
+    21.3333333333
+    
+    Calculate :math:`\int^\infty_0 e^{-x} dx`
+    
+    &gt;&gt;&gt; invexp = lambda x: np.exp(-x)
+    &gt;&gt;&gt; integrate.quad(invexp, 0, np.inf)
+    (1.0, 5.842605999138044e-11)
+    
+    &gt;&gt;&gt; f = lambda x,a : a*x
+    &gt;&gt;&gt; y, err = integrate.quad(f, 0, 1, args=(1,))
+    &gt;&gt;&gt; y
+    0.5
+    &gt;&gt;&gt; y, err = integrate.quad(f, 0, 1, args=(3,))
+    &gt;&gt;&gt; y
+    1.5
+    
+    Calculate :math:`\int^1_0 x^2 + y^2 dx` with ctypes, holding
+    y parameter as 1::
+    
+        testlib.c =&gt;
+            double func(int n, double args[n]){
+                return args[0]*args[0] + args[1]*args[1];}
+        compile to library testlib.*
+    
+    ::
+    
+       from scipy import integrate
+       import ctypes
+       lib = ctypes.CDLL(&#39;/home/.../testlib.*&#39;) #use absolute path
+       lib.func.restype = ctypes.c_double
+       lib.func.argtypes = (ctypes.c_int,ctypes.c_double)
+       integrate.quad(lib.func,0,1,(1))
+       #(1.3333333333333333, 1.4802973661668752e-14)
+       print((1.0**3/3.0 + 1.0) - (0.0**3/3.0 + 0.0)) #Analytic result
+       # 1.3333333333333333
+    
+    Be aware that pulse shapes and other sharp features as compared to the
+    size of the integration interval may not be integrated correctly using
+    this method. A simplified example of this limitation is integrating a
+    y-axis reflected step function with many zero values within the integrals
+    bounds.
+    
+    &gt;&gt;&gt; y = lambda x: 1 if x&lt;=0 else 0
+    &gt;&gt;&gt; integrate.quad(y, -1, 1)
+    (1.0, 1.1102230246251565e-14)
+    &gt;&gt;&gt; integrate.quad(y, -1, 100)
+    (1.0000000002199108, 1.0189464580163188e-08)
+    &gt;&gt;&gt; integrate.quad(y, -1, 10000)
+    (0.0, 0.0)
 </pre></div>
 </div>
 </div>
