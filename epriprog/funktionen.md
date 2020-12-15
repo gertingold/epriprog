@@ -67,7 +67,7 @@ print("** Ende")
 ```
 In diesem einfachen Beispiel ist die Funktion durch die ersten beiden Zeilen definiert. Dabei 
 besitzt die erste Zeile eine Struktur wie wir sie ähnlich von Schleifen und Verzweigungen kennen.
-Die Zeile beginnt nämlich ebenfalls mit einem Schlüsselwort, das hier `def` heißt und andeutet,
+Die Zeile beginnt nämlich ebenfalls mit einem Schlüsselwort, das in diesem Fall `def` heißt und andeutet,
 dass hier eine Funktion definiert wird. Des Weiteren wird die erste Zeile mit einem Doppelpunkt
 beendet. Der Funktionsname ist hier `f`, wobei hier im Allgemeinen eine Name gewählt werden sollte,
 der besser beschreibt, was die Funktion tut. Wichtig ist das Klammerpaar, das auch dann nicht
@@ -671,14 +671,22 @@ tags: [raises-exception]
 ableitung(lambda x: x**3, h=10**-n, 1)
 ```
 
-Abschließend sehen wir uns zur Illustration noch ein Beispiel aus der Scipy-Bibliothek an, auf die wir 
-im {numref}`scipy` noch etwas genauer eingehen werden. Diese Bibliothek stellt eine Funktion zur
-numerischen Integration zur Verfügung, die 14 Argumente besitzt. Die ersten drei Argumente werden 
-typischerweise über ihre Position übergeben, was sich unter anderem daraus ergibt, dass es sich
-hierbei um essentielle Argumente wie den Integranden und die Integrationsgrenzen handelt. Für diese
-Argumente gibt es keine sinnvollen Defaultwerte. Anders ist dies bei den restlichen elf Argumenten,
-für die Defaultwerte definiert sind, die bei Bedarf abgeändert werden können.
+Abschließend sehen wir uns zur Illustration noch ein Beispiel aus der
+Scipy-Bibliothek an, auf die wir im {numref}`scipy` einen Blick werfen
+werden. Diese Bibliothek stellt neben vielem anderem eine Funktion zur
+numerischen Integration zur Verfügung, die 14 Argumente besitzt. Die ersten
+drei Argumente werden typischerweise über ihre Position übergeben, was sich
+unter anderem daraus ergibt, dass es sich hierbei um essentielle Argumente wie
+den Integranden und die Integrationsgrenzen handelt. Für diese Argumente gibt
+es keine sinnvollen Defaultwerte. Anders ist dies bei den restlichen elf
+Argumenten, für die Defaultwerte definiert sind, die bei Bedarf abgeändert
+werden können. Da diese Argumente mit Hilfe der Namen übergeben werden können,
+ist es problemlos möglich, nur eines der Argumente zu modifizieren ohne 
+die in der Argumentliste davor stehenden Argumente angeben zu müssen.
 ```{code-cell} python
+---
+tags: [output_scroll]
+---
 from scipy import integrate
 help(integrate.quad)
 ```
