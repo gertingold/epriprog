@@ -4,6 +4,8 @@ author        : Gert-Ludwig Ingold
 copyright     : "2020"
 logo          : ""
 
+only_build_toc_files: true
+
 repository:
   url: https//github.com/gertingold/epriprog
   path_to_book: epriprog
@@ -25,6 +27,7 @@ sphinx:
     language: de
     numfig_format:
       section: 'Kapitel %s'
+  bibtex_bibfiles: []
 
 launch_buttons:
   binderhub_url: "https://mybinder.org" 
