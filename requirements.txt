@@ -1,3 +1,2 @@
-jupyter-book[sphinx] == 0.8.3
-sphinxcontrib-bibtex
+jupyter-book[sphinx]
 scipy
