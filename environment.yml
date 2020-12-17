@@ -4,12 +4,7 @@ channels:
   - conda-forge
 dependencies:
   - python==3.9
-  - sphinx
   - pip
-  - ghp-import
-  - jupytext
-  - numpy
   - scipy
-  - matplotlib
   - pip:
-    - jupyter-book
+    - jupyter-book[sphinx]
