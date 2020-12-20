@@ -1,3 +1,17 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: '0.8'
+    jupytext_version: 1.4.1+dev
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 (zusgdatentypen)=
 # Zusammengesetzte Datentypen
 
@@ -29,7 +43,7 @@ dass der Ort eines durch einen Index oder auch mehrere Indizes addressierten Ele
 Speicher ausgehend von der Startadresse unmittelbar berechnet werden kann. Dadurch kann
 man sehr effizient auf Elemente des Arrays zugreifen.
 
-In Python dagegen stehen solche homogenen Datenansammlungen in Form von Array nicht im
+In Python dagegen stehen solche homogenen Datenansammlungen in Form von Arrays nicht im
 Standardsprachumfang zur Verfügung. Sie werden aber durch die Programmbibliothek NumPy,
 die die Basis für wissenschaftliche Numerik in Python bildet und die wir im
 {numref}`scipy` besprechen werden, bereitgestellt. Python stellt stattdessen standardmäßig
@@ -39,6 +53,47 @@ mit einem höheren Aufwand beim Zugriff auf einzelne Elemente. Wir werden im Fol
 Listen als Datentyp in Python besprechen. Viele Aspekte werden wir später auf die von
 NumPy zur Verfügung gestellten Arrays übertragen können.
 
+Listen sind uns beispielsweise bereits in {numref}`forloop` begegnet, wo wir die
+{func}`range`-Funktion verwendet hatten, um einen Schleifenzähler mit Werten zu versorgen.
+Dabei werden die benötigten Werte nur bei Bedarf erzeugt. Um alle Werte auf einmal zu
+sehen, hatten wir die {func}`list`-Funktion verwendet und dabei eine Liste erzeugt.
+```{code-cell} python
+meine_liste = list(range(20))
+print(meine_liste)
+print(type(meine_liste))
+```
+Mit der zweiten Ausgabezeile wird hier nachgewiesen, dass der Datentyp des Objekts
+`meine_liste` tatsächlich eine Liste ist.
+
+Wenn man die Länge einer Liste nicht kennt, kann man diese mit Hilfe der {func}`len`-Funktion
+bestimmen.
+```{code-cell} python
+liste1 = list(range(1, 17, 3))
+print(f'Länge der ersten Liste:  {len(liste1)} Elemente')
+liste2 = ['Stein', 'Papier', 'Schere']
+print(f'Länge der zweiten Liste: {len(liste2)} Elemente')
+```
+
+Eine wichtige Eigenschaft von Listen besteht darin, dass man einzelne Listenelement oder auch
+Ausschnitte aus der Liste adressieren kann und diese auch verändern kann. Wir demonstrieren
+dies zunächst an einem einzelnen Listenelement.
+```{code-cell} python
+meine_liste = [1, 17, 3]
+print(meine_liste[1])
+```
+Das Ergebnis zeigt, dass die Zählung in Python bei 0 beginnt, wie es beispielsweise auch in
+der Programmiersprache C der Fall ist. Diese Wahl lässt sich dadurch motivieren, dass die Position
+des ersten Elements einer Liste relativ zum Beginn der Liste im Speicherplatz durch einen Offset
+von 0 gegeben ist. Man könnte aber auch argumentieren, dass das erste Element durch den Index 1
+addressiert werden sollte. Diese Wahl wurde in der Programmiersprache Fortran getroffen. Man muss
+sich also diesbezüglich informieren, welche Konvention in der verwendeten Programmiersprache gilt.
+
+Eine Veränderung eines Listenelements ist durch eine Zuweisung für das betreffende Listenelement
+möglich.
+```{code-cell} python
+meine_liste[1] = 2
+print(meine_liste)
+```
 
 (tupel)=
 ## Tupel
