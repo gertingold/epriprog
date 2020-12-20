@@ -41,7 +41,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -192,7 +191,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/sequenzen.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/sequenzen.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
@@ -213,6 +215,23 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/sequenzen.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -263,6 +282,109 @@
 </div>
 <div class="section" id="listen">
 <span id="id1"></span><h2><span class="section-number">6.1. </span>Listen<a class="headerlink" href="#listen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Bei der Lösung numerischer Probleme spielen die Zahlentypen, die wir im <a class="reference internal" href="datentypen.html#datentypen"><span class="std std-numref">Kapitel 3</span></a>
+kennengelernt haben, also Integers, Gleitkommazahlen oder Floats sowie komplexe Zahlen eine
+zentrale Rolle. Insbesondere in den Natur- und Ingenieurwissenschaften sind diese Daten aber
+Bestandteile von komplexeren Datentypen wie Vektoren oder Matrizen. Man spricht in diesem
+Zusammenhang von zusammengesetzten Datentypen, die wir im Folgenden behandeln wollen. Dabei
+müssen die Bestandteile nicht unbedingt numerischer Natur sein. Ein Beispiel hierfür wären
+Zeichenketten.</p>
+<p>Bei den zusammengesetzten Datentypen ist es sinnvoll, eine Unterscheidung vorzunehmen, die
+die Art der einzelnen Bestandteile betrifft. In Programmiersprachen wie Fortran oder C
+kennt man den Datentyp des Arrays, das eine ein- oder mehrdimensionale Ansammlung von
+Zahlen des gleichen Datentyps umfasst. Jedes Element nimmt im Speicher gleich viel Platz
+in Anspruch und die aufeinanderfolgende Elemente schließen im Speicher nahtlos aneinander
+an. Da die Anordnung der Elemente im Speicher immer eindimensional ist, gibt es für die
+Speicherung mehrdimensionaler Array unterschiedliche Zugänge und tatsächlich unterscheiden
+sich Fortran und C in dieser Hinsicht. Die homogene Struktur von Arrays hat zur Folge,
+dass der Ort eines durch einen Index oder auch mehrere Indizes addressierten Elements im
+Speicher ausgehend von der Startadresse unmittelbar berechnet werden kann. Dadurch kann
+man sehr effizient auf Elemente des Arrays zugreifen.</p>
+<p>In Python dagegen stehen solche homogenen Datenansammlungen in Form von Arrays nicht im
+Standardsprachumfang zur Verfügung. Sie werden aber durch die Programmbibliothek NumPy,
+die die Basis für wissenschaftliche Numerik in Python bildet und die wir im
+<a class="reference internal" href="scipy.html#scipy"><span class="std std-numref">Kapitel 8</span></a> besprechen werden, bereitgestellt. Python stellt stattdessen standardmäßig
+den Datentyp einer Liste zur Verfügung, die Objekte verschiedener Datentypen enthalten
+kann, aber nicht muss. Die größere Flexibilität der Liste gegenüber den Arrays bezahlt man
+mit einem höheren Aufwand beim Zugriff auf einzelne Elemente. Wir werden im Folgenden
+Listen als Datentyp in Python besprechen. Viele Aspekte werden wir später auf die von
+NumPy zur Verfügung gestellten Arrays übertragen können.</p>
+<p>Listen sind uns beispielsweise bereits in <a class="reference internal" href="kontrollstrukturen.html#forloop"><span class="std std-numref">Kapitel 4.1</span></a> begegnet, wo wir die
+<code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion verwendet hatten, um einen Schleifenzähler mit Werten zu versorgen.
+Dabei werden die benötigten Werte nur bei Bedarf erzeugt. Um alle Werte auf einmal zu
+sehen, hatten wir die <code class="xref py py-func docutils literal notranslate"><span class="pre">list()</span></code>-Funktion verwendet und dabei eine Liste erzeugt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+&lt;class &#39;list&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit der zweiten Ausgabezeile wird hier nachgewiesen, dass der Datentyp des Objekts
+<code class="docutils literal notranslate"><span class="pre">meine_liste</span></code> tatsächlich eine Liste ist.</p>
+<p>Wenn man die Länge einer Liste nicht kennt, kann man diese mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">len()</span></code>-Funktion
+bestimmen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Länge der ersten Liste:  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">liste1</span><span class="p">)</span><span class="si">}</span><span class="s1"> Elemente&#39;</span><span class="p">)</span>
+<span class="n">liste2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Länge der zweiten Liste: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">liste2</span><span class="p">)</span><span class="si">}</span><span class="s1"> Elemente&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Länge der ersten Liste:  6 Elemente
+Länge der zweiten Liste: 3 Elemente
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine wichtige Eigenschaft von Listen besteht darin, dass man einzelne Listenelement oder auch
+Ausschnitte aus der Liste adressieren kann und diese auch verändern kann. Wir demonstrieren
+dies zunächst an einem einzelnen Listenelement.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Ergebnis zeigt, dass die Zählung in Python bei 0 beginnt, wie es beispielsweise auch in
+der Programmiersprache C der Fall ist. Diese Wahl lässt sich dadurch motivieren, dass die Position
+des ersten Elements einer Liste relativ zum Beginn der Liste im Speicherplatz durch einen Offset
+von 0 gegeben ist. Man könnte aber auch argumentieren, dass das erste Element durch den Index 1
+addressiert werden sollte. Diese Wahl wurde in der Programmiersprache Fortran getroffen. Man muss
+sich also diesbezüglich informieren, welche Konvention in der verwendeten Programmiersprache gilt.</p>
+<p>Eine Veränderung eines Listenelements ist durch eine Zuweisung für das betreffende Listenelement
+möglich.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="tupel">
 <span id="id2"></span><h2><span class="section-number">6.2. </span>Tupel<a class="headerlink" href="#tupel" title="Link zu dieser Überschrift">¶</a></h2>
