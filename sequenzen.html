@@ -297,7 +297,7 @@ in Anspruch und die aufeinanderfolgende Elemente schließen im Speicher nahtlos 
 an. Da die Anordnung der Elemente im Speicher immer eindimensional ist, gibt es für die
 Speicherung mehrdimensionaler Array unterschiedliche Zugänge und tatsächlich unterscheiden
 sich Fortran und C in dieser Hinsicht. Die homogene Struktur von Arrays hat zur Folge,
-dass der Ort eines durch einen Index oder auch mehrere Indizes addressierten Elements im
+dass der Ort eines durch einen Index oder auch mehrere Indizes adressierten Elements im
 Speicher ausgehend von der Startadresse unmittelbar berechnet werden kann. Dadurch kann
 man sehr effizient auf Elemente des Arrays zugreifen.</p>
 <p>In Python dagegen stehen solche homogenen Datenansammlungen in Form von Arrays nicht im
@@ -364,11 +364,12 @@ dies zunächst an einem einzelnen Listenelement.</p>
 </div>
 </div>
 </div>
+<p>Zu beachten ist hier, dass der Index immer in eckigen Klammern stehen muss.</p>
 <p>Das Ergebnis zeigt, dass die Zählung in Python bei 0 beginnt, wie es beispielsweise auch in
 der Programmiersprache C der Fall ist. Diese Wahl lässt sich dadurch motivieren, dass die Position
 des ersten Elements einer Liste relativ zum Beginn der Liste im Speicherplatz durch einen Offset
 von 0 gegeben ist. Man könnte aber auch argumentieren, dass das erste Element durch den Index 1
-addressiert werden sollte. Diese Wahl wurde in der Programmiersprache Fortran getroffen. Man muss
+adressiert werden sollte. Diese Wahl wurde in der Programmiersprache Fortran getroffen. Man muss
 sich also diesbezüglich informieren, welche Konvention in der verwendeten Programmiersprache gilt.</p>
 <p>Eine Veränderung eines Listenelements ist durch eine Zuweisung für das betreffende Listenelement
 möglich.</p>
@@ -381,6 +382,711 @@ möglich.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neben der Möglichkeit, einzelne Listenelemente anzusprechen, ist es auch möglich, mehrere Listenelemente
+auf einmal zu adressieren. Dabei kann es sich entweder um eine gegebene Anzahl direkt aufeinanderfolgender
+Listenelemente oder mehrere Listenelemente mit einem festen Abstand handeln. In der folgenden
+Liste von Primzahlen werden alle Elemente ab Index 1, also ab dem zweiten Element, bis ausschließlich
+dem Index 5 ausgewählt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primzahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 5, 7, 11]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Gerade zu Beginn ist es oft ungewohnt, dass das Element zum zweiten Index nicht Teil der Auswahl ist,
+auch wenn wir dies von der <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion schon gewohnt sind. Man kann sich dieses Verhalten
+dadurch veranschaulichen, dass man sich den Index nicht als Nummerierung eines Elements vorstellt, sondern
+als Markierung »zwischen« den Listeneinträgen, wie es in <a class="reference internal" href="#fig-slices"><span class="std std-numref">Abb. 6.1</span></a> gezeigt ist.</p>
+<div class="figure align-default" id="fig-slices">
+<a class="reference internal image-reference" href="_images/listnumbering1.png"><img alt="_images/listnumbering1.png" src="_images/listnumbering1.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Abb. 6.1 </span><span class="caption-text">Die Indizierung von Listen lässt sich besser verstehen, wenn man den Index als Markierung »zwischen« den
+Listeneinträgen versteht.</span><a class="headerlink" href="#fig-slices" title="Link zu diesem Bild">¶</a></p>
+</div>
+<p>Da man in diesem Bild die Liste praktisch wie einen Brotlaib in Scheiben schneidet,
+spricht man bei der Adressierung von <em>slices</em>. Wie <a class="reference internal" href="#fig-slices"><span class="std std-numref">Abb. 6.1</span></a> mit den <em>slices</em>
+<code class="docutils literal notranslate"><span class="pre">[0:5]</span></code> und <code class="docutils literal notranslate"><span class="pre">[5:8]</span></code> zeigt, ist die von Python benutzte Indizierungskonvention auch
+insofern praktisch als aufeinanderfolgende <em>slices</em> den gleichen End -bzw. Anfangsindex
+haben.</p>
+<p>Wie bei der <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion gibt es auch bei den <em>slices</em> die Möglichkeit, die
+Schrittweite zu wählen. Die Bedeutung der Argumente ist in beiden Fällen gleich, nur dass
+in der <em>slice</em>-Notation die Argumente jeweils durch einen Doppelpunkt getrennt sind.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 7, 13, 19]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hierbei wird aus der obigen Primzahlliste ausgehend vom zweiten Eintrag bis zum achten
+Eintrag jedes zweite Element ausgewählt.</p>
+<p>Wie würde man vorgehen, wenn man ausgehend vom ersten Element jedes dritte Element der
+Primzahlliste ausgeben möchte. Für die vollständige Indexangabe wird man zunächst einmal
+die Länge der Liste bestimmen müssen, wenn man diese nicht schon kennt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">):</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 7, 17]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternativ kann man aber das Ende der Liste dadurch spezifizieren, dass man den
+entsprechenden Eintrag leer lässt. Das Fehlen des Index ist dabei anhand der Doppelpunkte
+erkenntlich.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 7, 17]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Entsprechend könnten man den ersten Index weglassen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[::</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 7, 17]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lässt man auch den dritten Index weg, so wird die Schrittweite automatisch auf 1 gesetzt.
+Statt zwei Doppelpunkten ist es dann aber einfacher, nur einen Doppelpunkt zu setzen. Auf
+diese Weise erhält man alle Elemente der Liste. Es ist allerdings nicht möglich, alle
+Doppelpunkte wegzulassen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[::])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 11, 13, 17, 19, 23]
+[2, 3, 5, 7, 11, 13, 17, 19, 23]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alle Listenelemente kann man zwar auch einfach durch die Angabe des Listennamens ausgeben.
+Allerdings werden wir später noch sehen, dass es einen Unterschied macht, ob man nur den
+Listennamen verwendet oder ein <em>slice</em> <code class="docutils literal notranslate"><span class="pre">[:]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 11, 13, 17, 19, 23]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Insbesondere wenn die Indizes in einem <em>slice</em> durch Programmcode erzeugt werden, kann es
+passieren, dass ein Index irrtümlich außerhalb des erlaubten Bereichs liegt. In einer solchen
+Situation können verschiedene Dinge passieren. Manche Programmiersprachen berechnen, zumindest
+unter bestimmten Bedingungen, einfach den entsprechenden Ort im Speicher und verwenden die dort
+vorhandenen Daten, sofern das Programm auf diesen Speicherbereich Zugriffsrechte besitzt. Solche
+Situationen führen zu Fehlern, die unter Umständen schwer zu identifizieren sind, unter anderem
+weil das Verhalten in solchen Situationen nicht reproduzierbar sein muss. Normalerweise kann
+man die betreffenden Programmiersprachen aber dazu zwingen, die Gültigkeit des angegebenen Index
+zu überprüfen.</p>
+<p>Python macht dies immer und so führt ein Zugriff jenseits der oberen Grenze der Liste zu einer
+Exception.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">0</span><span class="n">d1687bbc767</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
+
+<span class="ne">IndexError</span>: list index out of range
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dagegen sind negative Indizes in einem gewissen Rahmen erlaubt, nämlich von <code class="docutils literal notranslate"><span class="pre">-1</span></code> bis <code class="docutils literal notranslate"><span class="pre">-N</span></code>,
+wobei <code class="docutils literal notranslate"><span class="pre">N</span></code> die Zahl der Listenelemente ist. Die Zuordnung der Listenindizes ist in
+<a class="reference internal" href="#fig-negativeindices"><span class="std std-numref">Abb. 6.2</span></a> dargestellt. Mit negativen Indizes ist es also möglich,
+Listenelemente vom Ende her zu adressieren ohne die Länge der Liste kennen zu müssen.</p>
+<div class="figure align-default" id="fig-negativeindices">
+<a class="reference internal image-reference" href="_images/listnumbering2.png"><img alt="_images/listnumbering2.png" src="_images/listnumbering2.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Abb. 6.2 </span><span class="caption-text">Mit negativen Indizes lassen sich Listenelemente vom Ende der Liste her adressieren.</span><a class="headerlink" href="#fig-negativeindices" title="Link zu diesem Bild">¶</a></p>
+</div>
+<p>So lässt sich beispielsweise sehr leicht das letzte Element einer Liste extrahieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 11, 13, 17, 19, 23]
+23
+</pre></div>
+</div>
+</div>
+</div>
+<p>Auch die letzten drei Elemente lassen sich auf entsprechende Weise leicht erhalten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[17, 19, 23]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit einer negativen Schrittweite kann man die Listen in umgekehrter Reihenfolge anordnen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23, 19, 17, 13, 11, 7, 5, 3, 2]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bei der Arbeit mit Listen in Python ist zu beachten, dass sich diese nicht immer so
+verhalten, wie man es vielleicht erwarten würde. So erzeugt die Zuweisung einer Liste zu
+einer anderen Liste nicht zu einer unabhängigen Liste, sondern nur zu einem zweiten Namen,
+unter dem die ursprüngliche Liste angesprochen werden kann. Man spricht hier auch von
+einem <em>Alias</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Offenbar wurde hier nicht nur die Liste <code class="docutils literal notranslate"><span class="pre">a</span></code> verändert. Tatsächlich zeigen die beiden Namen
+<code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> auf das gleiche Pythonobjekt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140645552272192 140645552272192
+</pre></div>
+</div>
+</div>
+</div>
+<p>Anders sieht es aus, wenn man die Listenelemente zuweist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+[1, 17, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nun handelt es sich bei den beiden Listen in der Tat auch um verschiedene Pythonobjekte.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140645551620416 140645552273024
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dieses Verhalten wirkt sich auch aus, wenn man Listen an Funktionen übergibt und innerhalb
+der Funktion verändert.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">modify_list</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">modify_list</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die vorgenommene Änderung ist also nicht lokal auf die Funktion beschränkt, sondern wirkt
+sich auf die Liste im Hauptteil aus. Daher sollte man bei der Übergabe von Listen an
+Funktionen besondere Sorgfalt walten lassen und diese in der Funktion entweder nicht
+verändern oder zunächst eine Kopie anfertigen.</p>
+<p>Wie wir eingangs dieses Kapitels schon besprochen hatten, lassen Listen in Python im
+Gegensatz zu den homogenen Arrays anderer Programmiersprachen auch unterschiedliche
+Datentypen als Elemente einer Liste zu. Dies wollen wir an einer Liste demonstrieren, die
+eine mathematische Aufgabe in einer Liste spezifiziert, indem das erste Element ein
+Funktionsobjekt enthält während das zweite Element das zugehörige Argument enthält.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">aufgabe</span> <span class="o">=</span> <span class="p">[</span><span class="n">sin</span><span class="p">,</span> <span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">aufgabe</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">aufgabe</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49999999999999994
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dabei ist die Abweichung vom erwarteten Ergebnis <code class="docutils literal notranslate"><span class="pre">0.5</span></code> durch Rundungsfehler bedingt.</p>
+<p>Es ist auch möglich, Listen als Listenelemente zu verwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2]
+[3, 4]
+2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier wird beispielsweise mit <code class="docutils literal notranslate"><span class="pre">a[0]</span></code> das erste Element der Liste <code class="docutils literal notranslate"><span class="pre">a</span></code> adressiert, also die
+Liste <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code>. Aus dieser Liste kann wiederum ein Element ausgewählt werden, zum Beispiel
+<code class="docutils literal notranslate"><span class="pre">a[0][1]</span></code>.</p>
+<p>Auch wenn diese Liste von Listen den Anschein erwecken mag, als Matrix verwendet werden zu
+können, ist dies nicht wirklich der Fall. Zum einen ist es zwar leicht möglich, einen
+Zeilenvektor aus der Matrix zu extrahieren, wie wir an unserem Beispiel gesehen haben.
+Es ist aber nicht möglich, in entsprechender Weise einen Spaltenvektor zu erhalten. Zudem
+sind keine Matrixoperationen wie zum Beispiel eine Matrixmultiplikation für Listen von
+Listen definiert. Stattdessen verwendet man für diese Zwecke die Numpy-Arrays, die wir in
+<a class="reference internal" href="scipy.html#scipy"><span class="std std-numref">Kapitel 8</span></a> besprechen werden.</p>
+<p>Andererseits können Listen in <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleifen nützlich sein. So kann man über die
+einzelnen Listenelemente der Matrix <code class="docutils literal notranslate"><span class="pre">a</span></code> iterieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">liste</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2]
+[3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Häufig ist es in solchen Fälle sinnvoll, die einzelnen Listenelemente gleich zu entpacken.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 * 2 = 2
+3 * 4 = 12
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie wir bereits gesehen hatten, können wir Listenelemente verändern. Es ist uns allerdings
+nicht möglich, auf die gleiche Weise Listenelemente hinzufügen. Das folgende Beispiel kann
+nicht funktionieren, da versucht wird, auf ein nicht existierendes Listenelement
+zuzugreifen.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">25</span><span class="o">-</span><span class="mi">52</span><span class="n">a94bd9e362</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="ne">IndexError</span>: list assignment index out of range
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es ist jedoch möglich, mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">append()</span></code>-Methode Elemente an eine Liste
+anzuhängen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zu beachten ist hier, dass die Liste verändert wird ohne dass eine Zuweisung notwendig
+wäre. Würde man das Ergebnis der <code class="xref py py-func docutils literal notranslate"><span class="pre">append()</span></code>-Methode der Variable <code class="docutils literal notranslate"><span class="pre">a</span></code> zuweisen, so
+würde die Liste mit dem Wert <code class="docutils literal notranslate"><span class="pre">None</span></code> überschrieben werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Häufig werden im Rahmen einer Schleife mehrere Listenelemente zu einer Liste hinzugefügt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In einfacheren Fällen kann eine sogenannte <em>list comprehension</em> eine kompaktere Lösung
+darstellen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In einer <em>list comprehension</em> lassen sich auch noch Bedingungen stellen, aber man sollte
+sich davor hüten, solche Konstruktionen zu komplex werden zu lassen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 4, 16, 25, 49, 64]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die <code class="xref py py-func docutils literal notranslate"><span class="pre">append()</span></code>-Methode muss von der <code class="xref py py-func docutils literal notranslate"><span class="pre">extend()</span></code>-Methode unterschieden werden,
+mit der eine Liste an eine andere Liste angehängt werden kann. Mit der <code class="docutils literal notranslate"><span class="pre">append</span></code>-Methode
+würde die Liste dagegen ein Element der ersten Liste werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, [3, 4]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Verketten von zwei Listen ist auch mit einem Additionsoperator <code class="docutils literal notranslate"><span class="pre">+</span></code> möglich. Dagegen
+ist es nicht möglich, auf diese Weise ein einzelnes Listenelement hinzuzufügen.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">32</span><span class="o">-</span><span class="mi">5</span><span class="n">ccbd21555b8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: can only concatenate list (not &quot;int&quot;) to list
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neben der Addition von Listen ist auch die Multiplikation einer Liste mit einer nichtnegativen
+ganzen Zahl möglich.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neben <code class="docutils literal notranslate"><span class="pre">append</span></code> und <code class="docutils literal notranslate"><span class="pre">extend</span></code> gibt es noch weitere Methoden, um mit Listen zu arbeiten. Wir
+wollen hier nur ein paar Beispiele aufführen und verweisen ansonsten auf die
+<a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">Python-Dokumentation</a>.</p>
+<p>Bei der Suche nach einem bestimmten Wert in einer Liste kann die <code class="xref py py-func docutils literal notranslate"><span class="pre">index()</span></code>-Methode hilfreich
+sein, die den Index des Elements angibt, in dem der gesuchte Wert zum ersten Mal auftritt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">idx1</span> <span class="o">=</span> <span class="n">meine_liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">idx1</span><span class="si">}</span><span class="s2">  Wert: </span><span class="si">{</span><span class="n">meine_liste</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index: 1  Wert: 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Möchte man die Suche fortsetzen, so muss man darauf achten, sich auf den Teil der Liste nach dem
+bereits gefundenen Listenelement zu beschränken.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">offset</span> <span class="o">=</span> <span class="n">idx1</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">idx2</span> <span class="o">=</span> <span class="n">meine_liste</span><span class="p">[</span><span class="n">offset</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">offset</span><span class="o">+</span><span class="n">idx2</span><span class="si">}</span><span class="s2">  Wert: </span><span class="si">{</span><span class="n">meine_liste</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="n">idx2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index: 5  Wert: 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kommt das gesuchte Element nicht in der Liste vor, so erhält man einen <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">38</span><span class="o">-</span><span class="mi">4</span><span class="n">c28165d4a81</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">meine_liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: 5 is not in list
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um solche Fälle vernünftig zu behandeln, sollte man die Ausnahme abfangen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erstes Auftreten von </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">meine_liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> wurde nicht gefunden.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 wurde nicht gefunden.
+Erstes Auftreten von 1: 0
+Erstes Auftreten von 2: 1
+Erstes Auftreten von 3: 2
+Erstes Auftreten von 4: 3
+5 wurde nicht gefunden.
+6 wurde nicht gefunden.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ist man ausschließlich daran interessiert, ob ein Wert in der Liste vorhanden ist, aber
+nicht daran, wo sich dieser Wert befindet, so kann man den <code class="docutils literal notranslate"><span class="pre">in</span></code>-Operator verwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">meine_liste</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> ist vorhanden&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> ist nicht vorhanden&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 ist nicht vorhanden
+1 ist vorhanden
+2 ist vorhanden
+3 ist vorhanden
+4 ist vorhanden
+5 ist nicht vorhanden
+6 ist nicht vorhanden
+</pre></div>
+</div>
+</div>
+</div>
+<p>Benötigt man jedoch auch die Position des Eintrags, so sollte man direkt die vorige
+Variante wählen.</p>
+<p>Abschließend sei noch erwähnt, dass man Listen mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">sort()</span></code>-Methode
+sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue Liste erzeugt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">zufallsliste</span> <span class="o">=</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zufallsliste</span><span class="p">)</span>
+<span class="n">zufallsliste</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zufallsliste</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[94, 51, 63, 64, 94, 6, 83, 97, 69, 43, 83, 94, 46, 85, 95, 45, 91, 29, 70, 34]
+[6, 29, 34, 43, 45, 46, 51, 63, 64, 69, 70, 83, 83, 85, 91, 94, 94, 94, 95, 97]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bei Bedarf ist es auch möglich, einen Sortierschlüssel anzugeben. Möchte man zum Beispiel
+nach der letzten Ziffer sortieren, so kann man diese mit einer geeigneten Lambda-Funktion
+bewerkstelligen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zufallsliste</span> <span class="o">=</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zufallsliste</span><span class="p">)</span>
+<span class="n">zufallsliste</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zufallsliste</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[99, 41, 51, 25, 24, 39, 42, 46, 61, 44, 61, 20, 26, 73, 35, 82, 19, 65, 29, 5]
+[20, 41, 51, 61, 61, 42, 82, 73, 24, 44, 25, 35, 65, 5, 46, 26, 99, 39, 19, 29]
 </pre></div>
 </div>
 </div>
