@@ -39,7 +39,7 @@ in Anspruch und die aufeinanderfolgende Elemente schließen im Speicher nahtlos 
 an. Da die Anordnung der Elemente im Speicher immer eindimensional ist, gibt es für die
 Speicherung mehrdimensionaler Array unterschiedliche Zugänge und tatsächlich unterscheiden
 sich Fortran und C in dieser Hinsicht. Die homogene Struktur von Arrays hat zur Folge,
-dass der Ort eines durch einen Index oder auch mehrere Indizes addressierten Elements im
+dass der Ort eines durch einen Index oder auch mehrere Indizes adressierten Elements im
 Speicher ausgehend von der Startadresse unmittelbar berechnet werden kann. Dadurch kann
 man sehr effizient auf Elemente des Arrays zugreifen.
 
@@ -81,11 +81,13 @@ dies zunächst an einem einzelnen Listenelement.
 meine_liste = [1, 17, 3]
 print(meine_liste[1])
 ```
+Zu beachten ist hier, dass der Index immer in eckigen Klammern stehen muss.
+
 Das Ergebnis zeigt, dass die Zählung in Python bei 0 beginnt, wie es beispielsweise auch in
 der Programmiersprache C der Fall ist. Diese Wahl lässt sich dadurch motivieren, dass die Position
 des ersten Elements einer Liste relativ zum Beginn der Liste im Speicherplatz durch einen Offset
 von 0 gegeben ist. Man könnte aber auch argumentieren, dass das erste Element durch den Index 1
-addressiert werden sollte. Diese Wahl wurde in der Programmiersprache Fortran getroffen. Man muss
+adressiert werden sollte. Diese Wahl wurde in der Programmiersprache Fortran getroffen. Man muss
 sich also diesbezüglich informieren, welche Konvention in der verwendeten Programmiersprache gilt.
 
 Eine Veränderung eines Listenelements ist durch eine Zuweisung für das betreffende Listenelement
@@ -93,6 +95,357 @@ möglich.
 ```{code-cell} python
 meine_liste[1] = 2
 print(meine_liste)
+```
+
+Neben der Möglichkeit, einzelne Listenelemente anzusprechen, ist es auch möglich, mehrere Listenelemente
+auf einmal zu adressieren. Dabei kann es sich entweder um eine gegebene Anzahl direkt aufeinanderfolgender
+Listenelemente oder mehrere Listenelemente mit einem festen Abstand handeln. In der folgenden
+Liste von Primzahlen werden alle Elemente ab Index 1, also ab dem zweiten Element, bis ausschließlich
+dem Index 5 ausgewählt.
+```{code-cell} python
+primzahlen = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+print(primzahlen[1:5])
+```
+Gerade zu Beginn ist es oft ungewohnt, dass das Element zum zweiten Index nicht Teil der Auswahl ist,
+auch wenn wir dies von der {func}`range`-Funktion schon gewohnt sind. Man kann sich dieses Verhalten 
+dadurch veranschaulichen, dass man sich den Index nicht als Nummerierung eines Elements vorstellt, sondern
+als Markierung »zwischen« den Listeneinträgen, wie es in {numref}`fig:slices` gezeigt ist.
+
+```{figure} images/sequenzen/listnumbering1.png
+---
+width: 50%
+name: fig:slices
+---
+Die Indizierung von Listen lässt sich besser verstehen, wenn man den Index als Markierung »zwischen« den
+Listeneinträgen versteht.
+```
+
+Da man in diesem Bild die Liste praktisch wie einen Brotlaib in Scheiben schneidet,
+spricht man bei der Adressierung von *slices*. Wie {numref}`fig:slices` mit den *slices*
+`[0:5]` und `[5:8]` zeigt, ist die von Python benutzte Indizierungskonvention auch
+insofern praktisch als aufeinanderfolgende *slices* den gleichen End -bzw. Anfangsindex
+haben.
+
+Wie bei der {func}`range`-Funktion gibt es auch bei den *slices* die Möglichkeit, die
+Schrittweite zu wählen. Die Bedeutung der Argumente ist in beiden Fällen gleich, nur dass
+in der *slice*-Notation die Argumente jeweils durch einen Doppelpunkt getrennt sind.
+```{code-cell} python
+print(primzahlen[1:8:2])
+```
+Hierbei wird aus der obigen Primzahlliste ausgehend vom zweiten Eintrag bis zum achten
+Eintrag jedes zweite Element ausgewählt.
+
+Wie würde man vorgehen, wenn man ausgehend vom ersten Element jedes dritte Element der
+Primzahlliste ausgeben möchte. Für die vollständige Indexangabe wird man zunächst einmal
+die Länge der Liste bestimmen müssen, wenn man diese nicht schon kennt.
+```{code-cell} python
+print(primzahlen[0:len(primzahlen):3])
+```
+Alternativ kann man aber das Ende der Liste dadurch spezifizieren, dass man den
+entsprechenden Eintrag leer lässt. Das Fehlen des Index ist dabei anhand der Doppelpunkte
+erkenntlich.
+```{code-cell} python
+print(primzahlen[0::3])
+```
+Entsprechend könnten man den ersten Index weglassen.
+```{code-cell} python
+print(primzahlen[::3])
+```
+Lässt man auch den dritten Index weg, so wird die Schrittweite automatisch auf 1 gesetzt.
+Statt zwei Doppelpunkten ist es dann aber einfacher, nur einen Doppelpunkt zu setzen. Auf
+diese Weise erhält man alle Elemente der Liste. Es ist allerdings nicht möglich, alle
+Doppelpunkte wegzulassen.
+```{code-cell} python
+print(primzahlen[::])
+print(primzahlen[:])
+```
+Alle Listenelemente kann man zwar auch einfach durch die Angabe des Listennamens ausgeben.
+Allerdings werden wir später noch sehen, dass es einen Unterschied macht, ob man nur den
+Listennamen verwendet oder ein *slice* `[:]`.
+```{code-cell} python
+print(primzahlen)
+```
+
+Insbesondere wenn die Indizes in einem *slice* durch Programmcode erzeugt werden, kann es 
+passieren, dass ein Index irrtümlich außerhalb des erlaubten Bereichs liegt. In einer solchen
+Situation können verschiedene Dinge passieren. Manche Programmiersprachen berechnen, zumindest
+unter bestimmten Bedingungen, einfach den entsprechenden Ort im Speicher und verwenden die dort
+vorhandenen Daten, sofern das Programm auf diesen Speicherbereich Zugriffsrechte besitzt. Solche
+Situationen führen zu Fehlern, die unter Umständen schwer zu identifizieren sind, unter anderem
+weil das Verhalten in solchen Situationen nicht reproduzierbar sein muss. Normalerweise kann
+man die betreffenden Programmiersprachen aber dazu zwingen, die Gültigkeit des angegebenen Index
+zu überprüfen.
+
+Python macht dies immer und so führt ein Zugriff jenseits der oberen Grenze der Liste zu einer
+Exception.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+print(primzahlen[20])
+```
+Dagegen sind negative Indizes in einem gewissen Rahmen erlaubt, nämlich von `-1` bis `-N`,
+wobei `N` die Zahl der Listenelemente ist. Die Zuordnung der Listenindizes ist in
+{numref}`fig:negativeindices` dargestellt. Mit negativen Indizes ist es also möglich,
+Listenelemente vom Ende her zu adressieren ohne die Länge der Liste kennen zu müssen.
+
+```{figure} images/sequenzen/listnumbering2.png
+---
+width: 50%
+name: fig:negativeindices
+---
+Mit negativen Indizes lassen sich Listenelemente vom Ende der Liste her adressieren.
+```
+
+So lässt sich beispielsweise sehr leicht das letzte Element einer Liste extrahieren.
+```{code-cell} python
+print(primzahlen)
+print(primzahlen[-1])
+```
+Auch die letzten drei Elemente lassen sich auf entsprechende Weise leicht erhalten.
+```{code-cell} python
+print(primzahlen[-3:])
+```
+Mit einer negativen Schrittweite kann man die Listen in umgekehrter Reihenfolge anordnen.
+```{code-cell} python
+print(primzahlen[::-1])
+```
+
+Bei der Arbeit mit Listen in Python ist zu beachten, dass sich diese nicht immer so
+verhalten, wie man es vielleicht erwarten würde. So erzeugt die Zuweisung einer Liste zu
+einer anderen Liste nicht zu einer unabhängigen Liste, sondern nur zu einem zweiten Namen,
+unter dem die ursprüngliche Liste angesprochen werden kann. Man spricht hier auch von
+einem *Alias*.
+```{code-cell} python
+a = [1, 17, 3]
+b = a
+a[1] = 2
+print(a)
+print(b)
+```
+Offenbar wurde hier nicht nur die Liste `a` verändert. Tatsächlich zeigen die beiden Namen
+`a` und `b` auf das gleiche Pythonobjekt.
+```{code-cell} python
+print(id(a), id(b))
+```
+Anders sieht es aus, wenn man die Listenelemente zuweist.
+```{code-cell} python
+a = [1, 17, 3]
+b = a[:]
+a[1] = 2
+print(a)
+print(b)
+```
+Nun handelt es sich bei den beiden Listen in der Tat auch um verschiedene Pythonobjekte.
+```{code-cell} python
+print(id(a), id(b))
+```
+
+Dieses Verhalten wirkt sich auch aus, wenn man Listen an Funktionen übergibt und innerhalb
+der Funktion verändert.
+```{code-cell} python
+def modify_list(x):
+    x[0] = 2
+
+meine_liste = [1, 2, 3]
+modify_list(meine_liste)
+print(meine_liste)
+```
+Die vorgenommene Änderung ist also nicht lokal auf die Funktion beschränkt, sondern wirkt
+sich auf die Liste im Hauptteil aus. Daher sollte man bei der Übergabe von Listen an
+Funktionen besondere Sorgfalt walten lassen und diese in der Funktion entweder nicht
+verändern oder zunächst eine Kopie anfertigen.
+
+Wie wir eingangs dieses Kapitels schon besprochen hatten, lassen Listen in Python im
+Gegensatz zu den homogenen Arrays anderer Programmiersprachen auch unterschiedliche
+Datentypen als Elemente einer Liste zu. Dies wollen wir an einer Liste demonstrieren, die
+eine mathematische Aufgabe in einer Liste spezifiziert, indem das erste Element ein
+Funktionsobjekt enthält während das zweite Element das zugehörige Argument enthält.
+```{code-cell} python
+from math import sin, pi
+aufgabe = [sin, pi/6]
+ergebnis = aufgabe[0](aufgabe[1])
+print(ergebnis)
+```
+Dabei ist die Abweichung vom erwarteten Ergebnis `0.5` durch Rundungsfehler bedingt.
+
+Es ist auch möglich, Listen als Listenelemente zu verwenden.
+```{code-cell} python
+a = [[1, 2], [3, 4]]
+print(a[0])
+print(a[1])
+print(a[0][1])
+```
+Hier wird beispielsweise mit `a[0]` das erste Element der Liste `a` adressiert, also die
+Liste `[1, 2]`. Aus dieser Liste kann wiederum ein Element ausgewählt werden, zum Beispiel
+`a[0][1]`.
+
+Auch wenn diese Liste von Listen den Anschein erwecken mag, als Matrix verwendet werden zu
+können, ist dies nicht wirklich der Fall. Zum einen ist es zwar leicht möglich, einen
+Zeilenvektor aus der Matrix zu extrahieren, wie wir an unserem Beispiel gesehen haben.
+Es ist aber nicht möglich, in entsprechender Weise einen Spaltenvektor zu erhalten. Zudem
+sind keine Matrixoperationen wie zum Beispiel eine Matrixmultiplikation für Listen von 
+Listen definiert. Stattdessen verwendet man für diese Zwecke die Numpy-Arrays, die wir in
+{numref}`scipy` besprechen werden.
+
+Andererseits können Listen in `for`-Schleifen nützlich sein. So kann man über die
+einzelnen Listenelemente der Matrix `a` iterieren.
+```{code-cell} python
+for liste in a:
+    print(liste)
+```
+Häufig ist es in solchen Fälle sinnvoll, die einzelnen Listenelemente gleich zu entpacken.
+```{code-cell} python
+for x, y in a:
+    print(f"{x} * {y} = {x*y}")
+```
+
+Wie wir bereits gesehen hatten, können wir Listenelemente verändern. Es ist uns allerdings
+nicht möglich, auf die gleiche Weise Listenelemente hinzufügen. Das folgende Beispiel kann
+nicht funktionieren, da versucht wird, auf ein nicht existierendes Listenelement
+zuzugreifen.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+a = [1, 2, 3]
+a[3] = 4
+```
+Es ist jedoch möglich, mit Hilfe der {func}`append`-Methode Elemente an eine Liste
+anzuhängen.
+```{code-cell} python
+a = [1, 2, 3]
+a.append(4)
+print(a)
+```
+Zu beachten ist hier, dass die Liste verändert wird ohne dass eine Zuweisung notwendig
+wäre. Würde man das Ergebnis der {func}`append`-Methode der Variable `a` zuweisen, so
+würde die Liste mit dem Wert `None` überschrieben werden.
+```{code-cell} python
+a = [1, 2, 3]
+a = a.append(4)
+print(a)
+```
+Häufig werden im Rahmen einer Schleife mehrere Listenelemente zu einer Liste hinzugefügt.
+```{code-cell} python
+a = []
+for n in range(10):
+    a.append(n**2)
+print(a)
+```
+In einfacheren Fällen kann eine sogenannte *list comprehension* eine kompaktere Lösung
+darstellen.
+```{code-cell} python
+a = [n**2 for n in range(10)]
+print(a)
+```
+In einer *list comprehension* lassen sich auch noch Bedingungen stellen, aber man sollte
+sich davor hüten, solche Konstruktionen zu komplex werden zu lassen.
+```{code-cell} python
+a = [n**2 for n in range(10) if n % 3]
+print(a)
+```
+
+Die {func}`append`-Methode muss von der {func}`extend`-Methode unterschieden werden,
+mit der eine Liste an eine andere Liste angehängt werden kann. Mit der `append`-Methode
+würde die Liste dagegen ein Element der ersten Liste werden.
+```{code-cell} python
+a = [1, 2]
+b = [3, 4]
+a.extend(b)
+print(a)
+a = [1, 2]
+a.append(b)
+print(a)
+```
+Das Verketten von zwei Listen ist auch mit einem Additionsoperator `+` möglich. Dagegen
+ist es nicht möglich, auf diese Weise ein einzelnes Listenelement hinzuzufügen.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+a = [1, 2]
+b = [3, 4]
+print(a + b)
+print(a + 4)
+```
+
+Neben der Addition von Listen ist auch die Multiplikation einer Liste mit einer nichtnegativen
+ganzen Zahl möglich.
+```{code-cell} python
+a = [1, 2]
+print(a*5)
+```
+```{code-cell} python
+print(a*0)
+```
+```{code-cell} python
+b = [0]
+print(b*10)
+```
+
+Neben `append` und `extend` gibt es noch weitere Methoden, um mit Listen zu arbeiten. Wir
+wollen hier nur ein paar Beispiele aufführen und verweisen ansonsten auf die
+[Python-Dokumentation](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists).
+
+Bei der Suche nach einem bestimmten Wert in einer Liste kann die {func}`index`-Methode hilfreich
+sein, die den Index des Elements angibt, in dem der gesuchte Wert zum ersten Mal auftritt.
+```{code-cell} python
+meine_liste = [1, 2, 3, 4, 3, 2, 1]
+idx1 = meine_liste.index(2)
+print(f"Index: {idx1}  Wert: {meine_liste[idx1]}")
+```
+Möchte man die Suche fortsetzen, so muss man darauf achten, sich auf den Teil der Liste nach dem
+bereits gefundenen Listenelement zu beschränken.
+```{code-cell} python
+offset = idx1+1
+idx2 = meine_liste[offset:].index(2)
+print(f"Index: {offset+idx2}  Wert: {meine_liste[offset+idx2]}")
+```
+Kommt das gesuchte Element nicht in der Liste vor, so erhält man einen `ValueError`.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+meine_liste.index(5)
+```
+Um solche Fälle vernünftig zu behandeln, sollte man die Ausnahme abfangen.
+```{code-cell} python
+for n in range(7):
+    try:
+        print(f"Erstes Auftreten von {n}: {meine_liste.index(n)}")
+    except ValueError:
+        print(f"{n} wurde nicht gefunden.")
+```
+Ist man ausschließlich daran interessiert, ob ein Wert in der Liste vorhanden ist, aber
+nicht daran, wo sich dieser Wert befindet, so kann man den `in`-Operator verwenden.
+```{code-cell} python
+for n in range(7):
+    if n in meine_liste:
+        print(f"{n} ist vorhanden")
+    else:
+        print(f"{n} ist nicht vorhanden")
+```
+Benötigt man jedoch auch die Position des Eintrags, so sollte man direkt die vorige
+Variante wählen.
+
+Abschließend sei noch erwähnt, dass man Listen mit Hilfe der {func}`sort`-Methode
+sortieren kann. Auch dies geschieht *in place*, es wird also keine neue Liste erzeugt.
+```{code-cell} python
+from random import randint
+zufallsliste = [randint(1, 100) for _ in range(20)]
+print(zufallsliste)
+zufallsliste.sort()
+print(zufallsliste)
+```
+Bei Bedarf ist es auch möglich, einen Sortierschlüssel anzugeben. Möchte man zum Beispiel
+nach der letzten Ziffer sortieren, so kann man diese mit einer geeigneten Lambda-Funktion
+bewerkstelligen.
+```{code-cell} python
+zufallsliste = [randint(1, 100) for _ in range(20)]
+print(zufallsliste)
+zufallsliste.sort(key=lambda x: x % 10)
+print(zufallsliste)
 ```
 
 (tupel)=
