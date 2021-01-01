@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -41,6 +41,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -619,7 +620,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140645552272192 140645552272192
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140105741917248 140105741917248
 </pre></div>
 </div>
 </div>
@@ -650,7 +651,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140645551620416 140645552273024
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140105741769088 140105741918016
 </pre></div>
 </div>
 </div>
@@ -877,9 +878,7 @@ würde die Liste dagegen ein Element der ersten Liste werden.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, [3, 4]]
+[1, 2, [3, 4]]
 </pre></div>
 </div>
 </div>
@@ -1066,8 +1065,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[94, 51, 63, 64, 94, 6, 83, 97, 69, 43, 83, 94, 46, 85, 95, 45, 91, 29, 70, 34]
-[6, 29, 34, 43, 45, 46, 51, 63, 64, 69, 70, 83, 83, 85, 91, 94, 94, 94, 95, 97]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[43, 83, 10, 85, 85, 57, 56, 47, 55, 65, 8, 38, 84, 19, 87, 70, 62, 59, 58, 70]
+[8, 10, 19, 38, 43, 47, 55, 56, 57, 58, 59, 62, 65, 70, 70, 83, 84, 85, 85, 87]
 </pre></div>
 </div>
 </div>
@@ -1085,8 +1084,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[99, 41, 51, 25, 24, 39, 42, 46, 61, 44, 61, 20, 26, 73, 35, 82, 19, 65, 29, 5]
-[20, 41, 51, 61, 61, 42, 82, 73, 24, 44, 25, 35, 65, 5, 46, 26, 99, 39, 19, 29]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[100, 89, 52, 18, 15, 5, 33, 61, 1, 37, 55, 84, 39, 95, 10, 15, 39, 33, 82, 47]
+[100, 10, 61, 1, 52, 82, 33, 33, 84, 15, 5, 55, 95, 15, 37, 47, 18, 89, 39, 39]
 </pre></div>
 </div>
 </div>
@@ -1094,6 +1093,118 @@ bewerkstelligen.</p>
 </div>
 <div class="section" id="tupel">
 <span id="id2"></span><h2><span class="section-number">6.2. </span>Tupel<a class="headerlink" href="#tupel" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Tupel sind Listen insofern ähnlich als sie als Elemente Objekte beliebigen Typs enthalten können.
+Andererseits sind sie nicht veränderlich. Man sagt auch, dass Listen veränderlich (<em>mutable</em>) seien,
+während Tupel unveränderlich (<em>immutable</em>) sind. Dies bedeutet, dass man auf Elemente von Tupeln
+mit <em>slices</em> wie bei Listen zugreifen kann. Es ist jedoch nicht möglich, diese Elemente zu verändern,
+und es existiert beispielsweise auch keine <code class="xref py py-func docutils literal notranslate"><span class="pre">append()</span></code>-Methode, mit der man Elemente an ein Tupel
+anhängen könnte. Bei der Besprechung von Listen hatten wir gesehen, dass besondere Vorsicht bei der
+Übergabe von Listen an Funktionen geboten ist, wenn innerhalb der Funktion Listenelemente verändert
+werden, da sich diese Änderungen auch außerhalb der Funktion auswirken. Bei Tupeln ist dies nicht der
+Fall, so dass sich diese besser für die Übergabe von Daten an eine Funktion eignen. In <a class="reference internal" href="#dictionaries"><span class="std std-numref">Kapitel 6.4</span></a>
+werden wir später noch sehen, dass Tupel, im Gegensatz zu Listen, auch als Schlüssel in sogenannten
+<em>dictionaries</em> Verwendung finden können. Es gibt also gute Gründe, warum es neben den veränderlichen
+Listen auch noch die unveränderlichen Tupel gibt.</p>
+<p>Während Listen durch eckige Klammern eingeschlossen werden, verwendet man für Tupel runde Klammern. Dies
+ändert jedoch nichts daran, dass bei der Indizierung mit <em>slices</em> eckige Klammern zu verwenden sind.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primzahlen</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+(3, 11, 19)
+(31, 29, 23, 19, 17, 13, 11, 7, 5, 3, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie schon erwähnt ist es nicht möglich, Einträge in Tupeln zu verändern.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mein_tupel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">mein_tupel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">44</span><span class="o">-</span><span class="mi">7</span><span class="n">cc2ea0c184e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">mein_tupel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mein_tupel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
+</pre></div>
+</div>
+</div>
+</div>
+<p>Möchte man ein Tupel mit nur einem einzigen Element erzeugen, so muss nach dem ersten Element ein
+Komma angegeben werden obwohl kein zweites Element folgt. Dies ist erforderlich, da sonst das Objekt
+den Datentyp des eingeklammerten Elements besitzen würde.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kein_tupel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">kein_tupel</span><span class="p">))</span>
+<span class="n">ein_tupel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ein_tupel</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;tuple&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im ersten Fall erhält man also einen Integer und nur im zweiten Fall ein Tupel.</p>
+<p>Abschließend wollen wir nur kurz darauf hinweisen, dass einige Möglichkeiten, die wir von Listen her
+kennen und die nicht zu einer Modifikation der Liste führen, auch für Tupel existieren. So können wir
+beispielsweise die Länge eines Tupels wie gewohnt bestimmen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+</pre></div>
+</div>
+</div>
+</div>
+<p>Auch lässt sich das Vorhandensein eines Elements in einem Tupel wie schon bei Listen diskutiert
+überprüfen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">primzahlen</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist eine Primzahl.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist keine Primzahl.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 ist keine Primzahl.
+2 ist eine Primzahl.
+3 ist eine Primzahl.
+4 ist keine Primzahl.
+5 ist eine Primzahl.
+6 ist keine Primzahl.
+7 ist eine Primzahl.
+8 ist keine Primzahl.
+9 ist keine Primzahl.
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="zeichenketten">
 <span id="strings"></span><h2><span class="section-number">6.3. </span>Zeichenketten<a class="headerlink" href="#zeichenketten" title="Link zu dieser Überschrift">¶</a></h2>

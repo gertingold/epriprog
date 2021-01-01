@@ -451,6 +451,62 @@ print(zufallsliste)
 (tupel)=
 ## Tupel
 
+Tupel sind Listen insofern ähnlich als sie als Elemente Objekte beliebigen Typs enthalten können.
+Andererseits sind sie nicht veränderlich. Man sagt auch, dass Listen veränderlich (*mutable*) seien,
+während Tupel unveränderlich (*immutable*) sind. Dies bedeutet, dass man auf Elemente von Tupeln
+mit *slices* wie bei Listen zugreifen kann. Es ist jedoch nicht möglich, diese Elemente zu verändern,
+und es existiert beispielsweise auch keine {func}`append`-Methode, mit der man Elemente an ein Tupel
+anhängen könnte. Bei der Besprechung von Listen hatten wir gesehen, dass besondere Vorsicht bei der
+Übergabe von Listen an Funktionen geboten ist, wenn innerhalb der Funktion Listenelemente verändert
+werden, da sich diese Änderungen auch außerhalb der Funktion auswirken. Bei Tupeln ist dies nicht der
+Fall, so dass sich diese besser für die Übergabe von Daten an eine Funktion eignen. In {numref}`dictionaries`
+werden wir später noch sehen, dass Tupel, im Gegensatz zu Listen, auch als Schlüssel in sogenannten
+*dictionaries* Verwendung finden können. Es gibt also gute Gründe, warum es neben den veränderlichen
+Listen auch noch die unveränderlichen Tupel gibt.
+
+Während Listen durch eckige Klammern eingeschlossen werden, verwendet man für Tupel runde Klammern. Dies
+ändert jedoch nichts daran, dass bei der Indizierung mit *slices* eckige Klammern zu verwenden sind.
+```{code-cell} python
+primzahlen = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)
+print(primzahlen[4])
+print(primzahlen[1:8:3])
+print(primzahlen[::-1])
+```
+Wie schon erwähnt ist es nicht möglich, Einträge in Tupeln zu verändern.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+mein_tupel = (1, 17, 3)
+mein_tupel[1] = 2
+```
+Möchte man ein Tupel mit nur einem einzigen Element erzeugen, so muss nach dem ersten Element ein
+Komma angegeben werden obwohl kein zweites Element folgt. Dies ist erforderlich, da sonst das Objekt
+den Datentyp des eingeklammerten Elements besitzen würde.
+```{code-cell} python
+kein_tupel = (1)
+print(type(kein_tupel))
+ein_tupel = (1,)
+print(type(ein_tupel))
+```
+Im ersten Fall erhält man also einen Integer und nur im zweiten Fall ein Tupel.
+
+Abschließend wollen wir nur kurz darauf hinweisen, dass einige Möglichkeiten, die wir von Listen her
+kennen und die nicht zu einer Modifikation der Liste führen, auch für Tupel existieren. So können wir
+beispielsweise die Länge eines Tupels wie gewohnt bestimmen.
+```{code-cell} python
+print(len(primzahlen))
+```
+Auch lässt sich das Vorhandensein eines Elements in einem Tupel wie schon bei Listen diskutiert
+überprüfen.
+```{code-cell} python
+for n in range(1, 10):
+    if n in primzahlen:
+        print(f'{n} ist eine Primzahl.')
+    else:
+        print(f'{n} ist keine Primzahl.')
+```
+
 (strings)=
 ## Zeichenketten
 
