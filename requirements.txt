@@ -1,2 +1,5 @@
-jupyter-book[sphinx]
-scipy
+sphinx==3.2.1
+sphinxcontrib-bibtex==1.0.0
+jupyter-book==0.8.3
+numpy==1.19.2
+scipy==1.5.2
