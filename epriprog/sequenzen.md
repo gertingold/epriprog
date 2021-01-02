@@ -451,12 +451,39 @@ print(zufallsliste)
 (tupel)=
 ## Tupel
 
-Tupel sind Listen insofern ähnlich als sie als Elemente Objekte beliebigen Typs enthalten können.
-Andererseits sind sie nicht veränderlich. Man sagt auch, dass Listen veränderlich (*mutable*) seien,
-während Tupel unveränderlich (*immutable*) sind. Dies bedeutet, dass man auf Elemente von Tupeln
-mit *slices* wie bei Listen zugreifen kann. Es ist jedoch nicht möglich, diese Elemente zu verändern,
-und es existiert beispielsweise auch keine {func}`append`-Methode, mit der man Elemente an ein Tupel
-anhängen könnte. Bei der Besprechung von Listen hatten wir gesehen, dass besondere Vorsicht bei der
+Tupel sind Listen insofern ähnlich als sie als Elemente Objekte beliebigen Typs enthalten
+können.  Andererseits sind sie nicht veränderlich. Man sagt auch, dass Listen veränderlich
+(*mutable*) seien, während Tupel unveränderlich (*immutable*) sind. Dies bedeutet, dass
+man auf Elemente von Tupeln mit *slices* wie bei Listen zugreifen kann. Es ist jedoch
+nicht möglich, diese Elemente zu verändern, und es existiert beispielsweise auch keine
+{func}`append`-Methode, mit der man Elemente an ein Tupel anhängen könnte. Man kann zwar
+Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktionalität an die
+{func}`extend`-Methode von Listen erinnert.
+```{code-cell} python
+mytuple1 = (1, 2)
+mytuple2 = (3, 4)
+print(f'{id(mytuple1) = }')
+print(f'{id(mytuple2) = }')
+
+mytuple1 = mytuple1 + mytuple2
+print(f'{mytuple1 = }')
+print(f'{id(mytuple1) = }')
+```
+Offensichtlich wird hier ein neues Tupel erzeugt, genauso wie die Verknüpfung zweier
+Listen mit Hilfe des Additionsoperators eine neue Liste erzeugen würde. Bei der
+{func}`extend`-Methode für Listen ist dies dagegen nicht der Fall.
+
+```{admonition} Tipp
+:class: tip
+Das Zusammenfügen von Tupeln mit Hilfe des Additionsoperators ist ineffizient,
+insbesondere wenn es oft geschieht. Je nach Problemstellung ist es daher sinnvoll,
+zunächst eine Liste zu erstellen oder die benötigten Elemente mit einem Generatorausdruck
+zu erzeugen und anschließend mit Hilfe der {func}`tuple`-Funktion ein Tupel zu erzeugen.
+```
+
+Wozu sind Tupel nützlich, wenn sie im Wesentlichen Listen mit eingeschränkter
+Funktionalität sind? Die Unveränderbarkeit von Tupeln kann in der Praxis nützlich sein.
+Bei der Besprechung von Listen hatten wir zum Beispiel gesehen, dass besondere Vorsicht bei der
 Übergabe von Listen an Funktionen geboten ist, wenn innerhalb der Funktion Listenelemente verändert
 werden, da sich diese Änderungen auch außerhalb der Funktion auswirken. Bei Tupeln ist dies nicht der
 Fall, so dass sich diese besser für die Übergabe von Daten an eine Funktion eignen. In {numref}`dictionaries`
@@ -509,6 +536,8 @@ for n in range(1, 10):
 
 (strings)=
 ## Zeichenketten
+
+
 
 (dictionaries)=
 ## Dictionaries
