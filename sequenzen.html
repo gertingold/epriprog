@@ -620,7 +620,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140105741917248 140105741917248
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140497507778048 140497507778048
 </pre></div>
 </div>
 </div>
@@ -651,7 +651,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140105741769088 140105741918016
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140497507782976 140497507783552
 </pre></div>
 </div>
 </div>
@@ -1065,8 +1065,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[43, 83, 10, 85, 85, 57, 56, 47, 55, 65, 8, 38, 84, 19, 87, 70, 62, 59, 58, 70]
-[8, 10, 19, 38, 43, 47, 55, 56, 57, 58, 59, 62, 65, 70, 70, 83, 84, 85, 85, 87]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[32, 41, 93, 98, 79, 69, 84, 54, 49, 50, 12, 47, 68, 40, 50, 50, 8, 80, 26, 16]
+[8, 12, 16, 26, 32, 40, 41, 47, 49, 50, 50, 50, 54, 68, 69, 79, 80, 84, 93, 98]
 </pre></div>
 </div>
 </div>
@@ -1084,8 +1084,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[100, 89, 52, 18, 15, 5, 33, 61, 1, 37, 55, 84, 39, 95, 10, 15, 39, 33, 82, 47]
-[100, 10, 61, 1, 52, 82, 33, 33, 84, 15, 5, 55, 95, 15, 37, 47, 18, 89, 39, 39]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[88, 73, 25, 30, 12, 99, 88, 26, 97, 55, 29, 27, 49, 83, 89, 48, 13, 65, 22, 41]
+[30, 41, 12, 22, 73, 83, 13, 25, 55, 65, 26, 97, 27, 88, 88, 48, 99, 29, 49, 89]
 </pre></div>
 </div>
 </div>
@@ -1093,12 +1093,49 @@ bewerkstelligen.</p>
 </div>
 <div class="section" id="tupel">
 <span id="id2"></span><h2><span class="section-number">6.2. </span>Tupel<a class="headerlink" href="#tupel" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Tupel sind Listen insofern ähnlich als sie als Elemente Objekte beliebigen Typs enthalten können.
-Andererseits sind sie nicht veränderlich. Man sagt auch, dass Listen veränderlich (<em>mutable</em>) seien,
-während Tupel unveränderlich (<em>immutable</em>) sind. Dies bedeutet, dass man auf Elemente von Tupeln
-mit <em>slices</em> wie bei Listen zugreifen kann. Es ist jedoch nicht möglich, diese Elemente zu verändern,
-und es existiert beispielsweise auch keine <code class="xref py py-func docutils literal notranslate"><span class="pre">append()</span></code>-Methode, mit der man Elemente an ein Tupel
-anhängen könnte. Bei der Besprechung von Listen hatten wir gesehen, dass besondere Vorsicht bei der
+<p>Tupel sind Listen insofern ähnlich als sie als Elemente Objekte beliebigen Typs enthalten
+können.  Andererseits sind sie nicht veränderlich. Man sagt auch, dass Listen veränderlich
+(<em>mutable</em>) seien, während Tupel unveränderlich (<em>immutable</em>) sind. Dies bedeutet, dass
+man auf Elemente von Tupeln mit <em>slices</em> wie bei Listen zugreifen kann. Es ist jedoch
+nicht möglich, diese Elemente zu verändern, und es existiert beispielsweise auch keine
+<code class="xref py py-func docutils literal notranslate"><span class="pre">append()</span></code>-Methode, mit der man Elemente an ein Tupel anhängen könnte. Man kann zwar
+Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktionalität an die
+<code class="xref py py-func docutils literal notranslate"><span class="pre">extend()</span></code>-Methode von Listen erinnert.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mytuple1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">mytuple2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">mytuple1</span><span class="p">)</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">mytuple2</span><span class="p">)</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">mytuple1</span> <span class="o">=</span> <span class="n">mytuple1</span> <span class="o">+</span> <span class="n">mytuple2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mytuple1</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">mytuple1</span><span class="p">)</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140497533988672
+id(mytuple2) = 140497507765120
+mytuple1 = (1, 2, 3, 4)
+id(mytuple1) = 140497507289024
+</pre></div>
+</div>
+</div>
+</div>
+<p>Offensichtlich wird hier ein neues Tupel erzeugt, genauso wie die Verknüpfung zweier
+Listen mit Hilfe des Additionsoperators eine neue Liste erzeugen würde. Bei der
+<code class="xref py py-func docutils literal notranslate"><span class="pre">extend()</span></code>-Methode für Listen ist dies dagegen nicht der Fall.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tipp</p>
+<p>Das Zusammenfügen von Tupeln mit Hilfe des Additionsoperators ist ineffizient,
+insbesondere wenn es oft geschieht. Je nach Problemstellung ist es daher sinnvoll,
+zunächst eine Liste zu erstellen oder die benötigten Elemente mit einem Generatorausdruck
+zu erzeugen und anschließend mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">tuple()</span></code>-Funktion ein Tupel zu erzeugen.</p>
+</div>
+<p>Wozu sind Tupel nützlich, wenn sie im Wesentlichen Listen mit eingeschränkter
+Funktionalität sind? Die Unveränderbarkeit von Tupeln kann in der Praxis nützlich sein.
+Bei der Besprechung von Listen hatten wir zum Beispiel gesehen, dass besondere Vorsicht bei der
 Übergabe von Listen an Funktionen geboten ist, wenn innerhalb der Funktion Listenelemente verändert
 werden, da sich diese Änderungen auch außerhalb der Funktion auswirken. Bei Tupeln ist dies nicht der
 Fall, so dass sich diese besser für die Übergabe von Daten an eine Funktion eignen. In <a class="reference internal" href="#dictionaries"><span class="std std-numref">Kapitel 6.4</span></a>
@@ -1135,7 +1172,7 @@ Listen auch noch die unveränderlichen Tupel gibt.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">44</span><span class="o">-</span><span class="mi">7</span><span class="n">cc2ea0c184e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">45</span><span class="o">-</span><span class="mi">7</span><span class="n">cc2ea0c184e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">mein_tupel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mein_tupel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 
