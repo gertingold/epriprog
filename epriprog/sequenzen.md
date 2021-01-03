@@ -736,3 +736,136 @@ print(s_nenner.center(maxlaenge))
 
 (dictionaries)=
 ## Dictionaries
+
+Den letzten zusammengesetzten Datentyp, den wir in diesem Kapitel besprechen
+wollen, sind Dictionaries oder auch *hash tables*, die Schlüsseln (*key*) Werte
+(*value*) zuordnen. Man kann sich diese Objekte wie Telefonbücher oder Wörterbücher
+vorstellen, in denen man unter geordneten Schlüsseln schnell den richtigen Eintrag
+finden kann und dort die gesuchte Information nachschlagen kann.
+
+Betrachten wir ein Beispiel, um eine bessere Vorstellung von Dictionaries zu bekommen.
+Konkret wollen wir Informationen über die Atommasse einiger Elemente zusammenstellen.
+```{code-cell} python
+atommasse = {'H': 1.008, 'He': 4.002602, 'Li': 6.94, 'Be': 9.0121831}
+atommasse['Li']
+```
+In der ersten Zeile ist zu sehen, wie einem Schlüssel, hier das chemische Symbol, ein
+Wert, im Beispiel die zugehörige Atommasse, zugeordnet wird. Die zweite Zeile zeigt,
+wie man den Wert unter Angabe des Schlüssels erhalten kann. Sehen wir uns die beiden
+Zeilen etwas genauer an. Im Gegensatz zu Listen, deren Einträge durch eckige Klammern
+begrenzt sind, und Tupeln, die durch runde Klammern eingeschlossen werden, werden
+für Dictionaries in Python geschweifte Klammern verwendet. Die durch Kommas getrennten
+Einträge bestehen aus dem bereits erwähnten Paar von Schlüssel und Wert, die durch einen
+Doppelpunkt getrennt sind.
+
+Welche Objekte sind nun als Schlüssel und Wert zugelassen? Für Schlüsseln muss
+sich ein sogenannten Hashwert berechnen lassen, also eine ganze Zahl, die den
+Schlüssel charakterisiert. Da sich ein Hashwert nur für unveränderliche Objekte 
+wie numerische Datentypen, Tupel oder Zeichenketten definieren lassen, sind Listen
+und Dictionaries selbst nicht für Schlüssel zulässig. An dieser Stellen erkennen wir
+einen Vorteil, den Tupel gegenüber Listen bieten. Andererseits können die Werte sowohl
+unveränderliche als auch unveränderliche Objekte sein. Das bedeutet zum Beispiel, dass
+eine Liste ein Wert sein könnte und diese Liste im Programmlauf potentiell auch verändert
+werden kann. Im Übrigen ist es nicht notwendig, dass alle Schlüssel vom gleichen Datentyp
+sein müssen und auch für die Werte ist dies nicht erforderlich.
+
+Wie wir gerade schon angedeutet haben, sind Dictionaries veränderbar, also *mutable*. Zu
+einem Dictionary kann man weitere Schlüssel-Wert-Paare hinzufügen. Dazu verwendet man wie
+schon beim Auslesen von Werten in unserem ersten Beispiel eckige Klammern, die den Schlüssel
+einschließen. Diese Notation ist analog zur Indizierung von Listen mit Hilfe von *slices*.
+```{code-cell} python
+atommasse['B'] = 10.81
+print(atommasse)
+```
+Offenbar ändert sich die Reihenfolge der bisherigen Einträge durch die Hinzufügung
+nicht. Man darf allerdings nicht davon ausgehen, dass dies auch in anderen Programmiersprachen,
+die Dictionaries oder entsprechende Datentypen zur Verfügung stellen, auch der Fall ist. 
+Tatsächlich ist dieses Verhalten auch in Python erst seit der Version 3.6 realisiert, die
+eine neue Implementation von Dictionaries enthielt.
+
+Wenn man versucht, auf den Wert zu einem nicht existierenden Schlüssel zuzugreifen, so erhält
+man einen `KeyError`, den man mit der üblichen `try…except`-Konstruktion behandeln könnte
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+atommasse['O']
+```
+Möchte man nur wissen, ob ein Schlüssel im Dictionary vorhanden ist und interessiert man sich
+nicht für den zugehörigen Wert, kann man folgendermaßen vorgehen.
+```{code-cell} python
+'B' in atommasse
+```
+
+Iteriert man über ein Dictionary, so erhält man die darin enthaltenen Schlüssel.
+```{code-cell} python
+for k in atommasse:
+    print(k, end=", ")
+```
+Benötigt man auch die zugehörigen Werte, so kann man die {func}`items`-Methode verwenden, die
+Tupel aus Schlüssel und zugehörigem Wert liefert. Es ist durchaus üblich, aber nicht zwingend,
+die entsprechenden Variablen beim Entpacken des Tupels mit `k` für *key* und `v` für *value*
+zu bezeichnen.
+```{code-cell} python
+for k, v in atommasse.items():
+    print(f'{k:2s} | {v:5.2f}')
+```
+
+Wir wollen hier nicht alle Möglichkeiten im Detail besprechen, die für die Arbeit mit 
+Dictionaries in Python zur Verfügung stehen, sondern verweisen an dieser Stelle auf
+den [entsprechenden Abschnitt in der Python-Dokumentation](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict). Stattdessen wollen wir noch zwei Anwendungsszenarien besprechen, die im
+Zusammenhang mit vorangegangenen Kapiteln stehen.
+
+````{margin}
+```{admonition} Literaturhinweis
+Das Pascal-Beispiel ist K. Jensen, N. Wirth, [PASCAL User Manual and Report](https://doi.org/10.1007/978-3-662-21554-8), S. 31 (Springer, 1974) entnommen.
+```
+````
+In {numref}`ifelse` hatten wir unter anderem die Möglichkeit von Mehrfachverzweigungen
+angesprochen, aber auch darauf verwiesen, dass längliche `if…elif…else`-Konstruktionen 
+häufig mit Hilfe von Dictionaries vermieden werden können. Damit erhält man in Python
+einen Ersatz für `case`- oder `switch`-Anweisungen, die in anderen Programmiersprachen
+existieren. 
+
+Zur Illustration verwenden wir ein konkretes Anwendungsbeispiel für die `case`-Anweisung
+in der Programmiersprache Pascal.
+```{code-block} pascal
+case i of
+  0: x := 0;
+  1: x := sin(x);
+  2: x := cos(x);
+  3: x := exp(x);
+  4: x := ln(x);
+end
+```
+Hierbei wird abhängig vom Wert des Integers `i` eine von verschiedenen mathematischen
+Funktionen ausgeführt. Diese Problemstellung könnten wir in Python mit einer `if…elif`-Konstruktion
+realisieren. Besser ist aber die Lösung mit Hilfe eines Dictionaries, wobei als Schlüssel
+die Zahlen 0 bis 4 verwendet werden und die zugehörigen Werte die gewünschten Funktionen sind.
+```{code-cell} python
+from math import cos, exp, log, sin
+
+funktion = {0: lambda x: 0,
+            1: sin,
+            2: cos,
+            3: exp,
+            4: log}
+
+x = 2
+for i in range(5):
+    print(funktion[i](x))
+```
+Hier haben wir ausgenutzt, dass Funktionen in Python Bürger erster Klasse sind,
+die somit auch als Werte in Dictionaries in Frage kommen. Außerdem haben wir es
+im ersten Eintrag des Dictionaries mit einer Lambda-Funktion vermieden, extra
+eine Funktion zu definieren, die nichts anderes tut als den Wert Null
+zurückzugeben. Betrachten wir noch die letzte Zeile, die auf den ersten Blick
+vielleicht etwas verwirrend aussieht. Hier wird mit `funktion[i]` zunächst das
+benötigte Funktionsobjekt beschafft, wobei die Variable `i` den entsprechenden
+Schlüssel enthält. Diese Funktion kann nun in der üblichen Weise aufgerufen werden,
+womit sich der Funktionsaufruf `funktion[i](x)` erklärt.
+
+In {numref}`kwargs` haben wir diskutiert, dass Funktionsargumente per Schlüsselwort
+übergeben werden können. Es kann aber vorkommen, dass die aufzurufende Funktion
+überhaupt nicht alle relevanten Schlüsselworte als Argumente besitzt, weil sie einige
+dieser Argumente an eine andere Funktion weitergibt.
