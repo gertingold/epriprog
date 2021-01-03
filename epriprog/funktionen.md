@@ -223,6 +223,7 @@ und der Rückgabewerte einfach nach der Position. Die Möglichkeit, mit Hilfe vo
 Schlüsselworten eine Zuordnung der Funktionsargumente vorzunehmen, werden wir in
 {numref}`kwargs` besprechen.
 
+(dokumentation)=
 ## Dokumentation von Funktionen
 
 Wie generell beim Programmieren ist es auch in Funktionen sinnvoll, an eine

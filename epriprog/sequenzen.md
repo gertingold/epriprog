@@ -537,7 +537,202 @@ for n in range(1, 10):
 (strings)=
 ## Zeichenketten
 
+````{margin}
+```{admonition} Unicode
+Mehr Information zu Unicodezeichen findet sich in {numref}`appendixunicode`.
+```
+````
+In vielen Beispielen sind wir bereits der Notwendigkeit begegnet, einen Text auszugeben,
+der aus einem oder mehreren Zeichen besteht. In einigen Programmiersprachen wird zwischen
+einzelnen Zeichen (*characters*) und Zeichenketten (*strings*) unterschieden. Dies ist zum
+Beispiel in Fortran und C der Fall, wo eine Zeichenkette eine Liste von `char` darstellt.
+In Python gibt es dagegen nur Zeichenketten. Diese bestehen aus einem oder mehreren
+Unicodezeichen und sind wie die Tupel, die wir gerade kennengelernt haben, *immutable*,
+also unveränderlich.
 
+Zeichenketten werden in Python wahlweise von Hochkommas (`'`) oder Anführungszeichen (`"`,
+aber keine typographischen Anführungszeichen wie “”„‟), wobei am Anfang und am Ende das
+gleiche Zeichen verwendet werden muss. Während Python die Art der Begrenzer egal ist, kann
+diese Wahl beim Programmieren praktisch sein, wenn das andere Zeichen im Text selbst
+vorkommt.
+```{code-cell} python
+s1 = 'Hallo'
+s2 = "Hallo"
+s1 == s2
+```
+Sollte der Begrenzer in der Zeichenkette selbst auch vorkommen, muss ihm mit einem
+vorgestellten Backslash (`\`) die Sonderbedeutung an der betreffenden Stelle genommen
+werden.
+```{code-cell} python
+s = '"God said, \'Let Newton be!\' and all was light" (Alexander Pope)'
+print(s)
+```
+Umgekehrt kann der Backslash auch dazu verwendet werden, um bestimmten Zeichen eine
+besondere Bedeutung als Steuerzeichen zu geben. Verwendet man `\n`, so kann man in der
+Ausgabe einen Zeilenumbruch erzeugen.
+```{code-cell} python
+s = "Eine Zeile\nund noch eine Zeile"
+print(s)
+```
+Einige weitere Steuerzeichen findet man in {numref}`table:steuerzeichen`.
+
+Soll der Backslash nicht dazu dienen, ein Steuerzeichen anzudeuten, muss man seine
+Spezialfunktion entweder mit einem weiteren Backshlash außer Kraft setzen oder die
+Zeichenkette durch Voranstellen des Zeichens `r` als *raw string* kennzeichnen.
+```{code-cell} python
+s1 = "Eine Zeile\\nund noch eine Zeile"
+s2 = r"Eine Zeile\nund noch eine Zeile"
+s1, s2
+```
+Aus der Ausgabe kann man entnehmen, dass beide Varianten für Python vollkommen äquivalent
+sind.
+
+Wir wir in {numref}`dokumentation` gesehen haben, ist es in Python auch möglich,
+mehrzeilige Zeichenketten direkt als solche zu definieren. Dazu muss man am Anfang und
+am Ende der Zeichenkette statt nur einem Begrenzer, also `'` oder `"`, jeweils drei
+dieser Begrenzer setzen.
+```{code-cell} python
+s = '''Eine Zeile
+und noch eine Zeile'''
+print(s)
+```
+Bei längeren Zeichenketten ist es manchmal auch praktisch, dass Python direkt
+aufeinanderfolgende Zeichenketten, auch wenn sie über mehrere Zeilen verteilt sind,
+automatisch zu einer Zeichenkette zusammenfügt, so dass man das nicht selbst explizit tun
+muss.
+```{code-cell} python
+s = ('Dies ist eine etwas längere Zeile, '
+     'die noch weiter geht '
+     'und noch weiter und noch weiter ...')
+print(s)
+```
+
+Möchte man Zeichen verwenden, die sich nicht ohne Weiteres über die Tastatur eingeben
+lassen, so kann man mit dem Steuerzeichen `\u` den entsprechenden Unicode-Codepoint
+angeben oder mit dem Steuerzeichen `\N` die entsprechende Unicode-Beschreibung.
+```{code-cell} python
+print('\u263a \N{WHITE SMILING FACE}')
+print('\u210f \N{PLANCK CONSTANT OVER TWO PI}')
+```
+
+```{admonition} Weiterführender Hinweis
+Zur Darstellung einer Zeichenkette verwendet Python standardmäßig die UTF8-Kodierung,
+was in vielen Fällen die richtige Wahl sein wird. Benötigt man eine andere Kodierung,
+so muss je nach Anwendungfall die Kodierung spezifiziert werden oder die
+Unicode-Zeichenkette unter Angabe des `encoding`-Arguments in die entsprechende
+Byte-Darstellung umgewandelt werden.
+```
+
+Wie schon eingangs erwähnt, sind Zeichenketten genauso wie Tupel unveränderlich.
+Man kann Zeichenketten zwar mittels des Additionsoperators verketten, wie wir dies
+bei Tupeln schon gesehen hatten. Allerdings wird dabei immer eine neue Zeichenkette
+erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.
+```{code-cell} python
+s1 = 'Dies ist ein '
+s2 = 'Test'
+print(f'{id(s1) = } | {id(s2) = }')
+s1 = s1 + s2
+print(f'{id(s1) = }')
+```
+Ein besseres Verfahren besteht darin, die zusammenzusetzenden Zeichenketten in einer
+Liste zu sammeln, und sie anschließend mit der {func}`join`-Methode zusammenzufügen.
+Dabei handelt es sich um die Methode einer Zeichenkette, die zwischen die in der Liste
+aufgeführten Zeichenketten gesetzt wird. Es kann sich dabei um eine leere Zeichenkette
+handeln, wenn man die einzelnen Zeichenketten nahtlos aneinander fügen möchte. Im
+folgenden Beispiel ist dagegen eine Zeichenkette sinnvoll, die aus einem Leerzeichen
+besteht, aber im Prinzip könnte die Zeichenkette auch mehrere Zeichen umfassen.
+```{code-cell} python
+stringlist = ['Einführung', 'in', 'Prinzipien', 'der', 'Programmierung']
+print(''.join(stringlist))
+print(' '.join(stringlist))
+print('--'.join(stringlist))
+```
+
+Neben dem Additionsoperator ist auch der Multiplikationsoperator zwischen einer
+Zeichenkette und einem Integer definiert ähnlich wie wir das bereits bei Listen
+gesehen hatten. Die ist beispielsweise praktisch, wenn man in einer Ausgabe
+einen Trennstrich einer bestimmten Länge setzen möchte.
+```{code-cell} python
+print('-'*40)
+```
+
+Für Zeichenketten gibt es die gleichen Möglichkeiten des *slicing*, die wir auch von den
+Tupeln her kennen. Eine Veränderung einzelner oder mehrere Zeichen analog zu den Listen
+ist dagegen nicht möglich.
+```{code-cell} python
+s = 'Einführung in Prinzipien der Programmierung'
+print(f'{s[14:24] = }')
+print(f'{s[-14:] = }')
+print(f'{s[1::2] = }')
+print(f'{s[::-1] = }')
+```
+Wie bei Listen und Tupeln lässt sich auch überprüfen, ob oder wo eine Zeichenkette in einer
+anderen Zeichenkette vorhanden ist. Ist die gesuchte Zeichenkette nicht vorhanden, so
+erhält man einen `ValueError`, den man mit einer `try…except`-Konstruktion behandeln kann,
+wie wir in {numref}`exceptions` gesehen hatten.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+s = 'Einführung in Prinzipien der Programmierung'
+print('in' in s)
+print(s.index('in'))
+print(s.index('x'))
+```
+
+Wie über Listen oder Tupel kann man auch über Zeichenketten iterieren. Man 
+erhält dann nacheinander die einzelnen Zeichen der Zeichenkette.
+```{code-cell} python
+for c in 'ABC':
+    print(c)
+```
+
+Python stellt auch eine Reihe von Methoden spezifisch für Zeichenketten zur Verfügung, aus denen
+wir hier nur eine kleine Auswahl ansprechen wollen. Einen vollständigen Überblick bietet die
+Dokumentation unter dem Stichwort
+[String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods).
+
+Häufig steht man vor der Aufgabe, überschüssige Leerzeichen um eine Zeichenkette herum oder 
+einen Zeilenumbruch am Ende einer Zeichenkette zu entfernen. Die geht mit den Methoden {func}`strip`
+für beide Seiten, {func}`lstrip` für die linke und {func}`rstrip` für die rechte Seite der
+Zeichenkette. Ohne Argumente werden dabei Leerzeichen entfernt. Alternativ kann man eine Zeichenkette
+angeben, die die zu entfernenden Zeichen enthält.
+```{code-cell} python
+s = '   Hallo '
+print(f'|{s.lstrip()}|')
+print(f'|{s.rstrip()}|')
+print(f'|{s.strip()}|')
+```
+```{code-cell} python
+s = 'Hallo\n'
+print(s)
+print('-'*10)
+print(s.rstrip('\n'))
+print('-'*10)
+```
+Im letzten Beispiel erkennt man den ursprünglich vorhandenen Zeilenumbruch an der Leerzeile in
+der Ausgabe.
+
+Beim Vergleichen von Zeichenketten kann es nützlich sein, unabhängig von der Groß- und
+Kleinschreibung zu sein. Dann helfen die Methoden {func}`upper` und {func}`lower` weiter.
+```{code-cell} python
+s = 'Hallo'
+print(s.upper(), s.lower())
+```
+
+Das abschließende Beispiel demonstriert, wie man einen Bruch formatiert darstellen kann. Die perfekte
+Ausrichtung funktioniert natürlich nur, wenn beide Zahlen eine gerade oder eine beide eine
+ungerade Anzahl von Stellen haben.
+```{code-cell} python
+zaehler = 12345678
+nenner = 2468
+s_zaehler = str(zaehler)
+s_nenner = str(nenner)
+maxlaenge = max(len(s_zaehler), len(s_nenner))
+print(s_zaehler.center(maxlaenge))
+print('-'*maxlaenge)
+print(s_nenner.center(maxlaenge))
+```
 
 (dictionaries)=
 ## Dictionaries
