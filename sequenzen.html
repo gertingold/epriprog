@@ -620,7 +620,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140497507778048 140497507778048
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140488111685184 140488111685184
 </pre></div>
 </div>
 </div>
@@ -651,7 +651,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140497507782976 140497507783552
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140488111504448 140488111690176
 </pre></div>
 </div>
 </div>
@@ -1065,8 +1065,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[32, 41, 93, 98, 79, 69, 84, 54, 49, 50, 12, 47, 68, 40, 50, 50, 8, 80, 26, 16]
-[8, 12, 16, 26, 32, 40, 41, 47, 49, 50, 50, 50, 54, 68, 69, 79, 80, 84, 93, 98]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[96, 27, 20, 39, 86, 83, 96, 57, 35, 10, 32, 36, 88, 67, 33, 26, 52, 100, 37, 7]
+[7, 10, 20, 26, 27, 32, 33, 35, 36, 37, 39, 52, 57, 67, 83, 86, 88, 96, 96, 100]
 </pre></div>
 </div>
 </div>
@@ -1084,8 +1084,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[88, 73, 25, 30, 12, 99, 88, 26, 97, 55, 29, 27, 49, 83, 89, 48, 13, 65, 22, 41]
-[30, 41, 12, 22, 73, 83, 13, 25, 55, 65, 26, 97, 27, 88, 88, 48, 99, 29, 49, 89]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[97, 32, 94, 74, 67, 22, 26, 22, 87, 72, 11, 21, 28, 61, 34, 34, 78, 2, 100, 38]
+[100, 11, 21, 61, 32, 22, 22, 72, 2, 94, 74, 34, 34, 26, 97, 67, 87, 28, 78, 38]
 </pre></div>
 </div>
 </div>
@@ -1115,10 +1115,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140497533988672
-id(mytuple2) = 140497507765120
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140488111631744
+id(mytuple2) = 140488506994944
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 140497507289024
+id(mytuple1) = 140488111729776
 </pre></div>
 </div>
 </div>
@@ -1245,6 +1245,372 @@ beispielsweise die Länge eines Tupels wie gewohnt bestimmen.</p>
 </div>
 <div class="section" id="zeichenketten">
 <span id="strings"></span><h2><span class="section-number">6.3. </span>Zeichenketten<a class="headerlink" href="#zeichenketten" title="Link zu dieser Überschrift">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-unicode admonition">
+<p class="admonition-title">Unicode</p>
+<p>Mehr Information zu Unicodezeichen findet sich in <a class="reference internal" href="unicode.html#appendixunicode"><span class="std std-numref">Kapitel 13</span></a>.</p>
+</div>
+</div>
+<p>In vielen Beispielen sind wir bereits der Notwendigkeit begegnet, einen Text auszugeben,
+der aus einem oder mehreren Zeichen besteht. In einigen Programmiersprachen wird zwischen
+einzelnen Zeichen (<em>characters</em>) und Zeichenketten (<em>strings</em>) unterschieden. Dies ist zum
+Beispiel in Fortran und C der Fall, wo eine Zeichenkette eine Liste von <code class="docutils literal notranslate"><span class="pre">char</span></code> darstellt.
+In Python gibt es dagegen nur Zeichenketten. Diese bestehen aus einem oder mehreren
+Unicodezeichen und sind wie die Tupel, die wir gerade kennengelernt haben, <em>immutable</em>,
+also unveränderlich.</p>
+<p>Zeichenketten werden in Python wahlweise von Hochkommas (<code class="docutils literal notranslate"><span class="pre">'</span></code>) oder Anführungszeichen (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>,
+aber keine typographischen Anführungszeichen wie “”„‟), wobei am Anfang und am Ende das
+gleiche Zeichen verwendet werden muss. Während Python die Art der Begrenzer egal ist, kann
+diese Wahl beim Programmieren praktisch sein, wenn das andere Zeichen im Text selbst
+vorkommt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39;Hallo&#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;Hallo&quot;</span>
+<span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sollte der Begrenzer in der Zeichenkette selbst auch vorkommen, muss ihm mit einem
+vorgestellten Backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) die Sonderbedeutung an der betreffenden Stelle genommen
+werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&quot;God said, </span><span class="se">\&#39;</span><span class="s1">Let Newton be!</span><span class="se">\&#39;</span><span class="s1"> and all was light&quot; (Alexander Pope)&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;God said, &#39;Let Newton be!&#39; and all was light&quot; (Alexander Pope)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Umgekehrt kann der Backslash auch dazu verwendet werden, um bestimmten Zeichen eine
+besondere Bedeutung als Steuerzeichen zu geben. Verwendet man <code class="docutils literal notranslate"><span class="pre">\n</span></code>, so kann man in der
+Ausgabe einen Zeilenumbruch erzeugen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Eine Zeile</span><span class="se">\n</span><span class="s2">und noch eine Zeile&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eine Zeile
+und noch eine Zeile
+</pre></div>
+</div>
+</div>
+</div>
+<p>Einige weitere Steuerzeichen findet man in <a class="reference internal" href="unicode.html#table-steuerzeichen"><span class="std std-numref">Tab. 13.1</span></a>.</p>
+<p>Soll der Backslash nicht dazu dienen, ein Steuerzeichen anzudeuten, muss man seine
+Spezialfunktion entweder mit einem weiteren Backshlash außer Kraft setzen oder die
+Zeichenkette durch Voranstellen des Zeichens <code class="docutils literal notranslate"><span class="pre">r</span></code> als <em>raw string</em> kennzeichnen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s2">&quot;Eine Zeile</span><span class="se">\\</span><span class="s2">nund noch eine Zeile&quot;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;Eine Zeile\nund noch eine Zeile&quot;</span>
+<span class="n">s1</span><span class="p">,</span> <span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Eine Zeile\\nund noch eine Zeile&#39;, &#39;Eine Zeile\\nund noch eine Zeile&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aus der Ausgabe kann man entnehmen, dass beide Varianten für Python vollkommen äquivalent
+sind.</p>
+<p>Wir wir in <a class="reference internal" href="funktionen.html#dokumentation"><span class="std std-numref">Kapitel 5.2</span></a> gesehen haben, ist es in Python auch möglich,
+mehrzeilige Zeichenketten direkt als solche zu definieren. Dazu muss man am Anfang und
+am Ende der Zeichenkette statt nur einem Begrenzer, also <code class="docutils literal notranslate"><span class="pre">'</span></code> oder <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>, jeweils drei
+dieser Begrenzer setzen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;Eine Zeile</span>
+<span class="s1">und noch eine Zeile&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eine Zeile
+und noch eine Zeile
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bei längeren Zeichenketten ist es manchmal auch praktisch, dass Python direkt
+aufeinanderfolgende Zeichenketten, auch wenn sie über mehrere Zeilen verteilt sind,
+automatisch zu einer Zeichenkette zusammenfügt, so dass man das nicht selbst explizit tun
+muss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Dies ist eine etwas längere Zeile, &#39;</span>
+     <span class="s1">&#39;die noch weiter geht &#39;</span>
+     <span class="s1">&#39;und noch weiter und noch weiter ...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dies ist eine etwas längere Zeile, die noch weiter geht und noch weiter und noch weiter ...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Möchte man Zeichen verwenden, die sich nicht ohne Weiteres über die Tastatur eingeben
+lassen, so kann man mit dem Steuerzeichen <code class="docutils literal notranslate"><span class="pre">\u</span></code> den entsprechenden Unicode-Codepoint
+angeben oder mit dem Steuerzeichen <code class="docutils literal notranslate"><span class="pre">\N</span></code> die entsprechende Unicode-Beschreibung.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u263a</span><span class="s1"> </span><span class="se">\N{WHITE SMILING FACE}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u210f</span><span class="s1"> </span><span class="se">\N{PLANCK CONSTANT OVER TWO PI}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>☺ ☺
+ℏ ℏ
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Zur Darstellung einer Zeichenkette verwendet Python standardmäßig die UTF8-Kodierung,
+was in vielen Fällen die richtige Wahl sein wird. Benötigt man eine andere Kodierung,
+so muss je nach Anwendungfall die Kodierung spezifiziert werden oder die
+Unicode-Zeichenkette unter Angabe des <code class="docutils literal notranslate"><span class="pre">encoding</span></code>-Arguments in die entsprechende
+Byte-Darstellung umgewandelt werden.</p>
+</div>
+<p>Wie schon eingangs erwähnt, sind Zeichenketten genauso wie Tupel unveränderlich.
+Man kann Zeichenketten zwar mittels des Additionsoperators verketten, wie wir dies
+bei Tupeln schon gesehen hatten. Allerdings wird dabei immer eine neue Zeichenkette
+erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39;Dies ist ein &#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="si">= }</span><span class="s1"> | </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140488456038384 | id(s2) = 140488456038896
+id(s1) = 140488111199776
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ein besseres Verfahren besteht darin, die zusammenzusetzenden Zeichenketten in einer
+Liste zu sammeln, und sie anschließend mit der <code class="xref py py-func docutils literal notranslate"><span class="pre">join()</span></code>-Methode zusammenzufügen.
+Dabei handelt es sich um die Methode einer Zeichenkette, die zwischen die in der Liste
+aufgeführten Zeichenketten gesetzt wird. Es kann sich dabei um eine leere Zeichenkette
+handeln, wenn man die einzelnen Zeichenketten nahtlos aneinander fügen möchte. Im
+folgenden Beispiel ist dagegen eine Zeichenkette sinnvoll, die aus einem Leerzeichen
+besteht, aber im Prinzip könnte die Zeichenkette auch mehrere Zeichen umfassen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stringlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Einführung&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;Prinzipien&#39;</span><span class="p">,</span> <span class="s1">&#39;der&#39;</span><span class="p">,</span> <span class="s1">&#39;Programmierung&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stringlist</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stringlist</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stringlist</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EinführunginPrinzipienderProgrammierung
+Einführung in Prinzipien der Programmierung
+Einführung--in--Prinzipien--der--Programmierung
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neben dem Additionsoperator ist auch der Multiplikationsoperator zwischen einer
+Zeichenkette und einem Integer definiert ähnlich wie wir das bereits bei Listen
+gesehen hatten. Die ist beispielsweise praktisch, wenn man in einer Ausgabe
+einen Trennstrich einer bestimmten Länge setzen möchte.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für Zeichenketten gibt es die gleichen Möglichkeiten des <em>slicing</em>, die wir auch von den
+Tupeln her kennen. Eine Veränderung einzelner oder mehrere Zeichen analog zu den Listen
+ist dagegen nicht möglich.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Einführung in Prinzipien der Programmierung&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">24</span><span class="p">]</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s[14:24] = &#39;Prinzipien&#39;
+s[-14:] = &#39;Programmierung&#39;
+s[1::2] = &#39;ifhugi rniindrPormirn&#39;
+s[::-1] = &#39;gnureimmargorP red neipiznirP ni gnurhüfniE&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie bei Listen und Tupeln lässt sich auch überprüfen, ob oder wo eine Zeichenkette in einer
+anderen Zeichenkette vorhanden ist. Ist die gesuchte Zeichenkette nicht vorhanden, so
+erhält man einen <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, den man mit einer <code class="docutils literal notranslate"><span class="pre">try…except</span></code>-Konstruktion behandeln kann,
+wie wir in <a class="reference internal" href="kontrollstrukturen.html#exceptions"><span class="std std-numref">Kapitel 4.4</span></a> gesehen hatten.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Einführung in Prinzipien der Programmierung&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+1
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">60</span><span class="o">-</span><span class="mi">95762</span><span class="n">d69d746</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+
+<span class="ne">ValueError</span>: substring not found
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie über Listen oder Tupel kann man auch über Zeichenketten iterieren. Man
+erhält dann nacheinander die einzelnen Zeichen der Zeichenkette.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">&#39;ABC&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A
+B
+C
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python stellt auch eine Reihe von Methoden spezifisch für Zeichenketten zur Verfügung, aus denen
+wir hier nur eine kleine Auswahl ansprechen wollen. Einen vollständigen Überblick bietet die
+Dokumentation unter dem Stichwort
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#string-methods">String Methods</a>.</p>
+<p>Häufig steht man vor der Aufgabe, überschüssige Leerzeichen um eine Zeichenkette herum oder
+einen Zeilenumbruch am Ende einer Zeichenkette zu entfernen. Die geht mit den Methoden <code class="xref py py-func docutils literal notranslate"><span class="pre">strip()</span></code>
+für beide Seiten, <code class="xref py py-func docutils literal notranslate"><span class="pre">lstrip()</span></code> für die linke und <code class="xref py py-func docutils literal notranslate"><span class="pre">rstrip()</span></code> für die rechte Seite der
+Zeichenkette. Ohne Argumente werden dabei Leerzeichen entfernt. Alternativ kann man eine Zeichenkette
+angeben, die die zu entfernenden Zeichen enthält.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;   Hallo &#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;|</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span><span class="si">}</span><span class="s1">|&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;|</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="si">}</span><span class="s1">|&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;|</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s1">|&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|Hallo |
+|   Hallo|
+|Hallo|
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hallo</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo
+
+----------
+Hallo
+----------
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im letzten Beispiel erkennt man den ursprünglich vorhandenen Zeilenumbruch an der Leerzeile in
+der Ausgabe.</p>
+<p>Beim Vergleichen von Zeichenketten kann es nützlich sein, unabhängig von der Groß- und
+Kleinschreibung zu sein. Dann helfen die Methoden <code class="xref py py-func docutils literal notranslate"><span class="pre">upper()</span></code> und <code class="xref py py-func docutils literal notranslate"><span class="pre">lower()</span></code> weiter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hallo&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HALLO hallo
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das abschließende Beispiel demonstriert, wie man einen Bruch formatiert darstellen kann. Die perfekte
+Ausrichtung funktioniert natürlich nur, wenn beide Zahlen eine gerade oder eine beide eine
+ungerade Anzahl von Stellen haben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zaehler</span> <span class="o">=</span> <span class="mi">12345678</span>
+<span class="n">nenner</span> <span class="o">=</span> <span class="mi">2468</span>
+<span class="n">s_zaehler</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">zaehler</span><span class="p">)</span>
+<span class="n">s_nenner</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">nenner</span><span class="p">)</span>
+<span class="n">maxlaenge</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_zaehler</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">s_nenner</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_zaehler</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">maxlaenge</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="n">maxlaenge</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_nenner</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">maxlaenge</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12345678
+--------
+  2468  
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="dictionaries">
 <span id="id3"></span><h2><span class="section-number">6.4. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Link zu dieser Überschrift">¶</a></h2>

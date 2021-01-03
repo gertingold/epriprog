@@ -671,7 +671,7 @@ Fall kann zumindest versuchen, dafür zu sorgen, dass die wahrscheinlichsten Fä
 vielen Fällen kann man aber einen zusammengesetzten Datentyp, das so genannte `dictionary` verwenden, das wir
 im {numref}`dictionaries` genauer besprechen werden.
 
-
+(exceptions)=
 ## Abfangen von Ausnahmen
 
 In {numref}`float` hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
