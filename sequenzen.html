@@ -620,7 +620,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139812415354944 139812415354944
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140461072084928 140461072084928
 </pre></div>
 </div>
 </div>
@@ -651,7 +651,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139812415361600 139812415362816
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140461071879808 140461072089856
 </pre></div>
 </div>
 </div>
@@ -1065,8 +1065,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[54, 85, 81, 14, 12, 21, 11, 35, 71, 73, 25, 41, 18, 29, 45, 27, 74, 64, 15, 64]
-[11, 12, 14, 15, 18, 21, 25, 27, 29, 35, 41, 45, 54, 64, 64, 71, 73, 74, 81, 85]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[16, 87, 46, 58, 7, 7, 97, 75, 81, 37, 74, 5, 17, 56, 92, 22, 27, 49, 60, 21]
+[5, 7, 7, 16, 17, 21, 22, 27, 37, 46, 49, 56, 58, 60, 74, 75, 81, 87, 92, 97]
 </pre></div>
 </div>
 </div>
@@ -1084,8 +1084,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[63, 15, 96, 67, 3, 1, 40, 96, 88, 88, 17, 95, 27, 65, 18, 11, 20, 82, 14, 37]
-[40, 20, 1, 11, 82, 63, 3, 14, 15, 95, 65, 96, 96, 67, 17, 27, 37, 88, 88, 18]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[17, 37, 66, 49, 94, 73, 4, 99, 25, 8, 92, 55, 82, 53, 36, 50, 3, 16, 33, 61]
+[50, 61, 92, 82, 73, 53, 3, 33, 94, 4, 25, 55, 66, 36, 16, 17, 37, 8, 49, 99]
 </pre></div>
 </div>
 </div>
@@ -1115,10 +1115,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 139812475286144
-id(mytuple2) = 139812474904960
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140461098100608
+id(mytuple2) = 140461098099776
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 139812414864976
+id(mytuple1) = 140461071598112
 </pre></div>
 </div>
 </div>
@@ -1409,8 +1409,8 @@ erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 139812415156080 | id(s2) = 139812423948656
-id(s1) = 139812474679424
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140461072021296 | id(s2) = 140461072022512
+id(s1) = 140461097869600
 </pre></div>
 </div>
 </div>
@@ -1614,6 +1614,204 @@ ungerade Anzahl von Stellen haben.</p>
 </div>
 <div class="section" id="dictionaries">
 <span id="id3"></span><h2><span class="section-number">6.4. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Den letzten zusammengesetzten Datentyp, den wir in diesem Kapitel besprechen
+wollen, sind Dictionaries oder auch <em>hash tables</em>, die Schlüsseln (<em>key</em>) Werte
+(<em>value</em>) zuordnen. Man kann sich diese Objekte wie Telefonbücher oder Wörterbücher
+vorstellen, in denen man unter geordneten Schlüsseln schnell den richtigen Eintrag
+finden kann und dort die gesuchte Information nachschlagen kann.</p>
+<p>Betrachten wir ein Beispiel, um eine bessere Vorstellung von Dictionaries zu bekommen.
+Konkret wollen wir Informationen über die Atommasse einiger Elemente zusammenstellen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atommasse</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">:</span> <span class="mf">4.002602</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="mf">6.94</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">:</span> <span class="mf">9.0121831</span><span class="p">}</span>
+<span class="n">atommasse</span><span class="p">[</span><span class="s1">&#39;Li&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.94
+</pre></div>
+</div>
+</div>
+</div>
+<p>In der ersten Zeile ist zu sehen, wie einem Schlüssel, hier das chemische Symbol, ein
+Wert, im Beispiel die zugehörige Atommasse, zugeordnet wird. Die zweite Zeile zeigt,
+wie man den Wert unter Angabe des Schlüssels erhalten kann. Sehen wir uns die beiden
+Zeilen etwas genauer an. Im Gegensatz zu Listen, deren Einträge durch eckige Klammern
+begrenzt sind, und Tupeln, die durch runde Klammern eingeschlossen werden, werden
+für Dictionaries in Python geschweifte Klammern verwendet. Die durch Kommas getrennten
+Einträge bestehen aus dem bereits erwähnten Paar von Schlüssel und Wert, die durch einen
+Doppelpunkt getrennt sind.</p>
+<p>Welche Objekte sind nun als Schlüssel und Wert zugelassen? Für Schlüsseln muss
+sich ein sogenannten Hashwert berechnen lassen, also eine ganze Zahl, die den
+Schlüssel charakterisiert. Da sich ein Hashwert nur für unveränderliche Objekte
+wie numerische Datentypen, Tupel oder Zeichenketten definieren lassen, sind Listen
+und Dictionaries selbst nicht für Schlüssel zulässig. An dieser Stellen erkennen wir
+einen Vorteil, den Tupel gegenüber Listen bieten. Andererseits können die Werte sowohl
+unveränderliche als auch unveränderliche Objekte sein. Das bedeutet zum Beispiel, dass
+eine Liste ein Wert sein könnte und diese Liste im Programmlauf potentiell auch verändert
+werden kann. Im Übrigen ist es nicht notwendig, dass alle Schlüssel vom gleichen Datentyp
+sein müssen und auch für die Werte ist dies nicht erforderlich.</p>
+<p>Wie wir gerade schon angedeutet haben, sind Dictionaries veränderbar, also <em>mutable</em>. Zu
+einem Dictionary kann man weitere Schlüssel-Wert-Paare hinzufügen. Dazu verwendet man wie
+schon beim Auslesen von Werten in unserem ersten Beispiel eckige Klammern, die den Schlüssel
+einschließen. Diese Notation ist analog zur Indizierung von Listen mit Hilfe von <em>slices</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atommasse</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.81</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atommasse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1.008, &#39;He&#39;: 4.002602, &#39;Li&#39;: 6.94, &#39;Be&#39;: 9.0121831, &#39;B&#39;: 10.81}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Offenbar ändert sich die Reihenfolge der bisherigen Einträge durch die Hinzufügung
+nicht. Man darf allerdings nicht davon ausgehen, dass dies auch in anderen Programmiersprachen,
+die Dictionaries oder entsprechende Datentypen zur Verfügung stellen, auch der Fall ist.
+Tatsächlich ist dieses Verhalten auch in Python erst seit der Version 3.6 realisiert, die
+eine neue Implementation von Dictionaries enthielt.</p>
+<p>Wenn man versucht, auf den Wert zu einem nicht existierenden Schlüssel zuzugreifen, so erhält
+man einen <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>, den man mit der üblichen <code class="docutils literal notranslate"><span class="pre">try…except</span></code>-Konstruktion behandeln könnte</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atommasse</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">68</span><span class="o">-</span><span class="n">a64a0a9db3c8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">atommasse</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span>
+
+<span class="ne">KeyError</span>: &#39;O&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Möchte man nur wissen, ob ein Schlüssel im Dictionary vorhanden ist und interessiert man sich
+nicht für den zugehörigen Wert, kann man folgendermaßen vorgehen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;B&#39;</span> <span class="ow">in</span> <span class="n">atommasse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Iteriert man über ein Dictionary, so erhält man die darin enthaltenen Schlüssel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">atommasse</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H, He, Li, Be, B, 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Benötigt man auch die zugehörigen Werte, so kann man die <code class="xref py py-func docutils literal notranslate"><span class="pre">items()</span></code>-Methode verwenden, die
+Tupel aus Schlüssel und zugehörigem Wert liefert. Es ist durchaus üblich, aber nicht zwingend,
+die entsprechenden Variablen beim Entpacken des Tupels mit <code class="docutils literal notranslate"><span class="pre">k</span></code> für <em>key</em> und <code class="docutils literal notranslate"><span class="pre">v</span></code> für <em>value</em>
+zu bezeichnen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">atommasse</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s1">2s</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s1">5.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H  |  1.01
+He |  4.00
+Li |  6.94
+Be |  9.01
+B  | 10.81
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir wollen hier nicht alle Möglichkeiten im Detail besprechen, die für die Arbeit mit
+Dictionaries in Python zur Verfügung stehen, sondern verweisen an dieser Stelle auf
+den <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">entsprechenden Abschnitt in der Python-Dokumentation</a>. Stattdessen wollen wir noch zwei Anwendungsszenarien besprechen, die im
+Zusammenhang mit vorangegangenen Kapiteln stehen.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-literaturhinweis admonition">
+<p class="admonition-title">Literaturhinweis</p>
+<p>Das Pascal-Beispiel ist K. Jensen, N. Wirth, <a class="reference external" href="https://doi.org/10.1007/978-3-662-21554-8">PASCAL User Manual and Report</a>, S. 31 (Springer, 1974) entnommen.</p>
+</div>
+</div>
+<p>In <a class="reference internal" href="kontrollstrukturen.html#ifelse"><span class="std std-numref">Kapitel 4.3</span></a> hatten wir unter anderem die Möglichkeit von Mehrfachverzweigungen
+angesprochen, aber auch darauf verwiesen, dass längliche <code class="docutils literal notranslate"><span class="pre">if…elif…else</span></code>-Konstruktionen
+häufig mit Hilfe von Dictionaries vermieden werden können. Damit erhält man in Python
+einen Ersatz für <code class="docutils literal notranslate"><span class="pre">case</span></code>- oder <code class="docutils literal notranslate"><span class="pre">switch</span></code>-Anweisungen, die in anderen Programmiersprachen
+existieren.</p>
+<p>Zur Illustration verwenden wir ein konkretes Anwendungsbeispiel für die <code class="docutils literal notranslate"><span class="pre">case</span></code>-Anweisung
+in der Programmiersprache Pascal.</p>
+<div class="highlight-pascal notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="n">i</span> <span class="k">of</span>
+  <span class="mi">0</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="mi">1</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
+  <span class="mi">2</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
+  <span class="mi">3</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="nb">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
+  <span class="mi">4</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="nb">ln</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Hierbei wird abhängig vom Wert des Integers <code class="docutils literal notranslate"><span class="pre">i</span></code> eine von verschiedenen mathematischen
+Funktionen ausgeführt. Diese Problemstellung könnten wir in Python mit einer <code class="docutils literal notranslate"><span class="pre">if…elif</span></code>-Konstruktion
+realisieren. Besser ist aber die Lösung mit Hilfe eines Dictionaries, wobei als Schlüssel
+die Zahlen 0 bis 4 verwendet werden und die zugehörigen Werte die gewünschten Funktionen sind.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">sin</span>
+
+<span class="n">funktion</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="n">sin</span><span class="p">,</span>
+            <span class="mi">2</span><span class="p">:</span> <span class="n">cos</span><span class="p">,</span>
+            <span class="mi">3</span><span class="p">:</span> <span class="n">exp</span><span class="p">,</span>
+            <span class="mi">4</span><span class="p">:</span> <span class="n">log</span><span class="p">}</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">funktion</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+0.9092974268256817
+-0.4161468365471424
+7.38905609893065
+0.6931471805599453
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier haben wir ausgenutzt, dass Funktionen in Python Bürger erster Klasse sind,
+die somit auch als Werte in Dictionaries in Frage kommen. Außerdem haben wir es
+im ersten Eintrag des Dictionaries mit einer Lambda-Funktion vermieden, extra
+eine Funktion zu definieren, die nichts anderes tut als den Wert Null
+zurückzugeben. Betrachten wir noch die letzte Zeile, die auf den ersten Blick
+vielleicht etwas verwirrend aussieht. Hier wird mit <code class="docutils literal notranslate"><span class="pre">funktion[i]</span></code> zunächst das
+benötigte Funktionsobjekt beschafft, wobei die Variable <code class="docutils literal notranslate"><span class="pre">i</span></code> den entsprechenden
+Schlüssel enthält. Diese Funktion kann nun in der üblichen Weise aufgerufen werden,
+womit sich der Funktionsaufruf <code class="docutils literal notranslate"><span class="pre">funktion[i](x)</span></code> erklärt.</p>
+<p>In <a class="reference internal" href="funktionen.html#kwargs"><span class="std std-numref">Kapitel 5.7</span></a> haben wir diskutiert, dass Funktionsargumente per Schlüsselwort
+übergeben werden können. Es kann aber vorkommen, dass die aufzurufende Funktion
+überhaupt nicht alle relevanten Schlüsselworte als Argumente besitzt, weil sie einige
+dieser Argumente an eine andere Funktion weitergibt.</p>
 </div>
 </div>
 
