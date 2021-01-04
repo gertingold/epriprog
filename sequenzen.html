@@ -277,10 +277,6 @@
                 
   <div class="section" id="zusammengesetzte-datentypen">
 <span id="zusgdatentypen"></span><h1><span class="section-number">6. </span>Zusammengesetzte Datentypen<a class="headerlink" href="#zusammengesetzte-datentypen" title="Link zu dieser Überschrift">¶</a></h1>
-<div class="warning admonition">
-<p class="admonition-title">Hinweis</p>
-<p>Dieses Kapitel befindet sich noch in Bearbeitung.</p>
-</div>
 <div class="section" id="listen">
 <span id="id1"></span><h2><span class="section-number">6.1. </span>Listen<a class="headerlink" href="#listen" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Bei der Lösung numerischer Probleme spielen die Zahlentypen, die wir im <a class="reference internal" href="datentypen.html#datentypen"><span class="std std-numref">Kapitel 3</span></a>
@@ -620,7 +616,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139931045532480 139931045532480
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140122374740608 140122374740608
 </pre></div>
 </div>
 </div>
@@ -651,7 +647,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139931045534400 139931045532800
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140122374750592 140122374751808
 </pre></div>
 </div>
 </div>
@@ -878,9 +874,7 @@ würde die Liste dagegen ein Element der ersten Liste werden.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, [3, 4]]
+[1, 2, [3, 4]]
 </pre></div>
 </div>
 </div>
@@ -898,6 +892,9 @@ ist es nicht möglich, auf diese Weise ein einzelnes Listenelement hinzuzufügen
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -1067,8 +1064,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[18, 92, 8, 100, 53, 70, 88, 44, 27, 94, 73, 3, 2, 11, 42, 44, 67, 53, 30, 7]
-[2, 3, 7, 8, 11, 18, 27, 30, 42, 44, 44, 53, 53, 67, 70, 73, 88, 92, 94, 100]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[63, 9, 63, 31, 28, 54, 93, 51, 79, 94, 56, 38, 36, 86, 9, 34, 78, 20, 66, 32]
+[9, 9, 20, 28, 31, 32, 34, 36, 38, 51, 54, 56, 63, 63, 66, 78, 79, 86, 93, 94]
 </pre></div>
 </div>
 </div>
@@ -1086,8 +1083,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[69, 94, 37, 3, 79, 28, 93, 20, 100, 87, 84, 83, 50, 97, 77, 63, 40, 12, 7, 42]
-[20, 100, 50, 40, 12, 42, 3, 93, 83, 63, 94, 84, 37, 87, 97, 77, 7, 28, 69, 79]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[77, 25, 57, 50, 90, 98, 69, 30, 53, 50, 13, 2, 37, 82, 65, 46, 16, 64, 82, 22]
+[50, 90, 30, 50, 2, 82, 82, 22, 53, 13, 64, 25, 65, 46, 16, 77, 57, 37, 98, 69]
 </pre></div>
 </div>
 </div>
@@ -1117,10 +1114,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 139931096547264
-id(mytuple2) = 139931096699712
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140122400762368
+id(mytuple2) = 140122400719296
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 139931045045248
+id(mytuple1) = 140122374787456
 </pre></div>
 </div>
 </div>
@@ -1431,9 +1428,7 @@ angeben oder mit dem Steuerzeichen <code class="docutils literal notranslate"><s
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>☺ ☺
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ℏ ℏ
+ℏ ℏ
 </pre></div>
 </div>
 </div>
@@ -1461,8 +1456,8 @@ erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 139931045714736 | id(s2) = 139931045806000
-id(s1) = 139931045836800
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140122374973680 | id(s2) = 140122374941680
+id(s1) = 140122374788720
 </pre></div>
 </div>
 </div>
@@ -1796,8 +1791,105 @@ B  | 10.81
 </div>
 <p>Wir wollen hier nicht alle Möglichkeiten im Detail besprechen, die für die Arbeit mit
 Dictionaries in Python zur Verfügung stehen, sondern verweisen an dieser Stelle auf
-den <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">entsprechenden Abschnitt in der Python-Dokumentation</a>. Stattdessen wollen wir noch zwei Anwendungsszenarien besprechen, die im
-Zusammenhang mit vorangegangenen Kapiteln stehen.</p>
+den <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">entsprechenden Abschnitt in der Python-Dokumentation</a>.
+Stattdessen wollen wir die Anwendung von Dictionaries an zwei Anwendungsbeispielen
+demonstrieren und abschließend noch das Versprechen aus <a class="reference internal" href="kontrollstrukturen.html#ifelse"><span class="std std-numref">Kapitel 4.3</span></a> einlösen
+und zeigen, wie man Dictionaries als Ersatz für Mehrfachverzweigungen verwenden kann.</p>
+<p>Im ersten Beispiel wollen wir die Häufigkeiten von Zeichen in einem Text bestimmen.
+Die Idee ist, hierzu ein Dictionary zu verwenden, in dem die Zeichen die Schlüssel
+bilden und die zugehörigen Werte die Zähler darstellen, die sukzessive hochgezählt
+werden. Dazu beginnen wir mit einem leeren Dictionary <code class="docutils literal notranslate"><span class="pre">counter</span></code>. Bei der Iteration
+über die Zeichen des Textes inkrementieren wir immer den entsprechenden Eintrag.
+Allerdings wird bei jeden neuen Zeichen ein <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> auftreten, da der entsprechende
+Eintrag noch nicht vorhanden ist. Wir können dieses Problem mit in einer
+<code class="docutils literal notranslate"><span class="pre">try…except</span></code>-Konstruktion behandeln oder aber einfach den Wert zu dem neuen Schlüssel
+initialisieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Abrakadabra&#39;</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">counter</span><span class="p">:</span>
+        <span class="n">counter</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">counter</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">counter</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">occurrences</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">occurrences</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a: 4
+b: 2
+r: 2
+A: 1
+k: 1
+d: 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im unteren Teil der Lösung konstruieren wir uns zunächst eine Liste aus Tupeln, die
+jeweils den Schlüssel und den zugehörigen Wert enthalten. Um in der Ausgabe die
+häufigsten Buchstaben zuerst auflisten zu können, verwenden wir hier eine Lambda-Funktion,
+die nach dem zweiten Element des Tuples, also dem Wert im Dictionary, sortiert. Das
+Minuszeichen sorgt dabei dafür, dass die höheren Wert zuerst kommen.</p>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Die drei Zeilen in der ersten <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife lassen sich in Python einfacher schreiben,
+da Werte aus einem Dictionary mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code>-Methode abgefragt werden können,
+die es auch erlaubt, einen Defaultwert für den Fall anzugeben, dass der Schlüssel nicht
+existiert. In der <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife könnte man also einfach</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">counter</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">counter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>schreiben.</p>
+</div>
+<p>Um die Verwendung von Listen als Werten von Dictionaries zu illustrieren, wollen wir nun
+eine Liste von Worten nach ihrer Länge in Gruppen einteilen. Das Vorgehen ist ähnlich
+wie im vorigen Beispiel. Allerdings müssen wir hier zunächst den Schlüssel bestimmen
+was wir einmal zu Beginn jedes Durchlaufs durch die <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife erledigen. Wie wir
+am Ende der Schleife sehen, können wir den neuen Eintrag direkt an die betreffende Liste
+im Dictionary anhängen. Es ist also nicht nötig, eine neue Liste zu erzeugen und diese
+im Dictionary dem entsprechenden Eintrag zuzuweisen. Die Ausgabe des Dictionaries vereinfachen
+wir dadurch, dass wir <code class="xref py py-func docutils literal notranslate"><span class="pre">pprint()</span></code>-Funktion aus dem <a class="reference external" href="https://docs.python.org/3/library/pprint.html">pprint-Modul der Standardbibliothek</a> verwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="n">fruechte</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Birne&#39;</span><span class="p">,</span> <span class="s1">&#39;Banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Heidelbeere&#39;</span><span class="p">,</span> <span class="s1">&#39;Kirsche&#39;</span><span class="p">,</span> <span class="s1">&#39;Traube&#39;</span><span class="p">)</span> 
+<span class="n">gruppen</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">frucht</span> <span class="ow">in</span> <span class="n">fruechte</span><span class="p">:</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">frucht</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">gruppen</span><span class="p">:</span>
+        <span class="n">gruppen</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">gruppen</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frucht</span><span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">gruppen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{5: [&#39;Apfel&#39;, &#39;Birne&#39;],
+ 6: [&#39;Banane&#39;, &#39;Traube&#39;],
+ 7: [&#39;Kirsche&#39;],
+ 11: [&#39;Heidelbeere&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Auch hier können die letzten drei Zeilen der <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife vereinfacht werden. Hierzu
+benötigt man aber die <code class="xref py py-func docutils literal notranslate"><span class="pre">setdefault()</span></code>-Methode des Dictionaries, die bei einem
+fehlenden Schlüssel den entsprechenden Eintrag im Dictionary anlegt und mit dem angegebenen
+Defaultwert befüllt. Man könnte also einfacher</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">gruppen</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frucht</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>schreiben.</p>
+</div>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition-literaturhinweis admonition">
@@ -1860,10 +1952,6 @@ vielleicht etwas verwirrend aussieht. Hier wird mit <code class="docutils litera
 benötigte Funktionsobjekt beschafft, wobei die Variable <code class="docutils literal notranslate"><span class="pre">i</span></code> den entsprechenden
 Schlüssel enthält. Diese Funktion kann nun in der üblichen Weise aufgerufen werden,
 womit sich der Funktionsaufruf <code class="docutils literal notranslate"><span class="pre">funktion[i](x)</span></code> erklärt.</p>
-<p>In <a class="reference internal" href="funktionen.html#kwargs"><span class="std std-numref">Kapitel 5.7</span></a> haben wir diskutiert, dass Funktionsargumente per Schlüsselwort
-übergeben werden können. Es kann aber vorkommen, dass die aufzurufende Funktion
-überhaupt nicht alle relevanten Schlüsselworte als Argumente besitzt, weil sie einige
-dieser Argumente an eine andere Funktion weitergibt.</p>
 </div>
 </div>
 

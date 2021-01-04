@@ -15,11 +15,6 @@ kernelspec:
 (zusgdatentypen)=
 # Zusammengesetzte Datentypen
 
-```{admonition} Hinweis
-:class: warning
-Dieses Kapitel befindet sich noch in Bearbeitung.
-```
-
 (listen)=
 ## Listen
 
@@ -842,8 +837,80 @@ for k, v in atommasse.items():
 
 Wir wollen hier nicht alle Möglichkeiten im Detail besprechen, die für die Arbeit mit 
 Dictionaries in Python zur Verfügung stehen, sondern verweisen an dieser Stelle auf
-den [entsprechenden Abschnitt in der Python-Dokumentation](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict). Stattdessen wollen wir noch zwei Anwendungsszenarien besprechen, die im
-Zusammenhang mit vorangegangenen Kapiteln stehen.
+den [entsprechenden Abschnitt in der Python-Dokumentation](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict).
+Stattdessen wollen wir die Anwendung von Dictionaries an zwei Anwendungsbeispielen
+demonstrieren und abschließend noch das Versprechen aus {numref}`ifelse` einlösen
+und zeigen, wie man Dictionaries als Ersatz für Mehrfachverzweigungen verwenden kann.
+
+Im ersten Beispiel wollen wir die Häufigkeiten von Zeichen in einem Text bestimmen.
+Die Idee ist, hierzu ein Dictionary zu verwenden, in dem die Zeichen die Schlüssel
+bilden und die zugehörigen Werte die Zähler darstellen, die sukzessive hochgezählt
+werden. Dazu beginnen wir mit einem leeren Dictionary `counter`. Bei der Iteration
+über die Zeichen des Textes inkrementieren wir immer den entsprechenden Eintrag.
+Allerdings wird bei jeden neuen Zeichen ein `KeyError` auftreten, da der entsprechende
+Eintrag noch nicht vorhanden ist. Wir können dieses Problem mit in einer
+`try…except`-Konstruktion behandeln oder aber einfach den Wert zu dem neuen Schlüssel
+initialisieren.
+```{code-cell} python
+text = 'Abrakadabra'
+counter = {}
+for c in text:
+    if c not in counter:
+        counter[c] = 0
+    counter[c] = counter[c] + 1
+
+occurrences = list(counter.items())
+for c, n in sorted(occurrences, key=lambda x: -x[1]):
+    print(f'{c}: {n}')
+```
+Im unteren Teil der Lösung konstruieren wir uns zunächst eine Liste aus Tupeln, die
+jeweils den Schlüssel und den zugehörigen Wert enthalten. Um in der Ausgabe die
+häufigsten Buchstaben zuerst auflisten zu können, verwenden wir hier eine Lambda-Funktion,
+die nach dem zweiten Element des Tuples, also dem Wert im Dictionary, sortiert. Das
+Minuszeichen sorgt dabei dafür, dass die höheren Wert zuerst kommen. 
+
+````{admonition} Weiterführender Hinweis
+Die drei Zeilen in der ersten `for`-Schleife lassen sich in Python einfacher schreiben,
+da Werte aus einem Dictionary mit Hilfe der {func}`get`-Methode abgefragt werden können,
+die es auch erlaubt, einen Defaultwert für den Fall anzugeben, dass der Schlüssel nicht
+existiert. In der `for`-Schleife könnte man also einfach
+```{code-block} python
+    counter[c] = counter.get(c, 0) + 1
+```
+schreiben.
+````
+
+Um die Verwendung von Listen als Werten von Dictionaries zu illustrieren, wollen wir nun
+eine Liste von Worten nach ihrer Länge in Gruppen einteilen. Das Vorgehen ist ähnlich
+wie im vorigen Beispiel. Allerdings müssen wir hier zunächst den Schlüssel bestimmen
+was wir einmal zu Beginn jedes Durchlaufs durch die `for`-Schleife erledigen. Wie wir
+am Ende der Schleife sehen, können wir den neuen Eintrag direkt an die betreffende Liste
+im Dictionary anhängen. Es ist also nicht nötig, eine neue Liste zu erzeugen und diese
+im Dictionary dem entsprechenden Eintrag zuzuweisen. Die Ausgabe des Dictionaries vereinfachen
+wir dadurch, dass wir {func}`pprint`-Funktion aus dem [pprint-Modul der Standardbibliothek](https://docs.python.org/3/library/pprint.html) verwenden.
+```{code-cell} python
+from pprint import pprint
+
+fruechte = ('Apfel', 'Birne', 'Banane', 'Heidelbeere', 'Kirsche', 'Traube') 
+gruppen = {}
+for frucht in fruechte:
+    key = len(frucht)
+    if key not in gruppen:
+        gruppen[key] = []
+    gruppen[key].append(frucht)
+
+pprint(gruppen)
+```
+````{admonition} Weiterführender Hinweis
+Auch hier können die letzten drei Zeilen der `for`-Schleife vereinfacht werden. Hierzu
+benötigt man aber die {func}`setdefault`-Methode des Dictionaries, die bei einem
+fehlenden Schlüssel den entsprechenden Eintrag im Dictionary anlegt und mit dem angegebenen
+Defaultwert befüllt. Man könnte also einfacher
+```{code-block} python
+    gruppen.setdefault(key, []).append(frucht)
+```
+schreiben.
+````
 
 ````{margin}
 ```{admonition} Literaturhinweis
@@ -893,8 +960,3 @@ vielleicht etwas verwirrend aussieht. Hier wird mit `funktion[i]` zunächst das
 benötigte Funktionsobjekt beschafft, wobei die Variable `i` den entsprechenden
 Schlüssel enthält. Diese Funktion kann nun in der üblichen Weise aufgerufen werden,
 womit sich der Funktionsaufruf `funktion[i](x)` erklärt.
-
-In {numref}`kwargs` haben wir diskutiert, dass Funktionsargumente per Schlüsselwort
-übergeben werden können. Es kann aber vorkommen, dass die aufzurufende Funktion
-überhaupt nicht alle relevanten Schlüsselworte als Argumente besitzt, weil sie einige
-dieser Argumente an eine andere Funktion weitergibt.
