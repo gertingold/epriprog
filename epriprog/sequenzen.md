@@ -518,9 +518,30 @@ print(type(ein_tupel))
 ```
 Im ersten Fall erhält man also einen Integer und nur im zweiten Fall ein Tupel.
 
-Abschließend wollen wir nur kurz darauf hinweisen, dass einige Möglichkeiten, die wir von Listen her
-kennen und die nicht zu einer Modifikation der Liste führen, auch für Tupel existieren. So können wir
-beispielsweise die Länge eines Tupels wie gewohnt bestimmen.
+In {numref}`variablen` und {numref}`fdef` hatten wir Situationen kennengelernt, in denen
+Tupel verwendet werden ohne dass dies durch eine Klammerung explizit ersichtlich ist. Das
+folgende Beispiel, das einige Elemente der Fibonacci-Reihe berechnet, enthält in der Funktion
+`fibonacci_step` zwei solche Situationen.
+```{code-cell} python
+def fibonacci_step(n1, n2):
+    n1, n2 = n2, n1+n2
+    return n1, n2
+
+n1 = 0
+n2 = 1
+for n in range(15):
+    n1, n2 = fibonacci_step(n1, n2)
+    print(n2, end=' ')
+```
+In der ersten Zeile des Funktionskörpers wird ein Tupel einem anderen Tupel zugewiesen, wobei
+die einzelnen Werte gleich entpackt werden. In {numref}`variablen` hatten wir eine entsprechende
+Konstruktion verwendet, um die Werte zweier Variablen zu vertauschen. Die Rückgabe der beiden
+Funktionsresultate geschieht letztlich auch mit Hilfe eines Tupels ohne dass eine Klammerung
+erforderlich wäre. 
+
+Die Funktionalitäten, die wir von Listen her kennen und die nicht zu einer Modifikation der
+Liste führen, existieren auch für Tupel. So können wir beispielsweise die Länge eines Tupels
+wie von Listen her gewohnt bestimmen.
 ```{code-cell} python
 print(len(primzahlen))
 ```
@@ -532,6 +553,14 @@ for n in range(1, 10):
         print(f'{n} ist eine Primzahl.')
     else:
         print(f'{n} ist keine Primzahl.')
+```
+Nicht zuletzt können wir auch über Tupel oder gar Tupel von Tupeln iterieren, wobei
+wir die einzelnen Tupel gleich entpacken können.
+```{code-cell} python
+from math import hypot
+
+for x, y in ((2, 1), (-2, 4), (3, 0)):
+    print(f'Abstand des Punktes ({x}, {y}) vom Ursprung: {hypot(x, y):6.3f}')
 ```
 
 (strings)=
