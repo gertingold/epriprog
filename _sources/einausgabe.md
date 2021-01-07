@@ -49,6 +49,11 @@ wir uns vor allem mit dem Lesen und Schreiben von Dateien beschäftigen. Für sp
 Aspekte werden wir in weiterführenden Hinweisen zeigen, dass Python für viele der
 potentiell anfallenden Aufgaben nützliche Module in der Standardbibliothek bereit hält.
 
+<video width="640" height="360" controls>
+  <source src="https://gertingold.github.io/resources/flush.webm" type="video/webm">
+Your browser does not support the video tag.
+</video> 
+
 ## Eingabe über die Kommandozeile und die Tastatur
 
 ## Lesen und Schreiben von Dateien
