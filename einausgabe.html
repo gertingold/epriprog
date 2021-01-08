@@ -288,12 +288,144 @@ noch einmal einen kurzen Blick auf die <code class="xref py py-func docutils lit
 wir uns vor allem mit dem Lesen und Schreiben von Dateien beschäftigen. Für speziellere
 Aspekte werden wir in weiterführenden Hinweisen zeigen, dass Python für viele der
 potentiell anfallenden Aufgaben nützliche Module in der Standardbibliothek bereit hält.</p>
-<video width="640" height="360" controls>
-  <source src="https://gertingold.github.io/resources/flush.webm" type="video/webm">
-Your browser does not support the video tag.
-</video> 
 <div class="section" id="eingabe-uber-die-kommandozeile-und-die-tastatur">
 <h2><span class="section-number">7.1. </span>Eingabe über die Kommandozeile und die Tastatur<a class="headerlink" href="#eingabe-uber-die-kommandozeile-und-die-tastatur" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Wenn man Programme von der Kommandozeile aufruft, ist es nicht unüblich, dabei Parameter
+zu übergeben. Programmiersprachen wie Fortran, C und Python bieten die Möglichkeit,
+auf diese Parameter innerhalb des Programms zuzugreifen. Die Alternative, solche Parameter
+im Programmcode selbst zu definieren, hat den Nachteil, dass man zur Änderung eines
+Parameters den Code verändern muss, was im Allgemeinen keine gute Idee ist, unter anderem
+weil man dabei vielleicht andere unbeabsichtigte Änderungen am Programm vornehmen könnte.</p>
+<p>Wir demonstrieren das Vorgehen mit einem kleinen Beispielprogramme namens
+<code class="docutils literal notranslate"><span class="pre">beispiel_1.py</span></code>, das einen vom Benutzer vorgegebenen Text mehrfach ausgeben kann. Das
+erste Argument beim Aufruf soll der Text sein, das zweite Argument gibt dann die
+Zahl der Wiederholungen an.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># beispiel_1.py</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="nb">str</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">nmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Wir verwenden hier das <code class="docutils literal notranslate"><span class="pre">argv</span></code>-Attribute aus dem <code class="docutils literal notranslate"><span class="pre">sys</span></code>-Modul der Python-Standardbibliothek.
+Hierbei steht <code class="docutils literal notranslate"><span class="pre">argv</span></code> für <em>argument vector</em>. In Zeile 4 geben wir dieses Attribut zunächst
+aus, um zu sehen, was es alles enthält. Anschließend bestimmen wir aus zwei Einträgen in
+diesem Attribut in den Zeilen 5 und 6 den auszugebenden Text und die Zahl der Wiederholungen.</p>
+<p>Führen wir das Programm <code class="docutils literal notranslate"><span class="pre">beispiel_1.py</span></code> mit den Parametern <code class="docutils literal notranslate"><span class="pre">hallo</span></code> und <code class="docutils literal notranslate"><span class="pre">3</span></code> aus, so erhalten wir die
+folgende Ausgabe.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ python beispiel_1.py Hallo 3
+[&#39;beispiel_1.py&#39;, &#39;Hallo&#39;, &#39;3&#39;]
+Hallo
+Hallo
+Hallo
+</pre></div>
+</td></tr></table></div>
+<p>Zeile 1 gibt nach dem $-Prompt nochmals die Eingabe an, und dann folgt in den Zeilen 2 bis 5
+die erzeugte Ausgabe. In Zeile 2 sehen wir, dass <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> eine Liste enthält, deren erster
+Eintrag dem Namen des Python-Skripts entspricht, dem sich in den folgenden Einträgen die
+angegebenen Parameter anschließen. Wie wir sehen, sind die alle Einträge Zeichenketten. Damit
+erklärt sich, warum wir in Zeile 6 unseres Beispielskripts eine Umwandlung in einen Integer
+vornehmen mussten. Die obigen Zeilen 3 bis 5 enthalten dann die erwartete Ausgabe, nämlich
+dreimal den Text <code class="docutils literal notranslate"><span class="pre">Hallo</span></code>.</p>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Es kann vorkommen, dass die Zahl der Parameter deutlich größer ist als in unserem kleinen Beispiel
+und dass für eine Reihe von Parametern Defaultwerte definiert sind. Man wird dann meistens nur
+eine reduzierte Zahl von Parametern angeben, die entsprechend gekennzeichnet werden müssen, um
+eine eindeutige Zuordnung zu erlauben. Diese Situation ähnelt dem was wir im <a class="reference internal" href="funktionen.html#kwargs"><span class="std std-numref">Kapitel 5.7</span></a>
+für Funktionsaufrufe mit Schlüsselworten und Defaultwerten kennengelernt hatten. In solchen
+Fällen ist es ratsam, sich das <a class="reference external" href="https://docs.python.org/3/library/argparse.html"><code class="docutils literal notranslate"><span class="pre">argparse</span></code>-Modul</a>
+der Python-Standardbibliothek anzusehen. Da dieses Modul relativ komplexe Möglichkeiten bietet, steht
+auch ein spezielles <a class="reference external" href="https://docs.python.org/3/howto/argparse.html">Tutorial</a> zur Verfügung.</p>
+</div>
+<p>Alternativ zur Angabe von Parametern beim Programmaufruf kann man die Parameter auch durch
+das Programm abrufen lassen. Hierzu dient die <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code>-Funktion, die wir bereits in
+<a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> kennengelernt haben. Auch hier ist wieder zu beachten, dass die Eingaben
+im Programm als Zeichenketten vorliegen und je nach Bedarf umgewandelt werden müssen.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warnhinweis</p>
+<p>Man kann die über die <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code>-Funktion erhaltene Eingabe mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code>-Funktion
+auch als Python-Ausdruck auswerten lassen. Was auf den ersten Blick vielleicht vor allem
+interessante Möglichkeiten verspricht, kann unter Umständen ein Sicherheitsrisiko sein.
+Die unbesehene Ausführung von Code kann potentiell erheblichen Schaden anrichten, da es
+aus einem Python-Programm heraus durchaus möglich ist, zum Beispiel Dateien zu löschen.</p>
+</div>
+<p>Sehen wir uns an, wie die <code class="xref py py-func docutils literal notranslate"><span class="pre">input()</span></code>-Funktion für eine alternative Implementierung unseres
+Beispielprogramms genutzt werden kann.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># beispiel_2.py</span>
+<span class="nb">str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;auszugebender Text: &#39;</span><span class="p">)</span>
+<span class="n">nmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Anzahl der Wiederholungen: &#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Nach dem Aufruf des Programms werden nun die Parameter abgefragt, wobei die Anzahl der
+Wiederholungen wiederum in einen Integer umgewandelt werden muss. Anschließend erfolgt
+die mehrfache Ausgabe des eingegebenen Textes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python beispiel_2.py
+---
+linenos: true
+---
+auszugebender Text: Hallo
+Anzahl der Wiederholungen: 3
+Hallo
+Hallo
+Hallo
+</pre></div>
+</div>
+<p>Wir haben uns hier darauf beschränkt, das grundsätzliche Vorgehen zu demonstrieren. In der
+Praxis wäre es natürlich in beiden Beispielen sinnvoll, Fehler abzufangen, zum Beispiel
+für den Fall, dass sich die eingegebene Anzahl der Wiederholungen nicht in einen Integer
+umwandeln lässt.</p>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Möchte man Parameter nicht auf der Kommandozeile oder allgemein in einem Terminalfenster
+eingeben, sondern über eine graphische Benutzeroberfläche, so kann man sich in Python
+Unterstützung in der Standardbibliothek in Form des
+<a class="reference external" href="https://docs.python.org/3/library/tkinter.html"><code class="docutils literal notranslate"><span class="pre">tkinter</span></code>-Moduls</a> holen.</p>
+</div>
+<p>Nachdem wir uns bis jetzt auf die Eingabe konzentriert haben, wollen wir uns abschließend
+noch kurz der Ausgabe mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion zuwenden. Diese Funktion
+haben wir schon bei verschiedensten Gelegenheiten verwendet. Im <a class="reference internal" href="datentypen.html#formatierung"><span class="std std-numref">Kapitel 3.7</span></a>
+hatten wir unter anderem auch gesehen, dass der standardmäßige Zeilenumbruch am Ende
+der Ausgabe, durch den Parameter <code class="docutils literal notranslate"><span class="pre">end</span></code> durch eine andere Ausgabe ersetzt werden kann.</p>
+<p>Wir wollen die print-Funktion nun nutzen, um einen allgemeinen Aspekt der
+Ausgabe von Daten zu besprechen, der in der Praxis gelegentlich wichtig sein
+kann.  Ein- und Ausgabeoperationen sind typischerweise sehr langsam im
+Vergleich zu Rechenoperationen im Prozessor. Jede einzelne Ein- oder
+Ausgabeoperation sofort auszuführen, würde daher die Abarbeitung des Programms
+unnötig verzögern. Besser ist es zum Beispiel bei der Ausgabe von Daten, eine
+gewisse Datenmenge in einem Puffer anzusammeln und dann den gesamten Datenblock
+auszugeben. Praktisch bedeutet dies, dass man sich nicht darauf verlassen kann,
+dass die von einer <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung angestoßene Ausgabeoperation sofort
+vollständig ausgeführt wird. Für die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung kann man eine sofortige
+Ausführung jedoch erzwingen, indem man das Argument <code class="docutils literal notranslate"><span class="pre">flush</span></code> auf <code class="docutils literal notranslate"><span class="pre">True</span></code> setzt.</p>
+<p>Da wir es hier mit zeitlichen Abläufen zu tun haben, illustrieren wir die Auswirkung
+des Pufferns in einem Film. Wir verwenden dazu die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung, aber
+die Pufferung von Daten wird auch im nächsten Abschnitt noch einmal eine Rolle
+spielen, wenn wir die Ausgabe von Daten in eine Datei besprechen.</p>
+<video width="640" height="360" controls>
+  <source src="https://gertingold.github.io/resources/flush.webm" type="video/webm">
+Ihr Browser unterstützt nicht das video-Tag.
+</video> 
 </div>
 <div class="section" id="lesen-und-schreiben-von-dateien">
 <h2><span class="section-number">7.2. </span>Lesen und Schreiben von Dateien<a class="headerlink" href="#lesen-und-schreiben-von-dateien" title="Link zu dieser Überschrift">¶</a></h2>
