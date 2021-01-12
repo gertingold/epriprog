@@ -1,3 +1,17 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: '0.8'
+    jupytext_version: 1.4.1+dev
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 (einausgabe)=
 # Ein- und Ausgabe
 
@@ -142,9 +156,6 @@ Wiederholungen wiederum in einen Integer umgewandelt werden muss. Anschließend 
 die mehrfache Ausgabe des eingegebenen Textes.
 ```{code-block}
 $ python beispiel_2.py
----
-linenos: true
----
 auszugebender Text: Hallo
 Anzahl der Wiederholungen: 3
 Hallo

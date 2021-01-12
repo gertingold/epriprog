@@ -192,7 +192,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/einausgabe.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/einausgabe.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
@@ -213,6 +216,23 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/einausgabe.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -381,9 +401,6 @@ Beispielprogramms genutzt werden kann.</p>
 Wiederholungen wiederum in einen Integer umgewandelt werden muss. Anschließend erfolgt
 die mehrfache Ausgabe des eingegebenen Textes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python beispiel_2.py
----
-linenos: true
----
 auszugebender Text: Hallo
 Anzahl der Wiederholungen: 3
 Hallo
