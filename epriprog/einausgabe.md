@@ -63,6 +63,7 @@ wir uns vor allem mit dem Lesen und Schreiben von Dateien beschäftigen. Für sp
 Aspekte werden wir in weiterführenden Hinweisen zeigen, dass Python für viele der
 potentiell anfallenden Aufgaben nützliche Module in der Standardbibliothek bereit hält.
 
+(commandline)=
 ## Eingabe über die Kommandozeile und die Tastatur
 
 Wenn man Programme von der Kommandozeile aufruft, ist es nicht unüblich, dabei Parameter
@@ -202,4 +203,211 @@ spielen, wenn wir die Ausgabe von Daten in eine Datei besprechen.
 Ihr Browser unterstützt nicht das video-Tag.
 </video> 
 
-## Lesen und Schreiben von Dateien
+## Lesen von Dateien
+
+Für einfache wissenschaftliche Problemstellungen mag es ausreichen, Parameter über
+die Kommandozeile oder auf Anfrage des Programms einzugeben und die resultierenden
+Daten am Bildschirm anzusehen. Oft wird es aber so sein, dass dieses Vorgehen aufgrund
+des Umfangs der Daten nicht mehr sinnvoll ist. So kann es bereits zu umständlich
+sein, zehn oder zwanzig Parameter immer wieder per Hand einzugeben und in manchen
+Fällen kann die Zahl der Eingabeparameter deutlich größer sein. Man denke zum Beispiel
+an Strukturdaten für quantenchemische Rechnungen. Die erzeugten Daten sind häufig sehr
+umfangreich, so dass man sie für eine weitere Analyse abspeichern möchte. Dies gilt
+besonders dann, wenn die Erzeugung der Daten sehr zeitaufwändig ist.
+
+Wir wollen uns zunächst dem Lesen von Daten aus Dateien zuwenden. Das grundsätzliche
+Vorgehen ähnelt dem beim Lesen eines Buches. So wie man das Buch zum Lesen aufschlagen
+muss, muss man eine Datei zum Lesen zunächst öffnen. Anschließend kann man im Buch lesen,
+wobei wir uns hier auf die Situation beschränken wollen, in der beginnend am Anfang
+gelesen wird. Wie in einem Buch ist es zwar im Prinzip auch in einer Datei möglich, direkt
+zu einer bestimmten Stelle zu springen, aber dies kommt in der Praxis vor allem im
+Zusammenhang mit binären Dateien vor. Hier wollen wir uns dagegen auf Textdateien
+beschränken, wobei Text nicht ausschließt, dass die Datei ausschließlich oder zum
+Teil numerische Information enthält.
+
+Genauso wie man ein Buch, nachdem man Teile oder den gesamten Inhalt gelesen hat, wieder
+zuschlägt, sollte man auch eine Datei schließen. Im Prinzip wird dies von modernen
+Betriebssystemen notfalls erledigt, aber es ist keine gute Praxis darauf zu hoffen,
+dass jemand anderes für einen die Aufräumarbeit erledigt. Problematisch würde dies vor
+allem, wenn man viele Bücher gleichzeitig aufschlägt oder viele Dateien gleichzeitig
+öffnet.
+
+````{margin}
+```{seealso}
+[Wikipedia-Eintrag zu Foobar](https://en.wikipedia.org/wiki/Foobar).
+```
+````
+
+Um eine Datei lesen zu können, muss diese Datei zunächst einmal existieren. Wir gehen
+im Folgenden davon aus, dass es eine Datei mit dem Namen `foo.dat` im aktuellen Verzeichnis
+gibt. Den Inhalt dieser Datei lassen wir uns hier mit einem sogenannten magischen Befehl
+von Jupyter ausgeben.
+```{code-cell} python
+%cat foo.dat
+```
+Dann können wir diese Datei zum Lesen öffnen. Dabei erhalten wir ein Dateiobjekt zurück,
+mit dem wir anschließend auf den Inhalt der Datei zugreifen können.
+```{code-cell} python
+datei = open('foo.dat')
+print(datei)
+```
+Die `print`-Anweisung gibt hier nicht den Inhalt der Datei aus, die ja noch überhaupt nicht
+gelesen wurde, sondern Information über das Dateiobjekt, das durch die Variable `datei`
+repräsentiert wird. Wie wir sehen, erlaubt uns das Dateiobjekt tatsächlich Zugriff auf
+unsere Datei `foo.dat`.
+
+Der Zugriffsmodus ist `r`, was als Abkürzung für *read* andeutet, dass die
+Datei zum Lesen geöffnet ist. Später werden wir noch andere Werte für den
+Zugriffsmodus kennenlernen. Möchte man an dieser Stelle betonen, dass die Datei
+nur zum Lesen geöffnet werden soll, kann man dies mit Hilfe des `mode`-Arguments
+in der `open`-Anweisung tun. Da der Default aber der Lesezugriff ist, ist dies
+nicht unbedingt erforderlich.
+
+Schließlich ist noch die Textkodierung festgelegt. Standardmäßig wird die vom
+Betriebssystem bevorzugte Kodierung verwendet, die in unserem Fall die
+UTF-8-Kodierung ist, wie es heutzutage auf den meisten Systemen der Fall sein
+dürfte. Sollte der zu lesende Text in einer anderen Kodierung vorliegen, so muss
+man das `encoding`-Argument in der `open`-Anweisung entsprechend setzen.
+
+Der Versuch, eine Datei zum Lesen zu öffnen, die überhaupt nicht existiert, führt
+zu einem `FileNotFoundError`.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+open('nonexistent.dat')
+```
+
+Wir wollen nun aber das bereits zuvor erzeugte Dateiobjekt `datei` nutzen, um
+die Datei `foo.dat` zu lesen. Angesichts des in modernen Rechnern zur Verfügung
+stehenden großen Hauptspeichers ist es in den meisten Fällen möglich, den
+Inhalt der gesamten Datei in diesen Speicher zu laden. Dies lässt sich in
+Python auf zwei Arten bewerkstelligen. Zunächst verwenden wir die `read`-Methode
+des Dateiobjekts.
+```{code-cell} python
+inhalt = datei.read()
+inhalt
+```
+Wie wir sehen, wird der gesamte Inhalt in eine Zeichenkette geladen, wobei
+die Zeilenumbrüche jeweils an dem Steuerzeichen `\n` erkennbar sind. Um diese
+Steuerzeichen deutlich zu machen, haben wir hier nicht die {func}`print`-Funktion
+zu Ausgabe verwendet.
+
+Eine bequeme Methode, um diese Zeichenkette in einzelnen Zeilen zu zerlegen
+stellt die {func}`splitlines`-Methode bereit.
+```{code-cell} python
+print(inhalt.splitlines())
+```
+Wir erhalten damit eine Liste, die die einzelnen Zeilen als Einträge enthält.
+
+Was passiert nun, wenn wir versuchen, die Datei ein zweites Mal zu lesen?
+```{code-cell} python
+datei.read()
+```
+Das Ergebnis ist nun eine leere Zeichenkette. Wie lässt es sich erklären, dass
+wir nicht unser voriges Ergebnis reproduzieren können? Man kann sich den Leseprozess
+am besten veranschaulichen, wenn man sich das Lesen der Datei von einem 
+historischen Datenspeicher, einem Magnetband, vorstellt. Dort bewegt sich
+ein Lesekopf entlang des Magnetbandes. Ganz entsprechend gibt es auch heute
+noch einen Zeiger, der auf die aktuelle Position in der Datei verweist. Zu
+Beginn des Leseprozesses steht dieser Zeiger am Beginn der Datei und nach dem
+Lesen an deren Ende. Versucht man dann weiterzulesen, so erhält man keine Daten
+mehr. Im Prinzip kann man den Zeiger zwar beliebig in der Datei neu positionieren,
+aber diese Möglichkeiten werden bei Textdateien eigentlich nicht benötigt, da
+wir ja die gesamte Datei bereits eingelesen haben und damit arbeiten können.
+
+Da wir noch weitere Möglichkeiten demonstrieren wollen, Daten einzulesen, schließen
+wir zunächst die Datei wieder um sie dann erneut zu öffnen.
+```{code-cell} python
+datei.close()
+print(datei.closed)
+```
+Mit der ersten Zeile schließen wir die Datei. In der zweiten Zeile haben wir
+dann zur Illustration abgeprüft, ob die Datei wirklich geschlossen ist.
+
+Vor allem bei größeren Dateien möchte man vielleicht nicht die gesamte Datei
+auf einmal laden, sondern diese zeilenweise lesen und verarbeiten. Iteriert
+man in einer `for`-Schleife über das Dateiobjekt, so erhält man die einzelnen
+Zeilen.
+```{code-cell} python
+datei = open('foo.dat')
+for zeile in datei:
+    print(zeile)
+datei.close()
+```
+An den ausgegebenen Leerzeilen erkennen wir, dass das Zeilenumbruchzeichen
+am Ende der Zeile nicht entfernt wurde.
+
+Um das Schließen der Datei unter allen Umständen, also selbst im Fehlerfall,
+sicherzustellen, bedient man sich in Python normalerweise eines Kontext-Managers.
+Das vorige Beispiel lässt sich dann folgendermaßen formulieren.
+```{code-cell} python
+with open('foo.dat') as datei:
+    for zeile in datei:
+        print(zeile)
+```
+Wir erkennen die gewohnte Struktur mit einem Schlüsselwort, das hier `with` lautet,
+und einem Doppelpunkt am Ende der Zeile. Der darauf folgende eingerückte Block
+läuft unter Kontrolle des Kontext-Managers, und es ist sichergestellt, dass am
+Ende des Blocks die Datei geschlossen wird. Neu ist in der erste Zeile die
+Konstruktion, die das Ergebnis der `open`-Anweisung mit Hilfe des Schlüsselworts
+`as` der Variablen `datei` zuweist.
+
+In unserem konkreten Beispiel möchte man sicherlich auf die einzelnen Gleitkommawerte
+separat zugreifen, so dass man in der Praxis zunächst einmal die {func}`split`-Methode
+auf jede Zeile anwendet. Dies funktioniert hier ohne Angabe eines Arguments, da
+die Trennung dann an *white space*, also insbesondere Leerzeichen oder Tabulatorzeichen
+erfolgt. Zudem wereden solche Zeichen vollständig entfernt, und das schließt auch
+das Steuerzeichen für den Zeilenumbruch mit ein.
+```{code-cell} python
+with open('foo.dat') as datei:
+    for zeile in datei:
+        print(zeile.split())
+```
+Allerdings zeigt das Ergebnis, dass beim Einlesen zunächst einmal ausschließlich
+Zeichenketten vorliegen. Es ist hier also noch erforderlich, die einzelnen
+Zeilenbestandteile in den richtigen Datentyp umzuwandeln, hier also in Gleitkommazahlen.
+Natürlich könnte man dazu über jede einzelne Liste iterieren und nach der Umwandlung
+mit der {func}`float`-Funktion neue Listen aufbauen. In Python lässt sich das leichter
+und übersichtlicher mit der {func}`map`-Funktion erledigen, wobei die folgende 
+`for`-Schleife lediglich zur Ausgabe dient.
+```{code-cell} python
+data = map(float, ['1.37', '2.59'])
+for d in data:
+    print(d, type(d))
+```
+
+Im Prinzip könnte man ähnlich vorgehen, wenn die einzelnen Einträge in einer
+Zeile durch Kommas oder Semikolons getrennt sind. Solche Dateien begegnen einem
+in der Praxis häufig, wenn Daten mit Excel erfasst wurden und dann im
+CSV-Format abgespeichert wurden, wobei die Abkürzung CSV für *comma separated
+values* steht. Anstatt das Einlesen selbst zu programmieren, bietet es sich
+dann an, auf Funktionen aus der Python-Standardbibliothek zurückzugreifen, in
+diesem Fall konkret auf das
+[`csv`-Modul](https://docs.python.org/3/library/csv.html). Eine
+Programmbibliothek, die diverse Eingabeformate einlesen kann und für das
+Verarbeiten von strukturierten Daten in Python besonders gut geeignet ist, ist
+[Pandas](https://pandas.pydata.org/).
+
+```{admonition} Weiterführender Hinweis
+Große Mengen strukturierter Daten werden heute häufig im HDF5-Format gespeichert.
+Dieses kann von [Pandas](https://pandas.pydata.org/) gelesen werden. Wenn man
+Pandas jedoch nicht zur Weiterverarbeitung der Daten verwenden möchte, ist es
+sinnvoll, sich das [`h5py`-Paket](https://www.h5py.org/) anzusehen.
+
+Anstatt Parameter wie in {numref}`commandline` beschrieben an ein Programm zu
+übergeben, werden auch Konfigurationsdateien verwendet, wie man sie als `INI`-Dateien
+in Windows kennt. Zum Lesen solcher Dateien stellt die Python-Standardbibliothek
+das [`configparser`-Modul](https://docs.python.org/3/library/configparser.html)
+zur Verfügung.
+
+Beliebte Formate für den Datenaustausch sind unter anderem XML (*eXtensible
+Markup Language*) und JSON (*JavaScript Object Notation*). Auch diese
+unterstützt Python in der Standardbibliothek mit einer Reihe von [XML
+verarbeitenen Modulen](https://docs.python.org/3/library/xml.html)
+beziehungsweise dem
+[`json`-Modul](https://docs.python.org/3/library/json.html).
+```
+
+## Schreiben von Dateien
+
