@@ -250,8 +250,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lesen-und-schreiben-von-dateien">
-   7.2. Lesen und Schreiben von Dateien
+  <a class="reference internal nav-link" href="#lesen-von-dateien">
+   7.2. Lesen von Dateien
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schreiben-von-dateien">
+   7.3. Schreiben von Dateien
   </a>
  </li>
 </ul>
@@ -309,7 +314,7 @@ wir uns vor allem mit dem Lesen und Schreiben von Dateien beschäftigen. Für sp
 Aspekte werden wir in weiterführenden Hinweisen zeigen, dass Python für viele der
 potentiell anfallenden Aufgaben nützliche Module in der Standardbibliothek bereit hält.</p>
 <div class="section" id="eingabe-uber-die-kommandozeile-und-die-tastatur">
-<h2><span class="section-number">7.1. </span>Eingabe über die Kommandozeile und die Tastatur<a class="headerlink" href="#eingabe-uber-die-kommandozeile-und-die-tastatur" title="Link zu dieser Überschrift">¶</a></h2>
+<span id="commandline"></span><h2><span class="section-number">7.1. </span>Eingabe über die Kommandozeile und die Tastatur<a class="headerlink" href="#eingabe-uber-die-kommandozeile-und-die-tastatur" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Wenn man Programme von der Kommandozeile aufruft, ist es nicht unüblich, dabei Parameter
 zu übergeben. Programmiersprachen wie Fortran, C und Python bieten die Möglichkeit,
 auf diese Parameter innerhalb des Programms zuzugreifen. Die Alternative, solche Parameter
@@ -444,8 +449,256 @@ spielen, wenn wir die Ausgabe von Daten in eine Datei besprechen.</p>
 Ihr Browser unterstützt nicht das video-Tag.
 </video> 
 </div>
-<div class="section" id="lesen-und-schreiben-von-dateien">
-<h2><span class="section-number">7.2. </span>Lesen und Schreiben von Dateien<a class="headerlink" href="#lesen-und-schreiben-von-dateien" title="Link zu dieser Überschrift">¶</a></h2>
+<div class="section" id="lesen-von-dateien">
+<h2><span class="section-number">7.2. </span>Lesen von Dateien<a class="headerlink" href="#lesen-von-dateien" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Für einfache wissenschaftliche Problemstellungen mag es ausreichen, Parameter über
+die Kommandozeile oder auf Anfrage des Programms einzugeben und die resultierenden
+Daten am Bildschirm anzusehen. Oft wird es aber so sein, dass dieses Vorgehen aufgrund
+des Umfangs der Daten nicht mehr sinnvoll ist. So kann es bereits zu umständlich
+sein, zehn oder zwanzig Parameter immer wieder per Hand einzugeben und in manchen
+Fällen kann die Zahl der Eingabeparameter deutlich größer sein. Man denke zum Beispiel
+an Strukturdaten für quantenchemische Rechnungen. Die erzeugten Daten sind häufig sehr
+umfangreich, so dass man sie für eine weitere Analyse abspeichern möchte. Dies gilt
+besonders dann, wenn die Erzeugung der Daten sehr zeitaufwändig ist.</p>
+<p>Wir wollen uns zunächst dem Lesen von Daten aus Dateien zuwenden. Das grundsätzliche
+Vorgehen ähnelt dem beim Lesen eines Buches. So wie man das Buch zum Lesen aufschlagen
+muss, muss man eine Datei zum Lesen zunächst öffnen. Anschließend kann man im Buch lesen,
+wobei wir uns hier auf die Situation beschränken wollen, in der beginnend am Anfang
+gelesen wird. Wie in einem Buch ist es zwar im Prinzip auch in einer Datei möglich, direkt
+zu einer bestimmten Stelle zu springen, aber dies kommt in der Praxis vor allem im
+Zusammenhang mit binären Dateien vor. Hier wollen wir uns dagegen auf Textdateien
+beschränken, wobei Text nicht ausschließt, dass die Datei ausschließlich oder zum
+Teil numerische Information enthält.</p>
+<p>Genauso wie man ein Buch, nachdem man Teile oder den gesamten Inhalt gelesen hat, wieder
+zuschlägt, sollte man auch eine Datei schließen. Im Prinzip wird dies von modernen
+Betriebssystemen notfalls erledigt, aber es ist keine gute Praxis darauf zu hoffen,
+dass jemand anderes für einen die Aufräumarbeit erledigt. Problematisch würde dies vor
+allem, wenn man viele Bücher gleichzeitig aufschlägt oder viele Dateien gleichzeitig
+öffnet.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">Siehe auch</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Foobar">Wikipedia-Eintrag zu Foobar</a>.</p>
+</div>
+</div>
+<p>Um eine Datei lesen zu können, muss diese Datei zunächst einmal existieren. Wir gehen
+im Folgenden davon aus, dass es eine Datei mit dem Namen <code class="docutils literal notranslate"><span class="pre">foo.dat</span></code> im aktuellen Verzeichnis
+gibt. Den Inhalt dieser Datei lassen wir uns hier mit einem sogenannten magischen Befehl
+von Jupyter ausgeben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> foo.dat
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cat: foo.dat: No such file or directory
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dann können wir diese Datei zum Lesen öffnen. Dabei erhalten wir ein Dateiobjekt zurück,
+mit dem wir anschließend auf den Inhalt der Datei zugreifen können.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datei</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.dat&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datei</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">18711869</span><span class="n">b9a6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">datei</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.dat&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">datei</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;foo.dat&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung gibt hier nicht den Inhalt der Datei aus, die ja noch überhaupt nicht
+gelesen wurde, sondern Information über das Dateiobjekt, das durch die Variable <code class="docutils literal notranslate"><span class="pre">datei</span></code>
+repräsentiert wird. Wie wir sehen, erlaubt uns das Dateiobjekt tatsächlich Zugriff auf
+unsere Datei <code class="docutils literal notranslate"><span class="pre">foo.dat</span></code>.</p>
+<p>Der Zugriffsmodus ist <code class="docutils literal notranslate"><span class="pre">r</span></code>, was als Abkürzung für <em>read</em> andeutet, dass die
+Datei zum Lesen geöffnet ist. Später werden wir noch andere Werte für den
+Zugriffsmodus kennenlernen. Möchte man an dieser Stelle betonen, dass die Datei
+nur zum Lesen geöffnet werden soll, kann man dies mit Hilfe des <code class="docutils literal notranslate"><span class="pre">mode</span></code>-Arguments
+in der <code class="docutils literal notranslate"><span class="pre">open</span></code>-Anweisung tun. Da der Default aber der Lesezugriff ist, ist dies
+nicht unbedingt erforderlich.</p>
+<p>Schließlich ist noch die Textkodierung festgelegt. Standardmäßig wird die vom
+Betriebssystem bevorzugte Kodierung verwendet, die in unserem Fall die
+UTF-8-Kodierung ist, wie es heutzutage auf den meisten Systemen der Fall sein
+dürfte. Sollte der zu lesende Text in einer anderen Kodierung vorliegen, so muss
+man das <code class="docutils literal notranslate"><span class="pre">encoding</span></code>-Argument in der <code class="docutils literal notranslate"><span class="pre">open</span></code>-Anweisung entsprechend setzen.</p>
+<p>Der Versuch, eine Datei zum Lesen zu öffnen, die überhaupt nicht existiert, führt
+zu einem <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code>.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;nonexistent.dat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir wollen nun aber das bereits zuvor erzeugte Dateiobjekt <code class="docutils literal notranslate"><span class="pre">datei</span></code> nutzen, um
+die Datei <code class="docutils literal notranslate"><span class="pre">foo.dat</span></code> zu lesen. Angesichts des in modernen Rechnern zur Verfügung
+stehenden großen Hauptspeichers ist es in den meisten Fällen möglich, den
+Inhalt der gesamten Datei in diesen Speicher zu laden. Dies lässt sich in
+Python auf zwei Arten bewerkstelligen. Zunächst verwenden wir die <code class="docutils literal notranslate"><span class="pre">read</span></code>-Methode
+des Dateiobjekts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">datei</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">inhalt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie wir sehen, wird der gesamte Inhalt in eine Zeichenkette geladen, wobei
+die Zeilenumbrüche jeweils an dem Steuerzeichen <code class="docutils literal notranslate"><span class="pre">\n</span></code> erkennbar sind. Um diese
+Steuerzeichen deutlich zu machen, haben wir hier nicht die <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion
+zu Ausgabe verwendet.</p>
+<p>Eine bequeme Methode, um diese Zeichenkette in einzelnen Zeilen zu zerlegen
+stellt die <code class="xref py py-func docutils literal notranslate"><span class="pre">splitlines()</span></code>-Methode bereit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">inhalt</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir erhalten damit eine Liste, die die einzelnen Zeilen als Einträge enthält.</p>
+<p>Was passiert nun, wenn wir versuchen, die Datei ein zweites Mal zu lesen?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datei</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Ergebnis ist nun eine leere Zeichenkette. Wie lässt es sich erklären, dass
+wir nicht unser voriges Ergebnis reproduzieren können? Man kann sich den Leseprozess
+am besten veranschaulichen, wenn man sich das Lesen der Datei von einem
+historischen Datenspeicher, einem Magnetband, vorstellt. Dort bewegt sich
+ein Lesekopf entlang des Magnetbandes. Ganz entsprechend gibt es auch heute
+noch einen Zeiger, der auf die aktuelle Position in der Datei verweist. Zu
+Beginn des Leseprozesses steht dieser Zeiger am Beginn der Datei und nach dem
+Lesen an deren Ende. Versucht man dann weiterzulesen, so erhält man keine Daten
+mehr. Im Prinzip kann man den Zeiger zwar beliebig in der Datei neu positionieren,
+aber diese Möglichkeiten werden bei Textdateien eigentlich nicht benötigt, da
+wir ja die gesamte Datei bereits eingelesen haben und damit arbeiten können.</p>
+<p>Da wir noch weitere Möglichkeiten demonstrieren wollen, Daten einzulesen, schließen
+wir zunächst die Datei wieder um sie dann erneut zu öffnen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datei</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datei</span><span class="o">.</span><span class="n">closed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit der ersten Zeile schließen wir die Datei. In der zweiten Zeile haben wir
+dann zur Illustration abgeprüft, ob die Datei wirklich geschlossen ist.</p>
+<p>Vor allem bei größeren Dateien möchte man vielleicht nicht die gesamte Datei
+auf einmal laden, sondern diese zeilenweise lesen und verarbeiten. Iteriert
+man in einer <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife über das Dateiobjekt, so erhält man die einzelnen
+Zeilen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datei</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.dat&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">datei</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">zeile</span><span class="p">)</span>
+<span class="n">datei</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An den ausgegebenen Leerzeilen erkennen wir, dass das Zeilenumbruchzeichen
+am Ende der Zeile nicht entfernt wurde.</p>
+<p>Um das Schließen der Datei unter allen Umständen, also selbst im Fehlerfall,
+sicherzustellen, bedient man sich in Python normalerweise eines Kontext-Managers.
+Das vorige Beispiel lässt sich dann folgendermaßen formulieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.dat&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">datei</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">zeile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir erkennen die gewohnte Struktur mit einem Schlüsselwort, das hier <code class="docutils literal notranslate"><span class="pre">with</span></code> lautet,
+und einem Doppelpunkt am Ende der Zeile. Der darauf folgende eingerückte Block
+läuft unter Kontrolle des Kontext-Managers, und es ist sichergestellt, dass am
+Ende des Blocks die Datei geschlossen wird. Neu ist in der erste Zeile die
+Konstruktion, die das Ergebnis der <code class="docutils literal notranslate"><span class="pre">open</span></code>-Anweisung mit Hilfe des Schlüsselworts
+<code class="docutils literal notranslate"><span class="pre">as</span></code> der Variablen <code class="docutils literal notranslate"><span class="pre">datei</span></code> zuweist.</p>
+<p>In unserem konkreten Beispiel möchte man sicherlich auf die einzelnen Gleitkommawerte
+separat zugreifen, so dass man in der Praxis zunächst einmal die <code class="xref py py-func docutils literal notranslate"><span class="pre">split()</span></code>-Methode
+auf jede Zeile anwendet. Dies funktioniert hier ohne Angabe eines Arguments, da
+die Trennung dann an <em>white space</em>, also insbesondere Leerzeichen oder Tabulatorzeichen
+erfolgt. Zudem wereden solche Zeichen vollständig entfernt, und das schließt auch
+das Steuerzeichen für den Zeilenumbruch mit ein.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.dat&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">datei</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">zeile</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Allerdings zeigt das Ergebnis, dass beim Einlesen zunächst einmal ausschließlich
+Zeichenketten vorliegen. Es ist hier also noch erforderlich, die einzelnen
+Zeilenbestandteile in den richtigen Datentyp umzuwandeln, hier also in Gleitkommazahlen.
+Natürlich könnte man dazu über jede einzelne Liste iterieren und nach der Umwandlung
+mit der <code class="xref py py-func docutils literal notranslate"><span class="pre">float()</span></code>-Funktion neue Listen aufbauen. In Python lässt sich das leichter
+und übersichtlicher mit der <code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code>-Funktion erledigen, wobei die folgende
+<code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife lediglich zur Ausgabe dient.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;1.37&#39;</span><span class="p">,</span> <span class="s1">&#39;2.59&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im Prinzip könnte man ähnlich vorgehen, wenn die einzelnen Einträge in einer
+Zeile durch Kommas oder Semikolons getrennt sind. Solche Dateien begegnen einem
+in der Praxis häufig, wenn Daten mit Excel erfasst wurden und dann im
+CSV-Format abgespeichert wurden, wobei die Abkürzung CSV für <em>comma separated
+values</em> steht. Anstatt das Einlesen selbst zu programmieren, bietet es sich
+dann an, auf Funktionen aus der Python-Standardbibliothek zurückzugreifen, in
+diesem Fall konkret auf das
+<a class="reference external" href="https://docs.python.org/3/library/csv.html"><code class="docutils literal notranslate"><span class="pre">csv</span></code>-Modul</a>. Eine
+Programmbibliothek, die diverse Eingabeformate einlesen kann und für das
+Verarbeiten von strukturierten Daten in Python besonders gut geeignet ist, ist
+<a class="reference external" href="https://pandas.pydata.org/">Pandas</a>.</p>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Große Mengen strukturierter Daten werden heute häufig im HDF5-Format gespeichert.
+Dieses kann von <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> gelesen werden. Wenn man
+Pandas jedoch nicht zur Weiterverarbeitung der Daten verwenden möchte, ist es
+sinnvoll, sich das <a class="reference external" href="https://www.h5py.org/"><code class="docutils literal notranslate"><span class="pre">h5py</span></code>-Paket</a> anzusehen.</p>
+<p>Anstatt Parameter wie in <a class="reference internal" href="#commandline"><span class="std std-numref">Kapitel 7.1</span></a> beschrieben an ein Programm zu
+übergeben, werden auch Konfigurationsdateien verwendet, wie man sie als <code class="docutils literal notranslate"><span class="pre">INI</span></code>-Dateien
+in Windows kennt. Zum Lesen solcher Dateien stellt die Python-Standardbibliothek
+das <a class="reference external" href="https://docs.python.org/3/library/configparser.html"><code class="docutils literal notranslate"><span class="pre">configparser</span></code>-Modul</a>
+zur Verfügung.</p>
+<p>Beliebte Formate für den Datenaustausch sind unter anderem XML (<em>eXtensible
+Markup Language</em>) und JSON (<em>JavaScript Object Notation</em>). Auch diese
+unterstützt Python in der Standardbibliothek mit einer Reihe von <a class="reference external" href="https://docs.python.org/3/library/xml.html">XML
+verarbeitenen Modulen</a>
+beziehungsweise dem
+<a class="reference external" href="https://docs.python.org/3/library/json.html"><code class="docutils literal notranslate"><span class="pre">json</span></code>-Modul</a>.</p>
+</div>
+</div>
+<div class="section" id="schreiben-von-dateien">
+<h2><span class="section-number">7.3. </span>Schreiben von Dateien<a class="headerlink" href="#schreiben-von-dateien" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
 </div>
 
