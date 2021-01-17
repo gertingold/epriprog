@@ -15,11 +15,6 @@ kernelspec:
 (einausgabe)=
 # Ein- und Ausgabe
 
-```{admonition} Hinweis
-:class: warning
-Dieses Kapitel befindet sich noch in Bearbeitung.
-```
-
 Ein Programm, das eine sinnvolle Aufgabe bearbeitet, wird immer in irgendeiner Weise
 kommunizieren, also Informationen entgegennehmen und insbesondere die Resultate
 ausgeben. Für beiden Prozesse sind verschiedene Szenarien denkbar.
