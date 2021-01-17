@@ -358,7 +358,7 @@ In unserem konkreten Beispiel möchte man sicherlich auf die einzelnen Gleitkomm
 separat zugreifen, so dass man in der Praxis zunächst einmal die {func}`split`-Methode
 auf jede Zeile anwendet. Dies funktioniert hier ohne Angabe eines Arguments, da
 die Trennung dann an *white space*, also insbesondere Leerzeichen oder Tabulatorzeichen
-erfolgt. Zudem wereden solche Zeichen vollständig entfernt, und das schließt auch
+erfolgt. Zudem werden solche Zeichen vollständig entfernt, und das schließt auch
 das Steuerzeichen für den Zeilenumbruch mit ein.
 ```{code-cell} python
 with open('foo.dat') as datei:
@@ -405,7 +405,7 @@ zur Verfügung.
 Beliebte Formate für den Datenaustausch sind unter anderem XML (*eXtensible
 Markup Language*) und JSON (*JavaScript Object Notation*). Auch diese
 unterstützt Python in der Standardbibliothek mit einer Reihe von [XML
-verarbeitenen Modulen](https://docs.python.org/3/library/xml.html)
+verarbeitenden Modulen](https://docs.python.org/3/library/xml.html)
 beziehungsweise dem
 [`json`-Modul](https://docs.python.org/3/library/json.html).
 
