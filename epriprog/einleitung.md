@@ -98,7 +98,7 @@ Beispiel zuverlässig immer wieder die gleichen Programmanweisungen abarbeitet.
      oder einfach die gelernten Programmierfähigkeiten ausprobieren möchte,
      sollte einen Blick auf [projecteuler.net](http://projecteuler.net/) werfen.
 
-
+(warumpython)=
 ## Warum Python?
 
 Das Ziel des Programmierens ist es, dem Computer zu erklären, was von ihm
