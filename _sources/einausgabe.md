@@ -15,11 +15,6 @@ kernelspec:
 (einausgabe)=
 # Ein- und Ausgabe
 
-```{admonition} Hinweis
-:class: warning
-Dieses Kapitel befindet sich noch in Bearbeitung.
-```
-
 Ein Programm, das eine sinnvolle Aufgabe bearbeitet, wird immer in irgendeiner Weise
 kommunizieren, also Informationen entgegennehmen und insbesondere die Resultate
 ausgeben. Für beiden Prozesse sind verschiedene Szenarien denkbar.
@@ -203,6 +198,7 @@ spielen, wenn wir die Ausgabe von Daten in eine Datei besprechen.
 Ihr Browser unterstützt nicht das video-Tag.
 </video> 
 
+(readfile)=
 ## Lesen von Dateien
 
 Für einfache wissenschaftliche Problemstellungen mag es ausreichen, Parameter über
@@ -357,7 +353,7 @@ In unserem konkreten Beispiel möchte man sicherlich auf die einzelnen Gleitkomm
 separat zugreifen, so dass man in der Praxis zunächst einmal die {func}`split`-Methode
 auf jede Zeile anwendet. Dies funktioniert hier ohne Angabe eines Arguments, da
 die Trennung dann an *white space*, also insbesondere Leerzeichen oder Tabulatorzeichen
-erfolgt. Zudem wereden solche Zeichen vollständig entfernt, und das schließt auch
+erfolgt. Zudem werden solche Zeichen vollständig entfernt, und das schließt auch
 das Steuerzeichen für den Zeilenumbruch mit ein.
 ```{code-cell} python
 with open('foo.dat') as datei:
@@ -404,10 +400,152 @@ zur Verfügung.
 Beliebte Formate für den Datenaustausch sind unter anderem XML (*eXtensible
 Markup Language*) und JSON (*JavaScript Object Notation*). Auch diese
 unterstützt Python in der Standardbibliothek mit einer Reihe von [XML
-verarbeitenen Modulen](https://docs.python.org/3/library/xml.html)
+verarbeitenden Modulen](https://docs.python.org/3/library/xml.html)
 beziehungsweise dem
 [`json`-Modul](https://docs.python.org/3/library/json.html).
+
+Die genannten Pakete unterstützen nicht nur das Lesen der genannten Dateitypen,
+sondern auch das Schreiben.
 ```
 
 ## Schreiben von Dateien
 
+Genauso wie für das Lesen aus Dateien muss man zum Schreiben in eine
+Datei diese zunächst öffnen. Hat man das Schreiben beendet, so sollte
+die Datei wieder geschlossen werden. In Python macht man dies am Einfachsten
+im Rahmen eines `with`-Kontexts, wie wir ihn schon beim Lesen aus Dateien
+kennengelernt haben.
+
+Im {numref}`readfile` hatten wir gesehen, dass eine Datei defaultmäßig
+im Modus `r`, also zum Lesen, geöffnet wird. In diesem Modus ist es nicht
+möglich, in die geöffnete Datei zu schreiben. Statt der {func}`read`-Methode zum
+Lesen müssen wir hier die {func}`write`-Methode zum Schreiben verwenden, um das
+Verhalten zu demonstrieren.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+with open('foo.txt') as datei:
+    datei.write('Dies ist ein Test.')
+```
+Wenn wir dagegen die Datei im Schreibmodus `w` öffnen, können wir die
+Datei wie gewünscht schreiben.
+```{code-cell} python
+with open('foo.txt', mode='w') as datei:
+    datei.write('Dies ist ein Test.')
+```
+Das Ergebnis können wir uns wie in {numref}`readfile` mit dem magischen
+Befehl `%cat` in einer Notebook-Zelle ansehen.
+```{code-cell} python
+%cat foo.dat
+```
+
+Im Zusammenhang mit der {func}`write`-Methode ist allerdings zu beachten, dass
+diese im Gegensatz zur {func}`print`-Funktion nicht automatisch einen
+Zeilenumbruch anhängt. Im folgenden Beispiel verzichten wir darauf, beim
+zweiten Argument das Schlüsselwort `mode` anzugeben, da dieses Argument
+an der richtigen Position steht. Es spricht aber natürlich nichts dagegen,
+das Schlüsselwort zur Verdeutlichung anzugeben.
+```{code-cell} python
+with open('foo.txt', 'w') as datei:
+    for n in range(1, 4):
+        datei.write(f'Zeile {n}')
+```
+```{code-cell} python
+%cat foo.txt
+```
+Dieses Verhalten entspricht dem, was wir von der {func}`print`-Funktion kennen,
+wenn wir `end=''` setzen. Wollen wir einen Zeilenumbruch erreichen, so müssen
+wir das entsprechende Steuerzeichen explizit angeben.
+```{code-cell} python
+with open('foo.txt', 'w') as datei:
+    for n in range(1, 4):
+        datei.write(f'Zeile {n}\n')
+```
+```{code-cell} python
+%cat foo.txt
+```
+Die Möglichkeiten der Formatierung in f-Strings hatten wir in einigem
+Detail in {numref}`formatierung` besprochen, auf das wir an dieser Stelle
+verweisen wollen.
+
+Benutzt man den Modus `w` zum Öffnen einer Datei zum Schreiben, muss man sich
+bewusst sein, dass eine eventuell bereits existierende Datei mit diesem Namen
+zunächst gelöscht wird. Dies gilt zumindest, wenn man auf der Ebene des
+Betriebssystems die Rechte dazu besitzt. Je nach Situation kann dies das
+erwünschte Verhalten sein oder es stört einen zumindest nicht. Es gibt jedoch
+Anwendungen, in denen man einen alternativen Modus verwenden wird.
+
+Statt des Modus `w` kann man den Modus `x` verwenden, der die Datei nur dann
+zum Schreiben öffnen wird, wenn eine Datei mit dem betreffenden Namen noch
+nicht existiert. Dies können wir anhand der Datei `foo.txt` demonstrieren,
+die wir ja gerade geschrieben hatten.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+with open('foo.txt', 'x') as datei:
+    for n in range(1, 4):
+        datei.write(f'Zeile {n}\n')
+```
+Der Versuch, in eine existierende Datei zu schreiben, wird also beim Modus
+`x` unterbunden.
+
+Es kann aber auch vorkommen, dass man in einer bereits existierenden Datei
+am Ende der Datei weiterschreiben möchte. Hierzu ist der Modus `a` für *append*
+vorgesehen. Ein Anwendungsfall kann darin bestehen, Probleme durch das Puffern
+der Ausgabe, die wir am Ende von {numref}`commandline` besprochen hatten, zu
+umgehen. So könnte man bei einem Programm mit langer Laufzeit, bei dem in
+größeren Abständen Daten geschrieben werden, die Datei nur unmittelbar zum
+Schreiben der Daten wieder öffnen und anschließend wieder schließen. Bei einem
+Programmabbruch gehen damit die bereits ausgegebenen Daten nicht verloren.
+Dieses Vorgehen ist allerdings nur dann sinnvoll, wenn die Zeiten zwischen
+den Schreibvorgängen nicht zu kurz sind, da sonst der Aufwand für das Öffnen
+und Schließen der Datei das Programm ausbremsen würde.
+
+Im folgenden Beispiel demonstrieren wir mit Hilfe einer Schleife außerhalb des
+`with`-Kontexts das wiederholte Anhängen an eine Datei. Zudem überprüfen wir,
+dass die Datei jeweils wieder geschlossen wurde.
+```{code-cell} python
+from datetime import datetime
+from time import sleep
+
+for n in range(1, 5):
+    sleep(5)
+    now = datetime.now()
+    with open('spam.dat', 'a') as datei:
+        msg = f'{now:%H:%M:%S} - Durchlauf {n}\n'
+        datei.write(msg)
+    if datei.closed:
+        msg = f'{now:%H:%M:%S} - Datei geschlossen'
+        print(msg)
+```
+```{code-cell} python
+%cat spam.dat
+```
+
+Möchte man mehrere Dateien schreiben, weil man beispielsweise Rechnungen für
+mehrere Parametersätze durchführen möchte, sollte man im Hinterkopf behalten,
+dass es sich bei dem Namen, der beim Öffnen der Datei angegeben werden muss, 
+einfach um eine Zeichenkette handelt, die entsprechend konstruiert werden 
+kann. So hat man die Möglichkeit, entweder Parameter im Dateinamen unterzubringen
+oder die Dateien durchzunummerieren. Wir wollen letzteres an einem Beispiel
+demonstrieren.
+```{code-cell} python
+for n in range(1, 16):
+    with open(f'mydata_{n:04}.dat', 'w') as datei:
+        datei.write(f'Datei Nr. {n}\n')
+```
+```{code-cell}
+%ls mydata*.dat
+```
+Um eine übersichtliche Sortierung der Dateien zu erzeugen, ist es sinnvoll,
+für die Nummer der Datei ein hinreichend breites Feld vorzusehen und die
+freien Stellen mit Nullen zu füllen.
+
+Ganz unabhängig davon, wie man den Dateinamen wählt, ist es sinnvoll,
+Informationen, die erforderlich sind um die Daten zu erzeugen, zu Beginn der
+Datei abzuspeichern. Dazu gehören nicht nur die verwendeten Parameter, sondern
+auch Information über die verwendete Programmversion. Damit lässt sich im Fall
+eines Fehlers im Programm auch im Nachhinein entscheiden, ob die Daten hiervon
+betroffen sind.
