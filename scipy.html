@@ -192,7 +192,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/scipy.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/scipy.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
@@ -213,6 +216,23 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/scipy.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -261,8 +281,98 @@
 <p class="admonition-title">Hinweis</p>
 <p>Dieses Kapitel befindet sich noch in Bearbeitung.</p>
 </div>
+<p>In den bisherigen Kapiteln hatten wir immer wieder Gelegenheit, auf
+Möglichkeiten hinzuweisen, die die Python-Standardbibliothek bietet. Wenn man
+die dort zur Verfügung gestellten Module verwendet, kann man sich Einiges an
+Arbeit sparen und dabei auch den Code effizienter und übersichtlicher
+gestalten.  Neben der Python-Standardbibliothek gibt es aber auch noch viele
+interessante Programmpakete, die häufig über den <a class="reference external" href="https://pypi.org/">Python Package
+Index</a> zur Verfügung gestellt werden.</p>
+<p>Gerade für Problemstellungen in den Natur- und Ingenieurwissenschaften gibt es
+eine oft als <em>scientific ecosystem of Python</em> oder <em>scientific stack</em>
+bezeichnete Sammlung von zentralen Paketen. Hierzu gehört als Basispaket
+zunächst <a class="reference external" href="http://numpy.org/">NumPy</a>, das den Datentyp <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> sowie Methoden
+zur Verfügung stellt, um mit <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>-Objekten zu arbeiten. Damit wird das
+Rechnen mit Vektoren und Matrizen ermöglicht, das wir bei der Besprechung von
+Listen in <a class="reference internal" href="sequenzen.html#listen"><span class="std std-numref">Kapitel 6.1</span></a> vermisst hatten.</p>
+<p>Ein weiteres wichtiges Paket ist <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/">SciPy</a>, das vielfältige numerische Werkzeuge zur Verfügung stellt, beispielsweise
+zur numerischen Integration oder der Lösung von Differentialgleichungssystemen,
+zur Lösung von Optimierungsproblemen oder zur Berechnung von speziellen
+Funktion sowie vielem Anderem mehr. In diesem Kapitel werden wir einen
+ersten Eindruck von den Möglichkeiten geben, die NumPy und SciPy bereitstellen.</p>
+<p>Weitere zentrale Pakete, die in diesem Zusammenhang zu nennen sind, wären
+<a class="reference external" href="http://matplotlib.org/">Matplotlib</a> zur graphischen Darstellung von Daten,
+<a class="reference external" href="http://ipython.org/">IPython</a>, eine interaktive Python-Konsole, die für das
+<a class="reference external" href="https://jupyter.org/">Projekt Jupyter</a>, das unter anderem die Jupyter
+Notebooks zur Verfügung stellt, von zentraler Bedeutung war und ist,
+<a class="reference external" href="http://sympy.org/">SymPy</a> für das symbolische Rechnen sowie das im
+<a class="reference internal" href="einausgabe.html#readfile"><span class="std std-numref">Kapitel 7.2</span></a> bereits erwähnte <a class="reference external" href="http://pandas.pydata.org/">pandas</a>,
+das fortgeschrittene Datenstrukturen und vielfältige Methoden zu einer
+effizienten Datenanalyse bereithält.</p>
+<p>Auf der Basis dieser Pakete haben einzelne wissenschaftliche Disziplinen
+umfangreiche, auf ihre speziellen Bedürfnisse zugeschnittene Programmpakete
+entwickelt. So kann <a class="reference external" href="https://www.astropy.org/">Astropy</a> als Standard in der
+Astronomie angesehen werden. <a class="reference external" href="http://qutip.org/">QuTiP</a>, die <em>Quantum Toolbox
+in Python</em> erlaubt die Simulation von Qauntensystemen. Für Problemstellungen,
+die sich mit finite-Elemente-Methoden lösen lassen, steht
+<a class="reference external" href="https://fenicsproject.org/">FEniCS</a> zur Verfügung. Diese Aufzählung könnte
+fast beliebig fortgesetzt werden und soll nur dazu dienen, einen allerersten
+Eindruck von der Vielfalt der zur Verfügung stehenden
+Python-Programmbibliotheken zu geben.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">Siehe auch</p>
+<p>Quellen für hier besprochene Programmpakete:
+<a class="reference external" href="https://github.com/numpy/numpy">NumPy auf Github</a>,
+<a class="reference external" href="https://github.com/scipy/scipy">SciPy auf Github</a></p>
+</div>
+</div>
+<p>Nachdem die Benutzung professioneller Programmpakete gelegentlich mit hohen
+Kosten verbunden sein kann, ist es erwähnenswert, dass die hier aufgeführten
+Pakete frei verfügbar, aber dennoch von sehr hoher Qualität sind. Zwei Beispiele
+prominenter Forschungsprojekte, deren Arbeit wesentlich auf einigen der hier
+genannten Pakete, sind in <a class="reference internal" href="einleitung.html#warumpython"><span class="std std-numref">Kapitel 1.2</span></a> genannt. Darüber hinaus ist
+der Quellcode der Pakete verfügbar, so dass man sich bei Bedarf auch die
+konkrete Implementierung ansehen sowie zur Weiterentwicklung beitragen kann.</p>
 <div class="section" id="installation">
 <h2><span class="section-number">8.1. </span>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Da NumPy und SciPy nicht in der Python-Standardbibliothek enthalten sind, stehen
+diese Programmpakete auch bei einer vorhandenen Python-Installation nicht
+automatisch zur Verfügung. Dies lässt sich leicht überprüfen, indem man versucht,
+die beiden Pakete zu importieren. Schlägt dies fehl, so erhält man einen
+<code class="docutils literal notranslate"><span class="pre">ImportError</span></code>, der impliziert, dass Python die Pakete nicht finden kann.
+Außerdem lässt sich die installierte Version anzeigen, was deswegen interessant
+sein kann, weil gelegentlich neue Funktionalität zu den Paketen hinzugefügt
+wird. Beachten Sie, dass vor und nach <code class="docutils literal notranslate"><span class="pre">version</span></code> jeweils zwei Unterstriche
+stehen müssen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">numpy</span><span class="o">.</span><span class="n">__version__</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">scipy</span><span class="o">.</span><span class="n">__version__</span> <span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.__version__ = &#39;1.19.2&#39;
+scipy.__version__ = &#39;1.5.2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine einfache und empfehlenswerte Möglichkeit, NumPy und SciPy unter Windows,
+MacOS oder Linuxvarianten wie Ubuntu verfügbar zu machen, besteht darin, die
+<a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda-Distribution</a> zu
+installieren. Dabei werden allerdings gleichzeitig zahlreiche andere, für
+wissenschaftliche Zwecke interessante Programmpakete installiert.  Ist dies
+nicht erwünscht, zum Beispiel wegen des relativ großen Bedarfs an
+Speicherplatz, kann man NumPy und SciPy auch gezielt auf einem der Wege
+installieren, die in der <a class="reference external" href="https://numpy.org/install/">Installationsanleitung für
+NumPy</a> und der <a class="reference external" href="https://www.scipy.org/install.html">Installationsanleitung für
+SciPy</a> beschrieben sind.</p>
 </div>
 <div class="section" id="arrays-und-anwendungen">
 <h2><span class="section-number">8.2. </span>Arrays und Anwendungen<a class="headerlink" href="#arrays-und-anwendungen" title="Link zu dieser Überschrift">¶</a></h2>
@@ -313,7 +423,7 @@
         
           By Gert-Ludwig Ingold<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2020, 2021.<br/>
       </p>
     </div>
   </footer>

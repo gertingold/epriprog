@@ -489,7 +489,9 @@ von Jupyter ausgeben.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cat: foo.dat: No such file or directory
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1.37  2.59
+10.3  -1.3
+ 5.8   2.0
 </pre></div>
 </div>
 </div>
@@ -504,13 +506,7 @@ mit dem wir anschließend auf den Inhalt der Datei zugreifen können.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">18711869</span><span class="n">b9a6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">datei</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.dat&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">datei</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;foo.dat&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_io.TextIOWrapper name=&#39;foo.dat&#39; mode=&#39;r&#39; encoding=&#39;UTF-8&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -538,6 +534,16 @@ zu einem <code class="docutils literal notranslate"><span class="pre">FileNotFou
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">d1fa702c9820</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;nonexistent.dat&#39;</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;nonexistent.dat&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Wir wollen nun aber das bereits zuvor erzeugte Dateiobjekt <code class="docutils literal notranslate"><span class="pre">datei</span></code> nutzen, um
 die Datei <code class="docutils literal notranslate"><span class="pre">foo.dat</span></code> zu lesen. Angesichts des in modernen Rechnern zur Verfügung
@@ -549,6 +555,11 @@ des Dateiobjekts.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inhalt</span> <span class="o">=</span> <span class="n">datei</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">inhalt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39; 1.37  2.59\n10.3  -1.3\n 5.8   2.0\n&#39;
 </pre></div>
 </div>
 </div>
@@ -565,12 +576,22 @@ stellt die <code class="xref py py-func docutils literal notranslate"><span clas
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39; 1.37  2.59&#39;, &#39;10.3  -1.3&#39;, &#39; 5.8   2.0&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Wir erhalten damit eine Liste, die die einzelnen Zeilen als Einträge enthält.</p>
 <p>Was passiert nun, wenn wir versuchen, die Datei ein zweites Mal zu lesen?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datei</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
 </pre></div>
 </div>
 </div>
@@ -595,6 +616,11 @@ wir zunächst die Datei wieder um sie dann erneut zu öffnen.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <p>Mit der ersten Zeile schließen wir die Datei. In der zweiten Zeile haben wir
 dann zur Illustration abgeprüft, ob die Datei wirklich geschlossen ist.</p>
@@ -611,6 +637,15 @@ Zeilen.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1.37  2.59
+
+10.3  -1.3
+
+ 5.8   2.0
+</pre></div>
+</div>
+</div>
 </div>
 <p>An den ausgegebenen Leerzeilen erkennen wir, dass das Zeilenumbruchzeichen
 am Ende der Zeile nicht entfernt wurde.</p>
@@ -622,6 +657,15 @@ Das vorige Beispiel lässt sich dann folgendermaßen formulieren.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.dat&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">datei</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">zeile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1.37  2.59
+
+10.3  -1.3
+
+ 5.8   2.0
 </pre></div>
 </div>
 </div>
@@ -646,6 +690,13 @@ das Steuerzeichen für den Zeilenumbruch mit ein.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1.37&#39;, &#39;2.59&#39;]
+[&#39;10.3&#39;, &#39;-1.3&#39;]
+[&#39;5.8&#39;, &#39;2.0&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Allerdings zeigt das Ergebnis, dass beim Einlesen zunächst einmal ausschließlich
 Zeichenketten vorliegen. Es ist hier also noch erforderlich, die einzelnen
@@ -659,6 +710,12 @@ und übersichtlicher mit der <code class="xref py py-func docutils literal notra
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;1.37&#39;</span><span class="p">,</span> <span class="s1">&#39;2.59&#39;</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.37 &lt;class &#39;float&#39;&gt;
+2.59 &lt;class &#39;float&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -714,6 +771,17 @@ Verhalten zu demonstrieren.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mf">18968385e925</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">datei</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Dies ist ein Test.&#39;</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;foo.txt&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Wenn wir dagegen die Datei im Schreibmodus <code class="docutils literal notranslate"><span class="pre">w</span></code> öffnen, können wir die
 Datei wie gewünscht schreiben.</p>
@@ -730,6 +798,13 @@ Befehl <code class="docutils literal notranslate"><span class="pre">%cat</span><
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> foo.dat
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1.37  2.59
+10.3  -1.3
+ 5.8   2.0
 </pre></div>
 </div>
 </div>
@@ -755,6 +830,11 @@ das Schlüsselwort zur Verdeutlichung anzugeben.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zeile 1Zeile 2Zeile 3
+</pre></div>
+</div>
+</div>
 </div>
 <p>Dieses Verhalten entspricht dem, was wir von der <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion kennen,
 wenn wir <code class="docutils literal notranslate"><span class="pre">end=''</span></code> setzen. Wollen wir einen Zeilenumbruch erreichen, so müssen
@@ -771,6 +851,13 @@ wir das entsprechende Steuerzeichen explizit angeben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> foo.txt
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zeile 1
+Zeile 2
+Zeile 3
 </pre></div>
 </div>
 </div>
@@ -793,6 +880,18 @@ die wir ja gerade geschrieben hatten.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
         <span class="n">datei</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Zeile </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileExistsError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">19</span><span class="o">-</span><span class="mi">9</span><span class="n">b131f038a70</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">datei</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Zeile </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="ne">FileExistsError</span>: [Errno 17] File exists: &#39;foo.txt&#39;
 </pre></div>
 </div>
 </div>
@@ -830,10 +929,32 @@ dass die Datei jeweils wieder geschlossen wurde.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:28:19 - Datei geschlossen
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:28:24 - Datei geschlossen
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:28:29 - Datei geschlossen
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:28:34 - Datei geschlossen
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> spam.dat
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:28:19 - Durchlauf 1
+20:28:24 - Durchlauf 2
+20:28:29 - Durchlauf 3
+20:28:34 - Durchlauf 4
 </pre></div>
 </div>
 </div>
@@ -857,6 +978,14 @@ demonstrieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">ls</span> mydata*.dat
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mydata_0001.dat  mydata_0005.dat  mydata_0009.dat  mydata_0013.dat
+mydata_0002.dat  mydata_0006.dat  mydata_0010.dat  mydata_0014.dat
+mydata_0003.dat  mydata_0007.dat  mydata_0011.dat  mydata_0015.dat
+mydata_0004.dat  mydata_0008.dat  mydata_0012.dat
 </pre></div>
 </div>
 </div>
@@ -911,7 +1040,7 @@ betroffen sind.</p>
         
           By Gert-Ludwig Ingold<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2020, 2021.<br/>
       </p>
     </div>
   </footer>
