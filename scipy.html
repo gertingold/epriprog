@@ -737,6 +737,92 @@ Spaltenindex ist, sehen wir, dass die Eigenvektoren in diesem Array in den Spalt
 </div>
 <div class="section" id="numerische-integration">
 <h2><span class="section-number">8.3. </span>Numerische Integration<a class="headerlink" href="#numerische-integration" title="Link zu dieser Überschrift">¶</a></h2>
+<p>SciPy ist eine umfangreiche numerische Bibliothek, die wesentlich auf dem gerade besprochenen
+NumPy-Paket basiert. Sie deckt vielfältige Problemstellungen ab wie zum Beispiel numerische
+Integration und Lösung von gewöhnlichen Differentialgleichungen, Interpolation, Fouriertransformation,
+Lösung von Optimierungsproblemen und Nullstellensuche, Signalverarbeitung oder spezielle
+mathematische Funktionen. Hier wird es uns nur möglich sein, einen ersten Eindruck davon zu geben,
+wie man mit Hilfe von SciPy numerische Problemstellungen lösen kann. Wir wollen dies anhand der
+numerischen Auswertung von Integralen sowie der Lösung einer gewöhnlichen Differentialgleichung tun.</p>
+<p>In diesem Kapitel wollen wir an zwei Beispielen die Auswertung von Integralen und zeigen und betrachten
+zunächst das Integral</p>
+<div class="math notranslate nohighlight">
+\[J_0(1) = \frac{1}{\pi}\int_0^\pi\cos\!\big(\!\cos(x)\big)\text{d}x\,.\]</div>
+<p>Das Ergebnis lässt sich durch eine spezielle Funktion, nämlich die Besselfunktion erster Gattung und
+nullter Ordnung <span class="math notranslate nohighlight">\(J_0\)</span>, an der Stelle angeben. Mit Hilfe des SciPy-Pakets können wir sowohl das
+Integral auf der rechten Seite als auch die Besselfunktion auf der linken Seite unabhängig voneinander
+auswerten lassen und die beiden Ergebnisse miteinander vergleichen. Betrachten wir zunächst die
+numerische Integration. Hierfür steht im <code class="docutils literal notranslate"><span class="pre">integrate</span></code>-Modul die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">quad()</span></code> zur Verfügung,
+die als wesentliche Argumente den Integranden und die Integrationsgrenzen erwartet. Darüber hinaus
+gibt es noch weitere Argumente, die wir hier einfach auf ihren Defaultwerten belassen. Den Integranden
+stellen wir mit Hilfe einer Lambdafunktion zur Verfügung.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+
+<span class="n">resultat</span><span class="p">,</span> <span class="n">fehler</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">cos</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">pi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultat</span><span class="p">,</span> <span class="n">fehler</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7651976865579665 7.610963315273956e-11
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir erhalten sowohl das Resultat des numerischen Fehlers als auch eine Abschätzung für den absoluten
+Integrationsfehler.</p>
+<p>Zum Vergleich werten wir die Besselfunktion <span class="math notranslate nohighlight">\(J_0\)</span> nun direkt an der Stelle 1 aus. Dazu importieren
+wir die entsprechende Funktion aus dem <code class="docutils literal notranslate"><span class="pre">special</span></code>-Modul von SciPy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">j0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">j0</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7651976865579665
+</pre></div>
+</div>
+</div>
+</div>
+<p>In diesem Fall stimmen die beiden Ergebnisse perfekt überein, was aber im Allgemeinen nicht erwartet
+werden kann. Problematisch sind insbesondere Integranden, die Singularitäten enthalten oder sehr
+schnell oszillieren.</p>
+<p>Um zu demonstrieren, dass SciPy auch mit uneigentlichen Integralen umgehen kann, betrachten wir noch
+das Integral</p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^\infty\frac{1}{x^2+1}\text{d}x = \pi\,,\]</div>
+<p>dessen Wert man ebenfalls analytisch kennt. Dies erlaubt uns wiederum, einen Eindruck davon zu gewinnen,
+wie gut das Integrationsergebnis ist. Um mit den Integrationsgrenzen umzugehen, verwenden wir die
+Konstante <code class="docutils literal notranslate"><span class="pre">inf</span></code> aus NumPy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">resultat</span><span class="p">,</span> <span class="n">fehler</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultat</span><span class="p">,</span> <span class="n">fehler</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793 5.155583041103855e-10
+3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<p>Auch in diesem Fall ist die Übereinstimmung perfekt, so dass wir nochmals betonen wollen, dass dies
+im Allgemeinen keineswegs zu erwarten ist.</p>
+<p>Neben der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">quad()</span></code> stellt noch weitere Funktionen zur Verfügung, in denen zum Beispiel
+andere Integrationsverfahren verwendet werden oder mit denen auch mehrdimensionale Integrale
+berechnet werden können. Weitere Informationen findet man in der <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/integrate.html#integrating-functions-given-function-object">Dokumentation des
+<code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code>-Moduls</a>.</p>
 </div>
 <div class="section" id="integration-gewohnlicher-differentialgleichungen">
 <h2><span class="section-number">8.4. </span>Integration gewöhnlicher Differentialgleichungen<a class="headerlink" href="#integration-gewohnlicher-differentialgleichungen" title="Link zu dieser Überschrift">¶</a></h2>
