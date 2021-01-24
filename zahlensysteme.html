@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>11. Anhang: Zahlensysteme &#8212; Einführung in Prinzipien der Programmierung</title>
+    <title>10. Anhang: Zahlensysteme &#8212; Einführung in Prinzipien der Programmierung</title>
     
-  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -59,8 +59,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
-    <link rel="next" title="12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754" href="floats.html" />
-    <link rel="prev" title="10. Erstellung von Grafiken" href="grafik.html" />
+    <link rel="next" title="11. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754" href="floats.html" />
+    <link rel="prev" title="9. Objektorientiertes Programmieren" href="objektorientiert.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -134,24 +134,19 @@
    9. Objektorientiertes Programmieren
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="grafik.html">
-   10. Erstellung von Grafiken
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   11. Anhang: Zahlensysteme
+   10. Anhang: Zahlensysteme
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="floats.html">
-   12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
+   11. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unicode.html">
-   13. Anhang: Unicode
+   12. Anhang: Unicode
   </a>
  </li>
 </ul>
@@ -246,17 +241,17 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dualsystem">
-   11.1. Dualsystem
+   10.1. Dualsystem
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hexadezimalsystem">
-   11.2. Hexadezimalsystem
+   10.2. Hexadezimalsystem
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#verschiedene-arten-von-integers">
-   11.3. Verschiedene Arten von Integers
+   10.3. Verschiedene Arten von Integers
   </a>
  </li>
 </ul>
@@ -271,16 +266,16 @@
               <div>
                 
   <div class="section" id="anhang-zahlensysteme">
-<span id="id1"></span><h1><span class="section-number">11. </span>Anhang: Zahlensysteme<a class="headerlink" href="#anhang-zahlensysteme" title="Link zu dieser Überschrift">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">10. </span>Anhang: Zahlensysteme<a class="headerlink" href="#anhang-zahlensysteme" title="Link zu dieser Überschrift">¶</a></h1>
 <p>Im Alltag sind wir es gewohnt, Zahlen im Dezimalsystems anzugeben, das zehn
 Ziffern benötigt. Da ein Computer Information nur in Form von Bits, die die
 Werte Null oder Eins annehmen können, speichern kann, stehen zunächst nur zwei
 Ziffern zur Verfügung. Dann ist es besser, im Dualsystem zu arbeiten, das wir
-im <a class="reference internal" href="#dualsystem"><span class="std std-numref">Kapitel 11.1</span></a> besprechen werden.</p>
+im <a class="reference internal" href="#dualsystem"><span class="std std-numref">Kapitel 10.1</span></a> besprechen werden.</p>
 <p>In der Praxis ist es häufig praktisch, einige Bits zusammenzufassen. In der
 Praxis hat sich das Hexadezimalsystem bewährt, bei dem vier aufeinanderfolgende
 Bits durch eine von insgesamt sechzehn Ziffern dargestellt werden. Dem
-Hexadezimalsystem werden wir uns im <a class="reference internal" href="#hexadezimalsystem"><span class="std std-numref">Kapitel 11.2</span></a> zuwenden.</p>
+Hexadezimalsystem werden wir uns im <a class="reference internal" href="#hexadezimalsystem"><span class="std std-numref">Kapitel 10.2</span></a> zuwenden.</p>
 <p>Häufig beschränken Programmiersprachen die Zahl der Bits, die verwendet werden,
 um ein Integer darzustellen. Dadurch wird der darstellbare Zahlenbereich mehr
 oder weniger eingeschränkt, und es kann durch eine Überschreitung des zulässigen
@@ -288,10 +283,10 @@ Zahlenbereichs zu Problemen durch einen so genannten <em>overflow</em> kommen. O
 dies in Python diese Problematik bei Integers im Prinzip nicht kennt, muss man
 sich ihrer bewusst sein, wenn man in Python Programmpakete wie NumPy oder SciPy
 verwendet, die auch auf in C oder Fortran geschriebenen Programmen basieren.
-Daher werden wir uns in <a class="reference internal" href="#integertypes"><span class="std std-numref">Kapitel 11.3</span></a> verschiedene Arten von Integers
+Daher werden wir uns in <a class="reference internal" href="#integertypes"><span class="std std-numref">Kapitel 10.3</span></a> verschiedene Arten von Integers
 und die zugehörigen Zahlenbereiche ansehen.</p>
 <div class="section" id="dualsystem">
-<span id="id2"></span><h2><span class="section-number">11.1. </span>Dualsystem<a class="headerlink" href="#dualsystem" title="Link zu dieser Überschrift">¶</a></h2>
+<span id="id2"></span><h2><span class="section-number">10.1. </span>Dualsystem<a class="headerlink" href="#dualsystem" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Bevor wir uns mit dem Dualsystem beschäftigen, ist es sinnvoll, sich noch einmal
 die Funktionsweise des gewohnten Dezimalsystems zu vergegenwärtigen. Die durch
 Ziffern markierten Stellen entsprechen von hinten nach vorne gelesen den Einern,
@@ -367,7 +362,7 @@ Dabei kann es nützlich sein, an geometrische Reihen zu denken.</p>
 </div>
 </div>
 <div class="section" id="hexadezimalsystem">
-<span id="id3"></span><h2><span class="section-number">11.2. </span>Hexadezimalsystem<a class="headerlink" href="#hexadezimalsystem" title="Link zu dieser Überschrift">¶</a></h2>
+<span id="id3"></span><h2><span class="section-number">10.2. </span>Hexadezimalsystem<a class="headerlink" href="#hexadezimalsystem" title="Link zu dieser Überschrift">¶</a></h2>
 <p>In der Praxis hat das Dualsystem den Nachteil, dass die Zahlen relativ schwer lesbar sind.
 Zum einen enthalten Binärzahlen lediglich die Ziffern 0 und 1 und zudem sind sie etwa
 3,3-mal so lang wie die entsprechende Dezimaldarstellung. Daher fasst man häufig vier Bits
@@ -517,7 +512,7 @@ der Basis 8 arbeiten kann, in dem die Ziffern zwischen 0 und 7 liegen. Allerding
 das Hexadezimalsystem zur Angabe von Bytes am geeignetsten.</p>
 </div>
 <div class="section" id="verschiedene-arten-von-integers">
-<span id="integertypes"></span><h2><span class="section-number">11.3. </span>Verschiedene Arten von Integers<a class="headerlink" href="#verschiedene-arten-von-integers" title="Link zu dieser Überschrift">¶</a></h2>
+<span id="integertypes"></span><h2><span class="section-number">10.3. </span>Verschiedene Arten von Integers<a class="headerlink" href="#verschiedene-arten-von-integers" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Nachdem wir nun mit dem Dual- und dem Hexadezimalsystem vertraut sind, können wir uns
 verschiedenen Arten von Integers und den von ihnen abgedeckten Zahlenbereichen zuwenden.</p>
 <p>Zunächst kann man sich fragen, warum nicht alle Programmiersprachen zumindest
@@ -721,13 +716,13 @@ Darstellungen für die Null und ihr Negatives.</p>
 <p>Durch den kleinen Zahlenbereich <span class="math notranslate nohighlight">\(-128\ldots127\)</span> ist ein Byte selten für
 numerische Arbeiten ausreichend. Typischerweise wird man dann zwei, vier oder
 gar acht Bytes investieren, um Integers darzustellen. Damit wird der
-darstellbare Zahlenbereich erheblich größer, wie die <a class="reference internal" href="#table-ints"><span class="std std-numref">Tab. 11.1</span></a>
+darstellbare Zahlenbereich erheblich größer, wie die <a class="reference internal" href="#table-ints"><span class="std std-numref">Tab. 10.1</span></a>
 zeigt. Die dort gezeigten Bezeichnungen werden so im
 <a class="reference external" href="https://docs.python.org/3/library/struct.html">struct-Modul</a> von Python
 verwendet. Die einzelnen Bezeichnungen können in anderen Programmiersprachen
 unter Umständen abweichend definiert sein.</p>
 <table class="table" id="table-ints">
-<caption><span class="caption-number">Tab. 11.1 </span><span class="caption-text">Integerformate wie sie von Pythons <a class="reference external" href="https://docs.python.org/3/library/struct.html">struct-Modul</a> verwendet werden</span><a class="headerlink" href="#table-ints" title="Link zu dieser Tabelle">¶</a></caption>
+<caption><span class="caption-number">Tab. 10.1 </span><span class="caption-text">Integerformate wie sie von Pythons <a class="reference external" href="https://docs.python.org/3/library/struct.html">struct-Modul</a> verwendet werden</span><a class="headerlink" href="#table-ints" title="Link zu dieser Tabelle">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -844,8 +839,8 @@ ersetzt. Dadurch dreht sich die Reihenfolge der Bytes, nicht der Bits, gegebenen
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="grafik.html" title="previous page"><span class="section-number">10. </span>Erstellung von Grafiken</a>
-    <a class='right-next' id="next-link" href="floats.html" title="next page"><span class="section-number">12. </span>Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754</a>
+    <a class='left-prev' id="prev-link" href="objektorientiert.html" title="previous page"><span class="section-number">9. </span>Objektorientiertes Programmieren</a>
+    <a class='right-next' id="next-link" href="floats.html" title="next page"><span class="section-number">11. </span>Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -865,7 +860,7 @@ ersetzt. Dadurch dreht sich die Reihenfolge der Bytes, nicht der Bits, gegebenen
     </div>
 
     
-  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

@@ -56,7 +56,7 @@ Auf der Basis dieser Pakete haben einzelne wissenschaftliche Disziplinen
 umfangreiche, auf ihre speziellen Bedürfnisse zugeschnittene Programmpakete
 entwickelt. So kann [Astropy](https://www.astropy.org/) als Standard in der
 Astronomie angesehen werden. [QuTiP](http://qutip.org/), die *Quantum Toolbox
-in Python* erlaubt die Simulation von Qauntensystemen. Für Problemstellungen,
+in Python* erlaubt die Simulation von Quantensystemen. Für Problemstellungen,
 die sich mit finite-Elemente-Methoden lösen lassen, steht
 [FEniCS](https://fenicsproject.org/) zur Verfügung. Diese Aufzählung könnte
 fast beliebig fortgesetzt werden und soll nur dazu dienen, einen allerersten
@@ -109,6 +109,195 @@ NumPy](https://numpy.org/install/) und der [Installationsanleitung für
 SciPy](https://www.scipy.org/install.html) beschrieben sind.
 
 ## Arrays und Anwendungen
+
+Für die Arbeit mit dem NumPy-Paket ist es üblich, für `numpy` die Abkürzung
+`np` einzuführen.
+```{code-cell} python
+import numpy as np
+```
+Dies bedeutet, dass man bei der Verwendung von NumPy vor die entsprechenden
+Funktionen jeweils `np.` setzen muss. Diese Abkürzung verringert den Tippaufwand
+und macht zum anderen sofort erkenntlich, wenn es sich um eine Funktion aus dem
+NumPy-Paket handelt. Dies ist unter anderem deswegen wichtig, weil NumPy unter
+anderem auch Funktionen wie die Exponentialfunktion {func}`exp` zur Verfügung
+stellt, die von der Exponentialfunktion aus dem `math`-Modul unterschieden werden
+muss.
+
+Das zentrale Objekt, das durch das NumPy-Paket zur Verfügung gestellt wird, ist
+das `ndarray`, wobei die Abkürzung für N-dimensionales Array steht. Hiermit lassen
+sich also Vektoren und Matrizen von im Prinzip beliebiger Dimension darstellen,
+wobei alle Einträge vom gleichen Datentyp sind.
+
+Es gibt eine ganze Reihe von Möglichkeiten, solche Arrays zu konstruieren. Wir
+beginnen damit eine Matrix aus einer Liste oder im Allgemeinen Listen von Listen
+zu erzeugen.
+```{code-cell} python
+matrixA = np.array([[1.3, 2.5], [-1.7, 3.9]])
+print(type(matrixA))
+print(matrixA)
+```
+Für `ndarray`s ist eine Matrixmultiplikation definiert. Um dies zu demonstrieren,
+definieren wir ein zweites Array und führen die Matrixmultiplikation aus. Dafür
+können wir die Funktion `np.dot` verwenden oder den `@`-Operator, der in moderneren
+Versionen des NumPy-Pakets definiert ist. Anschließend überprüfen wir das Ergebnis
+am 00-Element.
+```{code-cell} python
+matrixB = np.array([[2.1, -4.5], [0.9, -2.1]])
+print(matrixA)
+print()
+print(matrixB)
+print()
+print(matrixA @ matrixB)
+print()
+print(f'{matrixA[0, 0]}*{matrixB[0, 0]} + {matrixA[0, 1]}*{matrixB[1, 0]} = '
+      f'{matrixA[0, 0]*matrixB[0, 0] + matrixA[0, 1]*matrixB[1, 0]}')
+```
+Dabei zeigen die letzten beiden Zeilen, wie man Elemente des Arrays adressieren
+kann, nämlich indem die Indizes für die einzelnen Dimensionen durch Komma getrennt
+in eckigen Klammern angegeben werden.
+
+```{admonition} Multiplikationsoperatoren @ und *
+:class: warning
+Beachten Sie, dass der normale Multiplikationsoperator `*` die beiden Matrizen
+elementweise multipliziert und somit keine Matrixmultiplikation ausführt, wie
+es `@` verlangt. Probieren Sie es an einem Beispiel selbst aus!
+```
+
+Wie bei Listen kann die Adressierung auch mit Hilfe von Slices erfolgen, so dass
+man bequem Untermatrizen extrahieren kann. Wichtig dabei ist, dass hier kein neues
+Array erzeugt wird, sondern nur eine andere Sicht auf das bereits existierende Array
+bereitgestellt wird. Dadurch ist ein solcher Zugriff sehr effizient. In diesem
+Beispiel verwenden wird zur schnellen Erzeugung eines etwas größeren Arrays die
+{func}`arange`-Funktion, die mit mit {func}`range` vergleichbar ist, aber eben ein
+zunächst eindimensionales Array erzeugt. Dieses können wir dann mit der
+{func}`reshape`-Methode beispielsweise in ein zweidimensionales Array umwandeln.
+```{code-cell} python
+matrixC = np.arange(36).reshape(6, 6)
+print(matrixC)
+print()
+print(matrixC[1:3, 3:5])
+```
+In der letzten Zeile extrahieren wir eine Untermatrix. Dabei bezieht sich das erste
+Slice auf die Zeilen und das zweite Slice auf die Spalten. So können wir auch eine
+Zerlegung in Blockmatrizen vornehmen.
+```{code-cell} python
+print(matrixC[:3, :3])
+print()
+print(matrixC[:3, 3:])
+print()
+print(matrixC[3:, :3])
+print()
+print(matrixC[3:, 3:])
+```
+Zudem kann die Möglichkeit eines Slices, die Schrittweite anzugeben, verwenden.
+```{code-cell} python
+print(matrixC[::2, ::3])
+```
+Während wir bei Listen gewohnt sind, diese mit der {func}`append`-Methode um weitere
+Elemente zu erweitern, sollte man ein solches Vorgehen bei Arrays vermeiden. Da dabei
+jeweils ein neues Array erzeugt wird, wäre ein solches Vorgehen äußerst ineffizient.
+Stattdessen legt man das Array zunächst in der benötigten Größe an, zum Beispiel mit
+Hilfe von {func}`np.zeros` oder {func}`np.ones`. Das folgende Beispiel illustriert,
+wie man die Dimension des Arrays sowie den Datentyp festlegen kann und was die
+Multiplikation des Arrays mit einer Zahl bedeutet.
+```{code-cell} python
+5*np.ones(shape=(2, 3, 4), dtype=np.int)
+```
+```{admonition} Integer-Arrays
+:class: warning
+Bei Python sind wir gewohnt, dass Integer im Prinzip beliebig groß werden können.
+Bei `ndarray`s mit Datentyp Integer ist dies nicht der Fall. Der mögliche
+Zahlenbereich ist je nach dem gewählten Integertyp eingeschränkt. Genaueres hierzu
+findet man in der [NumPy-Dokumentation zu Datentypen](https://numpy.org/doc/stable/user/basics.types.html).
+```
+
+Statt NumPy-Arrays im Detail zu diskutieren, wollen wir im Folgenden einen Eindruck von
+einigen Möglichkeiten geben, die dieser Datentyp bietet. Für die Arbeit mit `ndarray`s
+sollten man sich aber auf jeden Fall genauer mit diesen vertraut machen. Wir verweisen
+hierzu zum Beispiel auf die [NumPy-Dokumentation](https://numpy.org/doc/stable/), aber auch
+auf [Teil 1](https://youtu.be/R2rCYf3pv-M) und [Teil 2](https://youtu.be/sunNXIxIGV8) eines
+Videotutorials.
+
+Zu Beginn des Kapitels hatten wir gesehen, wie man Matrizen miteinander multiplizieren kann.
+Für Vektoren erhält man auf diese Weise unmittelbar das Skalarprodukt. Darüber hinaus kann man
+auch das Kreuzprodukt und das dyadische Produkt mit Hilfe von NumPy berechnen.
+```{code-cell} python
+vecA = np.array([2, -3, 0])
+vecB = np.array([5, 4, 0])
+print(np.dot(vecA, vecB))
+print()
+print(np.cross(vecA, vecB))
+print()
+print(np.outer(vecA, vecB))
+```
+Statt {func}`np.dot` hätten wir natürlich auch wieder den `@`-Operator verwenden können.
+
+Interessant sind die von NumPy zur Verfügung gestellten *universal functions* oder *ufuncs*,
+die als Argumente NumPy-Arrays akzeptieren und damit effizient Funktionen in einem Schritt
+für eine größere Anzahl von Argumenten auswerten können. In dem folgenden Beispiel demonstrieren
+wir zugleich die Verwendung der {func}`linspace`-Funktion, um eine Liste äquidistanter Werte
+zu erzeugen.
+```{code-cell} python
+x = np.linspace(0, 2, 11)
+print(x)
+y = np.exp(x)
+print(y)
+```
+Die Exponentialfunktion aus dem `math`-Modul ist dagegen nicht in der Lage, NumPy-Arrays als
+Argument zu akzeptieren.
+```{code-cell} python
+---
+tags: [raises-exception]
+---
+import math
+y = math.exp(x)
+```
+An dieser Stelle wird deutlich, wie nützlich es sein kann, aus dem Code direkt ersehen zu
+können, aus welchem Modul die Exponentialfunktion verwendet wird. Das NumPy-Paket stellt
+*ufuncs* für die üblichen Standardfunktionen zur Verfügung. Für viele spezielle Funktionen
+wird man im SciPy-Paket fündig.
+
+Zum Abschluss dieses kurzen Einblicks in das NumPy-Paket wollen wir noch einen Blick auf
+häufig benötigte Funktionen aus der linearen Algebra werfen. Diese befinden sich im `linalg`-Modul
+von NumPy, das üblicherweise unter dem Namen `LA` importiert wird.
+```{code-cell} python
+from numpy import linalg as LA
+```
+Für die Beispiele verwenden wir der Übersichtlichkeit halber nur 2×2-Matrizen, für die wir
+alle Rechnungen natürlich auch leicht analytisch durchführen könnten. Selbstverständlich kann
+NumPy auch mit viel größeren Matrizen umgehen. Wir definieren also eine 2×2-Matrix und berechnen
+zunächst ihre Determinante.
+```{code-cell} python
+a = np.array([[1, 3], [2, 5]])
+print(LA.det(a))
+```
+Als nächstes berechnen wir die Inverse und obwohl bei diesem Wert der Determinante die Korrektheit
+des Ergebnisses mehr oder weniger offensichtlich ist, berechnen wir gleich noch das Produkt
+aus der Matrix und ihrer Inversen, das erwartungsgemäß die Einheitsmatrix ergibt.
+```{code-cell} python
+a_inv = LA.inv(a)
+print(a_inv)
+print(a @ a_inv)
+```
+
+Für Anwendungen sehr wichtig ist die Möglichkeit, Eigenwertprobleme zu lösen. Berechnen wir also
+die Eigenwerte und Eigenvektoren der Matrix.
+```{code-cell} python
+eigenwerte, eigenvektoren = LA.eig(a)
+print(eigenwerte)
+print(eigenwerte[0]*eigenwerte[1])
+print(eigenvektoren)
+```
+der zweiten Ausgabezeile entnehmen als ersten Test, dass das Produkt der Eigenwerte, bis auf
+Rundungsfehler, gleich der oben erhaltenen Determinanten ist. Überprüfen wir zum Abschluss noch
+die Korrektheit der Eigenvektoren.
+```{code-cell} python
+for idx in range(2):
+    print(a @ eigenvektoren[:, idx],
+          eigenwerte[idx] * eigenvektoren[:, idx])
+```
+Da der erste Index des Array `eigenvektoren` der Zeilenindex ist, während der zweite Index der
+Spaltenindex ist, sehen wir, dass die Eigenvektoren in diesem Array in den Spalten stehen.
 
 ## Numerische Integration
 

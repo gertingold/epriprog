@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3. Einfache Datentypen, Variablen und Zuweisungen &#8212; Einführung in Prinzipien der Programmierung</title>
     
-  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -135,23 +135,18 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="grafik.html">
-   10. Erstellung von Grafiken
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="zahlensysteme.html">
-   11. Anhang: Zahlensysteme
+   10. Anhang: Zahlensysteme
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="floats.html">
-   12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
+   11. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unicode.html">
-   13. Anhang: Unicode
+   12. Anhang: Unicode
   </a>
  </li>
 </ul>
@@ -351,7 +346,7 @@ können, auch in Python beschränkt sind. Allerdings wird diese Beschränkung au
 modernen Computern selten ein Problem darstellen.</p>
 <p>Wie ganze Zahlen im Computer dargestellt werden und was das für die
 größenmäßige Einschränkung des Zahlenbereichs bedeutet, werden wir in einem
-Anhang in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 11</span></a> diskutieren.  Dort werden auch die
+Anhang in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 10</span></a> diskutieren.  Dort werden auch die
 Grundlagen des Dualsystems erklärt, das der Darstellung von Zahlen mit Hilfe
 von Nullen und Einsen zugrunde liegt. Hier wollen wir uns nun stärker der
 praktischen Arbeit mit Integers zuwenden.</p>
@@ -389,7 +384,7 @@ und würde dann ein Ergebnis mit 30103 Stellen erhalten.</p>
 keine Rolle, sondern dienen hier der besseren Lesbarkeit.</p>
 <p>In Python kann man auch mit Dual-, Oktal- und Hexadezimalzahlen arbeiten. Eine
 Einführung in Zahlensysteme, insbesondere das Dual- und das Hexadezimalsystem
-wird in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 11</span></a> gegeben. Um zwischen den verschiedenen
+wird in <a class="reference internal" href="zahlensysteme.html#anhang-zahlensysteme"><span class="std std-numref">Kapitel 10</span></a> gegeben. Um zwischen den verschiedenen
 Zahlensystemen unterscheiden zu können, werden Präfixe verwendet, und zwar
 <code class="docutils literal notranslate"><span class="pre">0b</span></code> oder <code class="docutils literal notranslate"><span class="pre">0B</span></code> für das Dualsystem, <code class="docutils literal notranslate"><span class="pre">0o</span></code> oder <code class="docutils literal notranslate"><span class="pre">0O</span></code> für das Oktalsystem
 sowie <code class="docutils literal notranslate"><span class="pre">0x</span></code> oder <code class="docutils literal notranslate"><span class="pre">0X</span></code> für das Hexadezimalsystem. Die folgenden drei Darstellungen
@@ -896,7 +891,7 @@ dabei ein <code class="docutils literal notranslate"><span class="pre">e</span><
 </div>
 <p>Da Dezimalzahlen im Allgemeinen keine endliche Binärdarstellung besitzen, kann
 es bei der Umwandlung in die Binärdarstellung zu Rundungsfehlern kommen.
-In <a class="reference internal" href="zahlensysteme.html#dualsystem"><span class="std std-numref">Kapitel 11.1</span></a> wurde festgestellt, dass <span class="math notranslate nohighlight">\(0{,}1_{10} = 0{,}0\overline{0011}_2\)</span>,
+In <a class="reference internal" href="zahlensysteme.html#dualsystem"><span class="std std-numref">Kapitel 10.1</span></a> wurde festgestellt, dass <span class="math notranslate nohighlight">\(0{,}1_{10} = 0{,}0\overline{0011}_2\)</span>,
 so dass diese Zahl im Dualsystem auf jeden Fall abgeschnitten werden muss.
 Das Problem wird an dem folgenden Beispiel deutlich, das zudem zeigt, dass es
 auf die Reihenfolge der Operationen ankommen kann.</p>
@@ -979,7 +974,7 @@ mit Hilfe von <code class="docutils literal notranslate"><span class="pre">math.
 </div>
 <p>Der Zahlenbereich für Floats sowie die Lücken um die Null und die Eins ergeben
 sich aus dem verwendeten Zahlenformat, das im IEEE-Standard 754 definiert ist.
-Einige Informationen dazu finden sich in <a class="reference internal" href="floats.html#anhang-floats"><span class="std std-numref">Kapitel 12</span></a>.</p>
+Einige Informationen dazu finden sich in <a class="reference internal" href="floats.html#anhang-floats"><span class="std std-numref">Kapitel 11</span></a>.</p>
 <p>Im Gegensatz zu Integers können Gleitkommazahlen also nicht beliebig groß
 werden, sondern sind auf einen allerdings recht großzügig bemessenen Bereich
 bis etwas über <span class="math notranslate nohighlight">\(10^{308}\)</span> beschränkt. Sollte dieser Bereich sich als
@@ -2347,7 +2342,7 @@ Mangel behebt, aber dennoch im Umfang sehr beschränkt ist, bis hin zum
 Unicode-Standard, der mehr als hunderttausend Zeichen umfasst. Für den
 Unicode-Standard gibt es wiederum verschiedene Codierungen, insbesondere die in
 der westlichen Welt sinnvolle UTF-8-Kodierung. Etwas mehr Details zu diesem
-Thema sind im <a class="reference internal" href="unicode.html#appendixunicode"><span class="std std-numref">Kapitel 13</span></a> zu finden.</p>
+Thema sind im <a class="reference internal" href="unicode.html#appendixunicode"><span class="std std-numref">Kapitel 12</span></a> zu finden.</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition-weiterfuhrender-hinweis admonition">
@@ -3340,7 +3335,7 @@ Zusätzlich wird ein Zeilenumbruch erzeugt, da das Argument <code class="docutil
     </div>
 
     
-  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8. Numerische Programmbibliotheken am Beispiel von NumPy/SciPy &#8212; Einführung in Prinzipien der Programmierung</title>
     
-  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -135,23 +135,18 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="grafik.html">
-   10. Erstellung von Grafiken
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="zahlensysteme.html">
-   11. Anhang: Zahlensysteme
+   10. Anhang: Zahlensysteme
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="floats.html">
-   12. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
+   11. Anhang: 64-Bit-Gleitkommazahlen nach IEEE-Standard 754
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unicode.html">
-   13. Anhang: Unicode
+   12. Anhang: Unicode
   </a>
  </li>
 </ul>
@@ -313,7 +308,7 @@ effizienten Datenanalyse bereithält.</p>
 umfangreiche, auf ihre speziellen Bedürfnisse zugeschnittene Programmpakete
 entwickelt. So kann <a class="reference external" href="https://www.astropy.org/">Astropy</a> als Standard in der
 Astronomie angesehen werden. <a class="reference external" href="http://qutip.org/">QuTiP</a>, die <em>Quantum Toolbox
-in Python</em> erlaubt die Simulation von Qauntensystemen. Für Problemstellungen,
+in Python</em> erlaubt die Simulation von Quantensystemen. Für Problemstellungen,
 die sich mit finite-Elemente-Methoden lösen lassen, steht
 <a class="reference external" href="https://fenicsproject.org/">FEniCS</a> zur Verfügung. Diese Aufzählung könnte
 fast beliebig fortgesetzt werden und soll nur dazu dienen, einen allerersten
@@ -376,6 +371,369 @@ SciPy</a> beschrieben sind.</p>
 </div>
 <div class="section" id="arrays-und-anwendungen">
 <h2><span class="section-number">8.2. </span>Arrays und Anwendungen<a class="headerlink" href="#arrays-und-anwendungen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Für die Arbeit mit dem NumPy-Paket ist es üblich, für <code class="docutils literal notranslate"><span class="pre">numpy</span></code> die Abkürzung
+<code class="docutils literal notranslate"><span class="pre">np</span></code> einzuführen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dies bedeutet, dass man bei der Verwendung von NumPy vor die entsprechenden
+Funktionen jeweils <code class="docutils literal notranslate"><span class="pre">np.</span></code> setzen muss. Diese Abkürzung verringert den Tippaufwand
+und macht zum anderen sofort erkenntlich, wenn es sich um eine Funktion aus dem
+NumPy-Paket handelt. Dies ist unter anderem deswegen wichtig, weil NumPy unter
+anderem auch Funktionen wie die Exponentialfunktion <code class="xref py py-func docutils literal notranslate"><span class="pre">exp()</span></code> zur Verfügung
+stellt, die von der Exponentialfunktion aus dem <code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul unterschieden werden
+muss.</p>
+<p>Das zentrale Objekt, das durch das NumPy-Paket zur Verfügung gestellt wird, ist
+das <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, wobei die Abkürzung für N-dimensionales Array steht. Hiermit lassen
+sich also Vektoren und Matrizen von im Prinzip beliebiger Dimension darstellen,
+wobei alle Einträge vom gleichen Datentyp sind.</p>
+<p>Es gibt eine ganze Reihe von Möglichkeiten, solche Arrays zu konstruieren. Wir
+beginnen damit eine Matrix aus einer Liste oder im Allgemeinen Listen von Listen
+zu erzeugen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrixA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">matrixA</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
+[[ 1.3  2.5]
+ [-1.7  3.9]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s ist eine Matrixmultiplikation definiert. Um dies zu demonstrieren,
+definieren wir ein zweites Array und führen die Matrixmultiplikation aus. Dafür
+können wir die Funktion <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> verwenden oder den <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>-Operator, der in moderneren
+Versionen des NumPy-Pakets definiert ist. Anschließend überprüfen wir das Ergebnis
+am 00-Element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrixB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixA</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixB</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixA</span> <span class="o">@</span> <span class="n">matrixB</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">matrixA</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">*</span><span class="si">{</span><span class="n">matrixB</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> + </span><span class="si">{</span><span class="n">matrixA</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">*</span><span class="si">{</span><span class="n">matrixB</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> = &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">matrixA</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">matrixB</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">matrixA</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">matrixB</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.3  2.5]
+ [-1.7  3.9]]
+
+[[ 2.1 -4.5]
+ [ 0.9 -2.1]]
+
+[[  4.98 -11.1 ]
+ [ -0.06  -0.54]]
+
+1.3*2.1 + 2.5*0.9 = 4.98
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dabei zeigen die letzten beiden Zeilen, wie man Elemente des Arrays adressieren
+kann, nämlich indem die Indizes für die einzelnen Dimensionen durch Komma getrennt
+in eckigen Klammern angegeben werden.</p>
+<div class="warning admonition">
+<p class="admonition-title">Multiplikationsoperatoren &#64; und *</p>
+<p>Beachten Sie, dass der normale Multiplikationsoperator <code class="docutils literal notranslate"><span class="pre">*</span></code> die beiden Matrizen
+elementweise multipliziert und somit keine Matrixmultiplikation ausführt, wie
+es <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> verlangt. Probieren Sie es an einem Beispiel selbst aus!</p>
+</div>
+<p>Wie bei Listen kann die Adressierung auch mit Hilfe von Slices erfolgen, so dass
+man bequem Untermatrizen extrahieren kann. Wichtig dabei ist, dass hier kein neues
+Array erzeugt wird, sondern nur eine andere Sicht auf das bereits existierende Array
+bereitgestellt wird. Dadurch ist ein solcher Zugriff sehr effizient. In diesem
+Beispiel verwenden wird zur schnellen Erzeugung eines etwas größeren Arrays die
+<code class="xref py py-func docutils literal notranslate"><span class="pre">arange()</span></code>-Funktion, die mit mit <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code> vergleichbar ist, aber eben ein
+zunächst eindimensionales Array erzeugt. Dieses können wir dann mit der
+<code class="xref py py-func docutils literal notranslate"><span class="pre">reshape()</span></code>-Methode beispielsweise in ein zweidimensionales Array umwandeln.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrixC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixC</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixC</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2  3  4  5]
+ [ 6  7  8  9 10 11]
+ [12 13 14 15 16 17]
+ [18 19 20 21 22 23]
+ [24 25 26 27 28 29]
+ [30 31 32 33 34 35]]
+
+[[ 9 10]
+ [15 16]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In der letzten Zeile extrahieren wir eine Untermatrix. Dabei bezieht sich das erste
+Slice auf die Zeilen und das zweite Slice auf die Spalten. So können wir auch eine
+Zerlegung in Blockmatrizen vornehmen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">matrixC</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixC</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixC</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrixC</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span> <span class="mi">3</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2]
+ [ 6  7  8]
+ [12 13 14]]
+
+[[ 3  4  5]
+ [ 9 10 11]
+ [15 16 17]]
+
+[[18 19 20]
+ [24 25 26]
+ [30 31 32]]
+
+[[21 22 23]
+ [27 28 29]
+ [33 34 35]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zudem kann die Möglichkeit eines Slices, die Schrittweite anzugeben, verwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">matrixC</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  3]
+ [12 15]
+ [24 27]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Während wir bei Listen gewohnt sind, diese mit der <code class="xref py py-func docutils literal notranslate"><span class="pre">append()</span></code>-Methode um weitere
+Elemente zu erweitern, sollte man ein solches Vorgehen bei Arrays vermeiden. Da dabei
+jeweils ein neues Array erzeugt wird, wäre ein solches Vorgehen äußerst ineffizient.
+Stattdessen legt man das Array zunächst in der benötigten Größe an, zum Beispiel mit
+Hilfe von <code class="xref py py-func docutils literal notranslate"><span class="pre">np.zeros()</span></code> oder <code class="xref py py-func docutils literal notranslate"><span class="pre">np.ones()</span></code>. Das folgende Beispiel illustriert,
+wie man die Dimension des Arrays sowie den Datentyp festlegen kann und was die
+Multiplikation des Arrays mit einer Zahl bedeutet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[5, 5, 5, 5],
+        [5, 5, 5, 5],
+        [5, 5, 5, 5]],
+
+       [[5, 5, 5, 5],
+        [5, 5, 5, 5],
+        [5, 5, 5, 5]]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Integer-Arrays</p>
+<p>Bei Python sind wir gewohnt, dass Integer im Prinzip beliebig groß werden können.
+Bei <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s mit Datentyp Integer ist dies nicht der Fall. Der mögliche
+Zahlenbereich ist je nach dem gewählten Integertyp eingeschränkt. Genaueres hierzu
+findet man in der <a class="reference external" href="https://numpy.org/doc/stable/user/basics.types.html">NumPy-Dokumentation zu Datentypen</a>.</p>
+</div>
+<p>Statt NumPy-Arrays im Detail zu diskutieren, wollen wir im Folgenden einen Eindruck von
+einigen Möglichkeiten geben, die dieser Datentyp bietet. Für die Arbeit mit <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>s
+sollten man sich aber auf jeden Fall genauer mit diesen vertraut machen. Wir verweisen
+hierzu zum Beispiel auf die <a class="reference external" href="https://numpy.org/doc/stable/">NumPy-Dokumentation</a>, aber auch
+auf <a class="reference external" href="https://youtu.be/R2rCYf3pv-M">Teil 1</a> und <a class="reference external" href="https://youtu.be/sunNXIxIGV8">Teil 2</a> eines
+Videotutorials.</p>
+<p>Zu Beginn des Kapitels hatten wir gesehen, wie man Matrizen miteinander multiplizieren kann.
+Für Vektoren erhält man auf diese Weise unmittelbar das Skalarprodukt. Darüber hinaus kann man
+auch das Kreuzprodukt und das dyadische Produkt mit Hilfe von NumPy berechnen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vecA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">vecB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vecA</span><span class="p">,</span> <span class="n">vecB</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">vecA</span><span class="p">,</span> <span class="n">vecB</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">vecA</span><span class="p">,</span> <span class="n">vecB</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2
+
+[ 0  0 23]
+
+[[ 10   8   0]
+ [-15 -12   0]
+ [  0   0   0]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Statt <code class="xref py py-func docutils literal notranslate"><span class="pre">np.dot()</span></code> hätten wir natürlich auch wieder den <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>-Operator verwenden können.</p>
+<p>Interessant sind die von NumPy zur Verfügung gestellten <em>universal functions</em> oder <em>ufuncs</em>,
+die als Argumente NumPy-Arrays akzeptieren und damit effizient Funktionen in einem Schritt
+für eine größere Anzahl von Argumenten auswerten können. In dem folgenden Beispiel demonstrieren
+wir zugleich die Verwendung der <code class="xref py py-func docutils literal notranslate"><span class="pre">linspace()</span></code>-Funktion, um eine Liste äquidistanter Werte
+zu erzeugen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.  0.2 0.4 0.6 0.8 1.  1.2 1.4 1.6 1.8 2. ]
+[1.         1.22140276 1.4918247  1.8221188  2.22554093 2.71828183
+ 3.32011692 4.05519997 4.95303242 6.04964746 7.3890561 ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Exponentialfunktion aus dem <code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul ist dagegen nicht in der Lage, NumPy-Arrays als
+Argument zu akzeptieren.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">6294</span><span class="n">dfbcf095</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: only size-1 arrays can be converted to Python scalars
+</pre></div>
+</div>
+</div>
+</div>
+<p>An dieser Stelle wird deutlich, wie nützlich es sein kann, aus dem Code direkt ersehen zu
+können, aus welchem Modul die Exponentialfunktion verwendet wird. Das NumPy-Paket stellt
+<em>ufuncs</em> für die üblichen Standardfunktionen zur Verfügung. Für viele spezielle Funktionen
+wird man im SciPy-Paket fündig.</p>
+<p>Zum Abschluss dieses kurzen Einblicks in das NumPy-Paket wollen wir noch einen Blick auf
+häufig benötigte Funktionen aus der linearen Algebra werfen. Diese befinden sich im <code class="docutils literal notranslate"><span class="pre">linalg</span></code>-Modul
+von NumPy, das üblicherweise unter dem Namen <code class="docutils literal notranslate"><span class="pre">LA</span></code> importiert wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linalg</span> <span class="k">as</span> <span class="n">LA</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für die Beispiele verwenden wir der Übersichtlichkeit halber nur 2×2-Matrizen, für die wir
+alle Rechnungen natürlich auch leicht analytisch durchführen könnten. Selbstverständlich kann
+NumPy auch mit viel größeren Matrizen umgehen. Wir definieren also eine 2×2-Matrix und berechnen
+zunächst ihre Determinante.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">LA</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als nächstes berechnen wir die Inverse und obwohl bei diesem Wert der Determinante die Korrektheit
+des Ergebnisses mehr oder weniger offensichtlich ist, berechnen wir gleich noch das Produkt
+aus der Matrix und ihrer Inversen, das erwartungsgemäß die Einheitsmatrix ergibt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_inv</span> <span class="o">=</span> <span class="n">LA</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a_inv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">@</span> <span class="n">a_inv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-5.  3.]
+ [ 2. -1.]]
+[[1. 0.]
+ [0. 1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für Anwendungen sehr wichtig ist die Möglichkeit, Eigenwertprobleme zu lösen. Berechnen wir also
+die Eigenwerte und Eigenvektoren der Matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eigenwerte</span><span class="p">,</span> <span class="n">eigenvektoren</span> <span class="o">=</span> <span class="n">LA</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigenwerte</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigenwerte</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">eigenwerte</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigenvektoren</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.16227766  6.16227766]
+-0.9999999999999984
+[[-0.93246475 -0.50245469]
+ [ 0.36126098 -0.86460354]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>der zweiten Ausgabezeile entnehmen als ersten Test, dass das Produkt der Eigenwerte, bis auf
+Rundungsfehler, gleich der oben erhaltenen Determinanten ist. Überprüfen wir zum Abschluss noch
+die Korrektheit der Eigenvektoren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">@</span> <span class="n">eigenvektoren</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">],</span>
+          <span class="n">eigenwerte</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">*</span> <span class="n">eigenvektoren</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.1513182  -0.05862459] [ 0.1513182  -0.05862459]
+[-3.09626531 -5.32792709] [-3.09626531 -5.32792709]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Da der erste Index des Array <code class="docutils literal notranslate"><span class="pre">eigenvektoren</span></code> der Zeilenindex ist, während der zweite Index der
+Spaltenindex ist, sehen wir, dass die Eigenvektoren in diesem Array in den Spalten stehen.</p>
 </div>
 <div class="section" id="numerische-integration">
 <h2><span class="section-number">8.3. </span>Numerische Integration<a class="headerlink" href="#numerische-integration" title="Link zu dieser Überschrift">¶</a></h2>
@@ -434,7 +792,7 @@ SciPy</a> beschrieben sind.</p>
     </div>
 
     
-  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
