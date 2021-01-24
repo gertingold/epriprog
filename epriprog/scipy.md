@@ -301,4 +301,70 @@ Spaltenindex ist, sehen wir, dass die Eigenvektoren in diesem Array in den Spalt
 
 ## Numerische Integration
 
+SciPy ist eine umfangreiche numerische Bibliothek, die wesentlich auf dem gerade besprochenen
+NumPy-Paket basiert. Sie deckt vielfältige Problemstellungen ab wie zum Beispiel numerische
+Integration und Lösung von gewöhnlichen Differentialgleichungen, Interpolation, Fouriertransformation,
+Lösung von Optimierungsproblemen und Nullstellensuche, Signalverarbeitung oder spezielle
+mathematische Funktionen. Hier wird es uns nur möglich sein, einen ersten Eindruck davon zu geben,
+wie man mit Hilfe von SciPy numerische Problemstellungen lösen kann. Wir wollen dies anhand der
+numerischen Auswertung von Integralen sowie der Lösung einer gewöhnlichen Differentialgleichung tun.
+
+In diesem Kapitel wollen wir an zwei Beispielen die Auswertung von Integralen und zeigen und betrachten
+zunächst das Integral
+
+$$J_0(1) = \frac{1}{\pi}\int_0^\pi\cos\!\big(\!\cos(x)\big)\text{d}x\,.$$
+
+Das Ergebnis lässt sich durch eine spezielle Funktion, nämlich die Besselfunktion erster Gattung und
+nullter Ordnung $J_0$, an der Stelle angeben. Mit Hilfe des SciPy-Pakets können wir sowohl das
+Integral auf der rechten Seite als auch die Besselfunktion auf der linken Seite unabhängig voneinander
+auswerten lassen und die beiden Ergebnisse miteinander vergleichen. Betrachten wir zunächst die
+numerische Integration. Hierfür steht im `integrate`-Modul die Funktion {func}`quad` zur Verfügung,
+die als wesentliche Argumente den Integranden und die Integrationsgrenzen erwartet. Darüber hinaus
+gibt es noch weitere Argumente, die wir hier einfach auf ihren Defaultwerten belassen. Den Integranden
+stellen wir mit Hilfe einer Lambdafunktion zur Verfügung.
+```{code-cell} python
+from math import cos, pi
+from scipy.integrate import quad
+
+resultat, fehler = quad(lambda x: cos(cos(x))/pi, 0, pi)
+print(resultat, fehler)
+```
+Wir erhalten sowohl das Resultat des numerischen Fehlers als auch eine Abschätzung für den absoluten
+Integrationsfehler.
+
+Zum Vergleich werten wir die Besselfunktion $J_0$ nun direkt an der Stelle 1 aus. Dazu importieren
+wir die entsprechende Funktion aus dem `special`-Modul von SciPy.
+```{code-cell} python
+from scipy.special import j0
+
+print(j0(1))
+```
+In diesem Fall stimmen die beiden Ergebnisse perfekt überein, was aber im Allgemeinen nicht erwartet
+werden kann. Problematisch sind insbesondere Integranden, die Singularitäten enthalten oder sehr
+schnell oszillieren.
+
+Um zu demonstrieren, dass SciPy auch mit uneigentlichen Integralen umgehen kann, betrachten wir noch
+das Integral
+
+$$\int_{-\infty}^\infty\frac{1}{x^2+1}\text{d}x = \pi\,,$$
+
+dessen Wert man ebenfalls analytisch kennt. Dies erlaubt uns wiederum, einen Eindruck davon zu gewinnen,
+wie gut das Integrationsergebnis ist. Um mit den Integrationsgrenzen umzugehen, verwenden wir die
+Konstante `inf` aus NumPy.
+```{code-cell} python
+import numpy as np
+
+resultat, fehler = quad(lambda x: 1/(x*x+1), -np.inf, np.inf)
+print(resultat, fehler)
+print(pi)
+```
+Auch in diesem Fall ist die Übereinstimmung perfekt, so dass wir nochmals betonen wollen, dass dies
+im Allgemeinen keineswegs zu erwarten ist.
+
+Neben der Funktion {func}`quad` stellt noch weitere Funktionen zur Verfügung, in denen zum Beispiel
+andere Integrationsverfahren verwendet werden oder mit denen auch mehrdimensionale Integrale 
+berechnet werden können. Weitere Informationen findet man in der [Dokumentation des
+`scipy.integrate`-Moduls](https://docs.scipy.org/doc/scipy/reference/integrate.html#integrating-functions-given-function-object).
+
 ## Integration gewöhnlicher Differentialgleichungen
+
