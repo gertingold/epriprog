@@ -15,11 +15,6 @@ kernelspec:
 (scipy)=
 # Numerische Programmbibliotheken am Beispiel von NumPy/SciPy
 
-```{admonition} Hinweis
-:class: warning
-Dieses Kapitel befindet sich noch in Bearbeitung.
-```
-
 In den bisherigen Kapiteln hatten wir immer wieder Gelegenheit, auf
 Möglichkeiten hinzuweisen, die die Python-Standardbibliothek bietet. Wenn man
 die dort zur Verfügung gestellten Module verwendet, kann man sich Einiges an
