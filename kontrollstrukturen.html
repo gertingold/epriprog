@@ -767,18 +767,7 @@ nun den Computer heranziehen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="mi">2</span><span class="n">d36a36f5406</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">wait_for_six</span><span class="p">():</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
+<img alt="_images/kontrollstrukturen_29_0.png" src="_images/kontrollstrukturen_29_0.png" />
 </div>
 </div>
 <p>Bei der Besprechung des Codes wollen wir uns auf die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">wait_for_six()</span></code>
@@ -844,6 +833,11 @@ nämlich 6, etwas abweicht.</p>
 <span class="n">waiting_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">wait_for_six</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
 <span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">waiting_sequence</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">waiting_sequence</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.99332
 </pre></div>
 </div>
 </div>
@@ -941,6 +935,21 @@ ausgeben lassen.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         0  1.0000000000000000
+     10000  1.6448340818460654
+     20000  1.6448840705979586
+     30000  1.6449007351814806
+     40000  1.6449090677856950
+     50000  1.6449140674482257
+     60000  1.6449174005982372
+     70000  1.6449197814400827
+     80000  1.6449215670826174
+     90000  1.6449229559223180
+3.141583104326456
+</pre></div>
+</div>
+</div>
 </div>
 <p>Hier wird in der <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung überprüft, ob der Schleifenzähler ohne Rest durch Zehntausend
 teilbar ist. Dann ist der Wahrheitswert des logischen Ausdrucks gleich <code class="docutils literal notranslate"><span class="pre">True</span></code> und der folgende
@@ -961,6 +970,11 @@ Code-Block relativ kurz ist. Statt</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 4 ist bestimmt nicht negativ.
+</pre></div>
+</div>
+</div>
 </div>
 <p>kann man also auch</p>
 <div class="cell docutils container">
@@ -968,6 +982,11 @@ Code-Block relativ kurz ist. Statt</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
 <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span> <span class="si">= }</span><span class="s1"> ist bestimmt nicht negativ.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 4 ist bestimmt nicht negativ.
 </pre></div>
 </div>
 </div>
@@ -990,6 +1009,18 @@ eines kleinen Programms, das eine Liste von Schaltjahren ausgibt.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1860 1864 1868 1872 1876 1880 1884 1888 1892 1896 1904 1908
+1912 1916 1920 1924 1928 1932 1936 1940 1944 1948 1952 1956
+1960 1964 1968 1972 1976 1980 1984 1988 1992 1996 2000 2004
+2008 2012 2016 2020 2024 2028 2032 2036 2040 2044 2048 2052
+2056 2060 2064 2068 2072 2076 2080 2084 2088 2092 2096 2104
+2108 2112 2116 2120 2124 2128 2132 2136 2140 2144 2148 2152
+2156 2160 2164 2168 2172 2176 2180 2184 2188 2192 2196 2204
+2208 
+</pre></div>
+</div>
+</div>
 </div>
 <p>In der dritten Zeile wird der logische Ausdruck, der auswertet, ob es sich beidem vorgegebenen
 Jahr um ein Schaltjahr handelt, der Variable <code class="docutils literal notranslate"><span class="pre">is_leapyear</span></code> zugewiesen. Nur wenn diese Variable
@@ -1008,6 +1039,18 @@ Funktion definieren können.</p>
             <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1860 1864 1868 1872 1876 1880 1884 1888 1892 1896 1904 1908
+1912 1916 1920 1924 1928 1932 1936 1940 1944 1948 1952 1956
+1960 1964 1968 1972 1976 1980 1984 1988 1992 1996 2000 2004
+2008 2012 2016 2020 2024 2028 2032 2036 2040 2044 2048 2052
+2056 2060 2064 2068 2072 2076 2080 2084 2088 2092 2096 2104
+2108 2112 2116 2120 2124 2128 2132 2136 2140 2144 2148 2152
+2156 2160 2164 2168 2172 2176 2180 2184 2188 2192 2196 2204
+2208 
 </pre></div>
 </div>
 </div>
@@ -1041,6 +1084,275 @@ ist also essentiell dafür, dass der Code wie gewünscht abgearbeitet wird.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1860 1861
+1862
+1863
+1864 1865
+1866
+1867
+1868 1869
+1870
+1871
+1872 1873
+1874
+1875
+1876 1877
+1878
+1879
+1880 1881
+1882
+1883
+1884 1885
+1886
+1887
+1888 1889
+1890
+1891
+1892 1893
+1894
+1895
+1896 1897
+1898
+1899
+1900
+1901
+1902
+1903
+1904 1905
+1906
+1907
+1909
+1910
+1911
+1912 1913
+1914
+1915
+1916 1917
+1918
+1919
+1920 1921
+1922
+1923
+1924 1925
+1926
+1927
+1928 1929
+1930
+1931
+1932 1933
+1934
+1935
+1936 1937
+1938
+1939
+1940 1941
+1942
+1943
+1944 1945
+1946
+1947
+1948 1949
+1950
+1951
+1952 1953
+1954
+1955
+1957
+1958
+1959
+1960 1961
+1962
+1963
+1964 1965
+1966
+1967
+1968 1969
+1970
+1971
+1972 1973
+1974
+1975
+1976 1977
+1978
+1979
+1980 1981
+1982
+1983
+1984 1985
+1986
+1987
+1988 1989
+1990
+1991
+1992 1993
+1994
+1995
+1996 1997
+1998
+1999
+2000 2001
+2002
+2003
+2005
+2006
+2007
+2008 2009
+2010
+2011
+2012 2013
+2014
+2015
+2016 2017
+2018
+2019
+2020 2021
+2022
+2023
+2024 2025
+2026
+2027
+2028 2029
+2030
+2031
+2032 2033
+2034
+2035
+2036 2037
+2038
+2039
+2040 2041
+2042
+2043
+2044 2045
+2046
+2047
+2048 2049
+2050
+2051
+2053
+2054
+2055
+2056 2057
+2058
+2059
+2060 2061
+2062
+2063
+2064 2065
+2066
+2067
+2068 2069
+2070
+2071
+2072 2073
+2074
+2075
+2076 2077
+2078
+2079
+2080 2081
+2082
+2083
+2084 2085
+2086
+2087
+2088 2089
+2090
+2091
+2092 2093
+2094
+2095
+2096 2097
+2098
+2099
+2100
+2101
+2102
+2103
+2105
+2106
+2107
+2108 2109
+2110
+2111
+2112 2113
+2114
+2115
+2116 2117
+2118
+2119
+2120 2121
+2122
+2123
+2124 2125
+2126
+2127
+2128 2129
+2130
+2131
+2132 2133
+2134
+2135
+2136 2137
+2138
+2139
+2140 2141
+2142
+2143
+2144 2145
+2146
+2147
+2148 2149
+2150
+2151
+2153
+2154
+2155
+2156 2157
+2158
+2159
+2160 2161
+2162
+2163
+2164 2165
+2166
+2167
+2168 2169
+2170
+2171
+2172 2173
+2174
+2175
+2176 2177
+2178
+2179
+2180 2181
+2182
+2183
+2184 2185
+2186
+2187
+2188 2189
+2190
+2191
+2192 2193
+2194
+2195
+2196 2197
+2198
+2199
+2200
+2201
+2202
+2203
+2205
+2206
+2207
+2208 2209
+</pre></div>
+</div>
+</div>
 </div>
 <p>Die <code class="docutils literal notranslate"><span class="pre">if…else</span></code>-Konstruktion lässt in der bisher besprochene Weise zwei mögliche Wege abhängig
 davon zu, ob eine Bedingung erfüllt ist oder nicht. Man kann aber auch mehr als zwei Alternativen
@@ -1059,6 +1371,15 @@ von <code class="docutils literal notranslate"><span class="pre">if…else</span
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2 ist negativ.
+-1 ist negativ.
+0 ist gleich Null.
+1 ist positiv.
+2 ist positiv.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Unter Verwendung der <code class="docutils literal notranslate"><span class="pre">elif</span></code>-Anweisung, die gewissermaßen eine <code class="docutils literal notranslate"><span class="pre">else</span></code>-Anweisung und eine <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung
 zusammenzieht, kann man die Verzweigungen etwas weniger hierarchisch hinschreiben.</p>
@@ -1071,6 +1392,15 @@ zusammenzieht, kann man die Verzweigungen etwas weniger hierarchisch hinschreibe
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich Null.&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2 ist negativ.
+-1 ist negativ.
+0 ist gleich Null.
+1 ist positiv.
+2 ist positiv.
 </pre></div>
 </div>
 </div>
@@ -1088,6 +1418,15 @@ wurde. Dieses Verhalten wird im folgenden Beispiel illustriert.</p>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gerade.&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ und nicht gerade.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2 ist gerade.
+-1 ist negativ und nicht gerade.
+0 ist gerade.
+1 ist positiv.
+2 ist positiv.
 </pre></div>
 </div>
 </div>
@@ -1129,6 +1468,17 @@ damit zu einem <code class="docutils literal notranslate"><span class="pre">Zero
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.02  0.999933
+-0.01  0.999983
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0.00  1.000000
+ 0.01  0.999983
+ 0.02  0.999933
+</pre></div>
+</div>
+</div>
 </div>
 <p>Allerdings muss hier jedes Mal überprüft werden, ob <span class="math notranslate nohighlight">\(x=0\)</span> ist, selbst dann, wenn dies in der Anwendung
 vielleicht nur selten oder überhaupt nicht vorkommt. Dennoch wird man den Spezialfall in vielen
@@ -1151,6 +1501,15 @@ Erlaubnis zu fragen. Anstatt also immer erst zu überprüfen, ob <span class="ma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.02  0.999933
+-0.01  0.999983
+ 0.00  1.000000
+ 0.01  0.999983
+ 0.02  0.999933
+</pre></div>
+</div>
+</div>
 </div>
 <p>Es wird also zunächst versucht, den Code im <code class="docutils literal notranslate"><span class="pre">try</span></code>-Block auszuführen. Wenn dabei eine
 <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>-Ausnahme auftritt, wird der entsprechende Block ausgeführt.</p>
@@ -1169,6 +1528,13 @@ da sonst Fehler eventuell unentdeckt bleiben können, wie in dem folgenden Beisp
 
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">7</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -0.01  0.999983
+      0  1.000000
+xxx      1.000000
 </pre></div>
 </div>
 </div>
@@ -1207,6 +1573,15 @@ wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs b
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ergebnis für </span><span class="si">{</span><span class="n">n_self</span> <span class="si">= }</span><span class="s2"> und </span><span class="si">{</span><span class="n">n_other</span> <span class="si">= }</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = 2 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 0 und n_other = 0: 0
+n_self = 2 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+n_self = 0 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 0 und n_other = 2: 1
 </pre></div>
 </div>
 </div>
