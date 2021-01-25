@@ -368,3 +368,143 @@ berechnet werden können. Weitere Informationen findet man in der [Dokumentation
 
 ## Integration gewöhnlicher Differentialgleichungen
 
+In Natur- und Ingenieurwissenschaften steht man häufig vor der Aufgabe, Differentialgleichungen numerisch
+zu lösen, wobei zwischen gewöhnlichen und partiellen Differentialgleichungen sowie zwischen Anfangs- und
+Randwertproblemen unterschieden werden muss. In diesem Kapitel wollen wir anhand von zwei Beispielen zeigen,
+wie mit Hilfe von SciPy gewöhnliche Differentialgleichungen mit Anfangsbedingungen gelöst werden können. 
+Dazu werden wir die Funktion {func}`solve_ivp` aus dem `integrate`-Modul verwenden, wobei `ivp` als Abkürzung
+für *initial value problem* zu lesen ist.
+
+Zunächst ist es sinnvoll, sich darüber zu informieren, wie diese Funktion aufzurufen ist.
+```{code-cell} python
+---
+tags: ["output_scroll"]
+---
+from scipy.integrate import solve_ivp
+
+help(solve_ivp)
+```
+Wichtig für uns ist insbesondere die Beschreibung zu Beginn des Hilfetexts sowie die ersten Argumente.
+Für die weiter hinten stehenden Argumente ist es zunächst sinnvoll, die Defaultwerte zu belassen.
+Interessant ist aber auch das Ende des Hilfetexts, wo einige konkrete Beispiele aufgeführt werden.
+
+Wie wir der Beschreibung entnehmen können, ist {func}`solve_ivp` in der Lage, Systeme gewöhnlicher
+Differentialgleichungen zu lösen. Wir wollen mit dem einfachsten Fall, nämlich einer einzigen 
+Differentialgleichung erster Ordnung, beginnen. Konkret wollen wir die Differentialgleichung
+
+$$\dot x = -x^2$$
+
+mit der Anfangsbedingung $x(0)=1$ lösen. Hierbei handelt es sich um eine nichtlineare Differentialgleichung,
+die sich mittels des Verfahrens der Trennung der Variablen analytisch lösen lässt. Die zugehörige Lösung
+
+$$x(t) = \frac{1}{1+t}$$
+
+erlaubt es uns, die Qualität der numerischen Lösung einzuschätzen. Wie wir dem Hilfetext entnehmen 
+können, besitzen die ersten drei Argumente keinen Defaultwert, so dass wir diese Argumente auf jeden
+Fall spezifizieren müssen. Dabei handelt es sich um die Funktion auf der rechten Seite der Differentialgleichung
+
+$$\frac{\text{d}y}{\text{d}t} = f(t, y)\,,$$
+
+um ein Tupel, das die Anfangszeit $t_\text{i}$ und die Endzeit $t_\text{f}$ enthält, sowie den oder
+die Anfangswerte $y(0)$. Zu beachten ist, dass $t$ eine allgemeine unabhängige Variable ist, also keineswegs
+die Bedeutung einer Zeit haben muss. $y$ ist in unserem Fall eine skalare Funktion, für Systeme von
+Differentialgleichungen dagegen eine vektorwertige Funktion. Entsprechend ist $y(0)$ entweder ein Skalar
+oder ein Vektor.
+
+Damit sind wir nun in der Lage, {func}`solve_ivp` zur Lösung unserer Differentialgleichung einzusetzen.
+Um hinreichend viele Datenpunkte für eine graphische Darstellung zu erhalten, wollen wir außerdem die
+gewünschten Zeitpunkte festlegen, zu denen die Lösung ausgegeben wird.
+```{code-cell} python
+import numpy as np
+
+t_span = (0, 5)
+y0 = [1]
+t_eval = np.linspace(*t_span, 100)
+sol = solve_ivp(lambda t, y: -y*y, t_span, y0, t_eval=t_eval)
+```
+An dieser Stelle sind noch ein paar Anmerkungen sinnvoll. Der Anfangswert `y0` muss laut Hilfetext immer
+Array-artig sein, und wir verwenden daher hier einfach eine Liste mit einem Element. `t_eval` enthält die
+uns interessierenden Zeitpunkte, wobei im ersten Argument der {func}`linspace` der Stern bedeutet, dass
+das Tupel `t_span` ausgepackt wird. Dies erspart es uns, explizit `t_span[0]` und `t_span[1]` anzugeben.
+Das Argument `t_eval` können wir hier nicht über die Position übergeben, da sonst als viertes Argument
+zunächst die Lösungsmethode angegeben werden müssen. Wir belassen es hier bei der defaultmäßig vorgesehenen
+Runge-Kutta-Methode. Schließlich entnehmen wir dem Hilfetext, dass `sol` eine ganze Reihe von Informationen
+über die Lösung enthält. Uns interessiert natürlich besonders die Lösung, die in `sol.y` enthalten ist.
+Damit können wir nun die numerische Lösung graphisch darstellen und mit der analytischen Lösung vergleichen.
+```{code-cell} python
+import matplotlib.pyplot as plt
+
+y_analytisch = 1/(1+t_eval)
+plt.plot(t_eval, sol.y[0], 'o')
+plt.plot(t_eval, y_analytisch)
+plt.show()
+```
+Da es schwierig ist, den Fehler der durch die blauen Punkte dargestellten numerischen Lösung im Vergleich
+zur als orangefarbige Linie dargestellten analytischen Lösung mit bloßem Auge zu beurteilen, stellen wir
+auch noch den relativen Fehler dar.
+```{code-cell} python
+plt.plot(t_eval, 1-sol.y[0]/y_analytisch)
+plt.show()
+```
+Aus der Abbildung lässt sich entnehmen, dass der relative Fehler hier immerhin bis zu 3‰ beträgt. 
+
+Auf den ersten Blick könnte man meinen, dass {func}`solve_ivp` nur zur Lösung von Differentialgleichungen
+erster Ordnung geeignet ist. Wie sieht es also zum Beispiel mit der Lösung der Bewegungsgleichung eines
+gedämpften harmonischen Oszillators
+
+$$\ddot x + \alpha\dot x + x = 0$$
+
+aus? Der Trick besteht darin, diese Differentialgleichung zweiter Ordnung durch Einführung der Geschwindigkeit
+als Hilfsvariable in zwei Differentialgleichungen erster Ordnung umzuschreiben, womit wir ein System 
+gewöhnlicher Differentialgleichungen erster Ordnung
+
+$$\begin{align}
+\dot v &= -x-\alpha v\\
+\dot x &= v
+\end{align}$$
+
+erhalten. Dieses können wir mit Hilfe von {func}`solve_ivp` lösen. Als Anfangsbedingungen wollen wir 
+$x(0) = 0, v(0) = 1$ wählen, das gedämpfte Pendel also in der Ruhelage anstoßen. Natürlich hätten wir
+eine kompliziertere Differentialgleichung wählen können, für die keine analytische Lösung zur Verfügung
+steht. Wir wollen aber auch hier am Ende die numerische mit der analytischen Lösung vergleichen.
+```{code-cell} python
+def ableitung(t, y, alpha):
+    x, v = y
+    return [v, -x-alpha*v]
+
+t_span = (0, 20)
+t_eval = np.linspace(*t_span, 300)
+anfangsbedingungen = [0, 1]
+alpha = 0.3
+sol = solve_ivp(ableitung, t_span, anfangsbedingungen, t_eval=t_eval, args=(alpha,))
+plt.plot(t_eval, sol.y[0])
+plt.plot(t_eval, sol.y[1])
+plt.show()
+```
+Im Gegensatz zum ersten Beispiel verlangt die Funktion, die wir hier `ableitung` genannt haben, neben
+den Argumenten `t` und `y` noch den Parameter `alpha`. Dieser wird in einem Tupel an das Argument `args`
+von {func}`solve_ivp` übergeben. Die Lösung in `sol.y` ist ein Vektor, so dass wir bereits im ersten
+Beispiel explizit `sol.y[0]` angeben mussten, um die Lösungsfunktion zu erhalten. Hier können wir nun
+sowohl den Ort (blau dargestellt) als auch die Geschwindigkeit (orange dargestellt) als Komponenten
+extrahieren.
+
+Sehen wir uns abschließend noch die Differenz zur analytischen Lösung an.
+```{code-cell} python
+def y_analytisch(t, alpha):
+    omega = np.sqrt(1-0.25*alpha**2)
+    return np.exp(-0.5*alpha*t)*np.sin(omega*t)/omega
+
+plt.plot(t_eval, sol.y[0]-y_analytisch(t_eval, alpha))
+plt.show()
+```
+Auch in diesem Fall erhalten wir einen Fehler von einigen Promille. Benötigt man eine genauere Lösung,
+so kann die Parameter `atol` für den absoluten Fehler und `rtol` für den relativen Fehler entsprechend
+anpassen. Weitere Informationen hierzu finden sich in obigem Hilfetext zu {func}`solve_ivp`.
+
+Zum Abschluss dieses Kapitels betonen wir noch einmal, dass wir hier nur einen
+winzigen Eindruck von den vielfältigen Möglichkeiten geben konnten, die NumPy
+und SciPy bieten. Es lohnt sich daher, einen Blick in die [Dokumentation von
+NumPy](https://numpy.org/doc/stable/) und die [Dokumentation von
+SciPy](https://docs.scipy.org/doc/scipy/reference/) oder zumindest die
+Überschriften der [API-Dokumentation von
+SciPy](https://docs.scipy.org/doc/scipy/reference/#api-reference) zu werfen.
