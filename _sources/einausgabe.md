@@ -437,7 +437,7 @@ with open('foo.txt', mode='w') as datei:
 Das Ergebnis können wir uns wie in {numref}`readfile` mit dem magischen
 Befehl `%cat` in einer Notebook-Zelle ansehen.
 ```{code-cell} python
-%cat foo.dat
+%cat foo.txt
 ```
 
 Im Zusammenhang mit der {func}`write`-Methode ist allerdings zu beachten, dass
