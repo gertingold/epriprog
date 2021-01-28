@@ -187,7 +187,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="_sources/objektorientiert.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/objektorientiert.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
@@ -208,6 +211,23 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/objektorientiert.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -246,8 +266,446 @@
 <p class="admonition-title">Hinweis</p>
 <p>Dieses Kapitel befindet sich noch in Bearbeitung.</p>
 </div>
+<p>Beim objektorientierten Programmieren handelt es sich um ein Paradigma, das man nutzen
+kann, aber nicht muss. So war objektorientiertes Programmieren in älteren Versionen
+von FORTRAN überhaupt nicht möglich und andererseits gibt es Programmiersprachen wie
+zum Beispiel Java, in denen man nur objektorientiert programmieren kann. Python ermöglicht
+zwar objektorientiertes Programmieren, erzwingt es aber nicht. Daher sollte man zumindest
+eine Vorstellung davon haben, was die Grundideen des objektorientierten Programmierens
+sind, um bei konkreten Problemstellungen erkennen zu können, ob und in welchem Maße es
+sich lohnt, diesem Programmierparadigma zu folgen.</p>
 <div class="section" id="klassen-attribute-und-methoden">
 <h2><span class="section-number">9.1. </span>Klassen, Attribute und Methoden<a class="headerlink" href="#klassen-attribute-und-methoden" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Tatsächlich ist Python objektorientiert konzipiert, so dass wir in den bisherigen Kapiteln
+bereits Spuren von objektorientiertem Programmieren gesehen haben, ohne dass dies groß
+thematisiert wurde. Für einen allerersten Einblick wollen wir das nun an ein paar Beispielen
+nachholen. Als Einstieg dienen uns dabei der Datentyp der komplexen Zahlen. Aus Pythonsicht
+gibt es die Klassendefinition der Klasse <code class="docutils literal notranslate"><span class="pre">complex</span></code>, die gewissermaßen den allgemeinen
+Bauplan für komplexe Zahlen enthält. Eine konkrete komplexe Zahl ist dann eine Instanz dieser
+Klasse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span>
+<span class="n">x</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;complex&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Objekte können Attribute haben, also Eigenschaften besitzen. Bei komplexen Zahlen sind dies
+Real- und Imaginärteil, die, wie wir aus <code class="xref std std-numref docutils literal notranslate"><span class="pre">complex</span></code> wissen, auf die folgende Weise
+erhalten können.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, 1.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nach dem Namen der Instanz folgt also der durch einen Punkt abgetrennte Attributname.</p>
+<p>Darüber hinaus kann es Methoden geben, also im Grunde genommen Funktionen, die mit den entsprechenden
+Objekten verknüpft sind. So erfolgt die Umwandlung einer komplexen Zahl mit Hilfe der Methode
+<code class="xref py py-func docutils literal notranslate"><span class="pre">conjugate()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2-1j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Auch hier folgt dem Namen der Instanz der durch einen Punkt abgetrennte Methodenname. Natürlich
+können Methoden auch Argumente besitzen. Als Beispiel nennen wir die <code class="xref py py-func docutils literal notranslate"><span class="pre">index()</span></code>-Methode von
+Listen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="n">mylist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Beispiel der komplexen Zahlen verdeutlicht einen der wesentlichen Vorteile des objektorientierten
+Programmierens. Die komplexe Zahl, in unserem Beispiel <code class="docutils literal notranslate"><span class="pre">x</span></code>, wird als ein Objekt verstanden und nicht
+separat als Real- und Imaginärteil der betreffenden Zahl. Dies ermöglicht es uns, zum Beispiel die
+komplexe Konjugation direkt auf die komplexe Zahl operieren zu lassen und nicht Real- und Imaginärteil
+zu betrachten. Trotzdem kann man bei Bedarf jederzeit auf den Real- und den Imaginärteil zugreifen.
+Weil man nun in diesen Objekten denkt, kann ein Programm, das diese Objekte verwendet, konzeptionell
+deutlich übersichtlicher und leichter verständlich werden, was bei der Fehlersuche helfen kann.
+Außerdem werden die Attribute gekapselt, so dass man sich nicht ständig um diese kümmern muss.</p>
+<p>Nach diesen Vorbemerkungen müssen wir uns nun ansehen, wie sich eine Klasse mit ihren Attributen
+und Methoden definieren lässt. Dies wollen wir anhand eines Beispiels tun, in dem eine Klasse
+für Vektoren in zwei Dimensionen definiert wird. Am Ende können wir mit solchen Vektoren als
+eigenständigen Objekten arbeiten. Eigenschaften wie die Vektorkomponenten können dabei, wie gerade
+schon für die komplexen Zahlen besprochen, häufig im Hintergrund bleiben, wie wir gleich noch
+sehen werden.</p>
+<p>Wir werden die Klassendefinition für zweidimensionale Vektoren schrittweise aufbauen und dabei
+verschiedene Aspekte besprechen. Unsere erste Version ist durch den folgenden Code gegeben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+
+<span class="k">class</span> <span class="nc">Vector2d</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s1">)&#39;</span>
+
+    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">return</span> <span class="n">Vector2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier werden zunächst zwei trigonometrische Funktionen importiert, die wir benötigen werden,
+um Vektoren in der Ebene zu drehen. Die eigentliche Klassendefinition beginnt dann in der
+dritten Zeile mit dem Schlüsselwort. Der Name der Klasse, hier <code class="docutils literal notranslate"><span class="pre">Vector2d</span></code>, beginnt üblicherweise
+mit einem Großbuchstaben und die Zeile wird ähnlich wie in einer Funktionsdefinition mit einem
+Doppelpunkt abgeschlossen.</p>
+<p>Es folgen drei Methoden, wobei die ersten beiden Namen tragen, die mit einem doppelten Unterstrich
+beginnen und enden. Dadurch wird angedeutet, dass diese Methoden für Python eine besondere Bedeutung
+haben. Die <code class="xref py py-func docutils literal notranslate"><span class="pre">__init__()</span></code>-Methode wird ausgeführt, wenn eine Instanz der Klasse erzeugt wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">Vector2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">v1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Vector2d at 0x7f83e97b7c40&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie wir sehen, hat die <code class="xref py py-func docutils literal notranslate"><span class="pre">__init__()</span></code>-Methode drei Argumente. Bei der Instantiierung ist aber ein
+Argument weniger anzugeben, da das erste Argument der <code class="xref py py-func docutils literal notranslate"><span class="pre">__init__()</span></code>-Methode, das üblicherweise
+<code class="docutils literal notranslate"><span class="pre">self</span></code> genannt wird, eine besondere Funktion erfüllt. Es steht gewissermaßen für die spezifische
+Instanz und erlaubt es, diese Instanz den verschiedenen Methoden zugänglich zu machen, wie wir
+noch genauer sehen werden. In der <code class="xref py py-func docutils literal notranslate"><span class="pre">__init__()</span></code>-Methode werden die übergebenen Parameter je
+nach Bedarf verarbeitet und in Attributen gespeichert sowie weitere zu Beginn erforderlich
+Operationen durchgeführt. In unserem speziellen Fall müssen wir nur dafür sorgen, dass die in
+den Parametern <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> vorliegenden Vektorkomponenten anschließend über entsprechende Attribute
+zugänglich sind. Dazu weisen wir sie <code class="docutils literal notranslate"><span class="pre">self.x</span></code> beziehungsweise <code class="docutils literal notranslate"><span class="pre">self.y</span></code> zu. Damit können
+wir auch nach der erfolgten Instantiierung auf die Attribute zugreifen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Verwandtschaft mit der Bestimmung des Real- und Imaginärteils komplexer Zahlen, die wir eingangs
+betrachtet hatten, ist offensichtlich.</p>
+<p>Eine nützliche Methode, die wir oben bereits definiert haben, ist die <code class="xref py py-func docutils literal notranslate"><span class="pre">__str__()</span></code>-Methode, die
+von Python dann aufgerufen wird, wenn das Objekt in eine Zeichenkette umgewandelt werden muss, wie dies
+beispielsweise durch die <code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code>-Funktion geschieht. Wir lassen die Vektorkomponenten ausgeben,
+um später leicht die Auswirkungen von weiteren Methoden unserer Klasse <code class="xref py py-class docutils literal notranslate"><span class="pre">Vector2d</span></code> zu überprüfen. Da die
+<code class="xref py py-func docutils literal notranslate"><span class="pre">__str__()</span></code>-Methode das Argument <code class="docutils literal notranslate"><span class="pre">self</span></code> besitzt, haben wir in dieser Methode Zugriff auf die
+Attribute des Objekts, also in unserem Fall auf die Vektorkomponenten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die dritte, oben definierte Methode <code class="xref py py-func docutils literal notranslate"><span class="pre">rotate()</span></code> soll es erlauben, den Vektor um einen Winkel <code class="docutils literal notranslate"><span class="pre">phi</span></code> in
+der <span class="math notranslate nohighlight">\(x\)</span>–<span class="math notranslate nohighlight">\(y\)</span>-Ebene zu drehen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.9999999999999999, 2.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie wir dem Code der <code class="xref py py-func docutils literal notranslate"><span class="pre">rotate()</span></code>-Methode entnehmen können, wird als Ergebnis eine neue Instanz der
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Vector2d</span></code> erzeugt. Alternativ hätten wir die Vektorkomponenten nach der Drehung <code class="docutils literal notranslate"><span class="pre">self.x</span></code> und <code class="docutils literal notranslate"><span class="pre">self.y</span></code>
+zuweisen können. Dann hätten wir lediglich die Attribute des Vektors geändert ohne einen neuen Vektor
+zu erzeugen.</p>
+<p>Der Wert von Attributen kann auch explizit durch Zuweisung geändert werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+<span class="n">v1</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 1)
+(4, 1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Oft werden hierfür spezielle Methoden zur Verfügung gestellt, um überprüfen zu können, ob der neue Wert
+gültig ist.</p>
+<p>Für Vektoren wird man sicherlich auch eine Methode erwarten, die die Länge des Vektors bestimmt. Eine solche
+Methode, die wir <code class="xref py py-func docutils literal notranslate"><span class="pre">norm()</span></code> nennen, lässt sich leicht mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">hypot()</span></code>-Funktion aus dem
+<code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul implementieren. Die erweiterte Klassendefinition geben wir nachfolgend vollständig wieder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">hypot</span>
+
+<span class="k">class</span> <span class="nc">Vector2d</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s1">)&#39;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">hypot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">return</span> <span class="n">Vector2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Würden wir die mit <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> beginnende Zeile, einen sogenannten Dekorator, weglassen, so würde es sich bei
+<code class="xref py py-func docutils literal notranslate"><span class="pre">norm()</span></code> einfach um eine Methode handeln, wie wir sie von der <code class="xref py py-func docutils literal notranslate"><span class="pre">rotate()</span></code>-Methode her kennen. Der
+Dekorator <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> wandelt diese Methode jedoch in eine Eigenschaft um, auf deren Wert wir wie bei
+einem Attribut zugreifen können.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">Vector2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.23606797749979
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es ist jedoch nicht möglich, den Wert dieses Attributs zu setzen.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">294</span><span class="n">b3f5c13e8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">v1</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="ne">AttributeError</span>: can&#39;t set attribute
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im Zusammenhang mit dem Setzen von Attributen ist noch wichtig zu wissen, dass man auch den Wert
+von nicht in der Klassendefinition vorkommenden Attributen im Prinzip setzen kann. Das kann bei
+Tippfehlern zu unerwartetem Verhalten führen. Dieser Umstand zeigt nochmals, dass es sinnvoll sein
+kann, explizite Methoden zum Setzen und auch zum Auslesen von Attributen zu implementieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 1)
+-4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um noch etwas deutlicher zu sehen, wie es das objektorientiertes Programmieren erlaubt, mit den Objekten
+als eigene Einheit zu arbeiten, wollen wir unsere Beispielklasse ein letztes Mal erweitern.
+Unser letztliches Ziel soll dabei sein, eine Methode zum Spiegeln eines Vektors an einem Normalenvektor,
+der einen bestimmten Winkel mit der <span class="math notranslate nohighlight">\(x\)</span>-Achse einschließt, zu implementieren.</p>
+<p>Dazu überlegen wir uns zunächst, wie wir diese allgemeine Spiegelung mathematisch bewerkstelligen
+können. Dazu bezeichnen wir den ursprünglichen Vektor als <span class="math notranslate nohighlight">\(\vec v\)</span>, den gespiegelten Vektor als
+<span class="math notranslate nohighlight">\({\vec v}'\)</span>, und die Spiegelachse werde durch den Normalenvektor <span class="math notranslate nohighlight">\(\vec n\)</span> spezifiziert. Dann können
+wir <span class="math notranslate nohighlight">\(\vec v\)</span> in den Anteil in Richtung von <span class="math notranslate nohighlight">\(\vec n\)</span> sowie den dazu senkrechten Anteil zerlegen.
+Es ist also</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+   \vec v_\parallel &amp;= \left(\vec v\cdot\vec n\right)\vec n\\
+   \vec v_\perp &amp;= \vec v-\vec v_\parallel\,.
+\end{align}\end{split}\]</div>
+<p>Der gespiegelte Vektor ergibt sich dann zu</p>
+<div class="math notranslate nohighlight">
+\[{\vec v}' = \vec v_\parallel-\vec v_\perp = 2\left(\vec v\cdot\vec n\right)\vec n - \vec v\,.\]</div>
+<p>Hieraus folgt, dass wir die Spiegelung alleine mit Hilfe der beteiligten Vektoren vornehmen
+können, ohne die einzelnen Komponenten der Vektoren explizit ins Spiel bringen zu müssen. Dazu
+müssen wir aber in der Lage sein Vektoren zu subtrahieren, mit reellen Zahlen zu multiplizieren
+und ein Skalarprodukt auszuwerten.</p>
+<p>Wir geben zunächst die vollständige, um einige Methoden ergänzte Klassendefinition von <code class="xref py py-class docutils literal notranslate"><span class="pre">Vector2d</span></code>
+an und besprechen anschließend die neu hinzugefügten Methoden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">hypot</span>
+
+<span class="k">class</span> <span class="nc">Vector2d</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s1">)&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">+</span><span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">-</span><span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector2d</span><span class="p">):</span>
+             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+             <span class="k">return</span> <span class="n">Vector2d</span><span class="p">(</span><span class="n">other</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">other</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Vector2d kann nicht mit </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s1"> multipliziert werden.&#39;</span><span class="p">)</span>
+
+    <span class="fm">__rmul__</span> <span class="o">=</span> <span class="fm">__mul__</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">hypot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">return</span> <span class="n">Vector2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">mirror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">Vector2d</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">))</span>
+        <span class="n">parallel</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">n</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">parallel</span> <span class="o">-</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zunächst sehen wir uns die Methoden <code class="xref py py-func docutils literal notranslate"><span class="pre">__add__()</span></code> und <code class="xref py py-func docutils literal notranslate"><span class="pre">__sub__()</span></code> an, die
+von Python unter anderem dann aufgerufen werden, wenn zwei Objekte mit einem Plus-
+beziehungsweise Minuszeichen verknüpft werden. Der erste Vektor entspricht dem Argument
+<code class="docutils literal notranslate"><span class="pre">self</span></code> und das zweite Argument <code class="docutils literal notranslate"><span class="pre">other</span></code> entspricht dem zweiten Vektor. Die entsprechenden
+Operationen haben wir entsprechend komponentenweise implementiert.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">Vector2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">Vector2d</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">v1</span><span class="o">+</span><span class="n">v2</span><span class="si">}</span><span class="s1">   </span><span class="si">{</span><span class="n">v1</span><span class="o">-</span><span class="n">v2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-1, 5)   (3, -1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Für eine bessere Implementation sollte man natürlich noch überprüfen, ob <code class="docutils literal notranslate"><span class="pre">other</span></code> wirklich eine
+Instanz von <code class="xref py py-class docutils literal notranslate"><span class="pre">Vector2d</span></code> ist. Dies werden wir in der nächsten Methode besser machen.</p>
+<p>Die <code class="xref py py-func docutils literal notranslate"><span class="pre">__mul__()</span></code>-Methode wird von Python unter anderem dann aufgerufen, wenn zwei Objekte
+mit dem Multiplikationsstern verknüpft werden. Für die Spiegelung eines Vektors müssen wir
+dabei zwei Fälle unterscheiden, Während sichergestellt ist, dass <code class="docutils literal notranslate"><span class="pre">self</span></code> immer eine Instanz von
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Vector2d</span></code> ist, soll das Verhalten der <code class="xref py py-func docutils literal notranslate"><span class="pre">__mul__()</span></code>-Methode davon abhängen, ob <code class="docutils literal notranslate"><span class="pre">other</span></code>
+ebenfalls eine Instanz dieser Klasse ist oder aber eine Gleitkommazahl (<code class="docutils literal notranslate"><span class="pre">float</span></code>) oder ein
+Integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>). Im ersten Fall haben wir ein Skalarprodukt implementiert und im zweiten Fall
+multiplizieren wir die beiden Komponenten mit der betreffenden Zahl. Trifft keiner der beiden
+Fälle zu, geben wir eine entsprechende Fehlermeldung aus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">v1</span><span class="si">}</span><span class="s1">*</span><span class="si">{</span><span class="n">v2</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">v1</span><span class="o">*</span><span class="n">v2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">v1</span><span class="si">}</span><span class="s1">*5 = </span><span class="si">{</span><span class="n">v1</span><span class="o">*</span><span class="mi">5</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2)*(-2, 3) = 4
+(1, 2)*5 = (5, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Leider funktioniert die umgekehrte Reihenfolge noch nicht, was sich aber dadurch beheben lässt,
+dass man eine Methode <code class="xref py py-func docutils literal notranslate"><span class="pre">__rmul__()</span></code> definiert, die von Python aufgerufen wird, wenn <code class="xref py py-func docutils literal notranslate"><span class="pre">__mul__()</span></code>
+fehlschlägt, und das die beiden Argumente <code class="docutils literal notranslate"><span class="pre">self</span></code> und <code class="docutils literal notranslate"><span class="pre">other</span></code> vertauscht.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;5*</span><span class="si">{</span><span class="n">v1</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="mi">5</span><span class="o">*</span><span class="n">v1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5*(1, 2) = (5, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nun ist es ein Leichtes, die Spiegelung entsprechend der zuvor hergeleiteten Formeln zu implementieren.
+Wir überprüfen, ob die Spiegelungen an der <span class="math notranslate nohighlight">\(x\)</span>- und der <span class="math notranslate nohighlight">\(y\)</span>-Achse sowie an der ersten Winkelhalbierenden
+die erwarteten Ergebnisse liefern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">phi</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">mirror</span><span class="p">(</span><span class="n">phi</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2)
+(1.0, -2.0)
+(-0.9999999999999998, 2.0)
+(2.0, 0.9999999999999996)
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="vererbung">
 <h2><span class="section-number">9.2. </span>Vererbung<a class="headerlink" href="#vererbung" title="Link zu dieser Überschrift">¶</a></h2>
