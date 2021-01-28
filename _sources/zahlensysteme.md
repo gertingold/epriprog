@@ -30,7 +30,7 @@ Häufig beschränken Programmiersprachen die Zahl der Bits, die verwendet werden
 um ein Integer darzustellen. Dadurch wird der darstellbare Zahlenbereich mehr
 oder weniger eingeschränkt, und es kann durch eine Überschreitung des zulässigen
 Zahlenbereichs zu Problemen durch einen so genannten *overflow* kommen. Obwohl
-dies in Python diese Problematik bei Integers im Prinzip nicht kennt, muss man
+Python diese Problematik bei Integers im Prinzip nicht kennt, muss man
 sich ihrer bewusst sein, wenn man in Python Programmpakete wie NumPy oder SciPy
 verwendet, die auch auf in C oder Fortran geschriebenen Programmen basieren.
 Daher werden wir uns in {numref}`integertypes` verschiedene Arten von Integers
