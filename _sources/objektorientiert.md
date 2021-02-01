@@ -236,7 +236,7 @@ und ein Skalarprodukt auszuwerten.
 Wir geben zunächst die vollständige, um einige Methoden ergänzte Klassendefinition von {class}`Vector2d`
 an und besprechen anschließend die neu hinzugefügten Methoden.
 ```{code-cell} python
-from math import cos, sin, hypot
+from math import cos, hypot, sin, pi
 
 class Vector2d:
     def __init__(self, x, y):
@@ -274,6 +274,9 @@ class Vector2d:
         n = Vector2d(cos(phi), sin(phi))
         parallel = (self*n)*n
         return 2*parallel - self
+
+    def orthogonal(self):
+        return self.rotate(0.5*pi)
 ```
 
 Zunächst sehen wir uns die Methoden {func}`__add__` und {func}`__sub__` an, die
@@ -316,4 +319,133 @@ for phi in (0, pi/2, pi/4):
     print(v1.mirror(phi))
 ```
 
+Ganz am Ende der Klassendefinition haben wir noch eine Methode hinzugefügt, die
+mit der Spiegelung nichts zu tun hat, sondern demonstriert, wie man Methoden
+innerhalb der Klassendefinition aufruft.  Die Methode {func}`orthogonal`
+bestimmt einen zum gegebenen Vektor senkrechten Vektor. Auch wenn es nicht die
+optimale Lösung darstellt, rotieren wir den Vektor dazu mit Hilfe der Methode
+{func}`rotate` um $\pi/2$. Wir sehen hier, dass man beim Aufruf `self.` voranstellen
+muss. Unterlässt man das, sucht Python nach einer Funktion mit entsprechendem Namen
+außerhalb der Klassendefinition. Nachdem `self` bereits dem Methodennamen vorangestellt
+wurde, muss es in der Liste der Argumente entfallen. Diese scheinbar unterschiedliche
+Anzahl von Argumenten kann gerade am Anfang zu Verwirrung führen.
+
 ## Vererbung
+
+Es kommt immer wieder vor, dass man man mehrere Klassen implementieren möchte, die
+in einem hierarchischen Verhältnis zueinander stehen. Eine oberste Klasse hat dann
+typischerweise nur wenige Attribute und Methoden definiert, die aber an eine
+darunter stehende Klasse vererbt werden können. Diese zweite Klasse kann dann noch
+eigene Attribute oder Methoden definieren oder auch Methoden der ersten Klasse 
+überschreiben.
+
+Als Beispiel betrachten wir einen Massenpunkt und eine ausgedehnte Masse, wobei wir
+uns der Einfachheit halber auf den zweidimensionalen Fall beschränken wollen. Die
+Lage des Massenpunktes ist dann durch zwei Koordinaten definiert und man kann eine
+Methode definieren, die dazu dient den Massenpunkt zu verschieben. In der Realität
+würde man vielleicht auch die Masse und die Geschwindigkeit des Massenpunkts
+berücksichtigen, aber darauf wollen wir der Einfachheit halber hier verzichten.
+
+Einer ausgedehnten Masse kann man im Gegensatz zum Massenpunkt noch eine Orientierung
+zuordnen und genauso wie man den Massenpunkt oder die Masse verschieben kann, kann
+man die Masse auch um einen Winkel drehen. 
+
+In diesem Fall ist es also sinnvoll, zunächst eine Klasse für den Massenpunkt zu
+definieren, die dann ihre Attribute und Methoden an die Klasse vererbt, die die
+ausgedehnte Masse beschreibt.
+
+Wir beginnen also mit einem Massenpunkt und definieren die Klasse {class}`Massenpunkt`.
+Wenn nichts anderes angegeben ist, liege der Massenpunkt anfänglich im Ursprung. 
+Zudem erlaubt es die {func}`shift`-Methode, den Massenpunkt zu verschieben. Die
+{func}`__str__`-Methode sorgt dafür, dass wir leicht die Position des Massenpunktes
+ausgeben lassen können.
+
+```{code-cell} python
+class Massenpunkt:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f'Massenpunkt am Ort ({self.x}, {self.y})'
+
+    def shift(self, x, y):
+        self.x = self.x + x
+        self.y = self.y + y
+```
+Der folgende Code zeigt, wie man mit der gerade definierten Klasse arbeiten kann.
+```{code-cell} python
+m1 = Massenpunkt()
+print(m1)
+m1.shift(1, 2)
+print(m1)
+m1.shift(-2.5, 3)
+print(m1)
+```
+
+Nun gehen wir zu einer ausgedehnten Masse über und definieren die Klasse
+{class}`AusgedehnteMasse`, die von der Klasse {class}`Massenpunkt` abgeleitet
+wird, also Attribute und Methoden erbt.  Entsprechend wird die Klasse
+{class}`Massenpunkt`, die sogenannte Elternklasse, in Klammern angegeben. Es
+ist zwar auch möglich, von mehreren Klassen zu erben, worauf wir an dieser
+Stelle jedoch nicht eingehen können. In einem solchen Fall muss man sich dann
+um Fragen kümmern wie von welcher Klasse eine bestimmte Methode geerbt wird.
+Dies wird zum Beispiel dann relevant, wenn mehrere der Elternklassen eine
+Methode mit gleichem Namen implementieren.
+
+Die {func}`__init__`-Methode der Klasse {class}`AusgedehnteMasse` besitzt
+nun drei statt nur zwei Argumente. Hinzugekommen ist ein Winkel in Grad,
+der die Ausrichtung der Masse charakterisiert, und wiederum einen Defaultwert
+besitzt. Der Wert des Winkels wird in einem Attribut gespeichert und dann
+eine Methode {func}`normalise` aufgerufen, die sicherstellt, dass der Winkel
+zwischen 0° und 360° liegt. Da der Winkel kein Integer sein muss, genügt
+hier nicht eine einfache Modulooperation. Bei dieser Gelegenheit betonen
+wir noch einmal, dass beim Aufruf einer in der Klasse definierten Methode
+ein `self.` vor den Methodennamen gestellt werden muss und dafür das
+Argument `self` in der Argumentliste entfällt. Die Verarbeitung der beiden
+Argumente `x` und `y` überlassen wir der {func}`__init__`-Methode der
+Elternklasse, die wir mit Hilfe der {func}`super`-Methode erhalten.
+
+Die {func}`__str__`-Methode, die nützliche Information über eine Instanz
+ausgeben soll, wird nicht aus der Elternklasse übernommen, sondern 
+überschrieben, da zusätzlich die Ausrichtung der Masse ausgeben wollen.
+Ein Methode, die diese Klasse neu definiert, ist {func}`rotate`, die die
+Masse um einen gewissen Winkel um die durch den aktuellen Ort verlaufende
+Achse senkrecht zur $x-y$-Ebene dreht.
+
+```{code-cell} python
+class AusgedehnteMasse(Massenpunkt):
+    def __init__(self, x=0, y=0, phi_deg=0):
+        self.phi_deg = phi_deg
+        self.normalise()
+        super().__init__(x, y)
+
+    def normalise(self):
+        self.phi_deg = self.phi_deg - (self.phi_deg // 360)*360
+
+    def __str__(self):
+        return f'Masse am Ort ({self.x}, {self.y}) mit Ausrichtung {self.phi_deg}°'
+
+    def rotate(self, phi_deg):
+        self.phi_deg = self.phi_deg + phi_deg
+        self.normalise()
+```
+Die folgende Sequenz aus Verschiebungen und Drehungen zeigt, dass obwohl
+die Klasse `AusgedehnteMasse` nicht selbst eine {func}`shift` implementiert,
+diese aus der Elternklasse `Massenpunkt` geerbt wurde.
+```{code-cell} python
+m2 = AusgedehnteMasse()
+print(m2)
+m2.shift(1, 2)
+print(m2)
+m2.rotate(270)
+print(m2)
+m2.shift(-3, 2.5)
+m2.rotate(100.5)
+print(m2)
+```
+Außerdem zeigt die letzte Ausgabe, dass die Reduktion des Winkels auf das
+Intervall von 0° bis 360° in der {func}`rotate`-Methode funktioniert. Wir
+erwähnen nochmals, dass es wichtig ist, Methoden innerhalb der Klassendefinition
+mit einem vorangestellten `self.` aufzurufen und dafür beim Aufruf das Argument
+`self` wegzulassen.

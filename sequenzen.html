@@ -611,7 +611,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140394029235456 140394029235456
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139675847065088 139675847065088
 </pre></div>
 </div>
 </div>
@@ -642,7 +642,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140394029235712 140394029236608
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139675847068416 139675847066560
 </pre></div>
 </div>
 </div>
@@ -1056,8 +1056,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7, 12, 99, 21, 34, 51, 43, 27, 57, 27, 21, 72, 58, 54, 75, 64, 90, 91, 84, 55]
-[7, 12, 21, 21, 27, 27, 34, 43, 51, 54, 55, 57, 58, 64, 72, 75, 84, 90, 91, 99]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[47, 58, 34, 98, 54, 40, 5, 60, 1, 23, 84, 67, 85, 42, 51, 41, 69, 89, 79, 60]
+[1, 5, 23, 34, 40, 41, 42, 47, 51, 54, 58, 60, 60, 67, 69, 79, 84, 85, 89, 98]
 </pre></div>
 </div>
 </div>
@@ -1075,8 +1075,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 56, 71, 91, 98, 2, 3, 48, 96, 77, 26, 63, 62, 26, 14, 8, 36, 99, 97, 82]
-[71, 91, 2, 2, 62, 82, 3, 63, 14, 56, 96, 26, 26, 36, 77, 97, 98, 48, 8, 99]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[97, 47, 72, 48, 35, 41, 93, 21, 14, 54, 13, 90, 38, 51, 74, 17, 74, 57, 6, 72]
+[90, 41, 21, 51, 72, 72, 93, 13, 14, 54, 74, 74, 35, 6, 97, 47, 17, 57, 48, 38]
 </pre></div>
 </div>
 </div>
@@ -1106,10 +1106,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140394029192896
-id(mytuple2) = 140394080429440
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 139675906484736
+id(mytuple2) = 139675906616000
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 140394028571600
+id(mytuple1) = 139675847100912
 </pre></div>
 </div>
 </div>
@@ -1448,8 +1448,8 @@ erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140394029450032 | id(s2) = 140394029450800
-id(s1) = 140394028761536
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 139675855676272 | id(s2) = 139675855677232
+id(s1) = 139675855734784
 </pre></div>
 </div>
 </div>
@@ -1557,9 +1557,7 @@ erhält dann nacheinander die einzelnen Zeichen der Zeichenkette.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B
+B
 C
 </pre></div>
 </div>
@@ -1586,9 +1584,7 @@ angeben, die die zu entfernenden Zeichen enthält.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|Hallo |
 |   Hallo|
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|Hallo|
+|Hallo|
 </pre></div>
 </div>
 </div>
@@ -1868,7 +1864,10 @@ wir dadurch, dass wir <code class="xref py py-func docutils literal notranslate"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{5: [&#39;Apfel&#39;, &#39;Birne&#39;],
- 6: [&#39;Banane&#39;, &#39;Traube&#39;],
+ 6: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Banane&#39;, &#39;Traube&#39;],
  7: [&#39;Kirsche&#39;],
  11: [&#39;Heidelbeere&#39;]}
 </pre></div>
@@ -1935,6 +1934,9 @@ die Zahlen 0 bis 4 verwendet werden und die zugehörigen Werte die gewünschten 
 -0.4161468365471424
 7.38905609893065
 0.6931471805599453
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
