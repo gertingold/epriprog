@@ -15,11 +15,6 @@ kernelspec:
 (oop)=
 # Objektorientiertes Programmieren
 
-```{admonition} Hinweis
-:class: warning
-Dieses Kapitel befindet sich noch in Bearbeitung.
-```
-
 Beim objektorientierten Programmieren handelt es sich um ein Paradigma, das man nutzen
 kann, aber nicht muss. So war objektorientiertes Programmieren in älteren Versionen
 von FORTRAN überhaupt nicht möglich und andererseits gibt es Programmiersprachen wie
