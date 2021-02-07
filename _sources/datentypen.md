@@ -888,6 +888,7 @@ x = 1e-5
 x - x**2/2 + x**3/3
 ```
 
+(complex)=
 ## Komplexe Zahlen
 
 Neben reellen Zahlen benötigt man immer wieder auch komplexe Zahlen. Dabei
