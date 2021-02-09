@@ -205,12 +205,12 @@ print(v1.z)
 
 Um noch etwas deutlicher zu sehen, wie es das objektorientiertes Programmieren erlaubt, mit den Objekten
 als eigene Einheit zu arbeiten, wollen wir unsere Beispielklasse ein letztes Mal erweitern.
-Unser letztliches Ziel soll dabei sein, eine Methode zum Spiegeln eines Vektors an einem Normalenvektor,
-der einen bestimmten Winkel mit der $x$-Achse einschließt, zu implementieren.
+Unser letztliches Ziel soll dabei sein, eine Methode zum Spiegeln eines Vektors an einer Achse,
+die einen bestimmten Winkel mit der $x$-Achse einschließt, zu implementieren.
 
 Dazu überlegen wir uns zunächst, wie wir diese allgemeine Spiegelung mathematisch bewerkstelligen
 können. Dazu bezeichnen wir den ursprünglichen Vektor als $\vec v$, den gespiegelten Vektor als 
-${\vec v}'$, und die Spiegelachse werde durch den Normalenvektor $\vec n$ spezifiziert. Dann können
+${\vec v}'$, und die Spiegelachse werde durch den normierten Vektor $\vec n$ spezifiziert. Dann können
 wir $\vec v$ in den Anteil in Richtung von $\vec n$ sowie den dazu senkrechten Anteil zerlegen.
 Es ist also
 
