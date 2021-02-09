@@ -391,7 +391,7 @@ haben. Die <code class="xref py py-func docutils literal notranslate"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Vector2d at 0x7f2af428f3d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Vector2d at 0x7ff9a0a8a310&gt;
 </pre></div>
 </div>
 </div>
@@ -559,11 +559,11 @@ kann, explizite Methoden zum Setzen und auch zum Auslesen von Attributen zu impl
 </div>
 <p>Um noch etwas deutlicher zu sehen, wie es das objektorientiertes Programmieren erlaubt, mit den Objekten
 als eigene Einheit zu arbeiten, wollen wir unsere Beispielklasse ein letztes Mal erweitern.
-Unser letztliches Ziel soll dabei sein, eine Methode zum Spiegeln eines Vektors an einem Normalenvektor,
-der einen bestimmten Winkel mit der <span class="math notranslate nohighlight">\(x\)</span>-Achse einschließt, zu implementieren.</p>
+Unser letztliches Ziel soll dabei sein, eine Methode zum Spiegeln eines Vektors an einer Achse,
+die einen bestimmten Winkel mit der <span class="math notranslate nohighlight">\(x\)</span>-Achse einschließt, zu implementieren.</p>
 <p>Dazu überlegen wir uns zunächst, wie wir diese allgemeine Spiegelung mathematisch bewerkstelligen
 können. Dazu bezeichnen wir den ursprünglichen Vektor als <span class="math notranslate nohighlight">\(\vec v\)</span>, den gespiegelten Vektor als
-<span class="math notranslate nohighlight">\({\vec v}'\)</span>, und die Spiegelachse werde durch den Normalenvektor <span class="math notranslate nohighlight">\(\vec n\)</span> spezifiziert. Dann können
+<span class="math notranslate nohighlight">\({\vec v}'\)</span>, und die Spiegelachse werde durch den normierten Vektor <span class="math notranslate nohighlight">\(\vec n\)</span> spezifiziert. Dann können
 wir <span class="math notranslate nohighlight">\(\vec v\)</span> in den Anteil in Richtung von <span class="math notranslate nohighlight">\(\vec n\)</span> sowie den dazu senkrechten Anteil zerlegen.
 Es ist also</p>
 <div class="math notranslate nohighlight">
