@@ -4,10 +4,13 @@
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4. Kontrollstrukturen &#8212; Einführung in Prinzipien der Programmierung</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,78 +20,91 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/translations.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
     <link rel="next" title="5. Funktionen" href="funktionen.html" />
     <link rel="prev" title="3. Einfache Datentypen, Variablen und Zuweisungen" href="datentypen.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="de">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Einführung in Prinzipien der Programmierung</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Einführung in Prinzipien der Programmierung</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="current nav sidenav_l1">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="einleitung.html">
    1. Einleitung
@@ -151,94 +167,182 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
-            title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/kontrollstrukturen.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/kontrollstrukturen.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
-                title="Vollbildmodus"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/kontrollstrukturen.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Inhalt
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/kontrollstrukturen.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/kontrollstrukturen.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/kontrollstrukturen.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#for-schleife">
    4.1. For-Schleife
@@ -261,17 +365,55 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Kontrollstrukturen</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-schleife">
+   4.1. For-Schleife
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#while-schleife">
+   4.2. While-Schleife
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verzweigungen">
+   4.3. Verzweigungen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abfangen-von-ausnahmen">
+   4.4. Abfangen von Ausnahmen
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="kontrollstrukturen">
-<h1><span class="section-number">4. </span>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Link zu dieser Überschrift">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="kontrollstrukturen">
+<h1><span class="section-number">4. </span>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Link zu dieser Überschrift">#</a></h1>
 <p>Im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir bereits kurz die Möglichkeit angesprochen, den
 Ablauf eines Programms zu beeinflussen, sei es dadurch, dass ein Programmteil
 in einer Schleife mehrfach ausgeführt wird oder dass ein Programmteil nur dann
@@ -289,8 +431,8 @@ bei der Division durch Null, Ausnahmen oder <em>exceptions</em> auftreten. Diese
 nicht zwingend zum Abbruch des Programms führen, sondern sie können geeignet
 behandelt werden. Diesen Aspekt der Steuerung des Programmablaufs werden wir im
 letzten Abschnitt dieses Kapitels kennenlernen.</p>
-<div class="section" id="for-schleife">
-<span id="forloop"></span><h2><span class="section-number">4.1. </span>For-Schleife<a class="headerlink" href="#for-schleife" title="Link zu dieser Überschrift">¶</a></h2>
+<section id="for-schleife">
+<span id="forloop"></span><h2><span class="section-number">4.1. </span>For-Schleife<a class="headerlink" href="#for-schleife" title="Link zu dieser Überschrift">#</a></h2>
 <p>Sollen bestimmte Anweisungen mehrfach ausgeführt werden, wobei die Anzahl der
 Wiederholungen zuvor bestimmt werden kann, bietet sich die Verwendung einer
 <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife an. Gegenüber der expliziten Wiederholung von Befehlen ergeben
@@ -304,8 +446,8 @@ berechnen. In einer <code class="docutils literal notranslate"><span class="pre"
 folgendermaßen gehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(5):
+    print(f&quot;{n:4} {n**2:4}&quot;)
 </pre></div>
 </div>
 </div>
@@ -322,11 +464,11 @@ folgendermaßen gehen.</p>
 <p>Verzichtet man auf die Schleife, so wäre der folgende Code erforderlich.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">0</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">0</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">1</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">1</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">3</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">4</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">4</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;{0:4} {0**2:4}&quot;)
+print(f&quot;{1:4} {1**2:4}&quot;)
+print(f&quot;{2:4} {2**2:4}&quot;)
+print(f&quot;{3:4} {3**2:4}&quot;)
+print(f&quot;{4:4} {4**2:4}&quot;)
 </pre></div>
 </div>
 </div>
@@ -345,9 +487,9 @@ Dies gilt insbesondere, wenn die Zahl der Durchläufe variabel sein soll, wie
 im folgenden Fall.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nmax</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nmax = 7
+for n in range(nmax):
+    print(f&quot;{n:4} {n**2:4}&quot;)
 </pre></div>
 </div>
 </div>
@@ -374,7 +516,7 @@ Zwar werden die Werte erst bei Bedarf generiert, aber wir können sie uns
 ansehen, indem wir explizit eine Liste der Werte erzeugen lassen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list(range(5))
 </pre></div>
 </div>
 </div>
@@ -410,9 +552,9 @@ Im ersten Beispiel ist die letzte Zeile Bestandteil der Schleife und wird
 demnach zweimal ausgeführt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Schleifendurchlauf </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Das war&#39;s.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(2):
+    print(f&quot;Schleifendurchlauf {n+1}&quot;)
+    print(&quot;Das war&#39;s.&quot;)
 </pre></div>
 </div>
 </div>
@@ -429,9 +571,9 @@ Das war&#39;s.
 die Schleife zweimal durchlaufen wurde.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Schleifendurchlauf </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Das war&#39;s.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(2):
+    print(f&quot;Schleifendurchlauf {n+1}&quot;)
+print(&quot;Das war&#39;s.&quot;)
 </pre></div>
 </div>
 </div>
@@ -449,13 +591,13 @@ die Zahl der Leerstellen im Prinzip frei gewählt werden kann, aber innerhalb
 des ganzen Schleifenkörpers konstant sein muss. Ein guter Kompromiss zwischen
 kaum sichtbaren Einrückungen und zu großen Einrückungen, die bei geschachtelten
 Schleifen schnell zu Platzproblemen führen, ist eine Einrückung von vier
-Leerzeichen. So wird dies auch im <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> empfohlen, dem <em>Python Enhancement
+Leerzeichen. So wird dies auch im <span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-0008/"><strong>PEP 8</strong></a> empfohlen, dem <em>Python Enhancement
 Proposal</em>, das Empfehlungen zur Formatierung von in Python geschriebenem
 Programmcode gibt. Diese Empfehlungen sind zwar nicht verpflichtend, aber die
 wichtigsten Hinweise werden von den meisten Programmierern respektiert.</p>
 <div class="admonition-weiterfuhrender-hinweis admonition">
 <p class="admonition-title">Weiterführender Hinweis</p>
-<p>Im <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> wird auch eine maximale Zeilenlänge von 79 Zeichen empfohlen. Sehr
+<p>Im <span class="target" id="index-1"></span><a class="pep reference external" href="https://peps.python.org/pep-0008/"><strong>PEP 8</strong></a> wird auch eine maximale Zeilenlänge von 79 Zeichen empfohlen. Sehr
 lange Zeilen sind unter Umständen schwer zu lesen und führen bei kleineren
 Bildschirmen zu Problemen mit Zeilenumbrüchen. Da heutzutage oft größere
 Monitore zum Einsatz kommen, geben manche Projekte eine Maximallänge von 99
@@ -464,11 +606,11 @@ Zeichen vor.</p>
 <p>Da die Verwendung der Einrückung als syntaktisches Merkmal ungewöhnlich ist,
 wollen wir kurz zwei Beispiele aus anderen Programmiersprachen besprechen. In
 FORTRAN 90 könnte eine Schleife folgendermaßen aussehen:</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">PROGRAM </span><span class="n">Quadrat</span>
-<span class="k">DO </span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span>
-   <span class="k">PRINT</span> <span class="s1">&#39;(2I4)&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">PROGRAM </span><span class="n">Quadrat</span><span class="w"></span>
+<span class="k">DO </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="w">   </span><span class="k">PRINT</span><span class="w"> </span><span class="s1">&#39;(2I4)&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="w"></span>
 <span class="k">END DO</span>
-<span class="k">END PROGRAM </span><span class="n">Quadrat</span>
+<span class="k">END PROGRAM </span><span class="n">Quadrat</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Hier wurde nur aus Gründen der Lesbarkeit eine Einrückung vorgenommen. Relevant
@@ -480,27 +622,18 @@ produzieren.</p>
 vorgenommen worden. Der Inhalt der Schleife wird durch die öffnende
 geschweifte Klammer in Zeile 6 und die schließende geschweifte Klammer in Zeile
 9 definiert.</p>
-<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-
-<span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
-   <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-   <span class="kt">int</span> <span class="n">quadrat</span><span class="p">;</span>
-   <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
-<span class="hll">         <span class="n">quadrat</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">;</span>
-</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%4i %4i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">quadrat</span><span class="p">);</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">quadrat</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"></span>
+<span class="hll"><span class="linenos"> 7</span><span class="w">         </span><span class="n">quadrat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos"> 8</span><span class="w">         </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%4i %4i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">quadrat</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">10</span><span class="p">}</span><span class="w"></span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Würde man auf die Klammern verzichten, so wäre nur die der <code class="docutils literal notranslate"><span class="pre">for</span></code>-Anweisung folgende
 Zeile, also Zeile 7, Bestandteil der Schleife. Dagegen befände sich Zeile 8 trotz
 der Einrückung nicht mehr im Schleifenkörper.</p>
@@ -518,9 +651,9 @@ Eine erste Variante besteht darin, mit Hilfe der <code class="xref py py-func do
 ausgegeben werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">objekte</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">objekte</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>objekte = [&#39;Stein&#39;, &#39;Papier&#39;, &#39;Schere&#39;]
+for idx in range(3):
+    print(objekte[idx])
 </pre></div>
 </div>
 </div>
@@ -542,8 +675,8 @@ Fällen verwendet, in denen die Rechengeschwindigkeit im Vordergrund steht.</p>
 wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">objekt</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">objekt</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for objekt in [&#39;Stein&#39;, &#39;Papier&#39;, &#39;Schere&#39;]:
+    print(objekt)
 </pre></div>
 </div>
 </div>
@@ -569,13 +702,13 @@ bei einem wählbaren maximalen Index abschneiden müssen. Dabei fällt der Fehle
 invers linear mit diesem maximalen Index. Betrachten wir nun den zugehörigen Python-Code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sqrt
 
-<span class="n">nmax</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="n">summe</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
-    <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">summe</span><span class="p">))</span>
+nmax = 100000
+summe = 0
+for n in range(nmax):
+    summe = summe + 1/(n+1)**2
+print(sqrt(6*summe))
 </pre></div>
 </div>
 </div>
@@ -605,7 +738,7 @@ Gründen entfernen wir die Variable hier explizit, da sie sonst ihren Wert aus d
 obigen Zelle behält.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">summe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>del summe
 </pre></div>
 </div>
 </div>
@@ -613,19 +746,19 @@ obigen Zelle behält.</p>
 <p>Unser neuer Code hat nun die folgende Form.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sqrt
 
-<span class="n">nmax</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
-    <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">summe</span><span class="p">))</span>
+nmax = 100000
+for n in range(nmax):
+    summe = summe + 1/(n+1)**2
+print(sqrt(6*summe))
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">3</span><span class="n">f25c651cbec</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">nmax</span> <span class="o">=</span> <span class="mi">100000</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
 <span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
@@ -645,11 +778,11 @@ das die Wahrheitswerttabelle für die logische UND-Verknüpfung (<code class="do
 ODER-Verknüpfung (<code class="docutils literal notranslate"><span class="pre">|</span></code>) darstellt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">arg1</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">arg2</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;)
+print(&quot;------------------------------------------&quot;)
+for arg1 in [False, True]:
+    for arg2 in [False, True]:
+        print(f&quot; {arg1!s:5}  {arg2!s:5}   {arg1&amp;arg2!s:^11}   {arg1|arg2!s:^11}&quot;)
 </pre></div>
 </div>
 </div>
@@ -684,16 +817,16 @@ wandern und nur zweimal ausgeführt werden.</p>
 <p>Versucht man dies, gibt es zunächst allerdings ein Problem.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">arg1</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">arg2</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;)
+print(&quot;------------------------------------------&quot;)
+for arg1 in [False, True]:
+    for arg2 in [False, True]:
+    print(f&quot; {arg1!s:5}  {arg2!s:5}   {arg1&amp;arg2!s:^11}   {arg1|arg2!s:^11}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-13-796f5cfb3843&gt;&quot;</span><span class="gt">, line </span><span class="mi">5</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="o">^</span>
 <span class="ne">IndentationError</span>: expected an indented block
@@ -709,12 +842,12 @@ dies bei Funktionen vor, in denen sich das gleiche Problem stellt. Dann hilft de
 Befehl <code class="docutils literal notranslate"><span class="pre">pass</span></code> weiter, der Python signalisiert, dass es hier nichts zu tun gibt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">arg1</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">arg2</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
-        <span class="k">pass</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;  arg1   arg2   arg1 &amp; arg2   arg1 | arg2 &quot;)
+print(&quot;------------------------------------------&quot;)
+for arg1 in [False, True]:
+    for arg2 in [False, True]:
+        pass
+    print(f&quot; {arg1!s:5}  {arg2!s:5}   {arg1&amp;arg2!s:^11}   {arg1|arg2!s:^11}&quot;)
 </pre></div>
 </div>
 </div>
@@ -732,9 +865,9 @@ am Ende der Abarbeitung der äußeren Schleifendurchläufe. Außerdem kann man h
 noch feststellen, dass die Laufvariable <code class="docutils literal notranslate"><span class="pre">arg2</span></code> der inneren Schleife auch nach der
 Abarbeitung der Schleife zur Verfügung steht. Sie hat dabei den Wert, der ihr zuletzt
 zugewiesen wurde, in unserem Fall also <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-</div>
-<div class="section" id="while-schleife">
-<span id="whileloop"></span><h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Link zu dieser Überschrift">¶</a></h2>
+</section>
+<section id="while-schleife">
+<span id="whileloop"></span><h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Link zu dieser Überschrift">#</a></h2>
 <p>Bei der gerade besprochenen <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife kennt man im Vorhinein die Zahl der
 Durchläufe. Dies ist jedoch nicht immer der Fall. Gelegentlich möchte man eine
 Schleife ausführen, so lange eine bestimmte Bedingung erfüllt ist. Einen eher
@@ -749,20 +882,20 @@ ist. Diese Fragen lassen sich mathematisch streng beantworten, aber wir wollen
 nun den Computer heranziehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from random import randrange
+import matplotlib.pyplot as plt
 
-<span class="k">def</span> <span class="nf">wait_for_six</span><span class="p">():</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-    <span class="n">ncasts</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">while</span> <span class="n">result</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-        <span class="n">ncasts</span> <span class="o">=</span> <span class="n">ncasts</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">ncasts</span>
+def wait_for_six():
+    result = randrange(1, 7)
+    ncasts = 1
+    while result != 6:
+        result = randrange(1, 7)
+        ncasts = ncasts + 1
+    return ncasts
 
-<span class="n">waiting_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">wait_for_six</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">waiting_sequence</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+waiting_sequence = [wait_for_six() for n in range(100000)]
+plt.hist(waiting_sequence, bins=30, range=(1, 30), density=True)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -803,10 +936,12 @@ das Programm auf einen der in <a class="reference internal" href="#fig-wuerfel">
 Flächen übertragen möchte. Dann kann es passieren, dass man aus Versehen nur einen
 der beiden Aufrufe der <code class="xref py py-func docutils literal notranslate"><span class="pre">randrange()</span></code>-Funktion korrigiert, womit das Programm
 fehlerhaft wäre.</p>
-<div class="figure align-default" id="fig-wuerfel">
+<figure class="align-default" id="fig-wuerfel">
 <a class="reference internal image-reference" href="_images/wuerfel.png"><img alt="_images/wuerfel.png" src="_images/wuerfel.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Abb. 4.1 </span><span class="caption-text">Dodekaeder- und Ikosaederwürfel.</span><a class="headerlink" href="#fig-wuerfel" title="Link zu diesem Bild">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Abb. 4.1 </span><span class="caption-text">Dodekaeder- und Ikosaederwürfel.</span><a class="headerlink" href="#fig-wuerfel" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
 <p>Der Grund für den ersten Aufruf der <code class="xref py py-func docutils literal notranslate"><span class="pre">randrange()</span></code>-Funktion besteht darin,
 dass bei der Ausführung des Bedingung zu Beginn der <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife die
 Variable <code class="docutils literal notranslate"><span class="pre">result</span></code> bekannt sein muss. Ein möglicher Ausweg besteht darin, den
@@ -820,24 +955,24 @@ Realisierungen ist es nicht unerwartet, dass das Ergebnis vom analytischen Ergeb
 nämlich 6, etwas abweicht.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from random import randrange
 
-<span class="k">def</span> <span class="nf">wait_for_six</span><span class="p">():</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">ncasts</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">result</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-        <span class="n">ncasts</span> <span class="o">=</span> <span class="n">ncasts</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">ncasts</span>
+def wait_for_six():
+    result = 0
+    ncasts = 0
+    while result != 6:
+        result = randrange(1, 7)
+        ncasts = ncasts + 1
+    return ncasts
 
-<span class="n">waiting_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">wait_for_six</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
-<span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">waiting_sequence</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">waiting_sequence</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">)</span>
+waiting_sequence = [wait_for_six() for n in range(100000)]
+average = sum(waiting_sequence)/len(waiting_sequence)
+print(average)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.00608
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.99745
 </pre></div>
 </div>
 </div>
@@ -850,23 +985,16 @@ es dagegen ein <code class="docutils literal notranslate"><span class="pre">do</
 Pascal. Dabei wird am Ende getestet.</p>
 <p>Ein einfaches Beispiel, das im Prinzip eine absteigende Folge von Quadratzahlen
 ausgibt, ist hier in C realisiert.</p>
-<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-
-<span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
-   <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">-1</span><span class="p">;</span>
-   <span class="k">do</span> <span class="p">{</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%4i %4i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">);</span>
-       <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="mi">-1</span><span class="p">;</span>
-   <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="linenos">4</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">5</span><span class="w">   </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%4i %4i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">6</span><span class="w">       </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">7</span><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">8</span><span class="p">}</span><span class="w"></span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Nach der Kompilation des Codes kann man das Programm ausführen und erhält als Ausgabe</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">-</span><span class="mi">1</span>    <span class="mi">1</span>
 </pre></div>
@@ -908,9 +1036,9 @@ dass es eine Möglichkeit gibt, das Programm kontrolliert, beispielsweise durch
 Drücken der Taste <code class="docutils literal notranslate"><span class="pre">q</span></code>, zu beenden. Im Python-Code verwendet man dann den
 <code class="docutils literal notranslate"><span class="pre">break</span></code>-Befehl, um die Ausführung des Programmcodes außerhalb der
 Schleife fortzusetzen.</p>
-</div>
-<div class="section" id="verzweigungen">
-<span id="ifelse"></span><h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link zu dieser Überschrift">¶</a></h2>
+</section>
+<section id="verzweigungen">
+<span id="ifelse"></span><h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link zu dieser Überschrift">#</a></h2>
 <p>Eine andere Art von Kontrollstruktur, die nicht die Wiederholung von Programmcode
 regelt, sondern vielmehr auf der Basis einer gegebenen Bedingung entscheidet,
 welcher Code ausgeführt wird, sind Verzweigungen.</p>
@@ -923,15 +1051,15 @@ So können wir uns zum Beispiel jeweils das Zwischenergebnis nach zehntausend It
 ausgeben lassen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sqrt
 
-<span class="n">nmax</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="n">summe</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
-    <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">summe</span><span class="si">:</span><span class="s2">18.16f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">summe</span><span class="p">))</span>
+nmax = 100000
+summe = 0
+for n in range(nmax):
+    summe = summe + 1/(n+1)**2
+    if n % 10000 == 0:
+        print(f&quot;{n:10}  {summe:18.16f}&quot;)
+print(sqrt(6*summe))
 </pre></div>
 </div>
 </div>
@@ -963,10 +1091,10 @@ Code in einer einzigen Zeile schreiben. Dies ist allerdings nur sinnvoll, wenn d
 Code-Block relativ kurz ist. Statt</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span> <span class="si">= }</span><span class="s1"> ist bestimmt nicht negativ.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = -4
+if x &lt; 0:
+    x = -x
+print(f&#39;{x = } ist bestimmt nicht negativ.&#39;)
 </pre></div>
 </div>
 </div>
@@ -979,9 +1107,9 @@ Code-Block relativ kurz ist. Statt</p>
 <p>kann man also auch</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span> <span class="si">= }</span><span class="s1"> ist bestimmt nicht negativ.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = -4
+if x &lt; 0: x = -x
+print(f&#39;{x = } ist bestimmt nicht negativ.&#39;)
 </pre></div>
 </div>
 </div>
@@ -997,15 +1125,15 @@ einzuführen, um die Bedeutung des Ausdrucks zu verdeutlichen. Wir illustrieren 
 eines kleinen Programms, das eine Liste von Schaltjahren ausgibt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyear</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1860</span><span class="p">,</span> <span class="mi">2210</span><span class="p">):</span>
-    <span class="n">is_leapyear</span> <span class="o">=</span> <span class="p">((</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">100</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">is_leapyear</span><span class="p">:</span>
-        <span class="n">nyear</span> <span class="o">=</span> <span class="n">nyear</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">nyear</span> <span class="o">%</span> <span class="mi">12</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nyear = 0
+for year in range(1860, 2210):
+    is_leapyear = ((year % 4 == 0) and (year % 100)) or (year % 400 == 0)
+    if is_leapyear:
+        nyear = nyear + 1
+        if nyear % 12:
+            print(year, end=&#39; &#39;)
+        else:
+            print(year)
 </pre></div>
 </div>
 </div>
@@ -1028,17 +1156,17 @@ den Wert <code class="docutils literal notranslate"><span class="pre">True</span
 Funktion definieren können.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_leapyear</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">((</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">100</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def is_leapyear(year):
+    return ((year % 4 == 0) and (year % 100)) or (year % 400 == 0)
 
-<span class="n">nyear</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1860</span><span class="p">,</span> <span class="mi">2210</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">is_leapyear</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
-        <span class="n">nyear</span> <span class="o">=</span> <span class="n">nyear</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">nyear</span> <span class="o">%</span> <span class="mi">12</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+nyear = 0
+for year in range(1860, 2210):
+    if is_leapyear(year):
+        nyear = nyear + 1
+        if nyear % 12:
+            print(year, end=&#39; &#39;)
+        else:
+            print(year)
 </pre></div>
 </div>
 </div>
@@ -1072,15 +1200,15 @@ kein Schaltjahr ist, ein Zeilenumbruch vorgenommen werden. Korrektes Einrücken
 ist also essentiell dafür, dass der Code wie gewünscht abgearbeitet wird.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nyear</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1860</span><span class="p">,</span> <span class="mi">2210</span><span class="p">):</span>
-    <span class="n">is_leapyear</span> <span class="o">=</span> <span class="p">((</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">100</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">is_leapyear</span><span class="p">:</span>
-        <span class="n">nyear</span> <span class="o">=</span> <span class="n">nyear</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">nyear</span> <span class="o">%</span> <span class="mi">12</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nyear = 0
+for year in range(1860, 2210):
+    is_leapyear = ((year % 4 == 0) and (year % 100)) or (year % 400 == 0)
+    if is_leapyear:
+        nyear = nyear + 1
+        if nyear % 12:
+            print(year, end=&#39; &#39;)
+    else:
+        print(year)
 </pre></div>
 </div>
 </div>
@@ -1360,14 +1488,14 @@ vorsehen. Eine erste Möglichkeit, die noch nicht wirklich optimal ist, beruht a
 von <code class="docutils literal notranslate"><span class="pre">if…else</span></code>-Verzweigungen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist positiv.&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich Null.&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(-2, 3):
+    if n &gt; 0:
+        print(f&#39;{n} ist positiv.&#39;)
+    else:
+        if n == 0:
+            print(f&#39;{n} ist gleich Null.&#39;)
+        else:
+            print(f&#39;{n} ist negativ.&#39;)
 </pre></div>
 </div>
 </div>
@@ -1385,13 +1513,13 @@ von <code class="docutils literal notranslate"><span class="pre">if…else</span
 zusammenzieht, kann man die Verzweigungen etwas weniger hierarchisch hinschreiben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist positiv.&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich Null.&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(-2, 3):
+    if n &gt; 0:
+        print(f&#39;{n} ist positiv.&#39;)
+    elif n == 0:
+        print(f&#39;{n} ist gleich Null.&#39;)
+    else:
+        print(f&#39;{n} ist negativ.&#39;)
 </pre></div>
 </div>
 </div>
@@ -1411,13 +1539,13 @@ Verzweigungsstruktur verlassen wird, sobald eine Bedingung erfüllt war und der 
 wurde. Dieses Verhalten wird im folgenden Beispiel illustriert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist positiv.&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gerade.&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ und nicht gerade.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(-2, 3):
+    if n &gt; 0:
+        print(f&#39;{n} ist positiv.&#39;)
+    elif n % 2 == 0:
+        print(f&#39;{n} ist gerade.&#39;)
+    else:
+        print(f&#39;{n} ist negativ und nicht gerade.&#39;)
 </pre></div>
 </div>
 </div>
@@ -1441,9 +1569,9 @@ erfüllt ist, da dann zunächst einmal viele Bedingungen erfolglos ausgewertet w
 Fall kann zumindest versuchen, dafür zu sorgen, dass die wahrscheinlichsten Fälle weiter oben stehen. In
 vielen Fällen kann man aber einen zusammengesetzten Datentyp, das so genannte <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> verwenden, das wir
 im <a class="reference internal" href="sequenzen.html#dictionaries"><span class="std std-numref">Kapitel 6.4</span></a> genauer besprechen werden.</p>
-</div>
-<div class="section" id="abfangen-von-ausnahmen">
-<span id="exceptions"></span><h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Link zu dieser Überschrift">¶</a></h2>
+</section>
+<section id="abfangen-von-ausnahmen">
+<span id="exceptions"></span><h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Link zu dieser Überschrift">#</a></h2>
 <p>In <a class="reference internal" href="datentypen.html#float"><span class="std std-numref">Kapitel 3.2</span></a> hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
 Ausnahme oder <em>exception</em> reagiert, dem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>. Unbehandelt führt eine solche Ausnahme zur
 Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
@@ -1455,16 +1583,16 @@ damit zu einem <code class="docutils literal notranslate"><span class="pre">Zero
 <p>Den speziellen Wert bei <span class="math notranslate nohighlight">\(x=0\)</span> könnte man nun mit Hilfe einer Verzweigung behandeln.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sin
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
+def f(x):
+    if x == 0:
+        return 1
+    else:
+        return sin(x)/x
 
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+for x in (-0.02, -0.01, 0, 0.01, 0.02):
+    print(f&quot;{x:5.2f}  {f(x):8.6f}&quot;)
 </pre></div>
 </div>
 </div>
@@ -1486,24 +1614,22 @@ Erlaubnis zu fragen. Anstatt also immer erst zu überprüfen, ob <span class="ma
 <span class="math notranslate nohighlight">\(x\)</span> und kümmert sich dann darum, wenn es Probleme gibt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sin
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
-    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
+def f(x):
+    try:
+        return sin(x)/x
+    except ZeroDivisionError:
+        return 1
 
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+for x in (-0.02, -0.01, 0, 0.01, 0.02):
+    print(f&quot;{x:5.2f}  {f(x):8.6f}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.02  0.999933
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.01  0.999983
+-0.01  0.999983
  0.00  1.000000
  0.01  0.999983
  0.02  0.999933
@@ -1518,16 +1644,16 @@ explizit zu benennen. Es ist aber sinnvoll, in der Nennung der Ausnahmen möglic
 da sonst Fehler eventuell unentdeckt bleiben können, wie in dem folgenden Beispiel gezeigt ist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sin
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
+def f(x):
+    try:
+        return sin(x)/x
+    except:
+        return 1
 
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">7</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+for x in (-0.01, 0, &#39;xxx&#39;):
+    print(f&quot;{x:7}  {f(x):8.6f}&quot;)
 </pre></div>
 </div>
 </div>
@@ -1556,32 +1682,32 @@ Für unsere Zwecke nehmen wir an, dass sichergestellt sei, dass die Argumente ga
 wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs behandeln.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from random import randrange
 
-<span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">n_self</span><span class="p">,</span> <span class="n">n_other</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_self</span> <span class="o">&lt;=</span><span class="mi">2</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n_other</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_self</span> <span class="si">= }</span><span class="s2"> und </span><span class="si">{</span><span class="n">n_other</span> <span class="si">= }</span><span class="s2"> müssen beide zwischen 0 und 2 liegen.&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">n_self</span><span class="o">-</span><span class="n">n_other</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span>
+def get_result(n_self, n_other):
+    if not(0 &lt;= n_self &lt;=2 and 0 &lt;= n_other &lt;= 2):
+        raise ValueError(
+            f&quot;{n_self = } und {n_other = } müssen beide zwischen 0 und 2 liegen.&quot;)
+    return (n_self-n_other) % 3
 
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">n_self</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="n">n_other</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">get_result</span><span class="p">(</span><span class="n">n_self</span><span class="p">,</span> <span class="n">n_other</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ergebnis für </span><span class="si">{</span><span class="n">n_self</span> <span class="si">= }</span><span class="s2"> und </span><span class="si">{</span><span class="n">n_other</span> <span class="si">= }</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+for _ in range(5):
+    n_self = randrange(-1, 4)
+    n_other = randrange(-1, 4)
+    try:
+        result = get_result(n_self, n_other)
+    except ValueError as e:
+        print(e)
+    else:
+        print(f&quot;Ergebnis für {n_self = } und {n_other = }: {result}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = -1 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
-Ergebnis für n_self = 2 und n_other = 1: 1
-n_self = 3 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
-n_self = -1 und n_other = 0 müssen beide zwischen 0 und 2 liegen.
-n_self = -1 und n_other = 2 müssen beide zwischen 0 und 2 liegen.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = 2 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 2 und n_other = 2: 0
+Ergebnis für n_self = 0 und n_other = 2: 1
+Ergebnis für n_self = 0 und n_other = 2: 1
+Ergebnis für n_self = 1 und n_other = 1: 0
 </pre></div>
 </div>
 </div>
@@ -1601,8 +1727,8 @@ Fehlermeldung ausgegeben.</p>
 <p>Einen Überblick über die von Python vordefinierten Ausnahmen findet man in der <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">Dokumentation der
 Python-Standardbibliothek</a>.
 Darüber hinaus ist es auch möglich, eigene Ausnahmen zu definieren.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1626,36 +1752,48 @@ Darüber hinaus ist es auch möglich, eigene Ausnahmen zu definieren.</p>
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="datentypen.html" title="zurück Seite">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">zurück</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Einfache Datentypen, Variablen und Zuweisungen</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="funktionen.html" title="weiter Seite">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Funktionen</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="datentypen.html" title="previous page"><span class="section-number">3. </span>Einfache Datentypen, Variablen und Zuweisungen</a>
-    <a class='right-next' id="next-link" href="funktionen.html" title="next page"><span class="section-number">5. </span>Funktionen</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gert-Ludwig Ingold<br/>
+  
+      &copy; Copyright CC-BY.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Gert-Ludwig Ingold<br/>
-        
-            &copy; Copyright 2020, 2021.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>

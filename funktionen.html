@@ -4,10 +4,13 @@
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5. Funktionen &#8212; Einführung in Prinzipien der Programmierung</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,78 +20,91 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/translations.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
     <link rel="next" title="6. Zusammengesetzte Datentypen" href="sequenzen.html" />
     <link rel="prev" title="4. Kontrollstrukturen" href="kontrollstrukturen.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="de">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Einführung in Prinzipien der Programmierung</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Einführung in Prinzipien der Programmierung</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="current nav sidenav_l1">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="einleitung.html">
    1. Einleitung
@@ -151,94 +167,182 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
-            title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/funktionen.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/funktionen.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
-                title="Vollbildmodus"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/funktionen.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Inhalt
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gertingold/epriprog/master?urlpath=tree/epriprog/funktionen.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/funktionen.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/funktionen.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#funktionsdefinitionen">
    5.1. Funktionsdefinitionen
@@ -276,17 +380,70 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Funktionen</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funktionsdefinitionen">
+   5.1. Funktionsdefinitionen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dokumentation-von-funktionen">
+   5.2. Dokumentation von Funktionen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lokale-und-globale-variable">
+   5.3. Lokale und globale Variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rekursive-funktionen">
+   5.4. Rekursive Funktionen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funktionen-als-burger-erster-klasse">
+   5.5. Funktionen als Bürger erster Klasse
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lambda-funktionen">
+   5.6. Lambda-Funktionen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schlusselworte-und-defaultwerte">
+   5.7. Schlüsselworte und Defaultwerte
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="funktionen">
-<h1><span class="section-number">5. </span>Funktionen<a class="headerlink" href="#funktionen" title="Link zu dieser Überschrift">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="funktionen">
+<h1><span class="section-number">5. </span>Funktionen<a class="headerlink" href="#funktionen" title="Link zu dieser Überschrift">#</a></h1>
 <p>Funktionen im mathematischen Sinne sind uns in den Natur- und Ingenieurwissenschaften
 wohlbekannt. Dass solche Funktionen auch von Programmiersprachen zur Verfügung gestellt
 werden, hatten wir unter anderem im <a class="reference internal" href="datentypen.html#mathfunc"><span class="std std-numref">Kapitel 3.3</span></a> gesehen. Allerdings ist der
@@ -320,18 +477,18 @@ oder aber eine Funktion zu implementieren.</p>
 Funktionalität in verschiedenen Programmen benötigt. Man kann solche Funktionen in einem
 Modul sammeln und dann bei Bedarf importieren, wie wir es schon mit dem <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul
 und den darin enthaltenen Funktionen getan haben.</p>
-<div class="section" id="funktionsdefinitionen">
-<span id="fdef"></span><h2><span class="section-number">5.1. </span>Funktionsdefinitionen<a class="headerlink" href="#funktionsdefinitionen" title="Link zu dieser Überschrift">¶</a></h2>
+<section id="funktionsdefinitionen">
+<span id="fdef"></span><h2><span class="section-number">5.1. </span>Funktionsdefinitionen<a class="headerlink" href="#funktionsdefinitionen" title="Link zu dieser Überschrift">#</a></h2>
 <p>Betrachten wir zunächst eine Funktion, die keine Argumente besitzt. Was die Funktion tut, ist
 also festgelegt und kann nicht durch Parameter verändert werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo!&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f():
+    print(&quot;Hallo!&quot;)
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Anfang&quot;</span><span class="p">)</span>
-<span class="n">f</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Ende&quot;</span><span class="p">)</span>
+print(&quot;** Anfang&quot;)
+f()
+print(&quot;** Ende&quot;)
 </pre></div>
 </div>
 </div>
@@ -364,12 +521,12 @@ An dieser Stelle ein Argument anzugeben, das in der Funktionsdefinition nicht vo
 zu einem Fehler führen.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo!&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f():
+    print(&quot;Hallo!&quot;)
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Anfang&quot;</span><span class="p">)</span>
-<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Ende&quot;</span><span class="p">)</span>
+print(&quot;** Anfang&quot;)
+f(1)
+print(&quot;** Ende&quot;)
 </pre></div>
 </div>
 </div>
@@ -379,8 +536,8 @@ zu einem Fehler führen.</p>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">756</span><span class="n">b26a1c931</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo!&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Anfang&quot;</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Ende&quot;</span><span class="p">)</span>
@@ -400,10 +557,10 @@ mehrere Argument übergeben wollen. Um den ursprünglichen Autor von Python,
 zu grüßenden Person als Argument übergeben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(name):
+    print(f&quot;Hallo, {name}!&quot;)
 
-<span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">)</span>
+f(&quot;Guido&quot;)
 </pre></div>
 </div>
 </div>
@@ -417,15 +574,15 @@ zu grüßenden Person als Argument übergeben.</p>
 weiteres Argument vorsehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;en&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;de&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(name, lang):
+    if lang == &quot;en&quot;:
+        print(f&quot;Hello, {name}!&quot;)
+    elif lang == &quot;de&quot;:
+        print(f&quot;Hallo, {name}!&quot;)
+    else:
+        print(f&quot;{name}!&quot;)
 
-<span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">)</span>
+f(&quot;Guido&quot;, &quot;en&quot;)
 </pre></div>
 </div>
 </div>
@@ -441,11 +598,11 @@ entschieden werden kann, was mit dem Ergebnis zu tun ist. Eine alternative Varia
 einem Argument würde dann folgendermaßen aussehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
-    <span class="k">return</span> <span class="n">s</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(name):
+    s = f&quot;Hallo, {name}!&quot;
+    return s
 
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">))</span>
+print(f(&quot;Guido&quot;))
 </pre></div>
 </div>
 </div>
@@ -462,11 +619,11 @@ in die <code class="docutils literal notranslate"><span class="pre">return</span
 kein Ergebnis zurückgibt, ist dies nicht ganz richtig.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(name):
+    print(f&quot;Hallo, {name}!&quot;)
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rückgabewert: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+x = f(&quot;Guido&quot;)
+print(f&quot;Rückgabewert: {x}&quot;)
 </pre></div>
 </div>
 </div>
@@ -483,12 +640,12 @@ wird in diesem Fall als Ergebnis <code class="docutils literal notranslate"><spa
 letzte Zeile explizit <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">None</span></code> geschrieben hätten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kc">None</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(name):
+    print(f&quot;Hallo, {name}!&quot;)
+    return None
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="s2">&quot;Guido&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rückgabewert: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+x = f(&quot;Guido&quot;)
+print(f&quot;Rückgabewert: {x}&quot;)
 </pre></div>
 </div>
 </div>
@@ -510,15 +667,15 @@ wird, sobald sie bei einer <code class="docutils literal notranslate"><span clas
 sehr simplen Primzahltest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">divisor</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">return</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def is_prime(n):
+    for divisor in range(2, n):
+        if n % divisor == 0:
+            return False
+    return True
 
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+for n in range(2, 100):
+    if is_prime(n):
+        print(n, end=&#39; &#39;)
 </pre></div>
 </div>
 </div>
@@ -528,13 +685,13 @@ sehr simplen Primzahltest.</p>
 </div>
 </div>
 </div>
-<div class="margin sidebar">
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition-weiterfuhrende-frage admonition">
 <p class="admonition-title">Weiterführende Frage</p>
 <p>Dieser Primzahltest ist alles andere als effizient. Wie könnte man ihn verbessern?</p>
 </div>
-</div>
+</aside>
 <p>Sobald <code class="docutils literal notranslate"><span class="pre">n</span></code> ohne Rest durch <code class="docutils literal notranslate"><span class="pre">divisor</span></code> teilbar ist, wird die Funktion mit der <code class="docutils literal notranslate"><span class="pre">return</span></code>-Anweisung beendet und
 der Wert <code class="docutils literal notranslate"><span class="pre">False</span></code> zurückgegeben. Wird kein Teiler gefunden, so wird de Wert <code class="docutils literal notranslate"><span class="pre">True</span></code> zurückgegeben. Abhängig
 vom Ergebnis der Funktion <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> wird die betreffende Zahl ausgegeben oder nicht und auf diese Weise
@@ -543,21 +700,21 @@ eine Liste von Primzahlen erzeugt.</p>
 getrennt in der <code class="docutils literal notranslate"><span class="pre">return</span></code>-Anweisung aufgelistet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">radians</span><span class="p">,</span> <span class="n">sin</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import cos, radians, sin
 
-<span class="k">def</span> <span class="nf">spherical2cartesian</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
-    <span class="n">theta</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-    <span class="n">phi</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+def spherical2cartesian(r, theta, phi):
+    theta = radians(theta)
+    phi = radians(phi)
+    x = r*sin(theta)*cos(phi)
+    y = r*sin(theta)*sin(phi)
+    z = r*cos(theta)
+    return x, y, z
 
-<span class="n">pt1_r</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">pt1_theta</span> <span class="o">=</span> <span class="mi">45</span>
-<span class="n">pt1_phi</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">pt1_x</span><span class="p">,</span> <span class="n">pt1_y</span><span class="p">,</span> <span class="n">pt1_z</span> <span class="o">=</span> <span class="n">spherical2cartesian</span><span class="p">(</span><span class="n">pt1_r</span><span class="p">,</span> <span class="n">pt1_theta</span><span class="p">,</span> <span class="n">pt1_phi</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">pt1_x</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pt1_y</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pt1_z</span><span class="si">:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+pt1_r = 10
+pt1_theta = 45
+pt1_phi = 30
+pt1_x, pt1_y, pt1_z = spherical2cartesian(pt1_r, pt1_theta, pt1_phi)
+print(f&quot;({pt1_x:5.3f}, {pt1_y:5.3f}, {pt1_z:5.3f})&quot;)
 </pre></div>
 </div>
 </div>
@@ -577,9 +734,9 @@ aus einem Modul importiert. In unserem Beispiel erfolgt die Zuordnung der Argume
 und der Rückgabewerte einfach nach der Position. Die Möglichkeit, mit Hilfe von
 Schlüsselworten eine Zuordnung der Funktionsargumente vorzunehmen, werden wir in
 <a class="reference internal" href="#kwargs"><span class="std std-numref">Kapitel 5.7</span></a> besprechen.</p>
-</div>
-<div class="section" id="dokumentation-von-funktionen">
-<span id="dokumentation"></span><h2><span class="section-number">5.2. </span>Dokumentation von Funktionen<a class="headerlink" href="#dokumentation-von-funktionen" title="Link zu dieser Überschrift">¶</a></h2>
+</section>
+<section id="dokumentation-von-funktionen">
+<span id="dokumentation"></span><h2><span class="section-number">5.2. </span>Dokumentation von Funktionen<a class="headerlink" href="#dokumentation-von-funktionen" title="Link zu dieser Überschrift">#</a></h2>
 <p>Wie generell beim Programmieren ist es auch in Funktionen sinnvoll, an eine
 ausreichende Dokumentation zu denken. Dies könnte mit Hilfe von Kommentaren
 erfolgen, die in Python mit einem <code class="docutils literal notranslate"><span class="pre">#</span></code> eingeleitet werden. Andere
@@ -589,19 +746,19 @@ nämlich einen Dokumentationstext, den so genannten <em>docstring</em>, der dire
 die erste Zeile der Funktionsdefinition folgt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sqrt
 
-<span class="k">def</span> <span class="nf">mitternacht</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Berechne die beiden Lösungen einer quadratischen Gleichung ax²+bx+c=0</span>
+def mitternacht(a, b, c):
+    &quot;&quot;&quot;Berechne die beiden Lösungen einer quadratischen Gleichung ax²+bx+c=0
 
-<span class="sd">    Es wird die Mitternachtsformel verwendet.</span>
-<span class="sd">    Achtung: Es wird stillschweigend vorausgesetzt, dass b^2-4ac&gt;0.</span>
+    Es wird die Mitternachtsformel verwendet.
+    Achtung: Es wird stillschweigend vorausgesetzt, dass b^2-4ac&gt;0.
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">diskriminante</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">)</span>
-    <span class="n">root1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="n">diskriminante</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-    <span class="n">root2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">-</span><span class="n">diskriminante</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">root1</span><span class="p">,</span> <span class="n">root2</span>
+    &quot;&quot;&quot;
+    diskriminante = sqrt(b**2-4*a*c)
+    root1 = (-b+diskriminante)/(2*a)
+    root2 = (-b-diskriminante)/(2*a)
+    return root1, root2
 </pre></div>
 </div>
 </div>
@@ -613,7 +770,7 @@ der <code class="xref py py-func docutils literal notranslate"><span class="pre"
 kennengelernt hatten, wo <code class="docutils literal notranslate"><span class="pre">help(math)</span></code> die Dokumentation für das <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul ausgab.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">mitternacht</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>help(mitternacht)
 </pre></div>
 </div>
 </div>
@@ -630,10 +787,10 @@ mitternacht(a, b, c)
 </div>
 </div>
 <p>Hier wird man also in Python belohnt, wenn man sich einer guten Dokumentationspraxis bedient.</p>
-<p>Weitere Hinweis zu <em>docstrings</em> sind in <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0257"><strong>PEP 257</strong></a> zu finden.</p>
-</div>
-<div class="section" id="lokale-und-globale-variable">
-<h2><span class="section-number">5.3. </span>Lokale und globale Variable<a class="headerlink" href="#lokale-und-globale-variable" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Weitere Hinweis zu <em>docstrings</em> sind in <span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-0257/"><strong>PEP 257</strong></a> zu finden.</p>
+</section>
+<section id="lokale-und-globale-variable">
+<h2><span class="section-number">5.3. </span>Lokale und globale Variable<a class="headerlink" href="#lokale-und-globale-variable" title="Link zu dieser Überschrift">#</a></h2>
 <p>Nicht selten kommt es vor, dass Variablen inner- und außerhalb einer Funktion den gleichen
 Namen haben. Insbesondere bei Funktionen, die aus fremden Modulen, zum Beispiel aus der
 Python-Standardbibliothek, importiert werden, lassen sich solche Namensdoppelungen auch kaum
@@ -660,17 +817,17 @@ werden.</p>
 konkreten Beispiel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lokal:  x = </span><span class="si">{</span><span class="nb">locals</span><span class="p">()[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;global: x = </span><span class="si">{</span><span class="nb">globals</span><span class="p">()[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;global: y = </span><span class="si">{</span><span class="nb">globals</span><span class="p">()[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(x):
+    x = x+1
+    print(f&quot;lokal:  x = {locals()[&#39;x&#39;]}&quot;)
+    print(f&quot;global: x = {globals()[&#39;x&#39;]}&quot;)
+    print(f&quot;global: y = {globals()[&#39;y&#39;]}&quot;)
+    return x*y
 
-<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+x = 5
+y = 2
+print(f&quot;{f(3) = }&quot;)
+print(f&quot;{x = }&quot;)
 </pre></div>
 </div>
 </div>
@@ -715,40 +872,39 @@ auf der rechten Seite der zweiten Zeile des Funktionskörpers der Wert der lokal
 benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem <code class="docutils literal notranslate"><span class="pre">UnboundLocalError</span></code>.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(x):
+    x = x+1
+    y = y+1
+    return x*y
 
-<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+x = 5
+y = 2
+print(f&quot;{f(3) = }&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">d50cf0ed9a63</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="nn">&lt;ipython-input-13-d50cf0ed9a63&gt;</span> in <span class="ni">f</span><span class="nt">(x)</span>
+<span class="nn">Cell In[13], line 3,</span> in <span class="ni">f</span><span class="nt">(x)</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
 
 <span class="ne">UnboundLocalError</span>: local variable &#39;y&#39; referenced before assignment
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="rekursive-funktionen">
-<h2><span class="section-number">5.4. </span>Rekursive Funktionen<a class="headerlink" href="#rekursive-funktionen" title="Link zu dieser Überschrift">¶</a></h2>
+</section>
+<section id="rekursive-funktionen">
+<h2><span class="section-number">5.4. </span>Rekursive Funktionen<a class="headerlink" href="#rekursive-funktionen" title="Link zu dieser Überschrift">#</a></h2>
 <p>Darf man in einer Funktion die Funktion selbst wieder aufrufen? In Sprachen wie Python, C und
 modernen Versionen von Fortran ist dies möglich. In Fortran 77 musste man dafür noch in die
 Trickkiste greifen. Eine Funktion, die in sich selbst wieder aufgerufen wird, wenn auch mit
@@ -769,14 +925,14 @@ dadurch, dass die Fakultät von <span class="math notranslate nohighlight">\(1\)
 Produktdarstellung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fakultaet</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">produkt</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">produkt</span> <span class="o">=</span> <span class="n">produkt</span><span class="o">*</span><span class="n">k</span>
-    <span class="k">return</span> <span class="n">produkt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def fakultaet(n):
+    produkt = 1
+    for k in range(2, n+1):
+        produkt = produkt*k
+    return produkt
 
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fakultaet</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+for n in range(1, 10):
+    print(n, fakultaet(n))
 </pre></div>
 </div>
 </div>
@@ -797,16 +953,16 @@ Produktdarstellung.</p>
 <p>Alternativ kann man die Fakultät rekursiv implementieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Das Argument muss größer als Null sein.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def fakultaet_rekursiv(n):
+    if n &gt; 1:
+        return n*fakultaet_rekursiv(n-1)
+    elif n == 1:
+        return 1
+    else:
+        raise ValueError(&quot;Das Argument muss größer als Null sein.&quot;)
 
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+for n in range(1, 10):
+    print(n, fakultaet_rekursiv(n))
 </pre></div>
 </div>
 </div>
@@ -850,20 +1006,20 @@ funktioniert.</p>
 wenig.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;** Aufruf mit Argument </span><span class="si">{</span><span class="n">n</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-&gt; </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">! = </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ergebnis</span>
-    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">ergebnis</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-&gt; </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">! = </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ergebnis</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Das Argument muss größer gleich Eins sein.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def fakultaet_rekursiv(n):
+    print(f&quot;** Aufruf mit Argument {n = }&quot;)
+    if n &gt; 1:
+        ergebnis = n*fakultaet_rekursiv(n-1)
+        print(f&quot;-&gt; {n}! = {ergebnis}&quot;)
+        return ergebnis
+    elif n == 1:
+        ergebnis = 1
+        print(f&quot;-&gt; {n}! = {ergebnis}&quot;)
+        return ergebnis
+    else:
+        raise ValueError(&quot;Das Argument muss größer gleich Eins sein.&quot;)
 
-<span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+fakultaet_rekursiv(5)
 </pre></div>
 </div>
 </div>
@@ -877,9 +1033,7 @@ wenig.</p>
 -&gt; 2! = 2
 -&gt; 3! = 6
 -&gt; 4! = 24
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; 5! = 120
+-&gt; 5! = 120
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
@@ -890,10 +1044,10 @@ wenig.</p>
 <p>Hier wird deutlich, wie zunächst nacheinander die Funktion mit fallenden Argumenten aufgerufen
 wird und dann sukzessive die Resultate aufgebaut werden, nachdem das Ende der Rekursion
 erreicht wurde.</p>
-</div>
-<div class="section" id="funktionen-als-burger-erster-klasse">
-<span id="fccfunc"></span><h2><span class="section-number">5.5. </span>Funktionen als Bürger erster Klasse<a class="headerlink" href="#funktionen-als-burger-erster-klasse" title="Link zu dieser Überschrift">¶</a></h2>
-<div class="margin sidebar">
+</section>
+<section id="funktionen-als-burger-erster-klasse">
+<span id="fccfunc"></span><h2><span class="section-number">5.5. </span>Funktionen als Bürger erster Klasse<a class="headerlink" href="#funktionen-als-burger-erster-klasse" title="Link zu dieser Überschrift">#</a></h2>
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition-literaturverweis admonition">
 <p class="admonition-title">Literaturverweis</p>
@@ -901,7 +1055,7 @@ erreicht wurde.</p>
 1967 von Christopher Strachey eingeführt: C. Strachey, <a class="reference external" href="https://doi.org/10.1023/A:1010000313106">Higher-order Symb. Comput. <em>13</em>, 11
 (2000)</a></p>
 </div>
-</div>
+</aside>
 <p>In diesem Kapitel haben wir bis jetzt Funktionen definiert und diese aufgerufen. Die Funktion
 wurde dann ausgeführt, und wir haben ein Ergebnis erhalten. Diese Möglichkeiten, mit Funktionen
 zu arbeiten, kann man für alle Programmiersprachen erwarten. Es gibt jedoch Programmiersprachen,
@@ -915,12 +1069,12 @@ sie können als Argumente an Funktionen übergeben werden oder beispielsweise au
 Listen auftreten. Wir wollen dies an Beispielen illustrieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sin
 
-<span class="n">funktion</span> <span class="o">=</span> <span class="n">sin</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">funktion</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">funktion</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sin</span><span class="p">)</span>
+funktion = sin
+print(funktion(1), sin(1))
+print(funktion)
+print(sin)
 </pre></div>
 </div>
 </div>
@@ -944,13 +1098,13 @@ eingebaute Funktion <code class="docutils literal notranslate"><span class="pre"
 es keine Rolle, ob die betreffenden Funktionen importiert oder selbst definiert wurden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import cos, sin
 
-<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">4</span>
+def myfunc(x):
+    return x**2 - 4*x + 4
 
-<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span><span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">myfunc</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="si">:</span><span class="s2">6s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s2">8.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+for f in [cos, sin, myfunc]:
+    print(f&quot;{f.__name__:6s}: {f(1):8.6f}&quot;)
 </pre></div>
 </div>
 </div>
@@ -969,15 +1123,15 @@ Möglichkeiten. Wir wollen dies an einem Beispiel demonstrieren, das numerisch n
 Ableitung einer Funktion an einer vorgegebenen Stelle bestimmen soll.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import cos, sin
 
-<span class="k">def</span> <span class="nf">ableitung</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="mf">1e-7</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span>
+def ableitung(f, x):
+    h = 1e-7
+    df = (f(x+h)-f(x-h))/(2*h)
+    return df
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ableitung</span><span class="p">(</span><span class="n">sin</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ableitung</span><span class="p">(</span><span class="n">cos</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+print(f&quot;{ableitung(sin, 0) = }&quot;)
+print(f&quot;{ableitung(cos, 0) = }&quot;)
 </pre></div>
 </div>
 </div>
@@ -996,9 +1150,9 @@ Funktionsobjekts keine Klammern gesetzt werden dürfen.</p>
 festen Schrittweite nicht unbedingt ideal ist. Immerhin kommen alle Verbesserung des Codes der
 Auswertung der Ableitung von im Prinzip beliebigen Funktionen zugute. Im <a class="reference internal" href="#kwargs"><span class="std std-numref">Kapitel 5.7</span></a> werden
 wir dieses Beispiel noch weiter entwickeln.</p>
-</div>
-<div class="section" id="lambda-funktionen">
-<span id="lambdafunktionen"></span><h2><span class="section-number">5.6. </span>Lambda-Funktionen<a class="headerlink" href="#lambda-funktionen" title="Link zu dieser Überschrift">¶</a></h2>
+</section>
+<section id="lambda-funktionen">
+<span id="lambdafunktionen"></span><h2><span class="section-number">5.6. </span>Lambda-Funktionen<a class="headerlink" href="#lambda-funktionen" title="Link zu dieser Überschrift">#</a></h2>
 <p>Im <a class="reference internal" href="#fdef"><span class="std std-numref">Kapitel 5.1</span></a> hatten wir Beispiele für Funktionen kennengelernt, bei denen die Bestimmung der
 Ergebnisses in einer einzelnen Codezeile erfolgte. Bei machen Gelegenheiten erscheint dann die
 vollständige Definition einer Funktion als unnötig aufwändig. Tatsächlich erlauben es die
@@ -1009,9 +1163,9 @@ als Variablenname verwendet werden kann. Ein Beispiel soll die Definition einer 
 illustrieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadrat</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">potenz</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="n">y</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">quadrat</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">potenz</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>quadrat = lambda x: x**2
+potenz = lambda x, y: x**y
+print(quadrat(9), potenz(3, 4))
 </pre></div>
 </div>
 </div>
@@ -1031,12 +1185,12 @@ So werden hier das Quadrat (<code class="docutils literal notranslate"><span cla
 <code class="docutils literal notranslate"><span class="pre">potenz</span></code> definiert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">potenz</span><span class="p">(</span><span class="n">exponent</span><span class="p">):</span>
-    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="n">exponent</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def potenz(exponent):
+    return lambda x: x**exponent
 
-<span class="n">square</span> <span class="o">=</span> <span class="n">potenz</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">cubic</span> <span class="o">=</span> <span class="n">potenz</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">cubic</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+square = potenz(2)
+cubic = potenz(3)
+print(square(5), cubic(5))
 </pre></div>
 </div>
 </div>
@@ -1051,12 +1205,12 @@ Funktionen nützlich sein, wenn man die Ableitung einer selbst definierten Funkt
 berechnen möchte. In dem folgenden Beispiel soll die Ableitung von <span class="math notranslate nohighlight">\(f(x)=x^3\)</span> berechnet werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ableitung</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="mf">1e-7</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ableitung(f, x):
+    h = 1e-7
+    df = (f(x+h)-f(x-h))/(2*h)
+    return df
 
-<span class="nb">print</span><span class="p">(</span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+print(ableitung(lambda x: x**3, 1))
 </pre></div>
 </div>
 </div>
@@ -1071,9 +1225,9 @@ Funktion kann das erste Argument einfach in Form einer anonymen Funktion oder La
 angegeben werden, ohne dass eine separate Funktion in der üblichen Weise definiert werden müsste.
 Auf diese Weise erhalten wir hier eine numerische Näherung für die Ableitung der dritten Potenz an
 der Stelle <span class="math notranslate nohighlight">\(1\)</span>.</p>
-</div>
-<div class="section" id="schlusselworte-und-defaultwerte">
-<span id="kwargs"></span><h2><span class="section-number">5.7. </span>Schlüsselworte und Defaultwerte<a class="headerlink" href="#schlusselworte-und-defaultwerte" title="Link zu dieser Überschrift">¶</a></h2>
+</section>
+<section id="schlusselworte-und-defaultwerte">
+<span id="kwargs"></span><h2><span class="section-number">5.7. </span>Schlüsselworte und Defaultwerte<a class="headerlink" href="#schlusselworte-und-defaultwerte" title="Link zu dieser Überschrift">#</a></h2>
 <p>Am Ende von <a class="reference internal" href="#fdef"><span class="std std-numref">Kapitel 5.1</span></a> hatten wir gezeigt, dass bei Funktionsaufrufen mit mehreren Argumenten
 die Zuordnung nicht nach dem Namen erfolgt, sondern zunächst einmal nach der Position der jeweiligen
 Argumente.  Dies ist jedoch insbesondere in Fällen, in denen die Argumentliste sehr lange wird,
@@ -1090,10 +1244,10 @@ zu verdeutlichen, greifen wir auf die Funktion zurück, die wir am Ende des letz
 numerischen Berechnung von Ableitungen eingeführt hatten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ableitung</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="mf">1e-7</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ableitung(f, x):
+    h = 1e-7
+    df = (f(x+h)-f(x-h))/(2*h)
+    return df
 </pre></div>
 </div>
 </div>
@@ -1101,7 +1255,7 @@ numerischen Berechnung von Ableitungen eingeführt hatten.</p>
 <p>In dem zuvor beschriebenen Funktionsaufruf</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ableitung(lambda x: x**3, 1)
 </pre></div>
 </div>
 </div>
@@ -1116,7 +1270,7 @@ zugeordnet. Alternativ kann man die Argumente mit den in der Funktion verwendete
 Ein mögliche Form des Funktionsaufrufs wäre dann</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ableitung(f=lambda x: x**3, x=1)
 </pre></div>
 </div>
 </div>
@@ -1131,7 +1285,7 @@ nun über die angegebenen Bezeichner. Daher könnte man genauso gut die Reihenfo
 Argumente vertauschen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ableitung(x=1, f=lambda x: x**3)
 </pre></div>
 </div>
 </div>
@@ -1143,7 +1297,7 @@ Argumente vertauschen.</p>
 </div>
 <div class="admonition-hinweis-zur-formatierung admonition">
 <p class="admonition-title">Hinweis zur Formatierung</p>
-<p><span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> empfiehlt, um Gleichheitszeichen in Zuweisungen Leerzeichen zu setzen. Anders
+<p><span class="target" id="index-1"></span><a class="pep reference external" href="https://peps.python.org/pep-0008/"><strong>PEP 8</strong></a> empfiehlt, um Gleichheitszeichen in Zuweisungen Leerzeichen zu setzen. Anders
 ist dies bei Schlüsselwortargumenten. Hier sollen um das Gleichheitszeichen keine Leerzeichen
 gesetzt.</p>
 </div>
@@ -1153,8 +1307,8 @@ zu tun. Noch sorgfältiger muss man in dem folgenden Funktionsaufruf die verschi
 unterscheiden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">ableitung</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
+ableitung(x=x, f=lambda x: x**3)
 </pre></div>
 </div>
 </div>
@@ -1181,9 +1335,9 @@ kommt, wenn nichts anderes gesagt wird. Ein verbesserte Variante der Ableitungsf
 wie folgt aussehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ableitung</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">):</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ableitung(f, x, h=1e-7):
+    df = (f(x+h)-f(x-h))/(2*h)
+    return df
 </pre></div>
 </div>
 </div>
@@ -1193,7 +1347,7 @@ Aufrufe übernehmen, wobei dann der Wert für <code class="docutils literal notr
 sich also nicht darüber beschweren, dass <code class="docutils literal notranslate"><span class="pre">h</span></code> nicht definiert sei.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ableitung(lambda x: x**3, 1)
 </pre></div>
 </div>
 </div>
@@ -1206,8 +1360,8 @@ sich also nicht darüber beschweren, dass <code class="docutils literal notransl
 <p>Man kann aber auch den Wert von <code class="docutils literal notranslate"><span class="pre">h</span></code> vorgeben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(1, 8):
+    print(ableitung(lambda x: x**3, 1, 10**-n))
 </pre></div>
 </div>
 </div>
@@ -1227,8 +1381,8 @@ sich also nicht darüber beschweren, dass <code class="docutils literal notransl
 auch Schlüsselwortargumente verwenden, zum Beispiel in der Form</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(1, 8):
+    print(ableitung(lambda x: x**3, h=10**-n, x=1))
 </pre></div>
 </div>
 </div>
@@ -1248,12 +1402,12 @@ auch Schlüsselwortargumente verwenden, zum Beispiel in der Form</p>
 entfallen kann, da sonst die Zuordnung nicht eindeutig ist.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ableitung(lambda x: x**3, h=10**-n, 1)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-32-623220036647&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
     <span class="n">ableitung</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
                                          <span class="o">^</span>
 <span class="ne">SyntaxError</span>: positional argument follows keyword argument
@@ -1275,13 +1429,13 @@ ist es problemlos möglich, nur eines der Argumente zu modifizieren ohne
 die in der Argumentliste davor stehenden Argumente angeben zu müssen.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
-<span class="n">help</span><span class="p">(</span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from scipy import integrate
+help(integrate.quad)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function quad in module scipy.integrate.quadpack:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function quad in module scipy.integrate._quadpack_py:
 
 quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=50, points=None, weight=None, wvar=None, wopts=None, maxp1=50, limlst=50)
     Compute a definite integral.
@@ -1330,7 +1484,6 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         An estimate of the absolute error in the result.
     infodict : dict
         A dictionary containing additional information.
-        Run scipy.integrate.quad_explain() for more information.
     message
         A convergence message.
     explain
@@ -1380,7 +1533,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     quadrature : adaptive Gaussian quadrature
     odeint : ODE integrator
     ode : ODE integrator
-    simps : integrator for sampled data
+    simpson : integrator for sampled data
     romb : integrator for sampled data
     scipy.special : for coefficients and roots of orthogonal polynomials
     
@@ -1515,6 +1668,91 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         ``infodict[&#39;rslist&#39;]``.  See the explanation dictionary (last entry
         in the output tuple) for the meaning of the codes.
     
+    
+    **Details of QUADPACK level routines**
+    
+    `quad` calls routines from the FORTRAN library QUADPACK. This section
+    provides details on the conditions for each routine to be called and a
+    short description of each routine. The routine called depends on
+    `weight`, `points` and the integration limits `a` and `b`.
+    
+    ================  ==============  ==========  =====================
+    QUADPACK routine  `weight`        `points`    infinite bounds
+    ================  ==============  ==========  =====================
+    qagse             None            No          No
+    qagie             None            No          Yes
+    qagpe             None            Yes         No
+    qawoe             &#39;sin&#39;, &#39;cos&#39;    No          No
+    qawfe             &#39;sin&#39;, &#39;cos&#39;    No          either `a` or `b`
+    qawse             &#39;alg*&#39;          No          No
+    qawce             &#39;cauchy&#39;        No          No
+    ================  ==============  ==========  =====================
+    
+    The following provides a short desciption from [1]_ for each
+    routine.
+    
+    qagse
+        is an integrator based on globally adaptive interval
+        subdivision in connection with extrapolation, which will
+        eliminate the effects of integrand singularities of
+        several types.
+    qagie
+        handles integration over infinite intervals. The infinite range is
+        mapped onto a finite interval and subsequently the same strategy as
+        in ``QAGS`` is applied.
+    qagpe
+        serves the same purposes as QAGS, but also allows the
+        user to provide explicit information about the location
+        and type of trouble-spots i.e. the abscissae of internal
+        singularities, discontinuities and other difficulties of
+        the integrand function.
+    qawoe
+        is an integrator for the evaluation of
+        :math:`\int^b_a \cos(\omega x)f(x)dx` or
+        :math:`\int^b_a \sin(\omega x)f(x)dx`
+        over a finite interval [a,b], where :math:`\omega` and :math:`f`
+        are specified by the user. The rule evaluation component is based
+        on the modified Clenshaw-Curtis technique
+    
+        An adaptive subdivision scheme is used in connection
+        with an extrapolation procedure, which is a modification
+        of that in ``QAGS`` and allows the algorithm to deal with
+        singularities in :math:`f(x)`.
+    qawfe
+        calculates the Fourier transform
+        :math:`\int^\infty_a \cos(\omega x)f(x)dx` or
+        :math:`\int^\infty_a \sin(\omega x)f(x)dx`
+        for user-provided :math:`\omega` and :math:`f`. The procedure of
+        ``QAWO`` is applied on successive finite intervals, and convergence
+        acceleration by means of the :math:`\varepsilon`-algorithm is applied
+        to the series of integral approximations.
+    qawse
+        approximate :math:`\int^b_a w(x)f(x)dx`, with :math:`a &lt; b` where
+        :math:`w(x) = (x-a)^{\alpha}(b-x)^{\beta}v(x)` with
+        :math:`\alpha,\beta &gt; -1`, where :math:`v(x)` may be one of the
+        following functions: :math:`1`, :math:`\log(x-a)`, :math:`\log(b-x)`,
+        :math:`\log(x-a)\log(b-x)`.
+    
+        The user specifies :math:`\alpha`, :math:`\beta` and the type of the
+        function :math:`v`. A globally adaptive subdivision strategy is
+        applied, with modified Clenshaw-Curtis integration on those
+        subintervals which contain `a` or `b`.
+    qawce
+        compute :math:`\int^b_a f(x) / (x-c)dx` where the integral must be
+        interpreted as a Cauchy principal value integral, for user specified
+        :math:`c` and :math:`f`. The strategy is globally adaptive. Modified
+        Clenshaw-Curtis integration is used on those intervals containing the
+        point :math:`x = c`.
+    
+    References
+    ----------
+    
+    .. [1] Piessens, Robert; de Doncker-Kapenga, Elise;
+           Überhuber, Christoph W.; Kahaner, David (1983).
+           QUADPACK: A subroutine package for automatic integration.
+           Springer-Verlag.
+           ISBN 978-3-540-12553-2.
+    
     Examples
     --------
     Calculate :math:`\int^4_0 x^2 dx` and compare with an analytic result
@@ -1532,7 +1770,9 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     &gt;&gt;&gt; integrate.quad(invexp, 0, np.inf)
     (1.0, 5.842605999138044e-11)
     
-    &gt;&gt;&gt; f = lambda x,a : a*x
+    Calculate :math:`\int^1_0 a x \,dx` for :math:`a = 1, 3`
+    
+    &gt;&gt;&gt; f = lambda x, a: a*x
     &gt;&gt;&gt; y, err = integrate.quad(f, 0, 1, args=(1,))
     &gt;&gt;&gt; y
     0.5
@@ -1577,8 +1817,8 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1602,36 +1842,48 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="kontrollstrukturen.html" title="zurück Seite">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">zurück</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Kontrollstrukturen</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="sequenzen.html" title="weiter Seite">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Zusammengesetzte Datentypen</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="kontrollstrukturen.html" title="previous page"><span class="section-number">4. </span>Kontrollstrukturen</a>
-    <a class='right-next' id="next-link" href="sequenzen.html" title="next page"><span class="section-number">6. </span>Zusammengesetzte Datentypen</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gert-Ludwig Ingold<br/>
+  
+      &copy; Copyright CC-BY.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Gert-Ludwig Ingold<br/>
-        
-            &copy; Copyright 2020, 2021.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>
