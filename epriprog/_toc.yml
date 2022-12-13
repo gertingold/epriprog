@@ -1,15 +1,17 @@
-- file: intro.md
+format: jb-book
+root: intro
+options:
   numbered: true
-
-- file: einleitung.md
-- file: vorschau.md
-- file: datentypen.md
-- file: kontrollstrukturen.md
-- file: funktionen.md
-- file: sequenzen.md
-- file: einausgabe.md
-- file: scipy.md
-- file: objektorientiert.md
-- file: zahlensysteme.md
-- file: floats.md
-- file: unicode.md
+chapters:
+  - file: einleitung
+  - file: vorschau
+  - file: datentypen
+  - file: kontrollstrukturen
+  - file: funktionen
+  - file: sequenzen
+  - file: einausgabe
+  - file: scipy
+  - file: objektorientiert
+  - file: zahlensysteme
+  - file: floats
+  - file: unicode
