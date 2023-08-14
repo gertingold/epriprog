@@ -359,16 +359,6 @@ Python-Entwicklungsumgebung Spyder
 
 ## Literatur
 
-- Gert-Ludwig Ingold, Vorlesungsmanuskript »Einführung in Prinzipien der Programmierung«
-
-  Das Vorlesungsmanuskript, das Sie gerade ansehen, befindet sich derzeit noch im Entstehen.
-
-  Als übergangsweise Ausweichlösung kann das Manuskript zu der Vorgängervorlesung
-  »Einführung in das Programmieren für Physiker und Materialwissenschaftler« genutzt
-  werden, das [online](http://gertingold.github.io/eidprog/) verfügbar ist. Eine
-  [PDF-Version](http://gertingold.github.io/eidprog/_downloads/eidprog.pdf) kann
-  frei heruntergeladen werden.
-
 - [www.python.org](http://www.python.org/)
 
   Dies ist die offizielle Python-Webseite. Dort gibt es z.B. die Software zum Herunterladen, 

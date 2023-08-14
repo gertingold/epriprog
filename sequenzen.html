@@ -711,7 +711,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140519664848768 140519664848768
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140272768817024 140272768817024
 </pre></div>
 </div>
 </div>
@@ -742,7 +742,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140519664848832 140519664875136
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140272768928896 140272768956608
 </pre></div>
 </div>
 </div>
@@ -1074,9 +1074,6 @@ bereits gefundenen Listenelement zu beschränken.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index: 5  Wert: 2
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <p>Kommt das gesuchte Element nicht in der Liste vor, so erhält man einen <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
@@ -1159,8 +1156,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 35, 62, 22, 72, 55, 65, 20, 27, 1, 52, 1, 50, 48, 74, 42, 58, 90, 31, 17]
-[1, 1, 10, 17, 20, 22, 27, 31, 35, 42, 48, 50, 52, 55, 58, 62, 65, 72, 74, 90]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[54, 97, 50, 61, 77, 48, 27, 6, 11, 55, 67, 96, 31, 91, 24, 64, 94, 53, 18, 18]
+[6, 11, 18, 18, 24, 27, 31, 48, 50, 53, 54, 55, 61, 64, 67, 77, 91, 94, 96, 97]
 </pre></div>
 </div>
 </div>
@@ -1178,8 +1175,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[31, 67, 77, 29, 69, 58, 74, 21, 9, 25, 81, 45, 60, 10, 77, 7, 95, 80, 25, 96]
-[60, 10, 80, 31, 21, 81, 74, 25, 45, 95, 25, 96, 67, 77, 77, 7, 58, 29, 69, 9]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[27, 49, 89, 98, 29, 31, 38, 61, 24, 100, 75, 81, 84, 27, 2, 68, 76, 11, 46, 74]
+[100, 31, 61, 81, 11, 2, 24, 84, 74, 75, 76, 46, 27, 27, 98, 38, 68, 49, 89, 29]
 </pre></div>
 </div>
 </div>
@@ -1209,10 +1206,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140519664880960
-id(mytuple2) = 140519788201280
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140272774286592
+id(mytuple2) = 140272774286144
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 140519665174064
+id(mytuple1) = 140272769113104
 </pre></div>
 </div>
 </div>
@@ -1551,8 +1548,8 @@ erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140519665149424 | id(s2) = 140519665151024
-id(s1) = 140519665176768
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140272769288496 | id(s2) = 140272769287024
+id(s1) = 140272768742176
 </pre></div>
 </div>
 </div>
@@ -1634,9 +1631,7 @@ wie wir in <a class="reference internal" href="kontrollstrukturen.html#exception
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+1
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -1749,9 +1744,7 @@ ungerade Anzahl von Stellen haben.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12345678
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------
+--------
   2468  
 </pre></div>
 </div>
@@ -1811,6 +1804,9 @@ einschließen. Diese Notation ist analog zur Indizierung von Listen mit Hilfe vo
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1.008, &#39;He&#39;: 4.002602, &#39;Li&#39;: 6.94, &#39;Be&#39;: 9.0121831, &#39;B&#39;: 10.81}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
