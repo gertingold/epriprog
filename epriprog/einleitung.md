@@ -375,7 +375,7 @@ Python-Entwicklungsumgebung Spyder
 
 ## Python-Version
 
-Python befindet sich in aktiver Entwicklung, wobei jedes Jahr eine neue Unterversion
+Python befindet sich in aktiver Entwicklung, wobei jährlich eine neue Unterversion
 veröffentlicht wird. Jede Version wird über fünf Jahre bei Bedarf mit Fehlerkorrekturen
 versorgt. Aktuell ist Python 3.8 die älteste Version, die noch unterstützt wird. Von
 ganz wenigen Ausnahmen abgesehen, auf die dann besonders hingewiesen wird, ist der
