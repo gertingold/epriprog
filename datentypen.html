@@ -1428,7 +1428,7 @@ NAME
     math
 
 MODULE REFERENCE
-    https://docs.python.org/3.9/library/math
+    https://docs.python.org/3.11/library/math.html
     
     The following documentation is automatically generated from the Python
     source files.  It may be incomplete, incorrect or include features that
@@ -1469,6 +1469,9 @@ FUNCTIONS
     
     atanh(x, /)
         Return the inverse hyperbolic tangent of x.
+    
+    cbrt(x, /)
+        Return the cube root of x.
     
     ceil(x, /)
         Return the ceiling of x as an Integral.
@@ -1521,6 +1524,9 @@ FUNCTIONS
     exp(x, /)
         Return e raised to the power of x.
     
+    exp2(x, /)
+        Return 2 raised to the power of x.
+    
     expm1(x, /)
         Return exp(x)-1.
         
@@ -1529,8 +1535,8 @@ FUNCTIONS
     fabs(x, /)
         Return the absolute value of the float x.
     
-    factorial(x, /)
-        Find x!.
+    factorial(n, /)
+        Find n!.
         
         Raise a ValueError if x is negative or non-integral.
     
@@ -1709,7 +1715,7 @@ DATA
     tau = 6.283185307179586
 
 FILE
-    /opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/lib-dynload/math.cpython-39-x86_64-linux-gnu.so
+    /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/lib-dynload/math.cpython-311-x86_64-linux-gnu.so
 </pre></div>
 </div>
 </div>
@@ -2254,7 +2260,7 @@ Python verwenden könnte.</p>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
 
-<span class="ne">TypeError</span>: can&#39;t convert complex to float
+<span class="ne">TypeError</span>: must be real number, not complex
 </pre></div>
 </div>
 </div>
@@ -2275,7 +2281,7 @@ NAME
     cmath
 
 MODULE REFERENCE
-    https://docs.python.org/3.9/library/cmath
+    https://docs.python.org/3.11/library/cmath.html
     
     The following documentation is automatically generated from the Python
     source files.  It may be incomplete, incorrect or include features that
@@ -2345,7 +2351,7 @@ FUNCTIONS
     log(...)
         log(z[, base]) -&gt; the logarithm of z to the given base.
         
-        If the base not specified, returns the natural logarithm (base e) of z.
+        If the base is not specified, returns the natural logarithm (base e) of z.
     
     log10(z, /)
         Return the base-10 logarithm of z.
@@ -2386,7 +2392,7 @@ DATA
     tau = 6.283185307179586
 
 FILE
-    /opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/lib-dynload/cmath.cpython-39-x86_64-linux-gnu.so
+    /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/lib-dynload/cmath.cpython-311-x86_64-linux-gnu.so
 </pre></div>
 </div>
 </div>
@@ -2576,14 +2582,13 @@ können, ist das Ergebnis der reservierten Schlüsselwörter.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False           None            True            __peg_parser__  and             
-as              assert          async           await           break           
-class           continue        def             del             elif            
-else            except          finally         for             from            
-global          if              import          in              is              
-lambda          nonlocal        not             or              pass            
-raise           return          try             while           with            
-yield           
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False           None            True            and             as              
+assert          async           await           break           class           
+continue        def             del             elif            else            
+except          finally         for             from            global          
+if              import          in              is              lambda          
+nonlocal        not             or              pass            raise           
+return          try             while           with            yield           
 </pre></div>
 </div>
 </div>
@@ -3107,10 +3112,7 @@ Zeichenkette das gleiche Zeichen verwendet wird.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Näherung für π/3:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1.0471966666666666
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Näherung für π/3: 1.0471966666666666
 </pre></div>
 </div>
 </div>
@@ -3127,9 +3129,6 @@ Beispiel wäre eine Beschränkung auf fünf Nachkommastellen sinnvoll.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Näherung für π/3: 1.04720
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3291,7 +3290,9 @@ nichts ausgegeben wie die folgenden Beispiele zeigen.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|+1.41|
-|-1.41|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|-1.41|
 | 1.41|
 |-1.41|
 |1.41|
@@ -3337,7 +3338,9 @@ an Stelle des bisherigen <code class="docutils literal notranslate"><span class=
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|1.41421356e+00|
-|1.4142e+00|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|1.4142e+00|
 |1.41421356e-07|
 |      1.41421356e+00|
 </pre></div>
@@ -3373,7 +3376,9 @@ erreicht man durch Angabe des Buchstabens <code class="docutils literal notransl
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|  1.4142136e-05|
-|  0.00014142136|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|  0.00014142136|
 |       14142136|
 |  1.4142136e+08|
 </pre></div>
@@ -3396,6 +3401,9 @@ nachlesen, die auch alle weiteren Aspekte der Formatierung detailliert beschreib
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|42|   42|00042|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

@@ -829,7 +829,7 @@ wandern und nur zweimal ausgeführt werden.</p>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">arg1</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">5</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">&amp;</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">arg1</span><span class="o">|</span><span class="n">arg2</span><span class="si">!s:</span><span class="s2">^11</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="o">^</span>
-<span class="ne">IndentationError</span>: expected an indented block
+<span class="ne">IndentationError</span>: expected an indented block after &#39;for&#39; statement on line 4
 </pre></div>
 </div>
 </div>
@@ -972,7 +972,7 @@ nämlich 6, etwas abweicht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.00021
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.99519
 </pre></div>
 </div>
 </div>
@@ -1703,11 +1703,11 @@ wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ergebnis für n_self = 1 und n_other = 1: 0
-Ergebnis für n_self = 2 und n_other = 2: 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = -1 und n_other = 0 müssen beide zwischen 0 und 2 liegen.
+n_self = 3 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+n_self = 0 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
 Ergebnis für n_self = 2 und n_other = 0: 2
-n_self = 3 und n_other = 1 müssen beide zwischen 0 und 2 liegen.
-n_self = 3 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
+n_self = -1 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
 </pre></div>
 </div>
 </div>

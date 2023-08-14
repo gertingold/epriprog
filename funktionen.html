@@ -897,7 +897,7 @@ benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem <code cl
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
 
-<span class="ne">UnboundLocalError</span>: local variable &#39;y&#39; referenced before assignment
+<span class="ne">UnboundLocalError</span>: cannot access local variable &#39;y&#39; where it is not associated with a value
 </pre></div>
 </div>
 </div>
@@ -1388,7 +1388,9 @@ auch Schlüsselwortargumente verwenden, zum Beispiel in der Form</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0100000000000016
-3.0001000000000055
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0001000000000055
 3.0000009999998634
 3.0000000099994484
 3.000000000097369
