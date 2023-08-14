@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>10. Anhang: Zahlensysteme &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -45,6 +45,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -367,7 +368,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="anhang-zahlensysteme">
-<span id="id1"></span><h1><span class="section-number">10. </span>Anhang: Zahlensysteme<a class="headerlink" href="#anhang-zahlensysteme" title="Link zu dieser Überschrift">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">10. </span>Anhang: Zahlensysteme<a class="headerlink" href="#anhang-zahlensysteme" title="Permalink to this heading">#</a></h1>
 <p>Im Alltag sind wir es gewohnt, Zahlen im Dezimalsystems anzugeben, das zehn
 Ziffern benötigt. Da ein Computer Information nur in Form von Bits, die die
 Werte Null oder Eins annehmen können, speichern kann, stehen zunächst nur zwei
@@ -387,7 +388,7 @@ verwendet, die auch auf in C oder Fortran geschriebenen Programmen basieren.
 Daher werden wir uns in <a class="reference internal" href="#integertypes"><span class="std std-numref">Kapitel 10.3</span></a> verschiedene Arten von Integers
 und die zugehörigen Zahlenbereiche ansehen.</p>
 <section id="dualsystem">
-<span id="id2"></span><h2><span class="section-number">10.1. </span>Dualsystem<a class="headerlink" href="#dualsystem" title="Link zu dieser Überschrift">#</a></h2>
+<span id="id2"></span><h2><span class="section-number">10.1. </span>Dualsystem<a class="headerlink" href="#dualsystem" title="Permalink to this heading">#</a></h2>
 <p>Bevor wir uns mit dem Dualsystem beschäftigen, ist es sinnvoll, sich noch einmal
 die Funktionsweise des gewohnten Dezimalsystems zu vergegenwärtigen. Die durch
 Ziffern markierten Stellen entsprechen von hinten nach vorne gelesen den Einern,
@@ -463,7 +464,7 @@ Dabei kann es nützlich sein, an geometrische Reihen zu denken.</p>
 </div>
 </section>
 <section id="hexadezimalsystem">
-<span id="id3"></span><h2><span class="section-number">10.2. </span>Hexadezimalsystem<a class="headerlink" href="#hexadezimalsystem" title="Link zu dieser Überschrift">#</a></h2>
+<span id="id3"></span><h2><span class="section-number">10.2. </span>Hexadezimalsystem<a class="headerlink" href="#hexadezimalsystem" title="Permalink to this heading">#</a></h2>
 <p>In der Praxis hat das Dualsystem den Nachteil, dass die Zahlen relativ schwer lesbar sind.
 Zum einen enthalten Binärzahlen lediglich die Ziffern 0 und 1 und zudem sind sie etwa
 3,3-mal so lang wie die entsprechende Dezimaldarstellung. Daher fasst man häufig vier Bits
@@ -471,11 +472,11 @@ zusammen, die dann die Ziffern von 0 bis 15 darstellen können. Auf diese Weise 
 das Hexadezimalsystem, das die Basis 16 benutzt. In diesem System benutzt man wie gewohnt
 die Ziffern 0 bis 9 und fährt dann mit den Buchstaben A bis F fort. Dabei spielt es
 keine Rolle, ob diese Buchstaben klein- oder großgeschrieben sind.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p>Dualsystem</p></th>
-<th class="text-center head"><p>Dezimalsystem</p></th>
-<th class="text-center head"><p>Hexadezimalsystem</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Dualsystem</p></th>
+<th class="head text-center"><p>Dezimalsystem</p></th>
+<th class="head text-center"><p>Hexadezimalsystem</p></th>
 </tr>
 </thead>
 <tbody>
@@ -613,7 +614,7 @@ der Basis 8 arbeiten kann, in dem die Ziffern zwischen 0 und 7 liegen. Allerding
 das Hexadezimalsystem zur Angabe von Bytes am geeignetsten.</p>
 </section>
 <section id="verschiedene-arten-von-integers">
-<span id="integertypes"></span><h2><span class="section-number">10.3. </span>Verschiedene Arten von Integers<a class="headerlink" href="#verschiedene-arten-von-integers" title="Link zu dieser Überschrift">#</a></h2>
+<span id="integertypes"></span><h2><span class="section-number">10.3. </span>Verschiedene Arten von Integers<a class="headerlink" href="#verschiedene-arten-von-integers" title="Permalink to this heading">#</a></h2>
 <p>Nachdem wir nun mit dem Dual- und dem Hexadezimalsystem vertraut sind, können wir uns
 verschiedenen Arten von Integers und den von ihnen abgedeckten Zahlenbereichen zuwenden.</p>
 <p>Zunächst kann man sich fragen, warum nicht alle Programmiersprachen zumindest
@@ -824,13 +825,6 @@ verwendet. Die einzelnen Bezeichnungen können in anderen Programmiersprachen
 unter Umständen abweichend definiert sein.</p>
 <table class="table" id="table-ints">
 <caption><span class="caption-number">Tab. 10.1 </span><span class="caption-text">Integerformate wie sie von Pythons <a class="reference external" href="https://docs.python.org/3/library/struct.html">struct-Modul</a> verwendet werden</span><a class="headerlink" href="#table-ints" title="Link zu dieser Tabelle">#</a></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Format</p></th>

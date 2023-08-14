@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>4. Kontrollstrukturen &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -45,6 +45,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -368,7 +369,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="kontrollstrukturen">
-<h1><span class="section-number">4. </span>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Link zu dieser Überschrift">#</a></h1>
+<h1><span class="section-number">4. </span>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Permalink to this heading">#</a></h1>
 <p>Im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir bereits kurz die Möglichkeit angesprochen, den
 Ablauf eines Programms zu beeinflussen, sei es dadurch, dass ein Programmteil
 in einer Schleife mehrfach ausgeführt wird oder dass ein Programmteil nur dann
@@ -387,7 +388,7 @@ nicht zwingend zum Abbruch des Programms führen, sondern sie können geeignet
 behandelt werden. Diesen Aspekt der Steuerung des Programmablaufs werden wir im
 letzten Abschnitt dieses Kapitels kennenlernen.</p>
 <section id="for-schleife">
-<span id="forloop"></span><h2><span class="section-number">4.1. </span>For-Schleife<a class="headerlink" href="#for-schleife" title="Link zu dieser Überschrift">#</a></h2>
+<span id="forloop"></span><h2><span class="section-number">4.1. </span>For-Schleife<a class="headerlink" href="#for-schleife" title="Permalink to this heading">#</a></h2>
 <p>Sollen bestimmte Anweisungen mehrfach ausgeführt werden, wobei die Anzahl der
 Wiederholungen zuvor bestimmt werden kann, bietet sich die Verwendung einer
 <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife an. Gegenüber der expliziten Wiederholung von Befehlen ergeben
@@ -822,7 +823,7 @@ Abarbeitung der Schleife zur Verfügung steht. Sie hat dabei den Wert, der ihr z
 zugewiesen wurde, in unserem Fall also <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </section>
 <section id="while-schleife">
-<span id="whileloop"></span><h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Link zu dieser Überschrift">#</a></h2>
+<span id="whileloop"></span><h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Permalink to this heading">#</a></h2>
 <p>Bei der gerade besprochenen <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife kennt man im Vorhinein die Zahl der
 Durchläufe. Dies ist jedoch nicht immer der Fall. Gelegentlich möchte man eine
 Schleife ausführen, so lange eine bestimmte Bedingung erfüllt ist. Einen eher
@@ -855,7 +856,10 @@ nun den Computer heranziehen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/87d38c5836f82ea023e331108291182d1d02f074419eace5b53fe5000c6be2fe.png" src="_images/87d38c5836f82ea023e331108291182d1d02f074419eace5b53fe5000c6be2fe.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+</pre></div>
+</div>
+<img alt="_images/d1bae1b273148a39d8e75333c73b6d4d8aa06ebe7ee167fa7aef4b22059037fb.png" src="_images/d1bae1b273148a39d8e75333c73b6d4d8aa06ebe7ee167fa7aef4b22059037fb.png" />
 </div>
 </div>
 <p>Bei der Besprechung des Codes wollen wir uns auf die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">wait_for_six()</span></code>
@@ -927,7 +931,7 @@ nämlich 6, etwas abweicht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.99937
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.00527
 </pre></div>
 </div>
 </div>
@@ -993,7 +997,7 @@ Drücken der Taste <code class="docutils literal notranslate"><span class="pre">
 Schleife fortzusetzen.</p>
 </section>
 <section id="verzweigungen">
-<span id="ifelse"></span><h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link zu dieser Überschrift">#</a></h2>
+<span id="ifelse"></span><h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Permalink to this heading">#</a></h2>
 <p>Eine andere Art von Kontrollstruktur, die nicht die Wiederholung von Programmcode
 regelt, sondern vielmehr auf der Basis einer gegebenen Bedingung entscheidet,
 welcher Code ausgeführt wird, sind Verzweigungen.</p>
@@ -1526,7 +1530,7 @@ vielen Fällen kann man aber einen zusammengesetzten Datentyp, das so genannte <
 im <a class="reference internal" href="sequenzen.html#dictionaries"><span class="std std-numref">Kapitel 6.4</span></a> genauer besprechen werden.</p>
 </section>
 <section id="abfangen-von-ausnahmen">
-<span id="exceptions"></span><h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Link zu dieser Überschrift">#</a></h2>
+<span id="exceptions"></span><h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Permalink to this heading">#</a></h2>
 <p>In <a class="reference internal" href="datentypen.html#float"><span class="std std-numref">Kapitel 3.2</span></a> hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
 Ausnahme oder <em>exception</em> reagiert, dem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>. Unbehandelt führt eine solche Ausnahme zur
 Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
@@ -1658,11 +1662,11 @@ wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = 2 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
-n_self = 1 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
-Ergebnis für n_self = 1 und n_other = 1: 0
-Ergebnis für n_self = 1 und n_other = 1: 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ergebnis für n_self = 1 und n_other = 1: 0
+n_self = 0 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
 Ergebnis für n_self = 0 und n_other = 1: 2
+Ergebnis für n_self = 0 und n_other = 2: 1
+Ergebnis für n_self = 1 und n_other = 0: 1
 </pre></div>
 </div>
 </div>

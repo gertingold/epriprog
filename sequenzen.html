@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>6. Zusammengesetzte Datentypen &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -45,6 +45,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -366,9 +367,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="zusammengesetzte-datentypen">
-<span id="zusgdatentypen"></span><h1><span class="section-number">6. </span>Zusammengesetzte Datentypen<a class="headerlink" href="#zusammengesetzte-datentypen" title="Link zu dieser Überschrift">#</a></h1>
+<span id="zusgdatentypen"></span><h1><span class="section-number">6. </span>Zusammengesetzte Datentypen<a class="headerlink" href="#zusammengesetzte-datentypen" title="Permalink to this heading">#</a></h1>
 <section id="listen">
-<span id="id1"></span><h2><span class="section-number">6.1. </span>Listen<a class="headerlink" href="#listen" title="Link zu dieser Überschrift">#</a></h2>
+<span id="id1"></span><h2><span class="section-number">6.1. </span>Listen<a class="headerlink" href="#listen" title="Permalink to this heading">#</a></h2>
 <p>Bei der Lösung numerischer Probleme spielen die Zahlentypen, die wir im <a class="reference internal" href="datentypen.html#datentypen"><span class="std std-numref">Kapitel 3</span></a>
 kennengelernt haben, also Integers, Gleitkommazahlen oder Floats sowie komplexe Zahlen eine
 zentrale Rolle. Insbesondere in den Natur- und Ingenieurwissenschaften sind diese Daten aber
@@ -710,7 +711,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140604549955264 140604549955264
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139984866619072 139984866619072
 </pre></div>
 </div>
 </div>
@@ -741,7 +742,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140604550040576 140604550035008
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139984866725312 139984866753536
 </pre></div>
 </div>
 </div>
@@ -1106,9 +1107,7 @@ bereits gefundenen Listenelement zu beschränken.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 wurde nicht gefunden.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Erstes Auftreten von 1: 0
+Erstes Auftreten von 1: 0
 Erstes Auftreten von 2: 1
 Erstes Auftreten von 3: 2
 Erstes Auftreten von 4: 3
@@ -1157,8 +1156,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11, 39, 52, 11, 70, 62, 80, 51, 8, 41, 98, 100, 34, 55, 81, 94, 37, 30, 88, 85]
-[8, 11, 11, 30, 34, 37, 39, 41, 51, 52, 55, 62, 70, 80, 81, 85, 88, 94, 98, 100]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[48, 26, 86, 44, 1, 32, 67, 6, 77, 39, 41, 26, 72, 29, 52, 99, 26, 88, 29, 9]
+[1, 6, 9, 26, 26, 26, 29, 29, 32, 39, 41, 44, 48, 52, 67, 72, 77, 86, 88, 99]
 </pre></div>
 </div>
 </div>
@@ -1176,15 +1175,15 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[99, 7, 92, 39, 63, 70, 92, 12, 25, 32, 48, 80, 59, 92, 71, 57, 40, 95, 70, 28]
-[70, 80, 40, 70, 71, 92, 92, 12, 32, 92, 63, 25, 95, 7, 57, 48, 28, 99, 39, 59]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[79, 68, 61, 24, 7, 74, 2, 3, 17, 70, 31, 4, 26, 26, 53, 54, 28, 29, 75, 77]
+[70, 61, 31, 2, 3, 53, 24, 74, 4, 54, 75, 26, 26, 7, 17, 77, 68, 28, 79, 29]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="tupel">
-<span id="id2"></span><h2><span class="section-number">6.2. </span>Tupel<a class="headerlink" href="#tupel" title="Link zu dieser Überschrift">#</a></h2>
+<span id="id2"></span><h2><span class="section-number">6.2. </span>Tupel<a class="headerlink" href="#tupel" title="Permalink to this heading">#</a></h2>
 <p>Tupel sind Listen insofern ähnlich als sie als Elemente Objekte beliebigen Typs enthalten
 können.  Andererseits sind sie nicht veränderlich. Man sagt auch, dass Listen veränderlich
 (<em>mutable</em>) seien, während Tupel unveränderlich (<em>immutable</em>) sind. Dies bedeutet, dass
@@ -1207,10 +1206,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140604555236800
-id(mytuple2) = 140604555328832
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 139984871896384
+id(mytuple2) = 139984871990848
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 140604550332880
+id(mytuple1) = 139984867039632
 </pre></div>
 </div>
 </div>
@@ -1384,7 +1383,7 @@ Abstand des Punktes (3, 0) vom Ursprung:  3.000
 </div>
 </section>
 <section id="zeichenketten">
-<span id="strings"></span><h2><span class="section-number">6.3. </span>Zeichenketten<a class="headerlink" href="#zeichenketten" title="Link zu dieser Überschrift">#</a></h2>
+<span id="strings"></span><h2><span class="section-number">6.3. </span>Zeichenketten<a class="headerlink" href="#zeichenketten" title="Permalink to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition-unicode admonition">
@@ -1549,8 +1548,8 @@ erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140604550374320 | id(s2) = 140604550375344
-id(s1) = 140604550483600
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 139984867084528 | id(s2) = 139984867086000
+id(s1) = 139984957289888
 </pre></div>
 </div>
 </div>
@@ -1702,9 +1701,8 @@ angeben, die die zu entfernenden Zeichen enthält.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------
+
+----------
 Hallo
 ----------
 </pre></div>
@@ -1754,7 +1752,7 @@ ungerade Anzahl von Stellen haben.</p>
 </div>
 </section>
 <section id="dictionaries">
-<span id="id3"></span><h2><span class="section-number">6.4. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Link zu dieser Überschrift">#</a></h2>
+<span id="id3"></span><h2><span class="section-number">6.4. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this heading">#</a></h2>
 <p>Den letzten zusammengesetzten Datentyp, den wir in diesem Kapitel besprechen
 wollen, sind Dictionaries oder auch <em>hash tables</em>, die Schlüsseln (<em>key</em>) Werte
 (<em>value</em>) zuordnen. Man kann sich diese Objekte wie Telefonbücher oder Wörterbücher

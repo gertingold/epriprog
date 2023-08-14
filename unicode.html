@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>12. Anhang: Unicode &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -45,6 +45,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -316,9 +317,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="anhang-unicode">
-<span id="appendixunicode"></span><h1><span class="section-number">12. </span>Anhang: Unicode<a class="headerlink" href="#anhang-unicode" title="Link zu dieser Überschrift">#</a></h1>
+<span id="appendixunicode"></span><h1><span class="section-number">12. </span>Anhang: Unicode<a class="headerlink" href="#anhang-unicode" title="Permalink to this heading">#</a></h1>
 <section id="kodierung-von-schriftzeichen">
-<h2><span class="section-number">12.1. </span>Kodierung von Schriftzeichen<a class="headerlink" href="#kodierung-von-schriftzeichen" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">12.1. </span>Kodierung von Schriftzeichen<a class="headerlink" href="#kodierung-von-schriftzeichen" title="Permalink to this heading">#</a></h2>
 <p>Auch Schriftzeichen müssen im Computer binär kodiert werden. Zwar sind schon
 bei Zahlen verschiedene Codierungsarten denkbar, aber grundlegende Aspekte des
 Codes ergeben sich durch die Verwendung des Dualsystems in natürlicher Weise.
@@ -332,7 +333,7 @@ die in Gebrauch sind oder im Gebrauch waren, so dass eine konsistente Kodierung
 Verarbeitung zudem auf die mechanische Stabilität von Lochkarten, wie die in
 <a class="reference internal" href="#fig-lochkarte"><span class="std std-numref">Abb. 12.1</span></a> gezeigte aus den späten 70er Jahren des letzten
 Jahrhunderts, Rücksicht nehmen. Entsprechend wurden im Lauf der Zeit eine
-Vielzahl unterschiedlicher Kodierungen entwickelt <a class="footnote-reference brackets" href="#haralambous" id="id1">1</a>, die durch
+Vielzahl unterschiedlicher Kodierungen entwickelt <a class="footnote-reference brackets" href="#haralambous" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, die durch
 Inkompatibilitäten den Informationsaustausch erschwerten. Erst in jüngerer Zeit
 setzt sich mit Unicode ein umfassender Standard weitgehend durch, der auch in
 Python seit der Version 3 konsequent unterstützt wird.</p>
@@ -360,13 +361,6 @@ zeigt, dass unterschiedliche Varianten mit LF und/oder CR in Gebrauch kamen,
 um einen Zeilenumbruch anzuzeigen.</p>
 <table class="table" id="table-steuerzeichen">
 <caption><span class="caption-number">Tab. 12.1 </span><span class="caption-text">Ausgewählte Steuerzeichen im ASCII-Standard</span><a class="headerlink" href="#table-steuerzeichen" title="Link zu dieser Tabelle">#</a></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Hexcode</p></th>
 <th class="head"><p>Kürzel</p></th>
@@ -444,7 +438,7 @@ die ASCII-Zeichen im Bereich <code class="docutils literal notranslate"><span cl
 Wir beschränken uns daher im Folgenden auf die Erklärung dieser Kodierung.</p>
 </section>
 <section id="utf-8-kodierung">
-<h2><span class="section-number">12.2. </span>UTF-8-Kodierung<a class="headerlink" href="#utf-8-kodierung" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">12.2. </span>UTF-8-Kodierung<a class="headerlink" href="#utf-8-kodierung" title="Permalink to this heading">#</a></h2>
 <p>Im Unicode-Standard ist jedes Zeichen zunächst einmal mit einer Nummer
 versehen, dem Unicode Codepoint, der in
 <a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 12.4</span></a>‒<a class="reference internal" href="#fig-unicode2200"><span class="std std-numref">Abb. 12.7</span></a> blau hinterlegt ist und mit
@@ -494,7 +488,7 @@ für Codepoints zwischen <code class="docutils literal notranslate"><span class=
 mit <code class="docutils literal notranslate"><span class="pre">0xF</span></code> beginnt.</p>
 </section>
 <section id="ausgewahlte-codeseiten-aus-dem-unicode-standard">
-<h2><span class="section-number">12.3. </span>Ausgewählte Codeseiten aus dem Unicode-Standard<a class="headerlink" href="#ausgewahlte-codeseiten-aus-dem-unicode-standard" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">12.3. </span>Ausgewählte Codeseiten aus dem Unicode-Standard<a class="headerlink" href="#ausgewahlte-codeseiten-aus-dem-unicode-standard" title="Permalink to this heading">#</a></h2>
 <p>Die im Folgenden abgebildeten exemplarischen Codeseiten geben einen kleinen Eindruck
 von der Vielfalt der vorhandenen Zeichen. Neben den im westlichen Sprachraum häufig
 verbreiten Zeichen, die in <a class="reference internal" href="#fig-unicode0000"><span class="std std-numref">Abb. 12.4</span></a> und <a class="reference internal" href="#fig-unicode0080"><span class="std std-numref">Abb. 12.5</span></a> gezeigt
@@ -535,12 +529,11 @@ hinterlegt angegeben.</span><a class="headerlink" href="#fig-unicode2200" title=
 </figcaption>
 </figure>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="haralambous"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Eine ausführlichere Darstellung der Entwicklungsgeschichte von Zeichenkodierungen
+<aside class="footnote brackets" id="haralambous" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Eine ausführlichere Darstellung der Entwicklungsgeschichte von Zeichenkodierungen
 gibt Y. Haralambous, <em>Fonts &amp; Encodings</em> (O’Reilly, 2007).</p>
-</dd>
-</dl>
+</aside>
 </section>
 </section>
 

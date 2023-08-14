@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>8. Numerische Programmbibliotheken am Beispiel von NumPy/SciPy &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -45,6 +45,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -368,7 +369,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numerische-programmbibliotheken-am-beispiel-von-numpy-scipy">
-<span id="scipy"></span><h1><span class="section-number">8. </span>Numerische Programmbibliotheken am Beispiel von NumPy/SciPy<a class="headerlink" href="#numerische-programmbibliotheken-am-beispiel-von-numpy-scipy" title="Link zu dieser Überschrift">#</a></h1>
+<span id="scipy"></span><h1><span class="section-number">8. </span>Numerische Programmbibliotheken am Beispiel von NumPy/SciPy<a class="headerlink" href="#numerische-programmbibliotheken-am-beispiel-von-numpy-scipy" title="Permalink to this heading">#</a></h1>
 <p>In den bisherigen Kapiteln hatten wir immer wieder Gelegenheit, auf
 Möglichkeiten hinzuweisen, die die Python-Standardbibliothek bietet. Wenn man
 die dort zur Verfügung gestellten Module verwendet, kann man sich Einiges an
@@ -424,7 +425,7 @@ genannten Pakete, sind in <a class="reference internal" href="einleitung.html#wa
 der Quellcode der Pakete verfügbar, so dass man sich bei Bedarf auch die
 konkrete Implementierung ansehen sowie zur Weiterentwicklung beitragen kann.</p>
 <section id="installation">
-<h2><span class="section-number">8.1. </span>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">8.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>Da NumPy und SciPy nicht in der Python-Standardbibliothek enthalten sind, stehen
 diese Programmpakete auch bei einer vorhandenen Python-Installation nicht
 automatisch zur Verfügung. Dies lässt sich leicht überprüfen, indem man versucht,
@@ -463,7 +464,7 @@ NumPy</a> und der <a class="reference external" href="https://www.scipy.org/inst
 SciPy</a> beschrieben sind.</p>
 </section>
 <section id="arrays-und-anwendungen">
-<h2><span class="section-number">8.2. </span>Arrays und Anwendungen<a class="headerlink" href="#arrays-und-anwendungen" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">8.2. </span>Arrays und Anwendungen<a class="headerlink" href="#arrays-und-anwendungen" title="Permalink to this heading">#</a></h2>
 <p>Für die Arbeit mit dem NumPy-Paket ist es üblich, für <code class="docutils literal notranslate"><span class="pre">numpy</span></code> die Abkürzung
 <code class="docutils literal notranslate"><span class="pre">np</span></code> einzuführen.</p>
 <div class="cell docutils container">
@@ -829,7 +830,7 @@ die Korrektheit der Eigenvektoren.</p>
 Spaltenindex ist, sehen wir, dass die Eigenvektoren in diesem Array in den Spalten stehen.</p>
 </section>
 <section id="numerische-integration">
-<h2><span class="section-number">8.3. </span>Numerische Integration<a class="headerlink" href="#numerische-integration" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">8.3. </span>Numerische Integration<a class="headerlink" href="#numerische-integration" title="Permalink to this heading">#</a></h2>
 <p>SciPy ist eine umfangreiche numerische Bibliothek, die wesentlich auf dem gerade besprochenen
 NumPy-Paket basiert. Sie deckt vielfältige Problemstellungen ab wie zum Beispiel numerische
 Integration und Lösung von gewöhnlichen Differentialgleichungen, Interpolation, Fouriertransformation,
@@ -918,7 +919,7 @@ berechnet werden können. Weitere Informationen findet man in der <a class="refe
 <code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code>-Moduls</a>.</p>
 </section>
 <section id="integration-gewohnlicher-differentialgleichungen">
-<h2><span class="section-number">8.4. </span>Integration gewöhnlicher Differentialgleichungen<a class="headerlink" href="#integration-gewohnlicher-differentialgleichungen" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">8.4. </span>Integration gewöhnlicher Differentialgleichungen<a class="headerlink" href="#integration-gewohnlicher-differentialgleichungen" title="Permalink to this heading">#</a></h2>
 <p>In Natur- und Ingenieurwissenschaften steht man häufig vor der Aufgabe, Differentialgleichungen numerisch
 zu lösen, wobei zwischen gewöhnlichen und partiellen Differentialgleichungen sowie zwischen Anfangs- und
 Randwertproblemen unterschieden werden muss. In diesem Kapitel wollen wir anhand von zwei Beispielen zeigen,

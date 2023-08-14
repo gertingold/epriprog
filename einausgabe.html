@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>7. Ein- und Ausgabe &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -45,6 +45,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -365,7 +366,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ein-und-ausgabe">
-<span id="einausgabe"></span><h1><span class="section-number">7. </span>Ein- und Ausgabe<a class="headerlink" href="#ein-und-ausgabe" title="Link zu dieser Überschrift">#</a></h1>
+<span id="einausgabe"></span><h1><span class="section-number">7. </span>Ein- und Ausgabe<a class="headerlink" href="#ein-und-ausgabe" title="Permalink to this heading">#</a></h1>
 <p>Ein Programm, das eine sinnvolle Aufgabe bearbeitet, wird immer in irgendeiner Weise
 kommunizieren, also Informationen entgegennehmen und insbesondere die Resultate
 ausgeben. Für beiden Prozesse sind verschiedene Szenarien denkbar.</p>
@@ -404,7 +405,7 @@ wir uns vor allem mit dem Lesen und Schreiben von Dateien beschäftigen. Für sp
 Aspekte werden wir in weiterführenden Hinweisen zeigen, dass Python für viele der
 potentiell anfallenden Aufgaben nützliche Module in der Standardbibliothek bereit hält.</p>
 <section id="eingabe-uber-die-kommandozeile-und-die-tastatur">
-<span id="commandline"></span><h2><span class="section-number">7.1. </span>Eingabe über die Kommandozeile und die Tastatur<a class="headerlink" href="#eingabe-uber-die-kommandozeile-und-die-tastatur" title="Link zu dieser Überschrift">#</a></h2>
+<span id="commandline"></span><h2><span class="section-number">7.1. </span>Eingabe über die Kommandozeile und die Tastatur<a class="headerlink" href="#eingabe-uber-die-kommandozeile-und-die-tastatur" title="Permalink to this heading">#</a></h2>
 <p>Wenn man Programme von der Kommandozeile aufruft, ist es nicht unüblich, dabei Parameter
 zu übergeben. Programmiersprachen wie Fortran, C und Python bieten die Möglichkeit,
 auf diese Parameter innerhalb des Programms zuzugreifen. Die Alternative, solche Parameter
@@ -525,7 +526,7 @@ Ihr Browser unterstützt nicht das video-Tag.
 </video> 
 </section>
 <section id="lesen-von-dateien">
-<span id="readfile"></span><h2><span class="section-number">7.2. </span>Lesen von Dateien<a class="headerlink" href="#lesen-von-dateien" title="Link zu dieser Überschrift">#</a></h2>
+<span id="readfile"></span><h2><span class="section-number">7.2. </span>Lesen von Dateien<a class="headerlink" href="#lesen-von-dateien" title="Permalink to this heading">#</a></h2>
 <p>Für einfache wissenschaftliche Problemstellungen mag es ausreichen, Parameter über
 die Kommandozeile oder auf Anfrage des Programms einzugeben und die resultierenden
 Daten am Bildschirm anzusehen. Oft wird es aber so sein, dass dieses Vorgehen aufgrund
@@ -841,7 +842,7 @@ sondern auch das Schreiben.</p>
 </div>
 </section>
 <section id="schreiben-von-dateien">
-<h2><span class="section-number">7.3. </span>Schreiben von Dateien<a class="headerlink" href="#schreiben-von-dateien" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">7.3. </span>Schreiben von Dateien<a class="headerlink" href="#schreiben-von-dateien" title="Permalink to this heading">#</a></h2>
 <p>Genauso wie für das Lesen aus Dateien muss man zum Schreiben in eine
 Datei diese zunächst öffnen. Hat man das Schreiben beendet, so sollte
 die Datei wieder geschlossen werden. In Python macht man dies am Einfachsten
@@ -1034,16 +1035,16 @@ dass die Datei jeweils wieder geschlossen wurde.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:38:13 - Datei geschlossen
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:39:45 - Datei geschlossen
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:38:18 - Datei geschlossen
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:39:50 - Datei geschlossen
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:38:23 - Datei geschlossen
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:39:55 - Datei geschlossen
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:38:28 - Datei geschlossen
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:40:00 - Datei geschlossen
 </pre></div>
 </div>
 </div>
@@ -1055,10 +1056,10 @@ dass die Datei jeweils wieder geschlossen wurde.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:38:13 - Durchlauf 1
-12:38:18 - Durchlauf 2
-12:38:23 - Durchlauf 3
-12:38:28 - Durchlauf 4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:39:45 - Durchlauf 1
+12:39:50 - Durchlauf 2
+12:39:55 - Durchlauf 3
+12:40:00 - Durchlauf 4
 </pre></div>
 </div>
 </div>

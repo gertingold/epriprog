@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3. Einfache Datentypen, Variablen und Zuweisungen &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -45,6 +45,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -371,7 +372,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="einfache-datentypen-variablen-und-zuweisungen">
-<span id="datentypen"></span><h1><span class="section-number">3. </span>Einfache Datentypen, Variablen und Zuweisungen<a class="headerlink" href="#einfache-datentypen-variablen-und-zuweisungen" title="Link zu dieser Überschrift">#</a></h1>
+<span id="datentypen"></span><h1><span class="section-number">3. </span>Einfache Datentypen, Variablen und Zuweisungen<a class="headerlink" href="#einfache-datentypen-variablen-und-zuweisungen" title="Permalink to this heading">#</a></h1>
 <p>In <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir bereits verschiedene Datentypen kennengelernt.
 Hierzu gehören ganze Zahlen, die zum einen durch die explizite Umwandlung der
 Benutzereingabe in eine ganze Zahl oder als Ergebnis der
@@ -390,7 +391,7 @@ werden wir vor allem neben den ganzen Zahlen noch weitere numerische Datentypen
 kennenlernen, die für natur- und ingenieurwissenschaftliche Anwendungen große
 Bedeutung besitzen.</p>
 <section id="ganze-zahlen">
-<span id="integers"></span><h2><span class="section-number">3.1. </span>Ganze Zahlen<a class="headerlink" href="#ganze-zahlen" title="Link zu dieser Überschrift">#</a></h2>
+<span id="integers"></span><h2><span class="section-number">3.1. </span>Ganze Zahlen<a class="headerlink" href="#ganze-zahlen" title="Permalink to this heading">#</a></h2>
 <p>Wir beginnen bei der Besprechung der numerischen Datentypen mit den ganzen
 Zahlen, auf Englisch <em>integers</em>. Auf den ersten Blick könnte man denken, dass
 in den Natur- und Ingenieurwissenschaften ganze Zahlen gegenüber den reellen
@@ -729,10 +730,6 @@ dargestellt. Dabei haben die weiter oben stehenden Operationen Vorrang vor den n
 Operationen.</p>
 <table class="table" id="table-precedence">
 <caption><span class="caption-number">Tab. 3.1 </span><span class="caption-text">Die weiter oben in der Liste stehenden Operationen haben Vorrang vor den weiter unten stehenden. Eine vollständige Liste findet man unter dem Punkt <a class="reference external" href="http://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a> in der Python-Dokumentation. Beachten Sie, dass die dortige Tabelle umgekehrt geordnet ist, also weiter unten stehende Operatoren Vorrang haben.</span><a class="headerlink" href="#table-precedence" title="Link zu dieser Tabelle">#</a></caption>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operatoren</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -793,7 +790,7 @@ nicht zur korrekten Abarbeitung des Ausdrucks erforderlich sind.</p>
 </div>
 </section>
 <section id="gleitkommazahlen">
-<span id="float"></span><h2><span class="section-number">3.2. </span>Gleitkommazahlen<a class="headerlink" href="#gleitkommazahlen" title="Link zu dieser Überschrift">#</a></h2>
+<span id="float"></span><h2><span class="section-number">3.2. </span>Gleitkommazahlen<a class="headerlink" href="#gleitkommazahlen" title="Permalink to this heading">#</a></h2>
 <p>Eine zentrale Rolle in der wissenschaftlichen Numerik spielen Gleitkommazahlen,
 die häufig auch mit dem englischen Begriff als <em>Floats</em> bezeichnet werden.
 Wir werden diesen Begriff gelegentlich verwenden, insbesondere um den Unterschied
@@ -1148,7 +1145,7 @@ nicht das Ergebnis <code class="docutils literal notranslate"><span class="pre">
 behandeln kann, wie wir später noch sehen werden.</p>
 </section>
 <section id="funktionen-fur-reelle-zahlen">
-<span id="mathfunc"></span><h2><span class="section-number">3.3. </span>Funktionen für reelle Zahlen<a class="headerlink" href="#funktionen-fur-reelle-zahlen" title="Link zu dieser Überschrift">#</a></h2>
+<span id="mathfunc"></span><h2><span class="section-number">3.3. </span>Funktionen für reelle Zahlen<a class="headerlink" href="#funktionen-fur-reelle-zahlen" title="Permalink to this heading">#</a></h2>
 <p>In numerischen Anwendungen in den Natur- und Ingenieurwissenschaften wird man häufig
 mathematische Funktionen auswerten wollen. Der Versuch, beispielsweise eine
 Exponentialfunktion auszuwerten, führt jedoch nicht unmittelbar zum Erfolg.</p>
@@ -1996,7 +1993,7 @@ natürlichen Logarithmus die Funktion <code class="xref py py-func docutils lite
 </div>
 </section>
 <section id="komplexe-zahlen">
-<span id="complex"></span><h2><span class="section-number">3.4. </span>Komplexe Zahlen<a class="headerlink" href="#komplexe-zahlen" title="Link zu dieser Überschrift">#</a></h2>
+<span id="complex"></span><h2><span class="section-number">3.4. </span>Komplexe Zahlen<a class="headerlink" href="#komplexe-zahlen" title="Permalink to this heading">#</a></h2>
 <p>Neben reellen Zahlen benötigt man immer wieder auch komplexe Zahlen. Dabei
 erzeugt man einen Imaginärteil durch Anhängen des Buchstabens <code class="docutils literal notranslate"><span class="pre">j</span></code> oder <code class="docutils literal notranslate"><span class="pre">J</span></code>, das
 Ingenieure häufig statt des in der Mathematik und Physik üblichen <code class="docutils literal notranslate"><span class="pre">i</span></code> verwenden.</p>
@@ -2386,7 +2383,7 @@ einfach mal aus.</p>
 </div>
 </section>
 <section id="variablen-und-zuweisungen">
-<span id="variablen"></span><h2><span class="section-number">3.5. </span>Variablen und Zuweisungen<a class="headerlink" href="#variablen-und-zuweisungen" title="Link zu dieser Überschrift">#</a></h2>
+<span id="variablen"></span><h2><span class="section-number">3.5. </span>Variablen und Zuweisungen<a class="headerlink" href="#variablen-und-zuweisungen" title="Permalink to this heading">#</a></h2>
 <p>Aus der Mathematik kennen wir das Konzept von Variablen, denen man je nach
 Anwendungsfall bestimmte Werte zuweisen kann. Es ist aber auch möglich, auf die
 explizite Zuweisung von Werten gänzlich zu verzichten und mit Variablen rein
@@ -2681,7 +2678,7 @@ zugehörigen schließenden Klammer liest.</p>
 </div>
 </section>
 <section id="wahrheitswerte">
-<h2><span class="section-number">3.6. </span>Wahrheitswerte<a class="headerlink" href="#wahrheitswerte" title="Link zu dieser Überschrift">#</a></h2>
+<h2><span class="section-number">3.6. </span>Wahrheitswerte<a class="headerlink" href="#wahrheitswerte" title="Permalink to this heading">#</a></h2>
 <p>Im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir schon gesehen, dass man den Ablauf eines
 Programms in Abhängigkeit davon beeinflussen kann, ob eine bestimmte Bedingung
 erfüllt ist oder nicht. In diesem Zusammenhang spielen Wahrheitswerte oder so
@@ -2805,10 +2802,6 @@ bekannten Folgen einer Division durch Null.</p>
 <a class="reference internal" href="#table-comparison"><span class="std std-numref">Tab. 3.2</span></a> zusammengestellt sind.</p>
 <table class="table" id="table-comparison">
 <caption><span class="caption-number">Tab. 3.2 </span><span class="caption-text">Vergleichsoperationen in Python</span><a class="headerlink" href="#table-comparison" title="Link zu dieser Tabelle">#</a></caption>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operator</p></th>
 <th class="head"><p>Bedeutung</p></th>
@@ -2971,7 +2964,7 @@ isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
 </div>
 </section>
 <section id="formatierung-von-ausgaben">
-<span id="formatierung"></span><h2><span class="section-number">3.7. </span>Formatierung von Ausgaben<a class="headerlink" href="#formatierung-von-ausgaben" title="Link zu dieser Überschrift">#</a></h2>
+<span id="formatierung"></span><h2><span class="section-number">3.7. </span>Formatierung von Ausgaben<a class="headerlink" href="#formatierung-von-ausgaben" title="Permalink to this heading">#</a></h2>
 <p>Wenn man ein Programm ausführt, möchte man in den meisten Fällen eine Ausgabe
 haben, die im einfachsten Fall auf dem Bildschirm erfolgen kann. In den
 Codezellen eines Jupyter Notebooks, wie wir sie in diesem Manuskript verwenden,
