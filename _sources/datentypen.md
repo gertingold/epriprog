@@ -1446,10 +1446,9 @@ strings*, der in den verschiedenen Programmiersprachen ähnlich aufgebaut ist,
 auch wenn es im Detail durchaus Unterschiede geben kann. Wie die auszugebenden
 Objekte und ihre Formatierung dann im Code anzugeben sind, unterscheidet sich
 von Programmiersprache zu Programmiersprache. Python selbst stellt hierfür schon
-mehrere Möglichkeiten zur Verfügung. Mit der Version 3.6 wurden die so genannten
-f-Strings eingeführt, wobei der englische Begriff *string* hier im Sinne einer 
-Zeichenkette zu verstehen ist. Im Folgenden werden wir uns auf die Formatierung mit
-Hilfe von f-Strings beschränken, da sich diese als bevorzugte Methode etabliert hat.
+mehrere Möglichkeiten zur Verfügung. die Formatierung mit Hilfe von f-Strings
+beschränken, da sich diese als bevorzugte Methode etabliert hat. Der englische
+Begriff *string* ist hier im Sinne einer Zeichenkette zu verstehen.
 
 Wir beginnen mit dem einfachsten Fall einer unformatierten Ausgabe.
 ```{code-cell} python
