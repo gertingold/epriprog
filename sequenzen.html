@@ -711,7 +711,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140455773658560 140455773658560
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139791330775808 139791330775808
 </pre></div>
 </div>
 </div>
@@ -742,7 +742,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140455773651008 140455773567552
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139791330801856 139791332695872
 </pre></div>
 </div>
 </div>
@@ -1156,8 +1156,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[61, 81, 83, 37, 82, 33, 87, 65, 66, 38, 25, 45, 91, 96, 67, 29, 77, 7, 35, 6]
-[6, 7, 25, 29, 33, 35, 37, 38, 45, 61, 65, 66, 67, 77, 81, 82, 83, 87, 91, 96]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[46, 47, 71, 81, 47, 26, 85, 36, 43, 55, 60, 11, 70, 53, 86, 63, 13, 53, 95, 74]
+[11, 13, 26, 36, 43, 46, 47, 47, 53, 53, 55, 60, 63, 70, 71, 74, 81, 85, 86, 95]
 </pre></div>
 </div>
 </div>
@@ -1175,8 +1175,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[75, 49, 86, 1, 58, 99, 84, 8, 18, 33, 25, 85, 33, 99, 40, 21, 43, 19, 89, 33]
-[40, 1, 21, 33, 33, 43, 33, 84, 75, 25, 85, 86, 58, 8, 18, 49, 99, 99, 19, 89]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[62, 97, 87, 38, 17, 77, 50, 93, 19, 43, 13, 64, 72, 31, 88, 21, 77, 49, 78, 47]
+[50, 31, 21, 62, 72, 93, 43, 13, 64, 97, 87, 17, 77, 77, 47, 38, 88, 78, 19, 49]
 </pre></div>
 </div>
 </div>
@@ -1206,10 +1206,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140455778941568
-id(mytuple2) = 140455778999488
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 139791330918080
+id(mytuple2) = 139791336132352
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 140455773765152
+id(mytuple1) = 139791331085664
 </pre></div>
 </div>
 </div>
@@ -1548,8 +1548,8 @@ erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140455773932720 | id(s2) = 140455773938224
-id(s1) = 140455773625184
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 139791331119024 | id(s2) = 139791330655472
+id(s1) = 139791335971440
 </pre></div>
 </div>
 </div>
@@ -1631,7 +1631,9 @@ wie wir in <a class="reference internal" href="kontrollstrukturen.html#exception
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -1937,6 +1939,16 @@ existiert. In der <code class="docutils literal notranslate"><span class="pre">f
 </pre></div>
 </div>
 <p>schreiben.</p>
+<p>Wenn man öfters Objekte zählen muss, lohnt ein Blick in die Standardbibliothek von
+Python. Unter Verwendung des <code class="docutils literal notranslate"><span class="pre">collections</span></code>-Modul lässt sich unser Beispiel noch
+einfacher realisieren.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Abrakadabra&quot;</span>
+<span class="k">for</span> <span class="n">character</span><span class="p">,</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">character</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">frequency</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Aber wir wollten ja eigentlich lernen, wie man mit Dictionaries umgeht.</p>
 </div>
 <p>Um die Verwendung von Listen als Werten von Dictionaries zu illustrieren, wollen wir nun
 eine Liste von Worten nach ihrer Länge in Gruppen einteilen. Das Vorgehen ist ähnlich

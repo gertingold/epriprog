@@ -878,6 +878,17 @@ existiert. In der `for`-Schleife könnte man also einfach
     counter[c] = counter.get(c, 0) + 1
 ```
 schreiben.
+
+Wenn man öfters Objekte zählen muss, lohnt ein Blick in die Standardbibliothek von
+Python. Unter Verwendung des `collections`-Modul lässt sich unser Beispiel noch
+einfacher realisieren.
+```{code-block} python
+from collections import Counter
+text = "Abrakadabra"
+for character, frequency in Counter(text).most_common():
+    print(f"{character}: {frequency}")
+```
+Aber wir wollten ja eigentlich lernen, wie man mit Dictionaries umgeht.
 ````
 
 Um die Verwendung von Listen als Werten von Dictionaries zu illustrieren, wollen wir nun
