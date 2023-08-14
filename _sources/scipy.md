@@ -196,7 +196,7 @@ Hilfe von {func}`np.zeros` oder {func}`np.ones`. Das folgende Beispiel illustrie
 wie man die Dimension des Arrays sowie den Datentyp festlegen kann und was die
 Multiplikation des Arrays mit einer Zahl bedeutet.
 ```{code-cell} python
-5*np.ones(shape=(2, 3, 4), dtype=np.int)
+5*np.ones(shape=(2, 3, 4), dtype=np.int64)
 ```
 ```{admonition} Integer-Arrays
 :class: warning
