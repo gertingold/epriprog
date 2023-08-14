@@ -1445,10 +1445,11 @@ Beschreibung des Formats funktioniert typischerweise mit Hilfe eines *format
 strings*, der in den verschiedenen Programmiersprachen ähnlich aufgebaut ist,
 auch wenn es im Detail durchaus Unterschiede geben kann. Wie die auszugebenden
 Objekte und ihre Formatierung dann im Code anzugeben sind, unterscheidet sich
-von Programmiersprache zu Programmiersprache. Python selbst stellt hierfür schon
-mehrere Möglichkeiten zur Verfügung. die Formatierung mit Hilfe von f-Strings
-beschränken, da sich diese als bevorzugte Methode etabliert hat. Der englische
-Begriff *string* ist hier im Sinne einer Zeichenkette zu verstehen.
+von Programmiersprache zu Programmiersprache. Python selbst stellt hierfür
+schon mehrere Möglichkeiten zur Verfügung. Wir werden uns auf die Formatierung
+mit Hilfe von f-Strings beschränken, da sich diese als bevorzugte Methode
+etabliert hat. Der englische Begriff *string* ist hier im Sinne einer
+Zeichenkette zu verstehen.
 
 Wir beginnen mit dem einfachsten Fall einer unformatierten Ausgabe.
 ```{code-cell} python
