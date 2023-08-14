@@ -375,9 +375,9 @@ Python-Entwicklungsumgebung Spyder
 
 ## Python-Version
 
-Python befindet sich in aktiver Entwicklung, so dass regelmäßig neue Versionen
-veröffentlicht werden. Für die Zwecke dieser Vorlesung sind die Unterschiede
-zwischen den neueren Versionen jedoch kaum relevant. Da Python 3.5 aber bereits sein
-Lebensende erreicht hat, sollte mindestens Python 3.6 verwendet werden. Lediglich
-an einer Stelle, auf die dann besonders hingewiesen wird, wird eine Eigenschaft von 
-Python 3.8 ausgenutzt.
+Python befindet sich in aktiver Entwicklung, wobei jedes Jahr eine neue Unterversion
+veröffentlicht wird. Jede Version wird über fünf Jahre bei Bedarf mit Fehlerkorrekturen
+versorgt. Aktuell ist Python 3.8 die älteste Version, die noch unterstützt wird. Von
+ganz wenigen Ausnahmen abgesehen, auf die dann besonders hingewiesen wird, ist der
+Code zu dieser Vorlesung unter Python 3.8 lauffähig, aber es spricht natürlich auch
+nichts dagegen, eine neuere Version wie zum Beispiel Python 3.11 zu verwenden.
