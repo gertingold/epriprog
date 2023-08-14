@@ -512,7 +512,7 @@ können, indem wir die tausendste Potenz von 2 ausrechnen lassen. Der doppelte S
 <code class="docutils literal notranslate"><span class="pre">**</span></code> steht dabei für den Exponentierungsoperator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>2**1000
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">1000</span>
 </pre></div>
 </div>
 </div>
@@ -527,7 +527,7 @@ und würde dann ein Ergebnis mit 30103 Stellen erhalten.</p>
 <p>Natürlich gibt es neben positiven Integers auch solche mit negativem Vorzeichen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>2**100 - 2**101
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">100</span> <span class="o">-</span> <span class="mi">2</span><span class="o">**</span><span class="mi">101</span>
 </pre></div>
 </div>
 </div>
@@ -548,7 +548,7 @@ sowie <code class="docutils literal notranslate"><span class="pre">0x</span></co
 sind jeweils äquivalent zur Zahl 25 im gewohnten Dezimalsystem</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>0b11001, 0o31, 0x19
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mb">0b11001</span><span class="p">,</span> <span class="mo">0o31</span><span class="p">,</span> <span class="mh">0x19</span>
 </pre></div>
 </div>
 </div>
@@ -562,7 +562,7 @@ sind jeweils äquivalent zur Zahl 25 im gewohnten Dezimalsystem</p>
 Funktionen <code class="docutils literal notranslate"><span class="pre">bin</span></code>, <code class="docutils literal notranslate"><span class="pre">oct</span></code> bzw. <code class="docutils literal notranslate"><span class="pre">hex</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bin(25), oct(25), hex(25)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span> <span class="nb">oct</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span> <span class="nb">hex</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -590,7 +590,7 @@ wir heute benutzen.</p>
 <p>Sehen wir uns an, wie Python 3 mit der Division von zwei Integers umgeht.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1/2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -602,7 +602,7 @@ wir heute benutzen.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>15/3
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="o">/</span><span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -619,7 +619,7 @@ Prinzip als ganze Zahl darstellbar wäre.</p>
 mit einem doppelten Schrägstrich.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1//2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -631,7 +631,7 @@ mit einem doppelten Schrägstrich.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>15//7
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">15</span><span class="o">//</span><span class="mi">7</span>
 </pre></div>
 </div>
 </div>
@@ -643,7 +643,7 @@ mit einem doppelten Schrägstrich.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>-15//7
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">15</span><span class="o">//</span><span class="mi">7</span>
 </pre></div>
 </div>
 </div>
@@ -663,11 +663,11 @@ von Guido van Rossum nachlesen.</p>
 <p>Um zu verdeutlichen, dass die in Python 3 getroffene Wahl nicht zwingend ist,
 sehen wir uns zum Vergleich die Division in der Programmiersprache C an.
 Hier liefert</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">-15</span><span class="o">/</span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">-15</span><span class="o">/</span><span class="mi">7</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>als Ergebnis</p>
@@ -678,10 +678,10 @@ Hier liefert</p>
 Integer. Zudem wird hier zur Null hin abgeschnitten. Im zweiten Fall ergibt sich also
 nicht -3 wie bei Python 3, sondern -2. Genauso verhält sich auch der entsprechende
 Fortran-Code</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">division</span><span class="w"></span>
-<span class="w">  </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mi">15</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">15</span><span class="o">/</span><span class="mi">7</span><span class="w"></span>
-<span class="w">  </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="mi">2</span><span class="w"></span>
-<span class="k">end program </span><span class="n">division</span><span class="w"></span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">division</span>
+<span class="w">  </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mi">15</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">15</span><span class="o">/</span><span class="mi">7</span>
+<span class="w">  </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="mi">2</span>
+<span class="k">end program </span><span class="n">division</span>
 </pre></div>
 </div>
 <p>mit dem Ergebnis</p>
@@ -697,10 +697,10 @@ Python. Oft ist man am Rest einer Integerdivision interessiert. Diesen könnte m
 im Prinzip folgendermaßen erhalten</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>zaehler = 15
-nenner = 4
-rest = zaehler - (zaehler//nenner)*nenner
-print(rest)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zaehler</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">nenner</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="n">zaehler</span> <span class="o">-</span> <span class="p">(</span><span class="n">zaehler</span><span class="o">//</span><span class="n">nenner</span><span class="p">)</span><span class="o">*</span><span class="n">nenner</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -713,9 +713,9 @@ print(rest)
 <p>Mit Hilfe des Modulo-Operators <code class="docutils literal notranslate"><span class="pre">%</span></code> von Python geht dies jedoch einfacher.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>zaehler = 15
-nenner = 4
-print(zaehler % nenner)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zaehler</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">nenner</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zaehler</span> <span class="o">%</span> <span class="n">nenner</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -728,7 +728,7 @@ print(zaehler % nenner)
 <p>Eine häufige Anwendung ist der Test auf eine gerade oder ungerade Zahl.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>16 % 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">16</span> <span class="o">%</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -741,7 +741,7 @@ print(zaehler % nenner)
 <p>Ist die Zahl ohne Rest durch 2 teilbar, ist sie offenbar gerade, ansonsten ungerade.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>17 % 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">17</span> <span class="o">%</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -755,8 +755,8 @@ print(zaehler % nenner)
 in einem Schritt mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">divmod()</span></code>-Funktion erhalten</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>quotient, rest = divmod(42, 5)
-print(quotient, rest)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quotient</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quotient</span><span class="p">,</span> <span class="n">rest</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -772,7 +772,7 @@ ausgeführt werden. In dem folgenden Beispiel sehen wir, dass in Python ebenso w
 in C und Fortran die Regel Punkt vor Strich gilt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>2+3*4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span>
 </pre></div>
 </div>
 </div>
@@ -786,7 +786,7 @@ in C und Fortran die Regel Punkt vor Strich gilt.</p>
 die Addition ausführen, so muss man Klammern setzen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(2+3)*4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
 </pre></div>
 </div>
 </div>
@@ -830,7 +830,7 @@ gefolgt, bindet das Vorzeichen allerdings stärker, was ja auch die einzig
 sinnvolle Interpretation dieses Codes ist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>2**-2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**-</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -843,7 +843,7 @@ sinnvolle Interpretation dieses Codes ist.</p>
 <p>Dagegen ist das Ergebnis von</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>-2**2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -880,14 +880,14 @@ spielen kann.</p>
 <p>An dieser Stelle müssen wir wieder einmal auf Unterschiede zwischen Programmiersprachen
 hinweisen. In Sprachen wie C und Fortran muss der Datentyp einer Variable festgelegt
 werden. Das Fortranprogramm</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">datentyp</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">datentyp</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span>
+<span class="w">  </span><span class="kt">real</span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
 
-<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
-<span class="hll"><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-</span><span class="w">  </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="k">end program </span><span class="n">datentyp</span><span class="w"></span>
+<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="hll"><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span>
+</span><span class="w">  </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">x</span>
+<span class="k">end program </span><span class="n">datentyp</span>
 </pre></div>
 </div>
 <p>erzeugt die Ausgabe</p>
@@ -905,8 +905,8 @@ sich auch ein Drache scheinbar wie eine Ente verhalten kann.</p>
 <p>Den Typ einer Variable kann man in Python mit Hilfe der <code class="xref py py-func docutils literal notranslate"><span class="pre">type()</span></code>-Funktion herausfinden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n = 2
-print(type(n))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -921,8 +921,8 @@ print(type(n))
 die Umwandlung tatsächlich stattgefunden hat.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = float(n)
-print(type(x))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -936,7 +936,7 @@ print(type(x))
 möglich, wobei der Nachkommaanteil einfach abgeschnitten wird:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int(2.7)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mf">2.7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -950,7 +950,7 @@ möglich, wobei der Nachkommaanteil einfach abgeschnitten wird:</p>
 interpretiert:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(type(2.))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -966,7 +966,7 @@ Stehen vor oder nach dem Dezimalpunkt keine Ziffern, so wird der entsprechende
 Anteil gleich Null gesetzt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">5.</span>
 </pre></div>
 </div>
 </div>
@@ -978,7 +978,7 @@ Anteil gleich Null gesetzt.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>.25
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">.25</span>
 </pre></div>
 </div>
 </div>
@@ -992,7 +992,7 @@ Anteil gleich Null gesetzt.</p>
 als auch nach dem Dezimalpunkt auf Ziffern zu verzichten.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
@@ -1012,7 +1012,7 @@ Vorzeichen enthalten darf, dargestellt.  Zwischen Mantisse und Exponenten muss
 dabei ein <code class="docutils literal notranslate"><span class="pre">e</span></code> oder ein <code class="docutils literal notranslate"><span class="pre">E</span></code> stehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1e-2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e-2</span>
 </pre></div>
 </div>
 </div>
@@ -1024,7 +1024,7 @@ dabei ein <code class="docutils literal notranslate"><span class="pre">e</span><
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1.53e2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1.53e2</span>
 </pre></div>
 </div>
 </div>
@@ -1036,7 +1036,7 @@ dabei ein <code class="docutils literal notranslate"><span class="pre">e</span><
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1E-5
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1E-5</span>
 </pre></div>
 </div>
 </div>
@@ -1054,7 +1054,7 @@ Das Problem wird an dem folgenden Beispiel deutlich, das zudem zeigt, dass es
 auf die Reihenfolge der Operationen ankommen kann.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>0.1+0.1+0.1-0.3
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.3</span>
 </pre></div>
 </div>
 </div>
@@ -1066,7 +1066,7 @@ auf die Reihenfolge der Operationen ankommen kann.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>0.1-0.3+0.1+0.1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span><span class="o">-</span><span class="mf">0.3</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span>
 </pre></div>
 </div>
 </div>
@@ -1084,8 +1084,8 @@ nicht beliebig dicht liegen. Informationen hierzu lassen sich in Python abfragen
 Die größtmögliche Zahl, die sich als Float darstellen lässt lautet</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
-sys.float_info.max
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span>
 </pre></div>
 </div>
 </div>
@@ -1098,7 +1098,7 @@ sys.float_info.max
 <p>Die Distanz zwischen der 1 und der nächsten darauf folgenden darstellbaren Zahl ist</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sys.float_info.epsilon
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">epsilon</span>
 </pre></div>
 </div>
 </div>
@@ -1111,7 +1111,7 @@ sys.float_info.max
 <p>Die kleinste normalisierte Zahl ist</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sys.float_info.min
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">min</span>
 </pre></div>
 </div>
 </div>
@@ -1146,7 +1146,7 @@ In diesem Fall setzt Python die entsprechende Zahl auf Unendlich oder <code clas
 vom englischen <em>infinity</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sys.float_info.max*1.00000001
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span><span class="o">*</span><span class="mf">1.00000001</span>
 </pre></div>
 </div>
 </div>
@@ -1159,7 +1159,7 @@ vom englischen <em>infinity</em>.</p>
 <p>Dieses Unendlich ist zudem vorzeichenbehaftet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>-sys.float_info.max*1.00000001
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span><span class="o">*</span><span class="mf">1.00000001</span>
 </pre></div>
 </div>
 </div>
@@ -1172,8 +1172,8 @@ vom englischen <em>infinity</em>.</p>
 <p>In manchen Situation kann man mit dem Ergebnis sogar noch weiterrechnen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = sys.float_info.max*1.00000001
-print(1/x)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span><span class="o">*</span><span class="mf">1.00000001</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1186,7 +1186,7 @@ print(1/x)
 <p>Dies ist jedoch nicht der Fall, wenn man zweimal positiv Unendlich voneinander abziehen will.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1e400 - 1e401
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1e400</span> <span class="o">-</span> <span class="mf">1e401</span>
 </pre></div>
 </div>
 </div>
@@ -1201,7 +1201,7 @@ print(1/x)
 nicht das Ergebnis <code class="docutils literal notranslate"><span class="pre">inf</span></code>. Vielmehr gibt es einen <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1.5/0
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1.5</span><span class="o">/</span><span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -1226,7 +1226,7 @@ mathematische Funktionen auswerten wollen. Der Versuch, beispielsweise eine
 Exponentialfunktion auszuwerten, führt jedoch nicht unmittelbar zum Erfolg.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>exp(2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1256,11 +1256,11 @@ mathematische Funktionen sehr einfach verwenden lassen.</p>
 <p>Eine moderne Sprache, in der dies ebenfalls der Fall ist, ist Julia.
 Hierbei handelt es sich wie bei Python um eine interpretierte Sprache, so
 dass wir die Exponentiation einfach in der Julia-Shell ausprobieren können.</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="o">$</span><span class="w"> </span><span class="n">julia</span><span class="w"></span>
-<span class="w">               </span><span class="n">_</span><span class="w"></span>
-<span class="w">   </span><span class="n">_</span><span class="w">       </span><span class="n">_</span><span class="w"> </span><span class="n">_</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="n">_</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="n">Documentation</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">docs</span><span class="o">.</span><span class="n">julialang</span><span class="o">.</span><span class="n">org</span><span class="w"></span>
-<span class="w">  </span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w">    </span><span class="o">|</span><span class="w"></span>
-<span class="w">   </span><span class="n">_</span><span class="w"> </span><span class="n">_</span><span class="w">   </span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="n">_</span><span class="w">  </span><span class="n">__</span><span class="w"> </span><span class="n">_</span><span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="kt">Type</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">help</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;]?&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Pkg</span><span class="w"> </span><span class="n">help</span><span class="o">.</span><span class="w"></span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="o">$</span><span class="w"> </span><span class="n">julia</span>
+<span class="w">               </span><span class="n">_</span>
+<span class="w">   </span><span class="n">_</span><span class="w">       </span><span class="n">_</span><span class="w"> </span><span class="n">_</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="n">_</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="n">Documentation</span><span class="o">:</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">docs</span><span class="o">.</span><span class="n">julialang</span><span class="o">.</span><span class="n">org</span>
+<span class="w">  </span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w">    </span><span class="o">|</span>
+<span class="w">   </span><span class="n">_</span><span class="w"> </span><span class="n">_</span><span class="w">   </span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="n">_</span><span class="w">  </span><span class="n">__</span><span class="w"> </span><span class="n">_</span><span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="kt">Type</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">help</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;]?&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Pkg</span><span class="w"> </span><span class="n">help</span><span class="o">.</span>
 <span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">|/</span><span class="w"> </span><span class="sa">_</span><span class="sb">` |  |</span>
 <span class="sb">  | | |_| | | | (_| |  |  Version 1.5.2 (2020-09-23)</span>
 <span class="sb"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
@@ -1275,8 +1275,8 @@ muss nur daran denken, zunächst das Modul <code class="xref py py-mod docutils 
 Python-Standardbibliothek ist zu laden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import math
-math.exp(2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1288,21 +1288,21 @@ math.exp(2)
 </div>
 <p>Zum Vergleich mit Python betrachten wir den folgenden Code, der die Verwendung
 einer mathematischen Funktion in der Programmiersprache C illustriert:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="hll"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="hll"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
 </span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Die Exponentialfunktion von %f ist %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Die Exponentialfunktion von %f ist %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Hier entspricht die hervorgehobene Zeile dem <code class="docutils literal notranslate"><span class="pre">import</span></code>-Befehl in Python. Zudem muss
 man beim Kompilieren, also der Übersetzung des Programms in maschinenlesbaren Code
 mit <code class="docutils literal notranslate"><span class="pre">-lm</span></code> noch die Mathematikbibliothek hinzuzulinken.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cc -o bsp_exp bsp_exp.c -lm
-$ ./bsp_exp
-Die Exponentialfunktion von <span class="m">2</span>.000000 ist <span class="m">7</span>.389056
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cc<span class="w"> </span>-o<span class="w"> </span>bsp_exp<span class="w"> </span>bsp_exp.c<span class="w"> </span>-lm
+$<span class="w"> </span>./bsp_exp
+Die<span class="w"> </span>Exponentialfunktion<span class="w"> </span>von<span class="w"> </span><span class="m">2</span>.000000<span class="w"> </span>ist<span class="w"> </span><span class="m">7</span>.389056
 </pre></div>
 </div>
 <p>In der ersten Zeile wird mit <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">bsp_exp</span></code> festgelegt, dass die Ausgabedatei
@@ -1376,8 +1376,8 @@ importieren. Diese stehen dann wie in dem folgenden Beispiel zur Verfügung, ohn
 der Modulname voranzustellen ist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sin, cos
-sin(0.5)**2+cos(0.5)**2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
+<span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">cos</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -1391,8 +1391,8 @@ sin(0.5)**2+cos(0.5)**2
 einbinden</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import *
-log(10)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1417,7 +1417,7 @@ Beachten Sie dabei, dass das Modul im Laufe der Zeit weiterentwickelt wird. Es k
 dass einzelne Funktionen in älteren Python-Versionen noch nicht vorhanden sind.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>help(math)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1709,7 +1709,7 @@ DATA
     tau = 6.283185307179586
 
 FILE
-    /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/lib-dynload/math.cpython-39-x86_64-linux-gnu.so
+    /opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/lib-dynload/math.cpython-39-x86_64-linux-gnu.so
 </pre></div>
 </div>
 </div>
@@ -1725,8 +1725,8 @@ im Bogenmaß oder in Grad erwartet werden. Die trigonometrischen Funktionen aus 
 <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul erwarten Argumente im Bogenmaß.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sin, pi
-sin(90), sin(0.5*pi)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">sin</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1755,8 +1755,8 @@ Letzteres kann für die Lesbarkeit hilfreich sein. Damit können wir unser obige
 Beispiel für Argumente in Grad anpassen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import radians
-sin(radians(90))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">radians</span>
+<span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1788,10 +1788,10 @@ y &amp;= r\sin(\varphi)
 durch die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">atan()</span></code> berechnet wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import atan, degrees, sqrt
-x = 1
-y = sqrt(3)
-degrees(atan(y/x))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">atan</span><span class="p">,</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">degrees</span><span class="p">(</span><span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1805,9 +1805,9 @@ degrees(atan(y/x))
 <p>Allerdings gibt es zwei Probleme. Zum einen kann der Punkt auf der <span class="math notranslate nohighlight">\(y\)</span>-Achse liegen.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 0
-y = 1
-atan(y/x)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1829,9 +1829,9 @@ fehlschlägt. Das andere Probleme besteht darin, dass man nicht zwischen einem P
 und dem am Ursprung gespiegelten Punkt unterscheiden kann.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = -1
-y = -sqrt(3)
-degrees(atan(y/x))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">degrees</span><span class="p">(</span><span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1846,8 +1846,8 @@ während das korrekte Ergebnis <span class="math notranslate nohighlight">\(240^
 <p>Für solche Fälle stellt Python die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">atan2()</span></code> zur Verfügung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import atan2
-help(atan2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">atan2</span>
+<span class="n">help</span><span class="p">(</span><span class="n">atan2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1867,9 +1867,9 @@ des Bruches stehen würde, bei uns also <code class="docutils literal notranslat
 aussehen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 0
-y = 1
-degrees(atan2(y, x))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">degrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1881,9 +1881,9 @@ degrees(atan2(y, x))
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = -1
-y = -sqrt(3)
-degrees(atan2(y, x))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">degrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1903,9 +1903,9 @@ bei der Berechnung des Abstands</p>
 Code lesbarer zu machen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
-y = 2
-sqrt(x**2 + y**2), hypot(x, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">hypot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1921,8 +1921,8 @@ zweier Punkte berechnet. Sowohl <code class="xref py py-func docutils literal no
 auch in mehr als zwei Dimensionen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import dist
-dist((1, 2, 3), (2, 1, 4))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">dist</span>
+<span class="n">dist</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1947,8 +1947,8 @@ gibt es die <code class="xref py py-func docutils literal notranslate"><span cla
 in C, Fortran und Julia verwendet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import e, log, log10
-log(e**2), log10(10**-3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">e</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">log10</span>
+<span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">log10</span><span class="p">(</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1983,9 +1983,9 @@ Exponentialfunktion</p>
 die <code class="xref py py-func docutils literal notranslate"><span class="pre">expm1()</span></code>-Funktion nimmt uns diese Arbeit ab.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import expm1
-x = 0.00001
-exp(x)-1, expm1(x)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">expm1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">0.00001</span>
+<span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">expm1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2001,8 +2001,8 @@ Unterschied zu machen, und da sie positiv sind, würden Sie den Abstand zum Resu
 <code class="xref py py-func docutils literal notranslate"><span class="pre">exp()</span></code>-Funktion ohnehin nur weiter vergrößern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 0.00001
-x + x**2/2 + x**3/6
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.00001</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">6</span>
 </pre></div>
 </div>
 </div>
@@ -2031,9 +2031,9 @@ der Nähe von 1 einer besonderen Behandlung bedürfen. Hierzu steht in Python f�
 natürlichen Logarithmus die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">log1p()</span></code> zur Verfügung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import log1p
-x = 1e-5
-log(1+x), log1p(x)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log1p</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">),</span> <span class="n">log1p</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2049,8 +2049,8 @@ log(1+x), log1p(x)
 <p>davon überzeugen, dass <code class="xref py py-func docutils literal notranslate"><span class="pre">log1p()</span></code> bis auf Rundungsfehler den korrekten Wert liefert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1e-5
-x - x**2/2 + x**3/3
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -2068,7 +2068,7 @@ erzeugt man einen Imaginärteil durch Anhängen des Buchstabens <code class="doc
 Ingenieure häufig statt des in der Mathematik und Physik üblichen <code class="docutils literal notranslate"><span class="pre">i</span></code> verwenden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(1+0.5j)/(1-0.5j)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mf">0.5</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="n">j</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2081,9 +2081,9 @@ Ingenieure häufig statt des in der Mathematik und Physik üblichen <code class=
 <p>Alternativ kann man die Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">complex()</span></code> verwenden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>z1 = complex(1, 0.5)
-z2 = complex(1, -0.5)
-z1/z2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">z1</span><span class="o">/</span><span class="n">z2</span>
 </pre></div>
 </div>
 </div>
@@ -2098,11 +2098,11 @@ konstruieren, geht dies mit der zweiten der gerade genannten Methoden
 sehr einfach</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
-y = 2
-z1 = complex(x, y)
-z2 = complex(x, -y)
-z1/z2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">z1</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">)</span>
+<span class="n">z1</span><span class="o">/</span><span class="n">z2</span>
 </pre></div>
 </div>
 </div>
@@ -2116,9 +2116,9 @@ z1/z2
 beachten, dass die folgenden beiden Wege nicht zum Ziel führen.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 18
-y = 9
-z = x+yj
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">yj</span>
 </pre></div>
 </div>
 </div>
@@ -2142,8 +2142,8 @@ man neben <code class="docutils literal notranslate"><span class="pre">x</span><
 für <code class="docutils literal notranslate"><span class="pre">yj</span></code> setzt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>yj = 24
-x+yj
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yj</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">x</span><span class="o">+</span><span class="n">yj</span>
 </pre></div>
 </div>
 </div>
@@ -2158,7 +2158,7 @@ repräsentieren soll, mit <code class="docutils literal notranslate"><span class
 undefinierte Variable angesehen und so erklärt sich dann auch die Fehlermeldung.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>z = x+y*j
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">j</span>
 </pre></div>
 </div>
 </div>
@@ -2179,8 +2179,8 @@ werden. Den Grund hierfür werden wir noch genauer verstehen, wenn wir in
 sind.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>z = x+y*1j
-z
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
+<span class="n">z</span>
 </pre></div>
 </div>
 </div>
@@ -2202,8 +2202,8 @@ noch genauer diskutieren werden, so lassen sich aus der Variablen wieder der Rea
 der Imaginärteil extrahieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1+0.5j
-x.real, x.imag
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mf">0.5</span><span class="n">j</span>
+<span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span>
 </pre></div>
 </div>
 </div>
@@ -2216,7 +2216,7 @@ x.real, x.imag
 <p>Man kann sich auch die konjugiert komplexe Zahl beschaffen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x.conjugate()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2242,8 +2242,8 @@ umgekehrten Weg gibt es keine mathematisch eindeutige Vorschrift, die
 Python verwenden könnte.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import exp, pi
-exp(0.25j*pi)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2263,8 +2263,8 @@ exp(0.25j*pi)
 Zahlen umgehen kann.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import cmath
-help(cmath)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cmath</span>
+<span class="n">help</span><span class="p">(</span><span class="n">cmath</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2386,7 +2386,7 @@ DATA
     tau = 6.283185307179586
 
 FILE
-    /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/lib-dynload/cmath.cpython-39-x86_64-linux-gnu.so
+    /opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/lib-dynload/cmath.cpython-39-x86_64-linux-gnu.so
 </pre></div>
 </div>
 </div>
@@ -2394,8 +2394,8 @@ FILE
 <p>Damit können wir nun die Exponentialfunktion auf eine komplexe Zahl anwenden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from cmath import exp, pi
-exp(0.25j*pi)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cmath</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2410,9 +2410,9 @@ sein, sowohl das Modul <code class="xref py py-mod docutils literal notranslate"
 importieren:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import math, cmath
-print(f&#39;reelle Exponentialfunktion:   {math.exp(2)}&#39;)
-print(f&#39;komplexe Exponentialfunktion: {cmath.exp(0.25j*math.pi)}&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">cmath</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;reelle Exponentialfunktion:   </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;komplexe Exponentialfunktion: </span><span class="si">{</span><span class="n">cmath</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2429,10 +2429,10 @@ immer klar, um welche Funktion es sich handelt.</p>
 wobei der Name nicht zwingend <code class="docutils literal notranslate"><span class="pre">cexp</span></code> sein müsste..</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import exp, pi
-from cmath import exp as cexp
-print(f&#39;reelle Exponentialfunktion:   {exp(2)}&#39;)
-print(f&#39;komplexe Exponentialfunktion: {cexp(0.25j*math.pi)}&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">cmath</span> <span class="kn">import</span> <span class="n">exp</span> <span class="k">as</span> <span class="n">cexp</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;reelle Exponentialfunktion:   </span><span class="si">{</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;komplexe Exponentialfunktion: </span><span class="si">{</span><span class="n">cexp</span><span class="p">(</span><span class="mf">0.25</span><span class="n">j</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2521,10 +2521,10 @@ chinesischen Schriftzeichen geschrieben wurde. Dennoch ist zum Beispiel der
 folgende Code für Python 3 kein Problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import pi as π
-Radius = 2
-Fläche = π*Radius**2
-print(Fläche)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span> <span class="k">as</span> <span class="n">π</span>
+<span class="n">Radius</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Fläche</span> <span class="o">=</span> <span class="n">π</span><span class="o">*</span><span class="n">Radius</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Fläche</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2566,12 +2566,12 @@ Wichtiger als das kurze Programm, das wir an dieser Stelle noch nicht vollständ
 können, ist das Ergebnis der reservierten Schlüsselwörter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from keyword import kwlist
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keyword</span> <span class="kn">import</span> <span class="n">kwlist</span>
 
-for nr, kw in enumerate(kwlist):
-    print(f&#39;{kw:&lt;16s}&#39;, end=&#39;&#39;)
-    if nr % 5 == 4:
-        print()
+<span class="k">for</span> <span class="n">nr</span><span class="p">,</span> <span class="n">kw</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kwlist</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kw</span><span class="si">:</span><span class="s1">&lt;16s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nr</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2599,10 +2599,10 @@ wir im <a class="reference internal" href="funktionen.html#lambdafunktionen"><sp
 ein Gleichheitszeichen gekennzeichnet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
-print(f&#39;nach der ersten Zuweisung:  x = {x}&#39;)
-x = x + 1
-print(f&#39;nach der zweiten Zuweisung: x = {x}&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nach der ersten Zuweisung:  x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nach der zweiten Zuweisung: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2629,11 +2629,11 @@ davon funktionieren, welchen konkreten Wert die beiden Variablen zunächst haben
 könnte zunächst versucht sein, das Problem auf die folgende Weise zu lösen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
-y = 2
-x = y
-y = x
-print(x, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2651,12 +2651,12 @@ nicht auf magische Weise wieder auftreten.</p>
 zwischenzuspeichern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
-y = 2
-tmp = x
-x = y
-y = tmp
-print(x, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2673,10 +2673,10 @@ zuzuweisen, der in <code class="docutils literal notranslate"><span class="pre">
 <p>In Python lässt sich das Problem noch eleganter in folgender Weise lösen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
-y = 2
-x, y = y, x
-print(x, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2717,8 +2717,8 @@ verteilen wird. Im ersten Fall erwartet Python nach dem Pluszeichen den zweiten
 Summanden, der auf dieser Zeile aber nicht zu finden ist.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>4+
-5
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="o">+</span>
+<span class="mi">5</span>
 </pre></div>
 </div>
 </div>
@@ -2735,8 +2735,8 @@ Summanden, der auf dieser Zeile aber nicht zu finden ist.</p>
 zugehörigen schließenden Klammer liest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(4+
-5)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">4</span><span class="o">+</span>
+<span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2762,7 +2762,7 @@ einem <code class="docutils literal notranslate"><span class="pre">True</span></
 Hilfe der Funktion <code class="xref py py-func docutils literal notranslate"><span class="pre">bool()</span></code> überprüfen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bool(0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2774,7 +2774,7 @@ Hilfe der Funktion <code class="xref py py-func docutils literal notranslate"><s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bool(42)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2788,8 +2788,8 @@ Hilfe der Funktion <code class="xref py py-func docutils literal notranslate"><s
 und <code class="docutils literal notranslate"><span class="pre">or</span></code> (logisches Oder). Bei der Negation wird aus <code class="docutils literal notranslate"><span class="pre">True</span></code> <code class="docutils literal notranslate"><span class="pre">False</span></code> und umgekehrt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = True
-not x
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ow">not</span> <span class="n">x</span>
 </pre></div>
 </div>
 </div>
@@ -2804,8 +2804,8 @@ durchführen, die nur dann <code class="docutils literal notranslate"><span clas
 Wahrheitswert <code class="docutils literal notranslate"><span class="pre">True</span></code> haben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y = False
-x and y
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">x</span> <span class="ow">and</span> <span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -2820,7 +2820,7 @@ den Wahrheitswert <code class="docutils literal notranslate"><span class="pre">T
 das nur <code class="docutils literal notranslate"><span class="pre">True</span></code> ergibt, wenn genau einer der beiden Wahrheitswerte gleich <code class="docutils literal notranslate"><span class="pre">True</span></code> ist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x or y
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="ow">or</span> <span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -2837,9 +2837,9 @@ Dies wird in dem folgenden Beispiel illustriert. Im ersten Fall steht das Ergebn
 durch Null nicht mehr durchgeführt wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = True
-y = 0
-x or 1/y
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x</span> <span class="ow">or</span> <span class="mi">1</span><span class="o">/</span><span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -2853,7 +2853,7 @@ x or 1/y
 bekannten Folgen einer Division durch Null.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x and 1/y
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="ow">and</span> <span class="mi">1</span><span class="o">/</span><span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -2905,7 +2905,7 @@ bekannten Folgen einer Division durch Null.</p>
 <p>Die folgenden drei Beispiele illustrieren Vergleichsoperationen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5 != 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -2917,7 +2917,7 @@ bekannten Folgen einer Division durch Null.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5 &gt; 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -2929,7 +2929,7 @@ bekannten Folgen einer Division durch Null.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5 == 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">==</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -2947,11 +2947,11 @@ statt zwei Gleichheitszeichen zu verwenden.</p>
 <p>In Python kann man Vergleichsoperation auch verketten wie das folgende Beispiel zeigt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(10):
-    if 2 &lt;= n &lt;= 5:
-        print(f&#39;{n} ✓&#39;)
-    else:
-        print(f&#39;{n} ✗&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ✓&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ✗&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2975,9 +2975,9 @@ nicht sinnvoll, da Rundungsfehler dazu führen können, dass das Ergebnis nicht
 wie erwartet ausfällt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 3*0.1
-y = 0.3
-x == y
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mf">0.1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -2991,8 +2991,8 @@ x == y
 Gleitkommazahlen eine vertretbare Schwelle unterschreitet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>eps = 1e-12
-abs(x-y) &lt; eps
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-12</span>
+<span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span>
 </pre></div>
 </div>
 </div>
@@ -3006,8 +3006,8 @@ abs(x-y) &lt; eps
 hilfreich sein, das sowohl absolute als auch relative Abweichungen berücksichtigen kann.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import math
-help(math.isclose)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3070,10 +3070,10 @@ Hilfe von f-Strings beschränken, da sich diese als bevorzugte Methode etabliert
 <p>Wir beginnen mit dem einfachsten Fall einer unformatierten Ausgabe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1.5
-y = 3.14159
-print(x**2)
-print(x, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3102,7 +3102,7 @@ auch einfache Anführungszeichen (<code class="docutils literal notranslate"><sp
 Zeichenkette das gleiche Zeichen verwendet wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Näherung für π/3:&quot;, y/3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Näherung für π/3:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3118,15 +3118,12 @@ dass man beispielsweise die Zahl der Nachkommastellen kontrollieren will. In uns
 Beispiel wäre eine Beschränkung auf fünf Nachkommastellen sinnvoll.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;Näherung für π/3: {y/3:.5f}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Näherung für π/3: </span><span class="si">{</span><span class="n">y</span><span class="o">/</span><span class="mi">3</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Näherung für π/3: 1.04720
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3149,9 +3146,9 @@ gerundet.</p>
 <p>In f-Strings ist die Zahl der auszuwertenden Ausdrücke nicht auf einen beschränkt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 2
-power = 0.5
-print(f&quot;{x}**{power} = {x**power}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">power</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">**</span><span class="si">{</span><span class="n">power</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">x</span><span class="o">**</span><span class="n">power</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3173,11 +3170,11 @@ so ist diese zu verdoppeln, also <code class="docutils literal notranslate"><spa
 Wert einer Variablen auszugeben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>myvar = 2**0.5
-print(f&quot;{myvar = }&quot;)
-print(f&quot;{myvar =}&quot;)
-print(f&quot;{myvar= }&quot;)
-print(f&quot;{myvar=}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myvar</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">myvar</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">myvar</span><span class="w"> </span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">myvar</span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">myvar</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3195,7 +3192,7 @@ Gleichheitszeichen herum leicht beeinflussen kann. Für ältere Pythonversionen
 müsste man stattdessen den Variablennamen de facto zweimal angeben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;myvar = {myvar}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;myvar = </span><span class="si">{</span><span class="n">myvar</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3216,13 +3213,16 @@ Beispiels weiter oben, in dem wir fünf Nachkommastellen festgelegt hatten,
 wollen wir nun die ganze Breite der Ausgabe festlegen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 2**0.5
-print(f&quot;|{x:6.3f}|&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">6.3f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 1.414|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -3244,7 +3244,7 @@ ausgegeben, aber untereinanderstehende Zahlen werden unter Umständen nicht
 mehr wie gewünscht zueinander ausgerichtet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;|{x:4.3f}|&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">4.3f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3258,8 +3258,8 @@ mehr wie gewünscht zueinander ausgerichtet.</p>
 da dann immer die minimal benötigte Breite belegt wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;{x:.3f}&quot;)
-print(f&quot;{x**7:.3f}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">**</span><span class="mi">7</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3277,12 +3277,12 @@ Formatierungsangabe wird für positive Zahlen ein Plus, ein Leerzeichen bzw. gar
 nichts ausgegeben wie die folgenden Beispiele zeigen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;|{x:+4.2f}|&quot;)
-print(f&quot;|{-x:+4.2f}|&quot;)
-print(f&quot;|{x: 4.2f}|&quot;)
-print(f&quot;|{-x: 4.2f}|&quot;)
-print(f&quot;|{x:-4.2f}|&quot;)
-print(f&quot;|{-x:-4.2f}|&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">+4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="o">-</span><span class="n">x</span><span class="si">:</span><span class="s2">+4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2"> 4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="o">-</span><span class="n">x</span><span class="si">:</span><span class="s2"> 4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">-4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="o">-</span><span class="n">x</span><span class="si">:</span><span class="s2">-4.2f</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3304,9 +3304,9 @@ kleinen oder sehr großen Zahlen eine feste Anzahl von Nachkommastellen nicht
 unbedingt geeignet ist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;{x:10.8f}&quot;)
-print(f&quot;{x/10e6:10.8f}&quot;)
-print(f&quot;{x*10e6:10.8f}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">10.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3325,10 +3325,10 @@ Exponentialdarstellung zu verlangen, die man mit Hilfe des Buchstabens <code cla
 an Stelle des bisherigen <code class="docutils literal notranslate"><span class="pre">f</span></code> erhält.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;|{x:10.8e}|&quot;)
-print(f&quot;|{x:10.4e}|&quot;)
-print(f&quot;|{x/10e6:14.8e}|&quot;)
-print(f&quot;|{x:20.8e}|&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">10.8e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">10.4e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">14.8e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">20.8e</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3361,10 +3361,10 @@ auszugebende Zahl hinreichend groß oder klein ist. Ein solches Verhalten
 erreicht man durch Angabe des Buchstabens <code class="docutils literal notranslate"><span class="pre">g</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;|{x/10e4:15.8g}|&quot;)
-print(f&quot;|{x/10e3:15.8g}|&quot;)
-print(f&quot;|{x*10e6:15.8g}|&quot;)
-print(f&quot;|{x*10e7:15.8g}|&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e4</span><span class="si">:</span><span class="s2">15.8g</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">10e3</span><span class="si">:</span><span class="s2">15.8g</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="mf">10e6</span><span class="si">:</span><span class="s2">15.8g</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="mf">10e7</span><span class="si">:</span><span class="s2">15.8g</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3386,8 +3386,8 @@ nachlesen, die auch alle weiteren Aspekte der Formatierung detailliert beschreib
 <p>Betrachten wir nun noch die Formatierung von Integers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n = 42
-print(f&quot;|{n}|{n:5}|{n:05}|&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">5</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">05</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3406,7 +3406,7 @@ Zahlensystemen interessant sein. Python unterstützt insbesondere die Ausgabe im
 Binärformat (<code class="docutils literal notranslate"><span class="pre">b</span></code>), Oktalformat (<code class="docutils literal notranslate"><span class="pre">o</span></code>) und im Hexadezimalformat (<code class="docutils literal notranslate"><span class="pre">x</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;|{n:}|{n:8b}|{n:8o}|{n:8x}|{n:08b}|&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">n</span><span class="si">:}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8b</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8o</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">8x</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">08b</span><span class="si">}</span><span class="s2">|&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3428,9 +3428,9 @@ jedoch nicht immer gewünscht und lässt sich mit Hilfe der Option <code class="
 beeinflussen. Folgendes Beispiel zeigt die Funktionsweise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;x&quot;, end=&quot;..&quot;)
-print(&quot;x&quot;, end=&quot;&quot;)
-print(&quot;x&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;..&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

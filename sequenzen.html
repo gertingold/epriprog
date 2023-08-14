@@ -447,9 +447,9 @@ Dabei werden die benötigten Werte nur bei Bedarf erzeugt. Um alle Werte auf ein
 sehen, hatten wir die <code class="xref py py-func docutils literal notranslate"><span class="pre">list()</span></code>-Funktion verwendet und dabei eine Liste erzeugt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>meine_liste = list(range(20))
-print(meine_liste)
-print(type(meine_liste))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -466,10 +466,10 @@ print(type(meine_liste))
 bestimmen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>liste1 = list(range(1, 17, 3))
-print(f&#39;Länge der ersten Liste:  {len(liste1)} Elemente&#39;)
-liste2 = [&#39;Stein&#39;, &#39;Papier&#39;, &#39;Schere&#39;]
-print(f&#39;Länge der zweiten Liste: {len(liste2)} Elemente&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Länge der ersten Liste:  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">liste1</span><span class="p">)</span><span class="si">}</span><span class="s1"> Elemente&#39;</span><span class="p">)</span>
+<span class="n">liste2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="s1">&#39;Papier&#39;</span><span class="p">,</span> <span class="s1">&#39;Schere&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Länge der zweiten Liste: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">liste2</span><span class="p">)</span><span class="si">}</span><span class="s1"> Elemente&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -485,8 +485,8 @@ Ausschnitte aus der Liste adressieren kann und diese auch verändern kann. Wir d
 dies zunächst an einem einzelnen Listenelement.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>meine_liste = [1, 17, 3]
-print(meine_liste[1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -507,8 +507,8 @@ sich also diesbezüglich informieren, welche Konvention in der verwendeten Progr
 möglich.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>meine_liste[1] = 2
-print(meine_liste)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -525,8 +525,8 @@ Liste von Primzahlen werden alle Elemente ab Index 1, also ab dem zweiten Elemen
 dem Index 5 ausgewählt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>primzahlen = [2, 3, 5, 7, 11, 13, 17, 19, 23]
-print(primzahlen[1:5])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primzahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -557,7 +557,7 @@ Schrittweite zu wählen. Die Bedeutung der Argumente ist in beiden Fällen gleic
 in der <em>slice</em>-Notation die Argumente jeweils durch einen Doppelpunkt getrennt sind.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen[1:8:2])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -574,7 +574,7 @@ Primzahlliste ausgeben möchte. Für die vollständige Indexangabe wird man zun�
 die Länge der Liste bestimmen müssen, wenn man diese nicht schon kennt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen[0:len(primzahlen):3])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">):</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -589,7 +589,7 @@ entsprechenden Eintrag leer lässt. Das Fehlen des Index ist dabei anhand der Do
 erkenntlich.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen[0::3])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -602,7 +602,7 @@ erkenntlich.</p>
 <p>Entsprechend könnten man den ersten Index weglassen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen[::3])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[::</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -618,8 +618,8 @@ diese Weise erhält man alle Elemente der Liste. Es ist allerdings nicht möglic
 Doppelpunkte wegzulassen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen[::])
-print(primzahlen[:])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[::])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[:])</span>
 </pre></div>
 </div>
 </div>
@@ -635,7 +635,7 @@ Allerdings werden wir später noch sehen, dass es einen Unterschied macht, ob ma
 Listennamen verwendet oder ein <em>slice</em> <code class="docutils literal notranslate"><span class="pre">[:]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -658,7 +658,7 @@ zu überprüfen.</p>
 Exception.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen[20])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -686,8 +686,8 @@ Listenelemente vom Ende her zu adressieren ohne die Länge der Liste kennen zu m
 <p>So lässt sich beispielsweise sehr leicht das letzte Element einer Liste extrahieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen)
-print(primzahlen[-1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -701,7 +701,7 @@ print(primzahlen[-1])
 <p>Auch die letzten drei Elemente lassen sich auf entsprechende Weise leicht erhalten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen[-3:])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
 </pre></div>
 </div>
 </div>
@@ -714,7 +714,7 @@ print(primzahlen[-1])
 <p>Mit einer negativen Schrittweite kann man die Listen in umgekehrter Reihenfolge anordnen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(primzahlen[::-1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -731,11 +731,11 @@ unter dem die ursprüngliche Liste angesprochen werden kann. Man spricht hier au
 einem <em>Alias</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 17, 3]
-b = a
-a[1] = 2
-print(a)
-print(b)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -750,12 +750,12 @@ print(b)
 <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> auf das gleiche Pythonobjekt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(id(a), id(b))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139969708604672 139969708604672
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140547774974208 140547774974208
 </pre></div>
 </div>
 </div>
@@ -763,11 +763,11 @@ print(b)
 <p>Anders sieht es aus, wenn man die Listenelemente zuweist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 17, 3]
-b = a[:]
-a[1] = 2
-print(a)
-print(b)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -781,12 +781,12 @@ print(b)
 <p>Nun handelt es sich bei den beiden Listen in der Tat auch um verschiedene Pythonobjekte.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(id(a), id(b))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139969708553856 139969708630464
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140547775285696 140547774973952
 </pre></div>
 </div>
 </div>
@@ -795,12 +795,12 @@ print(b)
 der Funktion verändert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def modify_list(x):
-    x[0] = 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">modify_list</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 
-meine_liste = [1, 2, 3]
-modify_list(meine_liste)
-print(meine_liste)
+<span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">modify_list</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -821,10 +821,10 @@ eine mathematische Aufgabe in einer Liste spezifiziert, indem das erste Element 
 Funktionsobjekt enthält während das zweite Element das zugehörige Argument enthält.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import sin, pi
-aufgabe = [sin, pi/6]
-ergebnis = aufgabe[0](aufgabe[1])
-print(ergebnis)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">aufgabe</span> <span class="o">=</span> <span class="p">[</span><span class="n">sin</span><span class="p">,</span> <span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">aufgabe</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">aufgabe</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -838,10 +838,10 @@ print(ergebnis)
 <p>Es ist auch möglich, Listen als Listenelemente zu verwenden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [[1, 2], [3, 4]]
-print(a[0])
-print(a[1])
-print(a[0][1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -867,8 +867,8 @@ Listen definiert. Stattdessen verwendet man für diese Zwecke die Numpy-Arrays, 
 einzelnen Listenelemente der Matrix <code class="docutils literal notranslate"><span class="pre">a</span></code> iterieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for liste in a:
-    print(liste)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">liste</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -882,8 +882,8 @@ einzelnen Listenelemente der Matrix <code class="docutils literal notranslate"><
 <p>Häufig ist es in solchen Fälle sinnvoll, die einzelnen Listenelemente gleich zu entpacken.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for x, y in a:
-    print(f&quot;{x} * {y} = {x*y}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -900,8 +900,8 @@ nicht funktionieren, da versucht wird, auf ein nicht existierendes Listenelement
 zuzugreifen.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 2, 3]
-a[3] = 4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
 </pre></div>
 </div>
 </div>
@@ -921,9 +921,9 @@ a[3] = 4
 anzuhängen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 2, 3]
-a.append(4)
-print(a)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -938,9 +938,9 @@ wäre. Würde man das Ergebnis der <code class="xref py py-func docutils literal
 würde die Liste mit dem Wert <code class="docutils literal notranslate"><span class="pre">None</span></code> überschrieben werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 2, 3]
-a = a.append(4)
-print(a)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -953,10 +953,10 @@ print(a)
 <p>Häufig werden im Rahmen einer Schleife mehrere Listenelemente zu einer Liste hinzugefügt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = []
-for n in range(10):
-    a.append(n**2)
-print(a)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -970,8 +970,8 @@ print(a)
 darstellen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [n**2 for n in range(10)]
-print(a)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -985,8 +985,8 @@ print(a)
 sich davor hüten, solche Konstruktionen zu komplex werden zu lassen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [n**2 for n in range(10) if n % 3]
-print(a)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1001,13 +1001,13 @@ mit der eine Liste an eine andere Liste angehängt werden kann. Mit der <code cl
 würde die Liste dagegen ein Element der ersten Liste werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 2]
-b = [3, 4]
-a.extend(b)
-print(a)
-a = [1, 2]
-a.append(b)
-print(a)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1022,10 +1022,10 @@ print(a)
 ist es nicht möglich, auf diese Weise ein einzelnes Listenelement hinzuzufügen.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 2]
-b = [3, 4]
-print(a + b)
-print(a + 4)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1049,8 +1049,8 @@ print(a + 4)
 ganzen Zahl möglich.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 2]
-print(a*5)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1062,7 +1062,7 @@ print(a*5)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a*0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1074,8 +1074,8 @@ print(a*5)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = [0]
-print(b*10)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1092,9 +1092,9 @@ wollen hier nur ein paar Beispiele aufführen und verweisen ansonsten auf die
 sein, die den Index des Elements angibt, in dem der gesuchte Wert zum ersten Mal auftritt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>meine_liste = [1, 2, 3, 4, 3, 2, 1]
-idx1 = meine_liste.index(2)
-print(f&quot;Index: {idx1}  Wert: {meine_liste[idx1]}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">idx1</span> <span class="o">=</span> <span class="n">meine_liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">idx1</span><span class="si">}</span><span class="s2">  Wert: </span><span class="si">{</span><span class="n">meine_liste</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1108,9 +1108,9 @@ print(f&quot;Index: {idx1}  Wert: {meine_liste[idx1]}&quot;)
 bereits gefundenen Listenelement zu beschränken.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>offset = idx1+1
-idx2 = meine_liste[offset:].index(2)
-print(f&quot;Index: {offset+idx2}  Wert: {meine_liste[offset+idx2]}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">offset</span> <span class="o">=</span> <span class="n">idx1</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">idx2</span> <span class="o">=</span> <span class="n">meine_liste</span><span class="p">[</span><span class="n">offset</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">offset</span><span class="o">+</span><span class="n">idx2</span><span class="si">}</span><span class="s2">  Wert: </span><span class="si">{</span><span class="n">meine_liste</span><span class="p">[</span><span class="n">offset</span><span class="o">+</span><span class="n">idx2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1118,12 +1118,15 @@ print(f&quot;Index: {offset+idx2}  Wert: {meine_liste[offset+idx2]}&quot;)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index: 5  Wert: 2
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <p>Kommt das gesuchte Element nicht in der Liste vor, so erhält man einen <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>meine_liste.index(5)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1141,11 +1144,11 @@ print(f&quot;Index: {offset+idx2}  Wert: {meine_liste[offset+idx2]}&quot;)
 <p>Um solche Fälle vernünftig zu behandeln, sollte man die Ausnahme abfangen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(7):
-    try:
-        print(f&quot;Erstes Auftreten von {n}: {meine_liste.index(n)}&quot;)
-    except ValueError:
-        print(f&quot;{n} wurde nicht gefunden.&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erstes Auftreten von </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">meine_liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> wurde nicht gefunden.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1165,11 +1168,11 @@ Erstes Auftreten von 4: 3
 nicht daran, wo sich dieser Wert befindet, so kann man den <code class="docutils literal notranslate"><span class="pre">in</span></code>-Operator verwenden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(7):
-    if n in meine_liste:
-        print(f&quot;{n} ist vorhanden&quot;)
-    else:
-        print(f&quot;{n} ist nicht vorhanden&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">meine_liste</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> ist vorhanden&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> ist nicht vorhanden&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1191,17 +1194,17 @@ Variante wählen.</p>
 sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue Liste erzeugt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from random import randint
-zufallsliste = [randint(1, 100) for _ in range(20)]
-print(zufallsliste)
-zufallsliste.sort()
-print(zufallsliste)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">zufallsliste</span> <span class="o">=</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zufallsliste</span><span class="p">)</span>
+<span class="n">zufallsliste</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zufallsliste</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[21, 96, 65, 43, 11, 95, 99, 30, 64, 96, 30, 60, 61, 37, 49, 30, 1, 69, 63, 99]
-[1, 11, 21, 30, 30, 30, 37, 43, 49, 60, 61, 63, 64, 65, 69, 95, 96, 96, 99, 99]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[48, 23, 92, 23, 95, 84, 29, 37, 9, 38, 69, 16, 54, 77, 25, 85, 48, 42, 31, 96]
+[9, 16, 23, 23, 25, 29, 31, 37, 38, 42, 48, 48, 54, 69, 77, 84, 85, 92, 95, 96]
 </pre></div>
 </div>
 </div>
@@ -1211,16 +1214,16 @@ nach der letzten Ziffer sortieren, so kann man diese mit einer geeigneten Lambda
 bewerkstelligen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>zufallsliste = [randint(1, 100) for _ in range(20)]
-print(zufallsliste)
-zufallsliste.sort(key=lambda x: x % 10)
-print(zufallsliste)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zufallsliste</span> <span class="o">=</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zufallsliste</span><span class="p">)</span>
+<span class="n">zufallsliste</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zufallsliste</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[98, 82, 7, 91, 30, 23, 35, 22, 60, 31, 93, 26, 14, 54, 18, 47, 60, 69, 94, 3]
-[30, 60, 60, 91, 31, 82, 22, 23, 93, 3, 14, 54, 94, 35, 26, 7, 47, 98, 18, 69]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[68, 59, 82, 31, 71, 84, 89, 8, 26, 12, 30, 6, 58, 76, 16, 78, 31, 66, 37, 19]
+[30, 31, 71, 31, 82, 12, 84, 26, 6, 76, 16, 66, 37, 68, 8, 58, 78, 59, 89, 19]
 </pre></div>
 </div>
 </div>
@@ -1238,22 +1241,22 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 <code class="xref py py-func docutils literal notranslate"><span class="pre">extend()</span></code>-Methode von Listen erinnert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mytuple1 = (1, 2)
-mytuple2 = (3, 4)
-print(f&#39;{id(mytuple1) = }&#39;)
-print(f&#39;{id(mytuple2) = }&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mytuple1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">mytuple2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">mytuple1</span><span class="p">)</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">mytuple2</span><span class="p">)</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
 
-mytuple1 = mytuple1 + mytuple2
-print(f&#39;{mytuple1 = }&#39;)
-print(f&#39;{id(mytuple1) = }&#39;)
+<span class="n">mytuple1</span> <span class="o">=</span> <span class="n">mytuple1</span> <span class="o">+</span> <span class="n">mytuple2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mytuple1</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">mytuple1</span><span class="p">)</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 139969707646208
-id(mytuple2) = 139969708104512
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140547774900416
+id(mytuple2) = 140547774825920
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 139969708050928
+id(mytuple1) = 140547779435632
 </pre></div>
 </div>
 </div>
@@ -1281,10 +1284,10 @@ Listen auch noch die unveränderlichen Tupel gibt.</p>
 ändert jedoch nichts daran, dass bei der Indizierung mit <em>slices</em> eckige Klammern zu verwenden sind.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>primzahlen = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)
-print(primzahlen[4])
-print(primzahlen[1:8:3])
-print(primzahlen[::-1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primzahlen</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1299,8 +1302,8 @@ print(primzahlen[::-1])
 <p>Wie schon erwähnt ist es nicht möglich, Einträge in Tupeln zu verändern.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mein_tupel = (1, 17, 3)
-mein_tupel[1] = 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mein_tupel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">mein_tupel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -1321,10 +1324,10 @@ Komma angegeben werden obwohl kein zweites Element folgt. Dies ist erforderlich,
 den Datentyp des eingeklammerten Elements besitzen würde.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>kein_tupel = (1)
-print(type(kein_tupel))
-ein_tupel = (1,)
-print(type(ein_tupel))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kein_tupel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">kein_tupel</span><span class="p">))</span>
+<span class="n">ein_tupel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ein_tupel</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1342,15 +1345,15 @@ folgende Beispiel, das einige Elemente der Fibonacci-Reihe berechnet, enthält i
 <code class="docutils literal notranslate"><span class="pre">fibonacci_step</span></code> zwei solche Situationen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def fibonacci_step(n1, n2):
-    n1, n2 = n2, n1+n2
-    return n1, n2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci_step</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+    <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">n2</span><span class="p">,</span> <span class="n">n1</span><span class="o">+</span><span class="n">n2</span>
+    <span class="k">return</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span>
 
-n1 = 0
-n2 = 1
-for n in range(15):
-    n1, n2 = fibonacci_step(n1, n2)
-    print(n2, end=&#39; &#39;)
+<span class="n">n1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+    <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">fibonacci_step</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1370,7 +1373,7 @@ Liste führen, existieren auch für Tupel. So können wir beispielsweise die Lä
 wie von Listen her gewohnt bestimmen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(len(primzahlen))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1384,11 +1387,11 @@ wie von Listen her gewohnt bestimmen.</p>
 überprüfen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for n in range(1, 10):
-    if n in primzahlen:
-        print(f&#39;{n} ist eine Primzahl.&#39;)
-    else:
-        print(f&#39;{n} ist keine Primzahl.&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">primzahlen</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist eine Primzahl.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist keine Primzahl.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1410,10 +1413,10 @@ wie von Listen her gewohnt bestimmen.</p>
 wir die einzelnen Tupel gleich entpacken können.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import hypot
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">hypot</span>
 
-for x, y in ((2, 1), (-2, 4), (3, 0)):
-    print(f&#39;Abstand des Punktes ({x}, {y}) vom Ursprung: {hypot(x, y):6.3f}&#39;)
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Abstand des Punktes (</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">) vom Ursprung: </span><span class="si">{</span><span class="n">hypot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="si">:</span><span class="s1">6.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1449,9 +1452,9 @@ diese Wahl beim Programmieren praktisch sein, wenn das andere Zeichen im Text se
 vorkommt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s1 = &#39;Hallo&#39;
-s2 = &quot;Hallo&quot;
-s1 == s2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39;Hallo&#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;Hallo&quot;</span>
+<span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span>
 </pre></div>
 </div>
 </div>
@@ -1466,8 +1469,8 @@ vorgestellten Backslash (<code class="docutils literal notranslate"><span class=
 werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &#39;&quot;God said, \&#39;Let Newton be!\&#39; and all was light&quot; (Alexander Pope)&#39;
-print(s)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&quot;God said, </span><span class="se">\&#39;</span><span class="s1">Let Newton be!</span><span class="se">\&#39;</span><span class="s1"> and all was light&quot; (Alexander Pope)&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1482,8 +1485,8 @@ besondere Bedeutung als Steuerzeichen zu geben. Verwendet man <code class="docut
 Ausgabe einen Zeilenumbruch erzeugen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &quot;Eine Zeile\nund noch eine Zeile&quot;
-print(s)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Eine Zeile</span><span class="se">\n</span><span class="s2">und noch eine Zeile&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1500,9 +1503,9 @@ Spezialfunktion entweder mit einem weiteren Backshlash außer Kraft setzen oder 
 Zeichenkette durch Voranstellen des Zeichens <code class="docutils literal notranslate"><span class="pre">r</span></code> als <em>raw string</em> kennzeichnen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s1 = &quot;Eine Zeile\\nund noch eine Zeile&quot;
-s2 = r&quot;Eine Zeile\nund noch eine Zeile&quot;
-s1, s2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s2">&quot;Eine Zeile</span><span class="se">\\</span><span class="s2">nund noch eine Zeile&quot;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;Eine Zeile\nund noch eine Zeile&quot;</span>
+<span class="n">s1</span><span class="p">,</span> <span class="n">s2</span>
 </pre></div>
 </div>
 </div>
@@ -1520,9 +1523,9 @@ am Ende der Zeichenkette statt nur einem Begrenzer, also <code class="docutils l
 dieser Begrenzer setzen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &#39;&#39;&#39;Eine Zeile
-und noch eine Zeile&#39;&#39;&#39;
-print(s)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;Eine Zeile</span>
+<span class="s1">und noch eine Zeile&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1539,10 +1542,10 @@ automatisch zu einer Zeichenkette zusammenfügt, so dass man das nicht selbst ex
 muss.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = (&#39;Dies ist eine etwas längere Zeile, &#39;
-     &#39;die noch weiter geht &#39;
-     &#39;und noch weiter und noch weiter ...&#39;)
-print(s)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Dies ist eine etwas längere Zeile, &#39;</span>
+     <span class="s1">&#39;die noch weiter geht &#39;</span>
+     <span class="s1">&#39;und noch weiter und noch weiter ...&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1557,16 +1560,14 @@ lassen, so kann man mit dem Steuerzeichen <code class="docutils literal notransl
 angeben oder mit dem Steuerzeichen <code class="docutils literal notranslate"><span class="pre">\N</span></code> die entsprechende Unicode-Beschreibung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;\u263a \N{WHITE SMILING FACE}&#39;)
-print(&#39;\u210f \N{PLANCK CONSTANT OVER TWO PI}&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u263a</span><span class="s1"> </span><span class="se">\N{WHITE SMILING FACE}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u210f</span><span class="s1"> </span><span class="se">\N{PLANCK CONSTANT OVER TWO PI}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>☺ ☺
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ℏ ℏ
+ℏ ℏ
 </pre></div>
 </div>
 </div>
@@ -1585,17 +1586,17 @@ bei Tupeln schon gesehen hatten. Allerdings wird dabei immer eine neue Zeichenke
 erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s1 = &#39;Dies ist ein &#39;
-s2 = &#39;Test&#39;
-print(f&#39;{id(s1) = } | {id(s2) = }&#39;)
-s1 = s1 + s2
-print(f&#39;{id(s1) = }&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39;Dies ist ein &#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span><span class="w"> </span><span class="si">= }</span><span class="s1"> | </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 139969708104048 | id(s2) = 139969708104176
-id(s1) = 139970120804032
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140547779351600 | id(s2) = 140547779352368
+id(s1) = 140547830299504
 </pre></div>
 </div>
 </div>
@@ -1609,18 +1610,16 @@ folgenden Beispiel ist dagegen eine Zeichenkette sinnvoll, die aus einem Leerzei
 besteht, aber im Prinzip könnte die Zeichenkette auch mehrere Zeichen umfassen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stringlist = [&#39;Einführung&#39;, &#39;in&#39;, &#39;Prinzipien&#39;, &#39;der&#39;, &#39;Programmierung&#39;]
-print(&#39;&#39;.join(stringlist))
-print(&#39; &#39;.join(stringlist))
-print(&#39;--&#39;.join(stringlist))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stringlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Einführung&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;Prinzipien&#39;</span><span class="p">,</span> <span class="s1">&#39;der&#39;</span><span class="p">,</span> <span class="s1">&#39;Programmierung&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stringlist</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stringlist</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stringlist</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EinführunginPrinzipienderProgrammierung
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Einführung in Prinzipien der Programmierung
+Einführung in Prinzipien der Programmierung
 Einführung--in--Prinzipien--der--Programmierung
 </pre></div>
 </div>
@@ -1632,7 +1631,7 @@ gesehen hatten. Die ist beispielsweise praktisch, wenn man in einer Ausgabe
 einen Trennstrich einer bestimmten Länge setzen möchte.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;-&#39;*40)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1647,11 +1646,11 @@ Tupeln her kennen. Eine Veränderung einzelner oder mehrere Zeichen analog zu de
 ist dagegen nicht möglich.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &#39;Einführung in Prinzipien der Programmierung&#39;
-print(f&#39;{s[14:24] = }&#39;)
-print(f&#39;{s[-14:] = }&#39;)
-print(f&#39;{s[1::2] = }&#39;)
-print(f&#39;{s[::-1] = }&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Einführung in Prinzipien der Programmierung&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">24</span><span class="p">]</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="si">= }</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1670,10 +1669,10 @@ erhält man einen <code class="docutils literal notranslate"><span class="pre">V
 wie wir in <a class="reference internal" href="kontrollstrukturen.html#exceptions"><span class="std std-numref">Kapitel 4.4</span></a> gesehen hatten.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &#39;Einführung in Prinzipien der Programmierung&#39;
-print(&#39;in&#39; in s)
-print(s.index(&#39;in&#39;))
-print(s.index(&#39;x&#39;))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Einführung in Prinzipien der Programmierung&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1698,8 +1697,8 @@ print(s.index(&#39;x&#39;))
 erhält dann nacheinander die einzelnen Zeichen der Zeichenkette.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for c in &#39;ABC&#39;:
-    print(c)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">&#39;ABC&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1722,10 +1721,10 @@ Zeichenkette. Ohne Argumente werden dabei Leerzeichen entfernt. Alternativ kann 
 angeben, die die zu entfernenden Zeichen enthält.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &#39;   Hallo &#39;
-print(f&#39;|{s.lstrip()}|&#39;)
-print(f&#39;|{s.rstrip()}|&#39;)
-print(f&#39;|{s.strip()}|&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;   Hallo &#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;|</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span><span class="si">}</span><span class="s1">|&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;|</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="si">}</span><span class="s1">|&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;|</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s1">|&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1739,11 +1738,11 @@ print(f&#39;|{s.strip()}|&#39;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &#39;Hallo\n&#39;
-print(s)
-print(&#39;-&#39;*10)
-print(s.rstrip(&#39;\n&#39;))
-print(&#39;-&#39;*10)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hallo</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1763,8 +1762,8 @@ der Ausgabe.</p>
 Kleinschreibung zu sein. Dann helfen die Methoden <code class="xref py py-func docutils literal notranslate"><span class="pre">upper()</span></code> und <code class="xref py py-func docutils literal notranslate"><span class="pre">lower()</span></code> weiter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &#39;Hallo&#39;
-print(s.upper(), s.lower())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hallo&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1779,14 +1778,14 @@ Ausrichtung funktioniert natürlich nur, wenn beide Zahlen eine gerade oder eine
 ungerade Anzahl von Stellen haben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>zaehler = 12345678
-nenner = 2468
-s_zaehler = str(zaehler)
-s_nenner = str(nenner)
-maxlaenge = max(len(s_zaehler), len(s_nenner))
-print(s_zaehler.center(maxlaenge))
-print(&#39;-&#39;*maxlaenge)
-print(s_nenner.center(maxlaenge))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zaehler</span> <span class="o">=</span> <span class="mi">12345678</span>
+<span class="n">nenner</span> <span class="o">=</span> <span class="mi">2468</span>
+<span class="n">s_zaehler</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">zaehler</span><span class="p">)</span>
+<span class="n">s_nenner</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">nenner</span><span class="p">)</span>
+<span class="n">maxlaenge</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_zaehler</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">s_nenner</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_zaehler</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">maxlaenge</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="n">maxlaenge</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_nenner</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">maxlaenge</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1810,8 +1809,8 @@ finden kann und dort die gesuchte Information nachschlagen kann.</p>
 Konkret wollen wir Informationen über die Atommasse einiger Elemente zusammenstellen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>atommasse = {&#39;H&#39;: 1.008, &#39;He&#39;: 4.002602, &#39;Li&#39;: 6.94, &#39;Be&#39;: 9.0121831}
-atommasse[&#39;Li&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atommasse</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">:</span> <span class="mf">4.002602</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="mf">6.94</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">:</span> <span class="mf">9.0121831</span><span class="p">}</span>
+<span class="n">atommasse</span><span class="p">[</span><span class="s1">&#39;Li&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1845,8 +1844,8 @@ schon beim Auslesen von Werten in unserem ersten Beispiel eckige Klammern, die d
 einschließen. Diese Notation ist analog zur Indizierung von Listen mit Hilfe von <em>slices</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>atommasse[&#39;B&#39;] = 10.81
-print(atommasse)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atommasse</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.81</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atommasse</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1865,7 +1864,7 @@ eine neue Implementation von Dictionaries enthielt.</p>
 man einen <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>, den man mit der üblichen <code class="docutils literal notranslate"><span class="pre">try…except</span></code>-Konstruktion behandeln könnte</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>atommasse[&#39;O&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atommasse</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1884,7 +1883,7 @@ man einen <code class="docutils literal notranslate"><span class="pre">KeyError<
 nicht für den zugehörigen Wert, kann man folgendermaßen vorgehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&#39;B&#39; in atommasse
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;B&#39;</span> <span class="ow">in</span> <span class="n">atommasse</span>
 </pre></div>
 </div>
 </div>
@@ -1897,8 +1896,8 @@ nicht für den zugehörigen Wert, kann man folgendermaßen vorgehen.</p>
 <p>Iteriert man über ein Dictionary, so erhält man die darin enthaltenen Schlüssel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for k in atommasse:
-    print(k, end=&quot;, &quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">atommasse</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1914,8 +1913,8 @@ die entsprechenden Variablen beim Entpacken des Tupels mit <code class="docutils
 zu bezeichnen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for k, v in atommasse.items():
-    print(f&#39;{k:2s} | {v:5.2f}&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">atommasse</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s1">2s</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s1">5.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1946,16 +1945,16 @@ Eintrag noch nicht vorhanden ist. Wir können dieses Problem mit in einer
 initialisieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>text = &#39;Abrakadabra&#39;
-counter = {}
-for c in text:
-    if c not in counter:
-        counter[c] = 0
-    counter[c] = counter[c] + 1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Abrakadabra&#39;</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">counter</span><span class="p">:</span>
+        <span class="n">counter</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">counter</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">counter</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
 
-occurrences = list(counter.items())
-for c, n in sorted(occurrences, key=lambda x: -x[1]):
-    print(f&#39;{c}: {n}&#39;)
+<span class="n">occurrences</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">occurrences</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1996,22 +1995,25 @@ im Dictionary dem entsprechenden Eintrag zuzuweisen. Die Ausgabe des Dictionarie
 wir dadurch, dass wir <code class="xref py py-func docutils literal notranslate"><span class="pre">pprint()</span></code>-Funktion aus dem <a class="reference external" href="https://docs.python.org/3/library/pprint.html">pprint-Modul der Standardbibliothek</a> verwenden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from pprint import pprint
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
-fruechte = (&#39;Apfel&#39;, &#39;Birne&#39;, &#39;Banane&#39;, &#39;Heidelbeere&#39;, &#39;Kirsche&#39;, &#39;Traube&#39;) 
-gruppen = {}
-for frucht in fruechte:
-    key = len(frucht)
-    if key not in gruppen:
-        gruppen[key] = []
-    gruppen[key].append(frucht)
+<span class="n">fruechte</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Birne&#39;</span><span class="p">,</span> <span class="s1">&#39;Banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Heidelbeere&#39;</span><span class="p">,</span> <span class="s1">&#39;Kirsche&#39;</span><span class="p">,</span> <span class="s1">&#39;Traube&#39;</span><span class="p">)</span> 
+<span class="n">gruppen</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">frucht</span> <span class="ow">in</span> <span class="n">fruechte</span><span class="p">:</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">frucht</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">gruppen</span><span class="p">:</span>
+        <span class="n">gruppen</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">gruppen</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frucht</span><span class="p">)</span>
 
-pprint(gruppen)
+<span class="n">pprint</span><span class="p">(</span><span class="n">gruppen</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{5: [&#39;Apfel&#39;, &#39;Birne&#39;],
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5: [&#39;Apfel&#39;, &#39;Birne&#39;],
  6: [&#39;Banane&#39;, &#39;Traube&#39;],
  7: [&#39;Kirsche&#39;],
  11: [&#39;Heidelbeere&#39;]}
@@ -2044,12 +2046,12 @@ einen Ersatz für <code class="docutils literal notranslate"><span class="pre">c
 existieren.</p>
 <p>Zur Illustration verwenden wir ein konkretes Anwendungsbeispiel für die <code class="docutils literal notranslate"><span class="pre">case</span></code>-Anweisung
 in der Programmiersprache Pascal.</p>
-<div class="highlight-pascal notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="n">i</span> <span class="k">of</span>
-  <span class="mi">0</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="mi">0</span><span class="o">;</span>
-  <span class="mi">1</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
-  <span class="mi">2</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
-  <span class="mi">3</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="nb">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
-  <span class="mi">4</span><span class="o">:</span> <span class="n">x</span> <span class="o">:=</span> <span class="nb">ln</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
+<div class="highlight-pascal notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">of</span>
+<span class="w">  </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="o">;</span>
+<span class="w">  </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
+<span class="w">  </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
+<span class="w">  </span><span class="mi">3</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
+<span class="w">  </span><span class="mi">4</span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">ln</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -2059,17 +2061,17 @@ realisieren. Besser ist aber die Lösung mit Hilfe eines Dictionaries, wobei als
 die Zahlen 0 bis 4 verwendet werden und die zugehörigen Werte die gewünschten Funktionen sind.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from math import cos, exp, log, sin
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">sin</span>
 
-funktion = {0: lambda x: 0,
-            1: sin,
-            2: cos,
-            3: exp,
-            4: log}
+<span class="n">funktion</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="n">sin</span><span class="p">,</span>
+            <span class="mi">2</span><span class="p">:</span> <span class="n">cos</span><span class="p">,</span>
+            <span class="mi">3</span><span class="p">:</span> <span class="n">exp</span><span class="p">,</span>
+            <span class="mi">4</span><span class="p">:</span> <span class="n">log</span><span class="p">}</span>
 
-x = 2
-for i in range(5):
-    print(funktion[i](x))
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">funktion</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

@@ -382,8 +382,8 @@ umrechnen lassen können. Anschließend werden wir uns umgekehrt überlegen, das
 die Interpretation der Hexadezimaldarstellung tatsächlich die Ausgangszahl ergibt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from struct import pack
-pack(&#39;&gt;d&#39;, -25.640625).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span>
+<span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;d&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">25.640625</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -451,8 +451,8 @@ Die größte darstellbare endliche Zahl ist</p>
 \[2^{1023}\times\big(1+(1-2^{-52})\big) \approx 1{,}798\cdot 10^{308}\,.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
-sys.float_info.max
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">max</span>
 </pre></div>
 </div>
 </div>
@@ -468,7 +468,7 @@ darstellbaren Zahl beträgt</p>
 \[2^{-52} \approx 2{,}22\cdot 10^{-16}\,.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sys.float_info.epsilon
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">epsilon</span>
 </pre></div>
 </div>
 </div>
@@ -482,7 +482,7 @@ darstellbaren Zahl beträgt</p>
 sondern die kleinste darstellbare normalisierte Zahl <span class="math notranslate nohighlight">\(2^{-1022}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sys.float_info.min
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">float_info</span><span class="o">.</span><span class="n">min</span>
 </pre></div>
 </div>
 </div>

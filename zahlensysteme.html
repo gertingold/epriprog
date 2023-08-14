@@ -449,7 +449,7 @@ Dezimalzahl in eine Dualzahl erfolgt mit Hilfe der <code class="xref py py-func 
 würde man dann folgendermaßen umrechnen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bin(123)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -465,7 +465,7 @@ man eine Binärzahl in die Codezelle eines Jupyter-Notebooks ein, so wird als Au
 entsprechende Dezimaldarstellung erzeugt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>0b1111011
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mb">0b1111011</span>
 </pre></div>
 </div>
 </div>
@@ -592,7 +592,7 @@ Beispiel</p>
 <code class="xref py py-func docutils literal notranslate"><span class="pre">hex()</span></code>-Funktion vorgenommen werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>hex(243)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hex</span><span class="p">(</span><span class="mi">243</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -606,7 +606,7 @@ Beispiel</p>
 <p>Genauso wie man eine Binärzahl in eine Dezimalzahl umwandeln kann,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int(0b11110011)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mb">0b11110011</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -619,7 +619,7 @@ Beispiel</p>
 <p>geht dies auch für eine Hexadezimalzahl</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int(0xf3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mh">0xf3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -634,7 +634,7 @@ ob das <code class="docutils literal notranslate"><span class="pre">x</span></co
 auch für die Hexadezimalziffern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int(0xF3), int(0Xf3), int(0XF3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mh">0xF3</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mh">0Xf3</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mh">0XF3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -671,8 +671,8 @@ Python erlaubt es uns, die interne Darstellung leicht zu bestimmen, wobei uns hi
 Ergebnis interessieren soll.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from struct import pack
-pack(&#39;&gt;B&#39;, 123).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="n">pack</span>
+<span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;B&#39;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -692,7 +692,7 @@ pack(&#39;&gt;B&#39;, 123).hex()
 <p>Die größte Zahl, die man mit einem Byte darstellen kann, ist <span class="math notranslate nohighlight">\(2^{8}-1=255\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pack(&#39;&gt;B&#39;, 2**8-1).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -705,7 +705,7 @@ pack(&#39;&gt;B&#39;, 123).hex()
 <p>Was passiert, wenn man versucht, <span class="math notranslate nohighlight">\(2^{8}\)</span> als »unsigned char« darzustellen?</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pack(&#39;&gt;B&#39;, 2**8).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -733,7 +733,7 @@ höchsten Bit, in unserer Darstellung also ganz links, gespeichert.
 Dementsprechend sind positive Zahlen von <span class="math notranslate nohighlight">\(0\)</span> mit <span class="math notranslate nohighlight">\(2^{7}-1\)</span> darstellbar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pack(&#39;&gt;b&#39;, 2**7-1).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">7</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -750,7 +750,7 @@ negative Zahl anzeigen würde.</p>
 abgespeichert werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pack(&#39;&gt;b&#39;, 1).hex(), pack(&#39;&gt;b&#39;, -1).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span> <span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -798,7 +798,7 @@ wenn man in der folgenden Ausgabe entsprechend unserer vorigen Beschränkung auf
 ein einziges Byte das vordere Byte ignoriert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pack(&#39;&gt;b&#39;, 123).hex(), pack(&#39;&gt;b&#39;, -123).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span> <span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -818,7 +818,7 @@ die sich mit einem »signed char« Integer darstellen lässt, gleich <span class
 <span class="math notranslate nohighlight">\(2^7\)</span> kann dagegen nicht mehr dargestellt werden.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pack(&#39;&gt;b&#39;, 2**7).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -836,7 +836,7 @@ die sich mit einem »signed char« Integer darstellen lässt, gleich <span class
 <p>Andererseits kann <span class="math notranslate nohighlight">\(-2^7\)</span> gerade noch dargestellt werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pack(&#39;&gt;b&#39;, -2**7).hex()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
