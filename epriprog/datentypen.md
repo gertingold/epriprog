@@ -522,8 +522,8 @@ $ julia
   (_)     | (_) (_)    |
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.5.2 (2020-09-23)
- _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+  | | |_| | | | (_| |  |  Version 1.9.2 (2023-07-05)
+ _/ |\__'_|_|_|\__'_|  |  https://github.com/conda-forge/julia-feedstock
 |__/                   |
 
 julia> exp(2)
