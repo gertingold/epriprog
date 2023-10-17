@@ -230,8 +230,8 @@ und auf der Computerhardware ausführen lässt.
 Grundsätzlich kann man die aktuellste Version des Python-Interpreters von der
 [offiziellen Python-Webseite](http://www.python.org/)
 herunterladen. Zum Zeitpunkt der Erstellung dieses Manuskripts war die Version
-3.9.0 aktuell. Wie weiter unten noch kurz diskutiert wird, ist im Rahmen dieser
-Vorlesung jede Version ab Python 3.6 brauchbar.
+3.12.0 aktuell. Wie weiter unten noch kurz diskutiert wird, ist im Rahmen dieser
+Vorlesung jede Version ab Python 3.8 brauchbar.
 
 Neben dem eigentlichen Python-Interpreter werden wir für wissenschaftliche
 Anwendungen häufig noch weitere Software benötigen, wie zum Beispiel die frei
@@ -380,4 +380,4 @@ veröffentlicht wird. Jede Version wird über fünf Jahre bei Bedarf mit Fehlerk
 versorgt. Aktuell ist Python 3.8 die älteste Version, die noch unterstützt wird. Von
 ganz wenigen Ausnahmen abgesehen, auf die dann besonders hingewiesen wird, ist der
 Code zu dieser Vorlesung unter Python 3.8 lauffähig, aber es spricht natürlich auch
-nichts dagegen, eine neuere Version wie zum Beispiel Python 3.11 zu verwenden.
+nichts dagegen, eine neuere Version wie zum Beispiel Python 3.11 oder 3.12 zu verwenden.
