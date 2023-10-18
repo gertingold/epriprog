@@ -15,14 +15,164 @@ kernelspec:
 (vorschau)=
 # Eine Vorschau
 
-In diesem Kapitel wollen wir anhand eines konkreten Beispiels eine Vorstellung
+In diesem Kapitel wollen wir anhand zweier konkreter Beispiele eine Vorstellung
 von einigen Aspekten bekommen, die beim Programmieren eine Rolle spielen. Wir
 werden diese Aspekte und noch einige mehr in den folgenden Kapiteln genauer
 besprechen. Es geht hier also nicht darum, schon alles im Detail zu verstehen,
 sondern vielmehr einen ersten Eindruck von der Struktur eines Programms zu
 gewinnen.
 
-Unser Beispiel implementiert das Spiel [»Schere, Stein,
+## Analyse experimenteller Daten
+
+````{margin}
+```{warning}
+   Beim Experimentieren mit dem Smartphone ist Vorsicht geboten, um mechanische
+   Beschädigungen auszuschließen. Das Benutzen des Smartphones zu solchen Zwecken
+   geschieht auf eigene Gefahr!
+```
+````
+
+Im ersten Beispiel soll der Zusammenhang zwischen der Winkelgeschwindigkeit $\omega$
+und der Beschleunigung $a$ bei einer Rotationsbewegung untersucht werden. Gemäß
+der Mechanik erfährt ein Objekt im Abstand $r$ von der Drehachse die Beschleunigung
+
+$$a = r\omega^2\,.$$
+
+Zur experimentellen Untersuchung wird ein Smartphone in einer Salatschleuder
+montiert, und diese in eine Drehung versetzt.  Die im Smartphone vorhandenen
+Sensoren erlauben es, die Winkelgeschwindigkeit und die Beschleunigung mit
+Hilfe der phyphox-App [^phyphox] zu messen. Dabei besteht auch die Möglichkeit,
+die gemessenen Daten herunterzuladen. phyphox packt die Daten sowie einige
+Metadaten in ein kleines zip-Archiv, das zunächst mit dem Befehl `unzip`
+entpackt werden muss. Dabei erhält man unter anderem eine Datei `Data.csv`, die
+wir für die weitere Analyse verwenden wollen. Die ersten Zeilen der von der
+phyphox-Anwendung »Zentripetalbeschleunigung« erzeugten Datei könnten z.B.
+folgendermaßen aussehen
+```
+"Time (s)","Angular velocity (rad/s)","Acceleration (m/s^2)"
+5.679032520E-1,2.767693656E-4,3.547039304E-2
+1.069169732E0,4.100045423E-4,9.018626044E-3
+1.570451470E0,4.192697651E-4,6.790971510E-3
+2.071717949E0,3.322073526E-4,4.908061966E-3
+2.572999688E0,2.126946028E-3,5.461507249E-3
+```
+In der ersten Zeile wird die Bedeutung der drei Spalten angegeben und
+anschließend folgen für jede Messung drei durch ein Komma getrennte Einträge,
+die jeweils den Zeitpunkt der Messung, die Winkelgeschwindigkeit und die
+Beschleunigung umfassen.  Die Trennung der Spalten durch Kommas erklärt die
+Endung `csv` für *comma separated values* [^csv] der Datei. CSV-Dateien lassen
+sich mit gängigen Tabellenkalkulationsprogrammen wie LibreOffice oder Microsoft
+Excel öffnen und bearbeiten.
+
+[^phyphox]: Informationen zur phyphox-App sowie Links zum Herunterladen der App
+   sind unter [phyphox.org](https://phyphox.org) zu finden. 
+[^csv]: Auch wenn wir hier Kommas als Spaltentrenner benutzen, sind in CSV-Dateien
+   auch andere Zeichen zu diesem Zwecke verwendbar, wie z.B. Semikolon oder 
+   Tabulatorzeichen.
+
+Wir wollen nun durch einzelne Schritte der Datenanalyse gehen, die man gut in
+einem Jupyter-Notebook durchführen kann. Da wir auf frei verfügbare Programmpakete
+zurückgreifen wollen, um Daten graphisch darzustellen oder die Daten an eine
+Funktion zu fitten importieren wir zunächst Namensräume von drei Bibliotheken.
+```
+import numpy as np
+from scipy import optimize
+import matplotlib.pyplot as plt
+```
+In einem nächsten Schritt werden die Daten aus der Datei eingelesen und die
+einzelnen Spalten entsprechenden Variablen zugeordnet.
+```
+with open("Data.csv") as csvfile:
+    data = np.loadtxt(csvfile, skiprows=1, delimiter=',')
+    
+time = data[:, 0]
+angular_velocity = data[:, 1]
+acceleration = data[:, 2]
+```
+Beim Einlesen der Daten mit `loadtxt` sorgen wir durch Angabe von `skiprows`
+dafür, dass die erste Zeile nicht als Datenzeile behandelt wird. Zudem legen
+wir mit Hilfe des Arguments `delimiter` das Komma als Trennzeichen fest.
+
+Damit sind wir schon in der Lage, uns einen graphischen Überblick über die
+Daten zu verschaffen, indem wir beispielsweise die gemessene Winkelgeschwindigkeit
+über der Zeit auftragen. Damit die Bedeutung der Achsen klar wird, sehen wir auch
+eine entsprechende Beschriftung vor.
+```
+plt.xlabel("$t$")
+plt.ylabel("$\omega$")
+plt.plot(time, angular_velocity)
+```
+```{figure} images/vorschau/datenanalyse_1.png
+---
+width: 10cm
+name: fig:datenanalyse_1
+---
+Winkelgeschwindigkeit als Funktion der Zeit
+```
+Um den eingangs erwähnten Zusammenhang zwischen Winkelgeschwindigkeit und
+Beschleunigung analysieren zu können, ist es aber sinnvoller, die beiden
+Größen gegeneinander aufzutragen.
+```
+plt.xlabel("$\omega$")
+plt.ylabel("$a$")
+plt.plot(angular_velocity, acceleration, ".")
+```
+```{figure} images/vorschau/datenanalyse_2.png
+---
+width: 10cm
+name: fig:datenanalyse_2
+---
+Beschleunigung als Funktion der Winkelgeschwindigkeit
+```
+Da die Daten nicht mit zunehmender Winkelgeschwindigkeit vorliegen, haben
+wir hier zur Darstellung Punkte verwendet und hierzu das Argument `"."`
+verwendet. Mehr Information zu den vielfältigen Darstellungsmöglichkeiten
+finden Sie auf der [Webseite von matplotlib](https://matplotlib.org).
+
+Im nächsten Schritt möchten wir die Daten, die offensichtlich eine nicht
+unerhebliche Messunsicherheit aufweisen, an eine quadratische Funktion fitten.
+Dazu definieren wir zunächst eine quadratische Funktion, die den Abstand
+zwischen Drehachse und Sensor als freien Parameter enthält, und übergeben
+diese Funktion sowie unsere Daten an die Funktion `optimize.curve_fit`. 
+Diese Funktion aus dem [SciPy-Paket](http://scipy.org) dient dazu, Fits
+an im Allgemeinen nichtlineare Funktionen vorzunehmen. 
+```
+def fit_func(x, radius):
+    return radius*x**2
+
+popt, pcov = optimize.curve_fit(fit_func, angular_velocity, acceleration)
+```
+Uns interessiert vor allem das Ergebnis `popt`. Dieses Tupel enthält für
+jeden freien Parameter den gefundenen Optimalwert. In unserem Fall ist
+dies lediglich der Wert `popt[0]`, der den Abstand zwischen Sensor und
+Drehachse angibt. 
+
+Um die Qualität des Fits optisch beurteilen zu können, ist es sinnvoll,
+die gefundene Funktion graphisch mit den Daten zusammen aufzutragen.
+```
+plt.xlabel("$\omega$")
+plt.ylabel("$a$")
+plt.plot(angular_velocity, acceleration, ".")
+xvalues = np.linspace(0, 20)
+yvalues = fit_func(xvalues, popt[0])
+plt.plot(xvalues, fit_func(xvalues, popt[0]))
+```
+Dazu wird in den drei letzten Zeilen zunächst ein Vektor mit $x$-Werten
+und anschließend unter Verwendung der Fitfunktion die zugehörigen $y$-Werte
+erzeugt, die abschließend graphisch gemeinsam mit den Messdaten dargestellt
+werden.
+```{figure} images/vorschau/datenanalyse_3.png
+---
+width: 10cm
+name: fig:datenanalyse_3
+---
+Beschleunigung als Funktion der Winkelgeschwindigkeit: Messdaten in blau
+und zugehörige Fitfunktion in orange
+```
+
+## Ein erstes Python-Skript
+
+Unser zweites Beispiel implementiert das Spiel [»Schere, Stein,
 Papier«](https://de.wikipedia.org/wiki/Schere,_Stein,_Papier), wobei der
 Benutzer gegen den Computer spielt. Bei der folgenden Realisierung spielen
 [psychologische Aspekte des
