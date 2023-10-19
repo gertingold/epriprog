@@ -64,6 +64,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'vorschau';</script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
@@ -338,7 +340,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -354,6 +358,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-experimenteller-daten">2.1. Analyse experimenteller Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ein-erstes-python-skript">2.2. Ein erstes Python-Skript</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -365,13 +378,277 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="eine-vorschau">
 <span id="vorschau"></span><h1><span class="section-number">2. </span>Eine Vorschau<a class="headerlink" href="#eine-vorschau" title="Permalink to this heading">#</a></h1>
-<p>In diesem Kapitel wollen wir anhand eines konkreten Beispiels eine Vorstellung
+<p>In diesem Kapitel wollen wir anhand zweier konkreter Beispiele eine Vorstellung
 von einigen Aspekten bekommen, die beim Programmieren eine Rolle spielen. Wir
 werden diese Aspekte und noch einige mehr in den folgenden Kapiteln genauer
 besprechen. Es geht hier also nicht darum, schon alles im Detail zu verstehen,
-sondern vielmehr einen ersten Eindruck von der Struktur eines Programms zu
-gewinnen.</p>
-<p>Unser Beispiel implementiert das Spiel <a class="reference external" href="https://de.wikipedia.org/wiki/Schere,_Stein,_Papier">»Schere, Stein,
+sondern vielmehr zunächst einen ersten Eindruck von der computerbasierten
+Datenanalyse sowie im zweiten Teil von der Struktur eines Programms zu gewinnen.</p>
+<section id="analyse-experimenteller-daten">
+<h2><span class="section-number">2.1. </span>Analyse experimenteller Daten<a class="headerlink" href="#analyse-experimenteller-daten" title="Permalink to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warnung</p>
+<p>Beim Experimentieren mit dem Smartphone ist Vorsicht geboten, um mechanische
+Beschädigungen auszuschließen. Das Benutzen des Smartphones zu solchen Zwecken
+geschieht auf eigene Gefahr!</p>
+</div>
+</aside>
+<p>Im ersten Beispiel soll der Zusammenhang zwischen der Winkelgeschwindigkeit <span class="math notranslate nohighlight">\(\omega\)</span>
+und der Beschleunigung <span class="math notranslate nohighlight">\(a\)</span> bei einer Rotationsbewegung untersucht werden. Gemäß
+der Mechanik erfährt ein Objekt im Abstand <span class="math notranslate nohighlight">\(r\)</span> von der Drehachse die Beschleunigung</p>
+<div class="math notranslate nohighlight">
+\[a = r\omega^2\,.\]</div>
+<p>Zur experimentellen Untersuchung wird ein Smartphone wie in
+<a class="reference internal" href="#fig-salatschleuder"><span class="std std-numref">Abb. 2.1</span></a> in einer Salatschleuder montiert, und diese in
+eine Drehung versetzt. Die im Smartphone vorhandenen Sensoren erlauben es, die
+Winkelgeschwindigkeit und die Beschleunigung mit Hilfe der phyphox-App
+<a class="footnote-reference brackets" href="#phyphox" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> zu messen.</p>
+<figure class="align-default" id="fig-salatschleuder">
+<a class="reference internal image-reference" href="_images/salatschleuder.png"><img alt="_images/salatschleuder.png" src="_images/salatschleuder.png" style="width: 10cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 2.1 </span><span class="caption-text">In einer Salatschleuder montiertes Smartphone mit phyphox-App zur Messung
+des Zusammenhangs zwischen Rotationsgeschwindigkeit und Beschleunigung
+(Quelle: Gert-Ludwig Ingold)</span><a class="headerlink" href="#fig-salatschleuder" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
+<p>Dabei besteht auch die Möglichkeit, die gemessenen Daten herunterzuladen.
+phyphox packt die Daten sowie einige Metadaten in ein kleines zip-Archiv, das
+zunächst mit dem Befehl <code class="docutils literal notranslate"><span class="pre">unzip</span></code> entpackt werden muss. Dabei erhält man unter
+anderem eine Datei <code class="docutils literal notranslate"><span class="pre">Data.csv</span></code>, die wir für die weitere Analyse verwenden
+wollen. Die ersten Zeilen der von der phyphox-Anwendung
+»Zentripetalbeschleunigung« erzeugten Datei könnten z.B.  folgendermaßen
+aussehen</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span><span class="s2">&quot;Angular velocity (rad/s)&quot;</span><span class="p">,</span><span class="s2">&quot;Acceleration (m/s^2)&quot;</span>
+<span class="mf">5.679032520E-1</span><span class="p">,</span><span class="mf">2.767693656E-4</span><span class="p">,</span><span class="mf">3.547039304E-2</span>
+<span class="mf">1.069169732E0</span><span class="p">,</span><span class="mf">4.100045423E-4</span><span class="p">,</span><span class="mf">9.018626044E-3</span>
+<span class="mf">1.570451470E0</span><span class="p">,</span><span class="mf">4.192697651E-4</span><span class="p">,</span><span class="mf">6.790971510E-3</span>
+<span class="mf">2.071717949E0</span><span class="p">,</span><span class="mf">3.322073526E-4</span><span class="p">,</span><span class="mf">4.908061966E-3</span>
+<span class="mf">2.572999688E0</span><span class="p">,</span><span class="mf">2.126946028E-3</span><span class="p">,</span><span class="mf">5.461507249E-3</span>
+</pre></div>
+</div>
+<p>In der ersten Zeile wird die Bedeutung der drei Spalten angegeben und
+anschließend folgen für jede Messung drei durch ein Komma getrennte Einträge,
+die jeweils den Zeitpunkt der Messung, die Winkelgeschwindigkeit und die
+Beschleunigung umfassen.  Die Trennung der Spalten durch Kommas erklärt die
+Endung <code class="docutils literal notranslate"><span class="pre">csv</span></code> für <em>comma separated values</em> <a class="footnote-reference brackets" href="#csv" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> der Datei. CSV-Dateien lassen
+sich mit gängigen Tabellenkalkulationsprogrammen wie LibreOffice oder Microsoft
+Excel öffnen und bearbeiten.</p>
+<p>Wir wollen nun durch einzelne Schritte der Datenanalyse gehen, die man gut in
+einem Jupyter-Notebook durchführen kann. Da wir auf frei verfügbare Programmpakete
+zurückgreifen wollen, um Daten graphisch darzustellen und die Daten an eine
+Funktion zu fitten, importieren wir zunächst Namensräume von drei Bibliotheken.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<p>In einem nächsten Schritt werden die Daten aus der Datei eingelesen und die
+einzelnen Spalten entsprechenden Variablen zugeordnet.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Data.csv&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    
+<span class="n">time</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">angular_velocity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">acceleration</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Beim Einlesen der Daten mit <code class="docutils literal notranslate"><span class="pre">loadtxt</span></code> aus der
+<a class="reference external" href="https://numpy.org">NumPy-Bibliothek</a> sorgen wir durch Angabe von <code class="docutils literal notranslate"><span class="pre">skiprows</span></code>
+dafür, dass die erste Zeile nicht als Datenzeile behandelt wird. Zudem legen
+wir mit Hilfe des Arguments <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> das Komma als Trennzeichen fest.</p>
+<p>Damit sind wir schon in der Lage, uns einen graphischen Überblick über die
+Daten zu verschaffen, indem wir beispielsweise die gemessene Winkelgeschwindigkeit
+über der Zeit auftragen. Damit die Bedeutung der Achsen klar wird, sehen wir auch
+eine entsprechende Beschriftung vor.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\omega$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">angular_velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="fig-datenanalyse-1">
+<a class="reference internal image-reference" href="_images/datenanalyse_1.png"><img alt="_images/datenanalyse_1.png" src="_images/datenanalyse_1.png" style="width: 10cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 2.2 </span><span class="caption-text">Winkelgeschwindigkeit als Funktion der Zeit</span><a class="headerlink" href="#fig-datenanalyse-1" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
+<p>Um den eingangs erwähnten Zusammenhang zwischen Winkelgeschwindigkeit und
+Beschleunigung analysieren zu können, ist es aber sinnvoller, diese beiden
+Größen gegeneinander aufzutragen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\omega$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$a$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angular_velocity</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="fig-datenanalyse-2">
+<a class="reference internal image-reference" href="_images/datenanalyse_2.png"><img alt="_images/datenanalyse_2.png" src="_images/datenanalyse_2.png" style="width: 10cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 2.3 </span><span class="caption-text">Beschleunigung als Funktion der Winkelgeschwindigkeit</span><a class="headerlink" href="#fig-datenanalyse-2" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
+<p>Da die Daten nicht mit zunehmender Winkelgeschwindigkeit vorliegen, haben
+wir hier zur Darstellung Punkte verwendet und dazu das Argument <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code>
+verwendet. Mehr Information zu den vielfältigen Darstellungsmöglichkeiten
+finden Sie auf der <a class="reference external" href="https://matplotlib.org">Webseite von matplotlib</a>.</p>
+<p>Im nächsten Schritt möchten wir die Daten, die offensichtlich eine nicht
+unerhebliche Messunsicherheit aufweisen, an eine quadratische Funktion fitten.
+Dazu definieren wir zunächst eine quadratische Funktion, die den Abstand
+zwischen Drehachse und Sensor als freien Parameter enthält, und übergeben
+diese Funktion sowie unsere Daten an die Funktion <code class="docutils literal notranslate"><span class="pre">optimize.curve_fit</span></code>.
+Diese Funktion aus dem <a class="reference external" href="http://scipy.org">SciPy-Paket</a> dient dazu, Fits
+an im Allgemeinen nichtlineare Funktionen vorzunehmen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">radius</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">fit_func</span><span class="p">,</span> <span class="n">angular_velocity</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Uns interessiert vor allem das Ergebnis <code class="docutils literal notranslate"><span class="pre">popt</span></code>. Dieses Tupel enthält für
+jeden freien Parameter den gefundenen Optimalwert. In unserem Fall ist
+dies lediglich der Wert <code class="docutils literal notranslate"><span class="pre">popt[0]</span></code>, der den Abstand zwischen Sensor und
+Drehachse angibt.</p>
+<p>Um die Qualität des Fits optisch beurteilen zu können, ist es sinnvoll,
+die gefundene Funktion graphisch mit den Daten zusammen aufzutragen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\omega$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$a$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angular_velocity</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="n">xvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">yvalues</span> <span class="o">=</span> <span class="n">fit_func</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">fit_func</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Dazu wird in den drei letzten Zeilen zunächst ein Vektor mit <span class="math notranslate nohighlight">\(x\)</span>-Werten
+und anschließend unter Verwendung der Fitfunktion die zugehörigen <span class="math notranslate nohighlight">\(y\)</span>-Werte
+erzeugt, die abschließend graphisch gemeinsam mit den Messdaten dargestellt
+werden.</p>
+<figure class="align-default" id="fig-datenanalyse-3">
+<a class="reference internal image-reference" href="_images/datenanalyse_3.png"><img alt="_images/datenanalyse_3.png" src="_images/datenanalyse_3.png" style="width: 10cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 2.4 </span><span class="caption-text">Beschleunigung als Funktion der Winkelgeschwindigkeit: Messdaten in blau
+und zugehörige Fitfunktion in orange</span><a class="headerlink" href="#fig-datenanalyse-3" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
+<p>Zur Analyse von Potenzgesetzen ist häufig eine doppelt-logarithmische
+Auftragung sinnvoll, da sich der Zusammenhang</p>
+<div class="math notranslate nohighlight">
+\[y = Ax^a\]</div>
+<p>durch Logarithmieren auf einen linearen Zusammenhang</p>
+<div class="math notranslate nohighlight">
+\[\log_{10}(y) = a\log_{10}(x) + \log_{10}(A)\]</div>
+<p>zwischen dem Logarithmus von <span class="math notranslate nohighlight">\(x\)</span> und dem Logarithmus von <span class="math notranslate nohighlight">\(y\)</span> abbilden lässt.
+Dabei ist es im Prinzip unerheblich, ob man wie hier den dekadischen Logarithmus
+oder aber den natürlichen Logarithmus verwendet. Daher tragen wir unsere
+Messdaten jetzt doppelt-logarithmisch auf.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\omega$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$a$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angular_velocity</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="fig-datenanalyse-4">
+<a class="reference internal image-reference" href="_images/datenanalyse_4.png"><img alt="_images/datenanalyse_4.png" src="_images/datenanalyse_4.png" style="width: 10cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 2.5 </span><span class="caption-text">Beschleunigung als Funktion der Winkelgeschwindigkeit in doppelt-logarithmischer
+Auftragung</span><a class="headerlink" href="#fig-datenanalyse-4" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
+<p>Hierbei fällt auf, dass es zwei Datenbereiche gibt. Bei größeren Winkelgeschwindigkeiten
+ergibt sich ein linearer Zusammenhang, während bei kleinen Winkelgeschwindigkeiten
+ein Punktehaufen zu sehen ist. Hier befindet sich die Salatschleuder offenbar nicht
+mehr in einer guten Rotationsbewegung, so dass wir nur Datenpunkte mit einer
+Winkelgeschwindigkeit größer als 1 1/s berücksichtigen wollen. Dazu definieren wir
+uns zunächst eine Variable <code class="docutils literal notranslate"><span class="pre">validdata</span></code>, die die betreffenden Messpunkte identifiziert.
+Mit ihrer Hilfe können wir die Messdaten auf die gewünschten Daten reduzieren. Zur
+Kontrolle stellen wir die so erhaltene Untermenge an Daten gleich noch einmal
+graphisch dar.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">validdata</span> <span class="o">=</span> <span class="n">angular_velocity</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">angular_velocity_1</span> <span class="o">=</span> <span class="n">angular_velocity</span><span class="p">[</span><span class="n">validdata</span><span class="p">]</span>
+<span class="n">acceleration_1</span> <span class="o">=</span> <span class="n">acceleration</span><span class="p">[</span><span class="n">validdata</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\omega$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$a$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angular_velocity_1</span><span class="p">,</span> <span class="n">acceleration_1</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="fig-datenanalyse-5">
+<a class="reference internal image-reference" href="_images/datenanalyse_5.png"><img alt="_images/datenanalyse_5.png" src="_images/datenanalyse_5.png" style="width: 10cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 2.6 </span><span class="caption-text">Auswahl der Messdaten für Winkelgeschwindigkeiten größer 1 1/s in doppelt-logarithmischer
+Auftragung</span><a class="headerlink" href="#fig-datenanalyse-5" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
+<p>In <a class="reference internal" href="#fig-datenanalyse-5"><span class="std std-numref">Abb. 2.6</span></a> haben wir unsere Messdaten
+doppelt-logarithmisch aufgetragen. Um einen linearen Fit durchführen zu können,
+müssen wir jedoch den Logarithmus unserer Messdaten bilden. Dann können wir
+die Daten auch auf einer linearen Skala darstellen und erhalten ein Bild, das
+äquivalent zur doppelt-logarithmischen Auftragung ist.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_angular_velocity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">angular_velocity_1</span><span class="p">)</span>
+<span class="n">log_acceleration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">acceleration_1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\log_</span><span class="si">{10}</span><span class="s2">(\omega)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\log_</span><span class="si">{10}</span><span class="s2">(a)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log_angular_velocity</span><span class="p">,</span> <span class="n">log_acceleration</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="fig-datenanalyse-6">
+<a class="reference internal image-reference" href="_images/datenanalyse_6.png"><img alt="_images/datenanalyse_6.png" src="_images/datenanalyse_6.png" style="width: 10cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 2.7 </span><span class="caption-text">Logarithmierte Messdaten für Winkelgeschwindigkeiten größer 1 1/s in linearer
+Auftragung</span><a class="headerlink" href="#fig-datenanalyse-6" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
+<p>Auch wenn die Auftragung der Daten in <a class="reference internal" href="#fig-datenanalyse-5"><span class="std std-numref">Abb. 2.6</span></a> und
+<a class="reference internal" href="#fig-datenanalyse-6"><span class="std std-numref">Abb. 2.7</span></a> gleich aussieht, erkennt man doch einen Unterschied
+an den Achsen. In <a class="reference internal" href="#fig-datenanalyse-5"><span class="std std-numref">Abb. 2.6</span></a> ist die Achseneinteilung nichtlinear,
+da wir die Originaldaten auf einer logarithmischen Skala auftragen. In
+<a class="reference internal" href="#fig-datenanalyse-6"><span class="std std-numref">Abb. 2.7</span></a> sind die Achsen dagegen linear eingeteilt. Dafür
+sind nun die Logarithmen der Messwerte aufgetragen.</p>
+<p>Die logarithmierten Daten können wir nun an eine lineare Funktion fitten.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lin_fit_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">lin_fit_func</span><span class="p">,</span> <span class="n">log_angular_velocity</span><span class="p">,</span> <span class="n">log_acceleration</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dabei ist zu beachten, dass die Fitfunktion im Gegensatz zu der ursprünglich
+verwendeten quadratischen Funktion zwei Fitparameter besitzt. Die Steigung <span class="math notranslate nohighlight">\(a\)</span> der
+Kurve gibt dabei den Exponenten an, während der Achsenabschnitt <span class="math notranslate nohighlight">\(b\)</span> dem Logarithmus
+des Vorfaktors entspricht. In unserem Fall wäre dieser Vorfaktor der Abstand zwischen
+Sensor und Drehachse.</p>
+<p>Der Exponent lässt sich aus <code class="docutils literal notranslate"><span class="pre">popt[0]</span></code> entnehmen. Für unsere Messdaten ergibt er
+sich zu etwa 1,987, was in Anbetracht der Messfehler gut zum erwarteten
+Exponenten 2 passt. Auf eine Analyse der Messfehler wollen wir an dieser Stelle
+verzichten. Der Abstand zwischen Sensor und Drehachse ergibt sich aus
+<code class="docutils literal notranslate"><span class="pre">10**popt[1]</span></code> zu etwa 9 cm, was gut zu den Dimensionen der Salatschleuder
+passt. Abschließend stellen wir nochmals unsere Messdaten zusammen mit dem
+linearen Fit dar, um uns auch auf diese Weise davon zu überzeugen, wie gut die
+Fitfunktion die Messdaten beschreibt.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\log_</span><span class="si">{10}</span><span class="s2">(\omega)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\log_</span><span class="si">{10}</span><span class="s2">(a)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log_angular_velocity</span><span class="p">,</span> <span class="n">log_acceleration</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">xvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">xvalues</span><span class="o">+</span><span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<figure class="align-default" id="fig-datenanalyse-7">
+<a class="reference internal image-reference" href="_images/datenanalyse_7.png"><img alt="_images/datenanalyse_7.png" src="_images/datenanalyse_7.png" style="width: 10cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Abb. 2.8 </span><span class="caption-text">Logarithmierte Messdaten für Winkelgeschwindigkeiten größer 1 1/s in linearer
+Auftragung zusammen mit einem linearen Fit</span><a class="headerlink" href="#fig-datenanalyse-7" title="Link zu diesem Bild">#</a></p>
+</figcaption>
+</figure>
+<p>Damit haben wir an einem Beispiel vorgeführt, wie eine einfache Datenanalyse
+mit Hilfe von Python unter Verwendung einiger wissenschaftlicher Programmbibliotheken
+vorgenommen werden kann. Die hier zusammengestellte Information, also Code, Abbildungen
+und Beschreibung würde man in der Praxis in einem einzigen Jupyter-Notebook
+zusammenfassen und damit die Strategie der Datenanalyse sowie die Ergebnisse
+in einer Datei dokumentieren.</p>
+</section>
+<section id="ein-erstes-python-skript">
+<h2><span class="section-number">2.2. </span>Ein erstes Python-Skript<a class="headerlink" href="#ein-erstes-python-skript" title="Permalink to this heading">#</a></h2>
+<p>Unser zweites Beispiel implementiert das Spiel <a class="reference external" href="https://de.wikipedia.org/wiki/Schere,_Stein,_Papier">»Schere, Stein,
 Papier«</a>, wobei der
 Benutzer gegen den Computer spielt. Bei der folgenden Realisierung spielen
 <a class="reference external" href="https://de.wikipedia.org/wiki/Schere,_Stein,_Papier#Logik_und_Psychologie_des_Spiels">psychologische Aspekte des
@@ -698,6 +975,19 @@ Es empfiehlt sich, für solche Fälle vorzusorgen und dem Benutzer einen entspre
 Hinweis auszugeben, wie dies in Zeile 29 der Fall ist, falls eine eingegebene Zahl
 nicht zwischen -1 und 2 liegt. Wie man solche Situationen sinnvoll behandelt, werden
 wir später noch genauer sehen.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="phyphox" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Informationen zur phyphox-App sowie Links zum Herunterladen der App
+sind unter <a class="reference external" href="https://phyphox.org">phyphox.org</a> zu finden.</p>
+</aside>
+<aside class="footnote brackets" id="csv" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Auch wenn wir hier Kommas als Spaltentrenner benutzen, sind in CSV-Dateien
+auch andere Zeichen zu diesem Zwecke verwendbar, wie z.B. Semikolon oder
+Tabulatorzeichen.</p>
+</aside>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -754,6 +1044,21 @@ wir später noch genauer sehen.</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-experimenteller-daten">2.1. Analyse experimenteller Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ein-erstes-python-skript">2.2. Ein erstes Python-Skript</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

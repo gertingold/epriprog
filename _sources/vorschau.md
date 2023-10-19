@@ -15,14 +15,304 @@ kernelspec:
 (vorschau)=
 # Eine Vorschau
 
-In diesem Kapitel wollen wir anhand eines konkreten Beispiels eine Vorstellung
+In diesem Kapitel wollen wir anhand zweier konkreter Beispiele eine Vorstellung
 von einigen Aspekten bekommen, die beim Programmieren eine Rolle spielen. Wir
 werden diese Aspekte und noch einige mehr in den folgenden Kapiteln genauer
 besprechen. Es geht hier also nicht darum, schon alles im Detail zu verstehen,
-sondern vielmehr einen ersten Eindruck von der Struktur eines Programms zu
-gewinnen.
+sondern vielmehr zunächst einen ersten Eindruck von der computerbasierten
+Datenanalyse sowie im zweiten Teil von der Struktur eines Programms zu gewinnen.
 
-Unser Beispiel implementiert das Spiel [»Schere, Stein,
+## Analyse experimenteller Daten
+
+````{margin}
+```{warning}
+   Beim Experimentieren mit dem Smartphone ist Vorsicht geboten, um mechanische
+   Beschädigungen auszuschließen. Das Benutzen des Smartphones zu solchen Zwecken
+   geschieht auf eigene Gefahr!
+```
+````
+
+Im ersten Beispiel soll der Zusammenhang zwischen der Winkelgeschwindigkeit $\omega$
+und der Beschleunigung $a$ bei einer Rotationsbewegung untersucht werden. Gemäß
+der Mechanik erfährt ein Objekt im Abstand $r$ von der Drehachse die Beschleunigung
+
+$$a = r\omega^2\,.$$
+
+Zur experimentellen Untersuchung wird ein Smartphone wie in
+{numref}`fig:salatschleuder` in einer Salatschleuder montiert, und diese in
+eine Drehung versetzt. Die im Smartphone vorhandenen Sensoren erlauben es, die
+Winkelgeschwindigkeit und die Beschleunigung mit Hilfe der phyphox-App
+[^phyphox] zu messen.
+```{figure} images/vorschau/salatschleuder.png
+---
+width: 10cm
+name: fig:salatschleuder
+---
+In einer Salatschleuder montiertes Smartphone mit phyphox-App zur Messung
+des Zusammenhangs zwischen Rotationsgeschwindigkeit und Beschleunigung
+(Quelle: Gert-Ludwig Ingold)
+```
+
+Dabei besteht auch die Möglichkeit, die gemessenen Daten herunterzuladen.
+phyphox packt die Daten sowie einige Metadaten in ein kleines zip-Archiv, das
+zunächst mit dem Befehl `unzip` entpackt werden muss. Dabei erhält man unter
+anderem eine Datei `Data.csv`, die wir für die weitere Analyse verwenden
+wollen. Die ersten Zeilen der von der phyphox-Anwendung
+»Zentripetalbeschleunigung« erzeugten Datei könnten z.B.  folgendermaßen
+aussehen
+```
+"Time (s)","Angular velocity (rad/s)","Acceleration (m/s^2)"
+5.679032520E-1,2.767693656E-4,3.547039304E-2
+1.069169732E0,4.100045423E-4,9.018626044E-3
+1.570451470E0,4.192697651E-4,6.790971510E-3
+2.071717949E0,3.322073526E-4,4.908061966E-3
+2.572999688E0,2.126946028E-3,5.461507249E-3
+```
+In der ersten Zeile wird die Bedeutung der drei Spalten angegeben und
+anschließend folgen für jede Messung drei durch ein Komma getrennte Einträge,
+die jeweils den Zeitpunkt der Messung, die Winkelgeschwindigkeit und die
+Beschleunigung umfassen.  Die Trennung der Spalten durch Kommas erklärt die
+Endung `csv` für *comma separated values* [^csv] der Datei. CSV-Dateien lassen
+sich mit gängigen Tabellenkalkulationsprogrammen wie LibreOffice oder Microsoft
+Excel öffnen und bearbeiten.
+
+[^phyphox]: Informationen zur phyphox-App sowie Links zum Herunterladen der App
+   sind unter [phyphox.org](https://phyphox.org) zu finden. 
+[^csv]: Auch wenn wir hier Kommas als Spaltentrenner benutzen, sind in CSV-Dateien
+   auch andere Zeichen zu diesem Zwecke verwendbar, wie z.B. Semikolon oder 
+   Tabulatorzeichen.
+
+Wir wollen nun durch einzelne Schritte der Datenanalyse gehen, die man gut in
+einem Jupyter-Notebook durchführen kann. Da wir auf frei verfügbare Programmpakete
+zurückgreifen wollen, um Daten graphisch darzustellen und die Daten an eine
+Funktion zu fitten, importieren wir zunächst Namensräume von drei Bibliotheken.
+```
+import numpy as np
+from scipy import optimize
+import matplotlib.pyplot as plt
+```
+In einem nächsten Schritt werden die Daten aus der Datei eingelesen und die
+einzelnen Spalten entsprechenden Variablen zugeordnet.
+```
+with open("Data.csv") as csvfile:
+    data = np.loadtxt(csvfile, skiprows=1, delimiter=',')
+    
+time = data[:, 0]
+angular_velocity = data[:, 1]
+acceleration = data[:, 2]
+```
+Beim Einlesen der Daten mit `loadtxt` aus der
+[NumPy-Bibliothek](https://numpy.org) sorgen wir durch Angabe von `skiprows`
+dafür, dass die erste Zeile nicht als Datenzeile behandelt wird. Zudem legen
+wir mit Hilfe des Arguments `delimiter` das Komma als Trennzeichen fest.
+
+Damit sind wir schon in der Lage, uns einen graphischen Überblick über die
+Daten zu verschaffen, indem wir beispielsweise die gemessene Winkelgeschwindigkeit
+über der Zeit auftragen. Damit die Bedeutung der Achsen klar wird, sehen wir auch
+eine entsprechende Beschriftung vor.
+```
+plt.xlabel("$t$")
+plt.ylabel("$\omega$")
+plt.plot(time, angular_velocity)
+```
+```{figure} images/vorschau/datenanalyse_1.png
+---
+width: 10cm
+name: fig:datenanalyse_1
+---
+Winkelgeschwindigkeit als Funktion der Zeit
+```
+Um den eingangs erwähnten Zusammenhang zwischen Winkelgeschwindigkeit und
+Beschleunigung analysieren zu können, ist es aber sinnvoller, diese beiden
+Größen gegeneinander aufzutragen.
+```
+plt.xlabel("$\omega$")
+plt.ylabel("$a$")
+plt.plot(angular_velocity, acceleration, ".")
+```
+```{figure} images/vorschau/datenanalyse_2.png
+---
+width: 10cm
+name: fig:datenanalyse_2
+---
+Beschleunigung als Funktion der Winkelgeschwindigkeit
+```
+Da die Daten nicht mit zunehmender Winkelgeschwindigkeit vorliegen, haben
+wir hier zur Darstellung Punkte verwendet und dazu das Argument `"."`
+verwendet. Mehr Information zu den vielfältigen Darstellungsmöglichkeiten
+finden Sie auf der [Webseite von matplotlib](https://matplotlib.org).
+
+Im nächsten Schritt möchten wir die Daten, die offensichtlich eine nicht
+unerhebliche Messunsicherheit aufweisen, an eine quadratische Funktion fitten.
+Dazu definieren wir zunächst eine quadratische Funktion, die den Abstand
+zwischen Drehachse und Sensor als freien Parameter enthält, und übergeben
+diese Funktion sowie unsere Daten an die Funktion `optimize.curve_fit`. 
+Diese Funktion aus dem [SciPy-Paket](http://scipy.org) dient dazu, Fits
+an im Allgemeinen nichtlineare Funktionen vorzunehmen. 
+```
+def fit_func(x, radius):
+    return radius*x**2
+
+popt, pcov = optimize.curve_fit(fit_func, angular_velocity, acceleration)
+```
+Uns interessiert vor allem das Ergebnis `popt`. Dieses Tupel enthält für
+jeden freien Parameter den gefundenen Optimalwert. In unserem Fall ist
+dies lediglich der Wert `popt[0]`, der den Abstand zwischen Sensor und
+Drehachse angibt. 
+
+Um die Qualität des Fits optisch beurteilen zu können, ist es sinnvoll,
+die gefundene Funktion graphisch mit den Daten zusammen aufzutragen.
+```
+plt.xlabel("$\omega$")
+plt.ylabel("$a$")
+plt.plot(angular_velocity, acceleration, ".")
+xvalues = np.linspace(0, 20)
+yvalues = fit_func(xvalues, popt[0])
+plt.plot(xvalues, fit_func(xvalues, popt[0]))
+```
+Dazu wird in den drei letzten Zeilen zunächst ein Vektor mit $x$-Werten
+und anschließend unter Verwendung der Fitfunktion die zugehörigen $y$-Werte
+erzeugt, die abschließend graphisch gemeinsam mit den Messdaten dargestellt
+werden.
+```{figure} images/vorschau/datenanalyse_3.png
+---
+width: 10cm
+name: fig:datenanalyse_3
+---
+Beschleunigung als Funktion der Winkelgeschwindigkeit: Messdaten in blau
+und zugehörige Fitfunktion in orange
+```
+
+Zur Analyse von Potenzgesetzen ist häufig eine doppelt-logarithmische
+Auftragung sinnvoll, da sich der Zusammenhang
+
+$$y = Ax^a$$
+
+durch Logarithmieren auf einen linearen Zusammenhang
+
+$$\log_{10}(y) = a\log_{10}(x) + \log_{10}(A)$$
+
+zwischen dem Logarithmus von $x$ und dem Logarithmus von $y$ abbilden lässt.
+Dabei ist es im Prinzip unerheblich, ob man wie hier den dekadischen Logarithmus
+oder aber den natürlichen Logarithmus verwendet. Daher tragen wir unsere
+Messdaten jetzt doppelt-logarithmisch auf.
+```
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel("$\omega$")
+plt.ylabel("$a$")
+plt.plot(angular_velocity, acceleration, '.')
+```
+```{figure} images/vorschau/datenanalyse_4.png
+---
+width: 10cm
+name: fig:datenanalyse_4
+---
+Beschleunigung als Funktion der Winkelgeschwindigkeit in doppelt-logarithmischer
+Auftragung
+```
+Hierbei fällt auf, dass es zwei Datenbereiche gibt. Bei größeren Winkelgeschwindigkeiten
+ergibt sich ein linearer Zusammenhang, während bei kleinen Winkelgeschwindigkeiten
+ein Punktehaufen zu sehen ist. Hier befindet sich die Salatschleuder offenbar nicht
+mehr in einer guten Rotationsbewegung, so dass wir nur Datenpunkte mit einer 
+Winkelgeschwindigkeit größer als 1 1/s berücksichtigen wollen. Dazu definieren wir
+uns zunächst eine Variable `validdata`, die die betreffenden Messpunkte identifiziert.
+Mit ihrer Hilfe können wir die Messdaten auf die gewünschten Daten reduzieren. Zur
+Kontrolle stellen wir die so erhaltene Untermenge an Daten gleich noch einmal
+graphisch dar.
+```
+validdata = angular_velocity > 1
+angular_velocity_1 = angular_velocity[validdata]
+acceleration_1 = acceleration[validdata]
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel("$\omega$")
+plt.ylabel("$a$")
+plt.plot(angular_velocity_1, acceleration_1, '.')
+```
+```{figure} images/vorschau/datenanalyse_5.png
+---
+width: 10cm
+name: fig:datenanalyse_5
+---
+Auswahl der Messdaten für Winkelgeschwindigkeiten größer 1 1/s in doppelt-logarithmischer
+Auftragung
+```
+
+In {numref}`fig:datenanalyse_5` haben wir unsere Messdaten
+doppelt-logarithmisch aufgetragen. Um einen linearen Fit durchführen zu können,
+müssen wir jedoch den Logarithmus unserer Messdaten bilden. Dann können wir
+die Daten auch auf einer linearen Skala darstellen und erhalten ein Bild, das
+äquivalent zur doppelt-logarithmischen Auftragung ist.
+```
+log_angular_velocity = np.log10(angular_velocity_1)
+log_acceleration = np.log10(acceleration_1)
+plt.xlabel("$\log_{10}(\omega)$")
+plt.ylabel("$\log_{10}(a)$")
+plt.plot(log_angular_velocity, log_acceleration, '.')
+```
+```{figure} images/vorschau/datenanalyse_6.png
+---
+width: 10cm
+name: fig:datenanalyse_6
+---
+Logarithmierte Messdaten für Winkelgeschwindigkeiten größer 1 1/s in linearer
+Auftragung
+```
+Auch wenn die Auftragung der Daten in {numref}`fig:datenanalyse_5` und
+{numref}`fig:datenanalyse_6` gleich aussieht, erkennt man doch einen Unterschied
+an den Achsen. In {numref}`fig:datenanalyse_5` ist die Achseneinteilung nichtlinear,
+da wir die Originaldaten auf einer logarithmischen Skala auftragen. In
+{numref}`fig:datenanalyse_6` sind die Achsen dagegen linear eingeteilt. Dafür 
+sind nun die Logarithmen der Messwerte aufgetragen.
+
+Die logarithmierten Daten können wir nun an eine lineare Funktion fitten.
+```
+def lin_fit_func(x, a, b):
+    return a*x+b
+
+popt, pcov = optimize.curve_fit(lin_fit_func, log_angular_velocity, log_acceleration)
+```
+Dabei ist zu beachten, dass die Fitfunktion im Gegensatz zu der ursprünglich
+verwendeten quadratischen Funktion zwei Fitparameter besitzt. Die Steigung $a$ der
+Kurve gibt dabei den Exponenten an, während der Achsenabschnitt $b$ dem Logarithmus
+des Vorfaktors entspricht. In unserem Fall wäre dieser Vorfaktor der Abstand zwischen
+Sensor und Drehachse.
+
+Der Exponent lässt sich aus `popt[0]` entnehmen. Für unsere Messdaten ergibt er
+sich zu etwa 1,987, was in Anbetracht der Messfehler gut zum erwarteten
+Exponenten 2 passt. Auf eine Analyse der Messfehler wollen wir an dieser Stelle
+verzichten. Der Abstand zwischen Sensor und Drehachse ergibt sich aus
+`10**popt[1]` zu etwa 9 cm, was gut zu den Dimensionen der Salatschleuder
+passt. Abschließend stellen wir nochmals unsere Messdaten zusammen mit dem
+linearen Fit dar, um uns auch auf diese Weise davon zu überzeugen, wie gut die
+Fitfunktion die Messdaten beschreibt.
+```
+plt.xlabel("$\log_{10}(\omega)$")
+plt.ylabel("$\log_{10}(a)$")
+plt.plot(log_angular_velocity, log_acceleration, '.')
+xvalues = np.linspace(0.4, 1.4)
+plt.plot(xvalues, popt[0]*xvalues+popt[1])
+```
+```{figure} images/vorschau/datenanalyse_7.png
+---
+width: 10cm
+name: fig:datenanalyse_7
+---
+Logarithmierte Messdaten für Winkelgeschwindigkeiten größer 1 1/s in linearer
+Auftragung zusammen mit einem linearen Fit
+```
+
+Damit haben wir an einem Beispiel vorgeführt, wie eine einfache Datenanalyse
+mit Hilfe von Python unter Verwendung einiger wissenschaftlicher Programmbibliotheken
+vorgenommen werden kann. Die hier zusammengestellte Information, also Code, Abbildungen
+und Beschreibung würde man in der Praxis in einem einzigen Jupyter-Notebook 
+zusammenfassen und damit die Strategie der Datenanalyse sowie die Ergebnisse
+in einer Datei dokumentieren.
+
+## Ein erstes Python-Skript
+
+Unser zweites Beispiel implementiert das Spiel [»Schere, Stein,
 Papier«](https://de.wikipedia.org/wiki/Schere,_Stein,_Papier), wobei der
 Benutzer gegen den Computer spielt. Bei der folgenden Realisierung spielen
 [psychologische Aspekte des
