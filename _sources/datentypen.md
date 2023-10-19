@@ -317,7 +317,7 @@ emphasize-lines: 6, 6
 ---
 program datentyp
   integer :: n
-  real:: x
+  real :: x
 
   n = 2
   x = n
