@@ -168,7 +168,7 @@ plt.ylabel("$a$")
 plt.plot(angular_velocity, acceleration, ".")
 xvalues = np.linspace(0, 20)
 yvalues = fit_func(xvalues, popt[0])
-plt.plot(xvalues, fit_func(xvalues, popt[0]))
+plt.plot(xvalues, yvalues)
 ```
 Dazu wird in den drei letzten Zeilen zunächst ein Vektor mit $x$-Werten
 und anschließend unter Verwendung der Fitfunktion die zugehörigen $y$-Werte
