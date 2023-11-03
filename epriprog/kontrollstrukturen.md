@@ -368,33 +368,33 @@ waiting_sequence = [wait_for_six() for n in range(100000)]
 plt.hist(waiting_sequence, bins=30, range=(1, 30), density=True)
 plt.show()
 ```
-Bei der Besprechung des Codes wollen wir uns auf die Funktion {func}`wait_for_six`
-konzentrieren, die die `while`-Schleife enthält und für eine zufällige Realisierung
-von Würfen bestimmt, wie viele Würfe benötigt werden um zum ersten Mal eine Sechs
-zu erhalten.
+Das Histogramm gibt die Wahrscheinlichkeit an, dass eine 6 zum ersten Mal nach
+der entsprechenden Anzahl von Versuchen gewürfelt wird.
 
-Betrachten wir zunächst einmal die grundsätzliche Struktur des Codes innerhalb
-der Funktion. Ähnlich wie bei einem der Beispiele für eine `for`-Schleife im
-vorigen Kapitel  wird zunächst eine Initialisierung vorgenommen. Dazu wird mit
-Hilfe der {func}`randrange`-Funktion ein Würfelwurf mit einem Ergebnis zwischen
-1 und 6 vorgenommen. Anhand des Werts der Variable `result` wird nachher festgelegt,
-über noch weitere Würfe erforderlich sind. Außerdem müssen wir die Zahl der Würfe
-zählen. Da bereits ein Wurf stattgefunden hat, setzen wir die betreffende Variable
-`ncasts` auf Eins. Nun beginnt die Schleife mit dem Schlüsselwort `while`, das von
-einer Bedingung gefolgt wird, die wiederum mit einem Doppelpunkt abgeschlossen wird.
-Die folgenden, zum Schleifenkörper gehörenden Zeilen sind wie üblich eingerückt. Bis
-auf das Schlüsselwort `while` entspricht die Struktur also dem, was wir von der
-`for`-Schleife schon kennen. 
+Bei der Besprechung des Codes wollen wir uns auf die Funktion
+{func}`wait_for_six` konzentrieren, die die `while`-Schleife enthält und für
+eine zufällige Realisierung von Würfen bestimmt, wie viele Würfe benötigt
+werden, um zum ersten Mal eine Sechs zu erhalten. Der Code setzt das Vorgehen
+beim Würfeln in direkter, wenn auch nicht unbedingt optimaler Weise um.
+Zunächst wird unter Verwendung der Zufallsfunktion `randrange` eine Zahl
+zwischen 1 und 6 gewürfelt. Gleichzeitig wird der Zähler `ncasts`, der die
+Anzahl der Würfe angibt, entsprechend auf eins gestellt.  Wurde keine 6
+gewürfelt, ist also die Bedingung `result != 6` erfüllt, so wird die
+`while`-Schleife durchlaufen, wobei wieder gewürfelt und der Zähler `ncasts` um
+eins erhöht wird. Die `while`-Schleife wird erst verlassen, wenn eine 6
+gewürfelt wurde, da dann die Bedingung `result != 6` nicht erfüllt ist.
+Abschließend gibt die Funktion `wait_for_six` die Zahl der Würfe zurück.
 
-In der `while`-Schleife wird zu Beginn getestet, ob die Befehle im Schleifenkörper
-überhaupt abgearbeitet werden sollen. Dies ist genau dann der Fall, wenn die
-Bedingung erfüllt ist, in unserem Fall also wenn `result` nicht den Wert 6 besitzt.
-Dann muss offenbar weitergewürfelt werden. Andernfalls wird der Schleifenkörper
-übersprungen und die Ausführung wird der ersten nicht mehr eingerückten Anweisung
-fortgesetzt. In unserem Fall wird dann die Zahl der Würfe an den aufrufenden Code
-zurückgegeben. Im Schleifenkörper selbst wird gewürfelt und der Wurfzähler um
-Eins erhöht. Anschließend wird wieder getestet, ob `result` ungleich 6 ist und
-gegebenenfalls die Ausführung der Schleife fortgesetzt.
+Die grundsätzliche Struktur des Codes entspricht derjenigen, die wir von der
+`for`-Schleife bereits kennen. Vor der Schleife findet hier eine Initialisierung
+statt, der wir schon bei dem Summationsbeispiel im vorigen Abschnitt
+begegnet sind. Die erste Zeile der eigentlichen `while`-Schleife beginnt mit dem 
+Schlüsselwort `while` anstelle des Schlüsselworts `for`. In beiden Fällen
+endet die Zeile mit einem Doppelpunkt. Bei der `while`-Schleife ist außerdem
+eine Bedingung, hier `result != 6`, anzugeben. Nur wenn diese Bedingung erfüllt
+ist, wird der eingerückte Block ausgeführt und anschließend wieder die Bedingung
+überprüft. Andernfalls wird die Ausführung des Programms nach dem eingerückten
+Block fortgesetzt.
 
 Aufmerksamen Leserinnen und Lesern fällt in diesem Code vielleicht auf, dass der
 Code für das Würfeln wiederholt wird. Am Ende von {numref}`vorschau` hatten wir
@@ -413,40 +413,14 @@ name: fig:wuerfel
 Dodekaeder- und Ikosaederwürfel.
 ```
 
-Der Grund für den ersten Aufruf der {func}`randrange`-Funktion besteht darin,
-dass bei der Ausführung des Bedingung zu Beginn der `while`-Schleife die
-Variable `result` bekannt sein muss. Ein möglicher Ausweg besteht darin, den
-Wert von `result` so zu setzen, dass die Bedingung beim ersten Mal auf jeden
-Fall wahr ist. Dazu können wir `result` zum Beispiel gleich Null setzen. Da wir
-damit noch nicht gewürfelt haben, setzen wir auch `ncasts` gleich Null. Nun
-finden alle Würfe innerhalb der `while`-Schleife statt. Der folgende Code verwendet
-die {func}`wait_for_six`-Funktion, um die mittlere Zahl der Würfe zu bestimmen,
-die benötigt werden, um eine 6 zu erhalten. Aufgrund der endlichen Zahl von
-Realisierungen ist es nicht unerwartet, dass das Ergebnis vom analytischen Ergebnis,
-nämlich 6, etwas abweicht.
-
-```{code-cell} python
-from random import randrange
-
-def wait_for_six():
-    result = 0
-    ncasts = 0
-    while result != 6:
-        result = randrange(1, 7)
-        ncasts = ncasts + 1
-    return ncasts
-
-waiting_sequence = [wait_for_six() for n in range(100000)]
-average = sum(waiting_sequence)/len(waiting_sequence)
-print(average)
-```
-
-Im Prinzip ließe sich unser Problem eleganter lösen, wenn man die Bedingung nicht
-zu Beginn der `while`-Schleife überprüfen würde, sondern an deren  Ende. Dann würde die
-Schleife auf jeden Fall einmal durchlaufen werden. In Python ist dies nicht direkt
-möglich, so dass wir zu dieser Hilfslösung greifen mussten. In anderen Sprachen gibt
-es dagegen ein `do … while`, wie zum Beispiel in C, oder ein `repeat … until` wie in
-Pascal. Dabei wird am Ende getestet.
+Im Prinzip ließe sich unser Problem eleganter lösen, wenn man die Bedingung
+nicht zu Beginn der `while`-Schleife überprüfen würde, sondern an deren  Ende.
+Dann würde die Schleife auf jeden Fall einmal durchlaufen werden. Es würde also
+auf jeden Fall einmal gewürfelt werden und wir würden nur eine Zeile mit einem
+Aufruf von `randrange` benötigen. In Python ist dies nicht direkt möglich, aber
+wir werden weiter unten auf alternative Lösungen zu sprechen kommen. In anderen
+Sprachen gibt es dagegen ein `do … while`, wie zum Beispiel in C, oder ein
+`repeat … until` wie in Pascal. Dabei wird am Ende getestet.
 
 Ein einfaches Beispiel, das im Prinzip eine absteigende Folge von Quadratzahlen 
 ausgibt, ist hier in C realisiert.
@@ -494,19 +468,91 @@ Einen Unterschied gibt es im Verhalten, wenn die angegebene Bedingung erfüllt i
 C-Beispiel wird die Schleife dann fortgesetzt, während sie im Pascal-Beispiel beendet
 wird. Entsprechend sind die beiden Bedingungen verschieden formuliert.
 
+Wie können wir nun unsere anfängliche Lösung so verbessern, dass der
+Aufruf von `randrange` in der Funktion `wait_for_six` nur einmal statt zweimal
+vorkommt? Eine Möglichkeit besteht darin, den Aufruf in die Bedingung zu verschieben.
+```{code-cell} python
+from random import randrange
+
+def wait_for_six():
+    ncasts = 1
+    while randrange(1, 7) != 6:
+        ncasts = ncasts + 1
+    return ncasts
+
+waiting_sequence = [wait_for_six() for n in range(100000)]
+average = sum(waiting_sequence)/len(waiting_sequence)
+print(average)
+```
+Hier wird zu Beginn der Anfangswert des Zählers `ncasts` schon im Vorgriff
+auf das anschließende Würfeln auf eins gesetzt. Auch die letzten beiden
+Zeilen wurden geändert, was aber nichts mit dem Code in der Funktion
+`wait_for_six`zu tun hat. Diese Änderung soll lediglich dafür sorgen, dass
+statt einem Histogramm der Mittelwert der Würfe ausgegeben wird. Da das
+angezeigte Ergebnis auf einer endlichen Anzahl von Veruschen beruht, weicht
+es ein wenig vom analytischen Ergebnis, nämlich 6, ab.
+
+Ein Nachteil dieser Lösung besteht darin, dass man das Ergebnis des Wurfes
+nicht ausgeben kann, da es keiner Variable zugewiesen wird. Seit Python 3.8
+lässt sich dieses Problem mit dem sogenannten Walroß-Operator `:=` lösen,
+dessen Name sich auf die Augen und Stoßzähne eines Walrosses bezieht. Der
+Code könnte dann folgendermaßen aussehen.
+```{code-cell} python
+from random import randrange
+
+def wait_for_six():
+    ncasts = 1
+    while (result := randrange(1, 7)) != 6:
+        print(result)
+        ncasts = ncasts + 1
+    print(result)
+    return ncasts
+
+wait_for_six()
+```
+
+Eine `do … while`- oder `repeat … until`-Konstruktion, bei der Bedingung
+tatsächlich erst am Ende abgeprüft wird, lässt sich in Python mit einer
+Endlosschleife realisieren.
+```{code-cell} python
+from random import randrange
+
+def wait_for_six():
+    ncasts = 0
+    while 1:
+        result = randrange(1, 7)
+        ncasts = ncasts + 1
+        if result == 6:
+            break
+    return ncasts
+
+waiting_sequence = [wait_for_six() for n in range(100000)]
+average = sum(waiting_sequence)/len(waiting_sequence)
+print(average)
+```
+Hier macht man sich zunutze, dass eine Schleife mit der `break`-Anweisung
+verlassen werden kann. Zu beachten ist dabei, dass die Bedingung
+angepasst werden muss, da das Verlassen erfolgen soll, falls eine
+6 gewürfelt wurde.
+
 Abschließend sei betont, dass der Programmierer bei der Verwendung von
 `while`-Schleifen und ähnlichen Konstrukten selbst dafür verantwortlich
 ist sicherzustellen, dass die Schleife irgendwann beendet wird.
 Andernfalls liegt eine Endlosschleife vor und das Programm muss von außen
-abgebrochen werden. Dieses Szenario kann allerdings gezielt bei Programmen
-eingesetzt werden, die durch äußere Ereignisse wie Tastendrucke oder Mausbewegungen
-gesteuert werden. Ein Beispiel hatten wir im {numref}`vorschau` kennengelernt.
-In diesem Fall durchläuft das Programm eine Endlosschleife, um bei Bedarf auf äußere
-Ereignisse adäquat zu reagieren. Aber auch in diesem Fall ist darauf zu achten,
-dass es eine Möglichkeit gibt, das Programm kontrolliert, beispielsweise durch
-Drücken der Taste `q`, zu beenden. Im Python-Code verwendet man dann den
-`break`-Befehl, um die Ausführung des Programmcodes außerhalb der
-Schleife fortzusetzen.
+abgebrochen werden. Eine Endlosschleife hat dabei nicht immer die mehr
+oder wenige offensichtliche Form wie im obigen Code mit `while 1` oder
+`while True`. Vergisst man zum Beispiel, eine für die Bedingung relevante
+Variable zu aktualisieren, so kann es sein, dass die `while`-Schleife nie
+zu einem Ende kommt. Ein sehr simples Beispiel zeigt das folgende Codestück.
+```{code-cell} python
+:tags: [skip-execution]
+
+n = 0
+while n < 10:
+    print(n, n**2)
+```
+Hier wurde vergessen, den Zähler `n` in der Schleife adäquat zu verändern.
+
 
 (ifelse)=
 ## Verzweigungen
