@@ -294,23 +294,24 @@ Eine komfortablere Python-Shell bietet IPython, unter anderem mit *Syntax Highli
 ```
 
 Interessant ist die Verwendung von so genannten Jupyter-Notebooks, die es
-erlauben, interaktiv mit Python in einem Browser zu arbeiten. Wie die
-{numref}`fig:jupyternotebook` zeigt, gibt es hier neben den grau hinterlegten
+erlauben, interaktiv mit Python unter Verwendung von Jupyterlab in einem
+Browser zu arbeiten. Wie die {numref}`fig:jupyterlab` zeigt, gibt es hier neben
 Codezellen auch Textzellen, die sogar Formeln enthalten können, und von
 ausgeführtem Code erzeugte Resultate werden ebenfalls in das Notebook
-integriert.  Dabei kann es sich, wie in {numref}`fig:jupyternotebook` dargestellt,
-beispielsweise auch um graphische Darstellungen handeln. Das Jupyter-Notebook
-eignet sich unter anderem hervorragend dafür, die Schritte einer Datenanalyse zu
-dokumentieren, um sie auch später nachvollziehen zu können.
+integriert. Dabei kann es sich, wie in {numref}`fig:jupyternotebook`
+dargestellt, beispielsweise auch um graphische Darstellungen handeln. Das
+Jupyter-Notebook eignet sich unter anderem hervorragend dafür, die Schritte
+einer Datenanalyse zu dokumentieren, um sie auch später nachvollziehen zu
+können.
 
-```{figure} images/einleitung/jupyternotebook.png
+```{figure} images/einleitung/jupyterlab.png
 ---
 width: 15cm
-name: fig:jupyternotebook
+name: fig:jupyterlab
 ---
-Beispiel eines Jupyter-Notebooks. Das graphische Ergebnis einer der beiden
-Codezellen wird innerhalb des Notebooks dargestellt. In Textzellen lassen
-sich auch Formeln einbetten.
+Beispiel eines Jupyter-Notebooks in Jupyterlab. Das graphische Ergebnis
+einer der beiden Codezellen wird innerhalb des Notebooks dargestellt.
+In Textzellen lassen sich auch Formeln einbetten.
 ```
 
 Da Notebookzellen mehrzeiligen Code enthalten können, sind IPython-Notebooks
