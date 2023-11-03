@@ -495,7 +495,7 @@ es ein wenig vom analytischen Ergebnis, nämlich 6, ab.
 Ein Nachteil dieser Lösung besteht darin, dass man das Ergebnis des Wurfes
 nicht ausgeben kann, da es keiner Variable zugewiesen wird. Seit Python 3.8
 lässt sich dieses Problem mit dem sogenannten Walroß-Operator `:=` lösen,
-dessen Name sich auf die Augen und Stoszähne eines Walrosses bezieht. Der
+dessen Name sich auf die Augen und Stoßzähne eines Walrosses bezieht. Der
 Code könnte dann folgendermaßen aussehen.
 ```{code-cell} python
 from random import randrange
