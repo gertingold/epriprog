@@ -667,7 +667,26 @@ for year in range(1860, 2210):
         print(year)
 ```
 
-Die `if…else`-Konstruktion lässt in der bisher besprochene Weise zwei mögliche Wege abhängig
+In einfachen Fällen lässt sich eine `if … else`-Konstruktion auch in einer einzigen Zeile
+schreiben. Statt
+```{code-cell} python
+:tags: [skip-execution]
+
+if nyear % 12:
+    print(year, end=' ')
+else:
+    print(year)
+```
+könnte man auch
+```{code-cell} python
+:tags: [skip-execution]
+
+end_string = ' ' if nyear % 12 else ''
+print(year, end=end_string)
+```
+verwenden. 
+
+Die `if … else`-Konstruktion lässt in der bisher besprochene Weise zwei mögliche Wege abhängig
 davon zu, ob eine Bedingung erfüllt ist oder nicht. Man kann aber auch mehr als zwei Alternativen
 vorsehen. Eine erste Möglichkeit, die noch nicht wirklich optimal ist, beruht auf einer Schachtelung
 von `if…else`-Verzweigungen.
