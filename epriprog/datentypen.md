@@ -1115,9 +1115,16 @@ Beispiel auch griechische Zeichen. Ob es wirklich sinnvoll ist, Buchstaben von
 außerhalb des Bereiche `A-Z` und `a-z` zu verwenden, sollte man sich im
 Einzelfall gut überlegen. Man muss sich nur vor Augen halten, was es für Folgen
 hätte, wenn man ein Programm analysieren müsste, das unter Verwendung von
-chinesischen Schriftzeichen geschrieben wurde. Dennoch ist zum Beispiel der
-folgende Code für Python 3 kein Problem.
-
+chinesischen Schriftzeichen geschrieben wurde. Auch wenn das folgende Beispiel
+noch einigermaßen übersichtlich ist, gibt es dennoch einen Eindruck von den
+Schwierigkeiten, die sich bei einem längeren Skript ergeben könnten.
+```{code-cell} python
+天堂 = 100
+地球 = 10
+print(天堂 + 地球)
+```
+Dennoch ist die Verwendung dieser Schriftzeichen in Python 3 kein Problem, 
+genauso wenig wie die Verwendung von griechischen Buchstaben.
 ```{code-cell} python
 from math import pi as π
 Radius = 2
