@@ -722,7 +722,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139920975564160 139920975564160
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140167534313664 140167534313664
 </pre></div>
 </div>
 </div>
@@ -753,7 +753,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139920975664512 139920975562752
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140167414367424 140167414396160
 </pre></div>
 </div>
 </div>
@@ -1167,8 +1167,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[53, 39, 38, 75, 47, 82, 76, 37, 57, 85, 82, 23, 60, 60, 78, 83, 69, 3, 50, 36]
-[3, 23, 36, 37, 38, 39, 47, 50, 53, 57, 60, 60, 69, 75, 76, 78, 82, 82, 83, 85]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23, 56, 57, 46, 27, 9, 81, 71, 11, 77, 35, 88, 26, 91, 2, 30, 14, 82, 61, 38]
+[2, 9, 11, 14, 23, 26, 27, 30, 35, 38, 46, 56, 57, 61, 71, 77, 81, 82, 88, 91]
 </pre></div>
 </div>
 </div>
@@ -1186,8 +1186,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[51, 70, 90, 27, 62, 13, 25, 20, 2, 85, 53, 23, 32, 7, 65, 82, 99, 95, 34, 30]
-[70, 90, 20, 30, 51, 62, 2, 32, 82, 13, 53, 23, 34, 25, 85, 65, 95, 27, 7, 99]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[27, 59, 77, 21, 76, 20, 77, 42, 2, 10, 50, 79, 19, 40, 74, 46, 86, 44, 69, 15]
+[20, 10, 50, 40, 21, 42, 2, 74, 44, 15, 76, 46, 86, 27, 77, 77, 59, 79, 19, 69]
 </pre></div>
 </div>
 </div>
@@ -1217,10 +1217,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 139920976350208
-id(mytuple2) = 139920976271488
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140167415048768
+id(mytuple2) = 140167414978112
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 139920976258736
+id(mytuple1) = 140167414959616
 </pre></div>
 </div>
 </div>
@@ -1322,7 +1322,10 @@ folgende Beispiel, das einige Elemente der Fibonacci-Reihe berechnet, enthält i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 2 3 5 8 13 21 34 55 89 144 233 377 610 987 
 </pre></div>
 </div>
 </div>
@@ -1559,8 +1562,8 @@ erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 139920976339056 | id(s2) = 139920976360944
-id(s1) = 139921049681424
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140167415051184 | id(s2) = 140167573132464
+id(s1) = 140167414316080
 </pre></div>
 </div>
 </div>
@@ -1603,6 +1606,9 @@ einen Trennstrich einer bestimmten Länge setzen möchte.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <p>Für Zeichenketten gibt es die gleichen Möglichkeiten des <em>slicing</em>, die wir auch von den
@@ -1620,7 +1626,9 @@ ist dagegen nicht möglich.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s[14:24] = &#39;Prinzipien&#39;
-s[-14:] = &#39;Programmierung&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s[-14:] = &#39;Programmierung&#39;
 s[1::2] = &#39;ifhugi rniindrPormirn&#39;
 s[::-1] = &#39;gnureimmargorP red neipiznirP ni gnurhüfniE&#39;
 </pre></div>
@@ -1755,7 +1763,9 @@ ungerade Anzahl von Stellen haben.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12345678
---------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------
   2468  
 </pre></div>
 </div>
@@ -1815,6 +1825,9 @@ einschließen. Diese Notation ist analog zur Indizierung von Listen mit Hilfe vo
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;H&#39;: 1.008, &#39;He&#39;: 4.002602, &#39;Li&#39;: 6.94, &#39;Be&#39;: 9.0121831, &#39;B&#39;: 10.81}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
