@@ -28,7 +28,7 @@ das wissenschaftliche Rechnen relevanten Programmiersprachen, auch wenn die
 konkrete syntaktische Umsetzung unterschiedlich sein kann.
 
 Wir hatten im vorigen Kapitel bereits gesehen, dass im Fehlerfall, zum Beispiel
-bei der Division durch Null, Ausnahmen oder *exceptions* auftreten. Diese müssen
+bei der Division durch null, Ausnahmen oder *exceptions* auftreten. Diese müssen
 nicht zwingend zum Abbruch des Programms führen, sondern sie können geeignet
 behandelt werden. Diesen Aspekt der Steuerung des Programmablaufs werden wir im
 letzten Abschnitt dieses Kapitels kennenlernen.
@@ -83,7 +83,7 @@ list(range(5))
 ```
 
 Es wird also eine Liste von aufeinanderfolgenden ganzen Zahlen erzeugt, die
-hier fünf Elemente enthält. Zu beachten ist, dass die Liste mit Null beginnt
+hier fünf Elemente enthält. Zu beachten ist, dass die Liste mit null beginnt
 und nicht mit Eins. Wir werden uns diesen zusammengesetzten Datentyp im
 {numref}`listen` noch genauer ansehen. Für den Moment genügt jedoch die
 intuitive Vorstellung von einer Liste. In der ersten Zeile der
@@ -243,16 +243,16 @@ die Bedeutung dieses Wert hinweist.
 
 Zwei Aspekte wollen wir an diesem Beispiel betonen. Zum einen übersieht man leicht,
 dass im Nenner nicht einfach `n**2` stehen darf. Dies würde zu einer Division durch
-Null führen, da der erste Wert, der von der {func}`range`-Funktion geliefert wird,
-gerade Null ist. Da die Summation bei 1 beginnt, müssen wir also im Nenner `(n+1)**2`
+null führen, da der erste Wert, der von der {func}`range`-Funktion geliefert wird,
+gerade null ist. Da die Summation bei 1 beginnt, müssen wir also im Nenner `(n+1)**2`
 schreiben.
 
 Ein zweiter Aspekt wird gerne übersehen. Im Schleifenkörper, der hier nur aus der
 vorletzten Zeile besteht, wird wie bei jeder Zuweisung zunächst die rechte Seite
 ausgewertet. Dabei erwartet der Pythoninterpreter schon beim ersten Durchlauf, dass
 die Variable `summe` einen Wert besitzt. Auch wenn wir einen fehlenden Wert intuitiv
-einfach auf Null setzen würden, ist es für Python ein großer Unterschied, ob eine
-Variable den Wert Null hat oder überhaupt keinen Wert besitzt. Dies bedeutet, dass
+einfach auf null setzen würden, ist es für Python ein großer Unterschied, ob eine
+Variable den Wert null hat oder überhaupt keinen Wert besitzt. Dies bedeutet, dass
 unser Beispiel nicht mehr läuft, wenn wir die vierte Zeile weglassen. Aus technischen
 Gründen entfernen wir die Variable hier explizit, da sie sonst ihren Wert aus der
 obigen Zelle behält.
@@ -417,8 +417,8 @@ Der Grund für den ersten Aufruf der {func}`randrange`-Funktion besteht darin,
 dass bei der Ausführung des Bedingung zu Beginn der `while`-Schleife die
 Variable `result` bekannt sein muss. Ein möglicher Ausweg besteht darin, den
 Wert von `result` so zu setzen, dass die Bedingung beim ersten Mal auf jeden
-Fall wahr ist. Dazu können wir `result` zum Beispiel gleich Null setzen. Da wir
-damit noch nicht gewürfelt haben, setzen wir auch `ncasts` gleich Null. Nun
+Fall wahr ist. Dazu können wir `result` zum Beispiel gleich null setzen. Da wir
+damit noch nicht gewürfelt haben, setzen wir auch `ncasts` gleich null. Nun
 finden alle Würfe innerhalb der `while`-Schleife statt. Der folgende Code verwendet
 die {func}`wait_for_six`-Funktion, um die mittlere Zahl der Würfe zu bestimmen,
 die benötigt werden, um eine 6 zu erhalten. Aufgrund der endlichen Zahl von
@@ -631,7 +631,7 @@ for n in range(-2, 3):
         print(f'{n} ist positiv.')
     else:
         if n == 0:
-            print(f'{n} ist gleich Null.')
+            print(f'{n} ist gleich null.')
         else:
             print(f'{n} ist negativ.')
 ```
@@ -642,7 +642,7 @@ for n in range(-2, 3):
     if n > 0:
         print(f'{n} ist positiv.')
     elif n == 0:
-        print(f'{n} ist gleich Null.')
+        print(f'{n} ist gleich null.')
     else:
         print(f'{n} ist negativ.')
 ```
@@ -674,14 +674,14 @@ im {numref}`dictionaries` genauer besprechen werden.
 (exceptions)=
 ## Abfangen von Ausnahmen
 
-In {numref}`float` hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
+In {numref}`float` hatten wir festgestellt, dass Python auf den Versuch, durch null zu teilen, mit einer
 Ausnahme oder *exception* reagiert, dem `ZeroDivisionError`. Unbehandelt führt eine solche Ausnahme zur
 Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
 in geeigneter Weise behandeln. Zur Illustration betrachten wir die Funktion 
 
 $$f(x)=\frac{\sin(x)}{x}\,.$$
 
-Eine numerische Auswertung dieser Funktion an der Stelle $x=0$ führt zu einer Division durch Null und
+Eine numerische Auswertung dieser Funktion an der Stelle $x=0$ führt zu einer Division durch null und
 damit zu einem `ZeroDivisionError` obwohl der Wert der Funktion im Grenzübergang $x\to 0$ gleich $1$ ist.
 
 Den speziellen Wert bei $x=0$ könnte man nun mit Hilfe einer Verzweigung behandeln.
