@@ -393,7 +393,7 @@ def fakultaet_rekursiv(n):
     elif n == 1:
         return 1
     else:
-        raise ValueError("Das Argument muss größer als Null sein.")
+        raise ValueError("Das Argument muss größer als null sein.")
 
 for n in range(1, 10):
     print(n, fakultaet_rekursiv(n))
@@ -408,7 +408,7 @@ gewünschte Ergebnis erhalten wird. Diesen Vorgang werden wir gleich noch etwas 
 
 Zuvor wollen wir aber noch darauf hinweisen, dass unsere Funktion noch eine Fehlerbehandlung
 durchführt, die verhindert, dass die Rekursion nie zu Ende kommt. Sollte das Argument `n` nämlich
-kleiner gleich Null sein oder keine ganze Zahl sein, würde man nie die Abbruchbedingung erreichen,
+kleiner gleich null sein oder keine ganze Zahl sein, würde man nie die Abbruchbedingung erreichen,
 bei der `n` gleich Eins ist.  Damit wären wir in einer Endlosschleife gefangen. Bei rekursiven
 Funktionen ist es also immer essentiell wichtig, darauf zu achten, dass die Abbruchbedingung korrekt
 implementiert ist. 

@@ -899,7 +899,7 @@ Produktdarstellung.</p>
     <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Das Argument muss größer als Null sein.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Das Argument muss größer als null sein.&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fakultaet_rekursiv</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
@@ -929,7 +929,7 @@ wurde, können sukzessive die Resultate der einzelnen Funktionsaufrufe bestimmt 
 gewünschte Ergebnis erhalten wird. Diesen Vorgang werden wir gleich noch etwas genauer veranschaulichen.</p>
 <p>Zuvor wollen wir aber noch darauf hinweisen, dass unsere Funktion noch eine Fehlerbehandlung
 durchführt, die verhindert, dass die Rekursion nie zu Ende kommt. Sollte das Argument <code class="docutils literal notranslate"><span class="pre">n</span></code> nämlich
-kleiner gleich Null sein oder keine ganze Zahl sein, würde man nie die Abbruchbedingung erreichen,
+kleiner gleich null sein oder keine ganze Zahl sein, würde man nie die Abbruchbedingung erreichen,
 bei der <code class="docutils literal notranslate"><span class="pre">n</span></code> gleich Eins ist.  Damit wären wir in einer Endlosschleife gefangen. Bei rekursiven
 Funktionen ist es also immer essentiell wichtig, darauf zu achten, dass die Abbruchbedingung korrekt
 implementiert ist.</p>
