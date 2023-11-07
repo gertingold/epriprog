@@ -394,7 +394,7 @@ Verzweigungen kennenlernen. Diese Programmkonstrukte finden sich in allen für
 das wissenschaftliche Rechnen relevanten Programmiersprachen, auch wenn die
 konkrete syntaktische Umsetzung unterschiedlich sein kann.</p>
 <p>Wir hatten im vorigen Kapitel bereits gesehen, dass im Fehlerfall, zum Beispiel
-bei der Division durch Null, Ausnahmen oder <em>exceptions</em> auftreten. Diese müssen
+bei der Division durch null, Ausnahmen oder <em>exceptions</em> auftreten. Diese müssen
 nicht zwingend zum Abbruch des Programms führen, sondern sie können geeignet
 behandelt werden. Diesen Aspekt der Steuerung des Programmablaufs werden wir im
 letzten Abschnitt dieses Kapitels kennenlernen.</p>
@@ -494,7 +494,7 @@ ansehen, indem wir explizit eine Liste der Werte erzeugen lassen.</p>
 </div>
 </div>
 <p>Es wird also eine Liste von aufeinanderfolgenden ganzen Zahlen erzeugt, die
-hier fünf Elemente enthält. Zu beachten ist, dass die Liste mit Null beginnt
+hier fünf Elemente enthält. Zu beachten ist, dass die Liste mit null beginnt
 und nicht mit Eins. Wir werden uns diesen zusammengesetzten Datentyp im
 <a class="reference internal" href="sequenzen.html#listen"><span class="std std-numref">Kapitel 6.1</span></a> noch genauer ansehen. Für den Moment genügt jedoch die
 intuitive Vorstellung von einer Liste. In der ersten Zeile der
@@ -691,15 +691,15 @@ ist die betreffende Stelle leichter zu finden, da der Variablenname <code class=
 die Bedeutung dieses Wert hinweist.</p>
 <p>Zwei Aspekte wollen wir an diesem Beispiel betonen. Zum einen übersieht man leicht,
 dass im Nenner nicht einfach <code class="docutils literal notranslate"><span class="pre">n**2</span></code> stehen darf. Dies würde zu einer Division durch
-Null führen, da der erste Wert, der von der <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion geliefert wird,
-gerade Null ist. Da die Summation bei 1 beginnt, müssen wir also im Nenner <code class="docutils literal notranslate"><span class="pre">(n+1)**2</span></code>
+null führen, da der erste Wert, der von der <code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code>-Funktion geliefert wird,
+gerade null ist. Da die Summation bei 1 beginnt, müssen wir also im Nenner <code class="docutils literal notranslate"><span class="pre">(n+1)**2</span></code>
 schreiben.</p>
 <p>Ein zweiter Aspekt wird gerne übersehen. Im Schleifenkörper, der hier nur aus der
 vorletzten Zeile besteht, wird wie bei jeder Zuweisung zunächst die rechte Seite
 ausgewertet. Dabei erwartet der Pythoninterpreter schon beim ersten Durchlauf, dass
 die Variable <code class="docutils literal notranslate"><span class="pre">summe</span></code> einen Wert besitzt. Auch wenn wir einen fehlenden Wert intuitiv
-einfach auf Null setzen würden, ist es für Python ein großer Unterschied, ob eine
-Variable den Wert Null hat oder überhaupt keinen Wert besitzt. Dies bedeutet, dass
+einfach auf null setzen würden, ist es für Python ein großer Unterschied, ob eine
+Variable den Wert null hat oder überhaupt keinen Wert besitzt. Dies bedeutet, dass
 unser Beispiel nicht mehr läuft, wenn wir die vierte Zeile weglassen. Aus technischen
 Gründen entfernen wir die Variable hier explizit, da sie sonst ihren Wert aus der
 obigen Zelle behält.</p>
@@ -867,7 +867,7 @@ nun den Computer heranziehen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4b1c05e7f0253abf84bd574213cacd036a1c50af0ab6306b357391b50647029f.png" src="_images/4b1c05e7f0253abf84bd574213cacd036a1c50af0ab6306b357391b50647029f.png" />
+<img alt="_images/79504c4a2603b8c6b4fc3a34c917efdaf4240feaadfad7ba90b6a6ca9946ac56.png" src="_images/79504c4a2603b8c6b4fc3a34c917efdaf4240feaadfad7ba90b6a6ca9946ac56.png" />
 </div>
 </div>
 <p>Das Histogramm gibt die Wahrscheinlichkeit an, dass eine 6 zum ersten Mal nach
@@ -977,7 +977,7 @@ vorkommt? Eine Möglichkeit besteht darin, den Aufruf in die Bedingung zu versch
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.01111
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.00193
 </pre></div>
 </div>
 </div>
@@ -1011,12 +1011,18 @@ Code könnte dann folgendermaßen aussehen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
-1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+3
+2
+3
+3
+4
+3
+2
 6
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
 </pre></div>
 </div>
 </div>
@@ -1044,7 +1050,7 @@ Endlosschleife realisieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.99224
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.98791
 </pre></div>
 </div>
 </div>
@@ -1106,7 +1112,9 @@ ausgeben lassen.</p>
      30000  1.6449007351814806
      40000  1.6449090677856950
      50000  1.6449140674482257
-     60000  1.6449174005982372
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     60000  1.6449174005982372
      70000  1.6449197814400827
      80000  1.6449215670826174
      90000  1.6449229559223180
@@ -1551,7 +1559,7 @@ von <code class="docutils literal notranslate"><span class="pre">if…else</span
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist positiv.&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich Null.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich null.&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ.&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1560,7 +1568,7 @@ von <code class="docutils literal notranslate"><span class="pre">if…else</span
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2 ist negativ.
 -1 ist negativ.
-0 ist gleich Null.
+0 ist gleich null.
 1 ist positiv.
 2 ist positiv.
 </pre></div>
@@ -1575,7 +1583,7 @@ zusammenzieht, kann man die Verzweigungen etwas weniger hierarchisch hinschreibe
     <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist positiv.&#39;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich Null.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist gleich null.&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> ist negativ.&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1584,7 +1592,7 @@ zusammenzieht, kann man die Verzweigungen etwas weniger hierarchisch hinschreibe
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2 ist negativ.
 -1 ist negativ.
-0 ist gleich Null.
+0 ist gleich null.
 1 ist positiv.
 2 ist positiv.
 </pre></div>
@@ -1630,13 +1638,13 @@ im <a class="reference internal" href="sequenzen.html#dictionaries"><span class=
 </section>
 <section id="abfangen-von-ausnahmen">
 <span id="exceptions"></span><h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Permalink to this heading">#</a></h2>
-<p>In <a class="reference internal" href="datentypen.html#float"><span class="std std-numref">Kapitel 3.2</span></a> hatten wir festgestellt, dass Python auf den Versuch, durch Null zu teilen, mit einer
+<p>In <a class="reference internal" href="datentypen.html#float"><span class="std std-numref">Kapitel 3.2</span></a> hatten wir festgestellt, dass Python auf den Versuch, durch null zu teilen, mit einer
 Ausnahme oder <em>exception</em> reagiert, dem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>. Unbehandelt führt eine solche Ausnahme zur
 Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
 in geeigneter Weise behandeln. Zur Illustration betrachten wir die Funktion</p>
 <div class="math notranslate nohighlight">
 \[f(x)=\frac{\sin(x)}{x}\,.\]</div>
-<p>Eine numerische Auswertung dieser Funktion an der Stelle <span class="math notranslate nohighlight">\(x=0\)</span> führt zu einer Division durch Null und
+<p>Eine numerische Auswertung dieser Funktion an der Stelle <span class="math notranslate nohighlight">\(x=0\)</span> führt zu einer Division durch null und
 damit zu einem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> obwohl der Wert der Funktion im Grenzübergang <span class="math notranslate nohighlight">\(x\to 0\)</span> gleich <span class="math notranslate nohighlight">\(1\)</span> ist.</p>
 <p>Den speziellen Wert bei <span class="math notranslate nohighlight">\(x=0\)</span> könnte man nun mit Hilfe einer Verzweigung behandeln.</p>
 <div class="cell docutils container">
@@ -1761,11 +1769,11 @@ wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ergebnis für n_self = 2 und n_other = 0: 2
-n_self = 3 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
-Ergebnis für n_self = 2 und n_other = 0: 2
-n_self = 0 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
-n_self = -1 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = 2 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+n_self = -1 und n_other = 1 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 2 und n_other = 1: 1
+Ergebnis für n_self = 1 und n_other = 2: 2
+n_self = -1 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
 </pre></div>
 </div>
 </div>
