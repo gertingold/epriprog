@@ -189,7 +189,7 @@ Dieser Primzahltest ist alles andere als effizient. Wie könnte man ihn verbesse
 ```
 ````
 Sobald `n` ohne Rest durch `divisor` teilbar ist, wird die Funktion mit der `return`-Anweisung beendet und
-der Wert `False` zurückgegeben. Wird kein Teiler gefunden, so wird de Wert `True` zurückgegeben. Abhängig
+der Wert `False` zurückgegeben. Wird kein Teiler gefunden, so wird der Wert `True` zurückgegeben. Abhängig
 vom Ergebnis der Funktion `is_prime` wird die betreffende Zahl ausgegeben oder nicht und auf diese Weise
 eine Liste von Primzahlen erzeugt.
 
