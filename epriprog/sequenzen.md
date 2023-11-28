@@ -783,7 +783,7 @@ Einträge bestehen aus dem bereits erwähnten Paar von Schlüssel und Wert, die 
 Doppelpunkt getrennt sind.
 
 Welche Objekte sind nun als Schlüssel und Wert zugelassen? Für Schlüssel muss
-sich ein sogenannten Hashwert berechnen lassen, also eine ganze Zahl, die den
+sich ein sogenannter Hashwert berechnen lassen, also eine ganze Zahl, die den
 Schlüssel charakterisiert. Da sich ein Hashwert nur für unveränderliche Objekte 
 wie numerische Datentypen, Tupel oder Zeichenketten definieren lassen, sind Listen
 und Dictionaries selbst nicht für Schlüssel zulässig. An dieser Stellen erkennen wir
