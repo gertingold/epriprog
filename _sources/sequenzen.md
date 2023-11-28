@@ -847,7 +847,7 @@ Die Idee ist, hierzu ein Dictionary zu verwenden, in dem die Zeichen die Schlüs
 bilden und die zugehörigen Werte die Zähler darstellen, die sukzessive hochgezählt
 werden. Dazu beginnen wir mit einem leeren Dictionary `counter`. Bei der Iteration
 über die Zeichen des Textes inkrementieren wir immer den entsprechenden Eintrag.
-Allerdings wird bei jeden neuen Zeichen ein `KeyError` auftreten, da der entsprechende
+Allerdings wird bei jedem neuen Zeichen ein `KeyError` auftreten, da der entsprechende
 Eintrag noch nicht vorhanden ist. Wir können dieses Problem mit in einer
 `try…except`-Konstruktion behandeln oder aber einfach den Wert zu dem neuen Schlüssel
 initialisieren.

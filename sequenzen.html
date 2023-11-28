@@ -725,7 +725,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140036684150976 140036684150976
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140101580438656 140101580438656
 </pre></div>
 </div>
 </div>
@@ -756,7 +756,7 @@ einem <em>Alias</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140036686112896 140036686168960
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140101580426112 140101578426432
 </pre></div>
 </div>
 </div>
@@ -1170,8 +1170,8 @@ sortieren kann. Auch dies geschieht <em>in place</em>, es wird also keine neue L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[80, 70, 78, 8, 60, 45, 9, 99, 58, 95, 4, 9, 16, 82, 90, 7, 7, 29, 49, 3]
-[3, 4, 7, 7, 8, 9, 9, 16, 29, 45, 49, 58, 60, 70, 78, 80, 82, 90, 95, 99]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[92, 6, 68, 23, 97, 49, 54, 45, 37, 30, 55, 87, 13, 86, 17, 71, 10, 90, 62, 50]
+[6, 10, 13, 17, 23, 30, 37, 45, 49, 50, 54, 55, 62, 68, 71, 86, 87, 90, 92, 97]
 </pre></div>
 </div>
 </div>
@@ -1189,8 +1189,8 @@ bewerkstelligen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[28, 51, 22, 98, 14, 10, 5, 97, 72, 56, 76, 29, 91, 24, 23, 69, 93, 64, 95, 87]
-[10, 51, 91, 22, 72, 23, 93, 14, 24, 64, 5, 95, 56, 76, 97, 87, 28, 98, 29, 69]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[54, 62, 84, 80, 18, 63, 10, 53, 59, 98, 84, 60, 14, 21, 61, 25, 67, 29, 48, 40]
+[80, 10, 60, 40, 21, 61, 62, 63, 53, 54, 84, 84, 14, 25, 67, 18, 98, 48, 59, 29]
 </pre></div>
 </div>
 </div>
@@ -1220,10 +1220,10 @@ Tupel mit Hilfe des Additionsoperators aneinanderhängen, was von der Funktional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140036684868672
-id(mytuple2) = 140036684772224
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(mytuple1) = 140101579178176
+id(mytuple2) = 140101579085568
 mytuple1 = (1, 2, 3, 4)
-id(mytuple1) = 140036684808336
+id(mytuple1) = 140101579076640
 </pre></div>
 </div>
 </div>
@@ -1562,8 +1562,8 @@ erzeugt, und dieses Vorgehen ist nicht sonderlich effizient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140036684858928 | id(s2) = 140036684862768
-id(s1) = 140036684942192
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id(s1) = 140101579172656 | id(s2) = 140101579172912
+id(s1) = 140101578953856
 </pre></div>
 </div>
 </div>
@@ -1906,7 +1906,7 @@ Die Idee ist, hierzu ein Dictionary zu verwenden, in dem die Zeichen die Schlüs
 bilden und die zugehörigen Werte die Zähler darstellen, die sukzessive hochgezählt
 werden. Dazu beginnen wir mit einem leeren Dictionary <code class="docutils literal notranslate"><span class="pre">counter</span></code>. Bei der Iteration
 über die Zeichen des Textes inkrementieren wir immer den entsprechenden Eintrag.
-Allerdings wird bei jeden neuen Zeichen ein <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> auftreten, da der entsprechende
+Allerdings wird bei jedem neuen Zeichen ein <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> auftreten, da der entsprechende
 Eintrag noch nicht vorhanden ist. Wir können dieses Problem mit in einer
 <code class="docutils literal notranslate"><span class="pre">try…except</span></code>-Konstruktion behandeln oder aber einfach den Wert zu dem neuen Schlüssel
 initialisieren.</p>
