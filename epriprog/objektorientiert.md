@@ -393,8 +393,7 @@ nun drei statt nur zwei Argumente. Hinzugekommen ist ein Winkel in Grad,
 der die Ausrichtung der Masse charakterisiert, und wiederum einen Defaultwert
 besitzt. Der Wert des Winkels wird in einem Attribut gespeichert und dann
 eine Methode {func}`normalise` aufgerufen, die sicherstellt, dass der Winkel
-zwischen 0° und 360° liegt. Da der Winkel kein Integer sein muss, genügt
-hier nicht eine einfache Modulooperation. Bei dieser Gelegenheit betonen
+zwischen 0° und 360° liegt. Bei dieser Gelegenheit betonen
 wir noch einmal, dass beim Aufruf einer in der Klasse definierten Methode
 ein `self.` vor den Methodennamen gestellt werden muss und dafür das
 Argument `self` in der Argumentliste entfällt. Die Verarbeitung der beiden
@@ -416,7 +415,7 @@ class AusgedehnteMasse(Massenpunkt):
         super().__init__(x, y)
 
     def normalise(self):
-        self.phi_deg = self.phi_deg - (self.phi_deg // 360)*360
+        self.phi_deg = self.phi_deg % 360
 
     def __str__(self):
         return f'Masse am Ort ({self.x}, {self.y}) mit Ausrichtung {self.phi_deg}°'
