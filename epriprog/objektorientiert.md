@@ -402,7 +402,7 @@ Elternklasse, die wir mit Hilfe der {func}`super`-Methode erhalten.
 
 Die {func}`__str__`-Methode, die nützliche Information über eine Instanz
 ausgeben soll, wird nicht aus der Elternklasse übernommen, sondern 
-überschrieben, da zusätzlich die Ausrichtung der Masse ausgeben wollen.
+überschrieben, da zusätzlich die Ausrichtung der Masse ausgeben werden soll.
 Ein Methode, die diese Klasse neu definiert, ist {func}`rotate`, die die
 Masse um einen gewissen Winkel um die durch den aktuellen Ort verlaufende
 Achse senkrecht zur $x-y$-Ebene dreht.
