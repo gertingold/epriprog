@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="de" data-content_root="" >
+<html lang="de" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. Funktionen &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -29,41 +28,37 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=9d506d31" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=91fba89f"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=70a09b52"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'funktionen';</script>
@@ -158,7 +153,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Einführung in Prinzipien der Programmierung</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="einleitung.html">1. Einleitung</a></li>
@@ -388,7 +394,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="funktionen">
-<h1><span class="section-number">5. </span>Funktionen<a class="headerlink" href="#funktionen" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Funktionen<a class="headerlink" href="#funktionen" title="Link to this heading">#</a></h1>
 <p>Funktionen im mathematischen Sinne sind uns in den Natur- und Ingenieurwissenschaften
 wohlbekannt. Dass solche Funktionen auch von Programmiersprachen zur Verfügung gestellt
 werden, hatten wir unter anderem im <a class="reference internal" href="datentypen.html#mathfunc"><span class="std std-numref">Kapitel 3.3</span></a> gesehen. Allerdings ist der
@@ -423,7 +429,7 @@ Funktionalität in verschiedenen Programmen benötigt. Man kann solche Funktione
 Modul sammeln und dann bei Bedarf importieren, wie wir es schon mit dem <code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code>-Modul
 und den darin enthaltenen Funktionen getan haben.</p>
 <section id="funktionsdefinitionen">
-<span id="fdef"></span><h2><span class="section-number">5.1. </span>Funktionsdefinitionen<a class="headerlink" href="#funktionsdefinitionen" title="Permalink to this heading">#</a></h2>
+<span id="fdef"></span><h2><span class="section-number">5.1. </span>Funktionsdefinitionen<a class="headerlink" href="#funktionsdefinitionen" title="Link to this heading">#</a></h2>
 <p>Betrachten wir zunächst eine Funktion, die keine Argumente besitzt. Was die Funktion tut, ist
 also festgelegt und kann nicht durch Parameter verändert werden.</p>
 <div class="cell docutils container">
@@ -681,7 +687,7 @@ Schlüsselworten eine Zuordnung der Funktionsargumente vorzunehmen, werden wir i
 <a class="reference internal" href="#kwargs"><span class="std std-numref">Kapitel 5.7</span></a> besprechen.</p>
 </section>
 <section id="dokumentation-von-funktionen">
-<span id="dokumentation"></span><h2><span class="section-number">5.2. </span>Dokumentation von Funktionen<a class="headerlink" href="#dokumentation-von-funktionen" title="Permalink to this heading">#</a></h2>
+<span id="dokumentation"></span><h2><span class="section-number">5.2. </span>Dokumentation von Funktionen<a class="headerlink" href="#dokumentation-von-funktionen" title="Link to this heading">#</a></h2>
 <p>Wie generell beim Programmieren ist es auch in Funktionen sinnvoll, an eine
 ausreichende Dokumentation zu denken. Dies könnte mit Hilfe von Kommentaren
 erfolgen, die in Python mit einem <code class="docutils literal notranslate"><span class="pre">#</span></code> eingeleitet werden. Andere
@@ -735,7 +741,7 @@ mitternacht(a, b, c)
 <p>Weitere Hinweis zu <em>docstrings</em> sind in <span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-0257/"><strong>PEP 257</strong></a> zu finden.</p>
 </section>
 <section id="lokale-und-globale-variable">
-<h2><span class="section-number">5.3. </span>Lokale und globale Variable<a class="headerlink" href="#lokale-und-globale-variable" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Lokale und globale Variable<a class="headerlink" href="#lokale-und-globale-variable" title="Link to this heading">#</a></h2>
 <p>Nicht selten kommt es vor, dass Variablen inner- und außerhalb einer Funktion den gleichen
 Namen haben. Insbesondere bei Funktionen, die aus fremden Modulen, zum Beispiel aus der
 Python-Standardbibliothek, importiert werden, lassen sich solche Namensdoppelungen auch kaum
@@ -849,7 +855,7 @@ benötigt wird. Da diese aber nicht existiert, kommt es hierzu zu einem <code cl
 </div>
 </section>
 <section id="rekursive-funktionen">
-<h2><span class="section-number">5.4. </span>Rekursive Funktionen<a class="headerlink" href="#rekursive-funktionen" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>Rekursive Funktionen<a class="headerlink" href="#rekursive-funktionen" title="Link to this heading">#</a></h2>
 <p>Darf man in einer Funktion die Funktion selbst wieder aufrufen? In Sprachen wie Python, C und
 modernen Versionen von Fortran ist dies möglich. In Fortran 77 musste man dafür noch in die
 Trickkiste greifen. Eine Funktion, die in sich selbst wieder aufgerufen wird, wenn auch mit
@@ -991,7 +997,7 @@ wird und dann sukzessive die Resultate aufgebaut werden, nachdem das Ende der Re
 erreicht wurde.</p>
 </section>
 <section id="funktionen-als-burger-erster-klasse">
-<span id="fccfunc"></span><h2><span class="section-number">5.5. </span>Funktionen als Bürger erster Klasse<a class="headerlink" href="#funktionen-als-burger-erster-klasse" title="Permalink to this heading">#</a></h2>
+<span id="fccfunc"></span><h2><span class="section-number">5.5. </span>Funktionen als Bürger erster Klasse<a class="headerlink" href="#funktionen-als-burger-erster-klasse" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition-literaturverweis admonition">
@@ -1097,7 +1103,7 @@ Auswertung der Ableitung von im Prinzip beliebigen Funktionen zugute. Im <a clas
 wir dieses Beispiel noch weiter entwickeln.</p>
 </section>
 <section id="lambda-funktionen">
-<span id="lambdafunktionen"></span><h2><span class="section-number">5.6. </span>Lambda-Funktionen<a class="headerlink" href="#lambda-funktionen" title="Permalink to this heading">#</a></h2>
+<span id="lambdafunktionen"></span><h2><span class="section-number">5.6. </span>Lambda-Funktionen<a class="headerlink" href="#lambda-funktionen" title="Link to this heading">#</a></h2>
 <p>Im <a class="reference internal" href="#fdef"><span class="std std-numref">Kapitel 5.1</span></a> hatten wir Beispiele für Funktionen kennengelernt, bei denen die Bestimmung der
 Ergebnisses in einer einzelnen Codezeile erfolgte. Bei machen Gelegenheiten erscheint dann die
 vollständige Definition einer Funktion als unnötig aufwändig. Tatsächlich erlauben es die
@@ -1172,7 +1178,7 @@ Auf diese Weise erhalten wir hier eine numerische Näherung für die Ableitung d
 der Stelle <span class="math notranslate nohighlight">\(1\)</span>.</p>
 </section>
 <section id="schlusselworte-und-defaultwerte">
-<span id="kwargs"></span><h2><span class="section-number">5.7. </span>Schlüsselworte und Defaultwerte<a class="headerlink" href="#schlusselworte-und-defaultwerte" title="Permalink to this heading">#</a></h2>
+<span id="kwargs"></span><h2><span class="section-number">5.7. </span>Schlüsselworte und Defaultwerte<a class="headerlink" href="#schlusselworte-und-defaultwerte" title="Link to this heading">#</a></h2>
 <p>Am Ende von <a class="reference internal" href="#fdef"><span class="std std-numref">Kapitel 5.1</span></a> hatten wir gezeigt, dass bei Funktionsaufrufen mit mehreren Argumenten
 die Zuordnung nicht nach dem Namen erfolgt, sondern zunächst einmal nach der Position der jeweiligen
 Argumente.  Dies ist jedoch insbesondere in Fällen, in denen die Argumentliste sehr lange wird,
@@ -1642,7 +1648,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     qawce             &#39;cauchy&#39;        No          No
     ================  ==============  ==========  =====================
     
-    The following provides a short desciption from [1]_ for each
+    The following provides a short description from [1]_ for each
     routine.
     
     qagse
@@ -1708,7 +1714,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         \int_a^b f(x) dx = \int_a^b g(x) dx + i\int_a^b h(x) dx
     
     assuming that the integrals of :math:`g` and :math:`h` exist
-    over the inteval :math:`[a,b]` [2]_. Therefore, ``quad`` integrates
+    over the interval :math:`[a,b]` [2]_. Therefore, ``quad`` integrates
     complex-valued functions by integrating the real and imaginary components
     separately.
     

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="de" data-content_root="" >
+<html lang="de" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4. Kontrollstrukturen &#8212; Einführung in Prinzipien der Programmierung</title>
   
@@ -29,41 +28,37 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=9d506d31" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=91fba89f"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=70a09b52"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'kontrollstrukturen';</script>
@@ -158,7 +153,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Einführung in Prinzipien der Programmierung</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="einleitung.html">1. Einleitung</a></li>
@@ -385,7 +391,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="kontrollstrukturen">
-<h1><span class="section-number">4. </span>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Link to this heading">#</a></h1>
 <p>Im <a class="reference internal" href="vorschau.html#vorschau"><span class="std std-numref">Kapitel 2</span></a> hatten wir bereits kurz die Möglichkeit angesprochen, den
 Ablauf eines Programms zu beeinflussen, sei es dadurch, dass ein Programmteil
 in einer Schleife mehrfach ausgeführt wird oder dass ein Programmteil nur dann
@@ -404,7 +410,7 @@ nicht zwingend zum Abbruch des Programms führen, sondern sie können geeignet
 behandelt werden. Diesen Aspekt der Steuerung des Programmablaufs werden wir im
 letzten Abschnitt dieses Kapitels kennenlernen.</p>
 <section id="for-schleife">
-<span id="forloop"></span><h2><span class="section-number">4.1. </span>For-Schleife<a class="headerlink" href="#for-schleife" title="Permalink to this heading">#</a></h2>
+<span id="forloop"></span><h2><span class="section-number">4.1. </span>For-Schleife<a class="headerlink" href="#for-schleife" title="Link to this heading">#</a></h2>
 <p>Sollen bestimmte Anweisungen mehrfach ausgeführt werden, wobei die Anzahl der
 Wiederholungen zuvor bestimmt werden kann, bietet sich die Verwendung einer
 <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife an. Gegenüber der expliziten Wiederholung von Befehlen ergeben
@@ -839,7 +845,7 @@ Abarbeitung der Schleife zur Verfügung steht. Sie hat dabei den Wert, der ihr z
 zugewiesen wurde, in unserem Fall also <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </section>
 <section id="while-schleife">
-<span id="whileloop"></span><h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Permalink to this heading">#</a></h2>
+<span id="whileloop"></span><h2><span class="section-number">4.2. </span>While-Schleife<a class="headerlink" href="#while-schleife" title="Link to this heading">#</a></h2>
 <p>Bei der gerade besprochenen <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife kennt man im Vorhinein die Zahl der
 Durchläufe. Dies ist jedoch nicht immer der Fall. Gelegentlich möchte man eine
 Schleife ausführen, so lange eine bestimmte Bedingung erfüllt ist. Einen eher
@@ -872,7 +878,7 @@ nun den Computer heranziehen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f211f3cdf941b14edfa4c0a1d7b3d3cb14b95f9f535d983c2fb7b04cdcb574ae.png" src="_images/f211f3cdf941b14edfa4c0a1d7b3d3cb14b95f9f535d983c2fb7b04cdcb574ae.png" />
+<img alt="_images/9250252242bb75bb230273d258d4532de20350ef8f29fcb5a9c08e03ecd9bfcf.png" src="_images/9250252242bb75bb230273d258d4532de20350ef8f29fcb5a9c08e03ecd9bfcf.png" />
 </div>
 </div>
 <p>Das Histogramm gibt die Wahrscheinlichkeit an, dass eine 6 zum ersten Mal nach
@@ -911,7 +917,7 @@ fehlerhaft wäre.</p>
 <figure class="align-default" id="fig-wuerfel">
 <a class="reference internal image-reference" href="_images/wuerfel.png"><img alt="_images/wuerfel.png" src="_images/wuerfel.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Abb. 4.1 </span><span class="caption-text">Dodekaeder- und Ikosaederwürfel.</span><a class="headerlink" href="#fig-wuerfel" title="Link zu diesem Bild">#</a></p>
+<p><span class="caption-number">Abb. 4.1 </span><span class="caption-text">Dodekaeder- und Ikosaederwürfel.</span><a class="headerlink" href="#fig-wuerfel" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Im Prinzip ließe sich unser Problem eleganter lösen, wenn man die Bedingung
@@ -982,7 +988,7 @@ vorkommt? Eine Möglichkeit besteht darin, den Aufruf in die Bedingung zu versch
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.01151
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.98701
 </pre></div>
 </div>
 </div>
@@ -1016,15 +1022,10 @@ Code könnte dann folgendermaßen aussehen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-5
-2
-4
-2
-6
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -1052,7 +1053,7 @@ Endlosschleife realisieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.01017
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.02226
 </pre></div>
 </div>
 </div>
@@ -1082,7 +1083,7 @@ zu einem Ende kommt. Ein sehr simples Beispiel zeigt das folgende Codestück.</p
 <p>Hier wurde vergessen, den Zähler <code class="docutils literal notranslate"><span class="pre">n</span></code> in der Schleife adäquat zu verändern.</p>
 </section>
 <section id="verzweigungen">
-<span id="ifelse"></span><h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Permalink to this heading">#</a></h2>
+<span id="ifelse"></span><h2><span class="section-number">4.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link to this heading">#</a></h2>
 <p>Eine andere Art von Kontrollstruktur, die nicht die Wiederholung von Programmcode
 regelt, sondern vielmehr auf der Basis einer gegebenen Bedingung entscheidet,
 welcher Code ausgeführt wird, sind Verzweigungen.</p>
@@ -1637,7 +1638,7 @@ vielen Fällen kann man aber einen zusammengesetzten Datentyp, das so genannte <
 im <a class="reference internal" href="sequenzen.html#dictionaries"><span class="std std-numref">Kapitel 6.4</span></a> genauer besprechen werden.</p>
 </section>
 <section id="abfangen-von-ausnahmen">
-<span id="exceptions"></span><h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Permalink to this heading">#</a></h2>
+<span id="exceptions"></span><h2><span class="section-number">4.4. </span>Abfangen von Ausnahmen<a class="headerlink" href="#abfangen-von-ausnahmen" title="Link to this heading">#</a></h2>
 <p>In <a class="reference internal" href="datentypen.html#float"><span class="std std-numref">Kapitel 3.2</span></a> hatten wir festgestellt, dass Python auf den Versuch, durch null zu teilen, mit einer
 Ausnahme oder <em>exception</em> reagiert, dem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>. Unbehandelt führt eine solche Ausnahme zur
 Ausgabe einer Fehlermeldung und dem Abbruch der Programmausführung. Man kann solche Ausnahmen aber auch
@@ -1769,11 +1770,11 @@ wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = 3 und n_other = 0 müssen beide zwischen 0 und 2 liegen.
-Ergebnis für n_self = 1 und n_other = 0: 1
-n_self = 2 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
-n_self = 0 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
-n_self = -1 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = 0 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 1 und n_other = 1: 0
+Ergebnis für n_self = 2 und n_other = 2: 0
+n_self = 0 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+n_self = 3 und n_other = 2 müssen beide zwischen 0 und 2 liegen.
 </pre></div>
 </div>
 </div>
