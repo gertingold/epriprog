@@ -33,4 +33,4 @@ launch_buttons:
   binderhub_url: "https://mybinder.org" 
 
 repository:
-  url: https://github.com/gertingold/epriprog
+  url: git@github.com:gertingold/epriprog
