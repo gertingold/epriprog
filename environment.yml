@@ -3,8 +3,7 @@ channels:
   - default
   - conda-forge
 dependencies:
-  - python==3.11
-  - pip
+  - python==3.12
   - scipy
-  - pip:
-    - jupyter-book[sphinx]
+  - matplotlib
+  - jupyter-book
