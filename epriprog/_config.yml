@@ -31,6 +31,3 @@ sphinx:
 
 launch_buttons:
   binderhub_url: "https://mybinder.org" 
-
-repository:
-  url: git@github.com:gertingold/epriprog
