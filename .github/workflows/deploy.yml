@@ -19,7 +19,8 @@ jobs:
 
     - name: install dependencies
       run: |
-        $CONDA/bin/conda env update --file environment.yml --name base
+        conda install -y python=3.11
+        conda env update --file environment.yml --name base
 
     - name: build the book
       run: |
