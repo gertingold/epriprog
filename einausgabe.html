@@ -642,7 +642,7 @@ zu einem <code class="docutils literal notranslate"><span class="pre">FileNotFou
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;nonexistent.dat&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/IPython/core/interactiveshell.py:324,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="nn">File /usr/share/miniconda/lib/python3.11/site-packages/IPython/core/interactiveshell.py:324,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
 <span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">319</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
@@ -889,7 +889,7 @@ Verhalten zu demonstrieren.</p>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">datei</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Dies ist ein Test.&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/IPython/core/interactiveshell.py:324,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="nn">File /usr/share/miniconda/lib/python3.11/site-packages/IPython/core/interactiveshell.py:324,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
 <span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">319</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
@@ -1009,7 +1009,7 @@ die wir ja gerade geschrieben hatten.</p>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">datei</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Zeile </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/IPython/core/interactiveshell.py:324,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="nn">File /usr/share/miniconda/lib/python3.11/site-packages/IPython/core/interactiveshell.py:324,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
 <span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">319</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
@@ -1057,16 +1057,16 @@ dass die Datei jeweils wieder geschlossen wurde.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13:53:46 - Datei geschlossen
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14:14:24 - Datei geschlossen
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13:53:51 - Datei geschlossen
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14:14:29 - Datei geschlossen
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13:53:56 - Datei geschlossen
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14:14:34 - Datei geschlossen
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13:54:01 - Datei geschlossen
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14:14:39 - Datei geschlossen
 </pre></div>
 </div>
 </div>
@@ -1078,10 +1078,10 @@ dass die Datei jeweils wieder geschlossen wurde.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13:53:46 - Durchlauf 1
-13:53:51 - Durchlauf 2
-13:53:56 - Durchlauf 3
-13:54:01 - Durchlauf 4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14:14:24 - Durchlauf 1
+14:14:29 - Durchlauf 2
+14:14:34 - Durchlauf 3
+14:14:39 - Durchlauf 4
 </pre></div>
 </div>
 </div>

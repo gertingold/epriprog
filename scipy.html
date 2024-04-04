@@ -469,7 +469,7 @@ stehen müssen.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.__version__ = &#39;1.26.4&#39;
-scipy.__version__ = &#39;1.13.0&#39;
+scipy.__version__ = &#39;1.12.0&#39;
 </pre></div>
 </div>
 </div>
@@ -1062,10 +1062,8 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
         events may be missed. Additionally each `event` function might
         have the following attributes:
     
-            terminal: bool or int, optional
-                When boolean, whether to terminate integration if this event occurs.
-                When integral, termination occurs after the specified the number of
-                occurences of this event.
+            terminal: bool, optional
+                Whether to terminate integration if this event occurs.
                 Implicitly False if not assigned.
             direction: float, optional
                 Direction of a zero crossing. If `direction` is positive,
@@ -1432,7 +1430,7 @@ Damit können wir nun die numerische Lösung graphisch darstellen und mit der an
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ae6968be6c3118fdcc7ebdd7e3e5e9dde971cac77b7e59d0de4c09da15f6cda.png" src="_images/8ae6968be6c3118fdcc7ebdd7e3e5e9dde971cac77b7e59d0de4c09da15f6cda.png" />
+<img alt="_images/e83dc225e509917089219caabb3682e9f4fe7c08cc96a0d7a16cb61a0380313b.png" src="_images/e83dc225e509917089219caabb3682e9f4fe7c08cc96a0d7a16cb61a0380313b.png" />
 </div>
 </div>
 <p>Da es schwierig ist, den Fehler der durch die blauen Punkte dargestellten numerischen Lösung im Vergleich
@@ -1446,7 +1444,7 @@ auch noch den relativen Fehler dar.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/738ddae0a55c75c34adaf972ede42fdd7cc7234a814159a8a6bdc843f8de8b85.png" src="_images/738ddae0a55c75c34adaf972ede42fdd7cc7234a814159a8a6bdc843f8de8b85.png" />
+<img alt="_images/79554491d6cd33b780641c8ef2cac343f42219945bfb3e2aaccc8629b7821f9c.png" src="_images/79554491d6cd33b780641c8ef2cac343f42219945bfb3e2aaccc8629b7821f9c.png" />
 </div>
 </div>
 <p>Aus der Abbildung lässt sich entnehmen, dass der relative Fehler hier immerhin bis zu 3‰ beträgt.</p>
@@ -1485,7 +1483,7 @@ steht. Wir wollen aber auch hier am Ende die numerische mit der analytischen Lö
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53d03c1e14be6e7d830739349e8c7c1ae4a992f8863f8b5d1fed85b4a326af6a.png" src="_images/53d03c1e14be6e7d830739349e8c7c1ae4a992f8863f8b5d1fed85b4a326af6a.png" />
+<img alt="_images/26aa88d7de06528371028b74a3d5b2891e5d9b65a0dfbcf371c5ec915ab51c73.png" src="_images/26aa88d7de06528371028b74a3d5b2891e5d9b65a0dfbcf371c5ec915ab51c73.png" />
 </div>
 </div>
 <p>Im Gegensatz zum ersten Beispiel verlangt die Funktion, die wir hier <code class="docutils literal notranslate"><span class="pre">ableitung</span></code> genannt haben, neben
@@ -1507,7 +1505,7 @@ extrahieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fcd9254185f154eae2bec2676a0bff4e5f34903eceadaaea33b4e050eefbacc7.png" src="_images/fcd9254185f154eae2bec2676a0bff4e5f34903eceadaaea33b4e050eefbacc7.png" />
+<img alt="_images/eef8efdeaffe0c3b23f883cf99082b9d4a842c0c74d3dea6400866633326cce9.png" src="_images/eef8efdeaffe0c3b23f883cf99082b9d4a842c0c74d3dea6400866633326cce9.png" />
 </div>
 </div>
 <p>Auch in diesem Fall erhalten wir einen Fehler von einigen Promille. Benötigt man eine genauere Lösung,
