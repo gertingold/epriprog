@@ -1,34 +1,31 @@
 name: deploy
 
 on:
-  # Trigger the workflow on push to main branch
   push:
     branches:
       - master
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-and-deploy-book:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout merge commit
+      uses: actions/checkout@v4
 
-    # Install dependencies
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: set up Python
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.11
-    - name: Install dependencies
+        python-version: '3.11'
+
+    - name: install dependencies
       run: |
         pip install -r requirements.txt
 
-    # Build the book
-    - name: Build the book
+    - name: build the book
       run: |
         jupyter-book build epriprog
 
-    # Deploy the book's HTML to gh-pages branch
-    - name: GitHub Pages action
+    - name: deploy book's HTML to gh-pages branch
       uses: peaceiris/actions-gh-pages@v3.9.3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
