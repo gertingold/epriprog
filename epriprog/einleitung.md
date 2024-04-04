@@ -298,7 +298,7 @@ erlauben, interaktiv mit Python unter Verwendung von Jupyterlab in einem
 Browser zu arbeiten. Wie die {numref}`fig:jupyterlab` zeigt, gibt es hier neben
 Codezellen auch Textzellen, die sogar Formeln enthalten können, und von
 ausgeführtem Code erzeugte Resultate werden ebenfalls in das Notebook
-integriert. Dabei kann es sich, wie in {numref}`fig:jupyternotebook`
+integriert. Dabei kann es sich, wie in {numref}`fig:jupyterlab`
 dargestellt, beispielsweise auch um graphische Darstellungen handeln. Das
 Jupyter-Notebook eignet sich unter anderem hervorragend dafür, die Schritte
 einer Datenanalyse zu dokumentieren, um sie auch später nachvollziehen zu
