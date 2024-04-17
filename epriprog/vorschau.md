@@ -17,7 +17,7 @@ Datenanalyse sowie im zweiten Teil von der Struktur eines Programms zu gewinnen.
 ## Analyse experimenteller Daten
 
 ````{margin}
-```{warning}
+```{warning} Warnhinweis
    Beim Experimentieren mit dem Smartphone ist Vorsicht geboten, um mechanische
    Beschädigungen auszuschließen. Das Benutzen des Smartphones zu solchen Zwecken
    geschieht auf eigene Gefahr!

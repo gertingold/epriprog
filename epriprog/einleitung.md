@@ -17,7 +17,7 @@ Man kann sich vorstellen, dass man das digitale Bild weiterbearbeiten möchte.
 Für viele Bildbearbeitungsaufgaben sind geeignete Programme verfügbar, aber
 es kann auch Fälle geben, in denen man selbst programmieren muss, zum Beispiel
 wenn man eine Exponentialfunktion auf einen Waschbären anwenden möchte
-({numref}`fig:exponential_raccoon`).
+({numref}`Abb. %s <fig:exponential_raccoon>`).
 
 ```{figure} images/einleitung/exponential_raccoon.png
 ---
