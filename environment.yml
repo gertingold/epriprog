@@ -1,4 +1,4 @@
-name: epriprog
+name: epriprog-myst
 channels:
   - default
   - conda-forge
@@ -6,4 +6,5 @@ dependencies:
   - python==3.11
   - scipy
   - matplotlib
-  - jupyter-book
+  - nodejs>=20,<21
+  - mystmd
