@@ -113,7 +113,7 @@ In neuerer Zeit hat der [Unicode-Standard](http://www.unicode.org/) enorm an
 Bedeutung gewonnen, da er das Ziel hat, alle weltweit gebräuchlichen Zeichen zu
 kodieren. Hierzu gehören in neuerer Zeit beispielsweise auch
 [Emoticons](https://www.unicode.org/charts/PDF/U1F600.pdf). Die aktuelle
-[Version 15.1.0](http://www.unicode.org/versions/Unicode15.1.0/) umfasst 149.813
+[Version 16.0](http://www.unicode.org/versions/Unicode16.0.0/) umfasst 154.998
 Zeichen und bietet noch genügend Platz für Erweiterungen. Jedes Zeichen ist
 einem so genannten Codepoint zugeordnet, der Werte zwischen ``0x00`` und
 ``0x10FFFF`` annehmen kann. Da damit jedes Zeichen statt üblicherweise einem
