@@ -19,6 +19,14 @@ es kann auch Fälle geben, in denen man selbst programmieren muss, zum Beispiel
 wenn man eine Exponentialfunktion auf einen Waschbären anwenden möchte
 ({numref}`Abb. %s <fig:exponential_raccoon>`).
 
+<wiki:Linux>
+
+<doi:10.1103/PhysRevD.93.122003>
+
+<myst:jupyterbook#content:references>
+
+Verweis auf Gleichung {numref}`bessel`
+
 ```{figure} images/einleitung/exponential_raccoon.png
 ---
 width: 10cm

@@ -299,7 +299,10 @@ numerischen Auswertung von Integralen sowie der Lösung einer gewöhnlichen Diff
 In diesem Kapitel wollen wir an zwei Beispielen die Auswertung von Integralen und zeigen und betrachten
 zunächst das Integral
 
-$$J_0(1) = \frac{1}{\pi}\int_0^\pi\cos\!\big(\!\cos(x)\big)\text{d}x\,.$$
+```{math}
+:label: bessel
+J_0(1) = \frac{1}{\pi}\int_0^\pi\cos\!\big(\!\cos(x)\big)\text{d}x\,.
+```
 
 Das Ergebnis lässt sich durch eine spezielle Funktion, nämlich die Besselfunktion erster Gattung und
 nullter Ordnung $J_0$, an der Stelle angeben. Mit Hilfe des SciPy-Pakets können wir sowohl das
