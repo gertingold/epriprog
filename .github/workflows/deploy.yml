@@ -12,20 +12,20 @@ jobs:
     - name: checkout merge commit
       uses: actions/checkout@v4
 
+    -name: Install uv
+     uses: astral-sh/setup-uv@v6
+
     - name: set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.13'
+      uses: uv python install
 
     - name: install dependencies
       run: |
-        uv init -p python=3.12
+        uv init -p python=3.13
         uv sync
-#       echo  >> $GITHUB_PATH
 
     - name: build the book
       run: |
-        jupyter-book build epriprog
+        uv run jupyter-book build epriprog
 
     - name: deploy book's HTML to gh-pages branch
       uses: peaceiris/actions-gh-pages@v4
