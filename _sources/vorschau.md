@@ -104,7 +104,7 @@ Daten zu verschaffen, indem wir beispielsweise die gemessene Winkelgeschwindigke
 eine entsprechende Beschriftung vor.
 ```
 plt.xlabel("$t$")
-plt.ylabel("$\omega$")
+plt.ylabel(r"$\omega$")
 plt.plot(time, angular_velocity)
 ```
 ```{figure} images/vorschau/datenanalyse_1.png
@@ -118,7 +118,7 @@ Um den eingangs erwähnten Zusammenhang zwischen Winkelgeschwindigkeit und
 Beschleunigung analysieren zu können, ist es aber sinnvoller, diese beiden
 Größen gegeneinander aufzutragen.
 ```
-plt.xlabel("$\omega$")
+plt.xlabel(r"$\omega$")
 plt.ylabel("$a$")
 plt.plot(angular_velocity, acceleration, ".")
 ```
@@ -155,7 +155,7 @@ Drehachse angibt.
 Um die Qualität des Fits optisch beurteilen zu können, ist es sinnvoll,
 die gefundene Funktion graphisch mit den Daten zusammen aufzutragen.
 ```
-plt.xlabel("$\omega$")
+plt.xlabel(r"$\omega$")
 plt.ylabel("$a$")
 plt.plot(angular_velocity, acceleration, ".")
 xvalues = np.linspace(0, 20)
@@ -191,7 +191,7 @@ Messdaten jetzt doppelt-logarithmisch auf.
 ```
 plt.xscale('log')
 plt.yscale('log')
-plt.xlabel("$\omega$")
+plt.xlabel(r"$\omega$")
 plt.ylabel("$a$")
 plt.plot(angular_velocity, acceleration, '.')
 ```
@@ -218,7 +218,7 @@ angular_velocity_1 = angular_velocity[validdata]
 acceleration_1 = acceleration[validdata]
 plt.xscale('log')
 plt.yscale('log')
-plt.xlabel("$\omega$")
+plt.xlabel(r"$\omega$")
 plt.ylabel("$a$")
 plt.plot(angular_velocity_1, acceleration_1, '.')
 ```
@@ -239,8 +239,8 @@ die Daten auch auf einer linearen Skala darstellen und erhalten ein Bild, das
 ```
 log_angular_velocity = np.log10(angular_velocity_1)
 log_acceleration = np.log10(acceleration_1)
-plt.xlabel("$\log_{10}(\omega)$")
-plt.ylabel("$\log_{10}(a)$")
+plt.xlabel(r"$\log_{10}(\omega)$")
+plt.ylabel(r"$\log_{10}(a)$")
 plt.plot(log_angular_velocity, log_acceleration, '.')
 ```
 ```{figure} images/vorschau/datenanalyse_6.png
@@ -280,8 +280,8 @@ passt. Abschließend stellen wir nochmals unsere Messdaten zusammen mit dem
 linearen Fit dar, um uns auch auf diese Weise davon zu überzeugen, wie gut die
 Fitfunktion die Messdaten beschreibt.
 ```
-plt.xlabel("$\log_{10}(\omega)$")
-plt.ylabel("$\log_{10}(a)$")
+plt.xlabel(r"$\log_{10}(\omega)$")
+plt.ylabel(r"$\log_{10}(a)$")
 plt.plot(log_angular_velocity, log_acceleration, '.')
 xvalues = np.linspace(0.4, 1.4)
 plt.plot(xvalues, popt[0]*xvalues+popt[1])
