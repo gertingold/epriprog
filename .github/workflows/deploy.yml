@@ -15,13 +15,13 @@ jobs:
     - name: set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.13'
 
     - name: install dependencies
       run: |
-        conda install -y python=3.11
-        conda env update --file environment.yml --name base
-        echo $CONDA/bin >> $GITHUB_PATH
+        uv init -p python=3.12
+        uv sync
+#       echo  >> $GITHUB_PATH
 
     - name: build the book
       run: |
