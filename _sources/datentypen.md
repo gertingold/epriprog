@@ -90,6 +90,13 @@ können, indem wir die tausendste Potenz von 2 ausrechnen lassen. Der doppelte S
 Das Ergebnis hat 302 Stellen. Genauso gut könnte man als Exponenten 100000 wählen
 und würde dann ein Ergebnis mit 30103 Stellen erhalten.
 
+```{admonition} Hinweis
+:class: tip
+Bei der Ausgabe von so großen Zahlen existiert in neueren Python-Versionen eine
+Beschränkung auf 4300 Stellen. Dies beeinträchtigt jedoch nicht die Möglichkeit,
+mit sehr große Zahlen zu rechnen. Zudem lässt sich die Grenze für die 
+Umwandlung in eine Zeichenkette bei Bedarf erhöhen.
+
 Natürlich gibt es neben positiven Integers auch solche mit negativem Vorzeichen.
 
 ```{code-cell} python
