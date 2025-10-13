@@ -963,28 +963,39 @@ für <em>initial value problem</em> zu lesen ist.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function solve_ivp in module scipy.integrate._ivp.ivp:
 
-solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=False, events=None, vectorized=False, args=None, **options)
+solve_ivp(
+    fun,
+    t_span,
+    y0,
+    method=&#39;RK45&#39;,
+    t_eval=None,
+    dense_output=False,
+    events=None,
+    vectorized=False,
+    args=None,
+    **options
+)
     Solve an initial value problem for a system of ODEs.
-    
+
     This function numerically integrates a system of ordinary differential
     equations given an initial value::
-    
+
         dy / dt = f(t, y)
         y(t0) = y0
-    
+
     Here t is a 1-D independent variable (time), y(t) is an
     N-D vector-valued function (state), and an N-D
     vector-valued function f(t, y) determines the differential equations.
     The goal is to find y(t) approximately satisfying the differential
     equations, given an initial value y(t0)=y0.
-    
+
     Some of the solvers support integration in the complex domain, but note
     that for stiff ODE solvers, the right-hand side must be
     complex-differentiable (satisfy Cauchy-Riemann equations [11]_).
     To solve a problem in the complex domain, pass y0 with a complex data type.
     Another option always available is to rewrite your problem for real and
     imaginary parts separately.
-    
+
     Parameters
     ----------
     fun : callable
@@ -1003,7 +1014,7 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
         complex data type (even if the initial value is purely real).
     method : string or `OdeSolver`, optional
         Integration method to use:
-    
+
             * &#39;RK45&#39; (default): Explicit Runge-Kutta method of order 5(4) [1]_.
               The error is controlled assuming accuracy of the fourth-order
               method, but steps are taken using the fifth-order accurate
@@ -1033,18 +1044,18 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
             * &#39;LSODA&#39;: Adams/BDF method with automatic stiffness detection and
               switching [7]_, [8]_. This is a wrapper of the Fortran solver
               from ODEPACK.
-    
+
         Explicit Runge-Kutta methods (&#39;RK23&#39;, &#39;RK45&#39;, &#39;DOP853&#39;) should be used
         for non-stiff problems and implicit methods (&#39;Radau&#39;, &#39;BDF&#39;) for
         stiff problems [9]_. Among Runge-Kutta methods, &#39;DOP853&#39; is recommended
         for solving with high precision (low values of `rtol` and `atol`).
-    
+
         If not sure, first try to run &#39;RK45&#39;. If it makes unusually many
         iterations, diverges, or fails, your problem is likely to be stiff and
         you should use &#39;Radau&#39; or &#39;BDF&#39;. &#39;LSODA&#39; can also be a good universal
         choice, but it might be somewhat less convenient to work with as it
         wraps old Fortran code.
-    
+
         You can also pass an arbitrary class derived from `OdeSolver` which
         implements the solver.
     t_eval : array_like or None, optional
@@ -1064,7 +1075,7 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
         each step, so if multiple zero crossings occur within one step,
         events may be missed. Additionally each `event` function might
         have the following attributes:
-    
+
             terminal: bool or int, optional
                 When boolean, whether to terminate integration if this event occurs.
                 When integral, termination occurs after the specified the number of
@@ -1075,21 +1086,21 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
                 `event` will only trigger when going from negative to positive,
                 and vice versa if `direction` is negative. If 0, then either
                 direction will trigger event. Implicitly 0 if not assigned.
-    
+
         You can assign attributes like ``event.terminal = True`` to any
         function in Python.
     vectorized : bool, optional
         Whether `fun` can be called in a vectorized fashion. Default is False.
-    
+
         If ``vectorized`` is False, `fun` will always be called with ``y`` of
         shape ``(n,)``, where ``n = len(y0)``.
-    
+
         If ``vectorized`` is True, `fun` may be called with ``y`` of shape
         ``(n, k)``, where ``k`` is an integer. In this case, `fun` must behave
         such that ``fun(t, y)[:, i] == fun(t, y[:, i])`` (i.e. each column of
         the returned array is the time derivative of the state corresponding
         with a column of ``y``).
-    
+
         Setting ``vectorized=True`` allows for faster finite difference
         approximation of the Jacobian by methods &#39;Radau&#39; and &#39;BDF&#39;, but
         will result in slower execution for other methods and for &#39;Radau&#39; and
@@ -1128,7 +1139,7 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
         to y, required by the &#39;Radau&#39;, &#39;BDF&#39; and &#39;LSODA&#39; method. The
         Jacobian matrix has shape (n, n) and its element (i, j) is equal to
         ``d f_i / d y_j``.  There are three ways to define the Jacobian:
-    
+
             * If array_like or sparse_matrix, the Jacobian is assumed to
               be constant. Not supported by &#39;LSODA&#39;.
             * If callable, the Jacobian is assumed to depend on both
@@ -1139,7 +1150,7 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
               sparse matrix.
             * If None (default), the Jacobian will be approximated by
               finite differences.
-    
+
         It is generally recommended to provide the Jacobian rather than
         relying on a finite-difference approximation.
     jac_sparsity : array_like, sparse matrix or None, optional
@@ -1164,7 +1175,7 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
     min_step : float, optional
         The minimum allowed step size for &#39;LSODA&#39; method.
         By default `min_step` is zero.
-    
+
     Returns
     -------
     Bunch object with the following fields defined:
@@ -1189,17 +1200,17 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
         Number of LU decompositions.
     status : int
         Reason for algorithm termination:
-    
+
             * -1: Integration step failed.
             *  0: The solver successfully reached the end of `tspan`.
             *  1: A termination event occurred.
-    
+
     message : string
         Human-readable description of the termination reason.
     success : bool
         True if the solver reached the interval end or a termination event
         occurred (``status &gt;= 0``).
-    
+
     References
     ----------
     .. [1] J. R. Dormand, P. J. Prince, &quot;A family of embedded Runge-Kutta
@@ -1238,11 +1249,11 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
             Equations I: Nonstiff Problems&quot;, Sec. II.
     .. [14] `Page with original Fortran code of DOP853
             &lt;http://www.unige.ch/~hairer/software.html&gt;`_.
-    
+
     Examples
     --------
     Basic exponential decay showing automatically chosen time points.
-    
+
     &gt;&gt;&gt; import numpy as np
     &gt;&gt;&gt; from scipy.integrate import solve_ivp
     &gt;&gt;&gt; def exponential_decay(t, y): return -0.5 * y
@@ -1257,9 +1268,9 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
       0.06214316 0.02701561]
      [8.         7.5534414  4.25308709 1.73277247 0.72069014 0.29932181
       0.12428631 0.05403123]]
-    
+
     Specifying points where the solution is desired.
-    
+
     &gt;&gt;&gt; sol = solve_ivp(exponential_decay, [0, 10], [2, 4, 8],
     ...                 t_eval=[0, 1, 2, 4, 10])
     &gt;&gt;&gt; print(sol.t)
@@ -1268,13 +1279,13 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
     [[2.         1.21305369 0.73534021 0.27066736 0.01350938]
      [4.         2.42610739 1.47068043 0.54133472 0.02701876]
      [8.         4.85221478 2.94136085 1.08266944 0.05403753]]
-    
+
     Cannon fired upward with terminal event upon impact. The ``terminal`` and
     ``direction`` fields of an event are applied by monkey patching a function.
     Here ``y[0]`` is position and ``y[1]`` is velocity. The projectile starts
     at position 0 with velocity +10. Note that the integration never reaches
     t=100 because the event is terminal.
-    
+
     &gt;&gt;&gt; def upward_cannon(t, y): return [y[1], -0.5]
     &gt;&gt;&gt; def hit_ground(t, y): return y[0]
     &gt;&gt;&gt; hit_ground.terminal = True
@@ -1285,14 +1296,14 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
     &gt;&gt;&gt; print(sol.t)
     [0.00000000e+00 9.99900010e-05 1.09989001e-03 1.10988901e-02
      1.11088891e-01 1.11098890e+00 1.11099890e+01 4.00000000e+01]
-    
+
     Use `dense_output` and `events` to find position, which is 100, at the apex
     of the cannonball&#39;s trajectory. Apex is not defined as terminal, so both
     apex and hit_ground are found. There is no information at t=20, so the sol
     attribute is used to evaluate the solution. The sol attribute is returned
     by setting ``dense_output=True``. Alternatively, the `y_events` attribute
     can be used to access the solution at the time of the event.
-    
+
     &gt;&gt;&gt; def apex(t, y): return y[1]
     &gt;&gt;&gt; sol = solve_ivp(upward_cannon, [0, 100], [0, 10],
     ...                 events=(hit_ground, apex), dense_output=True)
@@ -1306,23 +1317,23 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
     &gt;&gt;&gt; print(sol.y_events)
     [array([[-5.68434189e-14, -1.00000000e+01]]),
      array([[1.00000000e+02, 1.77635684e-15]])]
-    
+
     As an example of a system with additional parameters, we&#39;ll implement
     the Lotka-Volterra equations [12]_.
-    
+
     &gt;&gt;&gt; def lotkavolterra(t, z, a, b, c, d):
     ...     x, y = z
     ...     return [a*x - b*x*y, -c*y + d*x*y]
     ...
-    
+
     We pass in the parameter values a=1.5, b=1, c=3 and d=1 with the `args`
     argument.
-    
+
     &gt;&gt;&gt; sol = solve_ivp(lotkavolterra, [0, 15], [10, 5], args=(1.5, 1, 3, 1),
     ...                 dense_output=True)
-    
+
     Compute a dense solution and plot it.
-    
+
     &gt;&gt;&gt; t = np.linspace(0, 15, 300)
     &gt;&gt;&gt; z = sol.sol(t)
     &gt;&gt;&gt; import matplotlib.pyplot as plt
@@ -1331,16 +1342,16 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
     &gt;&gt;&gt; plt.legend([&#39;x&#39;, &#39;y&#39;], shadow=True)
     &gt;&gt;&gt; plt.title(&#39;Lotka-Volterra System&#39;)
     &gt;&gt;&gt; plt.show()
-    
+
     A couple examples of using solve_ivp to solve the differential
     equation ``y&#39; = Ay`` with complex matrix ``A``.
-    
+
     &gt;&gt;&gt; A = np.array([[-0.25 + 0.14j, 0, 0.33 + 0.44j],
     ...               [0.25 + 0.58j, -0.2 + 0.14j, 0],
     ...               [0, 0.2 + 0.4j, -0.1 + 0.97j]])
-    
+
     Solving an IVP with ``A`` from above and ``y`` as 3x1 vector:
-    
+
     &gt;&gt;&gt; def deriv_vec(t, y):
     ...     return A @ y
     &gt;&gt;&gt; result = solve_ivp(deriv_vec, [0, 25],
@@ -1351,15 +1362,15 @@ solve_ivp(fun, t_span, y0, method=&#39;RK45&#39;, t_eval=None, dense_output=Fals
     &gt;&gt;&gt; print(result.y[:, -1])
     [18.46291039+45.25653651j 10.01569306+36.23293216j
      -4.98662741+80.07360388j]
-    
+
     Solving an IVP with ``A`` from above with ``y`` as 3x3 matrix :
-    
+
     &gt;&gt;&gt; def deriv_mat(t, y):
     ...     return (A @ y.reshape(3, 3)).flatten()
     &gt;&gt;&gt; y0 = np.array([[2 + 0j, 3 + 0j, 4 + 0j],
     ...                [5 + 0j, 6 + 0j, 7 + 0j],
     ...                [9 + 0j, 34 + 0j, 78 + 0j]])
-    
+
     &gt;&gt;&gt; result = solve_ivp(deriv_mat, [0, 25], y0.flatten(),
     ...                    t_eval=np.linspace(0, 25, 101))
     &gt;&gt;&gt; print(result.y[:, 0].reshape(3, 3))
@@ -1435,7 +1446,7 @@ Damit können wir nun die numerische Lösung graphisch darstellen und mit der an
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/283cd265d3064fb2533c6e9446242616475917dc5cdf4244d17b479e49c40ce0.png" src="_images/283cd265d3064fb2533c6e9446242616475917dc5cdf4244d17b479e49c40ce0.png" />
+<img alt="_images/0a7ac72b7ff056e23b3882db61b22cb420f675b29cfc3a84b86d4c66de777469.png" src="_images/0a7ac72b7ff056e23b3882db61b22cb420f675b29cfc3a84b86d4c66de777469.png" />
 </div>
 </div>
 <p>Da es schwierig ist, den Fehler der durch die blauen Punkte dargestellten numerischen Lösung im Vergleich
@@ -1449,7 +1460,7 @@ auch noch den relativen Fehler dar.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/72bdb3e2dce627aab8281056a2eb1a5c3fd48e5892287983a505708f0a37e9f7.png" src="_images/72bdb3e2dce627aab8281056a2eb1a5c3fd48e5892287983a505708f0a37e9f7.png" />
+<img alt="_images/6b80d8a37d21848b4c5bf5cfffc58afa6b99d67e53b5544f8aa3add22d6ff2f7.png" src="_images/6b80d8a37d21848b4c5bf5cfffc58afa6b99d67e53b5544f8aa3add22d6ff2f7.png" />
 </div>
 </div>
 <p>Aus der Abbildung lässt sich entnehmen, dass der relative Fehler hier immerhin bis zu 3‰ beträgt.</p>
@@ -1488,7 +1499,7 @@ steht. Wir wollen aber auch hier am Ende die numerische mit der analytischen Lö
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3190667d1cf83ccc493822aa98939c351b15c1ec81c0c12a723f7a3fffddf5f1.png" src="_images/3190667d1cf83ccc493822aa98939c351b15c1ec81c0c12a723f7a3fffddf5f1.png" />
+<img alt="_images/a4afcd2284af1cfeaa4fdcc8d162ef53cc3c2d07e5c555df02ae7cedfb086bed.png" src="_images/a4afcd2284af1cfeaa4fdcc8d162ef53cc3c2d07e5c555df02ae7cedfb086bed.png" />
 </div>
 </div>
 <p>Im Gegensatz zum ersten Beispiel verlangt die Funktion, die wir hier <code class="docutils literal notranslate"><span class="pre">ableitung</span></code> genannt haben, neben
@@ -1510,7 +1521,7 @@ extrahieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c5b46752afbc1c4df464ab465c43e8f17aef585bd49b03792a29c096ef60417c.png" src="_images/c5b46752afbc1c4df464ab465c43e8f17aef585bd49b03792a29c096ef60417c.png" />
+<img alt="_images/b326f7ff3bd4a2df368f1d56f47a7aebe26aea4ee7d310ffc71d6db484631a78.png" src="_images/b326f7ff3bd4a2df368f1d56f47a7aebe26aea4ee7d310ffc71d6db484631a78.png" />
 </div>
 </div>
 <p>Auch in diesem Fall erhalten wir einen Fehler von einigen Promille. Benötigt man eine genauere Lösung,

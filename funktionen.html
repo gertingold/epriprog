@@ -733,7 +733,7 @@ kennengelernt hatten, wo <code class="docutils literal notranslate"><span class=
 
 mitternacht(a, b, c)
     Berechne die beiden Lösungen einer quadratischen Gleichung ax²+bx+c=0
-    
+
     Es wird die Mitternachtsformel verwendet.
     Achtung: Es wird stillschweigend vorausgesetzt, dass b^2-4ac&gt;0.
 </pre></div>
@@ -1391,32 +1391,48 @@ die in der Argumentliste davor stehenden Argumente angeben zu müssen.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function quad in module scipy.integrate._quadpack_py:
 
-quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=50, points=None, weight=None, wvar=None, wopts=None, maxp1=50, limlst=50, complex_func=False)
+quad(
+    func,
+    a,
+    b,
+    args=(),
+    full_output=0,
+    epsabs=1.49e-08,
+    epsrel=1.49e-08,
+    limit=50,
+    points=None,
+    weight=None,
+    wvar=None,
+    wopts=None,
+    maxp1=50,
+    limlst=50,
+    complex_func=False
+)
     Compute a definite integral.
-    
+
     Integrate func from `a` to `b` (possibly infinite interval) using a
     technique from the Fortran library QUADPACK.
-    
+
     Parameters
     ----------
     func : {function, scipy.LowLevelCallable}
         A Python function or method to integrate. If `func` takes many
         arguments, it is integrated along the axis corresponding to the
         first argument.
-    
+
         If the user desires improved integration performance, then `f` may
         be a `scipy.LowLevelCallable` with one of the signatures::
-    
+
             double func(double x)
             double func(double x, void *user_data)
             double func(int n, double *xx)
             double func(int n, double *xx, void *user_data)
-    
+
         The ``user_data`` is the data contained in the `scipy.LowLevelCallable`.
         In the call forms with ``xx``,  ``n`` is the length of the ``xx``
         array which contains ``xx[0] == x`` and the rest of the items are
         numbers contained in the ``args`` argument of quad.
-    
+
         In addition, certain ctypes call signatures are supported for
         backward compatibility, but those should not be used in new code.
     a : float
@@ -1436,7 +1452,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         If full_output is also non-zero, the `infodict`, `message`, and
         `explain` for the real and complex components are returned in
         a dictionary with keys &quot;real output&quot; and &quot;imag output&quot;.
-    
+
     Returns
     -------
     y : float
@@ -1451,7 +1467,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         Appended only with &#39;cos&#39; or &#39;sin&#39; weighting and infinite
         integration limits, it contains an explanation of the codes in
         infodict[&#39;ierlst&#39;]
-    
+
     Other Parameters
     ----------------
     epsabs : float or int, optional
@@ -1484,7 +1500,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     limlst : int, optional
         Upper bound on the number of cycles (&gt;=3) for use with a sinusoidal
         weighting and an infinite end-point.
-    
+
     See Also
     --------
     dblquad : double integral
@@ -1494,21 +1510,21 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     simpson : integrator for sampled data
     romb : integrator for sampled data
     scipy.special : for coefficients and roots of orthogonal polynomials
-    
+
     Notes
     -----
     For valid results, the integral must converge; behavior for divergent
     integrals is not guaranteed.
-    
+
     **Extra information for quad() inputs and outputs**
-    
+
     If full_output is non-zero, then the third output argument
     (infodict) is a dictionary with entries as tabulated below. For
     infinite limits, the range is transformed to (0,1) and the
     optional outputs are given with respect to this transformed range.
     Let M be the input argument limit and let K be infodict[&#39;last&#39;].
     The entries are:
-    
+
     &#39;neval&#39;
         The number of function evaluations.
     &#39;last&#39;
@@ -1533,11 +1549,11 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         sequence ``infodict[&#39;iord&#39;]`` and let E be the sequence
         ``infodict[&#39;elist&#39;]``.  Then ``E[I[1]], ..., E[I[L]]`` forms a
         decreasing sequence.
-    
+
     If the input argument points is provided (i.e., it is not None),
     the following additional outputs are placed in the output
     dictionary. Assume the points sequence is of length P.
-    
+
     &#39;pts&#39;
         A rank-1 array of length P+2 containing the integration limits
         and the break points of the intervals in ascending order.
@@ -1555,15 +1571,15 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         of the intervals may have been increased artificially in order to
         put their subdivision forward. This array has ones in slots
         corresponding to the subintervals for which this happens.
-    
+
     **Weighting the integrand**
-    
+
     The input variables, *weight* and *wvar*, are used to weight the
     integrand by a select list of functions. Different integration
     methods are used to compute the integral with these weighting
     functions, and these do not support specifying break points. The
     possible values of weight and the corresponding weighting functions are.
-    
+
     ==========  ===================================   =====================
     ``weight``  Weight function used                  ``wvar``
     ==========  ===================================   =====================
@@ -1575,17 +1591,17 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     &#39;alg-log&#39;   g(x)*log(x-a)*log(b-x)                wvar = (alpha, beta)
     &#39;cauchy&#39;    1/(x-c)                               wvar = c
     ==========  ===================================   =====================
-    
+
     wvar holds the parameter w, (alpha, beta), or c depending on the weight
     selected. In these expressions, a and b are the integration limits.
-    
+
     For the &#39;cos&#39; and &#39;sin&#39; weighting, additional inputs and outputs are
     available.
-    
+
     For weighted integrals with finite integration limits, the integration
     is performed using a Clenshaw-Curtis method, which uses Chebyshev moments.
     For repeated calculations, these moments are saved in the output dictionary:
-    
+
     &#39;momcom&#39;
         The maximum level of Chebyshev moments that have been computed,
         i.e., if ``M_c`` is ``infodict[&#39;momcom&#39;]`` then the moments have been
@@ -1602,7 +1618,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         over the same interval by passing this array as the second
         element of the sequence wopts and passing infodict[&#39;momcom&#39;] as
         the first element.
-    
+
     If one of the integration limits is infinite, then a Fourier integral is
     computed (assuming w neq 0). If full_output is 1 and a numerical error
     is encountered, besides the error message attached to the output tuple,
@@ -1610,7 +1626,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     error codes in the array ``info[&#39;ierlst&#39;]`` to English messages. The
     output information dictionary contains the following entries instead of
     &#39;last&#39;, &#39;alist&#39;, &#39;blist&#39;, &#39;rlist&#39;, and &#39;elist&#39;:
-    
+
     &#39;lst&#39;
         The number of subintervals needed for the integration (call it ``K_f``).
     &#39;rslst&#39;
@@ -1627,15 +1643,15 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         corresponding to the interval in the same position in
         ``infodict[&#39;rslist&#39;]``.  See the explanation dictionary (last entry
         in the output tuple) for the meaning of the codes.
-    
-    
+
+
     **Details of QUADPACK level routines**
-    
+
     `quad` calls routines from the FORTRAN library QUADPACK. This section
     provides details on the conditions for each routine to be called and a
     short description of each routine. The routine called depends on
     `weight`, `points` and the integration limits `a` and `b`.
-    
+
     ================  ==============  ==========  =====================
     QUADPACK routine  `weight`        `points`    infinite bounds
     ================  ==============  ==========  =====================
@@ -1647,15 +1663,15 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     qawse             &#39;alg*&#39;          No          No
     qawce             &#39;cauchy&#39;        No          No
     ================  ==============  ==========  =====================
-    
+
     The following provides a short description from [1]_ for each
     routine.
-    
+
     qagse
         is an integrator based on globally adaptive interval
         subdivision in connection with extrapolation, which will
         eliminate the effects of integrand singularities of
-        several types. The integration is performed using a 21-point Gauss-Kronrod 
+        several types. The integration is performed using a 21-point Gauss-Kronrod
         quadrature within each subinterval.
     qagie
         handles integration over infinite intervals. The infinite range is
@@ -1674,7 +1690,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         over a finite interval [a,b], where :math:`\omega` and :math:`f`
         are specified by the user. The rule evaluation component is based
         on the modified Clenshaw-Curtis technique
-    
+
         An adaptive subdivision scheme is used in connection
         with an extrapolation procedure, which is a modification
         of that in ``QAGS`` and allows the algorithm to deal with
@@ -1693,7 +1709,7 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         :math:`\alpha,\beta &gt; -1`, where :math:`v(x)` may be one of the
         following functions: :math:`1`, :math:`\log(x-a)`, :math:`\log(b-x)`,
         :math:`\log(x-a)\log(b-x)`.
-    
+
         The user specifies :math:`\alpha`, :math:`\beta` and the type of the
         function :math:`v`. A globally adaptive subdivision strategy is
         applied, with modified Clenshaw-Curtis integration on those
@@ -1704,40 +1720,40 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
         :math:`c` and :math:`f`. The strategy is globally adaptive. Modified
         Clenshaw-Curtis integration is used on those intervals containing the
         point :math:`x = c`.
-    
+
     **Integration of Complex Function of a Real Variable**
-    
+
     A complex valued function, :math:`f`, of a real variable can be written as
     :math:`f = g + ih`.  Similarly, the integral of :math:`f` can be
     written as
-    
+
     .. math::
         \int_a^b f(x) dx = \int_a^b g(x) dx + i\int_a^b h(x) dx
-    
+
     assuming that the integrals of :math:`g` and :math:`h` exist
     over the interval :math:`[a,b]` [2]_. Therefore, ``quad`` integrates
     complex-valued functions by integrating the real and imaginary components
     separately.
-    
-    
+
+
     References
     ----------
-    
+
     .. [1] Piessens, Robert; de Doncker-Kapenga, Elise;
            Überhuber, Christoph W.; Kahaner, David (1983).
            QUADPACK: A subroutine package for automatic integration.
            Springer-Verlag.
            ISBN 978-3-540-12553-2.
-    
+
     .. [2] McCullough, Thomas; Phillips, Keith (1973).
            Foundations of Analysis in the Complex Plane.
            Holt Rinehart Winston.
            ISBN 0-03-086370-8
-    
+
     Examples
     --------
     Calculate :math:`\int^4_0 x^2 dx` and compare with an analytic result
-    
+
     &gt;&gt;&gt; from scipy import integrate
     &gt;&gt;&gt; import numpy as np
     &gt;&gt;&gt; x2 = lambda x: x**2
@@ -1745,15 +1761,15 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     (21.333333333333332, 2.3684757858670003e-13)
     &gt;&gt;&gt; print(4**3 / 3.)  # analytical result
     21.3333333333
-    
+
     Calculate :math:`\int^\infty_0 e^{-x} dx`
-    
+
     &gt;&gt;&gt; invexp = lambda x: np.exp(-x)
     &gt;&gt;&gt; integrate.quad(invexp, 0, np.inf)
     (1.0, 5.842605999138044e-11)
-    
+
     Calculate :math:`\int^1_0 a x \,dx` for :math:`a = 1, 3`
-    
+
     &gt;&gt;&gt; f = lambda x, a: a*x
     &gt;&gt;&gt; y, err = integrate.quad(f, 0, 1, args=(1,))
     &gt;&gt;&gt; y
@@ -1761,17 +1777,17 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
     &gt;&gt;&gt; y, err = integrate.quad(f, 0, 1, args=(3,))
     &gt;&gt;&gt; y
     1.5
-    
+
     Calculate :math:`\int^1_0 x^2 + y^2 dx` with ctypes, holding
     y parameter as 1::
-    
+
         testlib.c =&gt;
             double func(int n, double args[n]){
                 return args[0]*args[0] + args[1]*args[1];}
         compile to library testlib.*
-    
+
     ::
-    
+
        from scipy import integrate
        import ctypes
        lib = ctypes.CDLL(&#39;/home/.../testlib.*&#39;) #use absolute path
@@ -1781,13 +1797,13 @@ quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit
        #(1.3333333333333333, 1.4802973661668752e-14)
        print((1.0**3/3.0 + 1.0) - (0.0**3/3.0 + 0.0)) #Analytic result
        # 1.3333333333333333
-    
+
     Be aware that pulse shapes and other sharp features as compared to the
     size of the integration interval may not be integrated correctly using
     this method. A simplified example of this limitation is integrating a
     y-axis reflected step function with many zero values within the integrals
     bounds.
-    
+
     &gt;&gt;&gt; y = lambda x: 1 if x&lt;=0 else 0
     &gt;&gt;&gt; integrate.quad(y, -1, 1)
     (1.0, 1.1102230246251565e-14)
