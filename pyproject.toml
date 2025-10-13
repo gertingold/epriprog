@@ -1,0 +1,9 @@
+[project]
+name = "epriprog"
+version = "1.0"
+requires-python = ">=3.13"
+dependencies = [
+  "scipy",
+  "matplotlib",
+  "jupyter-book",
+]
