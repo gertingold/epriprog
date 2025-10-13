@@ -16,34 +16,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css?v=9d506d31" />
   
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=91fba89f"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="Vorlesungsmanuskript zur Vorlesung »Einführung in Prinzipien der Programmierung«" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="de"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,11 +156,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Suche</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Suche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
@@ -276,16 +287,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -344,7 +363,8 @@ es kann auch Fälle geben, in denen man selbst programmieren muss, zum Beispiel
 wenn man eine Exponentialfunktion auf einen Waschbären anwenden möchte
 (<a class="reference internal" href="#fig-exponential-raccoon"><span class="std std-numref">Abb. 1.1</span></a>).</p>
 <figure class="align-default" id="fig-exponential-raccoon">
-<a class="reference internal image-reference" href="_images/exponential_raccoon.png"><img alt="_images/exponential_raccoon.png" src="_images/exponential_raccoon.png" style="width: 10cm;" /></a>
+<a class="reference internal image-reference" href="_images/exponential_raccoon.png"><img alt="_images/exponential_raccoon.png" src="_images/exponential_raccoon.png" style="width: 10cm;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 1.1 </span><span class="caption-text">Originalbild eines Waschbärs (links) und nach Anwendung einer Exponentialfunktion
 (rechts).</span><a class="headerlink" href="#fig-exponential-raccoon" title="Link to this image">#</a></p>
@@ -410,6 +430,33 @@ hat er praktisch immer recht. Da hilft es nur, die Fehlermeldungen ernst zu
 nehmen und ein bisschen Gelassenheit an den Tag zu legen. Dafür beschwert sich
 der Computer auch nicht, wenn er uns lästige Arbeit abnehmen muss, indem er zum
 Beispiel zuverlässig immer wieder die gleichen Programmanweisungen abarbeitet.</p>
+<p>Programmierarbeit wird in neuerer Zeit auch durch auf künstlicher Intelligenz (KI)
+basierender Werkzeuge unterstützt. Dabei werden große Sprachmodelle, sogenannte
+<em>large language models</em>, mit umfangreichem Programmcode, also den Ergebnissen
+menschlicher Intelligenz, trainiert. Allerdings versteht die künstliche
+Intelligenz das Programmieren nicht auf die gleiche Weise wie wir das als Menschen
+tun, sondern führt eine statistische Analyse durch. Auch wenn die Ergebnisse
+häufig sehr beeindruckend sein können, muss man sich immer bewusst sein, dass
+künstliche Intelligenz aufgrund ihres statistischen Charakters auch ziemlichen
+Blödsinn produzieren kann. Man spricht dann vom Halluzinieren der künstlichen
+Intelligenz.</p>
+<p>Nutzt man KI beim Programmieren, so ist es daher notwendig,
+Programmierkenntnisse zu besitzen, um zum einen der künstlichen Intelligenz
+klare Anweisungen geben zu können, die den Einfluss des Halluzinierens
+möglichst vermeiden. Außerdem ist es notwendig, das von der künstlichen
+Intelligenz vorgeschlagene Ergebnis beurteilen zu können. Es wäre ja schade,
+wenn einem die KI einen Programmcode unterschiebt, der die gesamte Festplatte
+löscht. Vor der Ausführung von KI-generiertem Code sollte man also erst einmal
+einen Blick auf den Code werfen und sicherstellen, dass dieser vernünftig
+aussieht. In einem industriellen Umfeld ist auch zu bedenken, dass die großen
+Sprachmodelle, wie schon erwähnt, mit zuvor existierendem Code trainiert
+werden. Als Konsequenz hiervon lässt es sich prinzipiell nicht ausschließen,
+dass die künstliche Intelligenz urheberrechtlich geschützten Code als Ergebnis
+liefert. In Zeiten, in denen die Folgen des Klimawandels immer sichtbarer
+werden, sollte man schließlich auch bedenken, dass menschliche Intelligenz
+energetisch um ein Vielfaches effizienter ist als künstliche Intelligenz. Trotz
+allem muss man wohl davon ausgehen, dass künstliche Intelligenz zukünftig eine
+zunehmende Rolle bei der Programmierarbeit spielen wird.</p>
 </section>
 <section id="warum-python">
 <span id="warumpython"></span><h2><span class="section-number">1.2. </span>Warum Python?<a class="headerlink" href="#warum-python" title="Link to this heading">#</a></h2>
@@ -449,7 +496,8 @@ included«) und das wissenschaftliche Rechnen wird durch eine Vielzahl freier
 Programmbibliotheken, wie <strong class="program">NumPy/SciPy</strong>, das wir im Kapitel <a class="reference internal" href="scipy.html#scipy"><span class="std std-ref">Numerische Programmbibliotheken am Beispiel von NumPy/SciPy</span></a>
 besprechen werden, unterstützt.</p></li>
 <li><p>Python hat sich in den letzten Jahren zu einer sehr populären Sprache
-entwickelt, unter anderem im Bereich der wissenschaftlichen Datenanalyse.</p></li>
+entwickelt, unter anderem im Bereich der wissenschaftlichen Datenanalyse
+und dem maschinellen Lernen bzw. der künstlichen Intelligenz.</p></li>
 </ul>
 <p>Bei den beiden physikalischen Beobachtungen, die in den letzten Jahren die
 Aufmerksamkeit einer breiten Öffentlichkeit erregten, nämlich die Beobachtung
@@ -461,7 +509,8 @@ erfolgte unter Verwendung wissenschaftlicher Programmpakete von Python wie
 <a class="reference external" href="https://pandas.pydata.org">Pandas</a>, <a class="reference external" href="https://jupyter.org">Jupyter</a>, und
 <a class="reference external" href="https://matplotlib.org">Matplotlib</a> <a class="footnote-reference brackets" href="#apjl875l3" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
 <figure class="align-default" id="fig-eso1907a">
-<a class="reference internal image-reference" href="_images/eso1907a.jpg"><img alt="_images/eso1907a.jpg" src="_images/eso1907a.jpg" style="width: 10cm;" /></a>
+<a class="reference internal image-reference" href="_images/eso1907a.jpg"><img alt="_images/eso1907a.jpg" src="_images/eso1907a.jpg" style="width: 10cm;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 1.2 </span><span class="caption-text">Abbild eines schwarzen Lochs aus Aufnahmen des Event Horizon Telescopes.
 (Urheber: EHT Collaboration)</span><a class="headerlink" href="#fig-eso1907a" title="Link to this image">#</a></p>
@@ -548,7 +597,8 @@ anschließend ausgeführt wird. Sobald Python installiert ist, ist auch die
 zugehörige Python-Shell verfügbar. <a class="reference internal" href="#fig-pythonshell"><span class="std std-numref">Abb. 1.3</span></a> zeigt die
 Python-Shell in einem Konsolenfenster unter Linux.</p>
 <figure class="align-default" id="fig-pythonshell">
-<a class="reference internal image-reference" href="_images/pythonshell.png"><img alt="_images/pythonshell.png" src="_images/pythonshell.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="_images/pythonshell.png"><img alt="_images/pythonshell.png" src="_images/pythonshell.png" style="width: 80%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 1.3 </span><span class="caption-text">Programmierung von wenigen Zeilen direkt in der Python-Shell.</span><a class="headerlink" href="#fig-pythonshell" title="Link to this image">#</a></p>
 </figcaption>
@@ -564,7 +614,8 @@ Eingabe je nach ihrer Funktion einfärbt.  Man spricht hierbei von <em>Syntax
 Highlighting</em>, das bei der Fehlersuche hilfreich sein kann. Es ist daher
 sinnvoll, statt der Python-Shell grundsätzlich die IPython-Shell zu verwenden.</p>
 <figure class="align-default" id="fig-ipythonshell">
-<a class="reference internal image-reference" href="_images/ipythonshell.png"><img alt="_images/ipythonshell.png" src="_images/ipythonshell.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="_images/ipythonshell.png"><img alt="_images/ipythonshell.png" src="_images/ipythonshell.png" style="width: 80%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 1.4 </span><span class="caption-text">Eine komfortablere Python-Shell bietet IPython, unter anderem mit <em>Syntax Highlighting</em>.</span><a class="headerlink" href="#fig-ipythonshell" title="Link to this image">#</a></p>
 </figcaption>
@@ -580,7 +631,8 @@ Jupyter-Notebook eignet sich unter anderem hervorragend dafür, die Schritte
 einer Datenanalyse zu dokumentieren, um sie auch später nachvollziehen zu
 können.</p>
 <figure class="align-default" id="fig-jupyterlab">
-<a class="reference internal image-reference" href="_images/jupyterlab.png"><img alt="_images/jupyterlab.png" src="_images/jupyterlab.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/jupyterlab.png"><img alt="_images/jupyterlab.png" src="_images/jupyterlab.png" style="width: 15cm;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 1.5 </span><span class="caption-text">Beispiel eines Jupyter-Notebooks in Jupyterlab. Das graphische Ergebnis
 einer der beiden Codezellen wird innerhalb des Notebooks dargestellt.
@@ -619,7 +671,8 @@ an dieser Stelle keine ausführliche Einführung in Spyder geben und verweisen
 stattdessen auf die zugehörige
 <a class="reference external" href="https://docs.spyder-ide.org/current/index.html">Dokumentation</a>.</p>
 <figure class="align-default" id="fig-spyder">
-<a class="reference internal image-reference" href="_images/spyder.png"><img alt="_images/spyder.png" src="_images/spyder.png" style="width: 15cm;" /></a>
+<a class="reference internal image-reference" href="_images/spyder.png"><img alt="_images/spyder.png" src="_images/spyder.png" style="width: 15cm;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Abb. 1.6 </span><span class="caption-text">Python-Entwicklungsumgebung Spyder</span><a class="headerlink" href="#fig-spyder" title="Link to this image">#</a></p>
 </figcaption>
@@ -747,8 +800,7 @@ Software Foundation)</a></p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -810,8 +862,8 @@ Durch Gert-Ludwig Ingold
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

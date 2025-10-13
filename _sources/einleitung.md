@@ -94,6 +94,35 @@ nehmen und ein bisschen Gelassenheit an den Tag zu legen. Dafür beschwert sich
 der Computer auch nicht, wenn er uns lästige Arbeit abnehmen muss, indem er zum
 Beispiel zuverlässig immer wieder die gleichen Programmanweisungen abarbeitet.
 
+Programmierarbeit wird in neuerer Zeit auch durch auf künstlicher Intelligenz (KI)
+basierender Werkzeuge unterstützt. Dabei werden große Sprachmodelle, sogenannte
+*large language models*, mit umfangreichem Programmcode, also den Ergebnissen
+menschlicher Intelligenz, trainiert. Allerdings versteht die künstliche
+Intelligenz das Programmieren nicht auf die gleiche Weise wie wir das als Menschen
+tun, sondern führt eine statistische Analyse durch. Auch wenn die Ergebnisse
+häufig sehr beeindruckend sein können, muss man sich immer bewusst sein, dass
+künstliche Intelligenz aufgrund ihres statistischen Charakters auch ziemlichen
+Blödsinn produzieren kann. Man spricht dann vom Halluzinieren der künstlichen
+Intelligenz.
+
+Nutzt man KI beim Programmieren, so ist es daher notwendig,
+Programmierkenntnisse zu besitzen, um zum einen der künstlichen Intelligenz
+klare Anweisungen geben zu können, die den Einfluss des Halluzinierens
+möglichst vermeiden. Außerdem ist es notwendig, das von der künstlichen
+Intelligenz vorgeschlagene Ergebnis beurteilen zu können. Es wäre ja schade,
+wenn einem die KI einen Programmcode unterschiebt, der die gesamte Festplatte
+löscht. Vor der Ausführung von KI-generiertem Code sollte man also erst einmal
+einen Blick auf den Code werfen und sicherstellen, dass dieser vernünftig
+aussieht. In einem industriellen Umfeld ist auch zu bedenken, dass die großen
+Sprachmodelle, wie schon erwähnt, mit zuvor existierendem Code trainiert
+werden. Als Konsequenz hiervon lässt es sich prinzipiell nicht ausschließen,
+dass die künstliche Intelligenz urheberrechtlich geschützten Code als Ergebnis
+liefert. In Zeiten, in denen die Folgen des Klimawandels immer sichtbarer
+werden, sollte man schließlich auch bedenken, dass menschliche Intelligenz
+energetisch um ein Vielfaches effizienter ist als künstliche Intelligenz. Trotz
+allem muss man wohl davon ausgehen, dass künstliche Intelligenz zukünftig eine
+zunehmende Rolle bei der Programmierarbeit spielen wird.
+
 [^euler]: Wer Spaß am Programmieren und am Lösen mathematischer Probleme hat
      oder einfach die gelernten Programmierfähigkeiten ausprobieren möchte,
      sollte einen Blick auf [projecteuler.net](http://projecteuler.net/) werfen.
@@ -143,7 +172,8 @@ Gründe für diese Wahl der Programmiersprache sind unter anderem:
   Programmbibliotheken, wie {program}`NumPy/SciPy`, das wir im Kapitel {ref}`scipy`
   besprechen werden, unterstützt.
 - Python hat sich in den letzten Jahren zu einer sehr populären Sprache
-  entwickelt, unter anderem im Bereich der wissenschaftlichen Datenanalyse.
+  entwickelt, unter anderem im Bereich der wissenschaftlichen Datenanalyse
+  und dem maschinellen Lernen bzw. der künstlichen Intelligenz.
 
 Bei den beiden physikalischen Beobachtungen, die in den letzten Jahren die
 Aufmerksamkeit einer breiten Öffentlichkeit erregten, nämlich die Beobachtung
