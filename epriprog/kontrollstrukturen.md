@@ -76,7 +76,7 @@ list(range(5))
 
 Es wird also eine Liste von aufeinanderfolgenden ganzen Zahlen erzeugt, die
 hier fünf Elemente enthält. Zu beachten ist, dass die Liste mit null beginnt
-und nicht mit Eins. Wir werden uns diesen zusammengesetzten Datentyp im
+und nicht mit eins. Wir werden uns diesen zusammengesetzten Datentyp im
 {numref}`listen` noch genauer ansehen. Für den Moment genügt jedoch die
 intuitive Vorstellung von einer Liste. In der ersten Zeile der
 `for`-Schleife, die mit einem Doppelpunkt enden muss, wird also festgelegt,
@@ -481,7 +481,7 @@ auf das anschließende Würfeln auf eins gesetzt. Auch die letzten beiden
 Zeilen wurden geändert, was aber nichts mit dem Code in der Funktion
 `wait_for_six`zu tun hat. Diese Änderung soll lediglich dafür sorgen, dass
 statt einem Histogramm der Mittelwert der Würfe ausgegeben wird. Da das
-angezeigte Ergebnis auf einer endlichen Anzahl von Veruschen beruht, weicht
+angezeigte Ergebnis auf einer endlichen Anzahl von Versuchen beruht, weicht
 es ein wenig vom analytischen Ergebnis, nämlich 6, ab.
 
 Ein Nachteil dieser Lösung besteht darin, dass man das Ergebnis des Wurfes
