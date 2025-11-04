@@ -509,7 +509,7 @@ ansehen, indem wir explizit eine Liste der Werte erzeugen lassen.</p>
 </div>
 <p>Es wird also eine Liste von aufeinanderfolgenden ganzen Zahlen erzeugt, die
 hier fünf Elemente enthält. Zu beachten ist, dass die Liste mit null beginnt
-und nicht mit Eins. Wir werden uns diesen zusammengesetzten Datentyp im
+und nicht mit eins. Wir werden uns diesen zusammengesetzten Datentyp im
 <a class="reference internal" href="sequenzen.html#listen"><span class="std std-numref">Kapitel 6.1</span></a> noch genauer ansehen. Für den Moment genügt jedoch die
 intuitive Vorstellung von einer Liste. In der ersten Zeile der
 <code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife, die mit einem Doppelpunkt enden muss, wird also festgelegt,
@@ -881,7 +881,7 @@ nun den Computer heranziehen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0c3568733a85b8f2400b740fd43939e9a869cc94c9f5c0c1900345a7c5c1fb4d.png" src="_images/0c3568733a85b8f2400b740fd43939e9a869cc94c9f5c0c1900345a7c5c1fb4d.png" />
+<img alt="_images/50d43802dc3879cb8652e5c116d502b803ffc0473c1fd73ce28d9d1a6541f08b.png" src="_images/50d43802dc3879cb8652e5c116d502b803ffc0473c1fd73ce28d9d1a6541f08b.png" />
 </div>
 </div>
 <p>Das Histogramm gibt die Wahrscheinlichkeit an, dass eine 6 zum ersten Mal nach
@@ -992,7 +992,7 @@ vorkommt? Eine Möglichkeit besteht darin, den Aufruf in die Bedingung zu versch
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.02532
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.00712
 </pre></div>
 </div>
 </div>
@@ -1002,7 +1002,7 @@ auf das anschließende Würfeln auf eins gesetzt. Auch die letzten beiden
 Zeilen wurden geändert, was aber nichts mit dem Code in der Funktion
 <code class="docutils literal notranslate"><span class="pre">wait_for_six</span></code>zu tun hat. Diese Änderung soll lediglich dafür sorgen, dass
 statt einem Histogramm der Mittelwert der Würfe ausgegeben wird. Da das
-angezeigte Ergebnis auf einer endlichen Anzahl von Veruschen beruht, weicht
+angezeigte Ergebnis auf einer endlichen Anzahl von Versuchen beruht, weicht
 es ein wenig vom analytischen Ergebnis, nämlich 6, ab.</p>
 <p>Ein Nachteil dieser Lösung besteht darin, dass man das Ergebnis des Wurfes
 nicht ausgeben kann, da es keiner Variable zugewiesen wird. Seit Python 3.8
@@ -1057,7 +1057,7 @@ Endlosschleife realisieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.02618
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.01092
 </pre></div>
 </div>
 </div>
@@ -1774,11 +1774,11 @@ wollen aber den Fehlerfall von Argumenten außerhalb des vorgegebenen Bereichs b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = 3 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
-n_self = 3 und n_other = 2 müssen beide zwischen 0 und 2 liegen.
-n_self = 0 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
-n_self = -1 und n_other = 1 müssen beide zwischen 0 und 2 liegen.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_self = -1 und n_other = 0 müssen beide zwischen 0 und 2 liegen.
+n_self = 2 und n_other = -1 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 0 und n_other = 1: 2
 n_self = 0 und n_other = 3 müssen beide zwischen 0 und 2 liegen.
+Ergebnis für n_self = 0 und n_other = 2: 1
 </pre></div>
 </div>
 </div>
