@@ -1281,6 +1281,28 @@ Position in der Liste zuzuordnen und andere Argumente über das zugehörige Schl
 solchen Fall müssen die Argumente mit Schlüsselwort zwingend hinter den Argumenten kommen, die über
 ihre Position zugeordnet werden. Andernfalls könnten die Argumente im Allgemeinen nicht
 zweifelsfrei zugeordnet werden.</p>
+<div class="admonition-weiterfuhrender-hinweis admonition">
+<p class="admonition-title">Weiterführender Hinweis</p>
+<p>Die Verwendung von Argumenten per Position oder Schlüsselwort kann in der Funktionsdefinition
+eingeschränkt werden. Steht in der Argumentliste ein Schrägstrich (<code class="docutils literal notranslate"><span class="pre">/</span></code>), so müssen alle Argumente
+davor per Position übergeben werden. Alle Argumente nach einem Stern (<code class="docutils literal notranslate"><span class="pre">*</span></code>) in der Argumentliste müssen
+dagegen zwingend per Schlüsselwort übergeben werden. Nach dem Schrägstrich und/oder vor dem Stern
+sind beide Varianten möglich. Als einfaches Beispiel kann die Funktion <code class="docutils literal notranslate"><span class="pre">atan2</span></code> aus dem
+<code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul der Python-Standardbibliothek dienen, die die folgende Signatur besitzt</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Damit müssen die Argumente <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> zwingend per Position übergeben werden. Es ist also
+nicht möglich</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>oder gar</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">atan2</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>zu verwenden.</p>
+</div>
 <p>Ein Nachteil unserer Ableitungsfunktion, wie sie momentan implementiert ist, besteht darin, dass die
 Schrittweite <code class="docutils literal notranslate"><span class="pre">h</span></code> in der Funktion fest vorgegeben ist. Der Wert von <span class="math notranslate nohighlight">\(10^{-7}\)</span> mag zwar vernünftig
 gewählt sein, aber es wäre sinnvoll, wenn man diesen Wert bei Bedarf anpassen könnte. In einem
