@@ -575,7 +575,7 @@ Daten graphisch darzustellen. Eine solche Funktion wird typischerweise relativ v
 haben, da man beispielsweise die Strichfarbe, die Strichdicke und die Strichart festlegen möchte.
 Andererseits möchte man nicht unbedingt alle Argumente explizit angeben müssen, wenn man nur eine
 schwarze durchgezogene Linie mittlerer Dicke darstellen möchte. Es sollte auch nicht so sein, dass
-man, nur weil man die Stichart anpassen möchte, alle anderen Argumente, die vor dem betreffenden
+man, nur weil man die Strichart anpassen möchte, alle anderen Argumente, die vor dem betreffenden
 Argument stehen, zwingend angeben muss.
 
 In einem solchen Fall ist es sinnvoll, Argumente per Schlüsselwort zu übergeben. Um das Vorgehen
