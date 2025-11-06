@@ -626,6 +626,27 @@ Position in der Liste zuzuordnen und andere Argumente über das zugehörige Schl
 solchen Fall müssen die Argumente mit Schlüsselwort zwingend hinter den Argumenten kommen, die über
 ihre Position zugeordnet werden. Andernfalls könnten die Argumente im Allgemeinen nicht
 zweifelsfrei zugeordnet werden.
+````{admonition} Weiterführender Hinweis
+Die Verwendung von Argumenten per Position oder Schlüsselwort kann in der Funktionsdefinition
+eingeschränkt werden. Steht in der Argumentliste ein Schrägstrich (`/`), so müssen alle Argumente
+davor per Position übergeben werden. Alle Argumente nach einem Stern (`*`) in der Argumentliste müssen
+dagegen zwingend per Schlüsselwort übergeben werden. Nach dem Schrägstrich und/oder vor dem Stern
+sind beide Varianten möglich. Als einfaches Beispiel kann die Funktion `atan2` aus dem
+`math`-Modul der Python-Standardbibliothek dienen, die die folgende Signatur besitzt
+```{code-block} python
+atan2(y, x, /)
+```
+Damit müssen die Argumente `x` und `y` zwingend per Position übergeben werden. Es ist also
+nicht möglich
+```{code-block} python
+atan2(y=2, x=1)
+```
+oder gar
+```{code-block} python
+atan2(x=1, y=2)
+```
+zu verwenden.
+````
 
 Ein Nachteil unserer Ableitungsfunktion, wie sie momentan implementiert ist, besteht darin, dass die
 Schrittweite `h` in der Funktion fest vorgegeben ist. Der Wert von $10^{-7}$ mag zwar vernünftig 
